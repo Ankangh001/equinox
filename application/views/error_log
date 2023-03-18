@@ -1,4 +1,0 @@
-[18-Jul-2021 10:09:47 UTC] PHP Warning:  array_slice() expects parameter 1 to be array, null given in /home/ankanghx/public_html/index.php on line 344
-[18-Jul-2021 10:09:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ankanghx/public_html/index.php on line 344
-[18-Jul-2021 10:10:05 UTC] PHP Warning:  array_slice() expects parameter 1 to be array, null given in /home/ankanghx/public_html/index.php on line 344
-[18-Jul-2021 10:10:05 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ankanghx/public_html/index.php on line 344

@@ -1,2 +1,0 @@
-# equinox
-freelance website equinox
