@@ -12,4 +12,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('faq');
 	}
+
+	public function rules()
+	{
+		$this->load->view('rules');
+	}
 }

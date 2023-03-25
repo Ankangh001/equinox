@@ -4,10 +4,7 @@ $this->load->view('includes/header');
 <section id="faq-hero" class="d-flex align-items-center">
     <div class="container position-relative text-center text-lg-start aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
       <div class="row">
-        <div class="col-lg-12 pt-5 justify-content-center d-flex f-row" style="
-    flex-direction: column;
-    align-items: center;
-">
+        <div class="col-lg-12 pt-5 justify-content-center d-flex f-row">
           <h1>We prefer your<span> Concern</span></h1>
           <h2>clear your doubts</h2>
 

@@ -1961,7 +1961,7 @@ table.account-config td {
   height: 100vh;
   background: linear-gradient(45deg, #000000, #00000087), url(../img/faq-3d.jpg) center;
   background-size: contain;
-  background-attachment: fixed;
+  background-attachment: fixed !important;
   background-repeat: no-repeat;
   background-color: #fff;
 }
@@ -1997,4 +1997,28 @@ table.account-config td {
   line-height: 1;
   color: white;
   border: 2px solid #00e894;
+}
+.f-row{
+  flex-direction: column;
+  align-items: center;
+}
+/*rules*/
+.rules{
+  background: linear-gradient(45deg, #000000, #00000087), url(../img/rules.jpg) center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.rule-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #3e3e3e;
+  background-clip: border-box;
+  border: none;
+  border-radius: 12px;
+  box-shadow: inset -3px -3px 0px #00000080, 0 0 10px #00000090;
+  padding: 1rem;
 }
