@@ -1,58 +1,6 @@
 <?php
 $this->load->view('includes/header');
 ?>
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-cente">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
-
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Equinox</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-		 	<li class="dropdown"><a href="#"><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-				<li><a href="#why-us">Evaluation Process</a></li>
-				<li><a href="#table-pricing">Pricing</a></li>
-				<li><a href="#">Scaling Plan</a></li>
-				</ul>
-			</li>
-			<li class="dropdown"><a href="#"><span>Help</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-					<li><a href="faq">FaQ</a></li>
-					<li><a href="rules">Rules</a></li>
-				</ul>
-			</li>
-			<li><a class="nav-link scrollto" href="testimonial">Testimonial</a></li>
-			<li class="dropdown"><a href="#"><span>Trading</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-					<li><a href="notice">Notice</a></li>
-					<li><a href="symbol">Symbol</a></li>
-					<li><a href="calender">News Calender</a></li>
-				</ul>
-			</li>
-			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
-			<li><a class="nav-link scrollto" href="payouts">Payouts</a></li>
-			<li class="dropdown"><a href="#"><span>Contact</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-					<li><a href="contact">Contact</a></li>
-					<li><a href="about">About Us</a></li>
-				</ul>
-			</li>
-			<li class="dropdown"><a href="#"><span>En</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-					<li><a href="contact">English</a></li>
-					<li><a href="about">Hindi</a></li>
-				</ul>
-			</li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Client Area</a>
-
-    </div>
-  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -343,6 +291,7 @@ $this->load->view('includes/header');
     </section><!-- End Pricing -->
 	
   </main><!-- End #main -->
-  <?php
+
+<?php
 $this->load->view('includes/footer');
 ?>
