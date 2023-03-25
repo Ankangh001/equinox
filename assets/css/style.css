@@ -20,7 +20,7 @@ a {
 }
 
 a:hover {
-  color: #d9ba85;
+  color: #00e894;
   text-decoration: none;
 }
 
@@ -144,7 +144,7 @@ h6 {
 
 #topbar .contact-info i {
   font-style: normal;
-  color: #d9ba85;
+  color: #00e894;
 }
 
 #topbar .contact-info i span {
@@ -283,21 +283,21 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar li:hover>a {
-  color: #d9ba85;
+  color: #00e894;
 }
 
 .navbar .dropdown ul {
   display: block;
   position: absolute;
-  left: 14px;
+  left: 30px;
   top: calc(100% + 30px);
   margin: 0;
   padding: 10px 0;
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: #2e2d2a;
+  box-shadow: 0px 0px 10px rgb(0 0 0 / 57%);
   transition: 0.3s;
   border-radius: 4px;
 }
@@ -308,7 +308,7 @@ h6 {
 
 .navbar .dropdown ul a {
   padding: 10px 20px;
-  color: #444444;
+  color: #ffffff;
 }
 
 .navbar .dropdown ul a i {
@@ -460,13 +460,13 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(45deg, #00000096, transparent),url("../img/hero-bg.jpg") top center;
+  background: linear-gradient(45deg, #00000096, transparent), url("../img/hero-bg.jpg") top center;
   background-size: cover;
   position: relative;
   padding: 0;
 }
 
-#device{
+#device {
   background: url(../img/device.png) top center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -875,11 +875,23 @@ section {
 /*--------------------------------------------------------------
 # Why Us
 --------------------------------------------------------------*/
+.why-us {
+  background: #444444;
+  background-attachment: fixed;
+  background-size: cover;
+  /* padding: 8rem 0; */
+}
+.table-pricing {
+  background: linear-gradient(350deg, rgb(0 0 0 / 70%) 0%, rgba(0, 0, 0, 0.482) 100%), url(../img/why-us-bg.jpg) center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
 .why-us .box {
   padding: 50px 30px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 0.3s;
-  background: #1a1814;
+  background: #2e2d2a;
+  border-radius: 12px;
 }
 
 .why-us .box span {
@@ -1777,3 +1789,118 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+/*price table*/
+@media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+}
+
+.text-white\/60 {
+  color: #fff9;
+}
+
+.p-40p {
+  padding: 2.5rem;
+}
+
+.rounded-24p,
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.hidden {
+  display: none;
+}
+
+.bg-box {
+  background: linear-gradient(180deg, rgba(27, 23, 36, .4) 0%, rgba(15, 14, 19, .4) 100%);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  border: 1px solid rgba(255, 255, 255, .03);
+}
+
+table.account-config {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff9;
+  width: 100%;
+}
+
+table.account-config thead tr {
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+table.account-config thead tr td {
+  padding: 0 0 20px;
+}
+
+table.account-config td {
+  padding: 12px 0;
+  position: relative;
+}
+
+table.account-config tbody tr:first-of-type td {
+  padding-top: 20px;
+}
+table.account-config td {
+  padding: 12px 0;
+  position: relative;
+}
+.py-8p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-16p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.bg-primary-500\/16 {
+  background-color: transparent;
+  backdrop-filter: blur(3px);
+}
+.border-primary-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(54 54 236 / var(--tw-border-opacity));
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+.gap-8p {
+  gap: 0.5rem;
+}
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.flex-row {
+  flex-direction: row;
+}
+.h-40p {
+  height: 2.5rem;
+}
+.flex {
+  display: flex;
+}
+.-my-12p {
+  margin-top: -0.75rem;
+  margin-bottom: -0.75rem;
+}
+.pointer{
+  cursor: pointer;
+}
+.pointer:hover{
+  margin-bottom: 1px;
+}
+.border-pricing{
+ box-shadow:  0 0 3px #ffffff80;
+}
+/*price table*/

@@ -11,7 +11,14 @@ $this->load->view('includes/header');
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+		<li class="dropdown"><a href="#"><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#why-us">Evaluation Process</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Scaling Plan</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto active dropdown" href="#hero">How it Works</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
           <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
@@ -63,50 +70,16 @@ $this->load->view('includes/header');
 
       </div>
     </div>
-  </section>
-  <!-- End Hero -->
+  </section><!-- End Hero -->
 
   <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-            <div class="about-img">
-              <img src="assets/img/about.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Why Us Section ======= -->
+	<!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Why Us</h2>
-          <p>Why Choose Our Restaurant</p>
+        <div class="section-title text-center">
+          <h2>Evaluation Process</h2>
+          <p>Steps to grow with us</p>
         </div>
 
         <div class="row">
@@ -139,6 +112,264 @@ $this->load->view('includes/header');
 
       </div>
     </section><!-- End Why Us Section -->
+
+	<!-- ======= Pricing ======= -->
+    <section id="table-pricing" class="table-pricing">
+		<div class="container" data-aos="fade-up">
+			<div class="section-title text-center">
+				<h2>Pricing</h2>
+				<p>What we offer</p>
+			</div>
+
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+				<li class="nav-item m-2 pointer">
+					<div data-toggle="pill" 
+						id="pills-home-tab"
+						href="#pills-home" 
+						role="tab" 
+						aria-controls="pills-home" 
+						aria-selected="true" 
+						class="flex justify-center active
+							items-center flex-row px-16p py-8p 
+							bg-primary-500/16 border-pricing 
+							border-primary-500 rounded-full 
+							-my-12p h-40p gap-8p">
+						<strong>$10000</strong>
+					</div>
+				</li>
+				<li class="nav-item m-2 pointer">
+					<div id="pills-profile-tab" 
+						data-toggle="pill" 
+						href="#pills-profile" 
+						role="tab" 
+						aria-controls="pills-profile" 
+						aria-selected="false"
+						class="flex justify-center 
+							items-center flex-row px-16p py-8p 
+							bg-primary-500/16 border-pricing 
+							border-primary-500 rounded-full 
+							-my-12p h-40p gap-8p">
+						<strong>$20000</strong>
+					</div>
+				</li>
+				<li class="nav-item m-2 pointer">
+					<div id="pills-contact-tab" 
+						data-toggle="pill" 
+						href="#pills-contact" 
+						role="tab" 
+						aria-controls="pills-contact" 
+						aria-selected="false"
+						class="flex justify-center 
+							items-center flex-row px-16p py-8p 
+							bg-primary-500/16 border-pricing 
+							border-primary-500 rounded-full 
+							-my-12p h-40p gap-8p">
+						<strong>$30000</strong>
+					</div>
+					<!-- <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a> -->
+				</li>
+			</ul>
+			<div class="tab-content" id="pills-tabContent">
+				<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+								<td></td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
+								<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>Trading period</td>
+								<td x-text="currentConfig[0][0]">30 days</td>
+								<td x-text="currentConfig[1][0]">60 days</td>
+								<td x-text="currentConfig[2][0]">indefinite</td>
+								</tr>
+								<tr>
+								<td>Minimum trading days</td>
+								<td x-text="currentConfig[0][1]">5 days</td>
+								<td x-text="currentConfig[1][1]">5 days</td>
+								<td x-text="currentConfig[2][1]">x</td>
+								</tr>
+								<tr>
+								<td>Max Daily Loss</td>
+								<td x-text="currentConfig[0][2]">£7,000</td>
+								<td x-text="currentConfig[1][2]">£7,000</td>
+								<td x-text="currentConfig[2][2]">£7,000</td>
+								</tr>
+								<tr>
+								<td>Max Overall Loss</td>
+								<td x-text="currentConfig[0][3]">£14,000</td>
+								<td x-text="currentConfig[1][3]">£14,000</td>
+								<td x-text="currentConfig[2][3]">£14,000</td>
+								</tr>
+								<tr>
+								<td>Profit Target</td>
+								<td x-text="currentConfig[0][4]">£11,200</td>
+								<td x-text="currentConfig[1][4]">£7,000</td>
+								<td x-text="currentConfig[2][4]">x</td>
+								</tr>
+								<tr>
+								<td>Refundable Fee</td>
+								<td colspan="3">
+									<div class="flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+									<span>Single payment of: </span>
+									<strong x-text="currentConfig[0][5]">€998</strong>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+				<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+								<td></td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
+								<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>Trading period</td>
+								<td x-text="currentConfig[0][0]">30 days</td>
+								<td x-text="currentConfig[1][0]">60 days</td>
+								<td x-text="currentConfig[2][0]">indefinite</td>
+								</tr>
+								<tr>
+								<td>Minimum trading days</td>
+								<td x-text="currentConfig[0][1]">5 days</td>
+								<td x-text="currentConfig[1][1]">5 days</td>
+								<td x-text="currentConfig[2][1]">x</td>
+								</tr>
+								<tr>
+								<td>Max Daily Loss</td>
+								<td x-text="currentConfig[0][2]">£7,000</td>
+								<td x-text="currentConfig[1][2]">£7,000</td>
+								<td x-text="currentConfig[2][2]">£7,000</td>
+								</tr>
+								<tr>
+								<td>Max Overall Loss</td>
+								<td x-text="currentConfig[0][3]">£14,000</td>
+								<td x-text="currentConfig[1][3]">£14,000</td>
+								<td x-text="currentConfig[2][3]">£14,000</td>
+								</tr>
+								<tr>
+								<td>Profit Target</td>
+								<td x-text="currentConfig[0][4]">£11,200</td>
+								<td x-text="currentConfig[1][4]">£7,000</td>
+								<td x-text="currentConfig[2][4]">x</td>
+								</tr>
+								<tr>
+								<td>Refundable Fee</td>
+								<td colspan="3">
+									<div class="flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+										<span>Single payment of: </span>
+										<strong x-text="currentConfig[0][5]">€998</strong>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+				<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+								<td></td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
+								<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>Trading period</td>
+								<td x-text="currentConfig[0][0]">30 days</td>
+								<td x-text="currentConfig[1][0]">60 days</td>
+								<td x-text="currentConfig[2][0]">indefinite</td>
+								</tr>
+								<tr>
+								<td>Minimum trading days</td>
+								<td x-text="currentConfig[0][1]">5 days</td>
+								<td x-text="currentConfig[1][1]">5 days</td>
+								<td x-text="currentConfig[2][1]">x</td>
+								</tr>
+								<tr>
+								<td>Max Daily Loss</td>
+								<td x-text="currentConfig[0][2]">£7,000</td>
+								<td x-text="currentConfig[1][2]">£7,000</td>
+								<td x-text="currentConfig[2][2]">£7,000</td>
+								</tr>
+								<tr>
+								<td>Max Overall Loss</td>
+								<td x-text="currentConfig[0][3]">£14,000</td>
+								<td x-text="currentConfig[1][3]">£14,000</td>
+								<td x-text="currentConfig[2][3]">£14,000</td>
+								</tr>
+								<tr>
+								<td>Profit Target</td>
+								<td x-text="currentConfig[0][4]">£11,200</td>
+								<td x-text="currentConfig[1][4]">£7,000</td>
+								<td x-text="currentConfig[2][4]">x</td>
+								</tr>
+								<tr>
+								<td>Refundable Fee</td>
+								<td colspan="3">
+									<div class="flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+									<span>Single payment of: </span>
+									<strong x-text="currentConfig[0][5]">€998</strong>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section><!-- End Pricing -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              <img src="assets/img/about.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
 
     <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
