@@ -881,11 +881,13 @@ section {
   background-size: cover;
   padding: 8rem 0;
 }
+
 .table-pricing {
   background: linear-gradient(350deg, rgb(0 0 0 / 70%) 0%, rgba(0, 0, 0, 0.482) 100%), url(../img/why-us-bg.jpg) center center;
   background-attachment: fixed;
   background-size: cover;
 }
+
 .why-us .box {
   padding: 50px 30px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -1376,6 +1378,7 @@ section {
   overflow: hidden;
   border-right: 3px solid #454035;
   border-bottom: 3px solid #454035;
+  margin: 1rem;
 }
 
 .gallery .gallery-item img {
@@ -1834,8 +1837,9 @@ table.account-config {
 }
 
 table.account-config thead tr {
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
+
 table.account-config thead tr td {
   padding: 0 0 20px;
 }
@@ -1848,10 +1852,12 @@ table.account-config td {
 table.account-config tbody tr:first-of-type td {
   padding-top: 20px;
 }
+
 table.account-config td {
   padding: 12px 0;
   position: relative;
 }
+
 .py-8p {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1861,48 +1867,62 @@ table.account-config td {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 .bg-primary-500\/16 {
   background-color: transparent;
   backdrop-filter: blur(3px);
 }
+
 .border-primary-500 {
   --tw-border-opacity: 1;
   border-color: rgb(54 54 236 / var(--tw-border-opacity));
 }
+
 .rounded-full {
   border-radius: 9999px;
 }
+
 .gap-8p {
   gap: 0.5rem;
 }
+
 .justify-center {
   justify-content: center;
 }
+
 .items-center {
   align-items: center;
 }
+
 .flex-row {
   flex-direction: row;
 }
+
 .h-40p {
   height: 2.5rem;
 }
+
 .flex {
   display: flex;
 }
+
 .-my-12p {
   margin-top: -0.75rem;
   margin-bottom: -0.75rem;
 }
-.pointer{
+
+.pointer {
   cursor: pointer;
 }
-.pointer:hover{
+
+.pointer:hover {
   margin-bottom: 1px;
 }
-.border-pricing{
- box-shadow:  0 0 3px #ffffff80;
+
+.border-pricing {
+  box-shadow: 0 0 3px #ffffff80;
 }
+
 /*price table*/
 
 
@@ -1910,12 +1930,14 @@ table.account-config td {
   background: #1a1814;
   background-attachment: fixed;
   background-size: cover;
-  padding: 12%  0;
+  padding: 12% 0;
   /* height: 90vh; */
 }
-.faq .section-title{
+
+.faq .section-title {
   margin-bottom: 2rem;
 }
+
 .accordion-item {
   margin-bottom: 15px;
   background-color: transparent;
@@ -1936,7 +1958,7 @@ table.account-config td {
   border: 0;
   border-radius: 12px !important;
   overflow-anchor: none;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
   box-shadow: 0 0 7px #00000080;
 }
 
@@ -1945,12 +1967,14 @@ table.account-config td {
   background-color: transparent;
   box-shadow: 0px -5px 0px rgb(107 111 110 / 47%);
 }
+
 .accordion-button:focus {
   z-index: 3;
   border: none !important;
   outline: 0;
   box-shadow: none !important;
 }
+
 .accordion-button:not(.collapsed)::after {
   background-image: none !important;
   transform: rotate(180deg);
@@ -1974,18 +1998,23 @@ table.account-config td {
   color: #fff;
   font-family: "Poppins", sans-serif;
 }
+
 #faq-hero h1 span {
   color: #00e894;
 }
+
 #faq-hero h2 {
   color: #eee;
   margin-bottom: 10px 0 0 0;
   font-size: 22px;
 }
+
 #faq-hero .btns {
   margin-top: 30px;
 }
-#faq-hero .btn-menu, #hero .btn-book {
+
+#faq-hero .btn-menu,
+#hero .btn-book {
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.5px;
@@ -1998,12 +2027,14 @@ table.account-config td {
   color: white;
   border: 2px solid #00e894;
 }
-.f-row{
+
+.f-row {
   flex-direction: column;
   align-items: center;
 }
+
 /*rules*/
-.rules{
+.rules {
   background: linear-gradient(45deg, #000000, #00000087), url(../img/rules.jpg) center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -2021,4 +2052,25 @@ table.account-config td {
   border-radius: 12px;
   box-shadow: inset -3px -3px 0px #00000080, 0 0 10px #00000090;
   padding: 1rem;
+}
+
+.testimonial {
+  background-color: #444444 !important;
+  background-image: none !important;
+}
+
+.video {
+  background: linear-gradient(166deg, #000000, #00000087), url(../img/video.jpg) top left !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.video .container iframe {
+  margin: 3rem 0;
+}
+
+.testimonial-iframe {
+  height: 30vh;
+  margin-bottom: -5px;
 }
