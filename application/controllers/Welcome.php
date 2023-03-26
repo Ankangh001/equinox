@@ -52,4 +52,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('affiliate');
 	}
+
+	public function payouts()
+	{
+		$this->load->view('payouts');
+	}
 }
