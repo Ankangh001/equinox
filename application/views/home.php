@@ -16,7 +16,7 @@ $this->load->view('includes/header');
           </div>
         </div>
         <div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-          <a href="" class="glightbox play-btn"></a>
+          <a href="" class=" avatar glightbox play-btn"></a>
         </div>
 
       </div>

@@ -32,10 +32,7 @@ $this->load->view('includes/header');
             </div>
         </div>
     </section><!-- End Pricing -->
-	
   </main><!-- End #main -->
-
-
 <?php
 $this->load->view('includes/footer');
 ?>
