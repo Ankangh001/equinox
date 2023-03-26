@@ -12,6 +12,7 @@ $route['calender'] = 'welcome/calender';
 $route['client-login'] = 'welcome/client';
 $route['client-signup'] = 'welcome/clientSignup';
 $route['affiliate'] = 'welcome/affiliate';
+$route['payouts'] = 'welcome/payouts';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
