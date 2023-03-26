@@ -2074,3 +2074,9 @@ table.account-config td {
   height: 30vh;
   margin-bottom: -5px;
 }
+
+.notice-title{
+  margin: 3rem 0 0rem 1rem !important;
+  border-bottom: 1px #ffffff70 solid;
+  padding-bottom: 0 !important;
+}

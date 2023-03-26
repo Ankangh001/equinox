@@ -22,4 +22,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('testimonial');
 	}
+
+	public function notice()
+	{
+		$this->load->view('notice');
+	}
 }
