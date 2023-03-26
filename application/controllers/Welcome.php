@@ -47,4 +47,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('client-signup');
 	}
+
+	public function affiliate()
+	{
+		$this->load->view('affiliate');
+	}
 }
