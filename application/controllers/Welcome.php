@@ -27,4 +27,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('notice');
 	}
+
+	public function symbol()
+	{
+		$this->load->view('symbol');
+	}
 }

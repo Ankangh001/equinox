@@ -6,6 +6,7 @@ $route['faq'] = 'welcome/faq';
 $route['rules'] = 'welcome/rules';
 $route['testimonial'] = 'welcome/testimonial';
 $route['notice'] = 'welcome/notice';
+$route['symbol'] = 'welcome/symbol';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
