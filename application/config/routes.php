@@ -13,6 +13,8 @@ $route['client-login'] = 'welcome/client';
 $route['client-signup'] = 'welcome/clientSignup';
 $route['affiliate'] = 'welcome/affiliate';
 $route['payouts'] = 'welcome/payouts';
+$route['contact'] = 'welcome/contact';
+$route['about'] = 'welcome/about';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

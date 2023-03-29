@@ -72,7 +72,7 @@ $this->load->view('includes/header');
 				<p>What we offer</p>
 			</div>
 
-			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+			<ul class="nav nav-pills mb-3 justify-content-center mb-5" id="pills-tab" role="tablist">
 				<li class="nav-item m-2 pointer">
 					<div data-toggle="pill" 
 						id="pills-home-tab"
@@ -290,6 +290,66 @@ $this->load->view('includes/header');
 		</div>
     </section><!-- End Pricing -->
 	
+	<!-- ======= Key Feature ======= -->
+    <section id="why-us" class="key-feature">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center">
+          <h2>Benefits</h2>
+          <p>Key Benefits</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="100">
+              <span>01</span>
+              <h4>Lorem Ipsum</h4>
+              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="200">
+              <span>02</span>
+              <h4>Repellat Nihil</h4>
+              <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="300">
+              <span>03</span>
+              <h4> Ad ad velit qui</h4>
+              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
+            </div>
+          </div>
+
+		  <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="300">
+              <span>04</span>
+              <h4> Ad ad velit qui</h4>
+              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
+            </div>
+          </div>
+
+		  
+        </div>
+
+      </div>
+    </section><!-- End Key Feature -->
+
+	<!-- ======= Pricing ======= -->
+    <section id="table-pricing" class="table-pricing">
+		<div class="container" data-aos="fade-up">
+			<div class="section-title text-center">
+				<h2>Pricing</h2>
+				<p>What we offer</p>
+			</div>
+
+		</div>
+    </section><!-- End Pricing -->
+
   </main><!-- End #main -->
 
 <?php
