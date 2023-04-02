@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
             <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <!-- <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p> -->
             <form action="" method="post" style="width:60%;" class="m-auto">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
@@ -72,7 +72,7 @@
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -86,7 +86,26 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+<script>$(function(){
+		var calcNewYear = setInterval(function(){
+			date_future = new Date('2023-06-016');
+			date_now = new Date();
 
+			seconds = Math.floor((date_future - (date_now))/1000);
+			minutes = Math.floor(seconds/60);
+			hours = Math.floor(minutes/60);
+			days = Math.floor(hours/24);
+			
+			hours = hours-(days*24);
+			minutes = minutes-(days*24*60)-(hours*60);
+			seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+
+			$("#day").text(days);
+			$("#hours").text(hours);
+			$("#min").text(minutes);
+			$("#sec").text(seconds);
+		},1000);
+	});</script>
 </body>
 
 </html>

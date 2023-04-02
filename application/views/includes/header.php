@@ -25,6 +25,8 @@
   <link href="<?= base_url('assets/') ?>vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -36,7 +38,7 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="<?= base_url('assets/') ?>img/logo.png" alt="" class="img-fluid"></a> -->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar hidden order-last order-lg-0">
         <ul>
 		 	<li class="dropdown"><a href="#"><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
@@ -76,7 +78,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="client-login" class="book-a-table-btn scrollto d-none d-lg-flex">Client Area</a>
+      <!-- <a href="client-login" class="book-a-table-btn scrollto d-none d-lg-flex">Client Area</a> -->
 
     </div>
   </header><!-- End Header -->
