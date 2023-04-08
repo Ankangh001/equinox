@@ -505,7 +505,7 @@ $this->load->view('includes/header');
     </section><!-- End Pricing -->
 	
 	<!-- ======= Key Feature ======= -->
-    <section id="why-us" class="key-feature">
+    <!-- <section id="why-us" class="key-feature">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -541,7 +541,7 @@ $this->load->view('includes/header');
 				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
             </div>
           </div>	  
-        </div>
+        </div> -->
 
 		<!-- <div class="row" data-aos="fade-up">
 			<div class="col-lg-8 justify-content-center join-team text-center">
@@ -562,9 +562,87 @@ $this->load->view('includes/header');
 			</div>
 		</div> -->
 
-      </div>
-    </section><!-- End Key Feature -->
+      <!-- </div>
+    </section> -->
+	<!-- End Key Feature -->
 	
+	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-title text-center">
+          <h2>Testimonials</h2>
+          <p>What they're saying about us</p>
+        </div>
+
+        <div class="testimonials-slider swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+          	<div class="swiper-wrapper" id="swiper-wrapper-7d8ae3358c76f485" aria-live="off" style="transform: translate3d(-1893.33px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="1 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" role="group" aria-label="2 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+			<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="3 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+
+            <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="4 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="5 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div><!-- End testimonial item -->
+
+          	<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="9 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+			
+			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="10 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+			
+			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="11 / 11" style="width: 358.667px; margin-right: 20px;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
+				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            </div>
+
+		</div>
+
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+			<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span>
+			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
+			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span>
+		</div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+      </div>
+    </section>
+
 	 <!-- ======= About Section ======= -->
 	 <section id="about" class="payout">
       <div class="container" data-aos="fade-up">
@@ -719,19 +797,9 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End Key Feature -->
 
-	<!-- ======= About Section ======= -->
-	<section id="about" class="payout3">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-			<div class="your-class">
-				<div>your content</div>
-				<div>your content</div>
-				<div>your content</div>
-			</div>
-        </div>
-      </div>
-    </section><!-- End About Section -->
+
   </main><!-- End #main -->
+  
 <?php
 $this->load->view('includes/footer');
 ?>

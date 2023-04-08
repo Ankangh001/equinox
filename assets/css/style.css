@@ -681,7 +681,7 @@ section {
 }
 
 .section-bg {
-	background-color: #1a1814;
+	background-color: #ddd;
 }
 
 .section-title {
@@ -1312,6 +1312,10 @@ section {
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
+.testimonials {
+	background:linear-gradient(180deg, #ffffff 20%, #eee 100%)
+}
+
 .testimonials .testimonial-item {
 	box-sizing: content-box;
 	min-height: 320px;
@@ -1360,13 +1364,14 @@ section {
 
 .testimonials .testimonial-item p {
 	font-style: italic;
-	margin: 0 15px 0 15px;
-	padding: 20px 20px 60px 20px;
-	background: #26231d;
-	position: relative;
-	border-radius: 6px;
-	position: relative;
-	z-index: 1;
+    margin: 0 15px 0 15px;
+    padding: 20px 20px 60px 20px;
+    background: #1cc674;
+    position: relative;
+    border-radius: 6px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 8px #00000050;
 }
 
 .testimonials .swiper-pagination {
@@ -2728,4 +2733,16 @@ span.inline-block {
 .key-feature-box{
 	transition: ease-in-out 0.5s;
 	cursor: pointer;
+}
+a.slider-video-btn {
+    position: absolute;
+    left: 42%;
+    bottom: 40%;
+    font-size: 35px;
+    background: #00000070;
+    padding: 20px 32px;
+    border-radius: 50%;
+}
+.swiper-slide img {
+    border-radius: 12px !important;
 }
