@@ -41,7 +41,7 @@ $this->load->view('includes/header');
 				</div>
 		</div>
 		<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-			<a href="" class="glightbox play-btn"></a>
+			<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
 		</div>
 
       </div>
@@ -577,54 +577,54 @@ $this->load->view('includes/header');
         <div class="testimonials-slider swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
           	<div class="swiper-wrapper" id="swiper-wrapper-7d8ae3358c76f485" aria-live="off" style="transform: translate3d(-1893.33px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="1 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
 			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" role="group" aria-label="2 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
 			<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="3 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
 
             <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="4 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div><!-- End testimonial item -->
 
             <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="5 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div><!-- End testimonial item -->
 
           	<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="9 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
 			
 			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="10 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
 			
 			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="11 / 11" style="width: 358.667px; margin-right: 20px;">
                 <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="" class="slider-video-btn"><i class="fas fa-play"></i></a>
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
             </div>
@@ -653,7 +653,7 @@ $this->load->view('includes/header');
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img src="assets/img/mobile-r.png" alt="">
+              <img style="width: 60%;margin: auto;" src="assets/img/mobile-r.png" alt="">
             </div>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
@@ -701,8 +701,14 @@ $this->load->view('includes/header');
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img d-flex justify-content-evenly align-item-center">
-				<img src="https://fundednext.fra1.digitaloceanspaces.com/moron.png?auto=format&fit=max&w=384" alt="" srcset="">
-				<img src="https://fundednext.fra1.digitaloceanspaces.com/chris.png?auto=format&fit=max&w=384" alt="" srcset="">
+				<div class="icons">
+					<a href="https://youtu.be/lnzr0lSc2Uo" class="glightbox icons-video-btn1"><i class="fas fa-play"></i></a>
+					<img src="https://fundednext.fra1.digitaloceanspaces.com/moron.png?auto=format&fit=max&w=384" alt="" srcset="">
+				</div>
+				<div class="icons">
+					<a href="https://youtu.be/lnzr0lSc2Uo" class="glightbox icons-video-btn2"><i class="fas fa-play"></i></a>
+					<img src="https://fundednext.fra1.digitaloceanspaces.com/chris.png?auto=format&fit=max&w=384" alt="" srcset="">
+				</div>
             </div>
 			<!-- <div class="thumbnail d-flex justify-content-evenly align-item-center">
 				<img src="https://fundednext.fra1.digitaloceanspaces.com/moron.png?auto=format&fit=max&w=384" alt="" srcset="">
@@ -797,6 +803,30 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End Key Feature -->
 
+	<!-- ======= About Section ======= -->
+	<section id="about" class="payout">
+      <div class="container" data-aos="fade-up">
+	  	<div class="section-title text-center">
+			<h2>Trusted Partners</h2>
+			<p>Our Payout System</p>
+		</div>
+        <div class="row trusted-row">
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="trustedpartners">
+              <img src="assets/img/trading-view.png" alt="">
+              <img src="assets/img/wise.png" alt="">
+            </div>
+          </div>
+		  <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="trustedpartners">
+				<img src="assets/img/wise.png" alt="">
+				<img class="mt-5" src="assets/img/paysera.png" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
 
   </main><!-- End #main -->
   

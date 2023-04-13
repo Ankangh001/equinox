@@ -1815,7 +1815,7 @@ section {
 
 #footer .credits {
 	padding-top: 10px;
-	text-align: center;
+	text-align: justify;
 	font-size: 13px;
 	color: #fff;
 }
@@ -2745,4 +2745,49 @@ a.slider-video-btn {
 }
 .swiper-slide img {
     border-radius: 12px !important;
+	height: 100%;
+	width: 100%;
+}
+
+.trustedpartners img {
+    width: 70%;
+    margin: auto;
+}
+
+.row.trusted-row {
+    background: #000000;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+	width: 80%;
+	margin: auto;
+}
+
+a.icons-video-btn1 {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    font-size: 35px;
+    background: #00000070;
+    padding: 20px 32px;
+    border-radius: 50%;
+}
+
+a.icons-video-btn2 {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    font-size: 35px;
+    background: #00000070;
+    padding: 20px 32px;
+    border-radius: 50%;
+}
+
+a.icons-video-btn1 i {
+    color: #fff;
+}
+
+a.icons-video-btn2 i {
+    color: #fff;
 }
