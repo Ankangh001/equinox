@@ -13,7 +13,7 @@ $this->load->view('includes/header');
         	<div class="col-lg-6" style="margin-top: -30px;">
 				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
 				<p style="margin:1rem; font-size:16px">Get funded upto $1,000,000 of capital and keep upto 95% of profits. <br> We cover the losses.</p>
-				<h2>Coming Soon</h2>
+				<!-- <h2>Coming Soon</h2>
 
 				<div class="flex items-end justify-start z-10">
 					<div class="timer-m text-center">
@@ -32,12 +32,13 @@ $this->load->view('includes/header');
 						<span id="sec" class="text-xl sm:text-5xl">20</span>
 						<p style="font-size:0.8rem">Seconds</p>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="btns">
 					<a href="#why-us" class="btn-book animated fadeInUp scrollto"><i style="color: #1586d4;" class="fa-brands fa-discord"></i>&nbsp;&nbsp;Join our discord</a>
-					<input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
-					<i style="color: #00e894;position: relative;left: -35px;top: 2px;" class="fas fa-arrow-right ms-1"></i>
+					<a href="#why-us" class="btn-book animated fadeInUp scrollto">&nbsp;&nbsp;Join our discord</a>
+					<!-- <input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
+					<i style="color: #00e894;position: relative;left: -35px;top: 2px;" class="fas fa-arrow-right ms-1"></i> -->
 				</div>
 		</div>
 		<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
@@ -505,7 +506,7 @@ $this->load->view('includes/header');
     </section><!-- End Pricing -->
 	
 	<!-- ======= Key Feature ======= -->
-    <!-- <section id="why-us" class="key-feature">
+    <section id="why-us" class="key-feature">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -541,9 +542,9 @@ $this->load->view('includes/header');
 				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
             </div>
           </div>	  
-        </div> -->
+        </div>
 
-		<!-- <div class="row" data-aos="fade-up">
+		<div class="row" data-aos="fade-up">
 			<div class="col-lg-8 justify-content-center join-team text-center">
 				<h2 class="text-lg">Join the team of our experienced traders</h2>
 				<p class="sm-text mt-5">If you are ready, accept our FTMO Challenge and become our FTMO Trader. You can even try the entire process completely free of charge.</p>
@@ -560,10 +561,10 @@ $this->load->view('includes/header');
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
 
-      <!-- </div>
-    </section> -->
+      </div>
+    </section>
 	<!-- End Key Feature -->
 	
 	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
