@@ -686,7 +686,7 @@ on the endeavour to financial independence.
     </section><!-- End Pricing -->
 	
 	<!-- ======= Key Feature ======= -->
-    <section id="why-us" class="key-feature">
+    <!-- <section id="why-us" class="key-feature">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -744,7 +744,7 @@ on the endeavour to financial independence.
 		</div>
 
       </div>
-    </section>
+    </section> -->
 	<!-- End Key Feature -->
 	
 	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
