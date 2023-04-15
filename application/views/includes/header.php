@@ -53,10 +53,10 @@
 					<li><a href="rules">Rules</a></li>
 				</ul>
 			</li>
-			<li><a class="nav-link scrollto" href="testimonial">Testimonial</a></li>
+			<li><a class="nav-link scrollto" href="testimonial">Testimonials</a></li>
 			<li class="dropdown"><a href="#"><span>Trading</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="notice">Notice</a></li>
+					<li><a href="notice">Announcements</a></li>
 					<li><a href="symbol">Symbol</a></li>
 					<li><a href="calender">News Calender</a></li>
 				</ul>

@@ -51,36 +51,39 @@ $this->load->view('includes/header');
 
   <main id="main">
 	<!-- ======= Trade for Proprietary ======= -->
-	<section id="about" class="payout">
+	<section id="about" class="payout" style="background:#fff">
 		<div class="container" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
-				<div class="about-img">
-				<img src="https://ftmo.com/wp-content/uploads/2022/09/Frame-7844.png" alt="">
+				<div class="about-img  m-auto">
+				<img src="assets/img/think.png" alt="">
 				</div>
 			</div>
-			<div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content">
-				<h3 style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">Trade for Proprietary <br> Trading Firm</h3>
-				<section class="av_textblock_section " itemscope="itemscope" itemtype="https://schema.org/CreativeWork">
+			<div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content" style="
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left;
+    margin-top: 5rem;
+">
+				<h3 style="margin-bottom: 3rem;font-size: 2.5rem;font-weight: 800;">Why Trade for us?</h3>
+				<div class="av_textblock_section ">
 					<div class="avia_textblock  " itemprop="text">
-						<p>FTMO developed a unique 2-step Evaluation Course for traders. This Evaluation Process consists of the <strong>FTMO Challenge</strong>&nbsp;and the&nbsp;<strong>Verification</strong>&nbsp;and is specifically tailored to discover trading talents.</p>
-						<p>Upon 
-							<span class="ftmo-tooltip" data-bs-toggle="tooltip" data-bs-custom-class="ftmo-tooltip--blue" 
-								data-bs-title="Successful completion refers to meeting the Trading Objectives of FTMO Challenge and Verification and demonstrating the trading history which is in compliance with the real market conditions described in clause 5.4 of the General Terms &amp; Conditions."> 
-								Successful completion 
-							</span> of the Evaluation Course, you are offered a placement in the FTMO Proprietary Trading firm where you can remotely manage the 
-							FTMO Account with a balance of up to 
-							<span class="ftmo-tooltip" 
-								data-bs-toggle="tooltip" 
-								data-bs-custom-class="ftmo-tooltip--blue" 
-								data-bs-title="After a client signs the Account Agreement with our Proprietary Trading Firm, 
-								he/she will be provided with the demo account with virtual funds. The FTMO Account is connected to our Proprietary 
-								Trading Firm’s account where we generate cash flow."><strong> 400,000 USD</strong>.
-							</span> Your journey to get there might be challenging, but our educational applications, 
-							account analysis and performance coach are here to help you on the endeavour to financial independence.
+						<p>
+						We developed a unique 2- step evaluation course for traders.
+This evaluation process consists of <strong class="text-primary">Phase 1</strong> & <strong class="text-primary">Phase 2</strong>
+and is specially tailored to discover trading talents. <br><br>
+Upon successful completion of the evaluation course, you
+are offered a placement in our firm where you can remotely
+manage accounts with a balance of up to <strong class="text-primary">$500,000.</strong> <br><br>
+Your journey to get there might be challenging but our user
+tools, analysis systems and applications are here to help you
+on the endeavour to financial independence.
+
 						</p>
 					</div>
-				</section>
+				</div>
 			</div>
 			</div>
 		</div>
@@ -175,8 +178,7 @@ $this->load->view('includes/header');
 							<a data-toggle="tooltip"  
 								data-toggle="tooltip" 
 								data-placement="top" 
-								title="The offer to trade for our partnered Proprietary Trading Firm is made to clients who successfully pass the Evaluation Process. 
-									To avoid any confusion, FTMO provides its clients demo accounts with virtual capital in all stages of the cooperation.">
+								>
 									<i class="fas fa-coins"></i>
 									&nbsp;&nbsp;Earn Real Money
 							</a>
@@ -287,105 +289,173 @@ $this->load->view('includes/header');
 				<p>What we offer</p>
 			</div>
 
-			<ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-				<li class="nav-item m-2 pointer">
-					<div data-toggle="pill" 
-						id="pills-home-tab"
-						href="#pills-home" 
-						role="tab" 
-						aria-controls="pills-home" 
-						aria-selected="true" 
-						class="flex justify-center active
-							items-center flex-row px-16p py-8p 
-							bg-primary-500/16 border-pricing 
-							border-primary-500 rounded-full 
-							-my-12p h-40p gap-8p">
-						<strong>$10000</strong>
-					</div>
-				</li>
-				<li class="nav-item m-2 pointer">
-					<div id="pills-profile-tab" 
-						data-toggle="pill" 
-						href="#pills-profile" 
-						role="tab" 
-						aria-controls="pills-profile" 
-						aria-selected="false"
-						class="flex justify-center 
-							items-center flex-row px-16p py-8p 
-							bg-primary-500/16 border-pricing 
-							border-primary-500 rounded-full 
-							-my-12p h-40p gap-8p">
-						<strong>$20000</strong>
-					</div>
-				</li>
-				<li class="nav-item m-2 pointer">
-					<div id="pills-contact-tab" 
-						data-toggle="pill" 
-						href="#pills-contact" 
-						role="tab" 
-						aria-controls="pills-contact" 
-						aria-selected="false"
-						class="flex justify-center 
-							items-center flex-row px-16p py-8p 
-							bg-primary-500/16 border-pricing 
-							border-primary-500 rounded-full 
-							-my-12p h-40p gap-8p">
-						<strong>$30000</strong>
-					</div>
-					<!-- <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a> -->
-				</li>
-			</ul>
-			<div class="tab-content" id="pills-tabContent">
+			<div class="row justify-content-center">
+				<ul class="col-lg-3 nav nav-pills m-auto flex-column justify-content-start" id="pills-tab" role="tablist" style="padding:0 2rem ;border-right: 1px solid #444444;">
+					<li class="nav-item mb-3 m-2 pointer">
+						<div data-toggle="pill" 
+							id="pills-home-tab"
+							href="#pills-home" 
+							role="tab" 
+							aria-controls="pills-home" 
+							aria-selected="true" 
+							class="flex justify-center active
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>Aggressive</strong>
+						</div>
+					</li>
+					<li class="nav-item m-2 mt-3 pointer">
+						<div id="pills-profile-tab" 
+							data-toggle="pill" 
+							href="#pills-profile" 
+							role="tab" 
+							aria-controls="pills-profile" 
+							aria-selected="false"
+							class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>Normal</strong>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="col-lg-9 nav nav-pills justify-content-center m-auto" id="pills-tab" role="tablist">
+					<li class="nav-item m-2 pointer">
+						<div data-toggle="pill" 
+							id="pills-home-tab"
+							href="#pills-home" 
+							role="tab" 
+							aria-controls="pills-home" 
+							aria-selected="true" 
+							class="flex justify-center active
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>$10,000</strong>
+						</div>
+					</li>
+					<li class="nav-item m-2 pointer">
+						<div id="pills-profile-tab" 
+							data-toggle="pill" 
+							href="#pills-profile" 
+							role="tab" 
+							aria-controls="pills-profile" 
+							aria-selected="false"
+							class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>$25,000</strong>
+						</div>
+					</li>
+
+
+					<li class="nav-item m-2 pointer">
+						<div id="pills-contact-tab" 
+							data-toggle="pill" 
+							href="#pills-contact" 
+							role="tab" 
+							aria-controls="pills-contact" 
+							aria-selected="false"
+							class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>$50,000</strong>
+						</div>
+
+
+
+						<li class="nav-item m-2 pointer">
+						<div id="pills-100-tab" 
+							data-toggle="pill" 
+							href="#pills-100" 
+							role="tab" 
+							aria-controls="pills-contact" 
+							aria-selected="false"
+							class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>$100,000</strong>
+						</div>
+						<li class="nav-item m-2 pointer">
+						<div id="pills-200-tab" 
+							data-toggle="pill" 
+							href="#pills-200" 
+							role="tab" 
+							aria-controls="pills-contact" 
+							aria-selected="false"
+							class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>$200,000</strong>
+						</div>
+						
+						<!-- <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a> -->
+					</li>
+				</ul>
+			</div>
+			<div class="tab-content mt-3" id="pills-tabContent">
 				<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
 						<table class="account-config">
 							<thead>
 								<tr>
-								<td>1</td>
+								<td>Objectives</td>
 								<td>Phase 1</td>
 								<td>Phase 2</td>
-								<td>Funded</td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-								<td>Trading period</td>
-								<td x-text="currentConfig[0][0]">30 days</td>
-								<td x-text="currentConfig[1][0]">60 days</td>
-								<td x-text="currentConfig[2][0]">indefinite</td>
+									<td>Target</td>
+									<td x-text="currentConfig[0][0]">15%</td>
+									<td x-text="currentConfig[1][0]">10%</td>
+									<td x-text="currentConfig[2][0]">8%</td>
+									<td x-text="currentConfig[2][0]">5%</td>
 								</tr>
 								<tr>
-								<td>Minimum trading days</td>
-								<td x-text="currentConfig[0][1]">5 days</td>
-								<td x-text="currentConfig[1][1]">5 days</td>
-								<td x-text="currentConfig[2][1]">x</td>
+									<td>Daily DD</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[1][1]">5</td>
+									<td x-text="currentConfig[2][1]">5</td>
 								</tr>
 								<tr>
-								<td>Max Daily Loss</td>
-								<td x-text="currentConfig[0][2]">£7,000</td>
-								<td x-text="currentConfig[1][2]">£7,000</td>
-								<td x-text="currentConfig[2][2]">£7,000</td>
+									<td>Max Drawdown</td>
+									<td x-text="currentConfig[0][2]">7.5%</td>
+									<td x-text="currentConfig[1][2]">7.5%</td>
+									<td x-text="currentConfig[2][2]">10%</td>
+									<td x-text="currentConfig[2][2]">10%</td>
 								</tr>
 								<tr>
-								<td>Max Overall Loss</td>
-								<td x-text="currentConfig[0][3]">£14,000</td>
-								<td x-text="currentConfig[1][3]">£14,000</td>
-								<td x-text="currentConfig[2][3]">£14,000</td>
+									<td>Trading period</td>
+									<td x-text="currentConfig[0][4]">30days</td>
+									<td x-text="currentConfig[1][4]">60days</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
-								<td>Profit Target</td>
-								<td x-text="currentConfig[0][4]">£11,200</td>
-								<td x-text="currentConfig[1][4]">£7,000</td>
-								<td x-text="currentConfig[2][4]">x</td>
-								</tr>
-								<tr>
-								<td>Refundable Fee</td>
-								<td colspan="3">
-									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-									<span>Coiming Soon</span>
-									<strong x-text="currentConfig[0][5]"></strong>
-									</div>
-								</td>
+									<td>Refundable Fee</td>
+									<td colspan="3">
+										<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+										<span>Coiming Soon</span>
+										<strong x-text="currentConfig[0][5]"></strong>
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -452,6 +522,116 @@ $this->load->view('includes/header');
 							<thead>
 								<tr>
 								<td>3</td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
+								<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>Trading period</td>
+								<td x-text="currentConfig[0][0]">30 days</td>
+								<td x-text="currentConfig[1][0]">60 days</td>
+								<td x-text="currentConfig[2][0]">indefinite</td>
+								</tr>
+								<tr>
+								<td>Minimum trading days</td>
+								<td x-text="currentConfig[0][1]">5 days</td>
+								<td x-text="currentConfig[1][1]">5 days</td>
+								<td x-text="currentConfig[2][1]">x</td>
+								</tr>
+								<tr>
+								<td>Max Daily Loss</td>
+								<td x-text="currentConfig[0][2]">£7,000</td>
+								<td x-text="currentConfig[1][2]">£7,000</td>
+								<td x-text="currentConfig[2][2]">£7,000</td>
+								</tr>
+								<tr>
+								<td>Max Overall Loss</td>
+								<td x-text="currentConfig[0][3]">£14,000</td>
+								<td x-text="currentConfig[1][3]">£14,000</td>
+								<td x-text="currentConfig[2][3]">£14,000</td>
+								</tr>
+								<tr>
+								<td>Profit Target</td>
+								<td x-text="currentConfig[0][4]">£11,200</td>
+								<td x-text="currentConfig[1][4]">£7,000</td>
+								<td x-text="currentConfig[2][4]">x</td>
+								</tr>
+								<tr>
+								<td>Refundable Fee</td>
+								<td colspan="3">
+									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+									<span>Coiming Soon</span>
+									<strong x-text="currentConfig[0][5]"></strong>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-100" role="tabpanel" aria-labelledby="pills-100-tab">
+					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+								<td>4</td>
+								<td>Phase 1</td>
+								<td>Phase 2</td>
+								<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>Trading period</td>
+								<td x-text="currentConfig[0][0]">30 days</td>
+								<td x-text="currentConfig[1][0]">60 days</td>
+								<td x-text="currentConfig[2][0]">indefinite</td>
+								</tr>
+								<tr>
+								<td>Minimum trading days</td>
+								<td x-text="currentConfig[0][1]">5 days</td>
+								<td x-text="currentConfig[1][1]">5 days</td>
+								<td x-text="currentConfig[2][1]">x</td>
+								</tr>
+								<tr>
+								<td>Max Daily Loss</td>
+								<td x-text="currentConfig[0][2]">£7,000</td>
+								<td x-text="currentConfig[1][2]">£7,000</td>
+								<td x-text="currentConfig[2][2]">£7,000</td>
+								</tr>
+								<tr>
+								<td>Max Overall Loss</td>
+								<td x-text="currentConfig[0][3]">£14,000</td>
+								<td x-text="currentConfig[1][3]">£14,000</td>
+								<td x-text="currentConfig[2][3]">£14,000</td>
+								</tr>
+								<tr>
+								<td>Profit Target</td>
+								<td x-text="currentConfig[0][4]">£11,200</td>
+								<td x-text="currentConfig[1][4]">£7,000</td>
+								<td x-text="currentConfig[2][4]">x</td>
+								</tr>
+								<tr>
+								<td>Refundable Fee</td>
+								<td colspan="3">
+									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+									<span>Coiming Soon</span>
+									<strong x-text="currentConfig[0][5]"></strong>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-200" role="tabpanel" aria-labelledby="pills-100-tab">
+					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+								<td>5</td>
 								<td>Phase 1</td>
 								<td>Phase 2</td>
 								<td>Funded</td>
@@ -654,18 +834,17 @@ $this->load->view('includes/header');
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img style="width: 60%;margin: auto;" src="assets/img/mobile-r.png" alt="">
+              <img style="width: 70%;margin: auto;" src="assets/img/mobilePO.png" alt="">
             </div>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3 style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">Payout System</h3>
             <p class="fst-italic">
-			The default payout ratio for all FTMO Traders is set to 80:20, however, an 80% share is not where we draw the line.
-			<br>
-			If you meet the conditions of our Scaling Plan, not only do we increase the balance of your FTMO Account by 25%, the payout ratio will also automatically change to a staggering 90:10!
-			<br>
-			All FTMO Traders can request payout on-demand. The payout can be processed just after 14 days, but you also have the ability to choose your own Profit Split Day, which can be even changed up to three times. In conclusion, we make sure that you will always receive your withdrawal on your most convenient day.
-            </p>
+			The default payout ratio for all ETC traders is set to 80:20, however, an 80% share is not where we draw the line. If you meet the conditions of our Scaling Plan, 
+				not only do we increase the balance of your ETC Account by 50%, the payout ratio will also automatically change to a staggering 90:10!
+				All ETC Traders can request payout on-demand. The payout can be processed just after 30 days, but you also have the ability to choose your own Profit Split Day, 
+				which can be even changed up to three times. In conclusion, we make sure that you will always receive your withdrawal on your most convenient day.
+			</p>
           </div>
         </div>
 
@@ -684,10 +863,10 @@ $this->load->view('includes/header');
           <div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content">
             <h3 style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">The most popular retail trading platforms</h3>
             <p class="fst-italic">
-			We offer all our clients the best trading solution in the form of our MT4, MT5 and cTrader accounts powered by data feed directly from our pool of prime liquidity providers. We do our best to simulate the real market conditions with super-raw spreads, very low commission and no markup to all demo trading accounts with virtual funds.
+			We offer all our clients the best trading solution in the form MT5 accounts powered by data feed directly from our pool of prime liquidity providers. We do our best to simulate the real market conditions with super-raw spreads, very low commission and no markup to all demo trading accounts with virtual funds.
 			</p>
-			<div class="img-holder d-flex justify-content-center align-item-center p-5">
-				<img src="assets/img/MT4.png" alt="mt4-image" width="30%">
+			<div class="img-holder d-flex justify-content-center align-item-center p-3">
+				<!-- <img src="assets/img/MT4.png" alt="mt4-image" width="30%"> -->
 				<img class="ml-3" src="assets/img/MT5.png" alt="mt4-image" width="30%">
 			</div>
           </div>
@@ -739,22 +918,24 @@ $this->load->view('includes/header');
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-right: 2px solid #DDD; border-bottom: 2px solid #DDD;">
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-coins ms-1"></i>&nbsp;&nbsp; <br> Swing Account</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-coins ms-1"></i>&nbsp;&nbsp; <br> The Best Trading Conditions</h4>
+				<p class="key-text">ETC offers a wide choice of assets across the board, with very low commissions and super-raw spreads.</p>
             </div>
           </div>
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-bottom: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp; <br> Scaling Plan</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp; <br> Trader-Friendly Leverage</h4>
+				<p class="key-text">We provide leverage of 1:100 to all our trading accounts. 
+	As a result, traders can use appropriate lot sizes even while using small stop losses.
+      	This makes the overall experience of trading with our accounts extremely fluent & flexible.</p>
             </div>
           </div>
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD; border-bottom: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp; <br> Free Trial</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp; <br> No Unrealistic Objectives</h4>
+				<p class="key-text">Our goal is to not confine you within boundaries but to make sure that you can spread your wings.</p>
             </div>
           </div>
         </div>
@@ -762,21 +943,22 @@ $this->load->view('includes/header');
 		<div class="row">
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-right: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp; <br> Scaling Plan</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp; <br> No Limits on Trading Style</h4>
+				<p class="key-text">At ETC, traders are welcome to explore different trading styles & strategies including swing trading, intraday trading, scalping, etc.
+      	Moreover, traders are free to use Expert Advisors, Copiers, or other tools.</p>
             </div>
           </div>
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp; <br> Free Trial</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp; <br>One-Time Fee Only</h4>
+				<p class="key-text">No recurrent charges, no membership or other hidden fees.</p>
             </div>
           </div>	
 		  <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-magnifying-glass-chart"></i>&nbsp;&nbsp; <br> Other Projects</h4>
-				<p class="key-text">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+				<h4 class="key-benefits-h4"><i class="fas fa-magnifying-glass-chart"></i>&nbsp;&nbsp; <br>Get Your Fees Refunded</h4>
+				<p class="key-text">The fee is automatically reimbursed to you with the first Profit Split.</p>
             </div>
           </div>	  
         </div>
