@@ -4,51 +4,71 @@
     <div class="footer-top">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 d-flex flex-column justify-content-center align-items-center text-left">
+          <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-start align-items-center text-left">
             <div class="footer-info">
-              <h3>Equinox</h3>
+              <br>
+              <img id="eqLogoWhite" width="50%" src="<?= base_url('assets/') ?>img/equinoxLogo.png" />
                 <br>
-              <p>About Us<br>
-                NY 535022, USA<br>
+                <strong>About Us</strong>
+                <ul>
+                  <li class="ml-3" style="color:#ffffff90">support@equinoxtradingcapital.com</li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="#">Global Reach</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="#">Complaints</a></li>
+                </ul>
                 <br>
-                <div class="social-links d-flex justify-content-evenly">
-                  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                  <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                  <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <div class="social-links d-flex justify-content-start">
+                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
+                  <a style="background: red !important;" href="#" class="facebook"><i class="fa-brands fa-youtube"></i></a>
                 </div>
-              </p>
+              
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-center align-items-start text-center footer-links">
+          <div class="col-lg-2 col-md-6 d-flex flex-column justify-content-center align-items-start text-center footer-links">
             <h4>Important Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Testimonial</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Affiliate</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Payouts</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Client Area</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Tutorials</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-6 d-flex flex-column justify-content-center align-items-start text-left footer-links">
             <h4 class="text-left">User Tools</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">tool 1</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">tool 2</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Account Protector</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Manager</a></li>
             </ul>
-            <h4 class="text-left">Market Data</h4>
+            <br>
+            <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">tool 1</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">tool 2</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Screener</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">COT Data</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 d-flex flex-column justify-content-center align-items-start text-center footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Terms of Service</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Privacy Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Refund Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Cookie Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Disclosure</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Live Account Disclaimer</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
           <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
-                <h4>Our Newsletter</h4>
-                <!-- <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p> -->
+                <br>
+                <h4>Stay Updated</h4>
+                <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
+                <br>
                 <form action="" method="post" >
                   <input type="email" name="email"><input type="submit" value="Subscribe">
                 </form>
@@ -63,17 +83,24 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Equinox</span></strong>. All Rights Reserved
+        &copy; 2023 Copyright <strong><span>Equinox Trading Capital </span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-      All information provided on this site is intended solely for the study purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Trading in financial markets is a high-risk activity and it is advised not to risk more than one can afford to lose! FTMO Evaluation Global s.r.o./FTMO Evaluation US s.r.o. does not provide any of the investment services listed in the Capital Market Undertakings Act No. 256/2004 Coll. The information on this site is not directed at residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. FTMO Evaluation Global s.r.o./FTMO Evaluation US s.r.o., and FTMO s.r.o. are not a broker and do not accept deposits. The offered technical solution for the FTMO platforms and data feed is powered by the institutional liquidity providers. The website FTMO.com is owned and operated by an EU company FTMO s.r.o., Purkyňova 3, 110 00 Prague, Czech Republic.
-      2023 © Copyright - FTMO.com Made with ❤ for trading
+      The information on the Website is provided solely for analysis purposes only and should not be construed as financial, investment, tax, or other advice.
+Nothing on the Website or in our Services represents a solicitation, advice, endorsement, or offer to purchase or sell stocks or other financial instruments 
+by ETC - Equinox Trading Capital, its agents, employees, contractors, or any connected entities. You are solely responsible for assessing the benefits and risks associated with 
+the use of any information or other content on the Website. All investments include substantial risk, and an individual's investment decisions are solely his/her obligation. 
+All information on the Website is provided “as is”, with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, 
+and without warranty of any kind, express or implied. ETC - Equinox Trading Capital, or its partners, employees, or agents, shall in no way be responsible to you or anyone else for any decision 
+made or action taken in reliance on the information on the Website, or for any consequential, special, or similar damages, even if warned of the potential of such damages.
+ETC - Equinox Trading Capital does not act as or conduct services as a broker. Purchases should not be regarded as deposits. All program charges are utilized for working expenses including, 
+however not restricted to, staff, innovation, and other business-related costs.
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
   <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -107,7 +134,24 @@
         $("#min").text(minutes);
         $("#sec").text(seconds);
       },1000);
-	});</script>
+	});
+  
+  $(document).ready(function(){
+    $("#eqLogoWhite").css("display" , "none");
+    $(window).scroll(function(){
+      var scroll = $(window).scrollTop();
+      if (scroll > 100) {
+        $("#eqLogoblack").css("display" , "none");  	
+        $("#eqLogoWhite").css("display" , "block");
+      }
+
+      else{
+        $("#eqLogoblack").css("display" , "block");  	
+        $("#eqLogoWhite").css("display" , "none");
+      }
+    })
+  })
+  </script>
 </body>
 
 </html>

@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -32,13 +32,18 @@
 <body>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-cente">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+    <div style="max-width: 83% !important;" class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="<?= base_url() ?>"><img src="<?= base_url('assets/') ?>img/equinoxLogo.png" /></a></h1>
+      <h1 class="logo me-auto me-lg-0">
+        <a  href="<?= base_url() ?>">
+          <img id="eqLogoblack" src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" />
+          <img id="eqLogoWhite" class="hiddden" src="<?= base_url('assets/') ?>img/equinoxLogo.png" />
+        </a>
+      </h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="<?= base_url('assets/') ?>img/logo.png" alt="" class="img-fluid"></a> -->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar hidden order-last order-lg-0">
         <ul>
 		 	<li class="dropdown"><a href="#"><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>

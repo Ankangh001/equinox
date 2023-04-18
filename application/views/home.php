@@ -10,12 +10,13 @@ $this->load->view('includes/header');
 		
 	
 		<div class="row">
-        	<div class="col-lg-6" style="margin-top: -30px;">
+        	<div class="col-lg-6 m-funding" style="margin-top: -40px;">
 				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
-				<p style="margin:1rem; font-size:16px">Get funded upto $1,000,000 of capital and keep upto 95% of profits. <br> We cover the losses.</p>
-				<!-- <h2>Coming Soon</h2>
+				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
+				
+				<h2>Coming Soon</h2>
 
-				<div class="flex items-end justify-start z-10">
+				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
 						<span id="day" class="text-xl sm:text-5xl">110</span>
 						<p style="font-size:0.8rem">Days</p>
@@ -32,11 +33,16 @@ $this->load->view('includes/header');
 						<span id="sec" class="text-xl sm:text-5xl">20</span>
 						<p style="font-size:0.8rem">Seconds</p>
 					</div>
-				</div> -->
+				</div>
 
-				<div class="btns">
-					<a href="#why-us" class="btn-book animated fadeInUp scrollto"><i style="color: #1586d4;" class="fa-brands fa-discord"></i>&nbsp;&nbsp;Join our discord</a>
-					<a href="#why-us" class="btn-book animated fadeInUp scrollto">&nbsp;&nbsp;Join our discord</a>
+				<div class="btns d-flex justify-content-center" style="width:80%">
+					<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
+						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-discord"></i>
+					</div>
+					<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
+						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-youtube"></i>
+					</div>
+					<!-- <a href="#why-us" class="btn-book animated fadeInUp scrollto">&nbsp;&nbsp;Join our discord</a> -->
 					<!-- <input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
 					<i style="color: #00e894;position: relative;left: -35px;top: 2px;" class="fas fa-arrow-right ms-1"></i> -->
 				</div>
@@ -51,35 +57,28 @@ $this->load->view('includes/header');
 
   <main id="main">
 	<!-- ======= Trade for Proprietary ======= -->
-	<section id="about" class="payout" style="background:#fff">
+	<section id="about" class="payout why-trade" style="background:#fff">
 		<div class="container" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
 				<div class="about-img  m-auto">
-				<img src="assets/img/think.png" alt="">
+				<img class="why-trade-img" src="assets/img/think.png" alt="">
 				</div>
 			</div>
-			<div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content" style="
-    justify-content: left;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    text-align: left;
-    margin-top: 5rem;
-">
-				<h3 style="margin-bottom: 3rem;font-size: 2.5rem;font-weight: 800;">Why Trade for us?</h3>
+			<div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content why-trade-content">
+				<h3>Why Trade for us?</h3>
 				<div class="av_textblock_section ">
 					<div class="avia_textblock  " itemprop="text">
 						<p>
 						We developed a unique 2- step evaluation course for traders.
-This evaluation process consists of <strong class="text-primary">Phase 1</strong> & <strong class="text-primary">Phase 2</strong>
-and is specially tailored to discover trading talents. <br><br>
-Upon successful completion of the evaluation course, you
-are offered a placement in our firm where you can remotely
-manage accounts with a balance of up to <strong class="text-primary">$500,000.</strong> <br><br>
-Your journey to get there might be challenging but our user
-tools, analysis systems and applications are here to help you
-on the endeavour to financial independence.
+						This evaluation process consists of <strong class="text-primary">Phase 1</strong> & <strong class="text-primary">Phase 2</strong>
+						and is specially tailored to discover trading talents. <br><br>
+						Upon successful completion of the evaluation course, you
+						are offered a placement in our firm where you can remotely
+						manage accounts with a balance of up to <strong class="text-primary">$500,000.</strong> <br><br>
+						Your journey to get there might be challenging but our user
+						tools, analysis systems and applications are here to help you
+						on the endeavour to financial independence.
 
 						</p>
 					</div>
@@ -90,7 +89,7 @@ on the endeavour to financial independence.
     </section><!-- End Trade for Proprietary -->
 
 	<!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
+    <section id="why-us" class="hidden why-us">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -282,7 +281,7 @@ on the endeavour to financial independence.
     </section><!-- End Why Us Section -->
 
 	<!-- ======= Pricing ======= -->
-    <section id="table-pricing" class="table-pricing">
+    <section id="table-pricing" class="hidden table-pricing">
 		<div class="container" data-aos="fade-up">
 			<div class="section-title text-center">
 				<h2>Pricing</h2>
@@ -412,11 +411,10 @@ on the endeavour to financial independence.
 						<table class="account-config">
 							<thead>
 								<tr>
-								<td>Objectives</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
+									<td></td>
+									<td>Phase 1</td>
+									<td>Phase 2</td>
+									<td>Funded</td>
 								</tr>
 							</thead>
 							<tbody>
@@ -424,28 +422,24 @@ on the endeavour to financial independence.
 									<td>Target</td>
 									<td x-text="currentConfig[0][0]">15%</td>
 									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">8%</td>
-									<td x-text="currentConfig[2][0]">5%</td>
+									<td x-text="currentConfig[2][0]">indefinite%</td>
 								</tr>
 								<tr>
 									<td>Daily DD</td>
 									<td x-text="currentConfig[0][1]">NA</td>
 									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[1][1]">5</td>
-									<td x-text="currentConfig[2][1]">5</td>
+									<td x-text="currentConfig[1][1]">X</td>
 								</tr>
 								<tr>
 									<td>Max Drawdown</td>
 									<td x-text="currentConfig[0][2]">7.5%</td>
 									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">10%</td>
-									<td x-text="currentConfig[2][2]">10%</td>
+									<td x-text="currentConfig[2][2]">indefinite</td>
 								</tr>
 								<tr>
 									<td>Trading period</td>
 									<td x-text="currentConfig[0][4]">30days</td>
 									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
 									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
@@ -686,7 +680,7 @@ on the endeavour to financial independence.
     </section><!-- End Pricing -->
 	
 	<!-- ======= Key Feature ======= -->
-    <!-- <section id="why-us" class="key-feature">
+    <section id="why-us" class="hidden key-feature">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -744,14 +738,14 @@ on the endeavour to financial independence.
 		</div>
 
       </div>
-    </section> -->
+    </section>
 	<!-- End Key Feature -->
 	
-	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
+	<section id="testimonials" class="key-highlights-mobile testimonials section-bg" style="padding:120px 80px">
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-title text-center">
-          <h2>Testimonials</h2>
+          <h2>Key Highlights</h2>
           <p>What they're saying about us</p>
         </div>
 
@@ -876,7 +870,7 @@ on the endeavour to financial independence.
     </section><!-- End About Section -->
 
 	<!-- ======= About Section ======= -->
-	<section id="about" class="payout3">
+	<section id="about" class="payout3 hidden">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
@@ -906,7 +900,7 @@ on the endeavour to financial independence.
     </section><!-- End About Section -->
 
 	<!-- ======= Key Feature ======= -->
-    <section id="why-us" class="key-feature py-3" style="padding:80px 0;">
+    <section id="why-us" class="key-feature" style="padding:120px 0;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -925,16 +919,17 @@ on the endeavour to financial independence.
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-bottom: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp; <br> Trader-Friendly Leverage</h4>
+				<h4 class="key-benefits-h4"><i class="fas fa-layer-group"></i>&nbsp;&nbsp; <br> Trader-Friendly Leverage</h4>
 				<p class="key-text">We provide leverage of 1:100 to all our trading accounts. 
-	As a result, traders can use appropriate lot sizes even while using small stop losses.
-      	This makes the overall experience of trading with our accounts extremely fluent & flexible.</p>
+					As a result, traders can use appropriate lot sizes even while using small stop losses.
+					This makes the overall experience of trading with our accounts extremely fluent & flexible.
+				</p>
             </div>
           </div>
 
           <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD; border-bottom: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp; <br> No Unrealistic Objectives</h4>
+				<h4 class="key-benefits-h4"><i class="fas fa-magnifying-glass-chart"></i>&nbsp;&nbsp; <br> No Unrealistic Objectives</h4>
 				<p class="key-text">Our goal is to not confine you within boundaries but to make sure that you can spread your wings.</p>
             </div>
           </div>
@@ -957,7 +952,7 @@ on the endeavour to financial independence.
           </div>	
 		  <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-magnifying-glass-chart"></i>&nbsp;&nbsp; <br>Get Your Fees Refunded</h4>
+				<h4 class="key-benefits-h4"><i class="fas fa-undo ms-1"></i>&nbsp;&nbsp; <br>Get Your Fees Refunded</h4>
 				<p class="key-text">The fee is automatically reimbursed to you with the first Profit Split.</p>
             </div>
           </div>	  
@@ -987,7 +982,7 @@ on the endeavour to financial independence.
     </section><!-- End Key Feature -->
 
 	<!-- ======= About Section ======= -->
-	<section id="about" class="payout">
+	<section id="about" class="payout hidden">
       <div class="container" data-aos="fade-up">
 	  	<div class="section-title text-center">
 			<h2>Trusted Partners</h2>

@@ -16,5 +16,13 @@ $route['payouts'] = 'welcome/payouts';
 $route['contact'] = 'welcome/contact';
 $route['about'] = 'welcome/about';
 
+
+
+//user dashboard
+$route['user'] = 'user';
+$route['user/account-overview'] = 'user/accountOverview';
+
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
