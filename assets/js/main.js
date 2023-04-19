@@ -233,19 +233,42 @@
   new Swiper('.testimonials-slider', {
     effect: "coverflow",
     grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 200,
-      depth: 100,
-      modifier: 3,
-      slideShadows: true,
+    // centeredSlides: true,
+    // slidesPerView: "auto",
+    // coverflowEffect: {
+    //   rotate: 0,
+    //   stretch: 300,
+    //   depth: 100,
+    //   modifier: 2,
+    //   slideShadows: true,
       
-    },
-    loop: true,
+    // },
+    // loop: true,
   });
 
+new Swiper(".mySwiper", {
+    effect: "cards",
+    grabCursor: true,
+    cardsEffect :{
+      rotate: 0,
+      perSlideOffset :9
+    },
+    // loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
   /**
    * Initiate gallery lightbox 
    */

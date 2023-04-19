@@ -14,7 +14,7 @@ $this->load->view('includes/header');
 				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
 				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
-				<h2>Coming Soon</h2>
+				<h2 class="coming-soon-text">Coming Soon</h2>
 
 				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
@@ -741,7 +741,7 @@ $this->load->view('includes/header');
     </section>
 	<!-- End Key Feature -->
 	
-	<section id="testimonials" class="key-highlights-mobile testimonials section-bg" style="padding:120px 80px">
+	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -749,82 +749,122 @@ $this->load->view('includes/header');
           <p>What they're saying about us</p>
         </div>
 
-        <div class="testimonials-slider swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-          	<div class="swiper-wrapper" id="swiper-wrapper-7d8ae3358c76f485" aria-live="off" style="transform: translate3d(-1893.33px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="1 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+        <div class="hidden testimonials-slider swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events aos-init aos-animate swiper-coverflow swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" data-aos="fade-up" data-aos-delay="100">
+          	<div class="swiper-wrapper" id="swiper-wrapper-7d8ae3358c76f485" aria-live="polite" style="transform: translate3d(-1566.25px, 0px, 0px); transition-duration: 0ms; cursor: grab;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="6" role="group" aria-label="7 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(1200px, 0px, -600px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -5;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div>
-			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" role="group" aria-label="2 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+            <div class="swiper-slide-shadow-left" style="opacity: 6; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-visible swiper-slide-prev" data-swiper-slide-index="7" role="group" aria-label="8 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(600.069px, 0px, -300.035px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -2;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div>
-			<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="3 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+            <div class="swiper-slide-shadow-left" style="opacity: 3.00035; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-visible swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(0.138182px, 0px, -0.0690912px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div>
+            <div class="swiper-slide-shadow-left" style="opacity: 0.000690912; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div>
+			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next swiper-slide-visible swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="2 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-599.793px, 0px, -299.896px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -2;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 2.99896; transition-duration: 0ms;"></div></div>
+			<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group" aria-label="3 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-1199.72px, 0px, -599.862px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -5;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				
+            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 5.99862; transition-duration: 0ms;"></div></div>
 
-            <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="4 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+            <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-1800.34px, 0px, -900.169px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -8;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div><!-- End testimonial item -->
+            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 9.00169; transition-duration: 0ms;"></div></div><!-- End testimonial item -->
 
-            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="5 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+            <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="5 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-2400.27px, 0px, -1200.13px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -11;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div><!-- End testimonial item -->
+            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 12.0013; transition-duration: 0ms;"></div></div><!-- End testimonial item -->
 
-          	<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="9 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
+          	<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" role="group" aria-label="6 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-3000.2px, 0px, -1500.1px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -14;">
+                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
+				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
 				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 				
-            </div>
+            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 15.001; transition-duration: 0ms;"></div></div>
 			
-			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="10 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            </div>
 			
-			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="11 / 11" style="width: 358.667px; margin-right: 20px;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&fit=max&w=1920" />
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            </div>
+			
+			
 
 		</div>
 
-        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+        <!-- <div class="hidden swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
 			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
 			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
 			<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span>
 			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
 			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span>
 		</div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
 
       </div>
+
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+			<div class="swiper-slide">Slide 1</div>
+			<div class="swiper-slide">Slide 2</div>
+			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide">Slide 4</div>
+			</div>
+
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+
+			<!-- If we need navigation buttons -->
+			<!-- <div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div> -->
+
+			<!-- If we need scrollbar -->
+			<div class="swiper-scrollbar"></div>
+		</div>
     </section>
 
-	 <!-- ======= About Section ======= -->
-	 <section id="about" class="payout">
+
+	<!-- ======= Game Section ======= -->
+	<section id="about" class="game payout2">
       <div class="container" data-aos="fade-up">
-	  	<!-- <div class="section-title text-center">
-			<h2>Payout</h2>
-			<p>Our Payout System</p>
-		</div> -->
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              <img src="assets/img/game2.png" alt="">
+            </div>
+          </div>
+          <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">
+            <h3 class="most-popular-text game-title">Play and win <br/>Assured rewards!</h3>
+            <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win upto <strong  style="font-weight:600; color:#06bd0d">$5,000 Cash</strong>, evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">20%</strong> discount.</p>
+			<div class="img-holder row justify-content-center align-item-center p-3">
+				<button class=" game-btn border-none col-lg-12 btn btn-primary mb-3 playnow">Play Now</button>
+				<div class="d-flex justify-content-center">
+					<button class="btn btn-primary mr-3 game-btn border-none pricelist">Prize List</button>
+					<button class="btn btn-primary game-btn border-none eligiblity">Eligiblity</button>
+				</div>
+			</div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+	 <!-- ======= About Section ======= -->
+	<section id="about" class="payout">
+      <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
@@ -832,12 +872,11 @@ $this->load->view('includes/header');
             </div>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3 style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">Payout System</h3>
+            <h3 class="payout-h3" style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">Payout System</h3>
             <p class="fst-italic">
-			The default payout ratio for all ETC traders is set to 80:20, however, an 80% share is not where we draw the line. If you meet the conditions of our Scaling Plan, 
-				not only do we increase the balance of your ETC Account by 50%, the payout ratio will also automatically change to a staggering 90:10!
-				All ETC Traders can request payout on-demand. The payout can be processed just after 30 days, but you also have the ability to choose your own Profit Split Day, 
-				which can be even changed up to three times. In conclusion, we make sure that you will always receive your withdrawal on your most convenient day.
+			<strong>Profit Split</strong> :  Your profit split ratio starts at level 1 &nbsp;<strong class="text-primary">[ 80:20 ]</strong>. <br><br>
+			<strong>Scaling Plan</strong> : If you meet the scaling conditions we increase your current balance by <strong class="text-primary">50%</strong> of the initial balance. With scaling your payout split goes to level 2 &nbsp;<strong class="text-primary">[ 90:10 ]</strong>.<br><br>
+			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">14 days</strong>  from the first trade. You will get paid on your most convinient date.
 			</p>
           </div>
         </div>
@@ -845,27 +884,120 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End About Section -->
 
-	 <!-- ======= About Section ======= -->
-	 <section id="about" class="payout2">
+	<!-- ======= About Section ======= -->
+	<section id="about" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
               <img src="assets/img/payout-2.png" alt="">
             </div>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content">
-            <h3 style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">The most popular retail trading platforms</h3>
-            <p class="fst-italic">
-			We offer all our clients the best trading solution in the form MT5 accounts powered by data feed directly from our pool of prime liquidity providers. We do our best to simulate the real market conditions with super-raw spreads, very low commission and no markup to all demo trading accounts with virtual funds.
-			</p>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+            <h3 class="most-popular-text" style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">The most popular retail trading platforms</h3>
+            <p class="fst-italic">We offer all our clients the best trading solution in the form <strong class="text-primary">MT5</strong> accounts powered by data feed directly from our pool of prime liquidity providers. We do our best to simulate the real market conditions with super-raw spreads, very low commission and no markup to all demo trading accounts with virtual funds.</p>
 			<div class="img-holder d-flex justify-content-center align-item-center p-3">
 				<!-- <img src="assets/img/MT4.png" alt="mt4-image" width="30%"> -->
 				<img class="ml-3" src="assets/img/MT5.png" alt="mt4-image" width="30%">
 			</div>
           </div>
         </div>
+      </div>
+    </section><!-- End About Section -->
 
+
+	<!-- ======= About Section ======= -->
+	<section id="navtabs-count" class="payout2">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-12 order-2 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+			<nav>
+				<div class="nav nav-tabs" id="nav-tab" role="tablist">
+					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-1"></i>. <span>Risk Manager</span>
+					</button>
+					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-2"></i>. <span>Trade Manager</span>
+					</button>
+					<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-3"></i>. <span>Trade Journal</span>
+					</button>
+					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-4"></i>. <span>Market Screener</span>
+					</button>
+					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-5"></i>. <span>Market Sentiments</span>
+					</button>
+					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
+						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-6"></i>. <span>Economic Calendar</span>
+					</button>
+				</div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">ETC Risk Manager</h6>
+							<br><br>
+							<p class="text-muted">It lets you manage trades and control your profit and loss across multiple currency pairs using a number of parameters and settings</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">ETC Trade Manager</h6>
+							<br><br>
+							<p class="text-muted">Execute your trades with precision. You can also calculate your lot size, close partial trades, or efficiently move your stop-loss to breakeven.</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">ETC Trade Journal</h6>
+							<br><br>
+							<p class="text-muted">Here you can record and review you daily trades for better output and for future reference. This can help you to keep track of your success as well as study mistakes made when entering or exiting a trade.</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">Market Screener</h6>
+							<br><br>
+							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-5-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">Market Sentiments</h6>
+							<br><br>
+							<p class="text-muted">See what the technical analysis says about a given symbol with our display ratings, made for easy viewing.</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="nav-cot" role="tabpanel" aria-labelledby="nav-cot-tab">
+					<div class="row py-5">
+						<div class="col-lg-8 m-auto text-center">
+							<h6 class="fw-bold mt-3 card-title">Economic Calendar</h6>
+							<br><br>
+							<p class="text-muted">
+							Keep an eye on key upcoming economic events, announcements, and news. Plus, set up filters in a few clicks, selecting for event importance and affected currencies.</p>
+							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+						</div>
+					</div>
+				</div>
+			</div>
+          </div>
+        </div>
       </div>
     </section><!-- End About Section -->
 
@@ -897,7 +1029,8 @@ $this->load->view('includes/header');
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section><!-- End About Section -->	
+
 
 	<!-- ======= Key Feature ======= -->
     <section id="why-us" class="key-feature" style="padding:120px 0;">
@@ -981,6 +1114,7 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End Key Feature -->
 
+
 	<!-- ======= About Section ======= -->
 	<section id="about" class="payout hidden">
       <div class="container" data-aos="fade-up">
@@ -1005,7 +1139,6 @@ $this->load->view('includes/header');
 
       </div>
     </section><!-- End About Section -->
-
   </main><!-- End #main -->
   
 <?php
