@@ -232,7 +232,7 @@
   <script src="assets/js/main.js"></script>
 <script>$(function(){
       var calcNewYear = setInterval(function(){
-        date_future = new Date('2023-06-016');
+        date_future = new Date('2023-06-22');
         date_now = new Date();
 
         seconds = Math.floor((date_future - (date_now))/1000);
@@ -266,6 +266,15 @@
       }
     })
   })
+
+
+  function playIframe(id, src) {
+    let container = '#iframe'+id;
+    $(container).html('');
+    $(container).append(`
+    <iframe width="90%" style="border-radius:20px" height="450px" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    `);
+  }
   </script>
 </body>
 

@@ -2994,7 +2994,7 @@ a.icons-video-btn2 i {
 
 	.key-feature-box{
 		border:  none;
-		border-bottom:  2px solid #ddd !important;
+		border-bottom:  2px solid #ddd ;
 	}
 
 	.swiper {
@@ -3005,6 +3005,9 @@ a.icons-video-btn2 i {
 	.nav-tabs{
 		border-bottom: none !important;
 		flex-direction: column !important;
+	}
+	#mb-border-none{
+		border-bottom: 0px !important;
 	}
 }
 #navtabs-count{

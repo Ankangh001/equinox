@@ -36,11 +36,12 @@ $this->load->view('includes/header');
 				</div>
 
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
-						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-discord"></i>
-					</div>
+					
 					<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
 						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-youtube"></i>
+					</div>
+					<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
+						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-discord"></i>
 					</div>
 					<!-- <a href="#why-us" class="btn-book animated fadeInUp scrollto">&nbsp;&nbsp;Join our discord</a> -->
 					<!-- <input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
@@ -819,10 +820,22 @@ $this->load->view('includes/header');
 
 		<div class="swiper mySwiper">
 			<div class="swiper-wrapper">
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
-			<div class="swiper-slide">Slide 4</div>
+				<div class="swiper-slide" id="iframe1">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe2">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe3">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe4">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
 			</div>
 
 			<!-- If we need pagination -->
@@ -1083,7 +1096,7 @@ $this->load->view('includes/header');
 				<p class="key-text">No recurrent charges, no membership or other hidden fees.</p>
             </div>
           </div>	
-		  <div class="col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD;">
+		  <div  id="mb-border-none" class=" col-lg-4 text-center key-feature-box col-md-4 col-sm-6 mt-4 mt-lg-0 p-5" style="border-left: 2px solid #DDD;">
 		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
 				<h4 class="key-benefits-h4"><i class="fas fa-undo ms-1"></i>&nbsp;&nbsp; <br>Get Your Fees Refunded</h4>
 				<p class="key-text">The fee is automatically reimbursed to you with the first Profit Split.</p>
