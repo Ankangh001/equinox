@@ -5,16 +5,14 @@ $this->load->view('includes/header');
 
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-		
-	
 		<div class="row">
-        	<div class="col-lg-6 m-funding" style="margin-top: -40px;">
+        	<div class="col-lg-6 m-funding">
 				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
 				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
-				<h2 class="coming-soon-text">Coming Soon</h2>
+				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
 
 				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
@@ -33,7 +31,7 @@ $this->load->view('includes/header');
 						<span id="sec" class="text-xl sm:text-5xl">20</span>
 						<p style="font-size:0.8rem">Seconds</p>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="btns d-flex justify-content-center" style="width:80%">
 					
@@ -47,19 +45,43 @@ $this->load->view('includes/header');
 					<!-- <input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
 					<i style="color: #00e894;position: relative;left: -35px;top: 2px;" class="fas fa-arrow-right ms-1"></i> -->
 				</div>
-		</div>
-		<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-			<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
-		</div>
-
-      </div>
+			</div>
+			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
+			</div>
+      	</div>
     </div>
   </section><!-- End Hero -->
 
+
   <main id="main">
+	<!-- ====== As seen on ====== -->
+	<div class="row p-3 m-5 bg-transparent" style="position:inherit;">
+		<div class="col-lg-2 d-flex align-items-center justify-content-center col-sm-6 logo-border">
+			<h2 style="font-size:1.5rem; color:#000000">As seen on</h2>
+		</div>
+		<div class="col-lg-10 col-sm-6">
+			<div class="row">
+				<div class="col-lg-12 photos d-flex">
+					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="" srcset="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 photos d-flex">
+					<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="" srcset="">
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- ======= Trade for Proprietary ======= -->
 	<section id="about" class="payout why-trade" style="background:#fff">
-		<div class="container" data-aos="fade-up">
+		<div class="container mt-5" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
 				<div class="about-img  m-auto">
@@ -87,18 +109,16 @@ $this->load->view('includes/header');
 			</div>
 			</div>
 		</div>
-    </section><!-- End Trade for Proprietary -->
+    </section>
+	<!-- ====== End Trade for Proprietary ====== -->
 
-	<!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="hidden why-us">
+	<!-- ======= Evaluation ======= -->
+    <section id="evaluation" class="why-us">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title text-center">
           <h2>Evaluation Process</h2>
           <p>Steps to grow with us</p>
         </div>
-
-		
 		<ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
 			<li class="nav-item m-2 pointer">
 				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
@@ -113,8 +133,6 @@ $this->load->view('includes/header');
 				</div>
 			</li>
 		</ul>
-
-		<!-- Tab panes -->
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade text-dark show in active" id="profile">
 				<div class="row">
@@ -211,7 +229,7 @@ $this->load->view('includes/header');
 			</div>
 			
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="buzz">
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-lg-2"></div>
 					<div class="col-lg-4">
 						<p class="evaluation-text2">This is where we evaluate your trading</p>
@@ -271,24 +289,111 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 					<div class="col-lg-2"></div>
+				</div> -->
+
+				<div class="row">
+					<div class="col-lg-8">
+						<p class="evaluation-text">This is where we evaluate your trading</p>
+						<div class="row">
+							<div class="col-lg-6 mt-4 mt-lg-0">
+								<div class="box" data-aos="zoom-in" data-aos-delay="200">
+									<div class="holder d-flex align-items-stretch justify-content-between">
+										<div class="left">
+											<span>Phase 1</span>
+											<p class="left-p" >Starting your <br> Evaluation process</p>
+										</div>
+										<div class="right">
+											<span><i class="fas fa-8 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+											<p class="left-p" >Profit Target</p>
+										</div>
+									</div>
+									<div class="objective">
+										<ul class="p-0 m-0 list-none">
+											<li class="block text-sm leading-6 text-white">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 30 days</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Registration fee</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6 mt-4 mt-lg-0">
+								<div class="box" data-aos="zoom-in" data-aos-delay="200">
+									<div class="holder d-flex align-items-stretch justify-content-between">
+										<div class="left">
+											<span>Phase 2</span>
+											<p class="left-p" >One step away to be <br> our Funded Trader</p>
+										</div>
+										<div class="right">
+											<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+											<p class="left-p" >Profit Target</p>
+										</div>
+									</div>
+									<div class="objective">
+										<ul class="p-0 m-0 list-none">
+											<li class="block text-sm leading-6 text-white">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 key-feature mt-4 mt-lg-0">
+						<div class="box" data-aos="zoom-in" data-aos-delay="200" style="padding: 20px 0;">
+							<a data-toggle="tooltip"  
+								data-toggle="tooltip" 
+								data-placement="top" 
+								>
+									<i class="fas fa-coins"></i>
+									&nbsp;&nbsp;Earn Real Money
+							</a>
+
+							<div style="padding:20px 30px 0">
+								<div class="holder d-flex align-items-stretch justify-content-between">
+									<div class="left">
+										<span>Phase 2</span>
+										<p class="left-p" >One step away to be <br> our Funded Trader</p>
+									</div>
+									<div class="right">
+										<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+										<p class="left-p" >Profit Target</p>
+									</div>
+								</div>
+								<div class="objective">
+									<ul class="p-0 m-0 list-none">
+										<li class="block text-sm leading-6 text-white">Objectives</li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-		
       </div>
-    </section><!-- End Why Us Section -->
+    </section>
+	<!-- ==== End Evaluation Process ==== -->
 
 	<!-- ======= Pricing ======= -->
-    <section id="table-pricing" class="hidden table-pricing">
+    <section id="table-pricing" class="table-pricing">
 		<div class="container" data-aos="fade-up">
 			<div class="section-title text-center">
 				<h2>Pricing</h2>
-				<p>What we offer</p>
 			</div>
-
 			<div class="row justify-content-center">
 				<ul class="col-lg-3 nav nav-pills m-auto flex-column justify-content-start" id="pills-tab" role="tablist" style="padding:0 2rem ;border-right: 1px solid #444444;">
 					<li class="nav-item mb-3 m-2 pointer">
@@ -678,10 +783,11 @@ $this->load->view('includes/header');
 				</div>
 			</div>
 		</div>
-    </section><!-- End Pricing -->
+    </section>
+	<!-- ===== End Pricing ===== -->
 	
 	<!-- ======= Key Feature ======= -->
-    <section id="why-us" class="hidden key-feature">
+    <section id="key-feature" class="key-feature">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -689,50 +795,51 @@ $this->load->view('includes/header');
           <p> Benefits</p>
         </div>
 
-        <div class="row">
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" id="iframe1">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe2">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe3">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+				<div class="swiper-slide" id="iframe4">
+					<br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-coins ms-1"></i>&nbsp;&nbsp;Swing Account</h4>
-				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
 
-          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
-		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-line ms-1"></i>&nbsp;&nbsp;Scaling Plan</h4>
-				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
+			<!-- If we need navigation buttons -->
+			<!-- <div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div> -->
 
-          <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
-		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-chart-pie ms-1"></i>&nbsp;&nbsp;Free Trial</h4>
-				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>	
-		  <div class="col-lg-3 col-md-3 col-sm-6 mt-4 mt-lg-0">
-		  	<div class="box" data-aos="zoom-in" data-aos-delay="100">
-				<h4 class="key-benefits-h4"><i class="fas fa-magnifying-glass-chart"></i>&nbsp;&nbsp;Other Projects</h4>
-				<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>	  
-        </div>
+			<!-- If we need scrollbar -->
+			<div class="swiper-scrollbar"></div>
+		</div>
 
 		<div class="row" data-aos="fade-up">
 			<div class="col-lg-8 justify-content-center join-team text-center">
 				<h2 class="text-lg">Join the team of our experienced traders</h2>
 				<p class="sm-text mt-5">If you are ready, accept our FTMO Challenge and become our FTMO Trader. You can even try the entire process completely free of charge.</p>
 				<div class="row m-auto mt-5">
-					<div class="col-lg-3">
+					<div class="col-lg-2">
 					</div>
-					<div class="col-lg-3" data-aos="fade-right">
-						<button class="btn btn-challenge">EQ Challenge</button>
+					<div class="col-lg-4" data-aos="fade-right">
+						<button class="btn w-100 btn-challenge">EQ Challenge</button>
 					</div>
-					<div class="col-lg-3" data-aos="fade-left">
-						<button class="btn btn-light">Free Trial</button>
+					<div class="col-lg-4" data-aos="fade-left">
+						<button class="btn w-100 btn-light">Free Trial</button>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-2">
 					</div>
 				</div>
 			</div>
@@ -740,9 +847,9 @@ $this->load->view('includes/header');
 
       </div>
     </section>
-	<!-- End Key Feature -->
+	<!-- ====== End Key Feature ======  -->
 	
-	<section id="testimonials" class="testimonials section-bg" style="padding:120px 80px">
+	<section id="testimonials" class="hidden testimonials section-bg" style="padding:120px 80px">
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -897,7 +1004,7 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End About Section -->
 
-	<!-- ======= About Section ======= -->
+	<!-- ======= After Payout ======= -->
 	<section id="about" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -916,7 +1023,8 @@ $this->load->view('includes/header');
           </div>
         </div>
       </div>
-    </section><!-- End About Section -->
+    </section>
+	<!-- ======= End After Payout ======= -->
 
 
 	<!-- ======= About Section ======= -->
@@ -1014,8 +1122,8 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End About Section -->
 
-	<!-- ======= About Section ======= -->
-	<section id="about" class="payout3 hidden">
+	<!-- ======= Icons Around you ======= -->
+	<section id="about" class="hidden payout3">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
@@ -1042,11 +1150,11 @@ $this->load->view('includes/header');
         </div>
 
       </div>
-    </section><!-- End About Section -->	
+    </section><!-- ========= Icons arund you ======== -->	
 
 
-	<!-- ======= Key Feature ======= -->
-    <section id="why-us" class="key-feature" style="padding:120px 0;">
+	<!-- ======= Key Benefits ======= -->
+    <section id="why-us" class="key-feature" style="padding:120px 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">
@@ -1125,11 +1233,11 @@ $this->load->view('includes/header');
 		</div> -->
 
       </div>
-    </section><!-- End Key Feature -->
+    </section><!-- ====== End Key Benefits ====== -->
 
 
-	<!-- ======= About Section ======= -->
-	<section id="about" class="payout hidden">
+	<!-- ======= Trusted patner logos ======= -->
+	<section id="about" class="hidden payout">
       <div class="container" data-aos="fade-up">
 	  	<div class="section-title text-center">
 			<h2>Trusted Partners</h2>
@@ -1151,7 +1259,8 @@ $this->load->view('includes/header');
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
+	<!-- ====== End Trusted patner logos ====== -->
   </main><!-- End #main -->
   
 <?php

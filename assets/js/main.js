@@ -77,17 +77,22 @@
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
-  let selectHeader = select('#header')
-  let selectTopbar = select('#topbar')
+  let selectHeader = select('#header');
+  let selectTopbar = select('#topbar');
+  let navbar = select('#navbar');
   if (selectHeader) {
     const headerScrolled = () => {
       if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
+        navbar.classList.add('whites');
+        navbar.classList.remove('black');
+        selectHeader.classList.add('header-scrolled');
         if (selectTopbar) {
           selectTopbar.classList.add('topbar-scrolled')
         }
       } else {
-        selectHeader.classList.remove('header-scrolled')
+        selectHeader.classList.remove('header-scrolled');
+        navbar.classList.remove('whites');
+        navbar.classList.add('black');
         if (selectTopbar) {
           selectTopbar.classList.remove('topbar-scrolled')
         }

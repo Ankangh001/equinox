@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 body {
 	font-family: "Poppins", sans-serif;
-	background: #0c0b09;
+	background: #fff;
 	color: #fff;
 }
 
@@ -262,10 +262,19 @@ h6 {
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px 0 10px 30px;
-	color: #fff;
+	/* color: #000000; */
 	white-space: nowrap;
 	transition: 0.3s;
-	font-size: 14px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.whites{
+	color: #fff !important;
+}
+
+.black{
+	color: #000 !important;
 }
 
 .navbar a i {
@@ -453,7 +462,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
 	width: 100%;
-	height: 100vh;
+	height: 90vh;
 	background: linear-gradient(
 		83deg,
 		rgb(0 0 0 / 70%) 0%,
@@ -483,7 +492,7 @@ h6 {
 }
 
 #hero .container {
-	padding-top: 110px;
+	padding: 15% 0;
 }
 
 
@@ -1311,7 +1320,7 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials {
-	background:linear-gradient(180deg, #ffffff 20%, #eee 100%)
+	background:linear-gradient(0deg, #ffffff 20%, #eee 100%)
 }
 
 .testimonials .testimonial-item {
@@ -2517,21 +2526,24 @@ ul {
 .evaluation-text {
 	color: #00b57c;
 	text-align: center;
-	margin: 2rem;
+	margin: 0 auto 2rem auto;
 	font-size: 16px;
+	border-bottom: 2px solid #00b57c;
+	border-style: dashed;
+	width: 325px;
 }
 
 .evaluation-text::after {
 	content: "";
-	width: 26%;
-	height: 2px;
+	width: 10px;
+	height: 10px;
 	display: inline-block;
-	border-bottom: 2px solid #00b57c;
-	border-style: dashed;
-	margin: 4px 10px;
+	border-radius: 50%;
+	background: transparent;
+	border: 2px solid #00b57c;
 	position: absolute;
-	left: 20%;
-	top: 30%;
+	left: 46%;
+	top: 25.5%;
 }
 
 .evaluation-text::before {
@@ -2544,7 +2556,7 @@ ul {
 	border: 2px solid #00b57c;
 	position: absolute;
 	left: 20%;
-	top: 30%;
+	top: 25.5%;
 }
 .evaluation-text2 {
 	color: #00b57c;
@@ -2583,7 +2595,7 @@ ul {
 	padding: 8px 12px;
 	display: block;
 	width: 90%;
-	margin: 0rem auto 2rem auto;
+	margin: 0rem auto 0 auto;
 	border-radius: 8px;
 	text-align: center;
 }
@@ -2651,7 +2663,7 @@ ul {
 	color: #000000;
 }
 .payout3 {
-	background: linear-gradient(1deg, #ffffff 20%, #eee 100%);
+	background: linear-gradient(0deg, #ffffff 20%, #eee 100%);
 	padding: 80px 0;
 	color: #000000;
 }
@@ -2800,7 +2812,112 @@ a.icons-video-btn2 i {
     color: #2481e7;
 }
 
+#navtabs-count{
+	padding-top: 80px;
+}
 
+.why-trade-content h3{
+	margin-bottom: 3rem;
+	font-size: 2.5rem;
+	font-weight: 800;
+}
+
+.why-trade-content{
+	justify-content: left;
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
+	text-align: left;
+	margin-top: 5rem;
+}
+
+.nav-tabs button {
+    color: #00000090;
+    font-size: 16px;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	color: #0458ad !important;
+    background-color: #fff !important;
+    border-color: #fff #fff #0077ee #fff !important;
+    border-bottom: 4px solid #0077ee;
+    margin-bottom: -4px;
+}
+
+.nav-tabs {
+    /* border-bottom: 1px solid #dee2e6; */
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    border-bottom: 4px solid #00000040;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active span {
+    color: #000000 !important;
+	font-weight: 600;
+}
+
+section#navtabs-count{
+	background:linear-gradient(180deg, #ffffff 20%, #eee 100%)  !important;
+}
+
+button.game-btn {
+	border-radius: 30px;
+	padding: 14px 31px;
+}
+.playnow{
+	background: linear-gradient(86deg, #FF5757, #8c52ff);
+	width:45%; 
+	font-family: 'Archivo Black', sans-serif;
+	letter-spacing: 3px;
+	font-size: 1.25rem;
+}
+.pricelist{
+	background: linear-gradient(86deg, #FF5758, #CF559E);
+	font-family: 'League Spartan', sans-serif;
+	letter-spacing:2px;
+}
+.eligiblity{
+	background: linear-gradient(86deg, #B754C0, #9752EF);
+	font-family: 'League Spartan', sans-serif;
+	letter-spacing:2px;
+}
+.game-title{
+	margin-bottom:8px; 
+	font-size:4rem; 
+	font-weight: 600; 
+	font-family: 'League Spartan', sans-serif;
+	text-align: center;
+	line-height: 3.8rem;
+}
+
+.game-para{
+	text-align: center;
+	font-size: 1rem;
+}
+.for-mob{
+	display: none;
+}
+
+.coming-soon-text{
+	font-weight: 800;
+}
+
+.gradient-btn{
+	background: linear-gradient(86deg, #FF5757, #8c52ff);
+	border: none;
+}
+
+.logo-border{
+	border-right: 2px solid #444444;
+}
+
+.photos img {
+	width: 22%;
+	aspect-ratio: 4/2;
+	object-fit: contain;
+	margin-right: 1rem;
+}
 
 /* mobile optimization */
 @media (max-width: 992px) {
@@ -3009,99 +3126,10 @@ a.icons-video-btn2 i {
 	#mb-border-none{
 		border-bottom: 0px !important;
 	}
-}
-#navtabs-count{
-	padding-top: 80px;
-}
 
-.why-trade-content h3{
-	margin-bottom: 3rem;
-	font-size: 2.5rem;
-	font-weight: 800;
-}
-
-.why-trade-content{
-	justify-content: left;
-	display: flex;
-	flex-direction: column;
-	align-items: baseline;
-	text-align: left;
-	margin-top: 5rem;
-}
-
-.nav-tabs button {
-    color: #00000090;
-    font-size: 16px;
-}
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-	color: #0458ad !important;
-    background-color: #fff !important;
-    border-color: #fff #fff #0077ee #fff !important;
-    border-bottom: 4px solid #0077ee;
-    margin-bottom: -4px;
-}
-
-.nav-tabs {
-    /* border-bottom: 1px solid #dee2e6; */
-    margin: auto;
-    width: fit-content;
-    text-align: center;
-    border-bottom: 4px solid #00000040;
-}
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active span {
-    color: #000000 !important;
-	font-weight: 600;
-}
-
-section#navtabs-count{
-	background:#fff !important;
-}
-
-button.game-btn {
-	border-radius: 30px;
-	padding: 14px 31px;
-}
-.playnow{
-	background: linear-gradient(86deg, #FF5757, #8c52ff);
-	width:45%; 
-	font-family: 'Archivo Black', sans-serif;
-	letter-spacing: 3px;
-	font-size: 1.25rem;
-}
-.pricelist{
-	background: linear-gradient(86deg, #FF5758, #CF559E);
-	font-family: 'League Spartan', sans-serif;
-	letter-spacing:2px;
-}
-.eligiblity{
-	background: linear-gradient(86deg, #B754C0, #9752EF);
-	font-family: 'League Spartan', sans-serif;
-	letter-spacing:2px;
-}
-.game-title{
-	margin-bottom:8px; 
-	font-size:4rem; 
-	font-weight: 600; 
-	font-family: 'League Spartan', sans-serif;
-	text-align: center;
-	line-height: 3.8rem;
-}
-
-.game-para{
-	text-align: center;
-	font-size: 1rem;
-}
-.for-mob{
-	display: none;
-}
-
-.coming-soon-text{
-	font-weight: 800;
-}
-
-.gradient-btn{
-	background: linear-gradient(86deg, #FF5757, #8c52ff);
-	border: none;
+	.logo-border {
+		border-right: 2px solid #444444;
+		width: 50%;
+	}
+	
 }
