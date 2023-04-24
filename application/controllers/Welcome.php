@@ -28,9 +28,9 @@ class Welcome extends CI_Controller {
 		$this->load->view('notice');
 	}
 
-	public function symbol()
+	public function quotes()
 	{
-		$this->load->view('symbol');
+		$this->load->view('quotes');
 	}
 
 	public function calender()
@@ -71,5 +71,14 @@ class Welcome extends CI_Controller {
 	public function scalingPlan()
 	{
 		$this->load->view('scalingPlan');
+	}
+	public function maerketData()
+	{
+		$this->load->view('maerketData');
+	}
+
+	public function calculators()
+	{
+		$this->load->view('calculators');
 	}
 }

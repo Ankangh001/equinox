@@ -8,7 +8,7 @@ $this->load->view('includes/header');
   <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
 		<div class="row">
-        	<div class="col-lg-6 m-funding">
+        	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
 				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
 				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
@@ -33,18 +33,31 @@ $this->load->view('includes/header');
 					</div>
 				</div> -->
 
+				
+
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					
-					<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
-						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-youtube"></i>
-					</div>
-					<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
-						<i style="color: #1586d4;" style="font-size:30px" class="ml-3 text-white fa-brands fa-discord"></i>
-					</div>
-					<!-- <a href="#why-us" class="btn-book animated fadeInUp scrollto">&nbsp;&nbsp;Join our discord</a> -->
-					<!-- <input type="text" class="btn btn-input animated fadeInUp scrollto" placeholder="Email Updates" />
-					<i style="color: #00e894;position: relative;left: -35px;top: 2px;" class="fas fa-arrow-right ms-1"></i> -->
+					<a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
+						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
+					</a>
+					<a href="#why-us" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a>
 				</div>
+
+				<div class="btn2" style="width:80%">
+					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
+					<div class="d-flex justify-content-center">
+						<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
+							<a target="_blank" href="https://www.youtube.com/@EquinoxTradingCapital">
+								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
+							</a>
+						</div>
+						<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
+							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
+								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-discord"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
 				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
@@ -63,10 +76,10 @@ $this->load->view('includes/header');
 		<div class="col-lg-10 col-sm-6">
 			<div class="row">
 				<div class="col-lg-12 photos d-flex">
-					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="Bloomberg" style="width :18% !important" srcset="">
+					<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga" srcset="">
+					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac" style="width :30% !important" srcset="">
+					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" style="width :25% !important" srcset="">
 				</div>
 			</div>
 			<div class="row">
@@ -1027,7 +1040,7 @@ $this->load->view('includes/header');
 	<!-- ======= End After Payout ======= -->
 
 
-	<!-- ======= About Section ======= -->
+	<!-- ======= navtabs Section ======= -->
 	<section id="navtabs-count" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -1211,27 +1224,6 @@ $this->load->view('includes/header');
             </div>
           </div>	  
         </div>
-		
-		<!-- join team -->
-		<!-- <div class="row" data-aos="fade-up">
-			<div class="col-lg-8 justify-content-center join-team text-center">
-				<h2 class="text-lg">Join the team of our experienced traders</h2>
-				<p class="sm-text mt-5">If you are ready, accept our FTMO Challenge and become our FTMO Trader. You can even try the entire process completely free of charge.</p>
-				<div class="row m-auto mt-5">
-					<div class="col-lg-3">
-					</div>
-					<div class="col-lg-3" data-aos="fade-right">
-						<button class="btn btn-challenge">EQ Challenge</button>
-					</div>
-					<div class="col-lg-3" data-aos="fade-left">
-						<button class="btn btn-light">Free Trial</button>
-					</div>
-					<div class="col-lg-3">
-					</div>
-				</div>
-			</div>
-		</div> -->
-
       </div>
     </section><!-- ====== End Key Benefits ====== -->
 

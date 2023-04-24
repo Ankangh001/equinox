@@ -138,10 +138,10 @@
 				<ul>
 					<li><a href="quotes">Quotes & Spreads</a></li>
 					<li><a href="economic-calendar">Economic Calendar</a></li>
-					<li><a href="tools">Market Data Analysis</a></li>
-					<li><a href="tools">Calculators</a></li>
+					<li><a href="market-data">Market Data Analysis</a></li>
+					<li><a href="calculators">Calculators</a></li>
 					<li><a href="tools">User Tools</a></li>
-					<li><a href="tutorials">Tutorials</a></li>
+					<li><a href="tutorials">MT5 Web Terminal</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
@@ -158,7 +158,6 @@
 					<li><a href="contact">Contact Us</a></li>
 					<li><a href="about">About Us</a></li>
 					<li><a href="about">Complaints</a></li>
-					<li><a href="about">Feedback</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a href="#"><span>En</span> <i class="bi bi-chevron-down"></i></a>

@@ -8,14 +8,16 @@ $route['faq'] = 'welcome/faq';
 $route['rules'] = 'welcome/rules';
 $route['testimonial'] = 'welcome/testimonial';
 $route['notice'] = 'welcome/notice';
-$route['symbol'] = 'welcome/symbol';
-$route['calender'] = 'welcome/calender';
+$route['quotes'] = 'welcome/quotes';
+$route['market-data'] = 'welcome/maerketData';
+$route['economic-calendar'] = 'welcome/calender';
 $route['client-login'] = 'welcome/client';
 $route['client-signup'] = 'welcome/clientSignup';
 $route['affiliate'] = 'welcome/affiliate';
 $route['payouts'] = 'welcome/payouts';
 $route['contact'] = 'welcome/contact';
 $route['about'] = 'welcome/about';
+$route['calculators'] = 'welcome/calculators';
 
 
 

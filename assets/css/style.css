@@ -519,7 +519,11 @@ h6 {
 }
 
 #hero .btns {
-	margin-top: 30px;
+	margin-top: 60px;
+}
+
+#hero .btn2 {
+	margin-top: 40px;
 }
 
 #hero .btn-menu,
@@ -534,13 +538,22 @@ h6 {
 	transition: 0.3s;
 	line-height: 1;
 	color: white;
-	border: 2px solid #00e894;
+	/* border: 2px solid #00000080; */
 }
 
 #hero .btn-menu:hover,
 #hero .btn-book:hover {
-	background: #00e894;
-	color: #fff;
+	border: 2px solid #00000080;
+	padding: 12px 30px;
+	background: transparent;
+}
+
+#hero .btn-menu:hover,
+#hero .btn-book:hover span {
+	background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	font-weight: 600;
 }
 
 #hero .btn-book {
@@ -2056,7 +2069,7 @@ table.account-config td {
 #faq-hero .btn-menu,
 #hero .btn-book {
 	font-weight: 600;
-	font-size: 13px;
+	font-size: 16px;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
 	display: inline-block;
@@ -2065,7 +2078,7 @@ table.account-config td {
 	transition: 0.3s;
 	line-height: 1;
 	color: white;
-	border: 2px solid #00e894;
+	/* border: 2px solid #00000080; */
 }
 
 .f-row {
@@ -2799,7 +2812,7 @@ a.icons-video-btn2 i {
 }
 
 .btn-box {
-    padding: 8px 14px 8px 0px !important;
+	padding: 5px 10px 4px !important;
     border-radius: 12px;
     font-size: 1.25rem;
     text-align: center !important;
@@ -2915,9 +2928,19 @@ button.game-btn {
 
 .photos img {
 	width: 22%;
-	aspect-ratio: 4/2;
+	aspect-ratio: 5/2;
 	object-fit: contain;
 	margin-right: 1rem;
+}
+
+.header{
+	border-bottom: 2px solid red;
+}
+
+.quotes-nav {
+    background-color: #000000;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
 /* mobile optimization */
