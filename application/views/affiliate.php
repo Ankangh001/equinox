@@ -3,7 +3,7 @@ $this->load->view('includes/header');
 ?>
 
 <!-- ======= Hero Section ======= -->
- <section id="hero" class=" affiliate d-flex align-items-center">
+ <section id="hero" class="affiliate d-flex align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
       <div class="row">
         <div class="col-lg-9">
@@ -11,9 +11,9 @@ $this->load->view('includes/header');
           <h1>Earn Like a<span> Champion</span></h1><br>
           <h2>Start earning up to 15% commission on every referral.</h2>
           <br><br>
-          <h2>Check out what our successful affiliates earned last month and join them now!</h2>
+          <!-- <h2>Check out what our successful affiliates earned last month and join them now!</h2> -->
 
-          <p class="font-bold text-lg my-5">
+          <!-- <p class="font-bold text-lg my-5">
             <span class="bg-white otp-text">$</span>
             <span class="bg-white otp-text">1</span>
             <span class="bg-white otp-text">4</span>
@@ -21,7 +21,7 @@ $this->load->view('includes/header');
             <span class="bg-white otp-text">3</span>
             <span class="bg-white otp-text">2</span>
             <span class="bg-white otp-text">2</span>
-          </p>
+          </p> -->
           <div class="btns">
             <a href="" class="btn-menu animated fadeInUp scrollto">Become a Affiliate</a>
           </div>

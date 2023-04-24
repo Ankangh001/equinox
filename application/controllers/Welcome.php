@@ -67,4 +67,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('about');
 	}
+
+	public function scalingPlan()
+	{
+		$this->load->view('scalingPlan');
+	}
 }

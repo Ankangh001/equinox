@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'welcome';
 //page routes
+$route['scaling-plan'] = 'welcome/scalingPlan';
 $route['faq'] = 'welcome/faq';
 $route['rules'] = 'welcome/rules';
 $route['testimonial'] = 'welcome/testimonial';

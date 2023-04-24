@@ -964,7 +964,7 @@ $this->load->view('includes/header');
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img src="assets/img/game2.png" alt="">
+              <img src="assets/img/game2.png" alt="game logo" style="width: 70%;">
             </div>
           </div>
           <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">

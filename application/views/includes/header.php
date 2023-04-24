@@ -123,13 +123,13 @@
 			</li>
 			<li class="dropdown"><a><span>Help</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="faq">FaQ</a></li>
+					<li><a href="faq">FAQ</a></li>
 					<li><a href="rules">Rules</a></li>
 				</ul>
 			</li>
-      <li class="dropdown"><a href="#"><span>Testimonials</span> <i class="bi bi-chevron-down"></i></a>
+      <li class="dropdown"><a><span>Testimonials</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="faq">Reviews</a></li>
+					<li><a href="testimonial">Reviews</a></li>
 					<li><a href="payouts">Payouts</a></li>
 				</ul>
 			</li>
@@ -138,7 +138,10 @@
 				<ul>
 					<li><a href="quotes">Quotes & Spreads</a></li>
 					<li><a href="economic-calendar">Economic Calendar</a></li>
-					<li><a href="e-calender">News Calender</a></li>
+					<li><a href="tools">Market Data Analysis</a></li>
+					<li><a href="tools">Calculators</a></li>
+					<li><a href="tools">User Tools</a></li>
+					<li><a href="tutorials">Tutorials</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
@@ -147,20 +150,21 @@
 				<ul>
 					<li><a href="notice">Announcements</a></li>
 					<li><a href="promotion">Promotion</a></li>
-					<li><a href="press-releases">Press Releases</a></li>
+					<li><a href="press-releases">Press Release</a></li>
 				</ul>
 			</li>
       <li class="dropdown"><a href="#"><span>Contact</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="contact">Contact</a></li>
+					<li><a href="contact">Contact Us</a></li>
 					<li><a href="about">About Us</a></li>
 					<li><a href="about">Complaints</a></li>
+					<li><a href="about">Feedback</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a href="#"><span>En</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="contact">English</a></li>
-					<li><a href="about">Hindi</a></li>
+					<li><a href="about">Spanish</a></li>
 				</ul>
 			</li>
         </ul>
