@@ -81,4 +81,14 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('calculators');
 	}
+
+	public function tools()
+	{
+		$this->load->view('tools');
+	}
+
+	public function webTerminal()
+	{
+		$this->load->view('webTerminal');
+	}
 }

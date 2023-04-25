@@ -8,8 +8,21 @@ $this->load->view('includes/header');
         margin: 1rem auto;
         height: 700px
     }
+    
     .economic{
         padding: 5rem 0;
+    }
+
+    .titleText-gieeF1Ex {
+        color: #000000 !important;
+    }
+
+    .tablet-gieeF1Ex .value-gieeF1Ex {
+        color: #000000 !important;
+    }
+
+    .disabled-gieeF1Ex .flagIcon-gieeF1Ex, .disabled-gieeF1Ex .importanceIcon-gieeF1Ex {
+        opacity: 100% !important;
     }
 </style>
 
@@ -20,7 +33,7 @@ $this->load->view('includes/header');
     <section id="faq" class="economic mt-5">
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
-                <h2>Economic Calender</h2>
+                <h2>Economic Calendar</h2>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12">

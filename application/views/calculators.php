@@ -4,6 +4,10 @@ $this->load->view('includes/header');
 <style>
     .card{
         box-shadow: 2px 2px 8px #00000050;
+        height: 520px;
+    }
+    .header{
+        font-weight:bold;
     }
 </style>
 <main id="main">
@@ -19,8 +23,8 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1">Position Size Calculator</div>
-                                <p class="mt-3" style="font-size:14px">An easy to use compact calculator for converting currencies and gold.</p>
-                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/indicators.png" alt="">
+                                <p class="mt-3" style="font-size:14px">Calculate position size in units of a base currency based on amount at risk and stop loss.</p>
+                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/position-size.png" alt="">
                             </div>
                         </div>
                     </a>
@@ -30,9 +34,9 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <div class="header text-center pb-1">PIP Calculator</div>
-                                <p class="mt-3" style="font-size:14px">An easy to use compact calculator for converting currencies and gold.</p>
-                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/indicators.png" alt="">
+                                <div class="header text-center pb-1">Pip Calculator</div>
+                                <p class="mt-3" style="font-size:14px">The calculator shows how an instrument’s price change in pips affects the trading account depending on the position size.</p>
+                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/pip-cal.png" alt="">
                             </div>
                         </div>
                     </a>
@@ -42,9 +46,9 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <div class="header text-center pb-1">Historical Sentiments - DK</div>
-                                <p class="mt-3" style="font-size:14px">An easy to use compact calculator for converting currencies and gold.</p>
-                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/indicators.png" alt="">
+                                <div class="header text-center pb-1">Profit Calculator</div>
+                                <p class="mt-3" style="font-size:14px">The widget shows commission and profit/loss data on trades simulated based on specified position and account details.</p>
+                                <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/profit-cal.png" alt="">
                             </div>
                         </div>
                     </a>
@@ -54,9 +58,9 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <div class="header text-center pb-1">Technical Indicator - DK</div>
-                                <p class="mt-3" style="font-size:14px">An easy to use compact calculator for converting currencies and gold.</p>
-                                <img class="my-3 mx-auto " src="<?= base_url('assets')?>/img/indicators.png" alt="">
+                                <div class="header text-center pb-1">Margin Calculator</div>
+                                <p class="mt-3" style="font-size:14px">The widget helps calculate margin requirements for trading various financial instruments on Swiss FX marketplace.</p>
+                                <img class="my-3 mx-auto " src="<?= base_url('assets')?>/img/margin-cal.png" alt="">
                             </div>
                         </div>
                     </a>

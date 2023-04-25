@@ -2,14 +2,17 @@
 $this->load->view('includes/header');
 ?>
 <style>
-    iframe{
-        width: 100% !important;
+    .iframe{
+        width: fit-content;
+        margin:auto
     }
 
     .tradingview-widget-container{
         width: 100% !important;
     }
-
+    .nav-link {
+        width: 25%;
+    }
     .nav-tabs button {
         color: #ffffff;
         font-size: 16px;
@@ -49,6 +52,9 @@ $this->load->view('includes/header');
         border-bottom: 4px solid #00000040;
         justify-content: space-evenly;
     }
+    .nav-link span{
+        font-size:18px;
+    }
 </style>
 <main id="main">
 <section id="navtabs-count" style="margin:6rem auto 0 auto">
@@ -58,20 +64,20 @@ $this->load->view('includes/header');
                 <h2>Quotes and Spreads</h2>
             </div>
         <div class="row">
-          <div class="col-lg-12 order-2 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-12 order-2 order-lg-1 iframe" data-aos="zoom-in" data-aos-delay="100">
 			<nav class="quotes-nav">
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
 					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-1"></i>. <span>Forex</span>
+						<span>Forex</span>
 					</button>
 					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-2"></i>. <span>Indices</span>
+						<span>Indices</span>
 					</button>
 					<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-3"></i>. <span>Crypto</span>
+						<span>Crypto</span>
 					</button>
 					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-4"></i>. <span>Comodities</span>
+						<span>Commodities</span>
 					</button>
 				</div>
 			</nav>
@@ -90,8 +96,8 @@ $this->load->view('includes/header');
                             {
                             "title": "Currencies",
                             "title_link": "/markets/currencies/rates-major/",
-                            "width": 100%,
-                            "height": 100%,
+                            "width": 770,
+                            "height": 450,
                             "locale": "in",
                             "showSymbolLogo": true,
                             "symbolsGroups": [
@@ -284,151 +290,129 @@ $this->load->view('includes/header');
 				</div>
                 <!-- Crypto -->
 				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="row">
-                        <div class="col-lg-12 m-auto text-center">
-                            <div class="bg-box text-white/60 flex-1 sm:block">
-                                <table class="account-config">
-                                    <tbody>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                            <td class="bg-light">Trading period</td>
-                                            <td>Trading period</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-                <!-- Comodities -->
-				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+                    <!-- TradingView Widget BEGIN -->
                     <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/markets/indices/" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
+                    <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/markets/cryptocurrencies/" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
                     {
-                    "title": "Indices",
+                    "title": "Cryptocurrencies",
+                    "title_raw": "Cryptocurrencies",
+                    "title_link": "/markets/cryptocurrencies/prices-all/",
                     "width": 770,
                     "height": 450,
                     "locale": "in",
                     "showSymbolLogo": true,
                     "symbolsGroups": [
                         {
-                        "name": "US & Canada",
+                        "name": "Overview",
                         "symbols": [
                             {
-                            "name": "FOREXCOM:SPXUSD",
-                            "displayName": "S&P 500"
+                            "name": "CRYPTOCAP:TOTAL"
                             },
                             {
-                            "name": "FOREXCOM:NSXUSD",
-                            "displayName": "US 100"
+                            "name": "BITSTAMP:BTCUSD"
                             },
                             {
-                            "name": "CME_MINI:ES1!",
-                            "displayName": "S&P 500"
+                            "name": "BITSTAMP:ETHUSD"
                             },
                             {
-                            "name": "INDEX:DXY",
-                            "displayName": "U.S. Dollar Currency Index"
+                            "name": "FTX:SOLUSD"
                             },
                             {
-                            "name": "FOREXCOM:DJI",
-                            "displayName": "Dow 30"
+                            "name": "BINANCE:AVAXUSD"
+                            },
+                            {
+                            "name": "COINBASE:UNIUSD"
                             }
                         ]
                         },
                         {
-                        "name": "Europe",
+                        "name": "Bitcoin",
                         "symbols": [
                             {
-                            "name": "INDEX:SX5E",
-                            "displayName": "Euro Stoxx 50"
+                            "name": "BITSTAMP:BTCUSD"
                             },
                             {
-                            "name": "FOREXCOM:UKXGBP",
-                            "displayName": "UK 100"
+                            "name": "COINBASE:BTCEUR"
                             },
                             {
-                            "name": "INDEX:DEU40",
-                            "displayName": "DAX Index"
+                            "name": "COINBASE:BTCGBP"
                             },
                             {
-                            "name": "INDEX:CAC40",
-                            "displayName": "CAC 40 Index"
+                            "name": "BITFLYER:BTCJPY"
                             },
                             {
-                            "name": "INDEX:SMI",
-                            "displayName": "SWISS MARKET INDEX SMI® PRICE"
+                            "name": "CME:BTC1!"
                             }
                         ]
                         },
                         {
-                        "name": "Asia/Pacific",
+                        "name": "Ethereum",
                         "symbols": [
                             {
-                            "name": "INDEX:NKY",
-                            "displayName": "Nikkei 225"
+                            "name": "BITSTAMP:ETHUSD"
                             },
                             {
-                            "name": "INDEX:HSI",
-                            "displayName": "Hang Seng"
+                            "name": "KRAKEN:ETHEUR"
                             },
                             {
-                            "name": "BSE:SENSEX",
-                            "displayName": "BSE SENSEX"
+                            "name": "COINBASE:ETHGBP"
                             },
                             {
-                            "name": "BSE:BSE500",
-                            "displayName": "S&P BSE 500 INDEX"
+                            "name": "BITFLYER:ETHJPY"
                             },
                             {
-                            "name": "INDEX:KSIC",
-                            "displayName": "Kospi Composite"
+                            "name": "BINANCE:ETHBTC"
+                            },
+                            {
+                            "name": "BINANCE:ETHUSDT"
+                            }
+                        ]
+                        },
+                        {
+                        "name": "Solana",
+                        "symbols": [
+                            {
+                            "name": "FTX:SOLUSD"
+                            },
+                            {
+                            "name": "BINANCE:SOLEUR"
+                            },
+                            {
+                            "name": "COINBASE:SOLGBP"
+                            },
+                            {
+                            "name": "BINANCE:SOLBTC"
+                            },
+                            {
+                            "name": "HUOBI:SOLETH"
+                            },
+                            {
+                            "name": "BINANCE:SOLUSDT"
+                            }
+                        ]
+                        },
+                        {
+                        "name": "Uniswap",
+                        "symbols": [
+                            {
+                            "name": "COINBASE:UNIUSD"
+                            },
+                            {
+                            "name": "KRAKEN:UNIEUR"
+                            },
+                            {
+                            "name": "COINBASE:UNIGBP"
+                            },
+                            {
+                            "name": "BINANCE:UNIBTC"
+                            },
+                            {
+                            "name": "KRAKEN:UNIETH"
+                            },
+                            {
+                            "name": "BINANCE:UNIUSDT"
                             }
                         ]
                         }
@@ -437,7 +421,65 @@ $this->load->view('includes/header');
                     }
                     </script>
                     </div>
+                    <!-- TradingView Widget END -->
 				</div>
+                <!-- Comodities -->
+				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+                    <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+                {
+                "width": 770,
+                "height": 450,
+                "symbolsGroups": [
+                    {
+                    "name": "Commodities ",
+                    "symbols": [
+                        {
+                        "name": "OANDA:XAUUSD",
+                        "displayName": "XAU/USD"
+                        },
+                        {
+                        "name": "OANDA:XAGUSD",
+                        "displayName": "XAG/USD"
+                        },
+                        {
+                        "name": "OANDA:XPTUSD",
+                        "displayName": "XPT/USD"
+                        },
+                        {
+                        "name": "OANDA:XAUEUR",
+                        "displayName": "XAU/EUR"
+                        },
+                        {
+                        "name": "OANDA:XAGEUR",
+                        "displayName": "XAG/EUR"
+                        },
+                        {
+                        "name": "FX_IDC:XPTEUR",
+                        "displayName": "XPT/EUR"
+                        },
+                        {
+                        "name": "TVC:USOIL",
+                        "displayName": "US OIL"
+                        },
+                        {
+                        "name": "TVC:UKOIL",
+                        "displayName": "UK OIL"
+                        }
+                    ]
+                    }
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "locale": "in"
+                }
+                </script>
+                </div>
+                <!-- TradingView Widget END -->
 			</div>
         </div>
     </div>

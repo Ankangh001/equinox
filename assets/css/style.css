@@ -2939,8 +2939,9 @@ button.game-btn {
 
 .quotes-nav {
     background-color: #000000;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    /* border-top-right-radius: 20px;
+    border-top-left-radius: 20px; */
+	justify-content: space-between;
 }
 
 /* mobile optimization */

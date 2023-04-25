@@ -49,9 +49,9 @@
             <br>
             <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Screener</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Technical Indicators</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Economic Calendar</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">COT Data</a></li>
             </ul>
           </div>
 
@@ -92,12 +92,12 @@
       <div class="credits">
       The information on the Website is provided solely for analysis purposes only and should not be construed as financial, investment, tax, or other advice.
         Nothing on the Website or in our Services represents a solicitation, advice, endorsement, or offer to purchase or sell stocks or other financial instruments 
-        by ETC - Equinox Trading Capital, its agents, employees, contractors, or any connected entities. You are solely responsible for assessing the benefits and risks associated with 
+        by Equinox Trading Capital, its agents, employees, contractors, or any connected entities. You are solely responsible for assessing the benefits and risks associated with 
         the use of any information or other content on the Website. All investments include substantial risk, and an individual's investment decisions are solely his/her obligation. 
         All information on the Website is provided “as is”, with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, 
-        and without warranty of any kind, express or implied. ETC - Equinox Trading Capital, or its partners, employees, or agents, shall in no way be responsible to you or anyone else for any decision 
+        and without warranty of any kind, express or implied. Equinox Trading Capital, or its partners, employees, or agents, shall in no way be responsible to you or anyone else for any decision 
         made or action taken in reliance on the information on the Website, or for any consequential, special, or similar damages, even if warned of the potential of such damages.
-        ETC - Equinox Trading Capital does not act as or conduct services as a broker. Purchases should not be regarded as deposits. All program charges are utilized for working expenses including, 
+       Equinox Trading Capital does not act as or conduct services as a broker. Purchases should not be regarded as deposits. All program charges are utilized for working expenses including, 
         however not restricted to, staff, innovation, and other business-related costs.
       </div>
     </div>
@@ -167,9 +167,9 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
             <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Screener</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Technical Indicators</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Economic Calendar</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">COT Data</a></li>
             </ul>
           </div>
 
@@ -200,12 +200,12 @@
       <div class="credits">
       The information on the Website is provided solely for analysis purposes only and should not be construed as financial, investment, tax, or other advice.
         Nothing on the Website or in our Services represents a solicitation, advice, endorsement, or offer to purchase or sell stocks or other financial instruments 
-        by ETC - Equinox Trading Capital, its agents, employees, contractors, or any connected entities. You are solely responsible for assessing the benefits and risks associated with 
+        by Equinox Trading Capital, its agents, employees, contractors, or any connected entities. You are solely responsible for assessing the benefits and risks associated with 
         the use of any information or other content on the Website. All investments include substantial risk, and an individual's investment decisions are solely his/her obligation. 
         All information on the Website is provided “as is”, with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, 
-        and without warranty of any kind, express or implied. ETC - Equinox Trading Capital, or its partners, employees, or agents, shall in no way be responsible to you or anyone else for any decision 
+        and without warranty of any kind, express or implied. Equinox Trading Capital, or its partners, employees, or agents, shall in no way be responsible to you or anyone else for any decision 
         made or action taken in reliance on the information on the Website, or for any consequential, special, or similar damages, even if warned of the potential of such damages.
-        ETC - Equinox Trading Capital does not act as or conduct services as a broker. Purchases should not be regarded as deposits. All program charges are utilized for working expenses including, 
+       Equinox Trading Capital does not act as or conduct services as a broker. Purchases should not be regarded as deposits. All program charges are utilized for working expenses including, 
         however not restricted to, staff, innovation, and other business-related costs.
       </div>
     </div>

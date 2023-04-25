@@ -82,7 +82,7 @@
   let navbar = select('#navbar');
   if (selectHeader) {
     const headerScrolled = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 80) {
         navbar.classList.add('whites');
         navbar.classList.remove('black');
         selectHeader.classList.add('header-scrolled');

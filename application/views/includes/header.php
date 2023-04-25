@@ -141,7 +141,7 @@
 					<li><a href="market-data">Market Data Analysis</a></li>
 					<li><a href="calculators">Calculators</a></li>
 					<li><a href="tools">User Tools</a></li>
-					<li><a href="tutorials">MT5 Web Terminal</a></li>
+					<li><a href="mt5-web-terminal">MT5 Web Terminal</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
@@ -149,7 +149,7 @@
       <li class="dropdown"><a><span>Insights</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="notice">Announcements</a></li>
-					<li><a href="promotion">Promotion</a></li>
+					<li><a href="promotion">Promotions</a></li>
 					<li><a href="press-releases">Press Release</a></li>
 				</ul>
 			</li>

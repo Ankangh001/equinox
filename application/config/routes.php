@@ -18,6 +18,8 @@ $route['payouts'] = 'welcome/payouts';
 $route['contact'] = 'welcome/contact';
 $route['about'] = 'welcome/about';
 $route['calculators'] = 'welcome/calculators';
+$route['tools'] = 'welcome/tools';
+$route['mt5-web-terminal'] = 'welcome/webTerminal';
 
 
 
