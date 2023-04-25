@@ -20,6 +20,8 @@ $this->load->view('includes/header');
 					<strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
 				</div>
 			</li>
+            <input type="text" id="myFilter" class="col-lg-3 form-control mr-3" onkeyup="myFunction()" placeholder="Enter city name">
+            
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade text-dark show in active" id="profile">

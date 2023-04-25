@@ -61,7 +61,7 @@ $this->load->view('includes/header');
 
     <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
-                <h2>Quotes and Spreads</h2>
+                <h2>Market Watch</h2>
             </div>
         <div class="row">
           <div class="col-lg-12 order-2 order-lg-1 iframe" data-aos="zoom-in" data-aos-delay="100">

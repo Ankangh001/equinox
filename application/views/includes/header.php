@@ -136,13 +136,13 @@
       
 			<li class="dropdown"><a><span>Trading</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="quotes">Quotes & Spreads</a></li>
+					<li><a href="quotes">Market Watch</a></li>
+					<li><a href="advance-chart">Advanced Chart</a></li>
+					<li><a href="mt5-web-terminal">MT5 Web Terminal</a></li>
 					<li><a href="economic-calendar">Economic Calendar</a></li>
-					<li><a href="market-data">Market Data Analysis</a></li>
+					<lis><a href="market-data">Market Analysis</a></li>
 					<li><a href="calculators">Calculators</a></li>
 					<li><a href="tools">User Tools</a></li>
-					<li><a href="mt5-web-terminal">MT5 Web Terminal</a></li>
-					<li><a href="advance-chart">Advanced charts</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>

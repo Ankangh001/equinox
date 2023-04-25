@@ -12,10 +12,10 @@ $this->load->view('includes/header');
 </style>
 <main id="main">
     <!-- ======= Why Us Section ======= -->
-    <section style="margin: 6rem auto">
+    <section style="margin: 6rem auto 0 auto;padding-bottom: 0; 0 auto;padding-bottom: 0;">
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
-                <h2>Market Data Analysis</h2>
+                <h2>Market Analysis</h2>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mb-5">

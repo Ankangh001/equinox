@@ -3165,3 +3165,11 @@ button.game-btn {
 .about-text p{
 	font-size: 14px !important;
 }
+
+.get-funded {
+    background: #fff;
+	box-shadow: 0 0 8px #00000080;
+    padding: 2rem;
+    border-radius: 70px;
+	color: #000000;
+}

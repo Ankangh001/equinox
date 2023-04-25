@@ -1,5 +1,10 @@
 
-  <!-- ======= Footer ======= -->
+<div class="rows m-5">
+  <div class="col-lg-10 m-auto d-flex justify-content-center align-items-center get-funded">
+    <p style="font-size:25px">Join Equinox Trading Capital on an exciting adventure!</p>  
+    <button class="btn btn-primary m-auto gradient-btn" style="border-radius: 30px;font-size:25px;padding: 0.5rem 2.5rem !important;">Get Funded</button>
+  </div>
+</div>
   <footer class="for-pc" id="footer">
     <div class="footer-top">
       <div class="container">
@@ -31,7 +36,7 @@
               <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Tutorials</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
             </ul>
@@ -136,7 +141,7 @@
               <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Tutorials</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
             </ul>

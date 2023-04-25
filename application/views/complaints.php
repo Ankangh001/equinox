@@ -64,9 +64,9 @@ $this->load->view('includes/header');
 			<div class="row" style="margin-top:6rem !important">
 				<div class="col-lg-8 m-auto mt-lg-0">
 					<div class="info">
-						<div class="email d-flex flex-column justify-content-start align-items-center">
+						<!-- <div class="email d-flex flex-column justify-content-start align-items-center">
 							<h4 style="text-align: center; width: 100%; font-size:22px; font-weight:bold; margin-bottom 2rem;">Get a Quote</h4>
-						</div>
+						</div> -->
 					</div>	
 					<form action="forms/contact.php" method="post" role="form" class="php-email-form">
 						<div class="row">
@@ -80,19 +80,28 @@ $this->load->view('includes/header');
 							</div>
 						</div>
 						<div class="form-group mt-3">
+							<select class="form-control" name="complaintType" id="">
+								<option selected>Select Type of Complaint</option>
+								<option value="General">General</option>
+								<option value="Products & Services">Products & Services</option>
+								<option value="Payments & Finances">Payments & Finances</option>
+								<option value="Technical Issue">Technical Issue</option>
+							</select>
+						</div>
+						<div class="form-group mt-3">
 							<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
 								required="">
 						</div>
 						<div class="form-group mt-3">
-							<textarea class="form-control" name="message" rows="8" placeholder="Message"
+							<textarea class="form-control" name="message" rows="8" placeholder="Description"
 								required=""></textarea>
 						</div>
 						<div class="my-3">
 							<div class="loading">Loading</div>
 							<div class="error-message"></div>
-							<div class="sent-message">Your message has been sent. Thank you!</div>
+							<div class="sent-message">Your complaint has been sent. Thank you!</div>
 						</div>
-						<div class="text-center"><button type="submit">Send Message</button></div>
+						<div class="text-center"><button type="submit">Submit</button></div>
 					</form>
 
 				</div>
