@@ -91,4 +91,14 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('webTerminal');
 	}
+
+	public function complaints()
+	{
+		$this->load->view('complaints');
+	}
+
+	public function advanceChart()
+	{
+		$this->load->view('advance-chart');
+	}
 }

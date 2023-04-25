@@ -127,12 +127,12 @@
 					<li><a href="rules">Rules</a></li>
 				</ul>
 			</li>
-      <li class="dropdown"><a><span>Testimonials</span> <i class="bi bi-chevron-down"></i></a>
+      <!-- <li class="dropdown"><a><span>Testimonials</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="testimonial">Reviews</a></li>
 					<li><a href="payouts">Payouts</a></li>
 				</ul>
-			</li>
+			</li> -->
       
 			<li class="dropdown"><a><span>Trading</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
@@ -142,6 +142,7 @@
 					<li><a href="calculators">Calculators</a></li>
 					<li><a href="tools">User Tools</a></li>
 					<li><a href="mt5-web-terminal">MT5 Web Terminal</a></li>
+					<li><a href="advance-chart">Advanced charts</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
@@ -150,20 +151,20 @@
 				<ul>
 					<li><a href="notice">Announcements</a></li>
 					<li><a href="promotion">Promotions</a></li>
-					<li><a href="press-releases">Press Release</a></li>
+					<!-- <li><a href="press-releases">Press Release</a></li> -->
 				</ul>
 			</li>
       <li class="dropdown"><a href="#"><span>Contact</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="contact">Contact Us</a></li>
 					<li><a href="about">About Us</a></li>
-					<li><a href="about">Complaints</a></li>
+					<li><a href="complaints">Complaints</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a href="#"><span>En</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="contact">English</a></li>
-					<li><a href="about">Spanish</a></li>
+					<li><a href="#">English</a></li>
+					<li><a href="#">Spanish</a></li>
 				</ul>
 			</li>
         </ul>

@@ -19,6 +19,8 @@ $route['contact'] = 'welcome/contact';
 $route['about'] = 'welcome/about';
 $route['calculators'] = 'welcome/calculators';
 $route['tools'] = 'welcome/tools';
+$route['complaints'] = 'welcome/complaints';
+$route['advance-chart'] = 'welcome/advanceChart';
 $route['mt5-web-terminal'] = 'welcome/webTerminal';
 
 
