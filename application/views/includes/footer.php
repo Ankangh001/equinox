@@ -35,9 +35,9 @@
             <ul>
               <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Affiliate</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Announcements</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
             </ul>
           </div>
@@ -140,9 +140,9 @@
             <ul>
               <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Affiliate</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="#">Announcements</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
             </ul>
           </div>

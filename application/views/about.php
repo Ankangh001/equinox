@@ -36,7 +36,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Address</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<p>71-75 SHELTON STREET, COVENT GARDEN LONDON WC2H 9JQ<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Website</h4>
-							<p><a href="equinoxtrading.com">www.equinoxtrading.com</a></p>
+							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.com</a> <br><a href="equinoxtradingcapital.co.uk">www.equinoxtradingcapital.co.uk</a></p>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">equinoxtrading@gmail.com</a></p>
+							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
 						</div>
 					</div>
 				</div>
@@ -63,7 +63,7 @@ $this->load->view('includes/header');
 				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-start align-items-center">
-							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">EU-Equinox Trading Capital Limited</h4>
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">US-Equinox Trading Capital LLC</h4>
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Address</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<p>412 N Main St100, Buffalo, WY 82834, United States<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
@@ -83,7 +83,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Website</h4>
-							<p><a href="equinoxtrading.com">www.equinoxtrading.com</a></p>
+							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.us</a></p>
 						</div>
 					</div>
 				</div>
@@ -91,18 +91,18 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">equinoxtrading@gmail.com</a></p>
+							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
 						</div>
 					</div>
 				</div>
-			</div>  
+			</div>
 		</div>
     	<div class="container aos-init aos-animate"  data-aos="fade-up">
 			<div class="row" style="margin-top:1rem !important">
 				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-start align-items-center">
-							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">EU-Equinox Trading Capital Limited</h4>
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">ASIA-Equinox Trading Capital Limited</h4>
 						</div>
 					</div>
 				</div>
@@ -114,7 +114,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Address</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<p>2/F, Tern Centre, Tower 1, 237 Queen’s Road Central, Hong Kong<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
@@ -122,7 +122,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Website</h4>
-							<p><a href="equinoxtrading.com">www.equinoxtrading.com</a></p>
+							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.co.hk</a></p>
 						</div>
 					</div>
 				</div>
@@ -130,7 +130,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">equinoxtrading@gmail.com</a></p>
+							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
 						</div>
 					</div>
 				</div>

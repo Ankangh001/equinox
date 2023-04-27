@@ -101,4 +101,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('advance-chart');
 	}
+
+	public function promotion()
+	{
+		$this->load->view('promotion');
+	}
 }

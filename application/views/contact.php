@@ -29,7 +29,7 @@ $this->load->view('includes/header');
 						<div class="email d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-envelope"></i>
 							<h4>Email</h4>
-							<p>info@example.com</p>
+							<p>support@equinoxtradingcapital.com</p>
 						</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@ $this->load->view('includes/header');
 						<div class="open-hours d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-clock"></i>
 							<h4>Open Hours</h4>
-							<p>Monday-Saturday<br>11:00 AM - 2300 PM</p>
+							<p>24*5</p>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ $this->load->view('includes/header');
 						<div class="phone d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-phone"></i>
 							<h4>Live Chat</h4>
-							<p>Monday-Saturday<br>11:00 AM - 2300 PM</p>
+							<p>24*5</p>
 						</div>
 					</div>
 				</div>
@@ -73,24 +73,24 @@ $this->load->view('includes/header');
 				<div class="col-lg-4">
 					<div class="info">
 						<div class="email about-text">
-							<h4>FTMO Evaluation Global s.r.o.</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<h4>EQUINOX TRADING CAPITAL LTD</h4>
+							<p>71-75 SHELTON STREET, COVENT GARDEN LONDON WC2H 9JQ<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="info">
 						<div class="email about-text">
-							<h4>FTMO Evaluation Global s.r.o.</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<h4>EQUINOX TRADING CAPITAL LLC</h4>
+							<p>412 N Main St100, Buffalo, WY 82834, United States<br>CIN: 000000XX</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="info">
 						<div class="email about-text">
-							<h4>FTMO Evaluation Global s.r.o.</h4>
-							<p>Purkyňova 2121/3<br>110 00 Prague, Czech Republic <br>ID: 09213651 <br>VAT: CZ699005540</p>
+							<h4>ETC TECHSOLUTIONS LLC</h4>
+							<p>2/F, Tern Centre, Tower 1, 237 Queen’s Road Central, Hong Kong<br>CIN: 000000XX</p>
 						</div>
 					</div>
 				</div>
@@ -112,10 +112,11 @@ $this->load->view('includes/header');
 						<div class="form-group mt-3">
 							<select class="form-control" name="complaintType" id="">
 								<option selected>Select Type of Ticket</option>
-								<option value="General">General</option>
-								<option value="Products & Services">Products & Services</option>
-								<option value="Payments & Finances">Payments & Finances</option>
+								<option value="General Question">General Question</option>
+								<option value="Payments & Orders">Payments & Orders</option>
+								<option value="Evaluation/Funded Phase">Evaluation/Funded Phase</option>
 								<option value="Technical Issue">Technical Issue</option>
+								<option value="Request">Request</option>
 							</select>
 						</div>
 						<div class="form-group mt-3">

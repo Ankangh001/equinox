@@ -33,8 +33,6 @@ $this->load->view('includes/header');
 					</div>
 				</div> -->
 
-				
-
 				<div class="btns d-flex justify-content-center" style="width:80%">
 					<a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
@@ -69,25 +67,25 @@ $this->load->view('includes/header');
 
   <main id="main">
 	<!-- ====== As seen on ====== -->
-	<div class="row p-3 m-5 bg-transparent" style="position:inherit;">
+	<div class="row p-3 m-5 bg-transparent" style="position:relative; left:	8rem">
 		<div class="col-lg-2 d-flex align-items-center justify-content-center col-sm-6 logo-border">
 			<h2 style="font-size:1.5rem; color:#000000">As seen on</h2>
 		</div>
-		<div class="col-lg-10 col-sm-6">
+		<div class="col-lg-10 col-sm-6 m-auto">
 			<div class="row">
 				<div class="col-lg-12 photos d-flex">
-					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="Bloomberg" style="width :18% !important" srcset="">
-					<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga" srcset="">
-					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac" style="width :30% !important" srcset="">
-					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" style="width :25% !important" srcset="">
+					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="Bloomberg" style="width :12% !important" srcset="">
+					<img src="<?=base_url('assets/') ?>img/Benzinga.png" style="width :12% !important" alt="Benzinga" srcset="">
+					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac" style="width :14% !important" srcset="">
+					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" style="width :20% !important" srcset="">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 photos d-flex">
-					<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/street_insider.png" style="width :18% !important" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" style="width :10% !important" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/marketwatch.png" style="width :20% !important" alt="" srcset="">
+					<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="" style="width :14% !important" srcset="">
 				</div>
 			</div>
 		</div>
@@ -810,21 +808,21 @@ $this->load->view('includes/header');
 
 		<div class="swiper mySwiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" id="iframe1">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b1.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe1">
+					<!-- <br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
-				<div class="swiper-slide" id="iframe2">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b2.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe2">
+					<!-- <br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
-				<div class="swiper-slide" id="iframe3">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b3.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe3">
+					<!-- <br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
-				<div class="swiper-slide" id="iframe4">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
+				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b4.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe4">
+					<!-- <br><br><br>Your Thumbnail Here
+					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
 			</div>
 
@@ -839,7 +837,7 @@ $this->load->view('includes/header');
 			<div class="swiper-scrollbar"></div>
 		</div>
 
-		<div class="row" data-aos="fade-up">
+		<!-- <div class="row" data-aos="fade-up">
 			<div class="col-lg-8 justify-content-center join-team text-center">
 				<h2 class="text-lg">Join the team of our experienced traders</h2>
 				<p class="sm-text mt-5">If you are ready, accept our FTMO Challenge and become our FTMO Trader. You can even try the entire process completely free of charge.</p>
@@ -856,7 +854,7 @@ $this->load->view('includes/header');
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
       </div>
     </section>
@@ -982,7 +980,7 @@ $this->load->view('includes/header');
           </div>
           <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">
             <h3 class="most-popular-text game-title">Play and win <br/>Assured rewards!</h3>
-            <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win upto <strong  style="font-weight:600; color:#06bd0d">$5,000 Cash</strong>, evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">20%</strong> discount.</p>
+            <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win upto <strong  style="font-weight:600; color:#06bd0d">$2,000 Cash</strong>, evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">20%</strong> discount.</p>
 			<div class="img-holder row justify-content-center align-item-center p-3">
 				<button class=" game-btn border-none col-lg-12 btn btn-primary mb-3 playnow">Play Now</button>
 				<div class="d-flex justify-content-center">
@@ -1044,88 +1042,108 @@ $this->load->view('includes/header');
 	<section id="navtabs-count" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
-          <div class="col-lg-12 order-2 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-12 order-2 order-lg-1 text-center" data-aos="zoom-in" data-aos-delay="100">
+		  	<h3 class="most-popular-text" style="margin-bottom:1rem; font-size:2rem; font-weight: 600;">We are more than just a Proprietary Trading Firm</h3>
+            <p class=" mb-3">Find out how you can benefit with Equinox Trading Capital.</p>
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
 					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-1"></i>. <span>Risk Manager</span>
+						<span>Risk Manager</span>
 					</button>
 					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-2"></i>. <span>Trade Manager</span>
+						<span>Trade Manager</span>
 					</button>
 					<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-3"></i>. <span>Trade Journal</span>
+						<span>Trade Journal</span>
 					</button>
 					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-4"></i>. <span>Market Screener</span>
+						<span>Market Analysis</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-5"></i>. <span>Market Sentiments</span>
+						<span>Market Sentiments</span>
 					</button>
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
-						<i class="fas fa-0"></i>&nbsp;<i class="fas fa-6"></i>. <span>Economic Calendar</span>
+						<span>Economic Calendar</span>
 					</button>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
 				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>etc_risk_manager.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">ETC Risk Manager</h6>
 							<br><br>
 							<p class="text-muted">It lets you manage trades and control your profit and loss across multiple currency pairs using a number of parameters and settings</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>etc_trade_manager.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Manager</h6>
 							<br><br>
 							<p class="text-muted">Execute your trades with precision. You can also calculate your lot size, close partial trades, or efficiently move your stop-loss to breakeven.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
+					<div class="row py-5 m-auto" style="width:95%;">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>etc-trade-journal.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Journal</h6>
 							<br><br>
 							<p class="text-muted">Here you can record and review you daily trades for better output and for future reference. This can help you to keep track of your success as well as study mistakes made when entering or exiting a trade.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
-					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
-							<h6 class="fw-bold mt-3 card-title">Market Screener</h6>
+					<div class="row py-5 m-auto" style="width:95%;">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>market-watch.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
+							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
 							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-5-tab">
-					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
-							<h6 class="fw-bold mt-3 card-title">Market Sentiments</h6>
+					<div class="row py-5 m-auto" style="width:95%;">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>market-analysis.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
+							<h6 class="fw-bold mt-3 card-title">Market Analysis</h6>
 							<br><br>
 							<p class="text-muted">See what the technical analysis says about a given symbol with our display ratings, made for easy viewing.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-cot" role="tabpanel" aria-labelledby="nav-cot-tab">
-					<div class="row py-5">
-						<div class="col-lg-8 m-auto text-center">
+					<div class="row py-5 m-auto" style="width:95%;">
+						<div class="col-lg-6 m-auto text-left">
+							<img src="<?= base_url('assets/img/')?>economic-calendar.png" alt="" srcset="">
+						</div>
+						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">Economic Calendar</h6>
 							<br><br>
 							<p class="text-muted">
 							Keep an eye on key upcoming economic events, announcements, and news. Plus, set up filters in a few clicks, selecting for event importance and affected currencies.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Get Started</button>
+							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
 						</div>
 					</div>
 				</div>
@@ -1167,7 +1185,7 @@ $this->load->view('includes/header');
 
 
 	<!-- ======= Key Benefits ======= -->
-    <section id="why-us" class="key-feature" style="padding:120px 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
+    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">

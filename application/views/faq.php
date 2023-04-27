@@ -1,6 +1,10 @@
 <?php
 $this->load->view('includes/header');
 ?>
+<style>
+    .why-us {
+    background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;}
+</style>
 <!-- ======= Evaluation ======= -->
 <section id="evaluation" class="why-us">
       <div class="container" data-aos="fade-up">
@@ -8,6 +12,8 @@ $this->load->view('includes/header');
           <h2>Get yourself clarified</h2>
         </div>
 		<ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
+            <input type="text" id="myFilter" class="col-lg-3 form-control m-5" onkeyup="myFunction()" placeholder="Search for Faq">
+
 			<li class="nav-item m-2 pointer">
 				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
 						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
@@ -20,7 +26,32 @@ $this->load->view('includes/header');
 					<strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
 				</div>
 			</li>
-            <input type="text" id="myFilter" class="col-lg-3 form-control mr-3" onkeyup="myFunction()" placeholder="Enter city name">
+
+
+            <li class="nav-item m-2 pointer">
+				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
+						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+					<strong>Aggressive</strong>
+				</div>
+			</li>
+			<li class="nav-item m-2 pointer">
+				<div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
+						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+					<strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
+				</div>
+			</li>
+            <li class="nav-item m-2 pointer">
+				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
+						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+					<strong>Aggressive</strong>
+				</div>
+			</li>
+			<li class="nav-item m-2 pointer">
+				<div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
+						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+					<strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
+				</div>
+			</li>
             
 		</ul>
 		<div class="tab-content">
