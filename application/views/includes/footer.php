@@ -63,12 +63,12 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
             <h4>Legal</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Terms of Service</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Privacy Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Refund Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Cookie Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Disclosure</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Live Account Disclaimer</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="terms-of-service">Terms of Service</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="privacy-policy">Privacy Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="refund-policy">Refund Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="cookie-policy">Cookie Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="risk-disclosure">Risk Disclosure</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="live-account">Live Account Disclaimer</a></li>
             </ul>
           </div>
 
@@ -150,12 +150,12 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
             <h4>Legal</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Terms of Service</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Privacy Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Refund Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Cookie Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Disclosure</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Live Account <br> Disclaimer</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="terms-of-service">Terms of Service</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="privacy-policy">Privacy Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="refund-policy">Refund Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="cookie-policy">Cookie Policy</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="risk-disclosure">Risk Disclosure</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="live-account">Live Account <br> Disclaimer</a></li>
             </ul>
           </div>
 

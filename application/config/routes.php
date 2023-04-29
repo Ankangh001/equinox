@@ -24,6 +24,14 @@ $route['advance-chart'] = 'welcome/advanceChart';
 $route['promotion'] = 'welcome/promotion';
 $route['mt5-web-terminal'] = 'welcome/webTerminal';
 
+//legal
+$route['terms-of-service'] = 'welcome/service';
+$route['privacy-policy'] = 'welcome/policy';
+$route['refund-policy'] = 'welcome/refund';
+$route['cookie-policy'] = 'welcome/cookie';
+$route['risk-disclosure'] = 'welcome/disclosure';
+$route['live-account'] = 'welcome/liveAccount';
+
 
 
 //user dashboard

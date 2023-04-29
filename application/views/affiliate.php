@@ -36,6 +36,9 @@ $this->load->view('includes/header');
     .get-funded{
         display:none !important;
     }
+    .list-disc {
+        list-style-type: disc;
+    }
 </style>
 <main id="main">
     <!-- ======= Why Us Section ======= -->
@@ -76,6 +79,31 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Pricing -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section style="margin: 0rem auto 0 auto;padding-bottom: 0;">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-center">
+                <i class="fas fa-clipboard"></i>
+                <h2>Terms & Conditions</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 m-auto col-sm-6 mb-5">
+                    <ul>
+                        <li class="text-dark list-disc pt-8"><p>Affiliate commissions will not be awarded if a customer purchase from his/her own affiliate link.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>Every trader can sign up only once using only one referral link</p></li>
+                        <li class="text-dark list-disc pt-8"><p>Each unique affiliate link has 90 Days cookie tracking. Any purchase after the 90 Days expire won’t count  toward the affiliate’s commission.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The commission will only be paid for the first purchase made by a trader. Account Top-ups and Account Resets won’t count toward the commission.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The reward is only paid once the payment is cleared on FundedNext’s end.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates are not to engage in any negative marketing. This means no marketing in which the affiliate would use negative words in order to get attention then promote our services. </p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates are not permitted to use Pay-Per-Click (PPC) or other keyword based advertising targeting “FundedNext” or any variations of the brand name as Keywords.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>An affiliate commission will not be awarded if a customer uses the discount code of another affiliate to purchases a new plan.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>FundedNext reserves the right to withhold payments for any affiliate who violates our terms and conditions or engages in fraudulent activity.</p></li>
+                    </ul>
                 </div>
             </div>
         </div>

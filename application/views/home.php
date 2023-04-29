@@ -962,6 +962,10 @@ $this->load->view('includes/header');
 			<strong>Scaling Plan</strong> : If you meet the scaling conditions we increase your current balance by <strong class="text-primary">50%</strong> of the initial balance. With scaling your payout split goes to level 2 &nbsp;<strong class="text-primary">[ 90:10 ]</strong>.<br><br>
 			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">14 days</strong>  from the first trade. You will get paid on your most convinient date.
 			</p>
+			<div class="img-holder d-flex justify-content-center align-items-center p-3">
+				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content">
+				<img class="ml-3" src="<?=base_url('assets/img/')?>wallet.png" alt="mt4-image" style="width:20%; height:fit-content">
+			</div>
           </div>
         </div>
 

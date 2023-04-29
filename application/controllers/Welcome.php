@@ -106,4 +106,34 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('promotion');
 	}
+
+	public function service()
+	{
+		$this->load->view('service');
+	}
+
+	public function policy()
+	{
+		$this->load->view('policy');
+	}
+
+	public function refund()
+	{
+		$this->load->view('refund');
+	}
+
+	public function disclosure()
+	{
+		$this->load->view('disclosure');
+	}
+
+	public function liveAccount()
+	{
+		$this->load->view('liveAccount');
+	}
+
+	public function cookie()
+	{
+		$this->load->view('cookie');
+	}
 }
