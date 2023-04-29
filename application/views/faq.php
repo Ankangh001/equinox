@@ -3,7 +3,14 @@ $this->load->view('includes/header');
 ?>
 <style>
     .why-us {
-    background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;}
+        background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;
+    }
+
+    #myFilter{
+        width: 70%;
+        display: inline-block;
+        margin: 2rem 10% !important;
+    }
 </style>
 <!-- ======= Evaluation ======= -->
 <section id="evaluation" class="why-us">

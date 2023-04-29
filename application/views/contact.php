@@ -5,6 +5,9 @@ $this->load->view('includes/header');
 	.container {
 		width:80%;
 	}
+	.get-funded{
+        display:none !important;
+    }
 </style>
 <main id="main">
 	<section id="contact" class="contact">

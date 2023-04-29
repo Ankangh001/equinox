@@ -1,7 +1,13 @@
 <?php
 $this->load->view('includes/header');
 ?>
-
+<style>
+        #myFilter{
+            width: 30%;
+            display: inline-block;
+            margin: 2rem 30% !important;
+        }
+</style>
 <main id="main">
 	<!-- ======= Why Us Section ======= -->
     <section id="faq" class="faq">

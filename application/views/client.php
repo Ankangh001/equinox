@@ -38,6 +38,7 @@
     }
     body{
         overflow: hidden;
+        background: linear-gradient(86deg, #FF5758, #CF559E);
     }
     @media (max-width: 450px) {
         .h-custom {
@@ -45,52 +46,57 @@
         }
     }
     form{
-        color:#000000
+        color:#000000;
+        width:500px;
+        margin:5rem auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius:20px;
+        box-shadow: 3px 3px 36px #00000090
+    }
+    button{
+        background: linear-gradient(86deg, #FF5758, #CF559E);
+        border:none !important;
+        color:#fff  !important;
+        transition: 0.3s ease-in-out
+    }
+
+    button:hover{
+        background:transparent !important;
+        border: 1px solid #FF5758 !important;
+        color:#FF5758 !important;
+        margin-top:-3px;
+    }
+    .form-check-label{
+        font-size:16px;
+        display:inline-block;
+        width: 100%;
+    }
+    .text-body{
+        font-size:14px
     }
     </style>
 </head>
 
 <body>
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 col-lg-6 col-xl-6 bg-secondary vh-100 row justify-content-center align-items-center p-5">
-            <img src="<?=base_url('assets')?>/img/device.png"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-6 col-lg-6 col-xl-6 bg-light vh-100 row justify-content-center overflow-scroll align-items-center p-5">
-            <form class="p-5">
-                <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start mt-5 pt-5">
-                    <img width="50%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"><br>
-                    <p class="lead fw-normal mb-0 me-3">Sign Up with Equinox</p><br>
+<form class="">
+                <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
+                    <a href="index"><img width="50%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a><br>
+                    <p class="lead fw-normal mb-0 me-3">Sign In with Equinox</p><br>
                 </div>
 
                 <div class="divider d-flex align-items-center my-4">
                     <p class="text-center fw-bold mx-3 mb-0">Enter your details below</p>
                 </div>
-
-                <!-- First input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enter your first name" />
-                    <!-- <label class="form-label" for="form3Example3">First Name</label> -->
-                </div>
-
-
-                <!-- Last input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enteryour last name" />
-                    <!-- <label class="form-label" for="form3Example3">Last Name</label> -->
-                </div>
-
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    <input type="email" id="form3Example3" class="form-control"
                     placeholder="Enter a valid email address" />
                     <!-- <label class="form-label" for="form3Example3">Email address</label> -->
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-3">
-                    <input type="password" id="form3Example4" class="form-control form-control-lg"
+                    <input type="password" id="form3Example4" class="form-control"
                     placeholder="Enter password" />
                     <!-- <label class="form-label" for="form3Example4">Password</label> -->
                 </div>
@@ -98,22 +104,20 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <!-- Checkbox -->
                     <div class="form-check mb-0">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                    <label class="form-check-label" for="form2Example3">
-                        agree with term & conditions
-                    </label>
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                        <label class="form-check-label" for="form2Example3">
+                            agree with term & conditions
+                        </label>
                     </div>
-                    <a href="#!" class="text-body" style="color:#fff !important">Forgot password?</a>
+                    <a href="#!" class="text-body">Forgot password?</a>
                 </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2 d-flex align-items-center justify-content-between">
-                    <button type="button" class="btn btn-primary  btn-lg"
+                <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
+                    <button type="button" class="btn w-100 "
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                     <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="client-signup"
                         class="link-danger">Register</a></p>
                 </div>
             </form>
-        </div>
-    </div>
 </body>
 </html>

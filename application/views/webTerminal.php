@@ -22,10 +22,10 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body text-center">
-                                <div class="header pb-1">This is a sub heading</div>
+                                <div class="header pb-1">Unable to install the desktop version or use the mobile application? No problem. Place any type of market and pending orders, trade currencies and futures with one click from a chart or Market Depth, as well as perform comprehensive market analysis using 30 technical indicators and 24 graphical objects. All this is available anytime and anywhere where there is Internet access.</div>
                                 <img class="my-3 mx-auto" src="<?= base_url('assets')?>/img/mt5-web.jpeg" alt="">
-                                <p class="mt-3" style="font-size:14px">Par above button</p>
-                                <button class="btn btn-primary">CLick Here</button>
+                                <!-- <p class="mt-3" style="font-size:14px">Par above button</p>
+                                <button class="btn btn-primary">CLick Here</button> -->
                             </div>
                         </div>
                     </a>

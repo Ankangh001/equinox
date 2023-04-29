@@ -33,10 +33,13 @@ $this->load->view('includes/header');
     .header{
         font-weight:bold;
     }
+    .get-funded{
+        display:none !important;
+    }
 </style>
 <main id="main">
     <!-- ======= Why Us Section ======= -->
-    <section style="margin: 6rem auto 0 auto;padding-bottom: 0;">
+    <section style="margin: 0rem auto 0 auto;padding-bottom: 0;">
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
                 <h2>Affiliates</h2>

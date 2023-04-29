@@ -67,31 +67,22 @@ $this->load->view('includes/header');
 
   <main id="main">
 	<!-- ====== As seen on ====== -->
-	<div class="row p-3 m-5 bg-transparent" style="position:relative; left:	8rem">
-		<div class="col-lg-2 d-flex align-items-center justify-content-center col-sm-6 logo-border">
-			<h2 style="font-size:1.5rem; color:#000000">As seen on</h2>
-		</div>
-		<div class="col-lg-10 col-sm-6 m-auto">
-			<div class="row">
-				<div class="col-lg-12 photos d-flex">
-					<img src="<?=base_url('assets/') ?>img/bloomberg.png" alt="Bloomberg" style="width :12% !important" srcset="">
-					<img src="<?=base_url('assets/') ?>img/Benzinga.png" style="width :12% !important" alt="Benzinga" srcset="">
-					<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac" style="width :14% !important" srcset="">
-					<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" style="width :20% !important" srcset="">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12 photos d-flex">
-					<img src="<?=base_url('assets/') ?>img/street_insider.png" style="width :18% !important" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" style="width :10% !important" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/marketwatch.png" style="width :20% !important" alt="" srcset="">
-					<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="" style="width :14% !important" srcset="">
-				</div>
+	<div class="row bg-transparent" style="position: inherit;">
+		<div class="row">
+			<div class="col-lg-12 photos d-flex justify-content-center">
+				<img src="<?=base_url('assets/') ?>img/bloomberg.png" style="width:8% !important" alt="Bloomberg" srcset="">
+				<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga" srcset="">
+				<img src="<?=base_url('assets/') ?>img/nasdaq.png" style="width:8% !important" alt="Nasdac" srcset="">
+				<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" srcset="">
+				<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="" srcset="">
+				<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" style="width:6% !important" alt="" srcset="">
+				<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="" srcset="">
+				<img src="<?=base_url('assets/') ?>img/cnbc.png" alt=""style="width:8% !important" srcset="">
 			</div>
 		</div>
 	</div>
 	<!-- ======= Trade for Proprietary ======= -->
-	<section id="about" class="payout why-trade" style="background:#fff">
+	<section id="about" class="payout why-trade" style="background:#fff; padding-top:0">
 		<div class="container mt-5" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
@@ -134,13 +125,13 @@ $this->load->view('includes/header');
 			<li class="nav-item m-2 pointer">
 				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
 						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-					<strong>1 Step</strong>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				</div>
 			</li>
 			<li class="nav-item m-2 pointer">
 				<div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
 						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-					<strong>2 Step</strong>
+					<strong>Aggressive</strong>
 				</div>
 			</li>
 		</ul>
@@ -157,19 +148,18 @@ $this->load->view('includes/header');
 											<span>Phase 1</span>
 											<p class="left-p" >Starting your <br> Evaluation process</p>
 										</div>
-										<div class="right">
-											<span><i class="fas fa-8 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+										<div class="right text-right">
+											<span>8%</span>
 											<p class="left-p" >Profit Target</p>
 										</div>
 									</div>
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
-											<li class="block text-sm leading-6 text-white">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 30 days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Registration fee</span></li>
+											<li class="block text-sm leading-6">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 										</ul>
 									</div>
 								</div>
@@ -182,19 +172,18 @@ $this->load->view('includes/header');
 											<span>Phase 2</span>
 											<p class="left-p" >One step away to be <br> our Funded Trader</p>
 										</div>
-										<div class="right">
-											<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+										<div class="right text-right">
+											<span>5%</span>
 											<p class="left-p" >Profit Target</p>
 										</div>
 									</div>
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
-											<li class="block text-sm leading-6 text-white">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+											<li class="block text-sm leading-6">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 										</ul>
 									</div>
 								</div>
@@ -212,25 +201,24 @@ $this->load->view('includes/header');
 									&nbsp;&nbsp;Earn Real Money
 							</a>
 
-							<div style="padding:20px 30px 0">
+							<div style="padding:27px 30px 0">
 								<div class="holder d-flex align-items-stretch justify-content-between">
 									<div class="left">
-										<span>Phase 2</span>
-										<p class="left-p" >One step away to be <br> our Funded Trader</p>
+										<span>Funded Trader</span>
+										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
-									<div class="right">
-										<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
-										<p class="left-p" >Profit Target</p>
+									<div class="right text-right">
+										<span>80/20</span>
+										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
 								<div class="objective">
 									<ul class="p-0 m-0 list-none">
-										<li class="block text-sm leading-6 text-white">Objectives</li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+										<li class="block text-sm leading-6">Objectives</li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-danger line"><span>No minimum Trading Days</span></span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 									</ul>
 								</div>
 							</div>
@@ -240,68 +228,6 @@ $this->load->view('includes/header');
 			</div>
 			
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="buzz">
-				<!-- <div class="row">
-					<div class="col-lg-2"></div>
-					<div class="col-lg-4">
-						<p class="evaluation-text2">This is where we evaluate your trading</p>
-						<div class="row">
-							<div class="col-lg-12 mt-4 mt-lg-0">
-								<div class="box" data-aos="zoom-in" data-aos-delay="200">
-									<div class="holder d-flex align-items-stretch justify-content-between">
-										<div class="left">
-											<span>Phase 1</span>
-											<p class="left-p" >Starting your <br> Evaluation process</p>
-										</div>
-										<div class="right">
-											<span><i class="fas fa-8 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
-											<p class="left-p" >Profit Target</p>
-										</div>
-									</div>
-									<div class="objective">
-										<ul class="p-0 m-0 list-none">
-											<li class="block text-sm leading-6 text-white">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 30 days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Registration fee</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 mt-4 mt-lg-0">
-						<div class="box" data-aos="zoom-in" data-aos-delay="200" style="padding: 20px 0;">
-							<a data-toggle="tooltip"  data-toggle="tooltip" data-placement="top" title="The offer to trade for our partnered Proprietary Trading Firm is made to clients who successfully pass the Evaluation Process. To avoid any confusion, FTMO provides its clients demo accounts with virtual capital in all stages of the cooperation."><i class="fas fa-coins"></i>&nbsp;&nbsp;Earn Real Money</a>
-							<div style="padding:20px 30px 0">
-								<div class="holder d-flex align-items-stretch justify-content-between">
-									<div class="left">
-										<span>Phase 2</span>
-										<p class="left-p" >One step away to be <br> our Funded Trader</p>
-									</div>
-									<div class="right">
-										<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
-										<p class="left-p" >Profit Target</p>
-									</div>
-								</div>
-								<div class="objective">
-									<ul class="p-0 m-0 list-none">
-										<li class="block text-sm leading-6 text-white">Objectives</li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2"></div>
-				</div> -->
-
 				<div class="row">
 					<div class="col-lg-8">
 						<p class="evaluation-text">This is where we evaluate your trading</p>
@@ -313,19 +239,18 @@ $this->load->view('includes/header');
 											<span>Phase 1</span>
 											<p class="left-p" >Starting your <br> Evaluation process</p>
 										</div>
-										<div class="right">
-											<span><i class="fas fa-8 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+										<div class="right text-right">
+											<span>15%</span>
 											<p class="left-p" >Profit Target</p>
 										</div>
 									</div>
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
-											<li class="block text-sm leading-6 text-white">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 30 days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Registration fee</span></li>
+											<li class="block text-sm leading-6">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 30 days</span></li>
 										</ul>
 									</div>
 								</div>
@@ -338,19 +263,18 @@ $this->load->view('includes/header');
 											<span>Phase 2</span>
 											<p class="left-p" >One step away to be <br> our Funded Trader</p>
 										</div>
-										<div class="right">
-											<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
+										<div class="right tetx-right">
+											<span>10%</span>
 											<p class="left-p" >Profit Target</p>
 										</div>
 									</div>
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
-											<li class="block text-sm leading-6 text-white">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+											<li class="block text-sm leading-6">Objectives</li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 60 days</span></li>
 										</ul>
 									</div>
 								</div>
@@ -371,22 +295,21 @@ $this->load->view('includes/header');
 							<div style="padding:20px 30px 0">
 								<div class="holder d-flex align-items-stretch justify-content-between">
 									<div class="left">
-										<span>Phase 2</span>
-										<p class="left-p" >One step away to be <br> our Funded Trader</p>
+										<span>Funded Trader</span>
+										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
-										<span><i class="fas fa-5 ms-1"></i><i class="fas fa-percent ms-1"></i></span>
-										<p class="left-p" >Profit Target</p>
+										<span><i class="fas fa-8 ms-1"></i><i class="fas fa-0 ms-1"></i> /<i class="fas fa-2 ms-1"></i><i class="fas fa-0 ms-1"></i></span>
+										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
 								<div class="objective">
 									<ul class="p-0 m-0 list-none">
-										<li class="block text-sm leading-6 text-white">Objectives</li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5 minimum Trading Days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">5% Maximum Daily Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">10% Maximum Overall Loss</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Trading Period up to 60 days</span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-white">Free</span></li>
+										<li class="block text-sm leading-6">Objectives</li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 									</ul>
 								</div>
 							</div>
@@ -407,22 +330,7 @@ $this->load->view('includes/header');
 			</div>
 			<div class="row justify-content-center">
 				<ul class="col-lg-3 nav nav-pills m-auto flex-column justify-content-start" id="pills-tab" role="tablist" style="padding:0 2rem ;border-right: 1px solid #444444;">
-					<li class="nav-item mb-3 m-2 pointer">
-						<div data-toggle="pill" 
-							id="pills-home-tab"
-							href="#pills-home" 
-							role="tab" 
-							aria-controls="pills-home" 
-							aria-selected="true" 
-							class="flex justify-center active
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>Aggressive</strong>
-						</div>
-					</li>
-					<li class="nav-item m-2 mt-3 pointer">
+					<li class="nav-item m-2 mb-3 pointer">
 						<div id="pills-profile-tab" 
 							data-toggle="pill" 
 							href="#pills-profile" 
@@ -435,6 +343,21 @@ $this->load->view('includes/header');
 								border-primary-500 rounded-full 
 								-my-12p h-40p gap-8p">
 							<strong>Normal</strong>
+						</div>
+					</li>
+					<li class="nav-item  mt-3  m-2 pointer">
+						<div data-toggle="pill" 
+							id="pills-home-tab"
+							href="#pills-home" 
+							role="tab" 
+							aria-controls="pills-home" 
+							aria-selected="true" 
+							class="flex justify-center active
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full 
+								-my-12p h-40p gap-8p">
+							<strong>Aggressive</strong>
 						</div>
 					</li>
 				</ul>
@@ -528,7 +451,62 @@ $this->load->view('includes/header');
 						<table class="account-config">
 							<thead>
 								<tr>
-									<td></td>
+									<td>Objectives</td>
+									<td>Phase 1</td>
+									<td>Phase 2</td>
+									<td>Funded</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Target</td>
+									<td x-text="currentConfig[0][0]">15%</td>
+									<td x-text="currentConfig[1][0]">10%</td>
+									<td x-text="currentConfig[2][0]">indefinite%</td>
+								</tr>
+								<tr>
+									<td>Max Drawdown</td>
+									<td x-text="currentConfig[0][2]">7.5%</td>
+									<td x-text="currentConfig[1][2]">7.5%</td>
+									<td x-text="currentConfig[2][2]">indefinite</td>
+								</tr>
+								<tr>
+									<td>Trading period</td>
+									<td x-text="currentConfig[0][4]">30days</td>
+									<td x-text="currentConfig[1][4]">60days</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
+								</tr>
+								<tr>
+									<td>Holding Over Weekend</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>News Trading, EA & Copy Trading</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>Refundable Fee</td>
+									<td colspan="3">
+										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+											<span>One time fee of $69</span>
+											<strong x-text="currentConfig[0][5]"></strong>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+						<table class="account-config">
+							<thead>
+								<tr>
+									<td>Objectives</td>
 									<td>Phase 1</td>
 									<td>Phase 2</td>
 									<td>Funded</td>
@@ -560,68 +538,25 @@ $this->load->view('includes/header');
 									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
+									<td>Holding Over Weekend</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>News Trading, EA & Copy Trading</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
 									<td>Refundable Fee</td>
 									<td colspan="3">
-										<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-										<span>Coiming Soon</span>
-										<strong x-text="currentConfig[0][5]"></strong>
+										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+											<span>One time fee of $69</span>
+											<strong x-text="currentConfig[0][5]"></strong>
 										</div>
 									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-								<td>2</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
-								<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-								<td>Trading period</td>
-								<td x-text="currentConfig[0][0]">30 days</td>
-								<td x-text="currentConfig[1][0]">60 days</td>
-								<td x-text="currentConfig[2][0]">indefinite</td>
-								</tr>
-								<tr>
-								<td>Minimum trading days</td>
-								<td x-text="currentConfig[0][1]">5 days</td>
-								<td x-text="currentConfig[1][1]">5 days</td>
-								<td x-text="currentConfig[2][1]">x</td>
-								</tr>
-								<tr>
-								<td>Max Daily Loss</td>
-								<td x-text="currentConfig[0][2]">£7,000</td>
-								<td x-text="currentConfig[1][2]">£7,000</td>
-								<td x-text="currentConfig[2][2]">£7,000</td>
-								</tr>
-								<tr>
-								<td>Max Overall Loss</td>
-								<td x-text="currentConfig[0][3]">£14,000</td>
-								<td x-text="currentConfig[1][3]">£14,000</td>
-								<td x-text="currentConfig[2][3]">£14,000</td>
-								</tr>
-								<tr>
-								<td>Profit Target</td>
-								<td x-text="currentConfig[0][4]">£11,200</td>
-								<td x-text="currentConfig[1][4]">£7,000</td>
-								<td x-text="currentConfig[2][4]">x</td>
-								</tr>
-								<tr>
-								<td>Refundable Fee</td>
-								<td colspan="3">
-									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-										<span>Coiming Soon</span>
-										<strong x-text="currentConfig[0][5]"></strong>
-									</div>
-								</td>
 								</tr>
 							</tbody>
 						</table>
@@ -632,51 +567,57 @@ $this->load->view('includes/header');
 						<table class="account-config">
 							<thead>
 								<tr>
-								<td>3</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
-								<td>Funded</td>
+									<td>Objectives</td>
+									<td>Phase 1</td>
+									<td>Phase 2</td>
+									<td>Funded</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-								<td>Trading period</td>
-								<td x-text="currentConfig[0][0]">30 days</td>
-								<td x-text="currentConfig[1][0]">60 days</td>
-								<td x-text="currentConfig[2][0]">indefinite</td>
+									<td>Target</td>
+									<td x-text="currentConfig[0][0]">15%</td>
+									<td x-text="currentConfig[1][0]">10%</td>
+									<td x-text="currentConfig[2][0]">indefinite%</td>
 								</tr>
 								<tr>
-								<td>Minimum trading days</td>
-								<td x-text="currentConfig[0][1]">5 days</td>
-								<td x-text="currentConfig[1][1]">5 days</td>
-								<td x-text="currentConfig[2][1]">x</td>
+									<td>Daily DD</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[1][1]">X</td>
 								</tr>
 								<tr>
-								<td>Max Daily Loss</td>
-								<td x-text="currentConfig[0][2]">£7,000</td>
-								<td x-text="currentConfig[1][2]">£7,000</td>
-								<td x-text="currentConfig[2][2]">£7,000</td>
+									<td>Max Drawdown</td>
+									<td x-text="currentConfig[0][2]">7.5%</td>
+									<td x-text="currentConfig[1][2]">7.5%</td>
+									<td x-text="currentConfig[2][2]">indefinite</td>
 								</tr>
 								<tr>
-								<td>Max Overall Loss</td>
-								<td x-text="currentConfig[0][3]">£14,000</td>
-								<td x-text="currentConfig[1][3]">£14,000</td>
-								<td x-text="currentConfig[2][3]">£14,000</td>
+									<td>Trading period</td>
+									<td x-text="currentConfig[0][4]">30days</td>
+									<td x-text="currentConfig[1][4]">60days</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
-								<td>Profit Target</td>
-								<td x-text="currentConfig[0][4]">£11,200</td>
-								<td x-text="currentConfig[1][4]">£7,000</td>
-								<td x-text="currentConfig[2][4]">x</td>
+									<td>Holding Over Weekend</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
 								</tr>
 								<tr>
-								<td>Refundable Fee</td>
-								<td colspan="3">
-									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-									<span>Coiming Soon</span>
-									<strong x-text="currentConfig[0][5]"></strong>
-									</div>
-								</td>
+									<td>News Trading, EA & Copy Trading</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>Refundable Fee</td>
+									<td colspan="3">
+										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+											<span>One time fee of $69</span>
+											<strong x-text="currentConfig[0][5]"></strong>
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -687,51 +628,57 @@ $this->load->view('includes/header');
 						<table class="account-config">
 							<thead>
 								<tr>
-								<td>4</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
-								<td>Funded</td>
+									<td>Objectives</td>
+									<td>Phase 1</td>
+									<td>Phase 2</td>
+									<td>Funded</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-								<td>Trading period</td>
-								<td x-text="currentConfig[0][0]">30 days</td>
-								<td x-text="currentConfig[1][0]">60 days</td>
-								<td x-text="currentConfig[2][0]">indefinite</td>
+									<td>Target</td>
+									<td x-text="currentConfig[0][0]">15%</td>
+									<td x-text="currentConfig[1][0]">10%</td>
+									<td x-text="currentConfig[2][0]">indefinite%</td>
 								</tr>
 								<tr>
-								<td>Minimum trading days</td>
-								<td x-text="currentConfig[0][1]">5 days</td>
-								<td x-text="currentConfig[1][1]">5 days</td>
-								<td x-text="currentConfig[2][1]">x</td>
+									<td>Daily DD</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[1][1]">X</td>
 								</tr>
 								<tr>
-								<td>Max Daily Loss</td>
-								<td x-text="currentConfig[0][2]">£7,000</td>
-								<td x-text="currentConfig[1][2]">£7,000</td>
-								<td x-text="currentConfig[2][2]">£7,000</td>
+									<td>Max Drawdown</td>
+									<td x-text="currentConfig[0][2]">7.5%</td>
+									<td x-text="currentConfig[1][2]">7.5%</td>
+									<td x-text="currentConfig[2][2]">indefinite</td>
 								</tr>
 								<tr>
-								<td>Max Overall Loss</td>
-								<td x-text="currentConfig[0][3]">£14,000</td>
-								<td x-text="currentConfig[1][3]">£14,000</td>
-								<td x-text="currentConfig[2][3]">£14,000</td>
+									<td>Trading period</td>
+									<td x-text="currentConfig[0][4]">30days</td>
+									<td x-text="currentConfig[1][4]">60days</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
-								<td>Profit Target</td>
-								<td x-text="currentConfig[0][4]">£11,200</td>
-								<td x-text="currentConfig[1][4]">£7,000</td>
-								<td x-text="currentConfig[2][4]">x</td>
+									<td>Holding Over Weekend</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
 								</tr>
 								<tr>
-								<td>Refundable Fee</td>
-								<td colspan="3">
-									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-									<span>Coiming Soon</span>
-									<strong x-text="currentConfig[0][5]"></strong>
-									</div>
-								</td>
+									<td>News Trading, EA & Copy Trading</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>Refundable Fee</td>
+									<td colspan="3">
+										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+											<span>One time fee of $69</span>
+											<strong x-text="currentConfig[0][5]"></strong>
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -742,51 +689,57 @@ $this->load->view('includes/header');
 						<table class="account-config">
 							<thead>
 								<tr>
-								<td>5</td>
-								<td>Phase 1</td>
-								<td>Phase 2</td>
-								<td>Funded</td>
+									<td>Objectives</td>
+									<td>Phase 1</td>
+									<td>Phase 2</td>
+									<td>Funded</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-								<td>Trading period</td>
-								<td x-text="currentConfig[0][0]">30 days</td>
-								<td x-text="currentConfig[1][0]">60 days</td>
-								<td x-text="currentConfig[2][0]">indefinite</td>
+									<td>Target</td>
+									<td x-text="currentConfig[0][0]">15%</td>
+									<td x-text="currentConfig[1][0]">10%</td>
+									<td x-text="currentConfig[2][0]">indefinite%</td>
 								</tr>
 								<tr>
-								<td>Minimum trading days</td>
-								<td x-text="currentConfig[0][1]">5 days</td>
-								<td x-text="currentConfig[1][1]">5 days</td>
-								<td x-text="currentConfig[2][1]">x</td>
+									<td>Daily DD</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[0][1]">NA</td>
+									<td x-text="currentConfig[1][1]">X</td>
 								</tr>
 								<tr>
-								<td>Max Daily Loss</td>
-								<td x-text="currentConfig[0][2]">£7,000</td>
-								<td x-text="currentConfig[1][2]">£7,000</td>
-								<td x-text="currentConfig[2][2]">£7,000</td>
+									<td>Max Drawdown</td>
+									<td x-text="currentConfig[0][2]">7.5%</td>
+									<td x-text="currentConfig[1][2]">7.5%</td>
+									<td x-text="currentConfig[2][2]">indefinite</td>
 								</tr>
 								<tr>
-								<td>Max Overall Loss</td>
-								<td x-text="currentConfig[0][3]">£14,000</td>
-								<td x-text="currentConfig[1][3]">£14,000</td>
-								<td x-text="currentConfig[2][3]">£14,000</td>
+									<td>Trading period</td>
+									<td x-text="currentConfig[0][4]">30days</td>
+									<td x-text="currentConfig[1][4]">60days</td>
+									<td x-text="currentConfig[2][4]">No Limit</td>
 								</tr>
 								<tr>
-								<td>Profit Target</td>
-								<td x-text="currentConfig[0][4]">£11,200</td>
-								<td x-text="currentConfig[1][4]">£7,000</td>
-								<td x-text="currentConfig[2][4]">x</td>
+									<td>Holding Over Weekend</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
 								</tr>
 								<tr>
-								<td>Refundable Fee</td>
-								<td colspan="3">
-									<div class="table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-									<span>Coiming Soon</span>
-									<strong x-text="currentConfig[0][5]"></strong>
-									</div>
-								</td>
+									<td>News Trading, EA & Copy Trading</td>
+									<td x-text="currentConfig[0][4]">Yes</td>
+									<td x-text="currentConfig[1][4]">Yes</td>
+									<td x-text="currentConfig[2][4]">Yes</td>
+								</tr>
+								<tr>
+									<td>Refundable Fee</td>
+									<td colspan="3">
+										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+											<span>One time fee of $69</span>
+											<strong x-text="currentConfig[0][5]"></strong>
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>

@@ -13,7 +13,7 @@ $this->load->view('includes/header');
                 Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
                 </p>
                 
-                <p class="d-block border-bottom pb-3">Equffering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
+                <p class="d-block border-bottom pb-3">20th JUN 2023
                 </p>
             </div>
             <div class="pt-5 pb-3">
@@ -24,8 +24,8 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset="">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
                                 <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
                             </div>
                         </div>
@@ -36,8 +36,8 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset="">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
                                 <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
                             </div>
                         </div>
@@ -48,8 +48,8 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset="">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
                                 <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
                             </div>
                         </div>

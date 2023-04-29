@@ -33,7 +33,7 @@
 
   .swiper {
     width: 80%;
-    height: 500px;
+    height: fit-content;
   }
 
   .swiper-slide {
