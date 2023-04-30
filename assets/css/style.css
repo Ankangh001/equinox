@@ -212,23 +212,25 @@ h6 {
 # Book a table button Menu
 --------------------------------------------------------------*/
 .book-a-table-btn {
-	margin: 0 0 0 15px;
-	border: 2px solid #00e894;
-	color: #fff;
-	border-radius: 50px;
-	padding: 8px 25px;
-	text-transform: uppercase;
-	font-size: 13px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	transition: 0.3s;
+	margin: 2px 2px 2px 35px;
+    background: linear-gradient(91deg, #ff5757, #8c52ff);
+    color: #fff;
+    border-radius: 50px;
+    padding: 6px 24px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s ease-in-out;
+    border: 2px solid transparent;
 }
 
 .book-a-table-btn:hover {
     background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border: 2px solid #00000090;
+    border: 2px solid #ff5757;
+	font-weight: 600;
 }
 
 @media (max-width: 992px) {
@@ -550,13 +552,36 @@ h6 {
 	/* border: 2px solid #00000080; */
 }
 
+.btn-primary:hover {
+    color: #ff5757;
+    background: transparent !important;
+    border: 2px solid #ff5757 !important;
+}
+
+.goog-te-gadget {
+    font-size: 0px !important;
+	height: 9vh !important;
+	margin-left: 1rem !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+    margin: 10px 0 0 0;
+    padding: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: transparent;
+    width: 82%;
+    color: #000;
+    font-family: 'Poppins';
+}
+
 #hero .btn-menu:hover, #hero .btn-book:hover {
-    border: 2px solid #00000080;
+    border: 2px solid #00000080 !important;
     background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
-    padding-bottom: 11px;
 }
 /* #hero .btn-menu:hover,
 #hero .btn-book:hover span {
@@ -2099,16 +2124,15 @@ table.account-config td {
 #faq-hero .btn-menu,
 #hero .btn-book {
 	font-weight: 600;
-	font-size: 16px;
-	letter-spacing: 0.5px;
-	text-transform: uppercase;
-	display: inline-block;
-	padding: 12px 30px;
-	border-radius: 50px;
-	transition: 0.3s;
-	line-height: 1;
-	color: white;
-	/* border: 2px solid #00000080; */
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+    align-items: center;
 }
 
 .f-row {
@@ -2965,7 +2989,7 @@ button.game-btn {
 
 .gradient-btn{
 	background: linear-gradient(86deg, #FF5757, #8c52ff);
-	border: none;
+ 	border: 2px solid transparent;
 }
 
 .logo-border{

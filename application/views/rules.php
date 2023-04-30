@@ -2,11 +2,18 @@
 $this->load->view('includes/header');
 ?>
 <style>
-        #myFilter{
-            width: 30%;
-            display: inline-block;
-            margin: 2rem 30% !important;
-        }
+    #myFilter input {
+        border-radius: 30px;
+    }
+    #myFilter {
+        width: 50%;
+        display: inline-block;
+        margin: 2rem 26rem !important;
+    }
+    button.btn.search {
+        position: relative;
+        right: 3rem;
+    }
 </style>
 <main id="main">
 	<!-- ======= Why Us Section ======= -->
@@ -15,23 +22,28 @@ $this->load->view('includes/header');
             <div class="section-title  text-center">
                 <h2>Find the Rules</h2>
             </div>
-
+            <div class="d-flex m-5" id="myFilter">
+                <input type="text" style="width:inherit"  class="col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Faq">
+                <button class="btn search">
+                    <i class="fas fa-search text-dark"></i>
+                </button>
+            </div>
             <ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
-            <input type="text" id="myFilter" class="col-lg-3 form-control m-5" onkeyup="myFunction()" placeholder="Search for Rules">
+            
 
-			<li class="nav-item m-2 pointer">
-				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
-						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-					<strong>Aggressive</strong>
-				</div>
-			</li>
-			<li class="nav-item m-2 pointer">
-				<div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
-						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-					<strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
-				</div>
-			</li>            
-		</ul>
+                <li class="nav-item m-2 pointer">
+                    <div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
+                            bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+                        <strong>Aggressive</strong>
+                    </div>
+                </li>
+                <li class="nav-item m-2 pointer">
+                    <div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
+                            bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+                        <strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
+                    </div>
+                </li>            
+            </ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade text-dark show in active" id="profile">
                 <div class="accordion accordion-flush" id="accordionFlushExample">

@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Equinox</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets/') ?>vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
+<?php
+$this->load->view('includes/header');
+?>
     <style>
+        #header{
+            display:none !important;
+        }
     .divider:after,
     .divider:before {
         content: "";
@@ -48,7 +27,7 @@
     form{
         color:#000000;
         width:500px;
-        margin:5rem auto;
+        margin:2rem auto;
         padding: 2rem;
         background: #fff;
         border-radius:20px;
@@ -81,12 +60,12 @@
 <body>
 <form class="">
                 <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
-                    <a href="index"><img width="50%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a><br>
+                    <a href="/" class="text-center w-100"><img class ="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a><br>
                     <p class="lead fw-normal mb-0 me-3">Sign In with Equinox</p><br>
                 </div>
 
-                <div class="divider d-flex align-items-center my-4">
-                    <p class="text-center fw-bold mx-3 mb-0">Enter your details below</p>
+                <div class="divider d-flex align-items-center mb-3">
+                    <p class="text-center fw-bold mb-0">Enter your details below</p>
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">

@@ -27,10 +27,28 @@
   <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+ 
+ <script type="text/javascript">
+     function googleTranslateElementInit() {
+         new google.translate.TranslateElement(
+             {pageLanguage: 'en'},
+             'google_translate_element'
+         );
+     }
+ </script>
 
+ <script type="text/javascript" src= "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <!-- Demo styles -->
 <style>
-
+.VIpgJd-ZVi9od-l4eHX-hSRGPd{
+  display: none !important;
+}
+.skiptranslate iframe{
+  display: none !important;
+}
+body{
+  position: inherit !important;
+}
   .swiper {
     width: 80%;
     height: fit-content;
@@ -161,16 +179,13 @@
 					<li><a href="complaints">Complaints</a></li>
 				</ul>
 			</li>
-			<li class="dropdown"><a href="#"><span>En</span> <i class="bi bi-chevron-down"></i></a>
-				<ul>
-					<li><a href="#">English</a></li>
-					<li><a href="#">Spanish</a></li>
-				</ul>
-			</li>
+			<li class="dropdown">
+        <div id="google_translate_element"></div>
+      </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="client-login" class="gradient-btn book-a-table-btn scrollto d-none d-lg-flex">Client Area</a>
+      <a href="client-login" class="book-a-table-btn scrollto d-none d-lg-flex">Client Area</a>
 
     </div>
   </header><!-- End Header -->

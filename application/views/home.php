@@ -248,7 +248,7 @@ $this->load->view('includes/header');
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 30 days</span></li>
 										</ul>
@@ -272,7 +272,7 @@ $this->load->view('includes/header');
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 60 days</span></li>
 										</ul>
@@ -307,7 +307,7 @@ $this->load->view('includes/header');
 									<ul class="p-0 m-0 list-none">
 										<li class="block text-sm leading-6">Objectives</li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p line">No Maximum Daily Loss</span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 									</ul>
@@ -963,7 +963,7 @@ $this->load->view('includes/header');
 			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">14 days</strong>  from the first trade. You will get paid on your most convinient date.
 			</p>
 			<div class="img-holder d-flex justify-content-center align-items-center p-3">
-				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content">
+				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content; margin-right:1rem">
 				<img class="ml-3" src="<?=base_url('assets/img/')?>wallet.png" alt="mt4-image" style="width:20%; height:fit-content">
 			</div>
           </div>

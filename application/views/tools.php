@@ -8,7 +8,7 @@ $this->load->view('includes/header');
     }
 </style>
 <main id="main">
-	<section id="about" class="payout why-trade" style="background:#fff">
+	<section id="risk" class="payout why-trade" style="background:#fff">
 		<div class="container mt-5" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
@@ -33,7 +33,7 @@ $this->load->view('includes/header');
 	
 	
 
-    <section id="about" class="payout why-trade" style="background:#fff">
+    <section id="trade" class="payout why-trade" style="background:#fff">
 		<div class="container mt-5" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-2 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
@@ -56,7 +56,7 @@ $this->load->view('includes/header');
 		</div>
     </section>
 
-	<section id="about" class="payout why-trade" style="background:#fff">
+	<section id="journal" class="payout why-trade" style="background:#fff">
 		<div class="container mt-5" data-aos="fade-up">
 			<div class="row align-items-center">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">

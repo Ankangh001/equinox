@@ -33,12 +33,12 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
             <h4>Important Links</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Affiliate</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Announcements</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="faq">FAQ</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="rules">Rules</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="affiliate">Affiliate</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="scaling-plan">Scaling Plan</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="notice">Announcements</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="promotion">Promotions</a></li>
             </ul>
           </div>
 
@@ -47,16 +47,16 @@
            <br> 
             <h4 class="text-left">User Tools</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Journal</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools">Risk Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#trade">Trade Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#journal">Trade Journal</a></li>
             </ul>
             <br>
             <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Technical Indicators</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">COT Data</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Technical Indicators</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Market Sentiments</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">COT Data</a></li>
             </ul>
           </div>
 
@@ -138,12 +138,12 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
             <h4>Important Links</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Affiliate</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Scaling Plan</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Announcements</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="faq">FAQ</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="rules">Rules</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="affiliate">Affiliate</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="scaling-plan">Scaling Plan</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="notice">Announcements</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="promotion">Promotions</a></li>
             </ul>
           </div>
 
@@ -163,18 +163,18 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
             <h4 class="text-left">User Tools</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Journal</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools">Risk Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#trade">Trade Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#journal">Trade Journal</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
             <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Technical Indicators</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">COT Data</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Technical Indicators</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Market Sentiments</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="market-data">COT Data</a></li>
             </ul>
           </div>
 

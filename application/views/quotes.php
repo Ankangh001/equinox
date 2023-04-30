@@ -55,9 +55,12 @@ $this->load->view('includes/header');
     .nav-link span{
         font-size:18px;
     }
+    body{
+        background: linear-gradient(180deg, #ffffff 20%, #eee 100%)  !important;
+    }
 </style>
 <main id="main">
-<section id="navtabs-count" style="margin:6rem auto 0 auto">
+<section id="navtabs-count" style="margin:6rem auto 0 auto; background:#ffffff !important; ">
 
     <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
