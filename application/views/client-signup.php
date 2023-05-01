@@ -72,12 +72,23 @@ $this->load->view('includes/header');
 
         <!-- designation input -->
         <div class="form-outline mb-3">
-            <input type="text" class="form-control" placeholder="Enter Designation eg: Mr/Mrs" />
+            <select class="form-control" >
+                <option selected value="mr">Select your title</option>
+                <option value="mr">Mr</option>
+                <option value="mr">Ms</option>
+                <option value="mr">Mrs</option>
+                <option value="mr">Mx</option>
+            </select>
         </div>
 
         <!-- name input -->
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="Enter your name" />
+            <input type="text" class="form-control" placeholder="Enter First name" />
+        </div>
+
+        <!-- name input -->
+        <div class="form-outline mb-4">
+            <input type="text" class="form-control" placeholder="Enter Last name" />
         </div>
 
         <!-- Email input -->
@@ -90,16 +101,28 @@ $this->load->view('includes/header');
             <input type="number" class="form-control" placeholder="Enter a valid number" />
         </div>
 
-        <!-- country input -->
-        <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="Enter country name" />
-        </div>
+        
 
         
 
         <!-- confirm Password input -->
         <div class="form-outline mb-3">
+            <input type="password" class="form-control" placeholder="Enter Password" />
+        </div>
+        <!-- confirm Password input -->
+        <div class="form-outline mb-3">
             <input type="password" class="form-control" placeholder="Enter Confirm Password" />
+        </div>
+
+        <!-- designation input -->
+        <div class="form-outline mb-3">
+            <select class="form-control" >
+                <option selected value="mr">Select your Country</option>
+                <option value="mr">US</option>
+                <option value="mr">INDIA</option>
+                <option value="mr">UK</option>
+                <option value="mr">...</option>
+            </select>
         </div>
 
         <div class="d-flex justify-content-between align-items-center">
@@ -107,7 +130,34 @@ $this->load->view('includes/header');
             <div class="form-check mb-0">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
-                    agree with term & conditions
+                I agree to the processing of personal data according to privacy policy
+                </label>
+            </div>
+            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                    
+                Do you want to receive news about our project? Sign up to our
+                                
+                </label>
+            </div>
+            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
+        </div>
+<br>
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                    
+                I acknowledge my name is correct and corresponds to the government issued identification.
+                        
                 </label>
             </div>
             <!-- <a href="#!" class="text-body">Forgot password?</a> -->
