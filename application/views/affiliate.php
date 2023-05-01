@@ -10,7 +10,7 @@ $this->load->view('includes/header');
                     Share, Get Paid, Repeat<br>
                     Earn Like a<span> Champion</span><br>
                 </h1>  
-                <p style="margin: 1rem 0 0 24px; font-size:16px; color:#000000; width:90%">Start earning up to 15% commission on every referral.</p>
+                <p style="margin: 1rem 0 0 24px; font-size:16px; color:#000000; width:90%">Start earning 15% commission on every referral.</p>
                 <div class="btns justify-content-start d-flex" style="width:80%">
                     <a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
                         <span>Become An Affiliate</span>
@@ -53,7 +53,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1">Highest affiliate commission</div>
-                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
                             </div>
                         </div>
                     </a>
@@ -64,7 +64,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1">Easy & Fast Withdrawals</div>
-                                <p class="mt-3" style="font-size:14px">Equinoc Trading Capital has built the fastest process for you to withdraw your commissions. Submit your withdrawal request from the dashboard and collect your commissions instantly.</p>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital has built the fastest process for you to withdraw your commissions. Submit your withdrawal request from the dashboard and collect your commissions instantly.</p>
                             </div>
                         </div>
                     </a>
@@ -96,13 +96,28 @@ $this->load->view('includes/header');
                     <ul>
                         <li class="text-dark list-disc pt-8"><p>Affiliate commissions will not be awarded if a customer purchase from his/her own affiliate link.</p></li>
                         <li class="text-dark list-disc pt-8"><p>Every trader can sign up only once using only one referral link</p></li>
-                        <li class="text-dark list-disc pt-8"><p>Each unique affiliate link has 90 Days cookie tracking. Any purchase after the 90 Days expire won’t count  toward the affiliate’s commission.</p></li>
                         <li class="text-dark list-disc pt-8"><p>The commission will only be paid for the first purchase made by a trader. Account Top-ups and Account Resets won’t count toward the commission.</p></li>
-                        <li class="text-dark list-disc pt-8"><p>The reward is only paid once the payment is cleared on FundedNext’s end.</p></li>
-                        <li class="text-dark list-disc pt-8"><p>The affiliates are not to engage in any negative marketing. This means no marketing in which the affiliate would use negative words in order to get attention then promote our services. </p></li>
-                        <li class="text-dark list-disc pt-8"><p>The affiliates are not permitted to use Pay-Per-Click (PPC) or other keyword based advertising targeting “FundedNext” or any variations of the brand name as Keywords.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The reward is only paid once the payment is cleared on Equinox Trading Capital’s end.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates are not to engage in any negative marketing. This means no marketing in which the affiliate would use negative words in order to get attention then promote our services.</p></li>
                         <li class="text-dark list-disc pt-8"><p>An affiliate commission will not be awarded if a customer uses the discount code of another affiliate to purchases a new plan.</p></li>
-                        <li class="text-dark list-disc pt-8"><p>FundedNext reserves the right to withhold payments for any affiliate who violates our terms and conditions or engages in fraudulent activity.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>Affiliate sales must qualify as a legitimate transaction upon Equinox Trading Capital’s review.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates must add a disclaimer stating “Equinox Trading Capital does not own or operate this website and is not responsible for its contents. It is owned by [your website name / your brand name], an independent marketing affiliate.”
+
+<li class="text-dark list-disc pt-8"><p>In no way may you copy our sales page content such as our sales letter, video, or images in an effort to imitate Equinox Trading Capital on your own site.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>The Available Payout Methods for Equinox Trading Capital Affiliates are: Perfect Money, DEEL, Crypto.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>The commission will be sent to the affiliates with their preferred payment methods.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>No minimum commission amount requirement to withdraw commission.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Affiliates can directly purchase a new plan using the commissions received from Equinox Trading Capital.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Withdrawal requests for affiliate commissions will only be processed by Equinox Trading Capital after all terms and conditions have been met. Payouts are available only upon request and are subject to review and approval by Equinox Trading Capital.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Equinox Trading Capital reserves the right to modify or change the terms and conditions at any given time, and it is the affiliate's responsibility to review the terms and conditions regularly to remain informed of any changes.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Equinox Trading Capital reserves the right to withhold payments for any affiliate who violates our terms and conditions or engages in fraudulent activity.</p></li>
                     </ul>
                 </div>
             </div>

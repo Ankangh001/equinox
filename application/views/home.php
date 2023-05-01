@@ -34,17 +34,17 @@ $this->load->view('includes/header');
 				</div> -->
 
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					<a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
+					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
-					<a href="#why-us" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a>
+					<a href="client-login" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a>
 				</div>
 
 				<div class="btn2" style="width:80%">
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
 					<div class="d-flex justify-content-center">
 						<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
-							<a target="_blank" href="https://www.youtube.com/@EquinoxTradingCapital">
+							<a target="_blank" href="https://youtube.com/@EquinoxTradingCapital">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
@@ -263,7 +263,7 @@ $this->load->view('includes/header');
 											<span>Phase 2</span>
 											<p class="left-p" >One step away to be <br> our Funded Trader</p>
 										</div>
-										<div class="right tetx-right">
+										<div class="right text-right">
 											<span>10%</span>
 											<p class="left-p" >Profit Target</p>
 										</div>
@@ -292,14 +292,14 @@ $this->load->view('includes/header');
 									&nbsp;&nbsp;Earn Real Money
 							</a>
 
-							<div style="padding:20px 30px 0">
+							<div style="padding:30px 30px 0">
 								<div class="holder d-flex align-items-stretch justify-content-between">
 									<div class="left">
 										<span>Funded Trader</span>
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
-										<span><i class="fas fa-8 ms-1"></i><i class="fas fa-0 ms-1"></i> /<i class="fas fa-2 ms-1"></i><i class="fas fa-0 ms-1"></i></span>
+										<span>80/20</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -935,10 +935,10 @@ $this->load->view('includes/header');
             <h3 class="most-popular-text game-title">Play and win <br/>Assured rewards!</h3>
             <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win upto <strong  style="font-weight:600; color:#06bd0d">$2,000 Cash</strong>, evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">20%</strong> discount.</p>
 			<div class="img-holder row justify-content-center align-item-center p-3">
-				<button class=" game-btn border-none col-lg-12 btn btn-primary mb-3 playnow">Play Now</button>
+				<a href="client-login" class=" game-btn border-none col-lg-12 btn btn-primary mb-3 playnow">Play Now</a>
 				<div class="d-flex justify-content-center">
-					<button class="btn btn-primary mr-3 game-btn border-none pricelist">Prize List</button>
-					<button class="btn btn-primary game-btn border-none eligiblity">Eligiblity</button>
+					<a href="faq" class="btn btn-primary mr-3 game-btn border-none pricelist">Prize List</a>
+					<a href="faq" class="btn btn-primary game-btn border-none eligiblity">Eligiblity</a>
 				</div>
 			</div>
           </div>
@@ -1034,7 +1034,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Risk Manager</h6>
 							<br><br>
 							<p class="text-muted">It lets you manage trades and control your profit and loss across multiple currency pairs using a number of parameters and settings</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="tools" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -1047,7 +1047,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Manager</h6>
 							<br><br>
 							<p class="text-muted">Execute your trades with precision. You can also calculate your lot size, close partial trades, or efficiently move your stop-loss to breakeven.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="tools#trade" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -1060,7 +1060,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Journal</h6>
 							<br><br>
 							<p class="text-muted">Here you can record and review you daily trades for better output and for future reference. This can help you to keep track of your success as well as study mistakes made when entering or exiting a trade.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="tools#journal" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -1073,7 +1073,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
 							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -1086,7 +1086,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">Market Analysis</h6>
 							<br><br>
 							<p class="text-muted">See what the technical analysis says about a given symbol with our display ratings, made for easy viewing.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="market-data" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -1100,7 +1100,7 @@ $this->load->view('includes/header');
 							<br><br>
 							<p class="text-muted">
 							Keep an eye on key upcoming economic events, announcements, and news. Plus, set up filters in a few clicks, selecting for event importance and affected currencies.</p>
-							<button class="btn btn-primary mt-5 gradient-btn">Learn More</button>
+							<a href="economic-calendar" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
 				</div>

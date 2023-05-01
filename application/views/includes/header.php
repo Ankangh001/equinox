@@ -49,6 +49,9 @@
 body{
   position: inherit !important;
 }
+.game-btn{
+  border-radius:30px
+}
   .swiper {
     width: 80%;
     height: fit-content;

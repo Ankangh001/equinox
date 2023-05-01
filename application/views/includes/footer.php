@@ -1,8 +1,8 @@
 
 <div class="rows m-5">
-  <div class="col-lg-10 m-auto d-flex justify-content-center align-items-center get-funded">
+  <div class="col-lg-10 m-auto d-flex justify-content-center align-items-center get-funded" style="background:transparent !important">
     <p style="font-size:25px">Join Equinox Trading Capital on an exciting adventure!</p>  
-    <button class="btn btn-primary m-auto gradient-btn" style="border-radius: 30px;font-size:25px;padding: 0.5rem 2.5rem !important;">Get Funded</button>
+    <a href="client-login" class="btn btn-primary m-auto gradient-btn" style="border-radius: 30px;font-size:25px;padding: 0.5rem 2.5rem !important;">Get Funded</a>
   </div>
 </div>
   <footer class="for-pc" id="footer">
@@ -16,10 +16,10 @@
                 <br>
                 <strong>About Us</strong>
                 <ul>
-                  <li class="ml-3" style="color:#ffffff90">support@equinoxtradingcapital.com</li>
+                  <li class="ml-3" style="color:#ffffff90"><a href="mailto:support@equinoxtradingcapital.com">support@equinoxtradingcapital.com</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
-                  <li><a class="ml-3" style="color:#ffffff90" href="#">Global Reach</a></li>
-                  <li><a class="ml-3" style="color:#ffffff90" href="#">Complaints</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="about">Global Reach</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="complaints">Complaints</a></li>
                 </ul>
                 <br>
                 <div class="social-links d-flex justify-content-start">
@@ -121,10 +121,10 @@
                 <br>
                 <strong>About Us</strong>
                 <ul>
-                  <li style="color:#ffffff90">support@equinoxtradingcapital.com</li>
-                  <li><a style="color:#ffffff90" href="#">Live Chat</a></li>
-                  <li><a style="color:#ffffff90" href="#">Global Reach</a></li>
-                  <li><a style="color:#ffffff90" href="#">Complaints</a></li>
+                  <li class="ml-3" style="color:#ffffff90"><a href="mailto:support@equinoxtradingcapital.com">support@equinoxtradingcapital.com</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="about">Global Reach</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="complaints">Complaints</a></li>
                 </ul>
                 <br>
                 <div class="social-links d-flex justify-content-start">
@@ -260,14 +260,15 @@
     $("#eqLogoWhite").css("display" , "none");
     $(window).scroll(function(){
       var scroll = $(window).scrollTop();
-      if (scroll > 100) {
+      if (scroll > 90) {
         $("#eqLogoblack").css("display" , "none");  	
         $("#eqLogoWhite").css("display" , "block");
       }
-
+      
       else{
         $("#eqLogoblack").css("display" , "block");  	
         $("#eqLogoWhite").css("display" , "none");
+        $("select.goog-te-combo").css("color" , "#000000 !important");
       }
     })
   })
