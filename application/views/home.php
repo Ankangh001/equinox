@@ -921,7 +921,6 @@ $this->load->view('includes/header');
 		</div>
     </section>
 
-
 	<!-- ======= Game Section ======= -->
 	<section id="about" class="game payout2">
       <div class="container" data-aos="fade-up">
@@ -993,7 +992,6 @@ $this->load->view('includes/header');
       </div>
     </section>
 	<!-- ======= End After Payout ======= -->
-
 
 	<!-- ======= navtabs Section ======= -->
 	<section id="navtabs-count" class="payout2">
@@ -1140,7 +1138,6 @@ $this->load->view('includes/header');
       </div>
     </section><!-- ========= Icons arund you ======== -->	
 
-
 	<!-- ======= Key Benefits ======= -->
     <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
       <div class="container" data-aos="fade-up">
@@ -1201,7 +1198,6 @@ $this->load->view('includes/header');
         </div>
       </div>
     </section><!-- ====== End Key Benefits ====== -->
-
 
 	<!-- ======= Trusted patner logos ======= -->
 	<section id="about" class="hidden payout">

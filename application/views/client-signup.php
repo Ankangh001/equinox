@@ -17,7 +17,7 @@ $this->load->view('includes/header');
     }
     body{
         /* overflow: hidden; */
-        background: linear-gradient(86deg, #FF5758, #CF559E);
+        background: linear-gradient(91deg, #ff5757, #8c52ff);
     }
     @media (max-width: 450px) {
         .h-custom {

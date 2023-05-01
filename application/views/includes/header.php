@@ -183,7 +183,7 @@ body{
 				</ul>
 			</li>
 			<li class="dropdown">
-        <div id="google_translate_element"></div>
+        <!-- <div id="google_translate_element"></div> -->
       </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
