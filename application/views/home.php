@@ -122,16 +122,17 @@ $this->load->view('includes/header');
           <p>Steps to grow with us</p>
         </div>
 		<ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
-			<li class="nav-item m-2 pointer">
-				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
-						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-				</div>
-			</li>
+			
 			<li class="nav-item m-2 pointer">
 				<div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
 						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
 					<strong>Aggressive</strong>
+				</div>
+			</li>
+			<li class="nav-item m-2 pointer">
+				<div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
+						bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				</div>
 			</li>
 		</ul>
@@ -156,7 +157,7 @@ $this->load->view('includes/header');
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Minimum Trading Days</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
@@ -180,7 +181,7 @@ $this->load->view('includes/header');
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Minimum Trading Days</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
@@ -215,7 +216,7 @@ $this->load->view('includes/header');
 								<div class="objective">
 									<ul class="p-0 m-0 list-none">
 										<li class="block text-sm leading-6">Objectives</li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p text-danger line"><span>No minimum Trading Days</span></span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p text-danger line"><span>Minimum Trading Days</span></span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">5% Maximum Daily Loss</span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
@@ -236,7 +237,7 @@ $this->load->view('includes/header');
 								<div class="box" data-aos="zoom-in" data-aos-delay="200">
 									<div class="holder d-flex align-items-stretch justify-content-between">
 										<div class="left">
-											<span>Phase 1</span>
+											<span style="color:#ff5757 !important">Phase 1</span>
 											<p class="left-p" >Starting your <br> Evaluation process</p>
 										</div>
 										<div class="right text-right">
@@ -247,8 +248,8 @@ $this->load->view('includes/header');
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Maximum Daily Loss</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 30 days</span></li>
 										</ul>
@@ -260,7 +261,7 @@ $this->load->view('includes/header');
 								<div class="box" data-aos="zoom-in" data-aos-delay="200">
 									<div class="holder d-flex align-items-stretch justify-content-between">
 										<div class="left">
-											<span>Phase 2</span>
+											<span style="color:#ff5757 !important">Phase 2</span>
 											<p class="left-p" >One step away to be <br> our Funded Trader</p>
 										</div>
 										<div class="right text-right">
@@ -271,8 +272,8 @@ $this->load->view('includes/header');
 									<div class="objective">
 										<ul class="p-0 m-0 list-none">
 											<li class="block text-sm leading-6">Objectives</li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Minimum Trading Days</span></span></li>
+											<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Maximum Daily Loss</span></span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 											<li class="block mt-4p"><span class="inline-block rounded-8p">Trading Period up to 60 days</span></li>
 										</ul>
@@ -295,7 +296,7 @@ $this->load->view('includes/header');
 							<div style="padding:30px 30px 0">
 								<div class="holder d-flex align-items-stretch justify-content-between">
 									<div class="left">
-										<span>Funded Trader</span>
+										<span style="color:#ff5757 !important">Funded Trader</span>
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
@@ -306,8 +307,8 @@ $this->load->view('includes/header');
 								<div class="objective">
 									<ul class="p-0 m-0 list-none">
 										<li class="block text-sm leading-6">Objectives</li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No minimum Trading Days</span></span></li>
-										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>No Maximum Daily Loss</span></span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Minimum Trading Days</span></span></li>
+										<li class="block mt-4p"><span class="inline-block rounded-8p line"><span>Maximum Daily Loss</span></span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">10% Maximum Overall Loss</span></li>
 										<li class="block mt-4p"><span class="inline-block rounded-8p">Unlimited trading days</span></li>
 									</ul>
@@ -322,22 +323,23 @@ $this->load->view('includes/header');
     </section>
 	<!-- ==== End Evaluation Process ==== -->
 
+
 	<!-- ======= Pricing ======= -->
     <section id="table-pricing" class="table-pricing">
 		<div class="container" data-aos="fade-up">
 			<div class="section-title text-center">
 				<h2>Pricing</h2>
 			</div>
-			<div class="row justify-content-center">
-				<ul class="col-lg-3 nav nav-pills m-auto flex-column justify-content-start" id="pills-tab" role="tablist" style="padding:0 2rem ;border-right: 1px solid #444444;">
+			<div class="row justify-content-start">
+				<ul class="col-lg-3 nav nav-pills flex-column justify-content-start" id="pills-tab" role="tablist" style="padding:0 2rem ;border-right: 1px solid #444444;">
 					<li class="nav-item m-2 mb-3 pointer">
 						<div id="pills-profile-tab" 
 							data-toggle="pill" 
 							href="#pills-profile" 
 							role="tab" 
 							aria-controls="pills-profile" 
-							aria-selected="false"
-							class="flex justify-center 
+							aria-selected="true"
+							class="flex justify-center active
 								items-center flex-row px-16p py-8p 
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full 
@@ -351,8 +353,8 @@ $this->load->view('includes/header');
 							href="#pills-home" 
 							role="tab" 
 							aria-controls="pills-home" 
-							aria-selected="true" 
-							class="flex justify-center active
+							aria-selected="false" 
+							class="flex justify-center 
 								items-center flex-row px-16p py-8p 
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full 
@@ -361,394 +363,716 @@ $this->load->view('includes/header');
 						</div>
 					</li>
 				</ul>
-
-				<ul class="col-lg-9 nav nav-pills justify-content-center m-auto" id="pills-tab" role="tablist">
-					<li class="nav-item m-2 pointer">
-						<div data-toggle="pill" 
-							id="pills-home-tab"
-							href="#pills-home" 
-							role="tab" 
-							aria-controls="pills-home" 
-							aria-selected="true" 
-							class="flex justify-center active
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>$10,000</strong>
-						</div>
-					</li>
-					<li class="nav-item m-2 pointer">
-						<div id="pills-profile-tab" 
-							data-toggle="pill" 
-							href="#pills-profile" 
-							role="tab" 
-							aria-controls="pills-profile" 
-							aria-selected="false"
-							class="flex justify-center 
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>$25,000</strong>
-						</div>
-					</li>
-
-
-					<li class="nav-item m-2 pointer">
-						<div id="pills-contact-tab" 
-							data-toggle="pill" 
-							href="#pills-contact" 
-							role="tab" 
-							aria-controls="pills-contact" 
-							aria-selected="false"
-							class="flex justify-center 
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>$50,000</strong>
-						</div>
-
-
-
-						<li class="nav-item m-2 pointer">
-						<div id="pills-100-tab" 
-							data-toggle="pill" 
-							href="#pills-100" 
-							role="tab" 
-							aria-controls="pills-contact" 
-							aria-selected="false"
-							class="flex justify-center 
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>$100,000</strong>
-						</div>
-						<li class="nav-item m-2 pointer">
-						<div id="pills-200-tab" 
-							data-toggle="pill" 
-							href="#pills-200" 
-							role="tab" 
-							aria-controls="pills-contact" 
-							aria-selected="false"
-							class="flex justify-center 
-								items-center flex-row px-16p py-8p 
-								bg-primary-500/16 border-pricing 
-								border-primary-500 rounded-full 
-								-my-12p h-40p gap-8p">
-							<strong>$200,000</strong>
-						</div>
-						
-						<!-- <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a> -->
-					</li>
-				</ul>
 			</div>
 			<div class="tab-content mt-3" id="pills-tabContent">
-				<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-									<td>Objectives</td>
-									<td>Phase 1</td>
-									<td>Phase 2</td>
-									<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Target</td>
-									<td x-text="currentConfig[0][0]">15%</td>
-									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">indefinite%</td>
-								</tr>
-								<tr>
-									<td>Max Drawdown</td>
-									<td x-text="currentConfig[0][2]">7.5%</td>
-									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">indefinite</td>
-								</tr>
-								<tr>
-									<td>Trading period</td>
-									<td x-text="currentConfig[0][4]">30days</td>
-									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
-								</tr>
-								<tr>
-									<td>Holding Over Weekend</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>News Trading, EA & Copy Trading</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>Refundable Fee</td>
-									<td colspan="3">
-										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-											<span>One time fee of $69</span>
-											<strong x-text="currentConfig[0][5]"></strong>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+				<!-- aggressive -->
+				<div class="tab-pane fade  " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+					<!-- nested-pill -->
+					<ul class="nav nav-pills mb-3 col-lg-9" id="pills-tab" role="tablist" style="position: relative;left: 30%;top: -4rem;">
+						<li class="nav-item mr-3" role="presentation">
+							<button class="flex justify-center active
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full  fw-bold
+								-my-12p h-40p gap-8p active" id="pills-home-tab2" 
+								data-bs-toggle="pill" data-bs-target="#pills-home2" type="button" 
+								role="tab" aria-controls="pills-home2" aria-selected="true">$10,000</button>
+						</li>
+						<li class="nav-item mr-3" role="presentation">
+							<button class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full  fw-bold
+								-my-12p h-40p gap-8p" id="pills-profile-tab2" 
+								data-bs-toggle="pill" data-bs-target="#pills-profile2" 
+								type="button" role="tab" aria-controls="pills-profile" 
+								aria-selected="false">$25,000</button>
+						</li>
+						<li class="nav-item mr-3" role="presentation">
+							<button class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold 
+								-my-12p h-40p gap-8p" id="pills-contact-tab" 
+								data-bs-toggle="pill" data-bs-target="#pills-contact" 
+								type="button" role="tab" aria-controls="pills-contact" 
+								aria-selected="false">$50,000</button>
+						</li>
+						<li class="nav-item mr-3" role="presentation">
+							<button class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full  fw-bold
+								-my-12p h-40p gap-8p" id="pills-contact22-tab" 
+								data-bs-toggle="pill" data-bs-target="#pills-contact22" 
+								type="button" role="tab" aria-controls="pills-contact22" 
+								aria-selected="false">$100,000</button>
+						</li>
+						<li class="nav-item mr-3" role="presentation">
+							<button class="flex justify-center 
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full  fw-bold
+								-my-12p h-40p gap-8p" id="pills-contact33-tab" 
+								data-bs-toggle="pill" data-bs-target="#pills-contact33" 
+								type="button" role="tab" aria-controls="pills-contact33" 
+								aria-selected="false">$200,000</button>
+						</li>
+					</ul>
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane text-dark fade show active" id="pills-home2" role="tabpanel" aria-labelledby="pills-home-tab2">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$1500</td>
+											<td x-text="currentConfig[1][0]">$1000</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$1000</td>
+											<td x-text="currentConfig[1][2]">$1000</td>
+											<td x-text="currentConfig[2][2]">$1000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">30days</td>
+											<td x-text="currentConfig[1][4]">60days</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$69</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane text-dark fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile-tab2">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$3750</td>
+											<td x-text="currentConfig[1][0]">$2500</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$2500</td>
+											<td x-text="currentConfig[1][2]">$2500</td>
+											<td x-text="currentConfig[2][2]">$2500</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">30days</td>
+											<td x-text="currentConfig[1][4]">60days</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<a href="client-area" class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$149</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane text-dark fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$7500</td>
+											<td x-text="currentConfig[1][0]">$5000</td>
+											<td x-text="currentConfig[2][0]">indefinite%</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$5000</td>
+											<td x-text="currentConfig[1][2]">$5000</td>
+											<td x-text="currentConfig[2][2]">$5000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">30days</td>
+											<td x-text="currentConfig[1][4]">60days</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$249</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="tab-pane text-dark fade" id="pills-contact22" role="tabpanel" aria-labelledby="pills-contact22-tab">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$15,000</td>
+											<td x-text="currentConfig[1][0]">$10,000</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$10,000</td>
+											<td x-text="currentConfig[1][2]">$10,000</td>
+											<td x-text="currentConfig[2][2]">$10,000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">30days</td>
+											<td x-text="currentConfig[1][4]">60days</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$449</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="tab-pane text-dark fade" id="pills-contact33" role="tabpanel" aria-labelledby="pills-contact33-tab">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$30,000</td>
+											<td x-text="currentConfig[1][0]">$20,000</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$20,000</td>
+											<td x-text="currentConfig[1][2]">$20,000</td>
+											<td x-text="currentConfig[2][2]">$20,000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">30days</td>
+											<td x-text="currentConfig[1][4]">60days</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$849</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-									<td>Objectives</td>
-									<td>Phase 1</td>
-									<td>Phase 2</td>
-									<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Target</td>
-									<td x-text="currentConfig[0][0]">15%</td>
-									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">indefinite%</td>
-								</tr>
-								<tr>
-									<td>Daily DD</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[1][1]">X</td>
-								</tr>
-								<tr>
-									<td>Max Drawdown</td>
-									<td x-text="currentConfig[0][2]">7.5%</td>
-									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">indefinite</td>
-								</tr>
-								<tr>
-									<td>Trading period</td>
-									<td x-text="currentConfig[0][4]">30days</td>
-									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
-								</tr>
-								<tr>
-									<td>Holding Over Weekend</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>News Trading, EA & Copy Trading</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>Refundable Fee</td>
-									<td colspan="3">
-										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-											<span>One time fee of $69</span>
-											<strong x-text="currentConfig[0][5]"></strong>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+				<!-- normal -->
+				<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="position: relative;left: 30%;top: -4rem;">
+						<li class="nav-item" role="presentation">
+							<button class="flex justify-center active mr-3
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold
+								-my-12p h-40p gap-8p active active" id="pills-home-tab111" 
+							data-bs-toggle="pill" data-bs-target="#pills-home111" type="button" 
+							role="tab" aria-controls="pills-home111" aria-selected="true">$10,000</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="flex justify-center mr-3
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold
+								-my-12p h-40p gap-8p" id="pills-profile-tab2555" 
+								data-bs-toggle="pill" data-bs-target="#pills-profile2555" 
+								type="button" role="tab" aria-controls="pills-profile2555" 
+								aria-selected="false">$25,000</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="flex justify-center mr-3
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold
+								-my-12p h-40p gap-8p" id="pills-contact-tab666" 
+							data-bs-toggle="pill" data-bs-target="#pills-contact666" type="button" 
+							role="tab" aria-controls="pills-contact666" aria-selected="false">$50,000</button>
+						</li>
+
+						<li class="nav-item" role="presentation">
+							<button class="flex justify-center mr-3
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold
+								-my-12p h-40p gap-8p" id="pills-contact-tab777" 
+							data-bs-toggle="pill" data-bs-target="#pills-contact777" type="button" 
+							role="tab" aria-controls="pills-contact777" aria-selected="false">$100,000</button>
+						</li>
+
+						<li class="nav-item" role="presentation">
+							<button class="flex justify-center mr-3
+								items-center flex-row px-16p py-8p 
+								bg-primary-500/16 border-pricing 
+								border-primary-500 rounded-full fw-bold
+								-my-12p h-40p gap-8p" id="pills-contact-tab888" 
+							data-bs-toggle="pill" data-bs-target="#pills-contact888" type="button" 
+							role="tab" aria-controls="pills-contact888" aria-selected="false">$200,000</button>
+						</li>
+					</ul>
+					<div class="tab-content" id="pills-tabContent">
+						<!-- 10,000 -->
+						<div class="tab-pane text-dark fade show active" id="pills-home111" role="tabpanel" aria-labelledby="pills-home-tab111">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$800</td>
+											<td x-text="currentConfig[1][0]">$500</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Daily Drawdown</td>
+											<td x-text="currentConfig[0][2]">$500</td>
+											<td x-text="currentConfig[1][2]">$500</td>
+											<td x-text="currentConfig[2][2]">$500</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$1000</td>
+											<td x-text="currentConfig[1][2]">$1000</td>
+											<td x-text="currentConfig[2][2]">$1000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">No Limit</td>
+											<td x-text="currentConfig[1][4]">No Limit</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$69</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 25,000 -->
+						<div class="tab-pane text-dark fade" id="pills-profile2555" role="tabpanel" aria-labelledby="pills-profile-tab2555">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$2000</td>
+											<td x-text="currentConfig[1][0]">$1250</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Daily Drawdown</td>
+											<td x-text="currentConfig[0][2]">$1250</td>
+											<td x-text="currentConfig[1][2]">$1250</td>
+											<td x-text="currentConfig[2][2]">$1250</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$2500</td>
+											<td x-text="currentConfig[1][2]">$2500</td>
+											<td x-text="currentConfig[2][2]">$2500</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">No Limit</td>
+											<td x-text="currentConfig[1][4]">No Limit</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$149</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 50,000 -->
+						<div class="tab-pane text-dark fade" id="pills-contact666" role="tabpanel" aria-labelledby="pills-contact-tab666">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$4000</td>
+											<td x-text="currentConfig[1][0]">$2500</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Daily Drawdown</td>
+											<td x-text="currentConfig[0][2]">$2500</td>
+											<td x-text="currentConfig[1][2]">$2500</td>
+											<td x-text="currentConfig[2][2]">$2500</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$5000</td>
+											<td x-text="currentConfig[1][2]">$5000</td>
+											<td x-text="currentConfig[2][2]">$5000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">No Limit</td>
+											<td x-text="currentConfig[1][4]">No Limit</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$249</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 1000,000 -->
+						<div class="tab-pane text-dark fade" id="pills-contact777" role="tabpanel" aria-labelledby="pills-contact-tab777">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$8000</td>
+											<td x-text="currentConfig[1][0]">$5000</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Daily Drawdown</td>
+											<td x-text="currentConfig[0][2]">$5000</td>
+											<td x-text="currentConfig[1][2]">$5000</td>
+											<td x-text="currentConfig[2][2]">$5000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$10,000</td>
+											<td x-text="currentConfig[1][2]">$10,000</td>
+											<td x-text="currentConfig[2][2]">$10,000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">No Limit</td>
+											<td x-text="currentConfig[1][4]">No Limit</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$449</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 2000,000 -->
+						<div class="tab-pane text-dark fade" id="pills-contact888" role="tabpanel" aria-labelledby="pills-contact-tab888">
+							<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
+								<table class="account-config">
+									<thead>
+										<tr>
+											<td style="text-align:left !important; width:40%">Objectives</td>
+											<td>Phase 1</td>
+											<td>Phase 2</td>
+											<td>Funded</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="text-align:left !important; width:40%">Target</td>
+											<td x-text="currentConfig[0][0]">$16,000</td>
+											<td x-text="currentConfig[1][0]">$10,000</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Daily Drawdown</td>
+											<td x-text="currentConfig[0][2]">$10,000</td>
+											<td x-text="currentConfig[1][2]">$10,000</td>
+											<td x-text="currentConfig[2][2]">$10,000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Max Drawdown</td>
+											<td x-text="currentConfig[0][2]">$20,000</td>
+											<td x-text="currentConfig[1][2]">$20,000</td>
+											<td x-text="currentConfig[2][2]">$20,000</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Trading period</td>
+											<td x-text="currentConfig[0][4]">No Limit</td>
+											<td x-text="currentConfig[1][4]">No Limit</td>
+											<td x-text="currentConfig[2][4]">No Limit</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Holding Over Weekend</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">News Trading, EA & Copy Trading</td>
+											<td x-text="currentConfig[0][4]">Yes</td>
+											<td x-text="currentConfig[1][4]">Yes</td>
+											<td x-text="currentConfig[2][4]">Yes</td>
+										</tr>
+										<tr>
+											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
+											<td colspan="3">
+												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
+													<span>$849</span>
+													<strong x-text="currentConfig[0][5]"></strong>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-									<td>Objectives</td>
-									<td>Phase 1</td>
-									<td>Phase 2</td>
-									<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Target</td>
-									<td x-text="currentConfig[0][0]">15%</td>
-									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">indefinite%</td>
-								</tr>
-								<tr>
-									<td>Daily DD</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[1][1]">X</td>
-								</tr>
-								<tr>
-									<td>Max Drawdown</td>
-									<td x-text="currentConfig[0][2]">7.5%</td>
-									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">indefinite</td>
-								</tr>
-								<tr>
-									<td>Trading period</td>
-									<td x-text="currentConfig[0][4]">30days</td>
-									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
-								</tr>
-								<tr>
-									<td>Holding Over Weekend</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>News Trading, EA & Copy Trading</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>Refundable Fee</td>
-									<td colspan="3">
-										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-											<span>One time fee of $69</span>
-											<strong x-text="currentConfig[0][5]"></strong>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="pills-100" role="tabpanel" aria-labelledby="pills-100-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-									<td>Objectives</td>
-									<td>Phase 1</td>
-									<td>Phase 2</td>
-									<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Target</td>
-									<td x-text="currentConfig[0][0]">15%</td>
-									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">indefinite%</td>
-								</tr>
-								<tr>
-									<td>Daily DD</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[1][1]">X</td>
-								</tr>
-								<tr>
-									<td>Max Drawdown</td>
-									<td x-text="currentConfig[0][2]">7.5%</td>
-									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">indefinite</td>
-								</tr>
-								<tr>
-									<td>Trading period</td>
-									<td x-text="currentConfig[0][4]">30days</td>
-									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
-								</tr>
-								<tr>
-									<td>Holding Over Weekend</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>News Trading, EA & Copy Trading</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>Refundable Fee</td>
-									<td colspan="3">
-										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-											<span>One time fee of $69</span>
-											<strong x-text="currentConfig[0][5]"></strong>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="pills-200" role="tabpanel" aria-labelledby="pills-100-tab">
-					<div class="bg-box rounded-24p text-white/60 flex-1 p-40p sm:block">
-						<table class="account-config">
-							<thead>
-								<tr>
-									<td>Objectives</td>
-									<td>Phase 1</td>
-									<td>Phase 2</td>
-									<td>Funded</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Target</td>
-									<td x-text="currentConfig[0][0]">15%</td>
-									<td x-text="currentConfig[1][0]">10%</td>
-									<td x-text="currentConfig[2][0]">indefinite%</td>
-								</tr>
-								<tr>
-									<td>Daily DD</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[0][1]">NA</td>
-									<td x-text="currentConfig[1][1]">X</td>
-								</tr>
-								<tr>
-									<td>Max Drawdown</td>
-									<td x-text="currentConfig[0][2]">7.5%</td>
-									<td x-text="currentConfig[1][2]">7.5%</td>
-									<td x-text="currentConfig[2][2]">indefinite</td>
-								</tr>
-								<tr>
-									<td>Trading period</td>
-									<td x-text="currentConfig[0][4]">30days</td>
-									<td x-text="currentConfig[1][4]">60days</td>
-									<td x-text="currentConfig[2][4]">No Limit</td>
-								</tr>
-								<tr>
-									<td>Holding Over Weekend</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>News Trading, EA & Copy Trading</td>
-									<td x-text="currentConfig[0][4]">Yes</td>
-									<td x-text="currentConfig[1][4]">Yes</td>
-									<td x-text="currentConfig[2][4]">Yes</td>
-								</tr>
-								<tr>
-									<td>Refundable Fee</td>
-									<td colspan="3">
-										<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-											<span>One time fee of $69</span>
-											<strong x-text="currentConfig[0][5]"></strong>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<!-- nested-pill -->
 				</div>
 			</div>
 		</div>
     </section>
 	<!-- ===== End Pricing ===== -->
+
+
+
+
 	
 	<!-- ======= Key Feature ======= -->
     <section id="key-feature" class="key-feature">

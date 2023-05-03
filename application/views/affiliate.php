@@ -10,7 +10,7 @@ $this->load->view('includes/header');
                     Share, Get Paid, Repeat<br>
                     Earn Like a<span> Champion</span><br>
                 </h1>  
-                <p style="margin: 1rem 0 0 24px; font-size:16px; color:#000000; width:90%">Start earning 15% commission on every referral.</p>
+                <p style="margin: 1rem 0 0 24px; font-size:16px; color:#000000; width:90%">Start earning <strong style= "color:#0d6efd">15%</strong> commission on every referral.</p>
                 <div class="btns justify-content-start d-flex" style="width:80%">
                     <a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
                         <span>Become An Affiliate</span>
@@ -53,7 +53,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1">Highest affiliate commission</div>
-                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering <strong style= "color:#0d6efd">15%</strong> commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
                             </div>
                         </div>
                     </a>
@@ -105,7 +105,7 @@ $this->load->view('includes/header');
 
 <li class="text-dark list-disc pt-8"><p>In no way may you copy our sales page content such as our sales letter, video, or images in an effort to imitate Equinox Trading Capital on your own site.</p></li>
 
-<li class="text-dark list-disc pt-8"><p>The Available Payout Methods for Equinox Trading Capital Affiliates are: Perfect Money, DEEL, Crypto.</p></li>
+<li class="text-dark list-disc pt-8"><p>The Available Payout Methods for Equinox Trading Capital Affiliates are: <strong style= "color:#0d6efd">DEEL & Crypto</strong>.</p></li>
 
 <li class="text-dark list-disc pt-8"><p>The commission will be sent to the affiliates with their preferred payment methods.</p></li>
 

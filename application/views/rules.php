@@ -17,13 +17,13 @@ $this->load->view('includes/header');
 </style>
 <main id="main">
 	<!-- ======= Why Us Section ======= -->
-    <section id="faq" class="faq">
+    <section id="faq" style="margin-top: 8rem">
         <div class="container" data-aos="fade-up">
             <div class="section-title  text-center">
                 <h2>Find the Rules</h2>
             </div>
             <div class="d-flex m-5" id="myFilter">
-                <input type="text" style="width:inherit"  class="col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Faq">
+                <input type="text" style="width:inherit"  class="col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
                 <button class="btn search">
                     <i class="fas fa-search text-dark"></i>
                 </button>
@@ -34,13 +34,13 @@ $this->load->view('includes/header');
                 <li class="nav-item m-2 pointer">
                     <div href="#profile" role="tab" data-toggle="tab" class="flex justify-center active items-center flex-row px-16p py-8p 
                             bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-                        <strong>Aggressive</strong>
+                        <strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
                     </div>
                 </li>
                 <li class="nav-item m-2 pointer">
                     <div href="#buzz" role="tab" data-toggle="tab" class="flex justify-center items-center flex-row px-16p py-8p 
                             bg-primary-500/16 border-pricing border-primary-500 rounded-full -my-12p h-40p gap-8p">
-                        <strong>&nbsp;&nbsp;&nbsp;Normal&nbsp;&nbsp;&nbsp;</strong>
+                        <strong>Aggressive</strong>
                     </div>
                 </li>            
             </ul>
@@ -49,32 +49,68 @@ $this->load->view('includes/header');
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            My question here
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        How do you calculate the daily loss limit?
                         </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                            Daily loss limit is calculated as below:
+                            <br>
+                            <br>
+                            Daily Loss Limit is calculated based on the previous day’s end of day (5pm EST) equity and balance. 
+                            Example of daily drawdown: If you have a <strong style= "color:#0d6efd">$105,000</strong> account balance, and you have <strong style= "color:#0d6efd">$5000</strong> floating profit going into the new day this will be your buffer, and you can still go down to <strong style= "color:#0d6efd">$99,750</strong> before hitting daily loss limit.
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            My question here
-                        </button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                How do you calculate the overall max drawdown?  
+                            </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                            <div class="accordion-body">
+                                Maximum drawdown is the maximum your account can drawdown before you would hard breach your account.  When you open the account, your Max Drawdown is set at <strong style= "color:#0d6efd">10%</strong> of your starting balance. This will be static for the duration of the account.
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            My question here
-                        </button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Can i hold position over the weekend?
+                            </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                            <div class="accordion-body">
+                            <strong style= "color:#0d6efd">Yes</strong>, you are allowed to hold over the weekend.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                Do i have to place a stop loss?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <strong style= "color:#0d6efd">No</strong>, you do not have to use a stop loss.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                Is there any consistency rule?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <strong style= "color:#0d6efd">No</strong>, there is no consistency rule
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,32 +120,39 @@ $this->load->view('includes/header');
                 <div class="accordion accordion-flush" id="accordionFlushExample2">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            My question here
-                        </button>
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                How do you calculate the overall max drawdown?                                                        
+                            </button>
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                            <div class="accordion-body">
+                            Maximum drawdown is the maximum your account can drawdown before you would hard breach your account. 
+                            When you open the account, your Max Drawdown is set at <strong style= "color:#0d6efd">10%</strong> of your starting balance. This will be static for the duration of the account.   
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            My question here
-                        </button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Can i hold position over the weekend?
+                            </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                            <div class="accordion-body">
+                                <strong style= "color:#0d6efd">Yes</strong>, you are allowed to hold over the weekend.
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            My question here
-                        </button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Is there any consistency rule?
+                            </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                            <div class="accordion-body">
+                                <strong style= "color:#0d6efd">No</strong>, there is no consistency rule
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,8 @@ $this->load->view('includes/header');
 						<div class="open-hours d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-clock"></i>
 							<h4>Open Hours</h4>
-							<p>24*5</p>
+							<!-- <p>24*5</p> -->
+							<p>Monday to Friday</p>
 						</div>
 					</div>
 				</div>
@@ -50,7 +51,8 @@ $this->load->view('includes/header');
 						<div class="phone d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-phone"></i>
 							<h4>Live Chat</h4>
-							<p>24*5</p>
+							<!-- <p>24*5</p> -->
+							<p>Monday to Friday</p>
 						</div>
 					</div>
 				</div>
@@ -81,7 +83,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<div class="info">
 						<div class="email about-text">
 							<h4>EQUINOX TRADING CAPITAL LLC</h4>
@@ -96,7 +98,7 @@ $this->load->view('includes/header');
 							<p>2/F, Tern Centre, Tower 1, 237 Queen’s Road Central, Hong Kong<br>CIN: 000000XX</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			
 			<div class="row" style="margin-top:6rem !important">

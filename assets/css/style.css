@@ -516,9 +516,14 @@ h6 {
 }
 
 .pricing-coming-soon span {
-	background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+    /* background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
+	color: #000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
 }
 
 #hero h2 {
@@ -2066,16 +2071,21 @@ table.account-config td {
 }
 
 .accordion-button:not(.collapsed) {
-	color: #ffffff;
-    background-color: #000000;
-    box-shadow: inset 0px -3px 0px rgb(107 111 110 / 47%);
+	color: #000;
+    background-color: #fff;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 }
 
+.pricing-coming-soon{
+    box-shadow: 0px 0px 10px #00000090;
+    background: #dddddd30;
+}
+
+
 .accordion-button:focus {
 	z-index: 3;
-	border: none !important;
+	border-bottom: 4px solid #ddd !important;
 	outline: 0;
 	box-shadow: none !important;
 }
@@ -2673,7 +2683,7 @@ ul {
     -ms-transform: rotate(-5deg);
     -o-transform: rotate(-5deg);
     transform: rotate(-1deg);
-    width: 60%;
+    width: 50%;
 }
 .box a {
 	background: #00b57c;
