@@ -50,7 +50,8 @@ body{
   position: inherit !important;
 }
 .game-btn{
-  border-radius:30px
+  border-radius:30px;
+  padding: 6px 4%;
 }
   .swiper {
     width: 80%;

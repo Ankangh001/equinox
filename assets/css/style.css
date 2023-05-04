@@ -8,12 +8,12 @@ body {
 }
 
 a {
-	color: #00e894;
+	color: #fff;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #00e894;
+	color: #fff;
 	text-decoration: none;
 }
 
@@ -216,21 +216,21 @@ h6 {
     background: linear-gradient(91deg, #ff5757, #8c52ff);
     color: #fff;
     border-radius: 50px;
-    padding: 6px 24px;
+    padding: 7px 22px;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
     transition: 0.3s ease-in-out;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
 }
 
 .book-a-table-btn:hover {
-    background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+	background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border: 2px solid #ff5757;
-	font-weight: 600;
+    box-shadow: inset 2px 0px 0px #ff5757, inset -2px 0px 0px #ff5757, inset 1px 2px 0px #ff5757, inset 0px -2px 0px #ff5757;
+    font-weight: 600;
 }
 
 @media (max-width: 992px) {

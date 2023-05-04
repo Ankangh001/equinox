@@ -9,7 +9,7 @@ $this->load->view('includes/header');
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
 		<div class="row">
         	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
-				<h1>Funding for traders <br>-  <span>Simplified !</span></h1>
+				<h1>Funding for traders <br><span>Simplified !</span></h1>
 				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
 				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
@@ -1251,7 +1251,7 @@ $this->load->view('includes/header');
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img src="assets/img/game2.png" alt="game logo" style="width: 70%;">
+              <img src="assets/img/game2.png" alt="game logo" style="width: 70%;margin:auto">
             </div>
           </div>
           <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">
@@ -1286,7 +1286,7 @@ $this->load->view('includes/header');
 			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">14 days</strong>  from the first trade. You will get paid on your most convinient date.
 			</p>
 			<div class="img-holder d-flex justify-content-center align-items-center p-3">
-				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content; margin-right:1rem">
+				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content; margin-right:2rem">
 				<img class="ml-3" src="<?=base_url('assets/img/')?>wallet.png" alt="mt4-image" style="width:20%; height:fit-content">
 			</div>
           </div>
@@ -1336,10 +1336,10 @@ $this->load->view('includes/header');
 						<span>Trade Journal</span>
 					</button>
 					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
-						<span>Market Analysis</span>
+						<span>Market Watch</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
-						<span>Market Sentiments</span>
+						<span>Market Analysis</span>
 					</button>
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
 						<span>Economic Calendar</span>

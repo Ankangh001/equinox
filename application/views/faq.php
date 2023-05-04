@@ -143,13 +143,13 @@ $this->load->view('includes/header');
                                 However, it needs to be understood that this is the best-case scenario and similarly, traders might face periods when they don’t earn any profits. 
                                 In general, trading is a risky business. Another benefit of trading for Equinox Trading Capital is that you won’t be responsible for any losses if any. 
                                 In case things go wrong, all losses on the live account are covered by Equinox Trading Capital. You don’t need to fear losing if you literally have nothing to lose.
-                                At Equinox Trading Capital, we are also traders and we understand that to be a great trader, it is not just about having enough capital to trade with. 
+                                <br><br> At Equinox Trading Capital, we are also traders and we understand that to be a great trader, it is not just about having enough capital to trade with. 
                                 The performance of our traders directly reflects the performance of the company. Therefore, it is in our interest that our traders trade under the best conditions. 
                                 Traders at Equinox Trading Capital will receive wide access to our <strong style= "color:#0d6efd">innovative Trading Applications</strong> which can enhance their trading edge and we will also evaluate your trading accounts with detailed feedback from our company.
                                 Then there is trading discipline. You cannot be all loosey-goosey with the live account. 
                                 We will carefully observe your trading results and you will be trading under much easier rules. 
                                 We believe that our rules are not very restrictive but at the same time, they would prevent a disaster if you decided to go on tilt. 
-                                No more over-trading, revenge trading, over-leveraging etc. That is why you will learn to manage risk much better once you start trading with us.
+                                <br><br> No more over-trading, revenge trading, over-leveraging etc. That is why you will learn to manage risk much better once you start trading with us.
                                 Another issue traders face is the so-called ‘keep and grow or withdraw and go‘. Do you prefer compounding your account or rather enjoy your hard-earned profit? 
                                 At Equinox Trading Capital, you can do both. Equinox Trading Capital will pay out up to <strong style= "color:#0d6efd">90%</strong> profit share on a bi-weekly basis. 
                                 Periodically, we will allocate more balance into your <strong style= "color:#0d6efd">live account</strong> if you consistently profit. <strong style= "color:#0d6efd">Get paid</strong> and grow at the same time according to our scaling plan.
@@ -264,16 +264,15 @@ $this->load->view('includes/header');
                         <div class="accordion-body">
                             Traders will have the same account balance size as chosen for their preceding Evaluation.
                             <br/>
-                            <br/>
-                            To avoid any confusion, after a client becomes a <strong style= "color:#0d6efd">funded trader</strong>, he/she will be provided with a demo account with <strong style= "color:#0d6efd">virtual funds</strong>. The funded account is connected to our <strong style= "color:#0d6efd">Proprietary Trading Firm’s</strong> live trading account with real capital.
+                            To avoid any confusion, after a client becomes a <strong style= "color:#0d6efd">funded trader</strong>, he/she will be provided with a demo account with virtual funds. 
+                            
+                            <br> The funded account is connected to our <strong style= "color:#0d6efd">Proprietary Trading Firm’s</strong> live trading account with real capital.
 
-                            <br/><br/>That is where we generate real cash flow. Clients are entitled to up to 90% of profits generated on the funded Account. This solution is administratively much easier and gives our company the freedom to actively manage risk in certain markets.
+                            <br/>That is where we generate real cash flow. Clients are entitled to up to <strong style= "color:#0d6efd">90%</strong> of profits generated on the funded Account. 
+                            <br/><br/>This solution is administratively much easier and gives our company the freedom to actively manage risk in certain markets.
 
-                            <br/><br/>We do not have upgrading options so you need to choose the appropriate account size right at the beginning when you are configuring your evaluation.
-
-                            <br/><br/>If you are successful and stable in the long run, the account balance can be increased according to our scaling plan. 
-
-                            <br/><br/>If your account fulfils the eligibility criteria, you will be able to request a scale-up directly in the client area. We shall then review your track record and provide a scaled-up live account for you for the upcoming trading period.
+                            <br/>We do not have upgrading options so you need to choose the appropriate account size right at the beginning when you are configuring your evaluation. If you are successful and stable in the long run, the account balance can be increased according to our scaling plan. 
+                            If your account fulfils the eligibility criteria, you will be able to request a scale-up directly in the client area. We shall then review your track record and provide a scaled-up live account for you for the upcoming trading period.
                         </div>
                         </div>
                     </div>
@@ -285,12 +284,12 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="funded-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFunudedhExample2">
                             <div class="accordion-body">
-                                The profit split on the live account is done on a bi-weekly basis.
+                                The profit split on the live account is done on a <strong style= "color:#0d6efd">bi-weekly basis.</strong>
                                 The payouts are processed within 1 business day upon confirming the invoice. 
                                 You can receive your profits by deel or cryptocurrencies. We don’t charge any commissions for withdrawals.
                                 You don’t need to score any minimum profit to receive up to a <strong style= "color:#0d6efd">90%</strong> Profit Split. 
                                 Whatever amount of profit you generate, that’s what we split by <strong style= "color:#0d6efd">80/20</strong> (<strong style= "color:#0d6efd">90/10</strong> on the scale-up plan) and pay you out.
-                                If you meet the conditions of our scaling plan, not only do we increase the balance of your live account by 50%, but the payout ratio will also automatically change to a staggering 90/10! 
+                                If you meet the conditions of our scaling plan, not only do we increase the balance of your live account by <strong style= "color:#0d6efd">50%</strong>, but the payout ratio will also automatically change to a staggering <strong style= "color:#0d6efd">90/10</strong>
                                 If you prefer to keep your <strong style= "color:#0d6efd">profit split</strong> on account to grow and accordingly build up your balance and drawdown buffer, you can do so.
                             </div>
                         </div>
@@ -323,10 +322,10 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="platform-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionPlatformExample2">
                             <div class="accordion-body">
-                                The account specification can be seen directly in the trading platform. To view the instrument specification in <strong style= "color:#0d6efd">MetaTrader</strong>,
+                                The account specification can be seen directly in the trading platform. To view the instrument specification in MetaTrader,
                                 open your Market Watch (Ctrl+M), right-click on the concerned instrument and choose ‘specification’.
-                                <br/><br/>Please familiarize yourself with the offer and conditions of each instrument you trade.The leverage we offer is up to 1:100 and cannot be increased. 
-                                The <strong style= "color:#0d6efd">leverage can be lowered</strong> upon request.  
+                                <br/><br/>Please familiarize yourself with the offer and conditions of each instrument you trade.The leverage we offer is up to <strong style= "color:#0d6efd">1:100</strong> and cannot be increased. 
+                                The leverage can be lowered upon request.  
                             </div>
                         </div>
                     </div>
@@ -387,7 +386,7 @@ $this->load->view('includes/header');
                                 The fee mainly serves as a trader’s commitment to treat the account with the utmost care and responsibility.A trader has something in the game and the psychology is working. 
                                 Also, the fee is just a marginal percentage compared to the size of the live account that you will receive after succeeding in the evaluation. In other words, the fee is a key towards the live account and an opportunity to gain financial independence.
                                 The good news is that you cannot lose more than this fee as any potential losses on the live account are covered by us. On top of that, the fee is always refunded back to the trader with his/her first profit split from the live account.
-                                The fee also covers the use of all our unique applications, such as the Web Terminal, Advanced Charts, Market Analysis, Calculators, Risk Management Application, Trade Management Application, Account Analysis, Account MetriX and Trading Journal.
+                                <br><br> The fee also covers the use of all our unique applications, such as the Web Terminal, Advanced Charts, Market Analysis, Calculators, Risk Management Application, Trade Management Application, Account Analysis, Account MetriX and Trading Journal.
                                 Another purpose of the fee is to filter out only the serious traders from those who just keep on trying. We are looking for traders who are experienced and can generate profits. Our capacities and resources are limited, and we simply can’t cater for all the traders out there.
                                 That’s why we take on board only those who are serious, committed and responsible. Our programme is a highly valued service we offer, and therefore it is adequately priced.
                             </div>
@@ -402,9 +401,9 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="order-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionFunudedhExample2">
                             <div class="accordion-body">
-                            We do not place any limit on the number of trading accounts you can have in the evaluation phase. However, we have a maximum capital allocation of $500,000 (prior to scaling) per trader or strategy, at any given time for any live account.
+                            We do not place any limit on the number of trading accounts you can have in the evaluation phase. However, we have a maximum capital allocation of <strong style= "color:#0d6efd">$500,000</strong> (prior to scaling) per trader or strategy, at any given time for any live account.
                             These limits are in place due to risk mitigation & diversification as we don’t want to allocate a big portion of our investment on one card.
-                            Please be careful not to get multiple accounts through various registrations as this is not permitted. If we discover identically traded strategies through various accounts, and exceeding $500,000 in the summary of allocated capital value, we reserve the right to suspend those accounts as per the T&Cs.
+                            Please be careful not to get multiple accounts through various registrations as this is not permitted. If we discover identically traded strategies through various accounts, and exceeding <strong style= "color:#0d6efd">$500,000</strong> in the summary of allocated capital value, we reserve the right to suspend those accounts as per the T&Cs.
                             If you would like to combine your successfully passed evaluation accounts into one master live account, we can do so upon request. 
                             The live account that is merged has a combined balance value as well as the drawdown limits. 
                             If you wish to compound your profits, you do not have to withdraw your profits before merging the accounts.
@@ -428,7 +427,7 @@ $this->load->view('includes/header');
                             <div class="accordion-body">
                                 Our free trial is a shortened version of the evaluation so you can get used to trading with us. The free trials only serve our new traders to practise their trading skills to see if they have what it takes to follow and respect our trading rules.
                                 If you are successful in the Free Trial, you have the best chances to succeed in the full evaluation as well. This should encourage you to start your journey to become one of our traders.
-                                Please note that free trials don’t give you any eligibility to automatically secure your live account. Although your results might be good in the free trial, you still need to go through the evaluation process to become one of our traders.
+                                <br><br> Please note that free trials don’t give you any eligibility to automatically secure your live account. Although your results might be good in the free trial, you still need to go through the evaluation process to become one of our traders.
                                 Our free trials are extremely popular and we have literally thousands of accounts taken every day. To accommodate the demand, only one free trial per trader is allowed at a time
                             </div>
                         </div>
@@ -463,7 +462,7 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="services-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionServicesExample2">
                             <div class="accordion-body">
-                                Yes, you can trade using an Expert Advisor. We do not allow any malicious expert advisors such as:
+                                <strong style= "color:#0d6efd">Yes</strong>, you can trade using an Expert Advisor. We do not allow any malicious expert advisors such as:
                                 <br/><br/>
                                 HFT<br/>
                                 Grid / Martingale<br/>
@@ -481,7 +480,7 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="services-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionServicesExample2">
                             <div class="accordion-body">
-                                Yes, you can trade news.
+                                <strong style= "color:#0d6efd">Yes</strong>, you can trade news.
                             </div>
                         </div>
                     </div>
@@ -494,7 +493,7 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="services-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionServicesExample2">
                             <div class="accordion-body">
-                            We don’t even impose any limits on instruments or position sizes you trade. You can trade all the instruments and assets that are available in your trading platform (Forex, Indices, Commodities,Crypto...). We give you complete freedom here. If your system is profitable while respecting the rules, we’re happy to see you profit with us.
+                            We don’t even impose any limits on instruments or position sizes you trade. You can trade all the instruments and assets that are available in your trading platform <strong style= "color:#0d6efd">(Forex, Indices, Commodities,Crypto...)</strong>. We give you complete freedom here. If your system is profitable while respecting the rules, we’re happy to see you profit with us.
                             </div>
                         </div>
                     </div>
