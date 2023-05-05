@@ -1,8 +1,8 @@
 
-<div class="rows m-5">
+<div class="rows m-5 g-funded-container">
   <div class="col-lg-10 m-auto d-flex justify-content-center align-items-center get-funded" style="background:transparent !important">
-    <p style="font-size:25px">Join Equinox Trading Capital on an exciting adventure!</p>  
-    <a href="client-login" class="btn btn-primary m-auto gradient-btn" style="border-radius: 30px;font-size:25px;padding: 0.5rem 2.5rem !important;">Get Funded</a>
+    <p class="f-25">Join Equinox Trading Capital on an exciting adventure!</p>  
+    <a href="client-login" class="btn btn-primary m-auto gradient-btn g-f-btn">Get Funded</a>
   </div>
 </div>
   <footer class="for-pc" id="footer">
@@ -234,7 +234,7 @@
 
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=1"></script>
 <script>$(function(){
       var calcNewYear = setInterval(function(){
         date_future = new Date('2023-06-22');
@@ -255,52 +255,35 @@
         $("#sec").text(seconds);
       },1000);
 	});
-  
-  $(document).ready(function(){
-    $("#eqLogoWhite").css("display" , "none");
-    $(window).scroll(function(){
-      var scroll = $(window).scrollTop();
-      if (scroll > 90) {
-        $("#eqLogoblack").css("display" , "none");  	
-        $("#eqLogoWhite").css("display" , "block");
-      }
-      
-      else{
-        $("#eqLogoblack").css("display" , "block");  	
-        $("#eqLogoWhite").css("display" , "none");
-        $("select.goog-te-combo").css("color" , "#000000 !important");
-      }
-    })
-  })
 
 
-  function playIframe(id, src) {
-    let container = '#iframe'+id;
-    $(container).html('');
-    $(container).append(`
-    <iframe width="90%" style="border-radius:20px" height="450px" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    `);
-  }
+  // function playIframe(id, src) {
+  //   let container = '#iframe'+id;
+  //   $(container).html('');
+  //   $(container).append(`
+  //   <iframe width="90%" style="border-radius:20px" height="450px" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  //   `);
+  // }
 
 
-    // Disable right-click
-    // document.addEventListener('contextmenu', (e) => e.preventDefault());
+    Disable right-click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    // function ctrlShiftKey(e, keyCode) {
-    //   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-    // }
+    function ctrlShiftKey(e, keyCode) {
+      return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    }
 
-    // document.onkeydown = (e) => {
-    //   // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-    //   if (
-    //     event.keyCode === 123 ||
-    //     ctrlShiftKey(e, 'I') ||
-    //     ctrlShiftKey(e, 'J') ||
-    //     ctrlShiftKey(e, 'C') ||
-    //     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-    //   )
-    //     return false;
-    // };
+    document.onkeydown = (e) => {
+      // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+      if (
+        event.keyCode === 123 ||
+        ctrlShiftKey(e, 'I') ||
+        ctrlShiftKey(e, 'J') ||
+        ctrlShiftKey(e, 'C') ||
+        (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+      )
+        return false;
+    };
 
   </script>
 </body>

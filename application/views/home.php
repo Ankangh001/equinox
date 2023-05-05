@@ -34,7 +34,7 @@ $this->load->view('includes/header');
 				</div> -->
 
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
+					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
 					<a href="client-login" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a>
@@ -67,7 +67,7 @@ $this->load->view('includes/header');
 
   <main id="main">
 	<!-- ====== As seen on ====== -->
-	<div class="row bg-transparent" style="position: inherit;">
+	<div class="row bg-transparent" id="pc-logo" style="position: inherit;">
 		<div class="row">
 			<div class="col-lg-12 photos d-flex justify-content-center">
 				<img src="<?=base_url('assets/') ?>img/bloomberg.png" style="width:8% !important" alt="Bloomberg" srcset="">
@@ -78,6 +78,23 @@ $this->load->view('includes/header');
 				<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" style="width:6% !important" alt="" srcset="">
 				<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="" srcset="">
 				<img src="<?=base_url('assets/') ?>img/cnbc.png" alt=""style="width:8% !important" srcset="">
+			</div>
+		</div>
+	</div>
+
+	<div class="row bg-transparent" id="mobile-logo" style="position: inherit; margin:1rem auto;">
+		<div class="row"  style="margin:auto;padding:0">
+			<div class="col-lg-12 photos d-flex justify-content-center" style="padding:0">
+				<img src="<?=base_url('assets/') ?>img/bloomberg.png"	alt="Bloomberg" style="width:16% !important">
+				<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga">
+				<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac">
+				<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal">
+			</div>
+			<div class="col-lg-12 photos d-flex justify-content-center" style="padding:0">
+				<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="street">
+				<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" alt="yahoo" style="width:13% !important">
+				<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="marketwatch">
+				<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="cnbc">
 			</div>
 		</div>
 	</div>
@@ -192,7 +209,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 
-					<div class="col-lg-4 key-feature mt-4 mt-lg-0">
+					<div class="col-lg-4 key-features mt-4 mt-lg-0">
 						<div class="box" data-aos="zoom-in" data-aos-delay="200" style="padding: 20px 0;">
 							<a data-toggle="tooltip"  
 								data-toggle="tooltip" 
@@ -283,7 +300,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 
-					<div class="col-lg-4 key-feature mt-4 mt-lg-0">
+					<div class="col-lg-4 key-features mt-4 mt-lg-0">
 						<div class="box" data-aos="zoom-in" data-aos-delay="200" style="padding: 20px 0;">
 							<a data-toggle="tooltip"  
 								data-toggle="tooltip" 
@@ -1251,7 +1268,8 @@ $this->load->view('includes/header');
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img src="assets/img/game2.png" alt="game logo" style="width: 70%;margin:auto">
+              <img src="assets/img/game2.png" alt="game logo" id="pc-game" style="width: 70%;margin:auto">
+              <img src="assets/img/mob-game.png" alt="game logo" id="mob-game" style="width: 100%;margin:auto">
             </div>
           </div>
           <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">

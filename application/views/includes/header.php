@@ -4,15 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="Cache-control" content="no-cache">
-  
+
+  <meta http-equiv='cache-control' content='no-cache'>
+  <meta http-equiv='expires' content='0'>
+  <meta http-equiv='pragma' content='no-cache'>
+
+
+  <meta description ="Equinox trading Capital Limited">
   <title>Equinox</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -29,12 +34,23 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
  
  <script type="text/javascript">
-     function googleTranslateElementInit() {
-         new google.translate.TranslateElement(
-             {pageLanguage: 'en'},
-             'google_translate_element'
-         );
-     }
+//      function googleTranslateElementInit() {
+//          new google.translate.TranslateElement(
+//              {pageLanguage: 'en'},
+//              'google_translate_element'
+//          );
+//      }
+//      $('.button').click(function() {
+//     $.ajax({
+//         url: "",
+//         context: document.body,
+//         success: function(s,x){
+
+//             $('html[manifest=saveappoffline.appcache]').attr('content', '');
+//                 $(this).html(s);
+//         }
+//     }); 
+// });
  </script>
 
  <script type="text/javascript" src= "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -115,7 +131,7 @@ body{
 </style>
 
 
-  <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>css/style.css>v=1" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
