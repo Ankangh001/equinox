@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/user/assets/') ?>vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
 
     <!-- Helpers -->
     <script src="<?= base_url('assets/user/assets/') ?>vendor/js/helpers.js"></script>
@@ -53,6 +54,11 @@
     <script src="<?= base_url('assets/user/assets/') ?>js/config.js"></script>
   </head>
   <body>
+  <div id="loading" class="demo-inline-spacing">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -72,10 +78,11 @@
 
           <div class="menu-inner-shadow"></div>
 
-          <ul class="menu-inner py-1">
+          <ul class="menu-inner py-3 border-top">
             <!-- Dashboard -->
-            <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+            
+            <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
+              <a href="<?=base_url()?>user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -83,19 +90,19 @@
 
 
 
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="account-overview" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+            <!-- Account -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'account-overview') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>account-overview" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-credit-card-alt"></i>
                 <div data-i18n="Analytics">Account Overview</div>
               </a>
             </li>
 
 
 
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <!-- Profile -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>profile" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div data-i18n="Analytics">Profile</div>
               </a>
@@ -103,11 +110,11 @@
 
 
 
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+            <!-- Purchase History -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>purchase-history" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Analytics">Purchase History</div>
               </a>
             </li>
           </ul>

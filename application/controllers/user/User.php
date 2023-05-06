@@ -8,7 +8,7 @@ class User extends CI_Controller {
 		$this->load->view('user/index');
 	}
     
-    public function accountOverview(Type $var = null)
+    public function accountOverview()
     {
         $this->load->view('user/account-overview');
         

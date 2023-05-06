@@ -35,8 +35,10 @@ $route['live-account'] = 'welcome/liveAccount';
 
 
 //user dashboard
-$route['user'] = 'user';
-$route['user/account-overview'] = 'user/accountOverview';
+$route['user'] = 'user/user';
+$route['user/account-overview'] = 'user/account';
+$route['user/profile'] = 'user/profile';
+$route['user/purchase-history'] = 'user/purchase';
 
 
 
