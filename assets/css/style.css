@@ -466,11 +466,6 @@ h6 {
 #hero {
 	width: 100%;
 	height: 90vh;
-	background: linear-gradient(
-		83deg,
-		rgb(0 0 0 / 70%) 0%,
-		rgb(128 128 128) 100%
-	);
 	background-size: cover;
 	position: relative;
 	padding: 0;
@@ -3072,8 +3067,35 @@ button.game-btn {
 	font-size:25px;
 	padding: 0.5rem 2.5rem !important;
 }
+.trade-cap{
+	margin: 1rem 0 -15px 34px; 
+	font-size:16px; 
+	color:#000000;
+}
+
+	
+iframe.mob-tuto{
+	display: none;
+}
+
+
 /* mobile optimization */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+	#hero .btns {
+		margin: 14px auto !important;
+		width: 100% !important;
+		justify-content: space-evenly !important;
+	}
+	#hero h1 {
+		font-size: 33px;
+		line-height: 38px;
+		margin: 0;
+	}
+	.trade-cap{
+		margin: 1rem auto; 
+		font-size:18px; 
+		color:#000000;
+	}
 	.f-25{
 		font-size: 16px;
 		width: 100%;
@@ -3144,12 +3166,14 @@ button.game-btn {
 	}
 	.evaluation-text::before {
 		left: 10%;
-		top: 13.85%;
+		top: 11.85%;
+		display: none;
 	}
 	.evaluation-text::after {
 		right: 10%;
-		top: 13.85%;
+		top: 11.85%;
 		left:auto;
+		display: none;
 	}
 	li.nav-item.m-2.mb-3.pointer div {
 		margin: 0 !important;
@@ -3169,8 +3193,18 @@ button.game-btn {
 		font-size: 12px !important;
 	}
 	.flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p {
-		margin: 0;
-		font-size: 16px;
+		margin: 0 auto 10% auto !important;
+		font-size: 18px !important;
+		padding: 6% 14% !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	li.nav-item {
+		margin-right: 2rem !important;
+	}
+	.pricing-coming-soon span {
+		font-size: 14px;
 	}
 	.why-us {
 		padding: 0;
@@ -3214,8 +3248,9 @@ button.game-btn {
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 16px !important;
-		padding: 6px 8px !important;
+		font-size: 22px !important;
+		padding: 3% 3% !important;
+		margin: 1rem 0 !important;
 	}
 	#hero .btn2 {
 		margin: auto !important;
@@ -3240,7 +3275,16 @@ button.game-btn {
 		text-align: center !important;
 	}
 	form{
-		width: 90%;
+		width: 90% !important;
+		margin: 5rem auto;
+	}
+		
+	.mob-tuto{
+		display: block !important;
+	}
+	.payouts{
+		padding: 0;
+		margin-bottom: 3rem;
 	}
 }
 
@@ -3258,9 +3302,8 @@ button.game-btn {
 	}
 
 	#hero .btns {
-		margin: 30px auto !important;
+		margin: 30px auto;
 	}
-	
 
 	#hero{
 		height: 100%;
@@ -3325,8 +3368,8 @@ button.game-btn {
 	}
 
 	.section-title h2{
-		font-size: 16px  !important;
-		line-height: 1rem;
+		font-size: 24px !important;
+		line-height: 2rem;
 	}
 
 	.key-highlights-mobile {

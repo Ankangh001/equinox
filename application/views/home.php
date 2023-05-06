@@ -10,7 +10,7 @@ $this->load->view('includes/header');
 		<div class="row">
         	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
-				<p style="margin: 1rem 0 -15px 34px; font-size:16px; color:#000000">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
+				<p class="trade-cap">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
 				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
 
@@ -98,8 +98,10 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 	</div>
+	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 	<!-- ======= Trade for Proprietary ======= -->
-	<section id="about" class="payout why-trade" style="background:#fff; padding-top:0">
+	<section id="about" class="payout why-trade payoutee" style="background:#fff; padding-top:0">
 		<div class="container mt-5" data-aos="fade-up">
 			<div class="row">
 			<div class="col-lg-6 order-2 order-lg-1 aos-init aos-animate d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
@@ -388,7 +390,7 @@ $this->load->view('includes/header');
 					<ul class="nav nav-pills mb-3 col-lg-9" id="pills-tab" role="tablist" style="position: relative;left: 30%;top: -4rem;">
 						<li class="nav-item mr-3" role="presentation">
 							<button class="flex justify-center active
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full  fw-bold
 								-my-12p h-40p gap-8p active" id="pills-home-tab2" 
@@ -397,7 +399,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item mr-3" role="presentation">
 							<button class="flex justify-center 
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full  fw-bold
 								-my-12p h-40p gap-8p" id="pills-profile-tab2" 
@@ -407,7 +409,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item mr-3" role="presentation">
 							<button class="flex justify-center 
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold 
 								-my-12p h-40p gap-8p" id="pills-contact-tab" 
@@ -417,7 +419,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item mr-3" role="presentation">
 							<button class="flex justify-center 
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full  fw-bold
 								-my-12p h-40p gap-8p" id="pills-contact22-tab" 
@@ -427,7 +429,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item mr-3" role="presentation">
 							<button class="flex justify-center 
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full  fw-bold
 								-my-12p h-40p gap-8p" id="pills-contact33-tab" 
@@ -721,7 +723,7 @@ $this->load->view('includes/header');
 					<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="position: relative;left: 30%;top: -4rem;">
 						<li class="nav-item" role="presentation">
 							<button class="flex justify-center active mr-3
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p  mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold
 								-my-12p h-40p gap-8p active active" id="pills-home-tab111" 
@@ -730,7 +732,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item" role="presentation">
 							<button class="flex justify-center mr-3
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p  mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold
 								-my-12p h-40p gap-8p" id="pills-profile-tab2555" 
@@ -740,7 +742,7 @@ $this->load->view('includes/header');
 						</li>
 						<li class="nav-item" role="presentation">
 							<button class="flex justify-center mr-3
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p  mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold
 								-my-12p h-40p gap-8p" id="pills-contact-tab666" 
@@ -750,7 +752,7 @@ $this->load->view('includes/header');
 
 						<li class="nav-item" role="presentation">
 							<button class="flex justify-center mr-3
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p  mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold
 								-my-12p h-40p gap-8p" id="pills-contact-tab777" 
@@ -760,7 +762,7 @@ $this->load->view('includes/header');
 
 						<li class="nav-item" role="presentation">
 							<button class="flex justify-center mr-3
-								items-center flex-row px-16p py-8p 
+								items-center flex-row px-16p py-8p  mob-pricing-btn
 								bg-primary-500/16 border-pricing 
 								border-primary-500 rounded-full fw-bold
 								-my-12p h-40p gap-8p" id="pills-contact-tab888" 
