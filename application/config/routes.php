@@ -42,7 +42,8 @@ $route['user/purchase-history'] = 'user/purchase';
 $route['user/start-new-challenge'] = 'user/challenge';
 $route['user/payment'] = 'user/payment';
 $route['user/account-info'] = 'user/info';
-// $route['user/payment'] = 'user/payment';
+$route['user/account-security'] = 'user/security';
+$route['user/account-kyc'] = 'user/kyc';
 // $route['user/payment'] = 'user/payment';
 // $route['user/payment'] = 'user/payment';
 
