@@ -44,7 +44,7 @@ $route['user/payment'] = 'user/payment';
 $route['user/account-info'] = 'user/info';
 $route['user/account-security'] = 'user/security';
 $route['user/account-kyc'] = 'user/kyc';
-// $route['user/payment'] = 'user/payment';
+$route['user/payout'] = 'user/payout';
 // $route['user/payment'] = 'user/payment';
 
 

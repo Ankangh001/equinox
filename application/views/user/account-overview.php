@@ -8,7 +8,7 @@ $this->load->view('user/includes/header');
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Purchase History</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Account Overview</h4>
     <div class="accordion mt-3" id="accordionExample">
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -28,7 +28,7 @@ $this->load->view('user/includes/header');
                 <div class="modal-body">
                   <div class="col-xl">
                     <div class="card-body">
-                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                      <div class="mb-3 row border-bottom justfy-content-start">
                         <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">098765678</label>
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
@@ -75,13 +75,17 @@ $this->load->view('user/includes/header');
                 <div class="">
                   <div class="card-body">
                     <div class="row">
-                      <label for="html5-text-input" class="col-md-4 col-form-label">Login:</label>
-                      <label for="html5-text-input" class="col-md-8 text-right col-form-label"> 098765678</label>
+                      <label for="html5-text-input" class="col-md-12 col-lg-6 col-form-label">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
+                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
                     </div>
                     <div class="row border-bottom mb-3">
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-4 col-form-label">Account size</label>
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$100,000</label>
+                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
+                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
                     </div>
+                    <div class="row border-bottom mb-3">
+                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-12 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span></label>
+                    </div>
+
                     <div class="row">
                       <div class="col-lg-6 text-left">
                         <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="mr-5 btn btn-sm btn-outline-primary">

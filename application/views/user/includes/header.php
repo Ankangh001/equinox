@@ -118,6 +118,32 @@
                 <div data-i18n="Analytics">Purchase History</div>
               </a>
             </li>
+
+            <!-- Payouts -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>payout" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div data-i18n="Analytics">Payout</div>
+              </a>
+            </li>
+
+
+            <!-- Announcements -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'announcements') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>announcements" class="menu-link">
+                <i class="menu-icon tf-icons bx bx bx-speaker"></i>
+                <div data-i18n="Analytics">Announcements</div>
+              </a>
+            </li>
+
+
+            <!-- Promotions -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'promotions') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>promotions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bar-chart-square"></i>
+                <div data-i18n="Analytics">Promotions</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
