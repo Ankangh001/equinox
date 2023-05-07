@@ -9,107 +9,66 @@ $this->load->view('user/includes/header');
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Dashboard</h4>
-
     <div class="row">
-        <div class="col-xl-12">
-          <div class="nav-align-top mb-4">
-            <ul class="nav nav-tabs" role="tablist">
-              <li class="nav-item">
-                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                  Aggressive
-                </button>
-              </li>
-              <li class="nav-item">
-                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
-                  Normal
-                </button>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
-                <!-- products for aggressive  -->
-                <div class="row">
-                  <div class="col-md-6 col-xl-6">
-                    <div class="card bg-white text-dark mb-3">
-                        <label class="card-body pointer">
-                          <div class="form-check d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-start align-items-center">
-                              <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
-                              <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
-                              </div>
-                            </div>
-                            <p class="card-title fw-bold text-primary">$15000</p>
-                          </div>
-                        </label>
-                    </div>
-
-                    <div class="card bg-white text-dark mb-3">
-                        <label class="card-body pointer">
-                          <div class="form-check d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-start align-items-center">
-                              <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
-                              <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
-                              </div>
-                            </div>
-                            <p class="card-title fw-bold text-primary">$15000</p>
-                          </div>
-                        </label>
-                    </div>
-
-                    <div class="card bg-white text-dark mb-3">
-                        <label class="card-body pointer">
-                          <div class="form-check d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-start align-items-center">
-                              <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
-                              <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
-                              </div>
-                            </div>
-                            <p class="card-title fw-bold text-primary">$15000</p>
-                          </div>
-                        </label>
-                    </div>
-
-                    <button class="btn btn-primary w-100">Buy Now</button>
-                  </div>
-                  <!-- end aggressive -->
-                  <div class="col-md-6 col-xl-6">
-                    <div class="card shadow-none bg-transparent border border-secondary mb-3">
-                      <div class="card-body">
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Two step assesment process</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;5% Daily Drawdown</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;10% Daily Drawdown</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;5 Trading Days</p>
-                      </div>
-                    </div>
-
-                    <div class="card shadow-none bg-transparent mb-3  align-items-center d-flex">
-                      <div class="card-body">
-                        <p class="card-text align-items-center d-flex flex-column fw-bold">Your Total Pricing<br/>
-                          <span class="fw-bold text-primary" style="font-size:1.5rem">$999</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div> 
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <!-- <h5 class="card-header">Order Summary</h5> -->
+            <div class="card-body">
+              <div class="mt-5 mb-3 row  text-center d-block w-100">
+                <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" style="width:40%">
+                <label for="html5-text-input" class="fs-1 text-dark my-3 col-form-label">Free Trial</label>
               </div>
-              <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
-                <p>
-                  Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
-                  cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                  cheesecake fruitcake.
-                </p>
+              <div class="mb-5 d-flex flex-column text-center">
+                <label for="html5-text-input" class="text-primary col-form-label">Master Your Skills</label>
+                <label for="html5-text-input" class="col-form-label">Practice Trading without risking anything !</label>
               </div>
+
+              <div class="mb-3 d-flex flex-column text-left border-bottom">
+                <ul class="list-unstyled mt-2">
+                  <li>
+                    <ul>
+                      <li>Basic account featured</li>
+                      <li>Master your trading stratergy</li>
+                      <li>Trading upto 14 days</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button type="submit" class="w-100 btn btn-secondary">Try for free</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <!-- <h5 class="card-header">Order Summary</h5> -->
+            <div class="card-body">
+              <div class="mt-5 mb-3 row  text-center d-block w-100">
+                <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" style="width:40%">
+                <label for="html5-text-input" class="fs-1 text-dark my-3 col-form-label">Challenge</label>
+              </div>
+              <div class="mb-5 d-flex flex-column text-center">
+                <label for="html5-text-input" class="text-primary col-form-label">Trade upto $200,000 SmartProp trde account</label>
+                <label for="html5-text-input" class="col-form-label">Pass the simple Evaluation and recieve your Funded Smart Prop Trader Account</label>
+              </div>
+
+              <div class="mb-3 d-flex flex-column text-left border-bottom">
+                <ul class="list-unstyled mt-2">
+                  <li>
+                    <ul>
+                      <li>Basic account featured</li>
+                      <li>Master your trading stratergy</li>
+                      <li>Trading upto 14 days</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button type="submit" class="w-100 btn btn-primary">Start New challenge</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
     <!-- / Content -->
 
 <?php $this->load->view('user/includes/footer');?>

@@ -39,6 +39,12 @@ $route['user'] = 'user/user';
 $route['user/account-overview'] = 'user/account';
 $route['user/profile'] = 'user/profile';
 $route['user/purchase-history'] = 'user/purchase';
+$route['user/start-new-challenge'] = 'user/challenge';
+$route['user/payment'] = 'user/payment';
+$route['user/account-info'] = 'user/info';
+// $route['user/payment'] = 'user/payment';
+// $route['user/payment'] = 'user/payment';
+// $route['user/payment'] = 'user/payment';
 
 
 

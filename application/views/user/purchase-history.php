@@ -22,24 +22,40 @@ $this->load->view('user/includes/header');
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalCenterTitle">Modal title</h5>
+                  <h5 class="modal-title" id="modalCenterTitle">Your Login Credentials</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div class="row">
-                    <div class="col mb-3">
-                      <label for="nameWithTitle" class="form-label">Name</label>
-                      <input type="text" id="nameWithTitle" class="form-control" placeholder="Enter Name">
-                    </div>
-                  </div>
-                  <div class="row g-2">
-                    <div class="col mb-0">
-                      <label for="emailWithTitle" class="form-label">Email</label>
-                      <input type="text" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
-                    </div>
-                    <div class="col mb-0">
-                      <label for="dobWithTitle" class="form-label">DOB</label>
-                      <input type="text" id="dobWithTitle" class="form-control" placeholder="DD / MM / YY">
+                  <div class="col-xl">
+                    <div class="card-body">
+                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">098765678</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                      </div>
+                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Master Password
+                          <span data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                            <i class='bx bx-info-circle' ></i>
+                          </span>
+                        </label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">********<i class='bx bxs-low-vision'></i></label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                      </div>
+                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Investor Password
+                          <span data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                            <i class='bx bx-info-circle' ></i>
+                          </span>
+                        </label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">098765678</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                      </div>
+                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">Demo</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -47,7 +63,7 @@ $this->load->view('user/includes/header');
                   <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
               </div>
             </div>
@@ -66,13 +82,15 @@ $this->load->view('user/includes/header');
                       <label for="html5-text-input" class="text-dark fw-bold col-md-4 col-form-label">Account size</label>
                       <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$100,000</label>
                     </div>
-                    <div class="row justify-content-evenly">
-                      <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="fs-5 btn btn-sm btn-outline-secondary col-lg-3">
-                        <i class='bx bxs-key p-1 fs-3'></i>Credentials
-                      </button>
-                      <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="fs-5 btn btn-sm btn-outline-primary col-lg-3">
-                      <i class='bx bx-line-chart-down p-1 fs-3' ></i>Metrix
-                      </button>
+                    <div class="row">
+                      <div class="col-lg-6 text-left">
+                        <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="mr-5 btn btn-sm btn-outline-primary">
+                          <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
+                        </button>
+                        <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="btn btn-sm btn-outline-primary">
+                        &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

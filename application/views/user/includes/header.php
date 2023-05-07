@@ -79,16 +79,21 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-3 border-top">
-            <!-- Dashboard -->
             
+            <!-- Start New Challenge -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'start-new-challenge' || $this->uri->segment(2) == 'payment') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>start-new-challenge" class="menu-link">
+                <button class="btn btn-primary">Start New Challenge</button>
+              </a>
+            </li>
+
+            <!-- Dashboard -->
             <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
               <a href="<?=base_url()?>user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-
-
 
             <!-- Account -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'account-overview') { echo 'active';} ?>">
@@ -98,17 +103,13 @@
               </a>
             </li>
 
-
-
             <!-- Profile -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>profile" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div data-i18n="Analytics">Profile</div>
               </a>
             </li>
-
-
 
             <!-- Purchase History -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
