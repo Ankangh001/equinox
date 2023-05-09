@@ -41,6 +41,7 @@ $route['user/account-overview'] = 'user/account';
 $route['user/profile'] = 'user/profile';
 $route['user/purchase-history'] = 'user/purchase';
 $route['user/start-new-challenge'] = 'user/challenge';
+$route['user/metrix'] = 'user/metrix';
 $route['user/payment'] = 'user/payment';
 $route['user/account-info'] = 'user/info';
 $route['user/account-security'] = 'user/security';
@@ -53,6 +54,7 @@ $route['user/affiliate'] = 'user/affiliate';
 $route['user/tools'] = 'user/tools';
 $route['user/market-data-analysis'] = 'user/market';
 $route['user/faq'] = 'user/faq';
+$route['user/mt5-webterminal'] = 'user/mt5-webterminal';
 //------------------- End user dashboard -----------------
 
 

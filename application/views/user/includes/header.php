@@ -111,6 +111,30 @@
               </a>
             </li>
 
+            <!--<li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>" style="">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Account Settings">Profile</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>">
+                  <a href="pages-account-settings-account.html" class="menu-link">
+                    <div data-i18n="profile">User Profile</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
+                  <a href="account-info" class="menu-link">
+                    <div data-i18n="account-info">Account Information</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'account-security') { echo 'active';} ?>"">
+                  <a href="account-security" class="menu-link">
+                    <div data-i18n="Connections">Account Security</div>
+                  </a>
+                </li>
+              </ul>
+            </li> -->
+
             <!-- Purchase History -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>purchase-history" class="menu-link">
@@ -148,7 +172,7 @@
             <!-- Games -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>games-rewards" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-game"></i>
+                <i class="menu-icon tf-icons bx bx-joystick"></i>
                 <div>Games & Rewards</div>
               </a>
             </li>
@@ -167,6 +191,22 @@
               <a href="<?=base_url('user/')?>platform" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-analyse"></i>
                 <div>Platform</div>
+              </a>
+            </li>
+
+             <!-- MT5 Web termnals -->
+             <li class="menu-item <?php if ($this->uri->segment(2) == 'mt5-webterminal') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>mt5-webterminal" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-window-alt"></i>
+                <div>MT5 Web Terminal</div>
+              </a>
+            </li>
+
+             <!-- Advance Chart -->
+             <li class="menu-item <?php if ($this->uri->segment(2) == 'advanced-chart') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>advanced-chart" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-network-chart"></i>
+                <div>Advanced Chart</div>
               </a>
             </li>
 
