@@ -17863,3 +17863,7 @@ body::-webkit-scrollbar-thumb
 #loading-image {
   z-index: 100;
 }
+
+.lg-text{
+  font-size: 50px !important;
+}

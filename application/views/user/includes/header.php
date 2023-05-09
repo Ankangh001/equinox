@@ -140,8 +140,24 @@
             <!-- Promotions -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'promotions') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>promotions" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-bar-chart-square"></i>
+                <i class="menu-icon tf-icons bx bx-pie-chart"></i>
                 <div data-i18n="Analytics">Promotions</div>
+              </a>
+            </li>
+
+            <!-- Games -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>games-rewards" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-game"></i>
+                <div data-i18n="Analytics">Games & Rewards</div>
+              </a>
+            </li>
+
+            <!-- Affiliate -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>affiliate" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bar-chart-square"></i>
+                <div data-i18n="Analytics">Affiliate</div>
               </a>
             </li>
           </ul>
