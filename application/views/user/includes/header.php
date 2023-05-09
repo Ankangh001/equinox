@@ -188,11 +188,11 @@
             </li>
 
 
-            <!-- Platform -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'platform') { echo 'active';} ?>">
-              <a href="<?=base_url('user/')?>platform" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-analyse"></i>
-                <div>Platform</div>
+            <!-- faq -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>faq" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-question-mark"></i>
+                <div>Faq</div>
               </a>
             </li>
           </ul>

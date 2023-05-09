@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//-------------------page routes------------------------
 $route['default_controller'] = 'welcome';
-//page routes
 $route['scaling-plan'] = 'welcome/scalingPlan';
 $route['faq'] = 'welcome/faq';
 $route['rules'] = 'welcome/rules';
@@ -32,9 +32,10 @@ $route['cookie-policy'] = 'welcome/cookie';
 $route['risk-disclosure'] = 'welcome/disclosure';
 $route['live-account'] = 'welcome/liveAccount';
 
+//---------------end page routes----------------
 
 
-//user dashboard
+//------------------- user dashboard -----------------
 $route['user'] = 'user/user';
 $route['user/account-overview'] = 'user/account';
 $route['user/profile'] = 'user/profile';
@@ -51,6 +52,29 @@ $route['user/games-rewards'] = 'user/games';
 $route['user/affiliate'] = 'user/affiliate';
 $route['user/tools'] = 'user/tools';
 $route['user/market-data-analysis'] = 'user/market';
+$route['user/faq'] = 'user/faq';
+//------------------- End user dashboard -----------------
+
+
+//-------------------- Admin dashboard ------------------
+$route['admin'] = 'admin/admin';
+$route['admin/account-overview'] = 'admin/account';
+$route['admin/profile'] = 'admin/profile';
+$route['admin/purchase-history'] = 'admin/purchase';
+$route['admin/start-new-challenge'] = 'admin/challenge';
+$route['admin/payment'] = 'admin/payment';
+$route['admin/account-info'] = 'admin/info';
+$route['admin/account-security'] = 'admin/security';
+$route['admin/account-kyc'] = 'admin/kyc';
+$route['admin/payout'] = 'admin/payout';
+$route['admin/announcements'] = 'admin/announcements';
+$route['admin/promotions'] = 'admin/promotions';
+$route['admin/games-rewards'] = 'admin/games';
+$route['admin/affiliate'] = 'admin/affiliate';
+$route['admin/tools'] = 'admin/tools';
+$route['admin/market-data-analysis'] = 'admin/market';
+$route['admin/faq'] = 'admin/faq';
+//-------------------- End Admin dashboard ------------------
 
 
 

@@ -147,37 +147,31 @@ $this->load->view('user/includes/header');
                 <label for="html5-text-input" class="col-md-4 col-form-label">Discount</label>
                 <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$5678</label>
               </div>
-              <div class="mb-5 row border-bottom">
+              <div class="mb-1 row border-bottom">
                 <label for="html5-text-input" class="text-dark fw-bold col-md-4 col-form-label">Total</label>
                 <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$999</label>
               </div>
 
-              <div class="mb-3 row border-bottom border-bottom align-items-center d-flex ">
-                <label for="html5-text-input" class="col-md-4 col-form-label">Terms & Conditions</label>
-                <label for="html5-text-input" class="col-md-8 text-right col-form-label h50 overflowy-scroll">
-                  A Terms and Conditions agreement acts as a legal contract between you (the company) and the user. 
-                  It's where you maintain your rights to exclude users from your app in the event that they abuse your website/app, 
-                  set out the rules for using your service and note other important details and disclaimers.
-                </label>
-                <div class="form-check mt-5 text-dark fw-bold">
+              <div class="my-3 row align-items-center d-flex ">
+                <div class="form-check text-dark fw-bold">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="#">terms and conditions</a>. </label>
+                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a>. </label>
                 </div>
               </div>
 
-              <div class="mb-3 row border-bottom border-bottom align-items-center d-flex ">
-                <label for="html5-text-input" class="col-md-4 col-form-label">Terms & Conditions</label>
-                <label for="html5-text-input" class="col-md-8 text-right col-form-label h50 overflowy-scroll">
-                  A Terms and Conditions agreement acts as a legal contract between you (the company) and the user. 
-                  It's where you maintain your rights to exclude users from your app in the event that they abuse your website/app, 
-                  set out the rules for using your service and note other important details and disclaimers.
-                </label>
-                <div class="form-check mt-5 text-dark fw-bold">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                  <label class="form-check-label" for="defaultCheck3"> I agree that i have read <a href="#">terms and conditions</a>. </label>
+              <div class="my-3 row align-items-center d-flex ">
+                <div class="form-check text-dark fw-bold">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('privacy-policy')?>">privacy policy</a>. </label>
                 </div>
               </div>
-              
+
+              <div class="my-3 row align-items-center d-flex ">
+                <div class="form-check text-dark fw-bold">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a></label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
