@@ -49,6 +49,8 @@ $route['user/announcements'] = 'user/announcements';
 $route['user/promotions'] = 'user/promotions';
 $route['user/games-rewards'] = 'user/games';
 $route['user/affiliate'] = 'user/affiliate';
+$route['user/tools'] = 'user/tools';
+$route['user/market-data-analysis'] = 'user/market';
 
 
 

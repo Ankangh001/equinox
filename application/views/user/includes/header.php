@@ -91,7 +91,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
               <a href="<?=base_url()?>user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div>Dashboard</div>
               </a>
             </li>
 
@@ -99,7 +99,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'account-overview') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>account-overview" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-credit-card-alt"></i>
-                <div data-i18n="Analytics">Account Overview</div>
+                <div>Account Overview</div>
               </a>
             </li>
 
@@ -107,7 +107,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>profile" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="Analytics">Profile</div>
+                <div>Profile</div>
               </a>
             </li>
 
@@ -115,7 +115,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>purchase-history" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="Analytics">Purchase History</div>
+                <div>Purchase History</div>
               </a>
             </li>
 
@@ -123,7 +123,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>payout" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
-                <div data-i18n="Analytics">Payout</div>
+                <div>Payout</div>
               </a>
             </li>
 
@@ -132,7 +132,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'announcements') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>announcements" class="menu-link">
                 <i class="menu-icon tf-icons bx bx bx-speaker"></i>
-                <div data-i18n="Analytics">Announcements</div>
+                <div>Announcements</div>
               </a>
             </li>
 
@@ -141,7 +141,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'promotions') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>promotions" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-pie-chart"></i>
-                <div data-i18n="Analytics">Promotions</div>
+                <div>Promotions</div>
               </a>
             </li>
 
@@ -149,7 +149,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>games-rewards" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-game"></i>
-                <div data-i18n="Analytics">Games & Rewards</div>
+                <div>Games & Rewards</div>
               </a>
             </li>
 
@@ -157,7 +157,42 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>affiliate" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bar-chart-square"></i>
-                <div data-i18n="Analytics">Affiliate</div>
+                <div>Affiliate</div>
+              </a>
+            </li>
+
+
+            <!-- Platform -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'platform') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>platform" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-analyse"></i>
+                <div>Platform</div>
+              </a>
+            </li>
+
+            <!-- Tools -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'tools') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>tools" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-crosshair"></i>
+                <div>Tools</div>
+              </a>
+            </li>
+
+
+            <!-- Market Data -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'market-data-analysis') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>market-data-analysis" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-trending-down"></i>
+                <div>Market Data</div>
+              </a>
+            </li>
+
+
+            <!-- Platform -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'platform') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>platform" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-analyse"></i>
+                <div>Platform</div>
               </a>
             </li>
           </ul>
