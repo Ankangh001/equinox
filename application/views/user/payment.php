@@ -169,7 +169,7 @@ $this->load->view('user/includes/header');
               <div class="my-3 row align-items-center d-flex ">
                 <div class="form-check text-dark fw-bold">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a></label>
+                  <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
                 </div>
               </div>
             </div>
