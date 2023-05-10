@@ -8,7 +8,6 @@ $this->load->view('user/includes/header');
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Dashboard</h4>
   <div class="accordion mt-3 mb-5" id="accordionExample">
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -74,28 +73,24 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <div class="row">
-                      <label for="html5-text-input" class="col-md-12 col-lg-6 col-form-label">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
-                    </div>
-                    <div class="row border-bottom mb-3">
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
-                    </div>
-                    <div class="row border-bottom mb-3">
-                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-12 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span></label>
+                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
                     </div>
 
-                    <div class="row">
-                      <div class="col-lg-6 text-left">
-                        <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="mr-5 btn btn-sm btn-outline-primary">
-                          <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
-                        </button>
-                        <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="btn btn-sm btn-outline-primary">
-                        &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </button>
-                      </div>
+                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
                     </div>
+
+                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
+                    </div>
+                    <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
               </div>
@@ -236,4 +231,7 @@ $this->load->view('user/includes/header');
       </div>
     <!-- / Content -->
 
+<script>
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`)
+</script>
 <?php $this->load->view('user/includes/footer');?>

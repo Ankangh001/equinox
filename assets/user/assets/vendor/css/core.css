@@ -17870,3 +17870,6 @@ body::-webkit-scrollbar-thumb
 .text-transform-none{
   text-transform: none;
 }
+.fs-16{
+  font-size: 16px;
+}

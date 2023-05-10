@@ -7,7 +7,6 @@ $this->load->view('user/includes/header');
 <!-- Content wrapper -->
 <div class="content-wrapper">
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Purchase History</h4>
   <!-- Bootstrap Table with Header - Light -->
   <div class="card">
     <h5 class="card-header">User Billings</h5>
@@ -19,20 +18,23 @@ $this->load->view('user/includes/header');
             <th>Date</th>
             <th>Amount</th>
             <th>Type</th>
-            <th>Invoice</th>
+            <!-- <th>Invoice</th> -->
             <th>Status</th>
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
           <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+            <td><strong>Evaluation $100,000</strong></td>
             <td>05/04/2023</td>
             <td>$999</td>
-            <td>Free Trial</td>
-            <td class="text-center"><i class='bx bx-download fs-3' ></i></td>
-            <td><span class="badge bg-label-primary me-1">Active</span></td>
+            <td>Aggressive</td>
+            <!-- <td class="text-center"><i class='bx bx-download fs-3' ></i></td> -->
             <td>
+              <span class="badge bg-label-success me-1">Paid</span>
+              <span class="badge bg-label-danger me-1">Cancelled</span>
+            </td>
+            <!-- <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
@@ -42,9 +44,9 @@ $this->load->view('user/includes/header');
                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                 </div>
               </div>
-            </td>
+            </td> -->
           </tr>
-          <tr>
+          <!-- <tr>
             <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
             <td>05/04/2023</td>
             <td>$999</td>
@@ -138,18 +140,21 @@ $this->load->view('user/includes/header');
                 </div>
               </div>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
   </div>
   <!-- Bootstrap Table with Header - Light -->
-  <div class="mb-3 col-12 mt-3">
+  <!-- <div class="mb-3 col-12 mt-3">
     <div class="alert alert-secondary">
       <h6 class="alert-heading fw-bold mb-1">Disclaimer</h6>
       <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
     </div>
-  </div>
+  </div> -->
 </div>
 
+<script>
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Purchase History</h4>`)
+</script>
 <?php $this->load->view('user/includes/footer');?>

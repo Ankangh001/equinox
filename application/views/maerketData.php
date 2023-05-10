@@ -58,7 +58,7 @@ $this->load->view('includes/header');
                     <a href="client-login">
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
-                                <div class="header text-center pb-1">Technical Indicator</div>
+                                <div class="header text-center pb-1">Technical Indicators</div>
                                 <p class="mt-3" style="font-size:14px">An overview of trading signals for Forex instruments, CFDs, and bitcoin based on the most popular technical indicators.</p>
                                 <img class="my-3" src="<?= base_url('assets')?>/img/indicators.png" alt="">
                             </div>

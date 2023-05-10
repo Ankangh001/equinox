@@ -104,12 +104,12 @@
             </li>
 
             <!-- Profile -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>profile" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div>Profile</div>
               </a>
-            </li>
+            </li> -->
 
             <!--<li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -138,7 +138,7 @@
             <!-- Purchase History -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>purchase-history" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
                 <div>Purchase History</div>
               </a>
             </li>
@@ -155,7 +155,7 @@
             <!-- Announcements -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'announcements') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>announcements" class="menu-link">
-                <i class="menu-icon tf-icons bx bx bx-speaker"></i>
+                <i class="menu-icon tf-icons bx bxs-megaphone"></i>
                 <div>Announcements</div>
               </a>
             </li>
@@ -164,7 +164,7 @@
             <!-- Promotions -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'promotions') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>promotions" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-pie-chart"></i>
+                <i class="menu-icon tf-icons bx bxs-offer"></i>
                 <div>Promotions</div>
               </a>
             </li>
@@ -210,6 +210,25 @@
               </a>
             </li>
 
+
+            <!-- Market Data -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'market-data-analysis') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>market-data-analysis" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-trending-down"></i>
+                <div>Market Analysis</div>
+              </a>
+            </li>
+
+
+            <!-- Calculators  -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'clculators') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>clculators" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-calculator"></i>
+                <div>Calculators</div>
+              </a>
+            </li>
+
+
             <!-- Tools -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'tools') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>tools" class="menu-link">
@@ -218,21 +237,12 @@
               </a>
             </li>
 
-
-            <!-- Market Data -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'market-data-analysis') { echo 'active';} ?>">
-              <a href="<?=base_url('user/')?>market-data-analysis" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-trending-down"></i>
-                <div>Market Data</div>
-              </a>
-            </li>
-
-
+            
             <!-- faq -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
-                <div>Faq</div>
+                <div>Help</div>
               </a>
             </li>
           </ul>
@@ -253,9 +263,9 @@
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3">
                   <button class="btn btn-secondary">Language</button>
-                </li>
+                </li> -->
 
                 <li class="nav-item lh-1 me-3">
                   <p class="text mt-3">User Name</p>
@@ -288,7 +298,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="<?=base_url('user/')?>profile">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>

@@ -36,6 +36,9 @@ $route['live-account'] = 'welcome/liveAccount';
 
 
 //------------------- user dashboard -----------------
+$route['user/login'] = 'user/login';
+$route['user/register'] = 'user/register';
+$route['user/forget'] = 'user/forget';
 $route['user'] = 'user/user';
 $route['user/account-overview'] = 'user/account';
 $route['user/profile'] = 'user/profile';
@@ -55,6 +58,7 @@ $route['user/tools'] = 'user/tools';
 $route['user/market-data-analysis'] = 'user/market';
 $route['user/faq'] = 'user/faq';
 $route['user/mt5-webterminal'] = 'user/mt5-webterminal';
+$route['user/clculators'] = 'user/calculators';
 //------------------- End user dashboard -----------------
 
 

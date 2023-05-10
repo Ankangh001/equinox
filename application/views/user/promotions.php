@@ -8,7 +8,6 @@ $this->load->view('user/includes/header');
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Promotions</h4>
     <div class="row">
       <div class="col-md-12">
         <!-- <div class="card mb-4">
@@ -23,7 +22,7 @@ $this->load->view('user/includes/header');
                       <input class="form-control" type="text" id="title" name="title" placeholder="John" autofocus="">
                     </div>
                     <div class="mb-3 col-md-12">
-                      <label for="content" class="form-label">Promotion Content</label>
+                      <label for="content" class="form-label">3rd July 2022</label>
                       <textarea class="form-control" id="content" name="content" placeholder="Enter your content here"></textarea>
                     </div>
                   </div>
@@ -63,7 +62,7 @@ $this->load->view('user/includes/header');
           <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3">Promotion content</h6>
+                <h6 class="alert-heading fw-bold mb-3">3rd July 2022</h6>
                 <p class="mb-0">
                   your content hereyour content here your content here your content here your content here your content here <br>
                   your content hereyour content hereyour content here
@@ -87,7 +86,7 @@ $this->load->view('user/includes/header');
           <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">Promotion content</h6>
+                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
                 <p class="mb-0">
                   your content hereyour content here your content here your content here your content here your content here <br>
                   your content hereyour content hereyour content here
@@ -102,7 +101,7 @@ $this->load->view('user/includes/header');
           <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">Promotion content</h6>
+                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
                 <p class="mb-0">
                   your content hereyour content here your content here your content here your content here your content here <br>
                   your content hereyour content hereyour content here
@@ -117,7 +116,7 @@ $this->load->view('user/includes/header');
           <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">Promotion content</h6>
+                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
                 <p class="mb-0">
                   your content hereyour content here your content here your content here your content here your content here <br>
                   your content hereyour content hereyour content here
@@ -129,5 +128,7 @@ $this->load->view('user/includes/header');
     </div>
   </div>
     <!-- / Content -->
-
+<script>
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Promotions</h4>`)
+</script>
 <?php $this->load->view('user/includes/footer');?>
