@@ -253,6 +253,26 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
+  fetch("https://www.fxblue.com/users/51634880/overviewscript", {
+            method: "get",
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            body: JSON.stringify(ob)
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+        })
+
+
+  // fetch('https://www.fxblue.com/users/51634880/overviewscript')
+  // .then(data => {
+  //   console.log(data);
+  //   return data;
+  // })
+  // .then(data => {
+  // });
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>
