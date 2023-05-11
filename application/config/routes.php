@@ -57,7 +57,8 @@ $route['user/affiliate'] = 'user/affiliate';
 $route['user/tools'] = 'user/tools';
 $route['user/market-data-analysis'] = 'user/market';
 $route['user/faq'] = 'user/faq';
-$route['user/mt5-webterminal'] = 'user/mt5-webterminal';
+$route['user/mt5-webterminal'] = 'user/webterminal';
+$route['user/advanced-chart'] = 'user/advance';
 $route['user/clculators'] = 'user/calculators';
 //------------------- End user dashboard -----------------
 
