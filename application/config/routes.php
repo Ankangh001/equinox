@@ -65,10 +65,14 @@ $route['user/clculators'] = 'user/calculators';
 
 //-------------------- Admin dashboard ------------------
 $route['admin'] = 'admin/admin';
+$route['admin/login'] = 'admin/login';
+$route['admin/register'] = 'admin/register';
+$route['admin/forget'] = 'admin/forget';
 $route['admin/account-overview'] = 'admin/account';
 $route['admin/profile'] = 'admin/profile';
 $route['admin/purchase-history'] = 'admin/purchase';
 $route['admin/start-new-challenge'] = 'admin/challenge';
+$route['admin/metrix'] = 'admin/metrix';
 $route['admin/payment'] = 'admin/payment';
 $route['admin/account-info'] = 'admin/info';
 $route['admin/account-security'] = 'admin/security';
@@ -81,6 +85,9 @@ $route['admin/affiliate'] = 'admin/affiliate';
 $route['admin/tools'] = 'admin/tools';
 $route['admin/market-data-analysis'] = 'admin/market';
 $route['admin/faq'] = 'admin/faq';
+$route['admin/mt5-webterminal'] = 'admin/webterminal';
+$route['admin/advanced-chart'] = 'admin/advance';
+$route['admin/clculators'] = 'admin/calculators';
 //-------------------- End Admin dashboard ------------------
 
 

@@ -42,7 +42,7 @@ $this->load->view('user/includes/header');
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
                       </div>
                       <div class="mb-3 row border-bottom justfy-content-evenly">
-                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password
+                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Master Password
                           <span data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
                             <i class='bx bx-info-circle' ></i>
                           </span>
@@ -50,16 +50,18 @@ $this->load->view('user/includes/header');
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">********<i class='bx bxs-low-vision'></i></label>
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
                       </div>
-                      
+                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Investor Password
+                          <span data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                            <i class='bx bx-info-circle' ></i>
+                          </span>
+                        </label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">098765678</label>
+                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                      </div>
                       <div class="mb-3 row border-bottom justfy-content-evenly">
                         <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">Demo</label>
-                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
-                      </div>
-
-                      <div class="mb-3 row border-bottom justfy-content-evenly">
-                        <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
-                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
                       </div>
                     </div>
