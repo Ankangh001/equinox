@@ -1,7 +1,7 @@
 <?php
 $this->load->view('includes/header');
 ?>
-    <style>
+<style>
         #header{
             display:none !important;
         }
@@ -58,7 +58,7 @@ $this->load->view('includes/header');
 </head>
 
 <body>
-<form class="">
+    <form class="">
                 <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
                     <a href="/" class="text-center w-100"><img class ="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a><br>
                     <!-- <p class="lead fw-normal mb-0 me-3">Sign in to your account</p><br> -->
@@ -69,13 +69,13 @@ $this->load->view('includes/header');
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control"
+                    <input type="email" id="email" class="form-control"
                     placeholder="Enter a valid email address" />
                     <!-- <label class="form-label" for="form3Example3">Email address</label> -->
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-3">
-                    <input type="password" id="form3Example4" class="form-control"
+                    <input type="password" id="password" class="form-control"
                     placeholder="Enter password" />
                     <!-- <label class="form-label" for="form3Example4">Password</label> -->
                 </div>
@@ -92,11 +92,47 @@ $this->load->view('includes/header');
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
-                    </a><a href='user' ><button type="button" class="btn w-100  btn-primary"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign In</button></a>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="client-signup"
-                        class="link-danger">Register</a></p>
+                    <button type="button" class="btn w-100  btn-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="validateUser()">Sign In</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="client-signup" class="link-danger">Register</a></p>
                 </div>
             </form>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    function validateUser() {
+		let email = $("#email").val();
+		let password = $("#password").val();
+		if (email == "") {
+			notify("danger", "Please enter email");
+			$("#email").focus();
+			return;
+		}
+		if (password == "") {
+			notify("danger", "Please enter password");
+			$("#password").focus();
+			return;
+		}
+		$.ajax({
+			type: "post",
+			url: "Auth/login",
+			data: {
+				"email": email,
+				"password": password
+			},
+			success: function(response) {
+				if (response.success == 1) {
+					window.location.href = BASEURL+"user";	
+				} else {
+					notify("danger", response.message);
+					return;
+				}
+			},
+			error: function(exception) {
+				console.log(exception);
+				notify("danger", "Some error occured")
+			}
+		})
+
+	}
+</script>

@@ -209,3 +209,6 @@ body{
 
     </div>
   </header><!-- End Header -->
+  <script>
+    const BASEURL= "<?=base_url()?>"; 
+    </script>
