@@ -65,13 +65,15 @@ $route['user/clculators'] = 'user/calculators';
 
 //-------------------- Admin dashboard ------------------
 $route['admin'] = 'admin/admin';
+$route['admin/challenge'] = 'admin/challenge';
+$route['admin/add-challenge'] = 'admin/challenge/addChallenge';
+
 $route['admin/login'] = 'admin/login';
 $route['admin/register'] = 'admin/register';
 $route['admin/forget'] = 'admin/forget';
 $route['admin/account-overview'] = 'admin/account';
 $route['admin/profile'] = 'admin/profile';
 $route['admin/purchase-history'] = 'admin/purchase';
-$route['admin/start-new-challenge'] = 'admin/challenge';
 $route['admin/metrix'] = 'admin/metrix';
 $route['admin/payment'] = 'admin/payment';
 $route['admin/account-info'] = 'admin/info';

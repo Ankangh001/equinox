@@ -92,8 +92,8 @@ $this->load->view('includes/header');
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
-                    <button type="button" class="btn w-100  btn-primary"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign In</button>
+                    </a><a href='user' ><button type="button" class="btn w-100  btn-primary"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign In</button></a>
                     <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="client-signup"
                         class="link-danger">Register</a></p>
                 </div>

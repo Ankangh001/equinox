@@ -1,5 +1,5 @@
 <?php
-$this->load->view('user/includes/header');
+$this->load->view('admin/includes/header');
 ?>
 
 
@@ -234,4 +234,4 @@ $this->load->view('user/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`)
 </script>
-<?php $this->load->view('user/includes/footer');?>
+<?php $this->load->view('admin/includes/footer');?>

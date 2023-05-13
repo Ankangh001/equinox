@@ -5,6 +5,11 @@ class Challenge extends CI_Controller {
 
 	public function index()
 	{
-        $this->load->view('user/start-challenge');
+        $this->load->view('admin/challenge');
+	}
+
+	public function addChallenge()
+	{
+        $this->load->view('admin/add-challenge');
 	}
 }
