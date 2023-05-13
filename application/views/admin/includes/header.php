@@ -79,85 +79,82 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-3 border-top">
-            
-            <!-- Start New Challenge -->
-            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'start-new-challenge' || $this->uri->segment(2) == 'payment') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>start-new-challenge" class="menu-link">
-                <button class="btn btn-primary">Start New Challenge</button>
-              </a>
-            </li> -->
-
-            <!-- Challenges -->
+            <!-- Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'challenge') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>challenge" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
                 <div>Challenges</div>
               </a>
             </li>
 
-            <!-- Dashboard -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
-              <a href="<?=base_url()?>user" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div>Dashboard</div>
-              </a>
-            </li>
-
-            <!-- Account -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'account-overview') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>account-overview" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-credit-card-alt"></i>
-                <div>Account Overview</div>
-              </a>
-            </li>
-
-            <!-- Profile -->
-            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>profile" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div>Profile</div>
-              </a>
-            </li> -->
-
-            <!--<li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>" style="">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="Account Settings">Profile</div>
+            <!-- Purchase History  -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial'|| $this->uri->segment(2) == 'completed' || $this->uri->segment(2) == 'phase-3'  || $this->uri->segment(2) == 'phase-1'||$this->uri->segment(2) == 'phase-2' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div>Purchase History</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'profile') { echo 'active';} ?>">
-                  <a href="pages-account-settings-account.html" class="menu-link">
-                    <div data-i18n="profile">User Profile</div>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/')?>free-trial" class="menu-link">
+                    <div>Free Trial</div>
                   </a>
                 </li>
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'account-info') { echo 'active';} ?>">
-                  <a href="account-info" class="menu-link">
-                    <div data-i18n="account-info">Account Information</div>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-1') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/')?>phase-1" class="menu-link">
+                    <div>Phase 1</div>
                   </a>
                 </li>
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'account-security') { echo 'active';} ?>"">
-                  <a href="account-security" class="menu-link">
-                    <div data-i18n="Connections">Account Security</div>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-2') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/')?>phase-2" class="menu-link">
+                    <div>Phase 2</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-3') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/')?>phase-3" class="menu-link">
+                    <div>Phase 3</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'completed') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/')?>completed" class="menu-link">
+                    <div>Completed</div>
                   </a>
                 </li>
               </ul>
-            </li> -->
-
-            <!-- Purchase History -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dollar"></i>
-                <div>Purchase History</div>
-              </a>
             </li>
 
+            <!-- Payouts  -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'payout' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div>Payout</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/payout/')?>pending" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-1') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/payout/')?>approved" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-2') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/payout/')?>declined" class="menu-link">
+                    <div>Declined</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
             <!-- Payouts -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>payout" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div>Payout</div>
               </a>
-            </li>
+            </li> -->
 
 
             <!-- Announcements -->
@@ -174,74 +171,6 @@
               <a href="<?=base_url('admin/')?>promotions" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-offer"></i>
                 <div>Promotions</div>
-              </a>
-            </li>
-
-            <!-- Games -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>games-rewards" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-joystick"></i>
-                <div>Games & Rewards</div>
-              </a>
-            </li>
-
-            <!-- Affiliate -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>affiliate" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-bar-chart-square"></i>
-                <div>Affiliate</div>
-              </a>
-            </li>
-
-
-            <!-- Platform -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'platform') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>platform" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-analyse"></i>
-                <div>Platform</div>
-              </a>
-            </li>
-
-             <!-- MT5 Web termnals -->
-             <li class="menu-item <?php if ($this->uri->segment(2) == 'mt5-webterminal') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>mt5-webterminal" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-window-alt"></i>
-                <div>MT5 Web Terminal</div>
-              </a>
-            </li>
-
-             <!-- Advance Chart -->
-             <li class="menu-item <?php if ($this->uri->segment(2) == 'advanced-chart') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>advanced-chart" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-network-chart"></i>
-                <div>Advanced Chart</div>
-              </a>
-            </li>
-
-
-            <!-- Market Data -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'market-data-analysis') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>market-data-analysis" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-trending-down"></i>
-                <div>Market Analysis</div>
-              </a>
-            </li>
-
-
-            <!-- Calculators  -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'clculators') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>clculators" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-calculator"></i>
-                <div>Calculators</div>
-              </a>
-            </li>
-
-
-            <!-- Tools -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'tools') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>tools" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crosshair"></i>
-                <div>Tools</div>
               </a>
             </li>
 

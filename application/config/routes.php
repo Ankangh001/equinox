@@ -68,6 +68,13 @@ $route['admin'] = 'admin/admin';
 $route['admin/challenge'] = 'admin/challenge';
 $route['admin/add-challenge'] = 'admin/challenge/addChallenge';
 
+    //-------purchase----------//
+$route['admin/free-trial'] = 'admin/purchase/freeTrial';
+$route['admin/phase-1'] = 'admin/purchase/phase1';
+$route['admin/phase-2'] = 'admin/purchase/phase2';
+$route['admin/phase-3'] = 'admin/purchase/phase3';
+$route['admin/completed'] = 'admin/purchase/completed';
+
 $route['admin/login'] = 'admin/login';
 $route['admin/register'] = 'admin/register';
 $route['admin/forget'] = 'admin/forget';
