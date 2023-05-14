@@ -1,4 +1,41 @@
+
 <?php
+
+$url = "https://www.fxblue.com/users/51634880/overviewscript";
+$data = file_get_contents($url);
+echo $data;
+die;
+// $account  = $_GET['account'];
+// $curl = curl_init();
+
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => 'https://www.fxblue.com/users/'.$account.'/overviewscript',
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'GET',
+// ));
+
+// $jsCode = curl_exec($curl);
+
+// curl_close($curl);
+// $jsCode = str_replace('if (!document.MTIntelligenceAccounts) document.MTIntelligenceAccounts = new Array(); ', '', $jsCode);
+
+// // Extract the JSON object from the code
+// $jsonString = substr($jsCode, strpos($jsCode, '{'), -2);
+
+// // Decode the JSON object into a PHP object
+// $accountObject = json_decode($jsonString);
+
+// // Access the values by property name
+// // echo "Account balance: " . $accountObject->balance . "<br>";
+// // echo "Total deposits: " . $accountObject->totalDeposits . "<br>";
+// echo"<pre>";
+// print_r($jsonString);
+// exit;
 $this->load->view('user/includes/header');
 ?>
 
@@ -187,6 +224,58 @@ $this->load->view('user/includes/header');
       </div>
     </div>
   </div>
-    <!-- / Content -->
+  <?php //header('Access-Control-Allow-Origin: *'); ?>
 
-<?php $this->load->view('user/includes/footer');?>
+    <!-- / Content -->
+    <?php $this->load->view('user/includes/footer');?>
+<script>
+//   var requestOptions = {
+//   method: 'GET',
+//   redirect: 'follow'
+// };
+
+// // fetch("https://www.fxblue.com/users/51634880/overviewscript", requestOptions)
+// //   .then(response => response.text())
+// //   .then(result => console.log(result))
+// //   .catch(error => console.log('error', error));
+
+
+// var settings = {
+//   "url": "https://www.fxblue.com/users/51634880/overviewscript",
+//   "method": "GET",
+//   "timeout": 0,
+// };
+
+// $.getJSON( "https://www.fxblue.com/users/51634880/overviewscript", function( data ) {
+//   var items = [];
+//   // $.each( data, function( key, val ) {
+//   //   items.push( "<li id='" + key + "'>" + val + "</li>" );
+//   // });
+ 
+//   // $( "<ul/>", {
+//   //   "class": "my-new-list",
+//   //   html: items.join( "" )
+//   // }).appendTo( "body" );
+//   console.log(data);
+// });
+
+function callback(data) {
+  console.log('Received data:', data);
+}
+
+$.ajax({
+  url: 'https://www.fxblue.com/users/51634880/overviewscript',
+  dataType: 'text',
+  // jsonpCallback: 'callback',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log(textStatus + ': ' + errorThrown);
+  }
+});
+
+
+
+
+</script>

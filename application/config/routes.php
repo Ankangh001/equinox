@@ -60,6 +60,8 @@ $route['user/faq'] = 'user/faq';
 $route['user/mt5-webterminal'] = 'user/webterminal';
 $route['user/advanced-chart'] = 'user/advance';
 $route['user/clculators'] = 'user/calculators';
+$route['user/community-chat'] = 'user/communityChat';
+$route['user/split'] = 'user/split';
 //------------------- End user dashboard -----------------
 
 
@@ -75,18 +77,16 @@ $route['admin/phase-2'] = 'admin/purchase/phase2';
 $route['admin/phase-3'] = 'admin/purchase/phase3';
 $route['admin/completed'] = 'admin/purchase/completed';
 
+$route['admin/payout/pending'] = 'admin/payout/pending';
+$route['admin/payout/approved'] = 'admin/payout/approved';
+$route['admin/payout/payout'] = 'admin/payout';
+
 $route['admin/login'] = 'admin/login';
 $route['admin/register'] = 'admin/register';
 $route['admin/forget'] = 'admin/forget';
-$route['admin/account-overview'] = 'admin/account';
+
 $route['admin/profile'] = 'admin/profile';
-$route['admin/purchase-history'] = 'admin/purchase';
-$route['admin/metrix'] = 'admin/metrix';
-$route['admin/payment'] = 'admin/payment';
-$route['admin/account-info'] = 'admin/info';
-$route['admin/account-security'] = 'admin/security';
-$route['admin/account-kyc'] = 'admin/kyc';
-$route['admin/payout'] = 'admin/payout';
+
 $route['admin/announcements'] = 'admin/announcements';
 $route['admin/promotions'] = 'admin/promotions';
 $route['admin/games-rewards'] = 'admin/games';

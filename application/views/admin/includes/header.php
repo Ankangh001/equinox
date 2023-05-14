@@ -123,23 +123,23 @@
             </li>
 
             <!-- Payouts  -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'payout' ) { echo 'active open';} ?>">
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'pending' || $this->uri->segment(3) == 'declined' || $this->uri->segment(3) == 'approved' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div>Payout</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/payout/')?>pending" class="menu-link">
                     <div>Pending</div>
                   </a>
                 </li>
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-1') { echo 'active';} ?>">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/payout/')?>approved" class="menu-link">
                     <div>Approved</div>
                   </a>
                 </li>
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-2') { echo 'active';} ?>">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'declined') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/payout/')?>declined" class="menu-link">
                     <div>Declined</div>
                   </a>

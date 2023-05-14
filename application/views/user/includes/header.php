@@ -238,13 +238,41 @@
             </li>
 
             
-            <!-- faq -->
+            
+
+             <!-- Community Chat -->
+             <li class="menu-item <?php if ($this->uri->segment(2) == 'community-chat') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>community-chat" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chat"></i>
+                <div>Community Chat</div>
+              </a>
+            </li>
+
+            <!-- COmpettitions -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'Compettitions-chat') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>community-chat" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-award"></i>
+                <div>Compettitions</div>
+              </a>
+            </li>
+
+            <!-- Community Chat -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'Certificates-chat') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>community-chat" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-certification"></i>
+                <div>Certificates</div>
+              </a>
+            </li>
+
+            <!-- Help -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div>Help</div>
               </a>
             </li>
+
+
           </ul>
         </aside>
         <!-- / Menu -->
