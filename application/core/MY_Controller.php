@@ -8,14 +8,13 @@ class APIMaster extends CI_Controller
 {
 
     public $development;
-    // public $client_id = client_id;
     public $datetime;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->development = ($_SERVER['HTTP_HOST'] != 'benepik.co.in') ? 1 : 0;
+        $this->development = ($_SERVER['HTTP_HOST'] != 'xyz.com') ? 1 : 0;
 
 
         if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -111,6 +110,27 @@ class APIMaster extends CI_Controller
         if ($authorization == "") {
             $this->returnResponse(0, "Please make a request with authorization key!");
         }
+        $result = $this->AppLogin->validateUserSession($authorization);
+        if ($result['success'] == 0) {
+            $this->returnResponse(0, "Failed: Invalid Session!");
+        } else {
+            return $authorization;
+        }
+    }
+
+    public function verifyAuth()
+    {
+        $headers = $_SESSION;
+        $authorization = '';
+        $success = 1;
+        $response['message'] = "Authenticated";
+        if (isset($headers['token']) && isset($headers['admin_type'])=='client') {
+            $authorization = $headers['token'];
+        }
+        if ($authorization == "") {
+            $this->returnResponse(0, "You are not Authorised!");
+        }
+
         $result = $this->AppLogin->validateUserSession($authorization);
         if ($result['success'] == 0) {
             $this->returnResponse(0, "Failed: Invalid Session!");

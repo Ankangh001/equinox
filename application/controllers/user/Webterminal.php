@@ -1,7 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Webterminal extends CI_Controller {
+class Webterminal extends APIMaster {
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->verifyAuth();
+    }
 
 	public function index()
 	{

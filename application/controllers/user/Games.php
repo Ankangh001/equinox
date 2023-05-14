@@ -1,7 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Games extends CI_Controller {
+class Games extends APIMaster {
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->verifyAuth();
+    }
 
 	public function index()
 	{

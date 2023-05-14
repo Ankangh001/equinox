@@ -136,4 +136,16 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('cookie');
 	}
+
+	public function test()
+	{
+		$url = "https://www.fxblue.com/users/51634880/overviewscript";
+		$data = file_get_contents($url);
+		echo $data;
+	}
+
+	public function gettest()
+	{
+		$this->load->view('test');
+	}
 }

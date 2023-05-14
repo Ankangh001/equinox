@@ -1,7 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Faq extends CI_Controller {
+class Faq extends APIMaster {
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->verifyAuth();
+    }
 
 	public function index()
 	{

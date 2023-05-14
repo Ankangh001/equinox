@@ -49,6 +49,7 @@ class Auth extends APIMaster {
             $insertData['token'] 	= $generateToken;
             $insertData['status'] 	= 1;
             $insertData['created_date'] = date('Y-m-d H:i:s');
+            $this->session->set_userdata("token", $generateToken);
 
             $this->db->insert('login_analytics',$insertData);
             $lastId = $this->db->insert_id();

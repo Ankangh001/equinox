@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends APIMaster {
 
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     $this->validateUserSession();
-    // }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->verifyAuth();
+    }
 
 	public function index()
 	{
