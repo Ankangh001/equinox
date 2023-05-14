@@ -1,14 +1,35 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
-<!-- Content wrapper -->
+<style>
+  aside#layout-menu {
+    display: none;
+}
+.layout-menu-fixed:not(.layout-menu-collapsed) .layout-page, .layout-menu-fixed-offcanvas:not(.layout-menu-collapsed) .layout-page {
+    padding-left: 0;
+}
+.layout-navbar.navbar-detached.container-xxl {
+    display: none;
+}
+</style>
 <div class="content-wrapper">
-  <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row d-flex">
+      <div class="col-md-6">
         <div class="card mb-3">
+          <div class="card-body text-center">
+              <iframe 
+                id="element" src="https://trade.mql5.com/trade?demo_all_servers=1&amp;startup_mode=open_demo&amp;lang=en&amp;save_password=off" 
+                allowfullscreen="allowfullscreen" 
+                style="width: 100%; height: 100vh; border: none;"
+                startup_version ="5"
+              ></iframe>
+            </div>
+            <div class="footer"></div>
+          </div>
+        </div>
+      <div class="col-md-6">
+      <div class="card mb-3">
           <div id="element"  class="card-body text-center">
               <!-- TradingView Widget BEGIN -->
               <div class="tradingview-widget-container">
@@ -44,19 +65,12 @@ $this->load->view('user/includes/header');
       </div>
     </div>
   </div>
-</div>
+  </div>
     <!-- / Content -->
 <script>
-  $('#navbar-collapse').prepend(
-    `<h4 class="fw-bold mb-0 mr-3"><span class="text-muted fw-light">User /</span> Advanced Chart</h4> 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button class="btn btn-outline-dark ml-3 btn-sm" onclick="var el = document.getElementById('element'); el.requestFullscreen();">
-        <i class='bx bx-fullscreen' ></i>
-        </button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="btn btn-outline-dark me-3 btn-sm" href="split">
-        <i class='bx bxs-arrow-to-right' ></i>
-      </a>`
-    );
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0 mr-3"><span class="text-muted fw-light">User /</span> MT5 Webterminal</h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-outline-dark ml-3 btn-sm" onclick="var el = document.getElementById('element'); el.requestFullscreen();">
+            <i class='bx bx-fullscreen' ></i>
+          </button>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

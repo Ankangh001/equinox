@@ -51,26 +51,14 @@ $this->load->view('admin/includes/header');
                       </div>
                   </div>
 
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label for="exampleFormControlSelect1" class="form-label">Product Type</label>
-                      <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected="">Select Product Type</option>
-                        <option class="text-primary" value="Free Trial">Free Trial</option>
-                        <option class="text-danger" value="Aggressive">Aggressive</option>
-                        <option class="text-success" value="Normal">Normal</option>
-                      </select>
-                    </div>
-                  </div>
 
                   <div class="col-lg-12">
                     <div class="mb-3">
                       <label for="exampleFormControlSelect1" class="form-label">Product Status</label>
                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                         <option selected="">Select Product Type</option>
-                        <option class="text-warning" value="Pending">Pending</option>
-                        <option class="text-success" value="Paid">Paid</option>
-                        <option class="text-danger" value="Denied">Denied</option>
+                        <option class="text-warning" value="Pending">Active</option>
+                        <option class="text-danger" value="Denied">Inactive</option>
                       </select>
                     </div>
                   </div>
@@ -107,28 +95,6 @@ $this->load->view('admin/includes/header');
                       <input type="text" class="form-control" id="basic-default-product-name" placeholder="Enter Product Name">
                     </div>
                   </div>
-
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label class="form-label" for="basic-default-product-name">Product List 2</label>
-                      <input type="text" class="form-control" id="basic-default-product-name" placeholder="Enter Product Name">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label class="form-label" for="basic-default-product-name">Product List 3</label>
-                      <input type="text" class="form-control" id="basic-default-product-name" placeholder="Enter Product Name">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label class="form-label" for="basic-default-product-name">Product List 4</label>
-                      <input type="text" class="form-control" id="basic-default-product-name" placeholder="Enter Product Name">
-                    </div>
-                  </div>
-
                 </div>
                 <button type="submit" class="w-100 btn btn-primary">Send</button>
               </form>
