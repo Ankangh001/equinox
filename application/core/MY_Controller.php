@@ -124,15 +124,40 @@ class APIMaster extends CI_Controller
         $authorization = '';
         $success = 1;
         $response['message'] = "Authenticated";
-        if (isset($headers['token']) && isset($headers['admin_type'])=='client') {
+        if (isset($headers['token']) && isset($headers['admin_type'])=='Client') {
             $authorization = $headers['token'];
         }
         if ($authorization == "") {
+            redirect('client-login');
             $this->returnResponse(0, "You are not Authorised!");
         }
 
         $result = $this->AppLogin->validateUserSession($authorization);
         if ($result['success'] == 0) {
+            redirect('client-login');
+            $this->returnResponse(0, "Failed: Invalid Session!");
+        } else {
+            return $authorization;
+        }
+    }
+
+    public function verifyAdminAuth()
+    {
+        $headers = $_SESSION;
+        $authorization = '';
+        $success = 1;
+        $response['message'] = "Authenticated";
+        if (isset($headers['token']) && isset($headers['admin_type'])=='Admin') {
+            $authorization = $headers['token'];
+        }
+        if ($authorization == "") {
+            redirect('client-login');
+            $this->returnResponse(0, "You are not Authorised!");
+        }
+
+        $result = $this->AppLogin->validateUserSession($authorization);
+        if ($result['success'] == 0) {
+            redirect('client-login');
             $this->returnResponse(0, "Failed: Invalid Session!");
         } else {
             return $authorization;

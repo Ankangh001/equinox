@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 11:11 AM
+-- Generation Time: May 14, 2023 at 07:31 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,33 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `equinox`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_roles`
---
-
-CREATE TABLE `admin_roles` (
-  `id` int(11) NOT NULL,
-  `role_id` int(30) NOT NULL,
-  `admin_id` int(11) NOT NULL,
-  `role_name` varchar(40) NOT NULL,
-  `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_user`
---
-
-CREATE TABLE `admin_user` (
-  `id` int(11) NOT NULL,
-  `username` int(50) NOT NULL,
-  `passward` varchar(300) NOT NULL,
-  `admin_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -130,7 +103,10 @@ INSERT INTO `login_analytics` (`auto_id`, `user_id`, `device`, `device_id`, `tok
 (3, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'NzExMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 08:04:17'),
 (4, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'NjgxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 08:04:21'),
 (5, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'ODQxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 08:04:29'),
-(6, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'NDgxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 1, '2023-05-14 08:04:34');
+(6, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'NDgxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 08:04:34'),
+(7, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'NjMxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 17:58:37'),
+(8, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'MTMxMXJvaGl0cHJhc2FkQGdtYWlsLmNvbQ==', 0, '2023-05-14 19:24:24'),
+(9, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42', '1', 'MjAyMmFkbWluQGFkbWluLmNvbQ==', 1, '2023-05-14 19:30:20');
 
 -- --------------------------------------------------------
 
@@ -215,31 +191,23 @@ CREATE TABLE `user` (
   `verification_key` varchar(200) NOT NULL,
   `email_verified` tinyint(2) NOT NULL DEFAULT 0,
   `created_date` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `admin_type` varchar(50) NOT NULL DEFAULT 'Client',
+  `profile` varchar(255) NOT NULL,
+  `client_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `country`, `state`, `city`, `number`, `password`, `verification_key`, `email_verified`, `created_date`, `updated_at`) VALUES
-(1, 'Rohit', 'Prasad', 'rohitprasad@gmail.com', 'India', 'West Bengal', 'Siliguri', 980099, '12345', '', 1, '2023-05-13 15:55:01', '2023-05-13 15:55:01');
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `country`, `state`, `city`, `number`, `password`, `verification_key`, `email_verified`, `created_date`, `updated_at`, `admin_type`, `profile`, `client_id`) VALUES
+(1, 'Rohit', 'Prasad', 'rohitprasad@gmail.com', 'India', 'West Bengal', 'Siliguri', 980099, '12345', '', 1, '2023-05-13 15:55:01', '2023-05-13 15:55:01', 'Client', '', ''),
+(2, 'Rohit', 'Prasad', 'admin@admin.com', 'India', 'West Bengal', 'Siliguri', 980099, '12345', '', 1, '2023-05-13 15:55:01', '2023-05-13 15:55:01', 'Admin', '', '');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin_roles`
---
-ALTER TABLE `admin_roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_user`
---
-ALTER TABLE `admin_user`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `affiliates`
@@ -300,18 +268,6 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `admin_roles`
---
-ALTER TABLE `admin_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `admin_user`
---
-ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `affiliates`
 --
 ALTER TABLE `affiliates`
@@ -333,7 +289,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `login_analytics`
 --
 ALTER TABLE `login_analytics`
-  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payout_history`
@@ -363,7 +319,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

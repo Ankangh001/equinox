@@ -122,7 +122,7 @@ $this->load->view('includes/header');
 			},
 			success: function(response) {
 				if (response.success == 1) {
-					window.location.href = BASEURL+"user";	
+					window.location.href = response.data.redirect_url;	
 				} else {
 					notify("danger", response.message);
 					return;

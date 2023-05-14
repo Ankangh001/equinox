@@ -59,7 +59,11 @@ class Auth extends APIMaster {
             $cookie_name = "API_TOKEN";
             $cookie_value = $generateToken;
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-              
+			if( $user_data['admin_type']=='Client'){
+				$res['data']['redirect_url']=base_url('user');
+			}else if( $user_data['admin_type']=='Admin'){
+				$res['data']['redirect_url']=base_url('admin');
+			}
         }
 
         $this->jsonOutput($res);

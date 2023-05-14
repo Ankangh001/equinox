@@ -1,40 +1,12 @@
 <?PHP
 class AppLogin extends CI_Model
 {
-    public function fetch_client_authKey()
-    {
-        try {
-            $query = $this->db->get('Client_Master', 1);
-            return $query->row_array()['auth_key'] ?? "";
-        } catch (Exception $ex) {
-            return $ex->getMessage();
-        }
-    }
 
     public function validateUserEmail($emailId)
     {
         try {
             $pass_enc = pass_enc;
-            $query = "select employee_id,validity,email_id,aes_decrypt(password,'{$pass_enc}')  as password,tnc_acknowledged,(select if(count(1)>=1,'0','1') from Employee_Login where employee_id=emp.employee_id) as first_time_user,disabled from Employee_Master as emp where email_id='{$emailId}' and status = 1 and accessibility = 'User'";
-            $data  = $this->db->query($query)->row_array();
-            if ($data) {
-                $response['success'] = 1;
-                $response['data'] = $data;
-            } else {
-                $response['success'] = 0;
-                $response['message'] = "Data Not Found";
-            }
-        } catch (Exception $ex) {
-            $response['success'] = 0;
-            $response['message'] = $ex->getMessage();
-        }
-        return $response;
-    }
-
-    public function check_authority($emp_id)
-    {
-        try {
-            $query = "select employee_id,tnc_acknowledged,(select if(count(1)>=1,'0','1') from Employee_Login where employee_id=emp.employee_id) as first_time_user from Employee_Master as emp where employee_id={$emp_id}";
+            $query = "select user_id,email,aes_decrypt(password,'{$pass_enc}')  as password,(select if(count(1)>=1,'0','1') from login_analytics where user_id=emp.user_id) as first_time_user from user as emp where email='{$emailId}' and status = 1 and admin_type = 'Client'";
             $data  = $this->db->query($query)->row_array();
             if ($data) {
                 $response['success'] = 1;
@@ -119,7 +91,7 @@ class AppLogin extends CI_Model
     {
         try {
             $pass_enc = pass_enc;
-            $sql = "SELECT  user_id,concat(first_name,' ',last_name) as user_name,email,password,'client' admin_type FROM user where email = '{$email}'";
+            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type FROM user where email = '{$email}'";
             $result = $this->db->query($sql)->row_array();
             if ($result) :
                 if (!empty($result['password'])) :

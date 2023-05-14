@@ -1,7 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Purchase extends CI_Controller {
+class Purchase extends APIMaster {
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->verifyAdminAuth();
+    }
 
 	public function index()
 	{
