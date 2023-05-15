@@ -550,8 +550,8 @@ $this->load->view('user/includes/header');
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
                     <div class="container" data-aos="fade-up">
                         <div class="d-flex m-5" id="myFilter">
-                            <input type="text" style="width:100%"  class="col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
-                            <button class="btn btn-secondary search"><i class="bx bx-search-alt-2 text-white"></i></button>
+                            <input type="text" style="width:30%"  class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
+                            <!-- <button class="btn btn-secondary search"><i class="bx bx-search-alt-2 text-white"></i></button> -->
                         </div>
                         <ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
                             <li class="nav-item m-2 pointer">

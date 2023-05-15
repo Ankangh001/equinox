@@ -21,7 +21,7 @@ $this->load->view('user/includes/header');
                         <!-- static  -->
                         <option value="Profit Split">Profit Split</option>
                         <option value="Affiliate">Affiliate</option>
-                        <option value="Rewards">Rewards</option>
+                        <option value="Rewards">Games & Rewards</option>
                         <!-- static  -->
                       </select>
                     </div>
@@ -59,17 +59,17 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label class="form-label d-flex align-items-center" for="basic-default-phone">Amount &nbsp;&nbsp;
                         <span id="available_amount" class="ml-3 text-info text-transform-none float-end"></span></label>
-                      <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="Enter amount">
+                      <input type="number" id="basic-default-zip" class="form-control phone-mask" placeholder="Enter amount">
                     </div>
                   </div>
                   <div class="col-lg-8">
                     <div class="mb-3">
-                      <label class="form-label" for="basic-default-phone">User Address</label>
+                      <label class="form-label" for="basic-default-phone">Email / Wallet Address</label>
                       <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="Enter your address">
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="w-100 btn btn-primary">Send</button>
+                <button type="submit" class="w-100 btn btn-primary">Request Payout</button>
               </form>
             </div>
           </div>
@@ -77,7 +77,7 @@ $this->load->view('user/includes/header');
         <h3 class="my-3"></h3>
         <div class="col-xl">
           <div class="card">
-            <h5 class="card-header">Withdrawl History</h5>
+            <h5 class="card-header">Withdrawal History</h5>
             <div class="table-responsive text-nowrap">
               <table class="table">
                 <thead class="table-light">

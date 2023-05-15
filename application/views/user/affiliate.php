@@ -10,15 +10,16 @@ $this->load->view('user/includes/header');
       <div class="col-md-12">
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title pt-3 me-3">Your Unique Affiliate Link</h5>
-            <a href="javascript:void(0)" class="btn btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</a>
+            <h5 class="card-title pt-3 me-3">Your Unique Affiliate Link-</h5>
+            <a href="javascript:void(0)" class="text-primary">https://equinoxtradingcapital.com/affiliate/username?aid=876545678</a>&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="row mb-5">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card mb-3" style="background: linear-gradient(60deg, #fcfc, #ea1cea);">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -34,7 +35,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card mb-3 bg-warning">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -50,21 +51,38 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card mb-3 bg-danger">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
-              <i class="lg-text bx bx-chart text-white"></i>
+              <i class="lg-text bx bx-dollar text-white"></i>
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Total Revenue</h5>
+                <h5 class="card-title text-white">Comission Withdrawn</h5>
                 <p class="card-text fs-1 text-white">19</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="col-md-3">
+        <div class="card mb-3 bg-info">
+          <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+              <i class="lg-text bx bx-dollar text-white"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title text-white">Comission Available</h5>
+                <p class="card-text fs-1 text-white">19</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="card">

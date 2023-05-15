@@ -28,6 +28,6 @@ $this->load->view('user/includes/header');
   <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
 
   <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Community Chat</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Community Chat</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

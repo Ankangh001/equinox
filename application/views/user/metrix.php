@@ -1,10 +1,10 @@
 
 <?php
 
-$url = "https://www.fxblue.com/users/51634880/overviewscript";
-$data = file_get_contents($url);
-echo $data;
-die;
+// $url = "https://www.fxblue.com/users/51634880/overviewscript";
+// $data = file_get_contents($url);
+// echo $data;
+// die;
 // $account  = $_GET['account'];
 // $curl = curl_init();
 
@@ -70,7 +70,7 @@ $this->load->view('user/includes/header');
             <div class="col-lg-4">
               <div class="card-body row align-items-center">
                 <div class="mb-3 col-lg-12 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Max Drawdown 
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Max Drawdown 
                       <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
                         <i class='bx bx-info-circle' ></i>
                       </span>
@@ -79,7 +79,7 @@ $this->load->view('user/includes/header');
                 </div>
 
                 <div class="mb-3 col-lg-12 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Daily Drawdown
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown
                       <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
                         <i class='bx bx-info-circle' ></i>
                       </span>
@@ -88,7 +88,7 @@ $this->load->view('user/includes/header');
                 </div>
 
                 <div class="mb-3 col-lg-12 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Today's Profit
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Total Profit
                       <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
                         <i class='bx bx-info-circle' ></i>
                       </span>

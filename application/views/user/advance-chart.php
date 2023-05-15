@@ -55,7 +55,7 @@ $this->load->view('user/includes/header');
         </button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a class="btn btn-outline-dark me-3 btn-sm" href="split">
-        <i class='bx bxs-arrow-to-right' ></i>
+        Merge<i class='bx bxs-arrow-to-right' ></i>
       </a>`
     );
 </script>

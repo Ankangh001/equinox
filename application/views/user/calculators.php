@@ -56,10 +56,10 @@ $this->load->view('user/includes/header');
                   <span>Position Calculator</span>
                 </button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                  <span>PIP Calculator</span>
+                  <span>Pip Calculator</span>
                 </button>
                 <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                  <span>FX Calculator</span>
+                  <span>Profit Calculator</span>
                 </button>
                 <button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
                   <span>Margin Requirement</span>
