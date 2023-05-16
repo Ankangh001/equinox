@@ -33,6 +33,14 @@ $this->load->view('includes/header');
         border-radius:20px;
         box-shadow: 3px 3px 36px #00000090
     }
+    .form-control {
+        background-color: #dddddd40 !important;
+        border: 1px solid #dddddd40 !important;
+    }
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+        border: 1px solid #000;
+    }
     button{
         background: linear-gradient(86deg, #FF5758, #CF559E);
         border:none !important;
@@ -62,12 +70,12 @@ $this->load->view('includes/header');
             <a href="/" class="text-center w-100">
                 <img class="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon">
             </a>
-            <br>
-            <p class="lead fw-normal mb-0 me-3">Sign Up with Equinox</p><br>
+            <!-- <br>
+            <p class="lead fw-normal mb-0 me-3">Sign Up</p><br> -->
         </div>
 
         <div class="divider d-flex align-items-center mb-3">
-            <p class="text-center fw-bold mb-0">Enter your details below</p>
+            <p class="text-center fw-bold mb-0">Sign Up</p>
         </div>
 
         <!-- designation input -->
@@ -83,22 +91,22 @@ $this->load->view('includes/header');
 
         <!-- name input -->
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="Enter First name" />
+            <input type="text" class="form-control" placeholder="First name" />
         </div>
 
         <!-- name input -->
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="Enter Last name" />
+            <input type="text" class="form-control" placeholder="Last name" />
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" class="form-control" placeholder="Enter a valid email address" />
+            <input type="email" class="form-control" placeholder="a valid email address" />
         </div>
 
         <!-- num input -->
         <div class="form-outline mb-4">
-            <input type="number" class="form-control" placeholder="Enter a valid number" />
+            <input type="number" class="form-control" placeholder="a valid number" />
         </div>
 
         
@@ -107,11 +115,11 @@ $this->load->view('includes/header');
 
         <!-- confirm Password input -->
         <div class="form-outline mb-3">
-            <input type="password" class="form-control" placeholder="Enter Password" />
+            <input type="password" class="form-control" placeholder="Password" />
         </div>
         <!-- confirm Password input -->
         <div class="form-outline mb-3">
-            <input type="password" class="form-control" placeholder="Enter Confirm Password" />
+            <input type="password" class="form-control" placeholder="Confirm Password" />
         </div>
 
         <!-- designation input -->

@@ -33,6 +33,14 @@ $this->load->view('includes/header');
         border-radius:20px;
         box-shadow: 3px 3px 36px #00000090
     }
+    .form-control {
+        background-color: #dddddd40 !important;
+        border: 1px solid #dddddd40 !important;
+    }
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+        border: 1px solid #000;
+    }`
     button{
         background: #0d6efd;
         border:none !important;
@@ -70,13 +78,13 @@ $this->load->view('includes/header');
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <input type="email" id="email" class="form-control"
-                    placeholder="Enter a valid email address" />
+                    placeholder="Email" />
                     <!-- <label class="form-label" for="form3Example3">Email address</label> -->
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-3">
                     <input type="password" id="password" class="form-control"
-                    placeholder="Enter password" />
+                    placeholder="Password" />
                     <!-- <label class="form-label" for="form3Example4">Password</label> -->
                 </div>
 
@@ -92,7 +100,7 @@ $this->load->view('includes/header');
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
-                    <button type="button" class="btn w-100  btn-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="validateUser()">Sign In</button>
+                    <button type="button" class="btn w-100  btn-info" style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="validateUser()">Sign In</button>
                     <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="client-signup" class="link-danger">Register</a></p>
                 </div>
             </form>
