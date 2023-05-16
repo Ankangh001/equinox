@@ -62,6 +62,7 @@ $route['user/advanced-chart'] = 'user/advance';
 $route['user/clculators'] = 'user/calculators';
 $route['user/community-chat'] = 'user/communityChat';
 $route['user/split'] = 'user/split';
+$route['user/economic-calendar'] = 'user/economicCalendar';
 //------------------- End user dashboard -----------------
 
 

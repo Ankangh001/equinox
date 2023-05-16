@@ -190,7 +190,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'platform') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>platform" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-analyse"></i>
-                <div>Platform</div>
+                <div>Platforms</div>
               </a>
             </li>
 
@@ -202,11 +202,20 @@
               </a>
             </li>
 
-             <!-- Advance Chart -->
+            <!-- Advance Chart -->
              <li class="menu-item <?php if ($this->uri->segment(2) == 'advanced-chart') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>advanced-chart" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-network-chart"></i>
                 <div>Advanced Chart</div>
+              </a>
+            </li>
+
+
+            <!-- Advance Chart -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'economic-calendar') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>economic-calendar" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div>Economic Calendar</div>
               </a>
             </li>
 
@@ -233,7 +242,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'tools') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>tools" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-crosshair"></i>
-                <div>Tools</div>
+                <div>User Tools</div>
               </a>
             </li>
 

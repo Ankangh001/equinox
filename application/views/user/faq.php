@@ -59,12 +59,12 @@ $this->load->view('user/includes/header');
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item">
                 <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                  Faq
+                  FAQ
                 </button>
               </li>
               <li class="nav-item">
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
-                  Rules
+                  RULES
                 </button>
               </li>
             </ul>
@@ -210,7 +210,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            How do i become an Equinox Trading Capital trader?
+                                            How do I become an Equinox Trading Capital trader?
                                         </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
@@ -265,7 +265,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingFour">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                            If i breach the rules, do i get a second chance?
+                                            If I breach the rules, do I get a second chance?
                                         </button>
                                         </h2>
                                         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample2">
@@ -299,7 +299,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            How much capital will i work with?
+                                            How much capital will I work with?
                                         </button>
                                         </h2>
                                         <div id="funded-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFunudedhExample2">
@@ -340,7 +340,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingFour">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                            Do i have to tax my income?
+                                            Do I have to tax my income?
                                         </button>
                                         </h2>
                                         <div id="funded-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFunudedhExample2">
@@ -374,7 +374,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#platform-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            Which platform can i use for trading?
+                                            Which platform can I use for trading?
                                         </button>
                                         </h2>
                                         <div id="platform-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionPlatformExample2">
@@ -406,7 +406,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="orders-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                        I paid for my evaluation, when will i get the account?
+                                        I paid for my evaluation, when will I get the account?
                                         </button>
                                         </h2>
                                         <div id="order-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionFunudedhExample2">
@@ -517,7 +517,7 @@ $this->load->view('user/includes/header');
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="orders-headingFour">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                                Can i trade news?
+                                                Can I trade news?
                                                 </button>
                                                 </h2>
                                                 <div id="services-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionServicesExample2">
@@ -530,7 +530,7 @@ $this->load->view('user/includes/header');
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="orders-headingFour">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                                Which instruments can i trade?
+                                                Which instruments can I trade?
                                                 </button>
                                                 </h2>
                                                 <div id="services-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionServicesExample2">
@@ -601,7 +601,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingThree">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                                Can i hold position over the weekend?
+                                                Can I hold position over the weekend?
                                             </button>
                                         </h2>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExampleRules">
@@ -614,7 +614,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingFour">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                                Do i have to place a stop loss?
+                                                Do I have to place a stop loss?
                                             </button>
                                         </h2>
                                         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExampleRules">
@@ -657,7 +657,7 @@ $this->load->view('user/includes/header');
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwoRules" aria-expanded="false" aria-controls="flush-collapseTwoRules">
-                                                Can i hold position over the weekend?
+                                                Can I hold position over the weekend?
                                             </button>
                                         </h2>
                                         <div id="flush-collapseTwoRules" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2Rules">

@@ -34,9 +34,9 @@ $this->load->view('user/includes/header');
 .tradingview-widget-container{
   margin:auto
 }
-iframe {
+/* iframe {
   pointer-events: none;
-}
+} */
 </style>
 
 
