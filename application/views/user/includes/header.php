@@ -266,8 +266,8 @@
             </li>
 
             <!-- Community Chat -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'Certificates-chat') { echo 'active';} ?>">
-              <a href="<?=base_url('user/')?>community-chat" class="menu-link">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'certificates') { echo 'active';} ?>">
+              <a href="<?=base_url('user/')?>certificates" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-certification"></i>
                 <div>Certificates</div>
               </a>
