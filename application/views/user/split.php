@@ -17,15 +17,14 @@ $this->load->view('user/includes/header');
     <div class="row d-flex">
       <div class="col-md-6">
         <div class="card mb-3">
-          <div class="card-body text-center">
+          <div class="card-body text-center" style="width: 100%; height: 650px; border: none;">
               <iframe 
                 id="element" src="https://trade.mql5.com/trade?demo_all_servers=1&amp;startup_mode=open_demo&amp;lang=en&amp;save_password=off" 
                 allowfullscreen="allowfullscreen" 
-                style="width: 100%; height: 100vh; border: none;"
+                style="width: 100%; height: 600px; border: none;"
                 startup_version ="5"
               ></iframe>
             </div>
-            <div class="footer"></div>
           </div>
         </div>
       <div class="col-md-6">
@@ -40,7 +39,7 @@ $this->load->view('user/includes/header');
                 new TradingView.widget(
                 {
                 "width": "100%",
-                "height": 610,
+                "height": 635,
                 "symbol": "FX:EURUSD",
                 "interval": "60",
                 "timezone": "Etc/UTC",

@@ -62,7 +62,7 @@ $this->load->view('user/includes/header');
                   <span>Profit Calculator</span>
                 </button>
                 <button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
-                  <span>Margin Requirement</span>
+                  <span>Margin Calculator</span>
                 </button>
               </div>
             </nav>

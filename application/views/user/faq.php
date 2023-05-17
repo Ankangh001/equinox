@@ -6,6 +6,11 @@ $this->load->view('user/includes/header');
     ul.nav.nav-tabs.justify-content-center.mb-5.border-none {
         background: transparent;
     }
+
+    input::placeholder{
+        color:#00000080 !important;
+    }
+
     .flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p strong {
         color: #000000;
         font-size: 16px;
@@ -47,11 +52,34 @@ $this->load->view('user/includes/header');
         z-index: 1;
         box-shadow: none
     }
+    
+    .form-control:focus, .form-select:focus {
+        box-shadow: inset -12px -2px 0px #61dbff, inset -12px 2px 0px #61dbff, 2px 3px 6px #00000030  !important;
+        border: none  !important;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.4375rem 0.875rem;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        line-height: 1.53;
+        color: #ffffff;
+        background-color: #f1f1f1;
+        background-clip: padding-box;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.375rem;
+        box-shadow: inset -6px 0px 0px #61dbff, inset 6px 0px 0px #61dbff, 2px 3px 6px #00000030;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
 </style>
 
-<!-- Content wrapper -->
 <div class="content-wrapper">
-  <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-xl-12">
@@ -69,14 +97,11 @@ $this->load->view('user/includes/header');
               </li>
             </ul>
             <div class="tab-content">
-                <!-- Faq -->
                 <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel"> 
                     <div class="container" data-aos="fade-up">
-                        <div class="d-flex m-5" id="myFilter">
+                        <div class="d-flex align-items-center m-5" id="myFilter2">
                             <input type="text" style="width:100%"  class="col-lg-3 form-control" id="search" placeholder="Search for Faq">
-                            <button class="btn search">
-                                <i class="fas fa-search text-dark"></i>
-                            </button>
+                            <i style="margin-left: -2em;" class='bx bx-search-alt-2'></i>
                         </div>
                     <ul class="nav nav-tabs justify-content-around border-none" role="tablist">
 
@@ -549,7 +574,7 @@ $this->load->view('user/includes/header');
                 <!-- Rules -->
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
                     <div class="container" data-aos="fade-up">
-                        <div class="d-flex m-5" id="myFilter">
+                        <div class="d-flex m-5" id="myFilter2">
                             <input type="text" style="width:30%"  class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
                             <!-- <button class="btn btn-secondary search"><i class="bx bx-search-alt-2 text-white"></i></button> -->
                         </div>

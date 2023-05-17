@@ -36,8 +36,8 @@ $this->load->view('user/includes/header');
                             <div class="d-flex justify-content-start align-items-center">
                               <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
                               <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
+                                <label class="fw-bold form-check-label" for="defaultRadio1"> Evaluation Fund </label>
+                                <!-- <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label> -->
                               </div>
                             </div>
                             <p class="card-title fw-bold text-primary">$15000</p>
@@ -51,8 +51,8 @@ $this->load->view('user/includes/header');
                             <div class="d-flex justify-content-start align-items-center">
                               <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
                               <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
+                                <label class="fw-bold form-check-label" for="defaultRadio1"> Evaluation Fund </label>
+                                <!-- <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label> -->
                               </div>
                             </div>
                             <p class="card-title fw-bold text-primary">$15000</p>
@@ -66,8 +66,8 @@ $this->load->view('user/includes/header');
                             <div class="d-flex justify-content-start align-items-center">
                               <input name="default-radio-1" class="form-check-input me-3" type="radio" value="" id="defaultRadio1">
                               <div class="d-flex flex-column">
-                                <label class="form-check-label" for="defaultRadio1"> Evaluation Fund </label>
-                                <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label>
+                                <label class="fw-bold form-check-label" for="defaultRadio1"> Evaluation Fund </label>
+                                <!-- <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label> -->
                               </div>
                             </div>
                             <p class="card-title fw-bold text-primary">$15000</p>

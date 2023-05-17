@@ -37,7 +37,7 @@ $this->load->view('user/includes/header');
         <i class='bx bx-fullscreen' ></i>
         </button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="btn btn-outline-dark me-3 btn-sm" href="split">
+      <a target="_blank" class="btn btn-outline-dark me-3 btn-sm" href="split">
         Merge<i class='bx bxs-arrow-to-right' ></i>
       </a>`)
 </script>

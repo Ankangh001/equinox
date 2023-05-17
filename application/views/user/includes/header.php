@@ -138,7 +138,7 @@
             <!-- Purchase History -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'purchase-history') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>purchase-history" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div>Purchase History</div>
               </a>
             </li>
@@ -146,7 +146,7 @@
             <!-- Payouts -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>payout" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
                 <div>Payout</div>
               </a>
             </li>
@@ -258,17 +258,17 @@
             </li>
 
             <!-- COmpettitions -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'Compettitions-chat') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'Compettitions-chat') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>community-chat" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-award"></i>
                 <div>Compettitions</div>
               </a>
-            </li>
+            </li> -->
 
             <!-- Community Chat -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'certificates') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>certificates" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-certification"></i>
+                <i class="menu-icon tf-icons bx bxs-award"></i>
                 <div>Certificates</div>
               </a>
             </li>
