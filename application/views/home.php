@@ -42,6 +42,7 @@ $this->load->view('includes/header');
 
 				<div class="btn2" style="width:80%">
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
+					
 					<div class="d-flex justify-content-center">
 						<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
 							<a target="_blank" href="https://youtube.com/@EquinoxTradingCapital">
@@ -54,8 +55,10 @@ $this->load->view('includes/header');
 							</a>
 						</div>
 					</div>
+					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="24px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
+						<a href="https://www.trustpilot.com/review/equinoxtradingcapital.com" target="_blank" rel="noopener">Trustpilot</a>
+					</div>
 				</div>
-				
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
 				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
@@ -1569,7 +1572,7 @@ $this->load->view('includes/header');
     </section>
 	<!-- ====== End Trusted patner logos ====== -->
   </main><!-- End #main -->
-  
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 <?php
 $this->load->view('includes/footer');
 ?>

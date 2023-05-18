@@ -84,7 +84,17 @@ $this->load->view('admin/includes/header');
       </div>
     </div>
     <!-- / Content -->
-<script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Challenge</h4>`)
-</script>
 <?php $this->load->view('user/includes/footer'); ?>
+<script>
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Challenge</h4>`);
+
+  $.ajax({
+        type: "GET",
+        url: "<?php echo base_url('admin/challenge/view'); ?>",
+        dataType: "html",
+        success: function(data){
+          console.log(data);
+        },
+        error: function() { alert("Error posting feed."); }
+    });
+</script>

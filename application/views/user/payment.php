@@ -109,12 +109,6 @@ $this->load->view('user/includes/header');
                 <div class="mb-3">
                   <div class="form-text">By providing your card information you allow Equinox Trading Capital Limited</div>
                 </div>
-                <div class="mb-3">
-                  <div class="form-check mt-3">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1"> I agree that i have read <a href="#">terms and conditions</a>. </label>
-                  </div>
-                </div>
                 <button type="submit" class="w-100 btn btn-primary">Send</button>
               </form>
             </div>
