@@ -73,7 +73,6 @@
               <h4 class="mb-3 text-center">Welcome to <br>Equinox Trading Capital! 👋</h4>
               <p class="mb-5 text-center">Start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
@@ -111,10 +110,8 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign in</button>
                 </div>
-              </form>
-
               <p class="text-center">
                 <span>New on our platform?</span>
                 <a href="auth-register-basic.html">
@@ -150,3 +147,42 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+  var BASEURL = "<?=base_url()?>";
+    function validateUser() {
+		let email = $("#email").val();
+		let password = $("#password").val();
+		if (email == "") {
+			notify("danger", "Please enter email");
+			$("#email").focus();
+			return;
+		}
+		if (password == "") {
+			notify("danger", "Please enter password");
+			$("#password").focus();
+			return;
+		}
+		$.ajax({
+			type: "post",
+			url: BASEURL+"Auth/login",
+			data: {
+				"email": email,
+				"password": password
+			},
+			success: function(response) {
+				if (response.success == 1) {
+					window.location.href = response.data.redirect_url;	
+				} else {
+					notify("danger", response.message);
+					return;
+				}
+			},
+			error: function(exception) {
+				console.log(exception);
+				notify("danger", "Some error occured")
+			}
+		})
+
+	}
+</script>

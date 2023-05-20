@@ -124,9 +124,10 @@ class APIMaster extends CI_Controller
         $authorization = '';
         $success = 1;
         $response['message'] = "Authenticated";
-        if (isset($headers['token']) && isset($headers['admin_type'])=='Client') {
+        if (isset($headers['token']) && $headers['admin_type']=='Client') {
             $authorization = $headers['token'];
         }
+
         if ($authorization == "") {
             redirect('client-login');
             $this->returnResponse(0, "You are not Authorised!");
@@ -147,17 +148,17 @@ class APIMaster extends CI_Controller
         $authorization = '';
         $success = 1;
         $response['message'] = "Authenticated";
-        if (isset($headers['token']) && isset($headers['admin_type'])=='Admin') {
+        if (isset($headers['token']) && $headers['admin_type']=='Admin') {
             $authorization = $headers['token'];
         }
         if ($authorization == "") {
-            redirect('client-login');
+            redirect('admin/login');
             $this->returnResponse(0, "You are not Authorised!");
         }
 
         $result = $this->AppLogin->validateUserSession($authorization);
         if ($result['success'] == 0) {
-            redirect('client-login');
+            redirect('admin/login');
             $this->returnResponse(0, "Failed: Invalid Session!");
         } else {
             return $authorization;
@@ -558,4 +559,14 @@ class APIMaster extends CI_Controller
         $this->load->view("footer");
     }
 
+    public function encryptAES($data) {
+        $encrypted = openssl_encrypt($data, 'AES-256-CBC', pass_enc, OPENSSL_RAW_DATA,pass_iv);
+        return base64_encode($encrypted);
+    }
+
+    public function decryptAES($encryptedData) {
+        $decoded = base64_decode($encryptedData);
+        $decrypted = openssl_decrypt($decoded, 'AES-256-CBC', pass_enc, OPENSSL_RAW_DATA,pass_iv);
+        return $decrypted;
+    }
 }

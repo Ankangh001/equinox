@@ -140,8 +140,20 @@ class Welcome extends CI_Controller {
 	public function test()
 	{
 		$url = "https://www.fxblue.com/users/51634880/overviewscript";
-		$data = file_get_contents($url);
-		echo $data;
+		$response = file_get_contents($url);
+		$pattern = '/document.MTIntelligenceAccounts.push\((.*?)\);/s';
+		preg_match($pattern, $response, $matches);
+
+		if (isset($matches[1])) {
+			$json = $matches[1];
+			$data = json_decode($json, true);
+			$userId = $data['userid'];
+			$balance = $data['balance'];
+			$equity = $data['equity'];
+			echo "User ID: $userId\n";
+			echo "Balance: $balance\n";
+			echo "Equity: $equity\n";
+		}
 	}
 
 	public function gettest()

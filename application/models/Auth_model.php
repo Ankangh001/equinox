@@ -43,10 +43,7 @@ class Auth_model extends CI_Model{
 	}
 
 	//--------------------------------------------------------------------
-	public function register($data){
-		$this->db->insert('ci_admin', $data);
-		return true;
-	}
+	
 
 	//--------------------------------------------------------------------
 	public function email_verification($code){

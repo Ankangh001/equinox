@@ -205,7 +205,7 @@
                 </li> -->
 
                 <li class="nav-item lh-1 me-3">
-                  <p class="text mt-3">User Name</p>
+                  <p class="text mt-3"><?=$_SESSION['user_name']?></p>
                 </li>
 
                 <!-- User -->
@@ -259,7 +259,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="<?=base_url('auth/logout')?>">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

@@ -65,7 +65,7 @@ $this->load->view('includes/header');
 </head>
 
 <body>
-    <form class="">
+    <form class="" id ="myForm" method="POST">
         <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="text-center w-100">
                 <img class="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon">
@@ -79,7 +79,7 @@ $this->load->view('includes/header');
         </div>
 
         <!-- designation input -->
-        <div class="form-outline mb-3">
+        <!-- <div class="form-outline mb-3">
             <select class="form-control" >
                 <option selected value="mr">Select your title</option>
                 <option value="mr">Mr</option>
@@ -87,44 +87,40 @@ $this->load->view('includes/header');
                 <option value="mr">Mrs</option>
                 <option value="mr">Mx</option>
             </select>
+        </div> -->
+
+        <!-- name input -->
+        <div class="form-outline mb-4">
+            <input type="text" name="first_name" class="form-control" placeholder="First name" />
         </div>
 
         <!-- name input -->
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="First name" />
-        </div>
-
-        <!-- name input -->
-        <div class="form-outline mb-4">
-            <input type="text" class="form-control" placeholder="Last name" />
+            <input type="text" name="last_name" class="form-control" placeholder="Last name" />
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" class="form-control" placeholder="a valid email address" />
+            <input type="email" name="email" class="form-control" placeholder="a valid email address" />
         </div>
 
         <!-- num input -->
         <div class="form-outline mb-4">
-            <input type="number" class="form-control" placeholder="a valid number" />
+            <input type="number" name="contact"  class="form-control" placeholder="a valid number" />
         </div>
-
         
-
-        
-
         <!-- confirm Password input -->
         <div class="form-outline mb-3">
-            <input type="password" class="form-control" placeholder="Password" />
+            <input type="password" name="password"  class="form-control" placeholder="Password" />
         </div>
         <!-- confirm Password input -->
         <div class="form-outline mb-3">
-            <input type="password" class="form-control" placeholder="Confirm Password" />
+            <input type="password" name="confirm_password"  class="form-control" placeholder="Confirm Password" />
         </div>
 
         <!-- designation input -->
         <div class="form-outline mb-3">
-            <select class="form-control" >
+            <select class="form-control" name="country">
                 <option selected value="mr">Select your Country</option>
                 <option value="mr">US</option>
                 <option value="mr">INDIA</option>
@@ -172,7 +168,7 @@ $this->load->view('includes/header');
         </div>
 
         <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
-            <button type="button" class="btn w-100 "
+            <button type="submit" class="btn w-100 "
             style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="client-login"
                 class="link-danger">Login</a></p>
@@ -180,3 +176,30 @@ $this->load->view('includes/header');
     </form>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+$(document).ready(function() {
+  $('#myForm').submit(function(e) {
+    e.preventDefault(); // Prevent the form from submitting normally
+    // Serialize the form data
+    var formData = $(this).serialize();
+    console.log(formData);
+    // Send the form data using Ajax
+    $.post({
+      url: BASEURL+'auth/register',
+      data: formData,
+      success: function(response) {
+        if (response.success == 1) {
+            window.location.href = BASEURL+'client-login';	
+        } else {
+            notify("danger", response.message);
+            return;
+        }
+      },
+      error: function(xhr, status, error) {
+        // Handle the error here
+      }
+    });
+  });
+});
+</script>
