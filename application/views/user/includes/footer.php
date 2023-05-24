@@ -69,12 +69,12 @@
     <script src="<?= base_url('assets/user/assets/') ?>js/dashboards-analytics.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
     <script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+        // ClassicEditor
+        //     .create( document.querySelector( '#editor' ) )
+        //     .catch( error => {
+        //         console.error( error );
+        //     } );
+    </script>
 
   </body>
 </html>

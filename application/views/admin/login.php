@@ -150,9 +150,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script>
   var BASEURL = "<?=base_url()?>";
-    function validateUser() {
+
+  function validateUser() {
 		let email = $("#email").val();
 		let password = $("#password").val();
+
 		if (email == "") {
 			notify("danger", "Please enter email");
 			$("#email").focus();
@@ -185,4 +187,18 @@
 		})
 
 	}
+
+
+  function notify(type, text){
+        $('.authentication-inner').prepend(
+          `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
+            ${text}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>`
+        );
+        setTimeout(() => {
+          $('#alert').fadeOut();
+          // $('#alert').addClass('d-none');
+        }, 3000);
+      }
 </script>

@@ -1,44 +1,5 @@
 
-<?php
-
-// $url = "https://www.fxblue.com/users/51634880/overviewscript";
-// $data = file_get_contents($url);
-// echo $data;
-// die;
-// $account  = $_GET['account'];
-// $curl = curl_init();
-
-// curl_setopt_array($curl, array(
-//   CURLOPT_URL => 'https://www.fxblue.com/users/'.$account.'/overviewscript',
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => '',
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 0,
-//   CURLOPT_FOLLOWLOCATION => true,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => 'GET',
-// ));
-
-// $jsCode = curl_exec($curl);
-
-// curl_close($curl);
-// $jsCode = str_replace('if (!document.MTIntelligenceAccounts) document.MTIntelligenceAccounts = new Array(); ', '', $jsCode);
-
-// // Extract the JSON object from the code
-// $jsonString = substr($jsCode, strpos($jsCode, '{'), -2);
-
-// // Decode the JSON object into a PHP object
-// $accountObject = json_decode($jsonString);
-
-// // Access the values by property name
-// // echo "Account balance: " . $accountObject->balance . "<br>";
-// // echo "Total deposits: " . $accountObject->totalDeposits . "<br>";
-// echo"<pre>";
-// print_r($jsonString);
-// exit;
-$this->load->view('user/includes/header');
-?>
-
+<?php $this->load->view('user/includes/header'); ?>
 
 <style>
   .accordion .accordion-item.active {
@@ -89,11 +50,12 @@ $this->load->view('user/includes/header');
 
                 <div class="mb-3 col-lg-12 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Total Profit
-                      <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                      <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" 
+                        data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
                         <i class='bx bx-info-circle' ></i>
                       </span>
                     </h6>
-                    <input readonly class="form-control" value="$400" />
+                    <input readonly id="total_profit" class="form-control" value="" />
                 </div>
               </div>
             </div>
@@ -128,7 +90,7 @@ $this->load->view('user/includes/header');
                         <h2 class="accordion-header" id="headingOne">
                           <button type="button" class="accordion-button collapsed" 
                             data-bs-toggle="collapse" data-bs-target="#accordionOne" 
-                            aria-expanded="false" aria-controls="accordionOne">Minimum 0 Trading days</button>
+                            aria-expanded="false" aria-controls="accordionOne">Maximum Drawdown</button>
                         </h2>
                         <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">      
                           <div class="accordion-body p-1 bg-secondary">
@@ -144,8 +106,8 @@ $this->load->view('user/includes/header');
                         </div>
                     </div>
                   </td>
-                  <td><div class="d-flex align-items-center justify-content-start">$0.00</div></td>
-                  <td><div class="d-flex align-items-center justify-content-start"><i class="bx bx-check-circle text-success"></i>Pass</div></td>
+                  <td><div class="d-flex align-items-center justify-content-start" id="max_drawdown"></div></td>
+                  <td><div class="d-flex align-items-center justify-content-start"><i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass</div></td>
                 </tr>
 
 
@@ -173,8 +135,36 @@ $this->load->view('user/includes/header');
                         </div>
                     </div>
                   </td>
-                  <td><div class="d-flex align-items-center justify-content-start">0</div></td>
-                  <td><div class="d-flex align-items-center justify-content-start"><i class="bx bx-check-circle text-success"></i>Pass</div></td>
+                  <td><div class="d-flex align-items-center justify-content-start" id="max_daily_loss"></div></td>
+                  <td><div class="d-flex align-items-center justify-content-start"><i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass</div></td>
+                </tr>
+
+                <tr>
+                  <td style="width:50%">
+                    <div class="accordion" id="accordionExample2">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne3" aria-expanded="false" aria-controls="accordionOne3">
+                            Total Profit
+                          </button>
+                        </h2>
+
+                        <div id="accordionOne3" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">      
+                          <div class="accordion-body p-1 bg-secondary">
+                            <div class="row">
+                              <div class="col-xl">
+                                <div class="row px-1">
+                                  <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label text-white">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                                  <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label text-white">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </td>
+                  <td><div class="d-flex align-items-center justify-content-start" id="closed_profit"></div></td>
+                  <td><div class="d-flex align-items-center justify-content-start text-danger"><i class="bx bx-x-circle"></i>&nbsp;&nbsp;Failed</div></td>
                 </tr>
               </tbody>
             </table>
@@ -229,53 +219,27 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
     <?php $this->load->view('user/includes/footer');?>
 <script>
-//   var requestOptions = {
-//   method: 'GET',
-//   redirect: 'follow'
-// };
-
-// // fetch("https://www.fxblue.com/users/51634880/overviewscript", requestOptions)
-// //   .then(response => response.text())
-// //   .then(result => console.log(result))
-// //   .catch(error => console.log('error', error));
 
 
-// var settings = {
-//   "url": "https://www.fxblue.com/users/51634880/overviewscript",
-//   "method": "GET",
-//   "timeout": 0,
-// };
-
-// $.getJSON( "https://www.fxblue.com/users/51634880/overviewscript", function( data ) {
-//   var items = [];
-//   // $.each( data, function( key, val ) {
-//   //   items.push( "<li id='" + key + "'>" + val + "</li>" );
-//   // });
- 
-//   // $( "<ul/>", {
-//   //   "class": "my-new-list",
-//   //   html: items.join( "" )
-//   // }).appendTo( "body" );
-//   console.log(data);
-// });
-
-function callback(data) {
-  console.log('Received data:', data);
-}
-
+var accountNum ={};
+accountNum.num = <?php echo $_GET['account']; ?>;
+$('.container-xxl').css('opacity','0.4');
 $.ajax({
-  url: 'https://www.fxblue.com/users/51634880/overviewscript',
-  dataType: 'text',
-  // jsonpCallback: 'callback',
-  success: function(data) {
-    console.log(data);
-  },
-  error: function(jqXHR, textStatus, errorThrown) {
-    console.log(textStatus + ': ' + errorThrown);
-  }
+    type: "POST",
+    url: "<?php echo base_url('user/metrix/userMetrix'); ?>",
+    data: accountNum,
+    dataType: "html",
+    success: function(data){
+      $('.container-xxl').css('opacity','1');
+      var res = JSON.parse(data);
+      $('#total_profit').val(res.closedProfit);  
+      $('#max_drawdown').text(res.peakPercentageLossFromOutset);  
+      $('#max_daily_loss').text(res.worstDayPercentage);  
+      $('#closed_profit').text(res.closedProfit);  
+    },
+    error: function() { 
+      alert("Error posting feed."); 
+    }
 });
-
-
-
 
 </script>

@@ -74,6 +74,20 @@
         .catch( error => {
             console.error( error );
         } );
+
+
+      function notify(){
+        $('body').prepend(`<div id="loading" class="demo-inline-spacing">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>`
+        );
+        setTimeout(() => {
+          $('#alert').fadeOut();
+          // $('#alert').addClass('d-none');
+        }, 3000);
+      }
 </script>
 
   </body>
