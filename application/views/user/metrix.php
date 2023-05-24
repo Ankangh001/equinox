@@ -1,16 +1,19 @@
 
-<?php $this->load->view('user/includes/header'); ?>
+<?php 
+echo "<pre>";
+print_r($res);
+exit;
+$this->load->view('user/includes/header'); 
+?>
 
 <style>
   .accordion .accordion-item.active {
       box-shadow: none;
   }
 </style>
-<!-- Content wrapper -->
+
 <div class="content-wrapper">
-  <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Promotions</h4> -->
     <div class="row">
       <div class="col-lg-10">
         <h5 class="card-title">Current Result</h5>
@@ -38,7 +41,6 @@
                     </h6>
                     <input readonly class="form-control" value="$400" />
                 </div>
-
                 <div class="mb-3 col-lg-12 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown
                       <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
@@ -47,7 +49,6 @@
                     </h6>
                     <input readonly class="form-control" value="$400" />
                 </div>
-
                 <div class="mb-3 col-lg-12 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Total Profit
                       <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" 

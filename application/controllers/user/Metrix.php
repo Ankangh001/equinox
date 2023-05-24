@@ -9,10 +9,31 @@ class Metrix extends APIMaster {
         $this->verifyAuth();
     }
 
-	public function index()
-	{
-        $this->load->view('user/metrix');
-	}
+	public function index(){
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=62333850&password=tecimil4&host=78.140.180.198&port=443');
+
+        $accountSummary = $this->accountSummary($token);
+        $orderHistory = $this->OrderHistory($token);
+        $openedOrders = $this->OpenedOrders($token);
+
+        $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
+        
+        $data['res'] = array_merge($mergedArray, json_decode($openedOrders, true));
+        
+        $this->load->view('user/metrix', $data);
+    }
+
+    public function accountSummary($token){
+        return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
+    }
+
+    public function OpenedOrders($token){
+        return $this->get_curl('https://mt5.mtapi.be/OpenedOrders?id='.$token);
+    }
+
+    public function OrderHistory($token){
+        return $this->get_curl('https://mt5.mtapi.be/OrderHistory?id='.$token.'&from=2022-01-01T12%3A00%3A00&to=2022-09-01T01%3A00%3A00');
+    }
 
     public function userMetrix()
 	{
@@ -35,4 +56,29 @@ class Metrix extends APIMaster {
             // echo "Equity: $equity\n";
         }
 	}
+
+    public function get_curl($url){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+        'content-type: text/plain; charset=utf-8 ',
+        'date: Wed24 May 2023 04:41:15 GMT ',
+        'strict-transport-security: max-age=15724800; includeSubDomains'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
+    }
 }

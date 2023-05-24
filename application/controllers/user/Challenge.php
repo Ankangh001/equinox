@@ -9,8 +9,9 @@ class Challenge extends APIMaster {
         $this->verifyAuth();
     }
 
-	public function index()
+    public function index()
 	{
-        $this->load->view('user/start-challenge');
+		$response['res'] = $this->db->get('products')->result_array();
+        $this->load->view('user/start-challenge', $response);
 	}
 }

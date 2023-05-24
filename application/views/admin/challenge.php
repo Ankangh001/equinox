@@ -26,13 +26,42 @@ $this->load->view('admin/includes/header');
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                  <?php foreach($res as $data){ ?>
                   <tr>
-                    <td>Evaluation Fund</td>
-                    <td>One Time Fund</td>
-                    <td><p class="text-danger">Aggressive</p></td>
-                    <td><i class='bx bx-dollar'></i>999</td>
+                    <td><?php echo $data['product_name'] ?></td>
+                    <td><?php echo $data['product_desc'] ?></td>
                     <td>
-                      <span class="badge bg-label-warning me-1">Pending</span>
+                      <p class="text-<?php 
+                        if($data['product_category'] == 'Free Trial'){
+                          echo "primary";
+                        }elseif($data['product_category'] == 'Normal'){
+                          echo "success";
+                        }else{
+                          echo "danger";
+                        }
+                        ?>">
+                        <?php echo $data['product_category'] ?></p></td>
+                    <td><i class='bx bx-dollar'></i><?php echo $data['product_price'] ?></td>
+                    <td>
+                      <span 
+                        class="badge bg-label-<?php 
+                          if($data['status'] == 0){ 
+                            echo 'warning'; 
+                          }elseif($data['status'] == 1){ 
+                            echo 'success'; 
+                          }elseif($data['status'] == 2){ 
+                            echo 'danger'; 
+                          }; 
+                        ?> me-1">
+                       <?php 
+                        if($data['status'] == 0){ 
+                          echo 'Pending'; 
+                        }elseif($data['status'] == 1){ 
+                          echo 'Paid'; 
+                        }elseif($data['status'] == 2){ 
+                          echo 'Denied'; 
+                        }   ?>
+                      </span>
                     </td>
                     <td>
                       <div class="d-flex justify-content-start">
@@ -42,7 +71,8 @@ $this->load->view('admin/includes/header');
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <?php }; ?>
+                  <!-- <tr>
                     <td>Free trial</td>
                     <td>One Time Fund</td>
                     <td><p class="text-primary">Free Trial</p></td>
@@ -73,7 +103,7 @@ $this->load->view('admin/includes/header');
                         <a class="text-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i></a>
                       </div>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>

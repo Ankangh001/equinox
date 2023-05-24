@@ -97,7 +97,7 @@ $this->load->view('user/includes/header');
                         <button data-bs-toggle="modal" data-bs-target="#modalCenter" class="me-3 btn btn-sm btn-outline-primary">
                           <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                         </button>
-                        <a href="<?=base_url('user/metrix?account=51634880')?>" class="btn btn-sm btn-outline-primary">
+                        <a href="<?=base_url('user/metrix?account=62333850&password=tecimil4&host=78.140.180.198&port=443')?>" class="btn btn-sm btn-outline-primary">
                         &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                       </div>

@@ -11,8 +11,8 @@ class Challenge extends APIMaster {
 
 	public function index()
 	{
-		$response = $this->db->get('products')->result_array();
-        $this->load->view('admin/challenge', json_encode($response));
+		$response['res'] = $this->db->get('products')->result_array();
+        $this->load->view('admin/challenge', $response);
 		// echo json_encode($response);	
 	}
 
