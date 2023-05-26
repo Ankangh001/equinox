@@ -55,10 +55,10 @@ $this->load->view('user/includes/header');
                   <div class="col-md-6 col-xl-6">
                     <div class="card shadow-none bg-transparent border border-secondary mb-3">
                       <div class="card-body">
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Two step assesment process</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;5% Daily Drawdown</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;10% Daily Drawdown</p>
-                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;5 Trading Days</p>
+                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$5000 Daily Drawdown</p>
+                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$10,000 Daily Drawdown</p>
+                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $200</strong></p>
+                        <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $500</strong></p>
                       </div>
                     </div>
 

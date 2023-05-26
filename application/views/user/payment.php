@@ -2,7 +2,12 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  button.btn.active {
+    border-bottom: 4px solid #535355;
+    border-radius: 0;
+}
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -125,7 +130,14 @@ $this->load->view('user/includes/header');
                 </div>
 
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
-                  Coinbase
+                  <div class="col-lg-12 mt-5">
+                    <div class="card-title d-flex justify-content-center">
+                      I want to continue with coinbase
+                    </div>
+                    <div class="card-body d-flex justify-content-center">
+                      <button id="coinbase_buy" class="btn btn-primary ">Pay Now With Coinbase</button>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
@@ -192,7 +204,27 @@ $this->load->view('user/includes/header');
         </div>
       </div>
     <!-- / Content -->
+<?php $this->load->view('user/includes/footer');?>
+
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
+
+  
+var product ={};
+product.id = <?php echo $_GET['product-code']; ?>;
+$('#coinbase_buy').click(()=>{
+  $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
+      data: product,
+      dataType: "html",
+      success: function(data){
+        window.location.href = data;
+      },
+      error: function() { 
+        alert("Error posting feed."); 
+      }
+  });
+});
+
 </script>
-<?php $this->load->view('user/includes/footer');?>

@@ -10,7 +10,13 @@ class Metrix extends APIMaster {
     }
 
 	public function index(){
-        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=62333850&password=tecimil4&host=78.140.180.198&port=443');
+        $this->load->view('user/metrix');
+    }
+    
+    public function accounts(){
+        $account =  $this->input->post('num')??'94604766';
+
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$account.'&password=wo0wylid&host=95.216.115.247&port=443');
 
         $accountSummary = $this->accountSummary($token);
         $orderHistory = $this->OrderHistory($token);
@@ -18,9 +24,11 @@ class Metrix extends APIMaster {
 
         $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
         
-        $data['res'] = array_merge($mergedArray, json_decode($openedOrders, true));
+        // $data = array_merge($mergedArray, json_decode($openedOrders, true));
+        $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
+
         
-        $this->load->view('user/metrix', $data);
+        echo json_encode($data, true);
     }
 
     public function accountSummary($token){
@@ -32,7 +40,7 @@ class Metrix extends APIMaster {
     }
 
     public function OrderHistory($token){
-        return $this->get_curl('https://mt5.mtapi.be/OrderHistory?id='.$token.'&from=2022-01-01T12%3A00%3A00&to=2022-09-01T01%3A00%3A00');
+        return $this->get_curl('https://mt5.mtapi.be/OrderHistory?id='.$token.'&from=1900-01-01T12%3A00%3A00&to=2100-09-01T01%3A00%3A00');
     }
 
     public function userMetrix()

@@ -11,6 +11,7 @@ class Account extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/account-overview');
+        $response['res'] = $this->db->get('products')->result_array();
+        $this->load->view('user/account-overview', $response);
 	}
 }
