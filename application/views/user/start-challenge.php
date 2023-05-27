@@ -37,13 +37,13 @@ $this->load->view('user/includes/header');
                           <label class="card-body pointer">
                             <div class="form-check d-flex justify-content-between align-items-center">
                               <div class="d-flex justify-content-start align-items-center">
-                                <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?php echo $data['id'] ?>" id="defaultRadio1">
+                                <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?php echo $data['product_id'] ?>" id="defaultRadio1">
                                 <div class="d-flex flex-column">
                                   <label class="fw-bold form-check-label" for="defaultRadio1"><?php echo $data['product_name'] ?></label>
                                   <!-- <label class="form-check-label fw-bold" for="defaultRadio1"> One Time Fund </label> -->
                                 </div>
                               </div>
-                              <p class="card-title fw-bold text-primary">$<?php echo $data['product_price'] ?></p>
+                              <p class="card-title fw-bold text-primary">$<?php echo $data['account_size'] ?></p>
                             </div>
                           </label>
                       </div>
@@ -85,12 +85,12 @@ $this->load->view('user/includes/header');
                           <label class="card-body pointer">
                             <div class="form-check d-flex justify-content-between align-items-center">
                               <div class="d-flex justify-content-start align-items-center">
-                                <input name="normal-product-code" required class="form-check-input me-3 product" type="radio" value="<?php echo $data['id'] ?>" id="defaultRadio1<?php echo $data['id'] ?>">
+                                <input name="normal-product-code" required class="form-check-input me-3 product" type="radio" value="<?php echo $data['product_id'] ?>" id="defaultRadio1<?php echo $data['product_id'] ?>">
                                 <div class="d-flex flex-column">
-                                  <label class="fw-bold form-check-label" for="defaultRadio1<?php echo $data['id'] ?>"><?php echo $data['product_name'] ?></label>
+                                  <label class="fw-bold form-check-label" for="defaultRadio1<?php echo $data['product_id'] ?>"><?php echo $data['product_name'] ?></label>
                                 </div>
                               </div>
-                              <p class="card-title fw-bold text-primary">$<?php echo $data['product_price'] ?></p>
+                              <p class="card-title fw-bold text-primary">$<?php echo $data['account_size'] ?></p>
                             </div>
                           </label>
                       </div>

@@ -14,7 +14,7 @@ class Metrix extends APIMaster {
     }
     
     public function accounts(){
-        $account =  $this->input->post('num')??'94604766';
+        $account =  $this->input->post('num');
 
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$account.'&password=wo0wylid&host=95.216.115.247&port=443');
 

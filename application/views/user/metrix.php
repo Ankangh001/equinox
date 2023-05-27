@@ -9,18 +9,20 @@ $this->load->view('user/includes/header');
 
 <style>
   .accordion .accordion-item.active {
-      box-shadow: none;
+    box-shadow: none;
+  }
+  div#eqLoader {
+    width: fit-content;
+    left: 50%;
+    top: 40%;
+    z-index: 999;
+    position: fixed;
+    height: 100vh;
+  }
+  label{
+    white-space: normal;
   }
 </style>
-
-
-<div id="info">
-
-</div>
-<div id="oders">
-
-</div>
-
 
 <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
@@ -112,11 +114,13 @@ $this->load->view('user/includes/header');
                             <div class="row">
                               <div class="col-xl">
                                 <div class="row px-1">
-                                  <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label text-white">
-                                    Maximum drawdown is the maximum your account can drawdown <br/>
-                                    before you would hard breach your account. When you open the <br/>
-                                    account, your Max Drawdown is set at 10% of your starting balance. <br/>
-                                    This will be static for the duration of the account.
+                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">
+                                    Maximum drawdown is the maximum your account
+                                    can drawdown before you would hard breach
+                                    your account. When you open the account,
+                                    your Max Drawdown is set at 10% of
+                                    your starting balance. This will be
+                                    static for the duration of the account.
                                   </label>
                                 </div>
                               </div>
@@ -138,7 +142,7 @@ $this->load->view('user/includes/header');
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne2">
                         <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne2" aria-expanded="false" aria-controls="accordionOne2">
-                          Maximum Daily Loss $0.00
+                          Maximum Daily Loss
                         </button>
                       </h2>
                       <div id="accordionOne2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">      
@@ -146,11 +150,11 @@ $this->load->view('user/includes/header');
                           <div class="row">
                             <div class="col-xl">
                               <div class="row px-1">
-                                <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label text-white">
-                                  Daily Loss Limit is calculated based on the previous day’s end of day <br/>
-                                  (5pm EST) equity and balance. Example of daily drawdown: If you have a<br/>
-                                  $105,000 account balance, and you have $5000 floating profit going into <br/>
-                                  the new day this will be your buffer, and you can still go down to $99,750 <br/>
+                                <label class="text-dark fw-bold col-md-12 col-form-label text-white">
+                                  Daily Loss Limit is calculated based on the previous day’s end of day 
+                                  (5pm EST) equity and balance. Example of daily drawdown: If you have a
+                                  $105,000 account balance, and you have $5000 floating profit going into 
+                                  the new day this will be your buffer, and you can still go down to $99,750 
                                   before hitting daily loss limit.
                                 </label>
                               </div>
@@ -181,8 +185,8 @@ $this->load->view('user/includes/header');
                             <div class="row">
                               <div class="col-xl">
                                 <div class="row px-1">
-                                  <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-6 col-form-label text-white">
-                                    Profit target means that a trader reaches a profit <br/>
+                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">
+                                    Profit target means that a trader reaches a profit
                                     in the sum of closed positions on the assigned trading account.
                                   </label>
                                 </div>
@@ -194,8 +198,7 @@ $this->load->view('user/includes/header');
                     </div>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center justify-content-start text-danger">
-                      <i class="bx bx-x-circle"></i>&nbsp;&nbsp;Failed
+                    <div id="pt">
                     </div>
                   </td>
                 </tr>
@@ -225,21 +228,8 @@ $this->load->view('user/includes/header');
                   <th>Summary</th>
                 </tr>
               </thead> -->
-              <tbody class="table-border-bottom-0">
-                <tr>
-                  <td>
-                    <div class="hol">
-                      <p class="text-dark text-left" style="margin-bottom:-1px">Equity</p>
-                      <span class="text-dark fw-bold text-left">$200,000</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="hol">
-                      <p class="text-dark text-left" style="margin-bottom:-1px">Average Profit</p>
-                      <span class="text-dark fw-bold text-left">$0.00</span>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="stats" class="table-border-bottom-0">
+                
               </tbody>
             </table>
           </div>
@@ -254,7 +244,7 @@ $this->load->view('user/includes/header');
       </div>
     </div>
     <div class="card">
-      <div class="table-responsive text-nowrap">
+      <div class="table-responsive text-nowrap" id="openOrdersTable">
         <table class="table">
           <thead class="table-light">
             <tr>
@@ -294,7 +284,6 @@ $this->load->view('user/includes/header');
               <th>Order ID</th>
               <th>Symbol</th>
               <th>Order Type</th>
-              <!-- placed type -->
               <th>Execution Type</th> 
               <th>Lots Size</th>
               <th>Open Price</th>
@@ -338,11 +327,15 @@ $this->load->view('user/includes/header');
   accountNum.num = <?php echo $_GET['account']; ?>;
   let accountSize = <?php echo $_GET['size']; ?>;
   let maxDD = <?php echo $_GET['max']; ?>;
+  let target = <?php echo $_GET['target']; ?>;
   let checkAmount = accountSize - maxDD;
-  let status = 0;
+  let tempChartData = [];
   let chartData = [];
   let chartLabel = [];
   let temp = 0;
+
+  let positiveSum = 0;
+  let negativeSum = 0;
 
   const myLineChart = new Chart(ctx, {
       type: 'line',
@@ -375,6 +368,15 @@ $this->load->view('user/includes/header');
         }
       }
     });
+  
+  let loader = "<?=base_url('assets/img/loader.gif')?>";
+  $('.container-p-y').css('opacity', '0.2');
+  $('.content-wrapper').prepend(`
+    <div id="eqLoader">
+      <img src="${loader}" alt="loader" />
+    </div>
+  `);
+
   function getAccounts(){
     $.ajax({
       type: "POST",
@@ -387,32 +389,68 @@ $this->load->view('user/includes/header');
         $('#closed_profit').val(((res['balance'])-accountSize).toFixed(2));
         $('#floating_profit').val(((res['equity'])-(res['balance'])).toFixed(2));
 
+        //load statistics
+        $('#stats').html(`
+          <tr>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Balance</p>
+                <span class="text-dark fw-bold text-left">$${res['balance']}</span>
+              </div>
+            </td>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Equity</p>
+                <span class="text-dark fw-bold text-left">$${res['equity']}</span>
+              </div>
+            </td>
+          </tr>
+        `);
+
+
+        //max drawdown render
         $('#max_dd').html('');
         if(res['equity'] > checkAmount){
-          status = 1;
           $('#max_dd').html(`
-          <div class="d-flex align-items-center justify-content-start text-success" >
-            <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-          </div>
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
           `);
         }else{
           $('#max_dd').html(`
-          <div class="d-flex align-items-center justify-content-start text-danger" >
-            <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-          </div>`);
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
+        };
+
+        //profit target render
+        $('#pt').html('');
+        if(((res['balance'])-accountSize).toFixed(2) > target){  
+          $('#pt').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+        }else{
+          $('#pt').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
         }
 
         $('#orders').html('');
 
+        //EMPTY ARRAY EVERYTIME
         chartData = [];
         chartLabel = [];
-        temp = 0;
+        tempChartData = [];
 
         res['orders'].forEach((element, index) => {
-          temp = accountSize + element['profit'];
-          
-          chartData.push(accountSize + element['profit']);
+
           chartLabel.push(index);
+          tempChartData.push(element['profit']);
 
           $('#orders').append(`
             <tr>
@@ -433,50 +471,76 @@ $this->load->view('user/includes/header');
             </tr>
           `);
         });
+
         chartData[0] = accountSize;
-        // console.log(chartData);
+
+        tempChartData.forEach((element, i) => {
+          if(i != 0){
+            chartData[i] = (chartData[i-1] + tempChartData[i]);
+          }
+        });
 
         myLineChart.data.labels = chartLabel;
         myLineChart.data.datasets[0].data = chartData;
         myLineChart.update();
 
         $('#openOrders').html('');
-        res['openorders'].forEach((element) => {
-          $('#openOrders').append(`
-            <tr>
-              <td>${element['ticket'] ? element['ticket'] : '-'}</td>
-              <td>${element['symbol'] ? element['symbol'] : '-'}</td>
-              <td>${element['orderType'] ? element['orderType'] : '-'}</td>
-              <td>${element['placedType'] ? element['placedType'] : '-'}</td>
-              <td>${element['lots'] ? element['lots'] : '-'}</td>
-              <td>${element['openPrice'] ? element['openPrice'] : '-'}</td>
-              <td>${element['openTime'] ? element['openTime'] : '-'}</td>
-              <td>${element['profit'] ? element['profit'] : '-'}</td>
-              <td>${element['swap'] ? element['swap'] : '-'}</td>
-              <td>${element['commission'] ? element['commission'] : '-'}</td>
-              <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
-              <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
-            </tr>
-          `);
-        });
+        
+        if((res['openorders'].length) > 0){
+          res['openorders'].forEach((element) => {
+            $('#openOrders').append(`
+                <tr>
+                  <td>${element['ticket'] ? element['ticket'] : '-'}</td>
+                  <td>${element['symbol'] ? element['symbol'] : '-'}</td>
+                  <td>${element['orderType'] ? element['orderType'] : '-'}</td>
+                  <td>${element['placedType'] ? element['placedType'] : '-'}</td>
+                  <td>${element['lots'] ? element['lots'] : '-'}</td>
+                  <td>${element['openPrice'] ? element['openPrice'] : '-'}</td>
+                  <td>${element['openTime'] ? element['openTime'] : '-'}</td>
+                  <td>${element['profit'] ? element['profit'] : '-'}</td>
+                  <td>${element['swap'] ? element['swap'] : '-'}</td>
+                  <td>${element['commission'] ? element['commission'] : '-'}</td>
+                  <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
+                  <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
+                </tr>
+              `);
+            }
+          );
+        }else{
+          $('#openOrdersTable table').html('');
+          $('#openOrdersTable').append(`<p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>`);
+        }
 
         $('#orders').css('opacity', '1');
         $('#openOrders').css('opacity', '1');
-
+        $('#eqLoader').css('display', 'none');
+        $('.container-p-y').css('opacity', '1');
+        $('.container-p-y').fadeIn();
       },
-      error: function() { 
-        window.location.href = "<?= base_url('/404')?>"; 
+      error: function() {
+        $('.container-p-y').html('');
+        $('.container-p-y').html(`
+          <div class="row my-5 mx-auto">
+            <div class="col-md-6 m-auto">
+              <div class="card">
+                  <div class="card-body text-center text-muted ">
+                    😧 <br/>Oops ! Unable to found metrics related to this account please contact to the support team.
+                  </div>
+              </div>
+            </div>
+          </div>
+        `);
+        $('#eqLoader').css('display', 'none');
+        $('.container-p-y').css('opacity', '1');
       }
     });
   }
 
-
-  setTimeout(() => {
-    getAccounts();
-    
-    setInterval(() => {
-      getAccounts();
-    }, 2500);
-  }, 2000);
+  getAccounts();
+  // setTimeout(() => {
+  //   setInterval(() => {
+  //     getAccounts();
+  //   }, 3500);
+  // }, 4000);
 
 </script>
