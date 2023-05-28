@@ -13,7 +13,6 @@ class Challenge extends APIMaster {
 	{
 		$response['res'] = $this->db->get('products')->result_array();
         $this->load->view('admin/challenge', $response);
-		// echo json_encode($response);	
 	}
 
 	public function addChallenge()

@@ -9,11 +9,13 @@ $this->load->view('user/includes/header');
 }
 </style>
 
+<div class="buy-now">
+  <button id="skip-payment" class="btn btn-danger btn-buy-now">Skip Payment For testing</button>
+</div>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
-
     <div class="row">
         <div class="col-md-12 col-lg-7">
           <div class="card mb-4">
@@ -125,7 +127,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <div class="form-text">By providing your card information you allow Equinox Trading Capital Limited</div>
                     </div>
-                    <button type="submit" class="w-100 btn btn-primary">Send</button>
+                    <button type="submit" class="w-100 btn btn-primary">Purchase</button>
                   </form>
                 </div>
 
@@ -209,22 +211,37 @@ $this->load->view('user/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
 
-  
-var product ={};
-product.id = <?php echo $_GET['product-code']; ?>;
-$('#coinbase_buy').click(()=>{
-  $.ajax({
-      type: "POST",
-      url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-      data: product,
-      dataType: "html",
-      success: function(data){
-        window.location.href = data;
-      },
-      error: function() { 
-        alert("Error posting feed."); 
-      }
+  var product ={};
+  product.id = <?php if(isset($_GET['product-code'])){ echo $_GET['product-code'];}elseif(isset($_GET['normal-product-code'])){ echo $_GET['product-code'];} ?>;
+  $('#coinbase_buy').click(()=>{
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
+        data: product,
+        dataType: "html",
+        success: function(data){
+          window.location.href = data;
+        },
+        error: function() { 
+          alert("Error posting feed."); 
+        }
+    });
   });
-});
+
+  $('#skip-payment').click(()=>{
+    console.log('hi');
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payment/success'); ?>",
+        data: product,
+        dataType: "html",
+        success: function(data){
+          window.location.href = "<?php echo base_url('user/account-overview'); ?>";
+        },
+        error: function() { 
+          alert("Error posting feed."); 
+        }
+    });
+  })
 
 </script>

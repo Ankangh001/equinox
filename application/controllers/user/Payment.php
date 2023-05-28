@@ -57,4 +57,38 @@ class Payment extends APIMaster {
         echo json_decode($response)->data->hosted_url;
         // header('Location:'.json_decode($response)->data->hosted_url);
 	}
+
+    public function success()
+	{        
+        try {
+			$data = array(
+				'product_name' => $this->input->post('product-name'),
+				'product_desc' => $this->input->post('description'),
+				'product_category' => $this->input->post('product-type'),
+				'product_price' => $this->input->post('product-price'),
+				'created_at' => date('Y-m-d H:m:s'),
+				'created_by' => 'admin',
+				'status' => $this->input->post('status'),
+			);
+			
+			$res = $this->db->insert('userproducts', $data);
+			if($res){
+				$response = array(
+					'status' => '200',
+					'message' => 'Added successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+			}
+			echo $response;  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
 }
+
+
