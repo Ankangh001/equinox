@@ -170,7 +170,8 @@
 			url: BASEURL+"Auth/login",
 			data: {
 				"email": email,
-				"password": password
+				"password": password,
+        "type": "Admin"
 			},
 			success: function(response) {
 				if (response.success == 1) {

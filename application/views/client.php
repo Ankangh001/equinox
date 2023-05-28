@@ -103,18 +103,20 @@ $this->load->view('includes/header');
     </form>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script>
+    // $(document).ready(function () {
+         
+    //   });
     function validateUser() {
 		let email = $("#email").val();
 		let password = $("#password").val();
 		if (email == "") {
-			notify("danger", "Please enter email");
+            $.notify("Please enter email");
 			$("#email").focus();
 			return;
 		}
 		if (password == "") {
-			notify("danger", "Please enter password");
+            $.notify("Please enter password");
 			$("#password").focus();
 			return;
 		}
@@ -123,19 +125,18 @@ $this->load->view('includes/header');
 			url: "Auth/login",
 			data: {
 				"email": email,
-				"password": password
+				"password": password,
+                "type":"Client"
 			},
 			success: function(response) {
 				if (response.success == 1) {
 					window.location.href = response.data.redirect_url;	
 				} else {
-					notify("danger", response.message);
-					return;
+                    $.notify(response.message);
 				}
 			},
 			error: function(exception) {
-				console.log(exception);
-				notify("danger", "Some error occured")
+                $.notify("Some error occured");
 			}
 		})
 

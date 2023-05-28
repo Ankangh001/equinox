@@ -192,7 +192,7 @@ $(document).ready(function() {
         if (response.success == 1) {
             window.location.href = BASEURL+'client-login';	
         } else {
-            notify("danger", response.message);
+            $.notify(response.message);
             return;
         }
       },
