@@ -13,10 +13,10 @@ class Auth extends APIMaster {
 	public function index(){
 
 		if($this->session->has_userdata('is_admin_login')){
-			redirect('admin/dashboard');
+			redirect('dashboard');
 		}
 		else{
-			redirect('admin/auth/login');
+			redirect('client-login');
 		}
 	}
 
@@ -28,12 +28,13 @@ class Auth extends APIMaster {
         endif;
         $user = $this->input->post('email');
         $pass = $this->input->post('password');
+        $type = $this->input->post('type');
 
         if (empty($user) || empty($pass)):
             $this->returnResponse(0, "All param required!");
         endif;
 
-        $res = $this->AppLogin->PanelLogin($user, $pass);
+        $res = $this->AppLogin->PanelLogin($user, $pass,$type);
         if ($res['success'] == 1) {
 			if ($this->decryptAES($res['data']['password']) == $pass){
 				$user_data = $res['data'];
@@ -112,30 +113,35 @@ class Auth extends APIMaster {
 					'email' 		=> $this->input->post('email'),
 					'password' 		=> $this->encryptAES($this->input->post('password')),
 					'admin_type'	=> 'Client',	
-					'email_verified'=> '1',	
+					'email_verified'=> '0',
+					'verification_key'=> md5(rand(0,1000)), 	
 					'created_date' 	=> date('Y-m-d h:m:s')
 				);
 				$data 	= $this->security->xss_clean($data);
-				$result = $this->AppLogin->insertRegData($data);
-				// if($result){
-				// 	//sending welcome email to user
-				// 	$this->load->helper('email_helper');
-
-				// 	$mail_data = array(
-				// 		'fullname' => $data['firstname'].' '.$data['lastname'],
-				// 		'verification_link' => base_url('admin/auth/verify/').'/'.$data['token']
-				// 	);
-				// 	$to = $data['email'];
-				// 	$email = $this->mailer->mail_template($to,'email-verification',$mail_data);
-				// 	if($email){
-				// 		$this->session->set_flashdata('success', 'Your Account has been made, please verify it by clicking the activation link that has been send to your email.');	
-				// 		redirect(base_url('admin/auth/login'));
-				// 	}	
-				// 	else{
-				// 		echo 'Email Error';
-				// 	}
-				// }
-				$this->jsonOutput($result);
+				$response = $this->AppLogin->insertRegData($data);
+				if($response['success']==1){
+					$this->load->helper('email_helper');
+					$this->load->library('mailer');
+					$mail_data = array(
+						'fullname' => $data['firstname'].' '.$data['lastname'],
+						'verification_link' => base_url('auth/verify/').'/'.$data['verification_key']
+					);
+					$to = $data['email'];
+					$email = $this->mailer->mail_template($to,'registration_email',$mail_data);
+					if($email){
+						$response = array(
+							"success" => 1,
+							"message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
+						);
+					}	
+					else{
+						$response = array(
+							"success" => 0,
+							"message" => "Some error occured!"
+						);
+					}
+				}
+				$this->jsonOutput($response);
 			}
 		}
 	}
@@ -143,76 +149,67 @@ class Auth extends APIMaster {
 	//----------------------------------------------------------	
 	public function verify(){
 
-		$verification_id = $this->uri->segment(4);
-		$result = $this->auth_model->email_verification($verification_id);
+		$verification_id = $this->uri->segment(3);
+		$result = $this->AppLogin->email_verification($verification_id);
 		if($result){
-			$this->session->set_flashdata('success', 'Your email has been verified, you can now login.');
-			redirect(base_url('admin/auth/login'));
+			$response = array(
+				"success" => 1,
+				"message" => "Your email has been verified, you can now login."
+			);
 		}
 		else{
-			$this->session->set_flashdata('success', 'The url is either invalid or you already have activated your account.');	
-			redirect(base_url('admin/auth/login'));
-		}	
+			$response = array(
+				"success" => 0,
+				"message" => "The url is either invalid or you already have activated your account."
+			);
+		}
+		$this->jsonOutput($response);
 	}
 
 	//--------------------------------------------------		
 	public function forgot_password(){
 
-		if($this->input->post('submit')){
-			//checking server side validation
-			$this->form_validation->set_rules('email', 'Email', 'valid_email|trim|required');
-			if ($this->form_validation->run() == FALSE) {
-				$data = array(
-					'errors' => validation_errors()
-				);
-				$this->session->set_flashdata('errors', $data['errors']);
-				redirect(base_url('admin/auth/forget_password'),'refresh');
-			}
+		//checking server side validation
+		$this->form_validation->set_rules('email', 'Email', 'valid_email|trim|required');
+		if ($this->form_validation->run() == FALSE) {
+			$data = array(
+				'errors' => validation_errors()
+			);
+			$this->session->set_flashdata('errors', $data['errors']);
+			redirect(base_url('auth/forget_password'),'refresh');
+		}
 
-			$email = $this->input->post('email');
-			$response = $this->auth_model->check_user_mail($email);
+		$email = $this->input->post('email');
+		$response = $this->AppLogin->check_user_mail($email);
 
-			if($response){
+		if($response){
+			$rand_no = rand(0,1000);
+			$pwd_reset_code = md5($rand_no.$response['user_id']);
+			$this->AppLogin->update_reset_code($pwd_reset_code, $response['user_id']);
 
-				$rand_no = rand(0,1000);
-				$pwd_reset_code = md5($rand_no.$response['admin_id']);
-				$this->auth_model->update_reset_code($pwd_reset_code, $response['admin_id']);
-				
-				// --- sending email
-				$to = $response['email'];
-				$mail_data= array(
-					'fullname' => $response['firstname'].' '.$response['lastname'],
-					'reset_link' => base_url('admin/auth/reset_password/'.$pwd_reset_code)
-				);
-				$this->mailer->mail_template($to,'forget-password',$mail_data);
+			// --- sending email
+			$to = $response['email'];
+			$mail_data= array(
+				'fullname' => $response['firstname'].' '.$response['lastname'],
+				'reset_link' => base_url('auth/reset_password/'.$pwd_reset_code)
+			);
+			$this->mailer->mail_template($to,'forget-password',$mail_data);
 
-				if($email){
-					$this->session->set_flashdata('success', 'We have sent instructions for resetting your password to your email');
+			if($email){
+				$this->session->set_flashdata('success', 'We have sent instructions for resetting your password to your email');
 
-					redirect(base_url('admin/auth/forgot_password'));
-				}
-				else{
-					$this->session->set_flashdata('error', 'There is the problem on your email');
-					redirect(base_url('admin/auth/forgot_password'));
-				}
+				redirect(base_url('auth/forgot_password'));
 			}
 			else{
-				$this->session->set_flashdata('error', 'The Email that you provided are invalid');
-				redirect(base_url('admin/auth/forgot_password'));
+				$this->session->set_flashdata('error', 'There is the problem on your email');
+				redirect(base_url('auth/forgot_password'));
 			}
 		}
 		else{
-
-			$data['title'] = 'Forget Password';
-			$data['navbar'] = false;
-			$data['sidebar'] = false;
-			$data['footer'] = false;
-			$data['bg_cover'] = true;
-
-			$this->load->view('admin/includes/_header', $data);
-			$this->load->view('admin/auth/forget_password');
-			$this->load->view('admin/includes/_footer', $data);
+			$this->session->set_flashdata('error', 'The Email that you provided are invalid');
+			redirect(base_url('auth/forgot_password'));
 		}
+		
 	}
 
 	//----------------------------------------------------------------		
@@ -237,7 +234,7 @@ class Auth extends APIMaster {
 				$new_password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 				$this->auth_model->reset_password($id, $new_password);
 				$this->session->set_flashdata('success','New password has been Updated successfully.Please login below');
-				redirect(base_url('admin/auth/login'));
+				redirect(base_url('client-login'));
 			}
 		}
 		else{
@@ -252,14 +249,14 @@ class Auth extends APIMaster {
 				$data['footer'] = false;
 				$data['bg_cover'] = true;
 
-				$this->load->view('admin/includes/_header', $data);
-				$this->load->view('admin/auth/reset_password');
-				$this->load->view('admin/includes/_footer', $data);
+				$this->load->view('includes/_header', $data);
+				$this->load->view('auth/reset_password');
+				$this->load->view('includes/_footer', $data);
 
 			}
 			else{
 				$this->session->set_flashdata('error','Password Reset Code is either invalid or expired.');
-				redirect(base_url('admin/auth/forgot_password'));
+				redirect(base_url('auth/forgot_password'));
 			}
 		}
 	}

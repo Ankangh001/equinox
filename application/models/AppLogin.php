@@ -69,11 +69,11 @@ class AppLogin extends CI_Model
         return $response;
     }
 
-    function PanelLogin($email, $password)
+    function PanelLogin($email, $password,$admin_type)
     {
         try {
             $pass_enc = pass_enc;
-            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type FROM user where email = '{$email}'";
+            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
             $result = $this->db->query($sql)->row_array();
             if ($result) :
                 if (!empty($result['password'])) :
@@ -94,4 +94,63 @@ class AppLogin extends CI_Model
         }
         return $response;
     }
+
+    public function email_verification($code){
+		$this->db->select('email, verification_key','email_verified');
+		$this->db->from('user');
+		$this->db->where('verification_key', $code);
+		$query = $this->db->get();
+		$result= $query->result_array();
+		$match = count($result);
+		if($match > 0){
+			$this->db->where('verification_key', $code);
+			$this->db->update('user', array('email_verified' => 1, 'verification_key'=> ''));
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+    public function check_user_mail($email)
+    {
+    	$result = $this->db->get_where('user', array('email' => $email));
+
+    	if($result->num_rows() > 0){
+    		$result = $result->row_array();
+    		return $result;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+
+        //============ Update Reset Code Function ===================
+        public function update_reset_code($reset_code, $user_id){
+            $data = array('password_reset_code' => $reset_code);
+            $this->db->where('user_id', $user_id);
+            $this->db->update('user', $data);
+        }
+    
+        //============ Activation code for Password Reset Function ===================
+        public function check_password_reset_code($code){
+    
+            $result = $this->db->get_where('user',  array('password_reset_code' => $code ));
+            if($result->num_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+        //============ Reset Password ===================
+        public function reset_password($id, $new_password){
+            $data = array(
+                'password_reset_code' => '',
+                'password' => $new_password
+            );
+            $this->db->where('password_reset_code', $id);
+            $this->db->update('user', $data);
+            return true;
+        }
 }
