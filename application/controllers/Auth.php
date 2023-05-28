@@ -123,7 +123,7 @@ class Auth extends APIMaster {
 					$this->load->helper('email_helper');
 					$this->load->library('mailer');
 					$mail_data = array(
-						'fullname' => $data['firstname'].' '.$data['lastname'],
+						'fullname' => $data['first_name'].' '.$data['last_name'],
 						'verification_link' => base_url('auth/verify/').'/'.$data['verification_key']
 					);
 					$to = $data['email'];
@@ -259,6 +259,26 @@ class Auth extends APIMaster {
 				redirect(base_url('auth/forgot_password'));
 			}
 		}
+	}
+
+	public function client()
+	{
+		if (isset($_SESSION['token']) && $_SESSION['admin_type']=='Client') {
+			redirect(base_url('user'));
+        }elseif (isset($_SESSION['token']) && $_SESSION['admin_type']=='Admin') {
+			redirect(base_url('admin'));
+        }
+		$this->load->view('client');
+	}
+
+	public function clientSignup()
+	{
+		if (isset($_SESSION['token']) && $_SESSION['admin_type']=='Client') {
+			redirect(base_url('user'));
+        }elseif (isset($_SESSION['token']) && $_SESSION['admin_type']=='Admin') {
+			redirect(base_url('admin'));
+        }
+		$this->load->view('client-signup');
 	}
 
 }  // end class

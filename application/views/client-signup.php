@@ -190,6 +190,7 @@ $(document).ready(function() {
       data: formData,
       success: function(response) {
         if (response.success == 1) {
+            $.notify(response.message,'success');
             window.location.href = BASEURL+'client-login';	
         } else {
             $.notify(response.message);
