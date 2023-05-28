@@ -205,19 +205,26 @@ $this->load->view('user/includes/header');
           </div>
         </div>
       </div>
-    <!-- / Content -->
 <?php $this->load->view('user/includes/footer');?>
 
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
 
-  var product ={};
-  product.id = <?php if(isset($_GET['product-code'])){ echo $_GET['product-code'];}elseif(isset($_GET['normal-product-code'])){ echo $_GET['product-code'];} ?>;
+  var responseData ={};
+
+  <?php if(isset($_GET['product-code'])){ ?>
+    responseData.product_id = "<?php echo $_GET['product-code']?>";
+
+  <?php }elseif(isset($_GET['normal-product-code'])){ ?>
+    responseData.product_id = "<?php echo $_GET['normal-product-code']?>";
+  <?php } ?>
+
+  responseData.user_id = "<?php echo $_SESSION['user_id'];?>";
   $('#coinbase_buy').click(()=>{
     $.ajax({
         type: "POST",
         url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-        data: product,
+        data: responseData,
         dataType: "html",
         success: function(data){
           window.location.href = data;
@@ -229,14 +236,16 @@ $this->load->view('user/includes/header');
   });
 
   $('#skip-payment').click(()=>{
-    console.log('hi');
     $.ajax({
         type: "POST",
         url: "<?php echo base_url('user/payment/success'); ?>",
-        data: product,
+        data: responseData,
         dataType: "html",
         success: function(data){
-          window.location.href = "<?php echo base_url('user/account-overview'); ?>";
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            window.location.href = "<?= base_url('user/account-overview') ?>";
+          }
         },
         error: function() { 
           alert("Error posting feed."); 

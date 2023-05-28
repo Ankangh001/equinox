@@ -61,21 +61,31 @@ class Payment extends APIMaster {
     public function success()
 	{        
         try {
-			$data = array(
-				'product_name' => $this->input->post('product-name'),
-				'product_desc' => $this->input->post('description'),
-				'product_category' => $this->input->post('product-type'),
-				'product_price' => $this->input->post('product-price'),
-				'created_at' => date('Y-m-d H:m:s'),
-				'created_by' => 'admin',
-				'status' => $this->input->post('status'),
+            $product_category = $this->db->where(['product_id' => $this->input->post('product_id')])->get('products')->result_array();
+			$userProducts = array(
+				'user_id' => $this->input->post('user_id'),
+				'product_id' => $this->input->post('product_id'),
+				'phase' => '1',
+				'created_date' => date('Y-m-d H:m:s'),
+				'product_status' => '0',
+			);
+
+            $transaction = array(
+				'user_id' => $this->input->post('user_id'),
+				'amount' => $product_category[0]['product_price'],
+				'product_id' => $this->input->post('product_id'),
+				'product_category' => $product_category[0]['product_category'],
+				'gateway' => 'coinbase',
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s'),
 			);
 			
-			$res = $this->db->insert('userproducts', $data);
-			if($res){
+			$res = $this->db->insert('userproducts', $userProducts);
+			$res2 = $this->db->insert('transactions', $transaction);
+			if($res && $res2){
 				$response = array(
 					'status' => '200',
-					'message' => 'Added successfully',
+					'message' => 'User Poduct Added successfully',
 				);
 			}else{
 				$response = array(
@@ -83,7 +93,7 @@ class Payment extends APIMaster {
 					'message' => 'Unable to add data',
 				);
 			}
-			echo $response;  
+			echo json_encode($response);  
 
 		} catch (\Throwable $th) {
 			$res = $th;
