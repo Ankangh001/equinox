@@ -38,16 +38,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('calender');
 	}
 
-	public function client()
-	{
-		$this->load->view('client');
-	}
-
-	public function clientSignup()
-	{
-		$this->load->view('client-signup');
-	}
-
 	public function affiliate()
 	{
 		$this->load->view('affiliate');
