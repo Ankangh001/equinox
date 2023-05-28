@@ -1,13 +1,7 @@
-<?php
-$this->load->view('user/includes/header');
-?>
+<?php $this->load->view('user/includes/header'); ?>
 
-
-
-<!-- Content wrapper -->
 <div class="content-wrapper">
 <div class="container-xxl flex-grow-1 container-p-y">
-  <!-- Bootstrap Table with Header - Light -->
   <div class="card">
     <h5 class="card-header">User Billings</h5>
     <div class="table-responsive text-nowrap">

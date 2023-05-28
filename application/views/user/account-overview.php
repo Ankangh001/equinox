@@ -1,3 +1,10 @@
+<?php 
+
+//   $this->CI = & get_instance();
+//  print_r($this->CI->encryptAES('hi') );
+//  print_r($this->CI->decryptAES('h1IwXyBRYLy1cbPP39FpnQ==') );
+//   die;?>
+
 <?php $this->load->view('user/includes/header');?>
 
 <style>
