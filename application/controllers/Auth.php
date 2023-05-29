@@ -127,7 +127,11 @@ class Auth extends APIMaster {
 						'verification_link' => base_url('auth/verify/').'/'.$data['verification_key']
 					);
 					$to = $data['email'];
-					$email = $this->mailer->mail_template($to,'registration_email',$mail_data);
+					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
+					$fromEmail = '';
+					$fromPass = '';
+					$email = send_email($to,$emailData['subject'],$emailData['content'],'','',$fromEmail,$fromPass);
+
 					if($email){
 						$response = array(
 							"success" => 1,

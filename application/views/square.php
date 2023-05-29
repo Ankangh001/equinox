@@ -33,7 +33,7 @@
         let BASEURL = "<?=base_url()?>";
 document.addEventListener('DOMContentLoaded', function () {
     const paymentForm = new SqPaymentForm({
-        applicationId: 'YOUR_APPLICATION_ID',
+        applicationId: 'sandbox-sq0idb-bKU_tsCUTINR2tS0wUGVnA',
         inputClass: 'sq-input',
         autoBuild: false,
         card: {

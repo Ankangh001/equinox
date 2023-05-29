@@ -12,11 +12,9 @@ class Mailer
     {
         $template   =  $this->$slug();
         $body       = $template['body'];
-        $subject    = $template['subject'];
-        $content    = $this->mail_template_variables($body,$slug,$mail_data);
-        send_email($to,$subject,$content);
-
-        return true;
+        $data['subject']    = $template['subject'];
+        $data['content']    = $this->mail_template_variables($body,$slug,$mail_data);
+        return $data;
     }
 
     //=============================================================
@@ -62,9 +60,8 @@ class Mailer
 
             <p>Regards, <br> 
                Equinox Team <br> 
-            </p>
-    ';
-    $template['subject'] = 'Email verification link';
+            </p>';
+        $template['subject'] = 'Email verification link';
 		return $template;		
 	}
 
@@ -81,8 +78,7 @@ class Mailer
             <br>
             <br>
 
-            <p>© 2018 CodeGlamoour - All rights reserved</p>
-    ';
+            <p>© 2018 CodeGlamoour - All rights reserved</p>';
         $template['subject'] = 'Password Reset link';
         return $template;			
 	}

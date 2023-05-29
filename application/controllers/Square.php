@@ -9,7 +9,7 @@ class Square extends CI_Controller {
 	}
 
     public function pay(){
-        $accessToken = 'YOUR_ACCESS_TOKEN';
+        $accessToken = 'EAAAEJdTHMCu2J4gUK2q_hL7EuRKJFdtcPiIlAhrrsjvDuF8hAf7Lep_y-UT7Xjc';
 
         $apiClient = new \Square\SquareClient([
             'accessToken' => $accessToken,

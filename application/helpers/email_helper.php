@@ -1,18 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc = '')
+function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc = '',$fromEmail='',$fromPass='')
 
     {
 		$controller =& get_instance();
        	$controller->load->helper('path'); 
-
+		$fromEmail = ($fromEmail !='')?$fromEmail:SMPT_USER; 
+		$fromPass = ($fromPass !='')?$fromPass:SMPT_PASS; 
        	// Configure email library
 		$config = array();
         $config['useragent']	= "CodeIgniter";
         $config['mailpath']		= "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
         $config['protocol']     = "smtp";
-        $config['smtp_host']    = SMPT_HOST;
-        $config['smtp_port']    = SMPT_PORT;
+        $config['smtp_host']    = $fromEmail;
+        $config['smtp_port']    = $fromPass;
 		$config['smtp_timeout'] = '30';
 		$config['smtp_user']    = SMPT_USER;
 		$config['smtp_pass']    = SMPT_PASS;
@@ -23,7 +24,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 
         $controller->load->library('email');
         $controller->email->initialize($config);   
-		$controller->email->from(EMAIL_FROM, APPLICATION_NAME);
+		$controller->email->from($fromEmail, APPLICATION_NAME);
 		$controller->email->to($to);
 		$controller->email->subject($subject);
 		$controller->email->message($body);
@@ -38,9 +39,10 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 		}
 
 		if($controller->email->send()){
-			return "success";
+			return true;
 		}else{
-			echo $controller->email->print_debugger();
+			return false;
+			// echo $controller->email->print_debugger();
 		}
     }
 
