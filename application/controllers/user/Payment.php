@@ -41,7 +41,7 @@ class Payment extends APIMaster {
             "description":"Create Charge using PHP",
             "pricing_type":"fixed_price",
             "redirect_url":"http://localhost/coinbase/s.php",
-            "cancel_url":"http://localhost/coinbase/cancel.php"
+            "cancel_url":"'.base_url().'coinbase/cancel.php"
         }',
         CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json',
@@ -57,4 +57,48 @@ class Payment extends APIMaster {
         echo json_decode($response)->data->hosted_url;
         // header('Location:'.json_decode($response)->data->hosted_url);
 	}
+
+    public function success()
+	{        
+        try {
+            $product_category = $this->db->where(['product_id' => $this->input->post('product_id')])->get('products')->result_array();
+			$userProducts = array(
+				'user_id' => $this->input->post('user_id'),
+				'product_id' => $this->input->post('product_id'),
+				'phase' => '1',
+				'created_date' => date('Y-m-d H:m:s'),
+				'product_status' => '0',
+			);
+
+            $transaction = array(
+				'user_id' => $this->input->post('user_id'),
+				'amount' => $product_category[0]['product_price'],
+				'product_id' => $this->input->post('product_id'),
+				'product_category' => $product_category[0]['product_category'],
+				'gateway' => 'coinbase',
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s'),
+			);
+			
+			$res = $this->db->insert('userproducts', $userProducts);
+			$res2 = $this->db->insert('transactions', $transaction);
+			if($res && $res2){
+				$response = array(
+					'status' => '200',
+					'message' => 'User Poduct Added successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+			}
+			echo json_encode($response);  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
 }
+
+

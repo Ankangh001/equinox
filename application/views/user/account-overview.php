@@ -1,3 +1,10 @@
+<?php 
+
+//   $this->CI = & get_instance();
+//  print_r($this->CI->encryptAES('hi') );
+//  print_r($this->CI->decryptAES('h1IwXyBRYLy1cbPP39FpnQ==') );
+//   die;?>
+
 <?php $this->load->view('user/includes/header');?>
 
 <style>
@@ -66,10 +73,7 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                      Close
-                    </button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
@@ -87,11 +91,17 @@
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label"></span>
-                      
-                        <!-- <span class="badge bg-primary text-white me-1">Passed</span>
-                        <span class="badge bg-danger text-white me-1">Failed</span></label> -->
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                          <?php if($value['product_status'] == '0'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
+                          <?php }elseif($value['product_status'] == '1'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTTIVE</span>
+                          <?php }elseif($value['product_status'] == '2'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                          <?php }elseif($value['product_status'] == '3'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
+                          <?php }?>
+                        </label>
                       </div>
 
                       <div class="row">
@@ -195,11 +205,17 @@
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label"></span>
-                      
-                        <!-- <span class="badge bg-primary text-white me-1">Passed</span>
-                        <span class="badge bg-danger text-white me-1">Failed</span></label> -->
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                          <?php if($value['product_status'] == '0'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
+                          <?php }elseif($value['product_status'] == '1'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTTIVE</span>
+                          <?php }elseif($value['product_status'] == '2'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                          <?php }elseif($value['product_status'] == '3'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
+                          <?php }?>
+                        </label>
                       </div>
 
                       <div class="row">
@@ -286,7 +302,6 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                       Close
                     </button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                   </div>
                 </div>
               </div>
@@ -304,11 +319,17 @@
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label"></span>
-                      
-                        <!-- <span class="badge bg-primary text-white me-1">Passed</span>
-                        <span class="badge bg-danger text-white me-1">Failed</span></label> -->
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                          <?php if($value['product_status'] == '0'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
+                          <?php }elseif($value['product_status'] == '1'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTTIVE</span>
+                          <?php }elseif($value['product_status'] == '2'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                          <?php }elseif($value['product_status'] == '3'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
+                          <?php }?>
+                        </label>
                       </div>
 
                       <div class="row">
@@ -397,7 +418,6 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                       Close
                     </button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                   </div>
                 </div>
               </div>
@@ -415,11 +435,17 @@
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Status: &nbsp;&nbsp;&nbsp;&nbsp; <span class="badge bg-success text-white me-1">Active</span>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label"></span>
-                      
-                        <!-- <span class="badge bg-primary text-white me-1">Passed</span>
-                        <span class="badge bg-danger text-white me-1">Failed</span></label> -->
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                          <?php if($value['product_status'] == '0'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
+                          <?php }elseif($value['product_status'] == '1'){ ?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTTIVE</span>
+                          <?php }elseif($value['product_status'] == '2'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                          <?php }elseif($value['product_status'] == '3'){?>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
+                          <?php }?>
+                        </label>
                       </div>
 
                       <div class="row">

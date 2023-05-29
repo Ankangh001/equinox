@@ -68,28 +68,23 @@ $this->load->view('includes/header');
 <body>
     <form class="">
         <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="text-center w-100"><img class ="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a><br>
-            <!-- <p class="lead fw-normal mb-0 me-3">Sign in to your account</p><br> -->
+            <a href="<?=base_url('');?>" class="text-center w-100"><img class ="m-auto" width="40%" src="<?=base_url('assets/'); ?>img/equinoxLogoBlack.png" rel="icon"></a>
+            <br>
         </div>
         <div class="divider d-flex align-items-center mb-3">
             <p class="text-center fw-bold mb-0">Sign in to your account</p>
         </div>
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="email" class="form-control"
-            placeholder="Email" />
-            <!-- <label class="form-label" for="form3Example3">Email address</label> -->
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
         </div>
         <!-- Password input -->
         <div class="form-outline mb-3">
-            <input type="password" id="password" class="form-control"
-            placeholder="Password" />
-            <!-- <label class="form-label" for="form3Example4">Password</label> -->
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
             <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <input class="form-check-input me-2" type="checkbox" name="remember" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
                     Remember me
                 </label>
@@ -104,9 +99,6 @@ $this->load->view('includes/header');
 </body>
 </html>
 <script>
-    // $(document).ready(function () {
-         
-    //   });
     function validateUser() {
 		let email = $("#email").val();
 		let password = $("#password").val();

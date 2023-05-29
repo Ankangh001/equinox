@@ -130,48 +130,38 @@ $this->load->view('includes/header');
         </div>
 
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
             <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <input class="form-check-input me-2" type="checkbox" name="checkbox1" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
-                I agree to the processing of personal data according to privacy policy
+                    I agree to the processing of personal data according to privacy policy
                 </label>
             </div>
-            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
         </div>
         <br>
 
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
             <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <input class="form-check-input me-2" type="checkbox" name="checkbox2" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
-                    
-                Do you want to receive news about our project? Sign up to our
-                                
+                    Do you want to receive news about our project? Sign up to our
                 </label>
             </div>
-            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
         </div>
-<br>
+        <br>
         <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
             <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <input class="form-check-input me-2" type="checkbox" name="checkbox3" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
-                    
-                I acknowledge my name is correct and corresponds to the government issued identification.
-                        
+                    I acknowledge my name is correct and corresponds to the government issued identification.
                 </label>
             </div>
-            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
         </div>
 
         <div class="text-center text-lg-start mt-4 pt-2 d-flex flex-column align-items-center justify-content-between">
-            <button type="submit" class="btn w-100 "
-            style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="client-login"
-                class="link-danger">Login</a></p>
+            <button type="submit" class="btn w-100" style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">
+                Already have an account? <a href="client-login" class="link-danger">Login</a>
+            </p>
         </div>
     </form>
 </body>

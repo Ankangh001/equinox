@@ -332,7 +332,7 @@ $this->load->view('user/includes/header');
   let tempChartData = [];
   let chartData = [];
   let chartLabel = [];
-  let temp = 0;
+  let lots = 0;
 
   let positiveSum = 0;
   let negativeSum = 0;
@@ -405,6 +405,34 @@ $this->load->view('user/includes/header');
               </div>
             </td>
           </tr>
+          <tr>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
+                <span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>
+              </div>
+            </td>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
+                <span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Total Trades</p>
+                <span class="text-dark fw-bold text-left">${(res['orders'].length)-1}</span>
+              </div>
+            </td>
+            <td>
+              <div class="hol">
+                <p class="text-dark text-left" style="margin-bottom:-1px">Lots Traded</p>
+                <span class="text-dark fw-bold text-left" id="lots"></span>
+              </div>
+            </td>
+          </tr>
         `);
 
 
@@ -446,9 +474,10 @@ $this->load->view('user/includes/header');
         chartData = [];
         chartLabel = [];
         tempChartData = [];
+        lots = 0;
 
         res['orders'].forEach((element, index) => {
-
+          lots += element['lots'];
           chartLabel.push(index);
           tempChartData.push(element['profit']);
 
@@ -471,7 +500,7 @@ $this->load->view('user/includes/header');
             </tr>
           `);
         });
-
+        $('#lots').text(lots)
         chartData[0] = accountSize;
 
         tempChartData.forEach((element, i) => {

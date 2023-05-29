@@ -87,6 +87,14 @@
               </a>
             </li>
 
+            <!-- Users -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'users') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Users</div>
+              </a>
+            </li>
+
             <!-- Purchase History  -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial'|| $this->uri->segment(2) == 'completed' || $this->uri->segment(2) == 'phase-3'  || $this->uri->segment(2) == 'phase-1'||$this->uri->segment(2) == 'phase-2' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
