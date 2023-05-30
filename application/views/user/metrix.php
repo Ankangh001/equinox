@@ -323,7 +323,7 @@ $this->load->view('user/includes/header');
   $('#openOrders').css('opacity', '0.5');
   $('#openOrders').html(`Loading Open Orders...`);
 
-  var accountNum ={};
+  let accountNum ={};
   accountNum.num = <?php echo $_GET['account']; ?>;
   let accountSize = <?php echo $_GET['size']; ?>;
   let maxDD = <?php echo $_GET['max']; ?>;
@@ -537,6 +537,7 @@ $this->load->view('user/includes/header');
           );
         }else{
           $('#openOrdersTable table').html('');
+          $('#openOrdersTable').html('');
           $('#openOrdersTable').append(`<p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>`);
         }
 
@@ -566,10 +567,10 @@ $this->load->view('user/includes/header');
   }
 
   getAccounts();
-  // setTimeout(() => {
-  //   setInterval(() => {
-  //     getAccounts();
-  //   }, 3500);
-  // }, 4000);
+  setTimeout(() => {
+    // setInterval(() => {
+    //   getAccounts();
+    // }, 2500);
+  }, 4000);
 
 </script>

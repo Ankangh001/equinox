@@ -25,15 +25,26 @@ class Challenge extends APIMaster {
         try {
 			$data = array(
 				'product_name' => $this->input->post('product-name'),
-				'product_desc' => $this->input->post('description'),
+				'account_size' => $this->input->post('account-size'),
 				'product_category' => $this->input->post('product-type'),
 				'product_price' => $this->input->post('product-price'),
+				'max_drawdown' => $this->input->post('maximum-drawdown'),
+				'daily_drawdown' => $this->input->post('daily-drawdown'),
+				'p1_target' => $this->input->post('phase-1-target'),
+				'p2_target' => $this->input->post('phase-2-target'),
 				'created_at' => date('Y-m-d H:m:s'),
 				'created_by' => 'admin',
 				'status' => $this->input->post('status'),
 			);
-			
-			$res = $this->db->insert('products', $data);
+
+			$product_id = $this->input->post('product_id');
+			$response = count($this->db->where(['product_id' =>$product_id])->get('products')->result_array());
+			if($response > 0){
+				$res = $this->db->where(['product_id' =>$product_id])->update('products', $data);
+			}else{
+				$res = $this->db->insert('products', $data);
+			}
+
 			if($res){
 				$response = array(
 					'status' => '200',
@@ -45,7 +56,7 @@ class Challenge extends APIMaster {
 					'message' => 'Unable to add data',
 				);
 			}
-			echo $response;  
+			echo json_encode($response);  
 
 		} catch (\Throwable $th) {
 			$res = $th;
@@ -56,50 +67,20 @@ class Challenge extends APIMaster {
 	public function edit()
 	{
         try {
-			$data = array(
-				'product_name' => $this->input->post('product-name'),
-				'product_desc' => $this->input->post('description'),
-				'product_category' => $this->input->post('product-type'),
-				'product_price' => $this->input->post('product-price'),
-				'created_at' => date('Y-m-d H:m:s'),
-				'created_by' => 'admin',
-				'status' => $this->input->post('status'),
-			);
-			
-			$res = $this->db->insert('products', $data);
-			if($res){
-				$response = array(
-					'status' => '200',
-					'message' => 'Added successfully',
-				);
-			}else{
-				$response = array(
-					'status' => '400',
-					'message' => 'Unable to add data',
-				);
-			}
-			echo $response;  
-
+			$last_segment = $this->uri->segment($this->uri->total_segments());
+			$response['res'] = $this->db->where(['product_id' =>$last_segment])->get('products')->result_array();
+        	$this->load->view('admin/edit-challenge', $response);
 		} catch (\Throwable $th) {
 			$res = $th;
 		}
-
 	}
 
 	public function delete()
 	{
         try {
-			$data = array(
-				'product_name' => $this->input->post('product-name'),
-				'product_desc' => $this->input->post('description'),
-				'product_category' => $this->input->post('product-type'),
-				'product_price' => $this->input->post('product-price'),
-				'created_at' => date('Y-m-d H:m:s'),
-				'created_by' => 'admin',
-				'status' => $this->input->post('status'),
-			);
-			
-			$res = $this->db->insert('products', $data);
+			$product_id = $this->input->post('product_id');		
+			$res = $this->db->where(['product_id' =>$product_id])->delete('products');
+
 			if($res){
 				$response = array(
 					'status' => '200',
@@ -111,7 +92,7 @@ class Challenge extends APIMaster {
 					'message' => 'Unable to add data',
 				);
 			}
-			echo $response;  
+			echo json_encode($response);
 
 		} catch (\Throwable $th) {
 			$res = $th;
@@ -121,7 +102,12 @@ class Challenge extends APIMaster {
 
 
 	public function view(){
-		$response = $this->db->get('products')->result_array();
-		echo json_encode($response);	
+		try {
+			$last_segment = $this->uri->segment($this->uri->total_segments());
+			$response['res'] = $this->db->where(['product_id' =>$last_segment])->get('products')->result_array();
+        	$this->load->view('admin/view-challenge', $response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
 	}
 }

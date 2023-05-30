@@ -19,4 +19,45 @@ class Account extends APIMaster {
 
         $this->load->view('user/account-overview', $response);
 	}
+
+    public function freeTrial()
+    {
+        try {
+			$userProducts = array(
+				'user_id' => $this->input->post('id'),
+				'product_id' => '1',
+				'phase' => '0',
+				'created_date' => date('Y-m-d H:m:s'),
+				'product_status' => '0',
+			);
+
+            $transaction = array(
+				'user_id' => $this->input->post('id'),
+				'amount' => '0',
+				'product_id' => '1',
+				'product_category' => 'Free Trial',
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s'),
+			);
+			
+			$res = $this->db->insert('userproducts', $userProducts);
+			$res2 = $this->db->insert('transactions', $transaction);
+			if($res && $res2){
+				$response = array(
+					'status' => '200',
+					'message' => 'User Poduct Added successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+			}
+			echo json_encode($response);  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+        
+    }
 }

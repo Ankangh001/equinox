@@ -1,9 +1,11 @@
 <?php 
+// print_r($res);die;
 
 //   $this->CI = & get_instance();
 //  print_r($this->CI->encryptAES('hi') );
 //  print_r($this->CI->decryptAES('h1IwXyBRYLy1cbPP39FpnQ==') );
-//   die;?>
+//   die;
+?>
 
 <?php $this->load->view('user/includes/header');?>
 
@@ -15,13 +17,19 @@
 </style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
-
+<?php if(!empty($res)){?>
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="accordion mt-3" id="accordionExample">
       <!-- Free Trial -->
-      <div class="card-title fw-bold">Free Trial</div>
-      <?php foreach ($res as $key => $value) { if ($value['phase'] == '0'){?>
+      <?php 
+        foreach ($res as $key => $value) { 
+          if ($value['phase'] == '0'){
+            echo '<div class="card-title fw-bold">Free Trial</div>';
+            break;  
+          }
+        };
+        foreach ($res as $key => $value) { if ($value['phase'] == '0'){?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
             <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne<?= @$value['id'] ?>">
@@ -86,16 +94,16 @@
                     <div class="card-body">
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['created_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; </label>
                       </div>
                       <div class="row mb-3">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTTIVE</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
                           <?php }elseif($value['product_status'] == '3'){?>
@@ -130,7 +138,7 @@
               echo '<div class="card-title fw-bold">Evaluation Phase 1</div>';
               break;  
             }
-          }
+          };
           foreach ($res as $key => $value) { 
             if ($value['phase'] == '1'){
       ?>
@@ -468,6 +476,19 @@
       <?php } }?>
     </div>
   </div>
+<?php }else{ ?>
+      <div class="row my-5 mx-auto">
+        <div class="col-md-12 m-auto">
+          <div class="card">
+              <div class="card-body text-center text-muted ">
+                😧 Hey ! Looks like you no accounts yet .<br /><br />
+                <a href="<?=base_url('user')?>" >click here</a> to get started with a free trial account 
+                or &nbsp;&nbsp;<a href="<?=base_url('user/')?>start-new-challenge" class="btn btn-primary btn-sm"> Start New Challenge</a>
+              </div>
+          </div>
+        </div>
+      </div>
+  <?php } ?>
     <!-- / Content -->
 
 <script>
