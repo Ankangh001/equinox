@@ -9,6 +9,9 @@ body {
   overflow:hidden;
   
 }
+.modal-content{
+  height:90vh;
+}
 
 div.wheel,
 .inner-wheel,

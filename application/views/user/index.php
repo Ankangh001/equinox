@@ -9,6 +9,10 @@ $this->load->view('user/includes/header');
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
   <div class="accordion mt-3 mb-5" id="accordionExample">
+    <?php  
+      foreach ($res as $key => $value) { 
+        if ($value['phase'] == '0'){
+    ?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="false" aria-controls="accordionOne">
@@ -22,9 +26,9 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                    <div id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
                     </div>
                     <div style="margin-bottom:-12px"></div>
@@ -35,7 +39,14 @@ $this->load->view('user/includes/header');
           </div>
         </div>
       </div>
+    <?php
+          break;
+        }
+      };
+    ?>
 
+
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne2">
           <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
@@ -49,23 +60,13 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
+                    <?php foreach ($res as $key => $value) { ?>
                     <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
                     </div>
-
-                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
-
-                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; 098765678</label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
+                    <?php } ?>
                     <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
@@ -74,6 +75,7 @@ $this->load->view('user/includes/header');
           </div>
         </div>
       </div>
+      <?php break;}} ?>
     </div>
     <div class="row">
         <div class="col-lg-6">
@@ -99,7 +101,7 @@ $this->load->view('user/includes/header');
                   </li>
                 </ul>
               </div>
-              <button type="submit" class="w-100 btn btn-secondary">Try for free</button>
+              <button type="button" id="free-trial-btn" class="w-100 btn btn-secondary">Try for free</button>
             </div>
           </div>
         </div>
@@ -136,6 +138,32 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`);
+
+  var user ={};
+  user.id = <?php echo $_SESSION['user_id']; ?>;
+  $('#free-trial-btn').click(()=>{
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/account/freeTrial'); ?>",
+      data: user,
+      success: function(data){
+        let res = JSON.parse(data);
+        if(res.status == 200){
+          window.location.href = "<?= base_url('user/account-overview') ?>";
+        }
+      },
+      error: function() { 
+        alert("Error posting feed."); 
+      }
+    });
+  });
+
+  function redirection(cred){
+    window.location.href = "<?= base_url('user/account-overview') ?>"+cred;
+  }
+  $('#redirect').click(()=>{
+    redirection();
+  });
 </script>
 <?php $this->load->view('user/includes/footer');?>

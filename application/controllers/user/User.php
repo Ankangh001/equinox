@@ -11,12 +11,13 @@ class User extends APIMaster {
 
 	public function index()
 	{
-		$this->load->view('user/index');
+        $this->db->select('*');
+        $this->db->from('userproducts');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['user_id' => '3']);
+        $response['res'] = $this->db->get()->result_array();
+		$this->load->view('user/index', $response);
 	}
     
-    public function accountOverview()
-    {
-        $this->load->view('user/account-overview');
-        
-    }
+    
 }

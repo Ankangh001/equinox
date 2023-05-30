@@ -210,21 +210,21 @@ $this->load->view('user/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
 
-  var responseData ={};
+  var requestData ={};
 
   <?php if(isset($_GET['product-code'])){ ?>
-    responseData.product_id = "<?php echo $_GET['product-code']?>";
+    requestData.product_id = "<?php echo $_GET['product-code']?>";
 
   <?php }elseif(isset($_GET['normal-product-code'])){ ?>
-    responseData.product_id = "<?php echo $_GET['normal-product-code']?>";
+    requestData.product_id = "<?php echo $_GET['normal-product-code']?>";
   <?php } ?>
 
-  responseData.user_id = "<?php echo $_SESSION['user_id'];?>";
+  requestData.user_id = "<?php echo $_SESSION['user_id'];?>";
   $('#coinbase_buy').click(()=>{
     $.ajax({
         type: "POST",
         url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-        data: responseData,
+        data: requestData,
         dataType: "html",
         success: function(data){
           window.location.href = data;
@@ -239,7 +239,7 @@ $this->load->view('user/includes/header');
     $.ajax({
         type: "POST",
         url: "<?php echo base_url('user/payment/success'); ?>",
-        data: responseData,
+        data: requestData,
         dataType: "html",
         success: function(data){
           let res = JSON.parse(data);
