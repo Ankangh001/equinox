@@ -71,14 +71,7 @@ $route['user/successfull-payment'] = 'user/payment/success';
 $route['admin'] = 'admin/admin';
 $route['admin/challenge'] = 'admin/challenge';
 $route['admin/add-challenge'] = 'admin/challenge/addChallenge';
-
-//---functions for challenge
-$route['add/challenge'] = 'admin/challenge/save';
-$route['view/challenge'] = 'admin/challenge/view';
-$route['edit/challenge'] = 'admin/challenge/edit';
-$route['delete/challenge'] = 'admin/challenge/delete';
-$route['changeStatus/challenge'] = 'admin/challenge/changeStatus';
-
+$route['admin/users'] = 'admin/user';
 
 
     //-------purchase----------//

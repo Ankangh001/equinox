@@ -11,12 +11,13 @@ class User extends APIMaster {
 
 	public function index()
 	{
-		$this->load->view('user/index');
+		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
+		$this->load->view('admin/users', $response);
 	}
     
     public function accountOverview()
     {
-        $this->load->view('user/account-overview');
+        $this->load->view('admin/account-overview');
         
     }
 }
