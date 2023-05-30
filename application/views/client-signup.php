@@ -166,7 +166,7 @@ $this->load->view('includes/header');
     </form>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
 <script>
 $(document).ready(function() {
   $('#myForm').submit(function(e) {
@@ -184,6 +184,7 @@ $(document).ready(function() {
             window.location.href = BASEURL+'client-login';	
         } else {
             $.notify(response.message);
+            $.notify($(response.data.errors).text());
             return;
         }
       },

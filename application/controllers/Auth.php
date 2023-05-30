@@ -128,9 +128,7 @@ class Auth extends APIMaster {
 					);
 					$to = $data['email'];
 					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
-					$fromEmail = '';
-					$fromPass = '';
-					$email = send_email($to,$emailData['subject'],$emailData['content'],'','',$fromEmail,$fromPass);
+					$email = send_email($to,$emailData['subject'],$emailData['content'],'','',1);
 
 					if($email){
 						$response = array(
