@@ -2,7 +2,11 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  .hover:hover{
+    background-color:#ccc
+  }
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -26,11 +30,11 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <div id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
+                    </a>
                     <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
@@ -60,13 +64,13 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <?php foreach ($res as $key => $value) { ?>
-                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
-                    <?php } ?>
+                    </a>
+                    <?php } }?>
                     <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
