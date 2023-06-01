@@ -1,238 +1,129 @@
 <?php
 $this->load->view('includes/header');
 ?>
-
-<!-- ======= Hero Section ======= -->
- <section id="hero" class=" affiliate d-flex align-items-center">
+ <!-- ======= Hero Section ======= -->
+ <section id="hero" class="align-items-center d-flex align-items-center justify-content-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-9">
-          <h2>Share, Get Paid, Repeat</h2><br>
-          <h1>Earn Like a<span> Champion</span></h1><br>
-          <h2>Start earning up to 15% commission on every referral.</h2>
-          <br><br>
-          <h2>Check out what our successful affiliates earned last month and join them now!</h2>
-
-          <p class="font-bold text-lg my-5">
-            <span class="bg-white otp-text">$</span>
-            <span class="bg-white otp-text">1</span>
-            <span class="bg-white otp-text">4</span>
-            <span class="bg-white otp-text">1</span>
-            <span class="bg-white otp-text">3</span>
-            <span class="bg-white otp-text">2</span>
-            <span class="bg-white otp-text">2</span>
-          </p>
-          <div class="btns">
-            <a href="" class="btn-menu animated fadeInUp scrollto">Become a Affiliate</a>
-          </div>
+        <div class="row">
+            <div class="col-lg-6 m-funding align-items-center d-flex align-items-center justify-content-center flex-column">
+                <h1>
+                    Share, Get Paid, Repeat<br>
+                    Earn Like a<span> Champion</span><br>
+                </h1>  
+                <p style="margin: 1rem 0 0 24px; font-size:16px; color:#000000; width:90%">Start earning <strong style= "color:#0d6efd">15%</strong> commission on every referral.</p>
+                <div class="btns justify-content-start d-flex" style="width:80%">
+                    <a href="#why-us" class="btn-book animated fadeInUp scrollto gradient-btn" style="font-size:20px; padding-top:12px">
+                        <span>Become An Affiliate</span>
+                    </a>
+                    <!-- <a href="#why-us" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a> -->
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center" data-aos="zoom-in" data-aos-delay="200">
+            <img src="<?= base_url('assets/')?>img/affiliate.png" alt="" srcset="">
         </div>
-        <div class="col-lg-3 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-          <!-- <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a> -->
-        </div>
-
+        
       </div>
     </div>
   </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="calculate">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-            <div class="visma-page--container">
-              <div class="autoinvoice-box">  
-                <!-- Efficiency calculator -->
-                <div class="slider-autoinvoice-module" data-color="light-blue">
-                  <div class="slider-autoinvoice">
-                    <p class="slider-autoinvoice--label">Affiliate Calculator</p>
-                    <p class="slider-autoinvoice--slider-scale">
-                      <span>1000</span>
-                      <span>100 000</span>
-                    </p>
-                    <div id="slider-autoinvoice-invoices" class="slider-autoinvoice--slider">&nbsp;</div>
-                  </div>
-                  <div class="slider-autoinvoice"  style="display:none">
-                    <p class="slider-autoinvoice--label">Amount of digital invoices today</p>
-                    <p class="slider-autoinvoice--slider-scale">
-                      <span>0%</span>
-                      <span>100%</span>
-                    </p>
-                    <div id="slider-autoinvoice-digital" class="slider-autoinvoice--slider">&nbsp;</div>
-                  </div>
-                  <div class="slider-autoinvoice--result">
-                    <p>
-                      <span class="slider-autoinvoice--result-label">You can earn:</span>
-                      <span id="slider-result">&nbsp;</span>
-                    </p>
-                  </div>
-                  <!-- calculation result-->
-                </div>
-                <!-- end efficiency calculator -->
-              </div>
+  <style>
+    .card{
+        box-shadow: 2px 2px 8px #00000050;
+        height: 200px;
+    }
+    .header{
+        font-weight:bold;
+    }
+    .get-funded{
+        display:none !important;
+    }
+    .list-disc {
+        list-style-type: disc;
+    }
+</style>
+<main id="main">
+    <!-- ======= Why Us Section ======= -->
+    <section style="margin: 0rem auto 0 auto;padding-bottom: 0;">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-center">
+                <h2>Affiliates</h2>
             </div>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content my-5">
-            <h3>Let our Earnings Calculator get you excited.</h3>
-            <p class="fst-italic py-3">Earn up to 15% in commissions on all referred purchases. Use the calculator to estimate your earnings.</p>
-          </div>
-        </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <div class="header text-center pb-1">Highest affiliate commission</div>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering <strong style= "color:#0d6efd">15%</strong> commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-      </div>
-    </section><!-- End About Section -->
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <div class="header text-center pb-1">Easy & Fast Withdrawals</div>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital has built the fastest process for you to withdraw your commissions. Submit your withdrawal request from the dashboard and collect your commissions instantly.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <div class="header text-center pb-1">Real-Time Tracking</div>
+                                <p class="mt-3" style="font-size:14px">Track your clicks, registrations and conversions in real-time to stay up-to-date with your progress. You can also check your payment and withdrawal history easily in your dashboard.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Pricing -->
 
     <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="about">
-      <div class="container" data-aos="fade-up">
+    <section style="margin: 0rem auto 0 auto;padding-bottom: 0;">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-center">
+                <i class="fas fa-clipboard"></i>
+                <h2>Terms & Conditions</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 m-auto col-sm-6 mb-5">
+                    <ul>
+                        <li class="text-dark list-disc pt-8"><p>Affiliate commissions will not be awarded if a customer purchase from his/her own affiliate link.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>Every trader can sign up only once using only one referral link</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The commission will only be paid for the first purchase made by a trader. Account Top-ups and Account Resets won’t count toward the commission.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The reward is only paid once the payment is cleared on Equinox Trading Capital’s end.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates are not to engage in any negative marketing. This means no marketing in which the affiliate would use negative words in order to get attention then promote our services.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>An affiliate commission will not be awarded if a customer uses the discount code of another affiliate to purchases a new plan.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>Affiliate sales must qualify as a legitimate transaction upon Equinox Trading Capital’s review.</p></li>
+                        <li class="text-dark list-disc pt-8"><p>The affiliates must add a disclaimer stating “Equinox Trading Capital does not own or operate this website and is not responsible for its contents. It is owned by [your website name / your brand name], an independent marketing affiliate.”
 
-        <div class="section-title">
-          <h2>Why Us</h2>
-          <p>How our Affiliate Model Works</p>
+<li class="text-dark list-disc pt-8"><p>In no way may you copy our sales page content such as our sales letter, video, or images in an effort to imitate Equinox Trading Capital on your own site.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>The Available Payout Methods for Equinox Trading Capital Affiliates are: <strong style= "color:#0d6efd">DEEL & Crypto</strong>.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>The commission will be sent to the affiliates with their preferred payment methods.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>No minimum commission amount requirement to withdraw commission.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Affiliates can directly purchase a new plan using the commissions received from Equinox Trading Capital.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Withdrawal requests for affiliate commissions will only be processed by Equinox Trading Capital after all terms and conditions have been met. Payouts are available only upon request and are subject to review and approval by Equinox Trading Capital.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Equinox Trading Capital reserves the right to modify or change the terms and conditions at any given time, and it is the affiliate's responsibility to review the terms and conditions regularly to remain informed of any changes.</p></li>
+
+<li class="text-dark list-disc pt-8"><p>Equinox Trading Capital reserves the right to withhold payments for any affiliate who violates our terms and conditions or engages in fraudulent activity.</p></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <div class="row">
-
-          <div class="col-lg-3">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <span>01</span>
-              <h4>Lorem Ipsum</h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <span>01</span>
-              <h4>Lorem Ipsum</h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="300">
-              <span>03</span>
-              <h4> Ad ad velit qui</h4>
-              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="300">
-              <span>03</span>
-              <h4> Ad ad velit qui</h4>
-              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Why Us Section -->
-  </main><!-- End #main -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.min.js"></script>
-  <script>
-    
-$(document).ready(function() {
-  var vismaAutoivoice = vismaAutoivoice || {};
-  vismaAutoivoice.calculator = function() {
-    var slider1 = document.getElementById("slider-autoinvoice-invoices"), //1 element to create slider
-      slider2 = document.getElementById("slider-autoinvoice-digital"), //2 element to create slider
-      savingRate = 63.55, //saved money kr per 1 invoice
-      $result = $("#slider-result"); //calculation output element
-    // Appending money-formatting (visual)
-    var outputFormat = wNumb({
-      prefix: "Rs ",
-      decimals: 2,
-      thousand: " ",
-      mark: ","
-    });
-    //Create slider for invoice count
-    noUiSlider.create(slider1, {
-      start: 10000,
-      step: 1000,
-      tooltips: wNumb({
-        decimals: 0,
-        thousand: " "
-      }),
-      range: {
-        min: 1000,
-        max: 100000
-      },
-      connect: "lower"
-    });
-    //Create slider for digital % of invoice count
-    noUiSlider.create(slider2, {
-      start: 50,
-      step: 1,
-      tooltips: wNumb({
-        decimals: 0
-      }),
-      range: {
-        min: 0,
-        max: 100
-      },
-      connect: "lower"
-    });
-
-    function calculateSavings(invoices, digital) {
-      digital = digital / 100;
-      var result = invoices * (1 - digital) * savingRate;
-      console.log("total result: ", result, invoices, digital);
-      $result.html(outputFormat.to(result))
-    }
-    //Default result before interaction with sliders
-    var invoiceCount = Number(slider1.noUiSlider.get()),
-        digitalCount = Number(slider2.noUiSlider.get());
-    console.log(
-      invoiceCount,
-      digitalCount,
-      typeof invoiceCount,
-    //  invoiceCount + digitalCount
-    );
-    //calculate saved hours and update calculation output element's content
-    var calculateMoney = function() {
-        //Show calculation result on screen
-        $amountSpan.html(mod);
-    };
-    /* var digitalInvoices = 80;
-    digitalInvoices = digitalInvoices / 100;
-    console.log(outputFormat.to(1000 * (1 - digitalInvoices) * savingRate), slider1);
-*/
-    function calculateMoney() {
-      //Formula: totalInvoices * (1 - digitalInvoices)*savingRate
-    }
-
-    //User can input calculation value by slider or directly into input field
-    //When the slider value changes, update the input and calculation output element's content
-    calculateSavings(invoiceCount, digitalCount);
-    
-    slider1.noUiSlider.on("update", function(values, handle) {
-      invoiceCount = Number(values[handle]);
-    
-      calculateSavings(invoiceCount, digitalCount);
-     // console.log(" slider 1 ", invoiceCount, typeof invoiceCount);
-      return invoiceCount;
-    });
-  
-
-    slider2.noUiSlider.on("update", function(values, handle) {
-      digitalCount = Number(values[handle]);
-      calculateSavings(invoiceCount, digitalCount);
-     
-    });
-  };
-
-  vismaAutoivoice.calculator();
-});
-
-  </script>
-
-
-
+    </section><!-- End Pricing -->
+</main><!-- End #main -->
 <?php
 $this->load->view('includes/footer');
 ?>

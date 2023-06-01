@@ -4,7 +4,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -77,17 +77,51 @@
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
-  let selectHeader = select('#header')
-  let selectTopbar = select('#topbar')
+
+  // $(document).ready(function(){
+    $("#eqLogoWhite").css("display" , "none");
+  //   $(window).scroll(function(){
+  //     var scroll = $(window).scrollTop();
+  //     if (scroll > 90) {
+  //       alert();
+  //       $("#eqLogoblack").css("display" , "none");  	
+  //       $("#eqLogoWhite").css("display" , "block");
+  //       $('.mobile-nav-toggle').css("color" , "#fff");
+  //     }
+      
+  //     else{
+  //       $("#eqLogoblack").css("display" , "block");  	
+  //       $("#eqLogoWhite").css("display" , "none");
+  //       $("select.goog-te-combo").css("color" , "#000000 !important");
+  //       $('.mobile-nav-toggle').css("color" , "#000");
+  //     }
+  //   })
+  // })
+
+
+  let selectHeader = select('#header');
+  let selectTopbar = select('#topbar');
+  let navbar = select('#navbar');
   if (selectHeader) {
     const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
+      if (window.scrollY > 80) {
+        navbar.classList.add('whites');
+        navbar.classList.remove('black');
+        selectHeader.classList.add('header-scrolled');
+        $("#eqLogoblack").css("display" , "none");  	
+        $("#eqLogoWhite").css("display" , "block");
+        $('.mobile-nav-toggle').css("color" , "#fff");
         if (selectTopbar) {
           selectTopbar.classList.add('topbar-scrolled')
         }
       } else {
-        selectHeader.classList.remove('header-scrolled')
+        selectHeader.classList.remove('header-scrolled');
+        navbar.classList.remove('whites');
+        navbar.classList.add('black');
+        $("#eqLogoblack").css("display" , "block");  	
+        $("#eqLogoWhite").css("display" , "none");
+        $("select.goog-te-combo").css("color" , "#000000 !important");
+        $('.mobile-nav-toggle').css("color" , "#000");
         if (selectTopbar) {
           selectTopbar.classList.remove('topbar-scrolled')
         }
@@ -116,7 +150,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -125,7 +159,7 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -135,7 +169,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -184,9 +218,9 @@
 
       let menuFilters = select('#menu-flters li', true);
 
-      on('click', '#menu-flters li', function(e) {
+      on('click', '#menu-flters li', function (e) {
         e.preventDefault();
-        menuFilters.forEach(function(el) {
+        menuFilters.forEach(function (el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
@@ -194,7 +228,7 @@
         menuIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        menuIsotope.on('arrangeComplete', function() {
+        menuIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
       }, true);
@@ -231,31 +265,44 @@
    * Testimonials slider
    */
   new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
+    effect: "coverflow",
+    grabCursor: true,
+    // centeredSlides: true,
+    // slidesPerView: "auto",
+    // coverflowEffect: {
+    //   rotate: 0,
+    //   stretch: 300,
+    //   depth: 100,
+    //   modifier: 2,
+    //   slideShadows: true,
+      
+    // },
+    // loop: true,
   });
 
+new Swiper(".mySwiper", {
+    effect: "cards",
+    grabCursor: true,
+    cardsEffect :{
+      rotate: 0,
+      perSlideOffset :9
+    },
+    // loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
   /**
    * Initiate gallery lightbox 
    */
