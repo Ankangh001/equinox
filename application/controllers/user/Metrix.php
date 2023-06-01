@@ -14,13 +14,13 @@ class Metrix extends APIMaster {
     }
     
     public function accounts(){
-        // $accountId =  $this->input->post('num');
+        $accountId =  $this->input->post('num') ?? '94604766';
         // $password =  $this->input->post('password');
         // $ip =  $this->input->post('ip');
         // $port =  $this->input->post('port');
 
         // $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$account.'&password=wo0wylid&host=95.216.115.247&port=443');
-        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=850766&password=test@1234&host=8.208.91.123&port=443');
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=850766&password=Test@1234&host=8.208.91.123&port=443');
 
         $accountSummary = $this->accountSummary($token);
         $orderHistory = $this->OrderHistory($token);
