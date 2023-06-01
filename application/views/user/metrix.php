@@ -22,6 +22,9 @@ $this->load->view('user/includes/header');
   label{
     white-space: normal;
   }
+  .bg-light{
+    background-color:#eceef1 !important;
+  }
 </style>
 
 <div class="content-wrapper">
@@ -49,11 +52,11 @@ $this->load->view('user/includes/header');
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Closed Profit</h6>
-                    <input readonly id="closed_profit" class="form-control" value="0" />
+                    <div id="closed_profit" ></div>
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Floating Profit</h6>
-                    <input readonly id="floating_profit" class="form-control" value="0" />
+                    <div id="floating_profit" ></div>
                 </div>
               </div>
             </div>
@@ -381,8 +384,13 @@ $this->load->view('user/includes/header');
       success: function(data){
 
         let res = JSON.parse(data);
-        $('#closed_profit').val(((res['balance'])-accountSize).toFixed(2));
-        $('#floating_profit').val(((res['equity'])-(res['balance'])).toFixed(2));
+        if(((res['balance'])-accountSize) < 0){
+          $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+          $('#floating_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }else if(((res['balance'])-accountSize) >= 0){
+          $('#closed_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+          $('#floating_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }
 
         //load statistics
         $('#stats').html(`
@@ -404,13 +412,20 @@ $this->load->view('user/includes/header');
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
-                <span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>
+                ${(((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) <= 0 ? 
+                  `<span class="text-danger fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                  `<span class="text-success fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`
+                }
+                
               </div>
             </td>
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
-                <span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>
+                ${((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) <=0 ?
+                  `<span class="text-danger fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                  `<span class="text-success fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`
+                }
               </div>
             </td>
           </tr>
@@ -429,7 +444,6 @@ $this->load->view('user/includes/header');
             </td>
           </tr>
         `);
-
 
         //max drawdown render
         if(res['equity'] > checkAmount){
