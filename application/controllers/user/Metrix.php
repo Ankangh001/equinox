@@ -14,10 +14,13 @@ class Metrix extends APIMaster {
     }
     
     public function accounts(){
-        $account =  $this->input->post('num');
+        // $accountId =  $this->input->post('num');
+        // $password =  $this->input->post('password');
+        // $ip =  $this->input->post('ip');
+        // $port =  $this->input->post('port');
 
         // $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$account.'&password=wo0wylid&host=95.216.115.247&port=443');
-        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=850766&password=hwfzmv0s&host=8.208.91.123&port=443');
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=850766&password=test@1234&host=8.208.91.123&port=443');
 
         $accountSummary = $this->accountSummary($token);
         $orderHistory = $this->OrderHistory($token);
@@ -89,5 +92,32 @@ class Metrix extends APIMaster {
 
         curl_close($curl);
         return $response;
+    }
+
+    public function saveStartDate(){
+        $start_date =  $this->input->post('date');
+        
+        $end_date = date('Y-m-d', strtotime($start_date. ' +30 days'));
+
+        $data = array(
+            'start_date' => $start_date,
+            'end_date' => $end_date
+        );
+        
+        $res = $this->db->where(['user_id'=>$_SESSION['user_id']])->update('userproducts', $data);
+
+        if($res){
+            $response = array(
+                'status'=> 200,
+                'message'=>'start date and end date added successfully'
+            );
+        }else{
+            $response = array(
+                'status'=> 400,
+                'message'=>'Error adding start date and end date to database'
+            );
+        }
+        
+        echo json_encode($response);
     }
 }

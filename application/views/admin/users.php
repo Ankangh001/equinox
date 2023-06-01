@@ -65,6 +65,7 @@ $this->load->view('admin/includes/header'); ?>
   let requestData = {};
   
   function delete_product(id){
+    return;
       requestData.user_id = id;
       $.ajax({
           type: "POST",

@@ -94,7 +94,7 @@
                     <div class="card-body">
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['created_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['start_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; </label>
                       </div>
                       <div class="row mb-3">
@@ -208,11 +208,11 @@
                     <div class="card-body">
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['start_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
                       </div>
                       <div class="row mb-3">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['end_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
@@ -322,11 +322,11 @@
                     <div class="card-body">
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['start_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
                       </div>
                       <div class="row mb-3">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['end_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
@@ -438,11 +438,11 @@
                     <div class="card-body">
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; 12/12/2022</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['start_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
                       </div>
                       <div class="row mb-3">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; 01/02/2023</label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?php echo substr($value['end_date'],0,10)?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
