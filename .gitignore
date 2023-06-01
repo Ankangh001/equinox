@@ -1,4 +1,6 @@
 .DS_Store
+# ankan!
+application/config/*
 
 application/cache/*
 !application/cache/index.html
@@ -31,5 +33,3 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 
-# ankan
-application/config/*
