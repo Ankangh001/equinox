@@ -30,7 +30,7 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow hover pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
@@ -169,5 +169,9 @@ $this->load->view('user/includes/header');
   $('#redirect').click(()=>{
     redirection();
   });
+
+  setInterval(() => {
+    $('#accordionExample').load(' #accordionExample')
+  }, 5000);
 </script>
 <?php $this->load->view('user/includes/footer');?>
