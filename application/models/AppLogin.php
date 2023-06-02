@@ -33,7 +33,8 @@ class AppLogin extends CI_Model
             if ($this->db->insert('user',$data)) {
                 $response = array(
                     "success" => 1,
-                    "message" => "Thank You for Registration."
+                    "message" => "Thank You for Registration.",
+                    "last_id" => $this->db->insert_id()
                 );
             } else {
                 $response = array(

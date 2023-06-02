@@ -114,7 +114,9 @@ class Auth extends APIMaster {
 					'password' 		=> $this->encryptAES($this->input->post('password')),
 					'admin_type'	=> 'Client',	
 					'email_verified'=> '0',
-					'verification_key'=> md5(rand(0,1000)), 	
+					'verification_key'=> md5(rand(0,1000).time()), 	
+					'affiliate_code'=> rand(100,999).$this->randomuuid(9).rand(100,999),
+					'reffered_by'	=> $this->input->post('referral_code'),
 					'created_date' 	=> date('Y-m-d h:m:s')
 				);
 				$data 	= $this->security->xss_clean($data);
@@ -124,7 +126,7 @@ class Auth extends APIMaster {
 					$this->load->library('mailer');
 					$mail_data = array(
 						'fullname' => $data['first_name'].' '.$data['last_name'],
-						'verification_link' => base_url('auth/verify/').'/'.$data['verification_key']
+						'verification_link' => base_url('auth/verify/').$data['verification_key']
 					);
 					$to = $data['email'];
 					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
@@ -273,14 +275,14 @@ class Auth extends APIMaster {
 		$this->load->view('client');
 	}
 
-	public function clientSignup()
+	public function clientSignup($code='')
 	{
 		if (isset($_SESSION['token']) && $_SESSION['admin_type']=='Client') {
 			redirect(base_url('user'));
         }elseif (isset($_SESSION['token']) && $_SESSION['admin_type']=='Admin') {
 			redirect(base_url('admin'));
         }
-		$this->load->view('client-signup');
+		$this->load->view('client-signup',['referral_code'=>$code]);
 	}
 
 }  // end class

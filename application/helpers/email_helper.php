@@ -5,8 +5,6 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
     {
 		$controller =& get_instance();
        	$controller->load->helper('path'); 
-		$fromEmail = ($fromEmail !='')?$fromEmail:SMPT_USER; 
-		$fromPass = ($fromPass !='')?$fromPass:SMPT_PASS; 
 
 		switch ($type) {
 			case "1":

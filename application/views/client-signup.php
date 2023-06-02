@@ -170,11 +170,10 @@ $this->load->view('includes/header');
 <script>
 $(document).ready(function() {
   $('#myForm').submit(function(e) {
-    e.preventDefault(); // Prevent the form from submitting normally
-    // Serialize the form data
+    e.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData);
-    // Send the form data using Ajax
+    var referral_code = "<?=$referral_code?>";
+    formData.append('referral_code',referral_code);
     $.post({
       url: BASEURL+'auth/register',
       data: formData,
