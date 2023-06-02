@@ -14,7 +14,7 @@ class Account extends APIMaster {
         $this->db->select('*');
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['user_id' => '3']);
+        $this->db->where(['user_id' => $_SESSION['user_id']]);
         $response['res'] = $this->db->get()->result_array();
 
         $this->load->view('user/account-overview', $response);

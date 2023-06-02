@@ -22,6 +22,9 @@ $this->load->view('user/includes/header');
   label{
     white-space: normal;
   }
+  .bg-light{
+    background-color:#eceef1 !important;
+  }
 </style>
 
 <div class="content-wrapper">
@@ -37,46 +40,26 @@ $this->load->view('user/includes/header');
                 </div>
               </div>
             </div>
-
             <div class="col-lg-12">
               <div class="card-body row align-items-center">
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Max Drawdown 
-                      <!-- <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
-                        <i class='bx bx-info-circle' ></i>
-                      </span> -->
-                    </h6>
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Max Drawdown</h6>
                     <input readonly class="form-control" value="$<?= @$_GET['max'] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown
-                      <!-- <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
-                        <i class='bx bx-info-circle' ></i>
-                      </span> -->
-                    </h6>
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown</h6>
                     <input readonly class="form-control" value="$<?= @$_GET['daily'] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Closed Profit
-                      <!-- <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" 
-                        data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
-                        <i class='bx bx-info-circle' ></i>
-                      </span> -->
-                    </h6>
-                    <input readonly id="closed_profit" class="form-control" value="0" />
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Closed Profit</h6>
+                    <div id="closed_profit" ></div>
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
-                    <h6 class="alert-heading fw-bold mb-3 text-left">Floating Profit
-                      <!-- <span class="text-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" 
-                        data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
-                        <i class='bx bx-info-circle' ></i>
-                      </span> -->
-                    </h6>
-                    <input readonly id="floating_profit" class="form-control" value="0" />
+                    <h6 class="alert-heading fw-bold mb-3 text-left">Floating Profit</h6>
+                    <div id="floating_profit" ></div>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -114,14 +97,7 @@ $this->load->view('user/includes/header');
                             <div class="row">
                               <div class="col-xl">
                                 <div class="row px-1">
-                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">
-                                    Maximum drawdown is the maximum your account
-                                    can drawdown before you would hard breach
-                                    your account. When you open the account,
-                                    your Max Drawdown is set at 10% of
-                                    your starting balance. This will be
-                                    static for the duration of the account.
-                                  </label>
+                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">Maximum drawdown is the maximum your account can drawdown before you would hard breach your account. When you open the account, your Max Drawdown is set at 10% of your starting balance. This will be static for the duration of the account.</label>
                                 </div>
                               </div>
                             </div>
@@ -132,6 +108,9 @@ $this->load->view('user/includes/header');
                   </td>
                   <td>
                     <div id="max_dd">
+                      <div class="d-flex align-items-center justify-content-start text-success" >
+                        <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -221,15 +200,7 @@ $this->load->view('user/includes/header');
         <div class="card">
           <div class="table-responsive text-nowrap">
             <table class="table">
-              <!-- <thead class="table-light">
-                <tr>
-                  <th>Trading Objectives</th>
-                  <th>Results</th>
-                  <th>Summary</th>
-                </tr>
-              </thead> -->
-              <tbody id="stats" class="table-border-bottom-0">
-                
+              <tbody id="stats" class="table-border-bottom-0">                
               </tbody>
             </table>
           </div>
@@ -325,6 +296,9 @@ $this->load->view('user/includes/header');
 
   let accountNum ={};
   accountNum.num = <?php echo $_GET['account']; ?>;
+
+  let saveStartDate ={};
+
   let accountSize = <?php echo $_GET['size']; ?>;
   let maxDD = <?php echo $_GET['max']; ?>;
   let target = <?php echo $_GET['target']; ?>;
@@ -377,6 +351,30 @@ $this->load->view('user/includes/header');
     </div>
   `);
 
+  function userFailed(){
+    alert('userFailed');
+  }
+  
+  function userPassed(){
+    alert('userPassed');
+  }
+
+  function saveDate(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/saveStartDate'); ?>",
+      data: saveStartDate,
+      dataType: "html",
+      success: function(data){
+        let res = JSON.parse(data);
+        console.log(res);
+      },
+      error: function(data){
+        alert(data);
+      }
+    })
+  };
+
   function getAccounts(){
     $.ajax({
       type: "POST",
@@ -386,8 +384,13 @@ $this->load->view('user/includes/header');
       success: function(data){
 
         let res = JSON.parse(data);
-        $('#closed_profit').val(((res['balance'])-accountSize).toFixed(2));
-        $('#floating_profit').val(((res['equity'])-(res['balance'])).toFixed(2));
+        if(((res['balance'])-accountSize) < 0){
+          $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+          $('#floating_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }else if(((res['balance'])-accountSize) >= 0){
+          $('#closed_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+          $('#floating_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }
 
         //load statistics
         $('#stats').html(`
@@ -409,13 +412,20 @@ $this->load->view('user/includes/header');
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
-                <span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>
+                ${(((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) <= 0 ? 
+                  `<span class="text-danger fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                  `<span class="text-success fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`
+                }
+                
               </div>
             </td>
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
-                <span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>
+                ${((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) <=0 ?
+                  `<span class="text-danger fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                  `<span class="text-success fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`
+                }
               </div>
             </td>
           </tr>
@@ -435,16 +445,17 @@ $this->load->view('user/includes/header');
           </tr>
         `);
 
-
         //max drawdown render
-        $('#max_dd').html('');
         if(res['equity'] > checkAmount){
+          userPassed();
+          $('#max_dd').html('');
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
             </div>
           `);
         }else{
+          userFailed()
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-danger" >
               <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
@@ -454,7 +465,7 @@ $this->load->view('user/includes/header');
 
         //profit target render
         $('#pt').html('');
-        if(((res['balance'])-accountSize).toFixed(2) > target){  
+        if(((res['balance'])-accountSize).toFixed(2) >= target){  
           $('#pt').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
@@ -516,6 +527,9 @@ $this->load->view('user/includes/header');
         $('#openOrders').html('');
         
         if((res['openorders'].length) > 0){
+          console.log((res['openorders'][0]['openTime']).slice(0,10));
+          saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10);
+          saveDate();
           res['openorders'].forEach((element) => {
             $('#openOrders').append(`
                 <tr>
@@ -536,9 +550,8 @@ $this->load->view('user/includes/header');
             }
           );
         }else{
-          $('#openOrdersTable table').html('');
-          $('#openOrdersTable').html('');
-          $('#openOrdersTable').append(`<p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>`);
+          $('#openOrders').html('');
+          $('#openOrders').append(`<p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>`);
         }
 
         $('#orders').css('opacity', '1');
@@ -554,7 +567,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-6 m-auto">
               <div class="card">
                   <div class="card-body text-center text-muted ">
-                    😧 <br/>Oops ! Unable to found metrics related to this account please contact to the support team.
+                    😧 <br/>Your Credentials has not been updated yet.
                   </div>
               </div>
             </div>
@@ -567,10 +580,10 @@ $this->load->view('user/includes/header');
   }
 
   getAccounts();
-  setTimeout(() => {
-    // setInterval(() => {
-    //   getAccounts();
-    // }, 2500);
-  }, 4000);
+  // setTimeout(() => {
+  //   setInterval(() => {
+  //     getAccounts();
+  //   }, 2500);
+  // }, 4000);
 
 </script>
