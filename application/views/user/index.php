@@ -12,6 +12,26 @@ $this->load->view('user/includes/header');
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="modal fade" id="modalAlert" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCenterTitle"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <span class="text-dark"><i class="bx bx-x-circle text-warning"></i>Oops!</span>&nbsp;&nbsp;&nbsp;
+                You already have a Free Trial Account.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
   <div class="accordion mt-3 mb-5" id="accordionExample">
     <?php  
       foreach ($res as $key => $value) { 
@@ -155,6 +175,8 @@ $this->load->view('user/includes/header');
         let res = JSON.parse(data);
         if(res.status == 200){
           window.location.href = "<?= base_url('user/account-overview') ?>";
+        }else if(res.status == 401){
+          $('#modalAlert').modal('show');
         }
       },
       error: function() { 
@@ -170,8 +192,8 @@ $this->load->view('user/includes/header');
     redirection();
   });
 
-  setInterval(() => {
-    $('#accordionExample').load(' #accordionExample')
-  }, 5000);
+  // setInterval(() => {
+  //   $('#accordionExample').load(' #accordionExample')
+  // }, 5000);
 </script>
 <?php $this->load->view('user/includes/footer');?>

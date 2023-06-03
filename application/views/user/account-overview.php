@@ -1,10 +1,18 @@
 <?php 
+// echo "<pre>";
 // print_r($res);die;
+$this->CI = & get_instance();
+// print_r($this->CI->encryptAES('hi,oo,oo') );
+// print_r($this->CI->decryptAES('9gOadDJ1ZSZjuY4yFiLobw=='));
 
-//   $this->CI = & get_instance();
-//  print_r($this->CI->encryptAES('hi') );
-//  print_r($this->CI->decryptAES('h1IwXyBRYLy1cbPP39FpnQ==') );
-//   die;
+// $encrypted = $this->CI->encrypt('98', "secret key");
+// echo $encrypted;
+// // // echo "\n";
+
+// $decrypted = $this->CI->decrypt("paKdpKOjmcHS4OGtnp+goZmfnZ2dnZ2Z09/S0o3h39bO2ZmenZ2dnZminZ2ZnQ==", "mm");
+
+// echo $decrypted;
+// die;
 ?>
 
 <?php $this->load->view('user/includes/header');?>
@@ -128,7 +136,20 @@
                           <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
-                          <a href="<?=base_url('user/metrix?account='.@$value['account_id'].'&size='.@$value['account_size'].'&type='.strtolower(@$value['product_category']).'&max='.@$value['max_drawdown'].'&daily='.@$value['daily_drawdown'].'&target='.@$value['profit_target'].'')?>" class="btn btn-sm btn-outline-primary">
+                          <?php 
+                            $ecryptedData = $this->CI->encrypt(
+                              $value['account_id'].','.
+                              $value['account_password'].','.
+                              $value['account_size'].',normal,'.
+                              $value['max_drawdown'].','.
+                              $value['daily_drawdown'].','.
+                              $value['profit_target'].','.
+                              $value['ip'].','.
+                              $value['port']
+                              ,"mm"
+                            );
+                          ?>
+                          <a href="<?= base_url('user/metrix?account=').$ecryptedData?>" class="btn btn-sm btn-outline-primary">
                           &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
@@ -256,7 +277,7 @@
                           <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
-                          <a href="<?=base_url('user/metrix?account='.@$value['account_id'].'&size='.@$value['account_size'].'&type='.strtolower(@$value['product_category']).'&max='.@$value['max_drawdown'].'&daily='.@$value['daily_drawdown'].'&target='.@$value['profit_target'].'')?>" class="btn btn-sm btn-outline-primary">
+                          <a href="<?=base_url('user/metrix?account='.$this->CI->encrypt(@$value['id'], "EQ#*#*2023"))?>" class="btn btn-sm btn-outline-primary">
                           &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
@@ -516,7 +537,19 @@
   <?php } ?>
     <!-- / Content -->
 
+<?php $this->load->view('user/includes/footer');?>
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
+  function withJquery(){
+    console.time('time1');
+    var temp = $("<input>");
+    $("body").append(temp);
+    temp.val($('#copyText1').text()).select();
+    document.execCommand("copy");
+    temp.remove();
+    console.timeEnd('time1');
+  }
+
 </script>
-<?php $this->load->view('user/includes/footer');?>
+</body>
+</html>

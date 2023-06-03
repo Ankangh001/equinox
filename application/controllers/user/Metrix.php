@@ -14,24 +14,24 @@ class Metrix extends APIMaster {
     }
     
     public function accounts(){
-        $accountId =  $this->input->post('num') ?? '94604766';
-        // $password =  $this->input->post('password');
+        $response = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($response, true);
+        
+        $details = $this->db->where(['account_id' =>$decrypted['ieqd']])->get('userproducts')->result_array();
+        // print_R($details['port']);
         // $ip =  $this->input->post('ip');
         // $port =  $this->input->post('port');
 
-        // $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$account.'&password=wo0wylid&host=95.216.115.247&port=443');
-        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user=850766&password=Test@1234&host=8.208.91.123&port=443');
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$decrypted['ieqd'].'&password='.$decrypted['peqd'].'&host='.$decrypted['ieqp'].'&port='.$decrypted['peqt']);
 
         $accountSummary = $this->accountSummary($token);
         $orderHistory = $this->OrderHistory($token);
         $openedOrders = $this->OpenedOrders($token);
 
         $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
-        
-        // $data = array_merge($mergedArray, json_decode($openedOrders, true));
+
         $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
 
-        
         echo json_encode($data, true);
     }
 
@@ -63,9 +63,6 @@ class Metrix extends APIMaster {
             $balance = $data['balance'];
             $equity = $data['equity'];
             echo $json;
-            // echo "User ID: $userId\n";
-            // echo "Balance: $balance\n";
-            // echo "Equity: $equity\n";
         }
 	}
 
@@ -120,4 +117,5 @@ class Metrix extends APIMaster {
         
         echo json_encode($response);
     }
+    
 }
