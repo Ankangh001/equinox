@@ -42,6 +42,7 @@ class Auth extends APIMaster {
 				$this->session->set_userdata("email", $user_data['email']);
 				$this->session->set_userdata("admin_type", $user_data['admin_type']);
 				$this->session->set_userdata("user_name", $user_data['user_name']);
+				$this->session->set_userdata("affiliate_code", $user_data['affiliate_code']);
 	
 				//store data in login analaytics
 				$generateToken = rand(10,100).$user_data['user_id'].''.$user_data['user_id'].''.$user_data['email'];
@@ -116,7 +117,7 @@ class Auth extends APIMaster {
 					'email_verified'=> '0',
 					'verification_key'=> md5(rand(0,1000).time()), 	
 					'affiliate_code'=> rand(100,999).$this->randomuuid(9).rand(100,999),
-					'reffered_by'	=> $this->input->post('referral_code'),
+					'reffered_by'	=> $this->input->post('referral_code')??'',
 					'created_date' 	=> date('Y-m-d h:m:s')
 				);
 				$data 	= $this->security->xss_clean($data);

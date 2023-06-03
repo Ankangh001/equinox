@@ -7,10 +7,15 @@ class Affiliate extends APIMaster {
     {
         parent::__construct();
         $this->verifyAuth();
+        $this->load->model('Affiliate_model','Affiliate');
     }
 
 	public function index()
 	{
-        $this->load->view('user/affiliate');
+        $data = [];
+        if($_SESSION['affiliate_code'] != ''){
+            $data = $this->Affiliate->getAffiliateData($_SESSION['affiliate_code']);
+        }
+        $this->load->view('user/affiliate',$data);
 	}
 }
