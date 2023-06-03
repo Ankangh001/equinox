@@ -2,20 +2,8 @@
 // echo "<pre>";
 // print_r($res);die;
 $this->CI = & get_instance();
-// print_r($this->CI->encryptAES('hi,oo,oo') );
-// print_r($this->CI->decryptAES('9gOadDJ1ZSZjuY4yFiLobw=='));
-
-// $encrypted = $this->CI->encrypt('98', "secret key");
-// echo $encrypted;
-// // // echo "\n";
-
-// $decrypted = $this->CI->decrypt("paKdpKOjmcHS4OGtnp+goZmfnZ2dnZ2Z09/S0o3h39bO2ZmenZ2dnZminZ2ZnQ==", "mm");
-
-// echo $decrypted;
-// die;
+$this->load->view('user/includes/header');
 ?>
-
-<?php $this->load->view('user/includes/header');?>
 
 <style>
   .accordion-button.collapsed {
@@ -145,7 +133,8 @@ $this->CI = & get_instance();
                               $value['daily_drawdown'].','.
                               $value['profit_target'].','.
                               $value['ip'].','.
-                              $value['port']
+                              $value['port'].','.
+                              $value['id']
                               ,"mm"
                             );
                           ?>
@@ -277,7 +266,22 @@ $this->CI = & get_instance();
                           <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
-                          <a href="<?=base_url('user/metrix?account='.$this->CI->encrypt(@$value['id'], "EQ#*#*2023"))?>" class="btn btn-sm btn-outline-primary">
+                          <?php 
+                            $ecryptedData = $this->CI->encrypt(
+                              $value['account_id'].','.
+                              $value['account_password'].','.
+                              $value['account_size'].','.
+                              $value['product_category'].','.
+                              $value['max_drawdown'].','.
+                              $value['daily_drawdown'].','.
+                              $value['profit_target'].','.
+                              $value['ip'].','.
+                              $value['port'].','.
+                              $value['id']
+                              ,"mm"
+                            );
+                          ?>
+                          <a href="<?= base_url('user/metrix?account=').$ecryptedData?>" class="btn btn-sm btn-outline-primary">
                           &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
@@ -391,7 +395,22 @@ $this->CI = & get_instance();
                           <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
-                          <a href="<?=base_url('user/metrix?account='.@$value['account_id'].'&size='.@$value['account_size'].'&type='.strtolower(@$value['product_category']).'&max='.@$value['max_drawdown'].'&daily='.@$value['daily_drawdown'].'&target='.@$value['profit_target'].'')?>" class="btn btn-sm btn-outline-primary">
+                          <?php 
+                            $ecryptedData = $this->CI->encrypt(
+                              $value['account_id'].','.
+                              $value['account_password'].','.
+                              $value['account_size'].','.
+                              $value['product_category'].','.
+                              $value['max_drawdown'].','.
+                              $value['daily_drawdown'].','.
+                              $value['profit_target'].','.
+                              $value['ip'].','.
+                              $value['port'].','.
+                              $value['id']
+                              ,"mm"
+                            );
+                          ?>
+                          <a href="<?= base_url('user/metrix?account=').$ecryptedData?>" class="btn btn-sm btn-outline-primary">
                           &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
@@ -507,7 +526,22 @@ $this->CI = & get_instance();
                           <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
-                          <a href="<?=base_url('user/metrix?account='.@$value['account_id'].'&size='.@$value['account_size'].'&type='.strtolower(@$value['product_category']).'&max='.@$value['max_drawdown'].'&daily='.@$value['daily_drawdown'].'&target='.@$value['profit_target'].'')?>" class="btn btn-sm btn-outline-primary">
+                          <?php 
+                            $ecryptedData = $this->CI->encrypt(
+                              $value['account_id'].','.
+                              $value['account_password'].','.
+                              $value['account_size'].','.
+                              $value['product_category'].','.
+                              $value['max_drawdown'].','.
+                              $value['daily_drawdown'].','.
+                              $value['profit_target'].','.
+                              $value['ip'].','.
+                              $value['port'].','.
+                              $value['id']
+                              ,"mm"
+                            );
+                          ?>
+                          <a href="<?= base_url('user/metrix?account=').$ecryptedData?>" class="btn btn-sm btn-outline-primary">
                           &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
