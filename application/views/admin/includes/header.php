@@ -120,7 +120,7 @@
                 </li>
                 <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-3') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>phase-3" class="menu-link">
-                    <div>Phase 3</div>
+                    <div>Funded</div>
                   </a>
                 </li>
                 <li class="menu-item <?php if ($this->uri->segment(2) == 'completed') { echo 'active';} ?>">
