@@ -85,12 +85,9 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('pass_enc','India#2023');
 define('pass_iv','qwe#67%#qw986tva');
-define('SMPT_HOST','smtp.hostinger.com');
-define('SMPT_PORT',465);
-define('SMPT_USER','test@equinoxtradingcapital.com');
-define('SMPT_PASS','Ankan@2000');
-define('EMAIL_FROM','eq');
-define('APPLICATION_NAME','Equinox');
-
-
-
+define('SMPT_HOST','');
+define('SMPT_PORT',587);
+define('SMPT_USER','');
+define('SMPT_PASS','');
+define('EMAIL_FROM','');
+define('APPLICATION_NAME','');
