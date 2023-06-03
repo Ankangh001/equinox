@@ -157,7 +157,7 @@ $this->load->view('admin/includes/header');
               <tbody class="table-border-bottom-0">
                 <?php 
                   foreach ($res as $key => $value) { 
-                    if ($value['phase'] == '1'){
+                    if ($value['phase'] == '1' && $value['product_status'] != '1'){
                 ?>
                 <tr>
                   <td><?= @$value['product_name']?></td>
