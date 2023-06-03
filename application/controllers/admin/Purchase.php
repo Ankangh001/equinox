@@ -99,7 +99,11 @@ class Purchase extends APIMaster {
 
 	public function completed()
 	{
-        $this->load->view('admin/completed');
+		$this->db->select('*');
+        $this->db->from('userproducts');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $response['res'] = $this->db->get()->result_array();
+        $this->load->view('admin/completed', $response);
 	}
 
 	public function getPhase1()

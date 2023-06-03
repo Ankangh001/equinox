@@ -81,6 +81,14 @@
 
           <ul class="menu-inner py-3 border-top">
             <!-- Challenge -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>challenge" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'challenge') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>challenge" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dollar"></i>
