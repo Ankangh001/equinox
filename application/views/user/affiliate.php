@@ -28,7 +28,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Referred Users</h5>
-                <p class="card-text fs-1 text-white"><?=$count??0?></p>
+                <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Earned</h5>
-                <p class="card-text fs-1 text-white">29</p>
+                <p class="card-text fs-1 text-white"><?=$transaction['credit']?></p>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Withdrawn</h5>
-                <p class="card-text fs-1 text-white">19</p>
+                <p class="card-text fs-1 text-white"><?=$transaction['debit']?></p>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Available</h5>
-                <p class="card-text fs-1 text-white">19</p>
+                <p class="card-text fs-1 text-white"><?= (int) ($transaction['credit'] -  $transaction['debit'])?></p>
               </div>
             </div>
           </div>
@@ -99,8 +99,8 @@ $this->load->view('user/includes/header');
         </thead>
         <tbody class="table-border-bottom-0">
           <?php 
-          if(isset($count) && $count>0){
-            foreach($referredUser as $row): ?>
+          if(isset($userData['count']) && $userData['count']>0){
+            foreach($userData['referredUser'] as $row): ?>
           <tr>
             <td>
               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -116,7 +116,7 @@ $this->load->view('user/includes/header');
               </ul>
             </td>
             <td><?=$row['created_date']?></td>
-            <td>$999</td>
+            <td><?=$row['amount']?></td>
             <!-- <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

@@ -88,6 +88,7 @@ $this->load->view('includes/header');
                 <option value="mr">Mx</option>
             </select>
         </div> -->
+        <input type="hidden" name="referral_code" value = "<?=@$referral_code?>"/>
 
         <!-- name input -->
         <div class="form-outline mb-4">
@@ -172,8 +173,6 @@ $(document).ready(function() {
   $('#myForm').submit(function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
-    var referral_code = "<?=$referral_code?>";
-    formData.append('referral_code',referral_code);
     $.post({
       url: BASEURL+'auth/register',
       data: formData,
