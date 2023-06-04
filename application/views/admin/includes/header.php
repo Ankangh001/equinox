@@ -83,7 +83,7 @@
             <!-- Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>challenge" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
               </a>
             </li>
@@ -197,6 +197,14 @@
               <a href="<?=base_url('admin/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div>Help</div>
+              </a>
+            </li>
+
+            <!-- Server -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>faq" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-globe"></i>
+                <div>Server Settings</div>
               </a>
             </li>
           </ul>

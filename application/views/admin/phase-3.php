@@ -321,7 +321,7 @@ $this->load->view('admin/includes/header');
             render: function (data, type, row) {
                 return `<div class="d-flex justify-content-space-between">
                     <a onclick="viewDetails('${row.user_id}', '${row.product_id}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                    <a onclick="addDetails('${row.user_id}', '${row.product_id})" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                    <a onclick="addDetails('${row.user_id}', '${row.product_id}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
                   </div>`;
             }
           },
