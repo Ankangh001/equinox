@@ -9,125 +9,59 @@ $this->load->view('user/includes/header');
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
+    <?php foreach ($res as $key => $value) {?>
       <div class="col-md-12">
-        <!-- <div class="card mb-4">
-          <h5 class="card-header">Add New Promotion</h5>
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="card-body">
-                <form id="formAccountSettings" method="POST" onsubmit="return false">
-                  <div class="row">
-                    <div class="mb-3 col-md-12">
-                      <label for="title" class="form-label">Title</label>
-                      <input class="form-control" type="text" id="title" name="title" placeholder="John" autofocus="">
-                    </div>
-                    <div class="mb-3 col-md-12">
-                      <label for="content" class="form-label">3rd July 2022</label>
-                      <textarea class="form-control" id="content" name="content" placeholder="Enter your content here"></textarea>
-                    </div>
-                  </div>
-                  <div class="mt-2">
-                    <button type="submit" class="btn btn-primary me-2">Save Promotion</button>
-                    <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card-body">
-                <div class="d-flex flex-column align-items-start align-items-sm-center gap-4">
-                  <img src="<?=base_url('assets/user/assets/img/')?>avatars/1.png" alt="user-avatar" class="d-block rounded" height="200" width="200" id="uploadedAvatar">
-                  <div class="button-wrapper">
-                    <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                      <span class="d-none d-sm-block">Upload Thumbnail</span>
-                      <i class="bx bx-upload d-block d-sm-none"></i>
-                      <input type="file" id="upload" class="account-file-input" hidden="" accept="image/png, image/jpeg">
-                    </label>
-                    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                      <i class="bx bx-reset d-block d-sm-none"></i>
-                      <span class="d-none d-sm-block">Reset</span>
-                    </button>
-
-                    <p class="text-muted mb-0 text-center">Allowed JPG, GIF or PNG. <br> Max size of 800K</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-
-        
         <div class="card">
-          <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
+          <h5 class="card-header text-center border-bottom mb-3"><?= @$value['title']?></h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3">3rd July 2022</h6>
-                <p class="mb-0">
-                  your content hereyour content here your content here your content here your content here your content here <br>
-                  your content hereyour content hereyour content here
-                </p>
+                <h6 class="alert-heading fw-bold mb-3">
+                  <?php 
+                    if(substr(@$value['created_at'],8,-8) == "01"){
+                      echo "1st ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }elseif (substr(@$value['created_at'],8,-8) == "02") {
+                      echo "2nd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }elseif (substr(@$value['created_at'],8,-8) == "03") {
+                      echo "3rd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }else{
+                      echo substr(@$value['created_at'],8,-8).date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }
+                    ?>
+                </h6>
+                <p class="mb-0"><?= @$value['content']?></p>
             </div>
-            <!-- <div class="col-lg-4">
-              <div class="card-body">
-                <div class="d-flex flex-column align-items-start align-items-sm-center gap-4">
-                  <img src="<?=base_url('assets/user/assets/img/')?>avatars/1.png" alt="user-avatar" class="d-block rounded" height="200" width="200" id="uploadedAvatar">
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
-
       </div>
+    <?php break;}?>
 
-
+      <?php foreach ($res as $key => $value) {?>
       <div class="col-md-4 my-5 mx-auto">
         <div class="card">
-          <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
+          <h5 class="card-header text-center border-bottom mb-3"><?= @$value['title']?></h5>
           <div class="card-body row align-items-center">
             <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
-                <p class="mb-0">
-                  your content hereyour content here your content here your content here your content here your content here <br>
-                  your content hereyour content hereyour content here
-                </p>
+                <h6 class="alert-heading fw-bold mb-3 text-center">
+                <?php 
+                    if(substr(@$value['created_at'],8,-8) == "01"){
+                      echo "1st ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }elseif (substr(@$value['created_at'],8,-8) == "02") {
+                      echo "2nd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }elseif (substr(@$value['created_at'],8,-8) == "03") {
+                      echo "3rd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }else{
+                      echo substr(@$value['created_at'],8,-8).date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                    }
+                    ?>
+                </h6>
+                <p class="mb-0"><?= @$value['content']?></p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-md-4 my-5 mx-auto">
-        <div class="card">
-          <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
-          <div class="card-body row align-items-center">
-            <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
-                <p class="mb-0">
-                  your content hereyour content here your content here your content here your content here your content here <br>
-                  your content hereyour content hereyour content here
-                </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 my-5 mx-auto">
-        <div class="card">
-          <h5 class="card-header text-center border-bottom mb-3">Promotion Title</h5>
-          <div class="card-body row align-items-center">
-            <div class="mb-3 col-lg-12 mb-0">
-                <h6 class="alert-heading fw-bold mb-3 text-center">3rd July 2022</h6>
-                <p class="mb-0">
-                  your content hereyour content here your content here your content here your content here your content here <br>
-                  your content hereyour content hereyour content here
-                </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php }?>
     </div>
   </div>
-    <!-- / Content -->
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Promotions</h4>`)
 </script>

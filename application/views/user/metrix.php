@@ -514,9 +514,6 @@ $myArray = explode(',', $myString);
 
         //max drawdown render
         $('#max_dd').html('');  
-  console.log(checkAmount);
-  console.log(res['equity']);
-
         if(res['equity'] > checkAmount){
           checkIfFail();
         }else{
@@ -640,10 +637,10 @@ $myArray = explode(',', $myString);
   }
 
   getAccounts();
-  // setTimeout(() => {
-  //   setInterval(() => {
-  //     getAccounts();
-  //   }, 2500);
-  // }, 4000);
+  setTimeout(() => {
+    setInterval(() => {
+      getAccounts();
+    }, 2500);
+  }, 4000);
 
 </script>

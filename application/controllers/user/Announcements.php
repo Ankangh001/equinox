@@ -11,6 +11,7 @@ class Announcements extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/announcements');
+        $res['res'] = $this->db->get('announcements')->result_array();
+        $this->load->view('user/announcements', $res);
 	}
 }
