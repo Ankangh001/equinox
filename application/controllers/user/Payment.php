@@ -1,17 +1,52 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require 'vendor/autoload.php'; 
+use Square\SquareClient;
+use Square\Models\Money;
+use Square\Models\CreatePaymentRequest;
+use Square\Exceptions\ApiException;
+use Ramsey\Uuid\Uuid;
 
 class Payment extends APIMaster {
 
-	public function __construct()
-    {
+    var $currency;
+    var $country;
+    var $location_id;
+  
+    function __construct() {
         parent::__construct();
         $this->verifyAuth();
+        $access_token =  SQUARE_ACCESS_TOKEN;
+        $square_client = new SquareClient([
+            'accessToken' => $access_token,  
+            'environment' => SQUARE_ENVIRONMENT
+        ]);
+        $location = $square_client->getLocationsApi()->retrieveLocation(SQUARE_LOCATION_ID)->getResult()->getLocation();
+        $this->location_id = $location->getId();
+        $this->currency = $location->getCurrency();
+        $this->country = $location->getCountry();  
+    }
+  
+    public function getCurrency() {
+      return $this->currency;
+    }
+  
+    public function getCountry() {
+      return $this->country;
+    }
+  
+    public function getId() {
+      return $this->location_id;
     }
 
 	public function index()
 	{
-        $this->load->view('user/payment');
+        $data['squareData'] = [
+            'currency' => $this->getCurrency(),
+            'country' => $this->getCountry(),
+            'idempotencyKey' => Uuid::uuid4() 
+        ];
+        $this->load->view('user/payment',$data);
 	}
 
     public function coinbaseCreateCharge()
@@ -99,6 +134,45 @@ class Payment extends APIMaster {
 			$res = $th;
 		}
 	}
+
+    public function squarePayment(){
+        
+        if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+            error_log('Received a non-POST request');
+            echo 'Request not allowed';
+            http_response_code(405);
+            return;
+          }
+          $json     = file_get_contents('php://input');
+          $data     = json_decode($json);
+          $token    = $data->token;
+          $idempotencyKey = $data->idempotencyKey;
+          
+          $square_client = new SquareClient([
+            'accessToken'   => SQUARE_ACCESS_TOKEN,
+            'environment'   => SQUARE_ENVIRONMENT,
+            'userAgentDetail' => 'sample_app_php_payment',
+          ]);
+          
+          $payments_api = $square_client->getPaymentsApi();
+                    
+          $money = new Money();
+          $money->setAmount(100);
+          $money->setCurrency($this->getCurrency());
+          
+          try {
+            $create_payment_request = new CreatePaymentRequest($token, $idempotencyKey, $money);
+            $create_payment_request->setLocationId($this->getId());
+          
+            $response = $payments_api->createPayment($create_payment_request);
+          
+            if ($response->isSuccess()) {
+              echo json_encode($response->getResult());
+            } else {
+              echo json_encode(array('errors' => $response->getErrors()));
+            }
+          } catch (ApiException $e) {
+            echo json_encode(array('errors' => $e));
+          }
+    }
 }
-
-

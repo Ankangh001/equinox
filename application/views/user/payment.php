@@ -1,6 +1,8 @@
 <?php
 $this->load->view('user/includes/header');
+$web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.squarecdn.com/v1/square.js" : "https://sandbox.web.squarecdn.com/v1/square.js";
 ?>
+  <link rel="stylesheet" type="text/css" href="<?=base_url('assets/user/assets/css/sq-payment.css')?>">
 
 <style>
   button.btn.active {
@@ -8,7 +10,14 @@ $this->load->view('user/includes/header');
     border-radius: 0;
 }
 </style>
-
+<script type="text/javascript" src="<?php echo $web_payment_sdk_url ?>"></script>
+  <script type="text/javascript">
+    window.applicationId ="<?= SQUARE_APPLICATION_ID?>";
+    window.locationId = "<?= SQUARE_LOCATION_ID?>";
+    window.currency ="<?= $squareData['currency']?>";
+    window.country = "<?= $squareData['country']?>";
+    window.idempotencyKey ="<?= $squareData['idempotencyKey']?>";
+  </script>
 <div class="buy-now">
   <button id="skip-payment" class="btn btn-danger btn-buy-now">Skip Payment For testing</button>
 </div>
@@ -26,7 +35,7 @@ $this->load->view('user/includes/header');
             <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
               <li class="nav-item">
                 <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                  <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png">
+                  <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
                 </button>
               </li>
 
@@ -45,6 +54,28 @@ $this->load->view('user/includes/header');
             <div class="card-body">
               <div class="tab-content">
                 <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
+                  <form class="payment-form" id="fast-checkout">
+                    <div class="wrapper">
+                      <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
+                      <!-- <div id="google-pay-button" alt="google-pay" type="button"></div> -->
+                      <!-- <div class="border">
+                        <span>OR</span>
+                      </div> -->
+                      <!-- <div id="ach-wrapper">
+                        <label for="ach-account-holder-name">Full Name</label>
+                        <input id="ach-account-holder-name" type="text" placeholder="Jane Doe" name="ach-account-holder-name" autocomplete="name" /><span id="ach-message"></span><button id="ach-button" type="button">Pay with Bank Account</button>
+
+                        <div class="border">
+                          <span>OR</span>
+                        </div>
+                      </div> -->
+                      <div id="card-container"></div>
+                      <button id="card-button" type="button">Pay with Card</button>
+                      <span id="payment-flow-message"></span>
+                    </div>
+                  </form>
+                </div>
+                 <!-- <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
                   <form>
                     <div class="mb-3">
                       <label class="form-label" for="basic-default-fullname">Card Holder Name</label>
@@ -99,7 +130,6 @@ $this->load->view('user/includes/header');
                               <img src="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png" width="40" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png">
                             </span>
                           </div>
-                          <!-- <div class="form-text">You can use letters, numbers &amp; periods</div> -->
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -129,8 +159,7 @@ $this->load->view('user/includes/header');
                     </div>
                     <button type="submit" class="w-100 btn btn-primary">Purchase</button>
                   </form>
-                </div>
-
+                </div> -->
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
                   <div class="col-lg-12 mt-5">
                     <div class="card-title d-flex justify-content-center">
@@ -206,6 +235,14 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 <?php $this->load->view('user/includes/footer');?>
+
+
+<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
+  <!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script> -->
+  <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
+  <!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script> -->
+  <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>
+
 
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
