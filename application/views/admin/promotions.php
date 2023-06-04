@@ -9,14 +9,14 @@ $this->load->view('admin/includes/header');
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div id="alert" class="alert alert-success alert-dismissible d-none" role="alert">
-      Announcement Added Successfully 
+      Promotion Added Successfully 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <div class="row">
       <div class="col-md-12 col-lg-8 mx-auto mt-5">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="menu-icon tf-icons bx bxs-megaphone"></i>Add New Announcement </h5>
+            <h5 class="mb-0"><i class="menu-icon tf-icons bx bxs-offer"></i>Add New Promotion </h5>
             <small class="text-muted float-end">Fill Required Detail</small>
           </div>
           <div class="card-body">
@@ -41,7 +41,7 @@ $this->load->view('admin/includes/header');
                     </div>
                 </div>
               </div>
-              <button type="submit" class="w-100 btn btn-primary">ADD ANNOUNCEMENT</button>
+              <button type="submit" class="w-100 btn btn-primary">ADD PROMOTION</button>
             </form>
           </div>
         </div>
@@ -52,7 +52,7 @@ $this->load->view('admin/includes/header');
       <div class="col-xl">
         <div class="card">
           <h5 class="card-header">
-            All announcements
+            All Promotions
           </h5>
           <div class="table-responsive text-nowrap p-3">
             <table class="table">
@@ -64,9 +64,7 @@ $this->load->view('admin/includes/header');
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody class="table-border-bottom-0">
-                
-              </tbody>
+              <tbody class="table-border-bottom-0"></tbody>
             </table>
           </div>
         </div>
@@ -86,7 +84,7 @@ $this->load->view('admin/includes/header');
     var form = $('#add-challenge').serializeArray();
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url('admin/announcements/save'); ?>",
+        url: "<?php echo base_url('admin/promotions/save'); ?>",
         data: form,
         dataType: "html",
         beforeSend: function(){
@@ -115,7 +113,7 @@ $this->load->view('admin/includes/header');
   loadTable();
   function loadTable(){
         $('.table').DataTable({
-          ajax: "<?php echo base_url('admin/announcements/get'); ?>",
+          ajax: "<?php echo base_url('admin/promotions/get'); ?>",
           deferRender: true,
           "pageLength": 100,
           columns:[

@@ -11,6 +11,7 @@ class Promotions extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/promotions');
+        $res['res'] = $this->db->get('promotions')->result_array();
+        $this->load->view('user/promotions',$res);
 	}
 }

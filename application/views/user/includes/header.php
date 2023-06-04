@@ -170,12 +170,12 @@
             </li>
 
             <!-- Games -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'games-rewards') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>games-rewards" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-joystick"></i>
                 <div>Games & Rewards</div>
               </a>
-            </li>
+            </li> -->
 
             <!-- Affiliate -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate') { echo 'active';} ?>">
