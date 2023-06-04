@@ -235,15 +235,6 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
         </div>
       </div>
 <?php $this->load->view('user/includes/footer');?>
-
-
-<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
-  <!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script> -->
-  <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
-  <!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script> -->
-  <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>
-
-
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
 
@@ -291,3 +282,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
   })
 
 </script>
+
+<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>

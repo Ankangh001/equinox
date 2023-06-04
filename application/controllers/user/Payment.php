@@ -147,32 +147,81 @@ class Payment extends APIMaster {
           $data     = json_decode($json);
           $token    = $data->token;
           $idempotencyKey = $data->idempotencyKey;
-          
-          $square_client = new SquareClient([
-            'accessToken'   => SQUARE_ACCESS_TOKEN,
-            'environment'   => SQUARE_ENVIRONMENT,
-            'userAgentDetail' => 'sample_app_php_payment',
-          ]);
-          
-          $payments_api = $square_client->getPaymentsApi();
-                    
-          $money = new Money();
-          $money->setAmount(100);
-          $money->setCurrency($this->getCurrency());
-          
-          try {
-            $create_payment_request = new CreatePaymentRequest($token, $idempotencyKey, $money);
-            $create_payment_request->setLocationId($this->getId());
-          
-            $response = $payments_api->createPayment($create_payment_request);
-          
-            if ($response->isSuccess()) {
-              echo json_encode($response->getResult());
-            } else {
-              echo json_encode(array('errors' => $response->getErrors()));
+          $requestData = $data->requestData;
+          if(isset($requestData->product_id) && $requestData->product_id !=''){
+            $productPrice = $this->db->select('product_price')->where(['product_id' => $requestData->product_id])->get('products')->row_array()['product_price'];
+            
+            $square_client = new SquareClient([
+                'accessToken'   => SQUARE_ACCESS_TOKEN,
+                'environment'   => SQUARE_ENVIRONMENT,
+                'userAgentDetail' => 'sample_app_php_payment',
+            ]);
+            
+            $payments_api = $square_client->getPaymentsApi();
+                        
+            $money = new Money();
+            $money->setAmount($productPrice*100);
+            $money->setCurrency($this->getCurrency());
+            
+            try {
+                $create_payment_request = new CreatePaymentRequest($token, $idempotencyKey, $money);
+                $create_payment_request->setLocationId($this->getId());
+            
+                $response = $payments_api->createPayment($create_payment_request);
+            
+                if ($response->isSuccess()) {
+                    $this->squareSuccess($requestData->user_id,$requestData->product_id,$response->getResult());
+                echo json_encode($response->getResult());
+                } else {
+                echo json_encode(array('errors' => $response->getErrors()));
+                }
+            } catch (ApiException $e) {
+                echo json_encode(array('errors' => $e));
             }
-          } catch (ApiException $e) {
-            echo json_encode(array('errors' => $e));
-          }
+        }else{
+            echo json_encode(array('errors' => 'Invalid Request'));
+        }
     }
+
+    public function squareSuccess($user_id,$product_id,$dump)
+	{        
+        try {
+            $product_category = $this->db->where(['product_id' => $product_id])->get('products')->result_array();
+			$userProducts = array(
+				'user_id' => $user_id,
+				'product_id' => $product_id,
+				'phase' => '1',
+				'created_date' => date('Y-m-d H:m:s'),
+				'product_status' => '0',
+			);
+
+            $transaction = array(
+				'user_id' => $user_id,
+				'amount' => $product_category[0]['product_price'],
+				'product_id' => $product_id,
+				'product_category' => $product_category[0]['product_category'],
+				'gateway' => 'coinbase',
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s'),
+			);
+			
+			$res = $this->db->insert('userproducts', $userProducts);
+			$res2 = $this->db->insert('transactions', $transaction);
+			if($res && $res2){
+				$response = array(
+					'status' => '200',
+					'message' => 'User Poduct Added successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+			}
+			echo json_encode($response);  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
 }
