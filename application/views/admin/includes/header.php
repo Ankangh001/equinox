@@ -82,7 +82,7 @@
           <ul class="menu-inner py-3 border-top">
             <!-- Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == '') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>challenge" class="menu-link">
+              <a href="<?=base_url('admin/')?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
               </a>
@@ -137,6 +137,15 @@
                   </a>
                 </li>
               </ul>
+            </li>
+
+            
+            <!-- Server -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>faq" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-globe"></i>
+                <div>Server Settings</div>
+              </a>
             </li>
 
             <!-- Payouts  -->
@@ -197,14 +206,6 @@
               <a href="<?=base_url('admin/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div>Help</div>
-              </a>
-            </li>
-
-            <!-- Server -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>faq" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-globe"></i>
-                <div>Server Settings</div>
               </a>
             </li>
           </ul>

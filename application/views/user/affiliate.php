@@ -11,7 +11,7 @@ $this->load->view('user/includes/header');
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-center align-items-center">
             <h5 class="card-title pt-3 me-3">Your Unique Affiliate Link-</h5>
-            <a href="javascript:void(0)" class="text-primary">https://equinoxtradingcapital.com/affiliate/username?aid=876545678</a>&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" class="text-primary"><?=base_url('client-signup/').$_SESSION['affiliate_code']?></a>&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</a>
           </div>
         </div>
@@ -28,7 +28,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Referred Users</h5>
-                <p class="card-text fs-1 text-white">44</p>
+                <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Earned</h5>
-                <p class="card-text fs-1 text-white">29</p>
+                <p class="card-text fs-1 text-white"><?=@$transaction['credit']?></p>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Withdrawn</h5>
-                <p class="card-text fs-1 text-white">19</p>
+                <p class="card-text fs-1 text-white"><?=@$transaction['debit']?></p>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Available</h5>
-                <p class="card-text fs-1 text-white">19</p>
+                <p class="card-text fs-1 text-white"><?= (int) (@$transaction['credit'] -  @$transaction['debit'])?></p>
               </div>
             </div>
           </div>
@@ -98,11 +98,14 @@ $this->load->view('user/includes/header');
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
+          <?php 
+          if(isset($userData['count']) && $userData['count']>0){
+            foreach($userData['referredUser'] as $row): ?>
           <tr>
             <td>
               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                  <img src="<?=base_url('assets/user/assets/img/avatars/')?>5.png" alt="Avatar" class="rounded-circle"> &nbsp;&nbsp;<b>John Hoe</b>
+                  <img src="<?=base_url('assets/user/assets/img/avatars/')?>5.png" alt="Avatar" class="rounded-circle"> &nbsp;&nbsp;<b><?=$row['first_name'].' '.$row['last_name']?></b>
                 </li>
                 <!-- <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
                   <img src="<?=base_url('assets/user/assets/img/avatars/')?>6.png" alt="Avatar" class="rounded-circle">
@@ -112,8 +115,8 @@ $this->load->view('user/includes/header');
                 </li> -->
               </ul>
             </td>
-            <td>05/04/2023</td>
-            <td>$999</td>
+            <td><?=$row['created_date']?></td>
+            <td><?=$row['amount']?></td>
             <!-- <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -125,6 +128,9 @@ $this->load->view('user/includes/header');
                 </div>
               </div>
             </td> -->
+          </tr>
+          <?php endforeach; 
+        }?>
         </tbody>
       </table>
     </div>

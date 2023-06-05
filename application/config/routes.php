@@ -13,6 +13,7 @@ $route['market-data'] = 'welcome/maerketData';
 $route['economic-calendar'] = 'welcome/calender';
 $route['client-login'] = 'auth/client';
 $route['client-signup'] = 'auth/clientSignup';
+$route['client-signup/(:any)'] = 'auth/clientSignup/$1';
 $route['affiliate'] = 'welcome/affiliate';
 $route['payouts'] = 'welcome/payouts';
 $route['contact'] = 'welcome/contact';
