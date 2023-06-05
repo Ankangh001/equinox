@@ -5,6 +5,8 @@ $this->CI = & get_instance();
 $encrypted = $_GET['account'];
 $myString =  $this->CI->decrypt(str_replace(' ','+', $encrypted), "mm");
 $myArray = explode(',', $myString);
+// print_r($myArray);
+// die;
 ?>
 
 <style>
@@ -115,7 +117,7 @@ $myArray = explode(',', $myString);
                   </td>
                 </tr>
 
-                <?php if($myArray[3] == 'normal') {?>
+                <?php if($myArray[3] == 'Normal') {?>
                 <tr>
                   <td style="width:50%">
                     <div class="accordion-item">
@@ -513,7 +515,7 @@ $myArray = explode(',', $myString);
         `);
 
         //max drawdown render
-        $('#max_dd').html('');  
+        // $('#max_dd').html('');  
         if(res['equity'] > checkAmount){
           checkIfFail();
         }else{
