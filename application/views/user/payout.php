@@ -64,6 +64,75 @@ $this->load->view('user/includes/header');
                     </div>
                   </div>
                 </div>
+                <div id="bank-details" class="mt-5">
+                  <div class="row mt-5">
+                    <h4 class="tex-divider">Bank Transfer Details</h4>
+                    <hr>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Receipant Name &nbsp;&nbsp;
+                          <span id="receipant-name" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="receipant-name" class="form-control phone-mask" placeholder="Enter Receipant Name">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Receipant Address &nbsp;&nbsp;
+                          <span id="receipant-address" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="receipant-address" class="form-control phone-mask" placeholder="Enter Receipant Address">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Account Number/IBAN&nbsp;&nbsp;
+                          <span id="iban" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="iban" class="form-control phone-mask" placeholder="Enter Account Number/IBAN">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Sortcode/ABN/Routing Code&nbsp;&nbsp;
+                          <span id="sort-code" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="sort-code" class="form-control phone-mask" placeholder="Enter Sortcode/ABN/Routing Code">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Swift Code&nbsp;&nbsp;
+                          <span id="swift-code" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="swift-code" class="form-control phone-mask" placeholder="Enter Swift Code">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Bank Name&nbsp;&nbsp;
+                          <span id="bank-name" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="bank-name" class="form-control phone-mask" placeholder="Enter Bank Name">
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label class="form-label d-flex align-items-center" for="amount">Branch Address&nbsp;&nbsp;
+                          <span id="branch_address" class="ml-3 text-info text-transform-none float-end"></span>
+                        </label>
+                        <input type="text" id="branch_address" class="form-control phone-mask" placeholder="Enter Branch Address">
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
                 <button type="submit" class="w-100 btn btn-primary">Request Payout</button>
               </form>
             </div>
@@ -105,6 +174,7 @@ $this->load->view('user/includes/header');
 <script>
 
   $('#account').css('display','none');
+  $('#bank-details').css('display','none');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
 
@@ -149,6 +219,15 @@ $this->load->view('user/includes/header');
     }
   });
 
+  $('#payment-mode').change((e)=>{
+    if(e.target.value == "2"){
+      $('#bank-details').css('display','block');
+    }else{
+  $('#bank-details').css('display','none');
+
+    }
+  });
+
   let user = {};
   user.user_id = "<?= $_SESSION['user_id'] ?>";
   $.ajax({
@@ -169,7 +248,7 @@ $this->load->view('user/includes/header');
         if(res.status == 200){
           $('div#loading').hide(200);
           if(res.data){
-            data.forEach(element => {
+            res.data.forEach(element => {
               $('#account-numbers').append(`
                 <option value="${element.account_id}">${element.account_id}</option>
               `);
