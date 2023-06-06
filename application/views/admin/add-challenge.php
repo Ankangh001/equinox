@@ -29,7 +29,6 @@ $this->load->view('admin/includes/header');
                     <label for="product-type" class="form-label">Product Type</label>
                     <select class="form-select" name="product-type" id="product-type" aria-label="Default select example">
                       <option selected="">Select Product Type</option>
-                      <option class="text-primary" value="Free Trial">Free Trial</option>
                       <option class="text-danger" value="Aggressive">Aggressive</option>
                       <option class="text-success" value="Normal">Normal</option>
                     </select>

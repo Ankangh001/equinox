@@ -10,14 +10,10 @@ class Purchase extends APIMaster {
     }
 
 	public function getCredentials(){
-		$userID = $this->input->post('user_id');
+		$iD = $this->input->post('id');
 		$productID = $this->input->post('product_id');
 
-		$response = $this->db->where(
-			[
-			'user_id' =>  $userID,
-			'product_id' =>  $productID
-			])->get('userproducts')->result_array();
+		$response = $this->db->where(['id' =>  $iD])->get('userproducts')->result_array();
 
 		echo json_encode($response);
 	}
@@ -34,13 +30,9 @@ class Purchase extends APIMaster {
 			'product_status' =>  '1',
 		);
 
-		$userID = $this->input->post('user_id');
-		$productID = $this->input->post('product_id');
+		$iD = $this->input->post('id');
 		
-		$res = $this->db->where([
-			'user_id' =>  $userID,
-			'product_id' =>  $productID,
-			])->update('userproducts', $data);
+		$res = $this->db->where(['id' =>  $iD])->update('userproducts', $data);
 
 		if($res){
 			$response = array(
@@ -113,6 +105,17 @@ class Purchase extends APIMaster {
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $response['data'] = $this->db->get()->result_array();
+
+		echo  json_encode($response);
+	}
+
+	public function getPhase1Pending()
+	{
+        $this->db->select('*');
+        $this->db->from('userproducts');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $response['data'] = $this->db->where(['phase'=> '1', 'product_status'=>'0'])->get()->result_array();
 
 		echo  json_encode($response);
 	}

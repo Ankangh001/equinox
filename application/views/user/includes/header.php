@@ -51,7 +51,9 @@
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="<?= base_url('assets/user/assets/') ?>js/config.js"></script>
+    <script src="<?= base_url('assets/user/assets/') ?>js/config.js">
+      let PANEL_URL = "<?= base_url()?>";
+    </script>
   </head>
   <body>
   <div id="loading" class="demo-inline-spacing">

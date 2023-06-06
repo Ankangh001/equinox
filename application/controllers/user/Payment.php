@@ -75,7 +75,7 @@ class Payment extends APIMaster {
             "name":"Example1",
             "description":"Create Charge using PHP",
             "pricing_type":"fixed_price",
-            "redirect_url":"http://localhost/coinbase/s.php",
+            "redirect_url":"'.base_url().'/coinbase/s.php",
             "cancel_url":"'.base_url().'coinbase/cancel.php"
         }',
         CURLOPT_HTTPHEADER => array(
