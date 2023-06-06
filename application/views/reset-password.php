@@ -42,39 +42,33 @@
                     </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-3 text-center">Sign In to your account</h4>
+                    <h4 class="mb-3 text-center">Reset your account</h4>
                     <p class="mb-5 text-center">start the adventure</p>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
-                    </div>
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
                             <label class="form-label" for="password">Password</label>
-                        <a href="<?=base_url('client-forget-password')?>">
-                            <small>Forgot Password?</small>
-                        </a>
                         </div>
                         <div class="input-group input-group-merge">
                             <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
                             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember-me" />
-                            <label class="form-check-label" for="remember-me"> Remember Me </label>
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password">Confirm Password</label>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign in</button>
                     </div>
                     <p class="text-center">
-                    <span>New on our platform?</span>
-                    <a href="<?= base_url('client-signup');?>">
-                        <span>Create an account</span>
-                    </a>
+                        <span>New on our platform?</span>
+                        <a href="<?= base_url('client-signup');?>">
+                            <span>Create an account</span>
+                        </a>
                     </p>
                 </div>
             </div>
@@ -85,11 +79,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script>
         function validateUser() {
-            let email = $("#email").val();
             let password = $("#password").val();
-            if (email == "") {
-                $.notify("Please enter email");
-                $("#email").focus();
+            let confirm_password = $("#confirm_password").val();
+            if (confirm_password == "") {
+                $.notify("Please enter confirm password");
+                $("#confirm_password").focus();
                 return;
             }
             if (password == "") {
@@ -99,9 +93,9 @@
             }
             $.ajax({
                 type: "post",
-                url: "Auth/login",
+                url: "<?=base_url('reset-password')?>",
                 data: {
-                    "email": email,
+                    "confirm_password": confirm_password,
                     "password": password,
                     "type":"Client"
                 },
