@@ -5,17 +5,15 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
     {
 		$controller =& get_instance();
        	$controller->load->helper('path'); 
-// 		$fromEmail = ($fromEmail !='')?$fromEmail:SMPT_USER; 
-// 		$fromPass = ($fromPass !='')?$fromPass:SMPT_PASS; 
 
 		switch ($type) {
 			case "1":
-				$smtp_host = 'smtp.hostinger.com';
-				$smtp_port = '587';
-				$smtp_user = 'mailtes@equinoxtradingcapital.com';
-				$smtp_pass = 'Equinox@2023';
-				$from	=	'mailtes@equinoxtradingcapital.com';
-				$application_name	=	'mailtes@equinoxtradingcapital.com';
+				$smtp_host = '';
+				$smtp_port = '';
+				$smtp_user = '';
+				$smtp_pass = '';
+				$from	=	'';
+				$application_name	=	'';
 			  break;
 			case "2":
 				$smtp_host = '';
@@ -80,7 +78,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 			return true;
 		}else{
 			return false;
-// 			echo $controller->email->print_debugger();
+			// echo $controller->email->print_debugger();
 		}
     }
 

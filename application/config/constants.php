@@ -91,6 +91,7 @@ define('SMPT_USER','test@equinoxtradingcapital.com');
 define('SMPT_PASS','Ankan@2000');
 define('EMAIL_FROM','eq');
 define('APPLICATION_NAME','Equinox');
-
-
-
+define('SQUARE_ENVIRONMENT','sandbox');
+define('SQUARE_APPLICATION_ID','sandbox-sq0idb-bKU_tsCUTINR2tS0wUGVnA');
+define('SQUARE_ACCESS_TOKEN','EAAAEJdTHMCu2J4gUK2q_hL7EuRKJFdtcPiIlAhrrsjvDuF8hAf7Lep_y-UT7Xjc');
+define('SQUARE_LOCATION_ID','LHAPGWEHZ7HYC');

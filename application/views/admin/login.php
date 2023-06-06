@@ -21,13 +21,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?=base_url('assets/img/')?>equinoxLogoBlack.png" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/fonts/boxicons.css" />
@@ -35,25 +28,12 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-    <!-- Page -->
     <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/css/pages/page-auth.css" />
     <!-- Helpers -->
     <script src="<?=base_url('assets/user/')?>assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="<?=base_url('assets/user/')?>assets/js/config.js"></script>
   </head>
 
   <body>
-    <!-- Content -->
-
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -124,82 +104,62 @@
         </div>
       </div>
     </div>
-
-    <!-- / Content -->
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="<?=base_url('assets/user/')?>assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="<?=base_url('assets/user/')?>assets/vendor/libs/popper/popper.js"></script>
-    <script src="<?=base_url('assets/user/')?>assets/vendor/js/bootstrap.js"></script>
-    <script src="<?=base_url('assets/user/')?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="<?=base_url('assets/user/')?>assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+      var BASEURL = "<?=base_url()?>";
 
-    <!-- Page JS -->
+      function validateUser() {
+        let email = $("#email").val();
+        let password = $("#password").val();
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-<script>
-  var BASEURL = "<?=base_url()?>";
+        if (email == "") {
+          notify("danger", "Please enter email");
+          $("#email").focus();
+          return;
+        }
+        if (password == "") {
+          notify("danger", "Please enter password");
+          $("#password").focus();
+          return;
+        }
+        $.ajax({
+          type: "post",
+          url: BASEURL+"Auth/login",
+          data: {
+            "email": email,
+            "password": password,
+            "type": "Admin"
+          },
+          success: function(response) {
+            if (response.success == 1) {
+              window.location.href = response.data.redirect_url;	
+            } else {
+              notify("danger", response.message);
+              return;
+            }
+          },
+          error: function(exception) {
+            console.log(exception);
+            notify("danger", "Some error occured")
+          }
+        })
 
-  function validateUser() {
-		let email = $("#email").val();
-		let password = $("#password").val();
-
-		if (email == "") {
-			notify("danger", "Please enter email");
-			$("#email").focus();
-			return;
-		}
-		if (password == "") {
-			notify("danger", "Please enter password");
-			$("#password").focus();
-			return;
-		}
-		$.ajax({
-			type: "post",
-			url: BASEURL+"Auth/login",
-			data: {
-				"email": email,
-				"password": password,
-        "type": "Admin"
-			},
-			success: function(response) {
-				if (response.success == 1) {
-					window.location.href = response.data.redirect_url;	
-				} else {
-					notify("danger", response.message);
-					return;
-				}
-			},
-			error: function(exception) {
-				console.log(exception);
-				notify("danger", "Some error occured")
-			}
-		})
-
-	}
-
-
-  function notify(type, text){
-        $('.authentication-inner').prepend(
-          `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
-            ${text}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>`
-        );
-        setTimeout(() => {
-          $('#alert').fadeOut();
-          // $('#alert').addClass('d-none');
-        }, 3000);
       }
-</script>
+
+
+      function notify(type, text){
+            $('.authentication-inner').prepend(
+              `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
+                ${text}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`
+            );
+            setTimeout(() => {
+              $('#alert').fadeOut();
+              // $('#alert').addClass('d-none');
+            }, 3000);
+          }
+    </script>
+</body>
+</html>

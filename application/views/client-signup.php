@@ -88,6 +88,7 @@ $this->load->view('includes/header');
                 <option value="mr">Mx</option>
             </select>
         </div> -->
+        <input type="hidden" name="referral_code" value = "<?=@$referral_code?>"/>
 
         <!-- name input -->
         <div class="form-outline mb-4">
@@ -170,11 +171,8 @@ $this->load->view('includes/header');
 <script>
 $(document).ready(function() {
   $('#myForm').submit(function(e) {
-    e.preventDefault(); // Prevent the form from submitting normally
-    // Serialize the form data
+    e.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData);
-    // Send the form data using Ajax
     $.post({
       url: BASEURL+'auth/register',
       data: formData,

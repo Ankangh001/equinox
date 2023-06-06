@@ -1,10 +1,12 @@
 
 <?php 
-// echo "<pre>";
-// print_r($res);
-// echo $res['balance'];
-// exit;
 $this->load->view('user/includes/header'); 
+$this->CI = & get_instance();
+$encrypted = $_GET['account'];
+$myString =  $this->CI->decrypt(str_replace(' ','+', $encrypted), "mm");
+$myArray = explode(',', $myString);
+// print_r($myArray);
+// die;
 ?>
 
 <style>
@@ -21,6 +23,9 @@ $this->load->view('user/includes/header');
   }
   label{
     white-space: normal;
+  }
+  .bg-light{
+    background-color:#eceef1 !important;
   }
 </style>
 
@@ -41,19 +46,19 @@ $this->load->view('user/includes/header');
               <div class="card-body row align-items-center">
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Max Drawdown</h6>
-                    <input readonly class="form-control" value="$<?= @$_GET['max'] ?>" />
+                    <input readonly class="form-control" value="$<?= @$myArray[4] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown</h6>
-                    <input readonly class="form-control" value="$<?= @$_GET['daily'] ?>" />
+                    <input readonly class="form-control" value="$<?= @$myArray[5] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Closed Profit</h6>
-                    <input readonly id="closed_profit" class="form-control" value="0" />
+                    <div id="closed_profit" ></div>
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Floating Profit</h6>
-                    <input readonly id="floating_profit" class="form-control" value="0" />
+                    <div id="floating_profit" ></div>
                 </div>
               </div>
             </div>
@@ -112,7 +117,7 @@ $this->load->view('user/includes/header');
                   </td>
                 </tr>
 
-                <?php if($_GET['type'] == 'normal') {?>
+                <?php if($myArray[3] == 'Normal') {?>
                 <tr>
                   <td style="width:50%">
                     <div class="accordion-item">
@@ -292,20 +297,29 @@ $this->load->view('user/includes/header');
   $('#openOrders').html(`Loading Open Orders...`);
 
   let accountNum ={};
-  accountNum.num = <?php echo $_GET['account']; ?>;
+  accountNum.ieqd = "<?= $myArray[0] ?>";
+  accountNum.peqd = "<?= $myArray[1] ?>";
+  accountNum.aeqe = "<?= $myArray[2] ?>";
+  accountNum.teqe = "<?= $myArray[3] ?>";
+  accountNum.meqx = "<?= $myArray[4] ?>";
+  accountNum.deqy = "<?= $myArray[5] ?>";
+  accountNum.peqt = "<?= $myArray[6] ?>";
+  accountNum.ieqp = "<?= $myArray[7] ?>";
+  accountNum.peqt = "<?= $myArray[8] ?>";
+  accountNum.eqid = "<?= $myArray[9] ?>";
 
+  const r = window.btoa(JSON.stringify(accountNum));
   let saveStartDate ={};
 
-  let accountSize = <?php echo $_GET['size']; ?>;
-  let maxDD = <?php echo $_GET['max']; ?>;
-  let target = <?php echo $_GET['target']; ?>;
+  let accountSize = <?= $myArray[2]; ?>;
+  let maxDD = <?= $myArray[4]; ?>;
+  let target = <?= $myArray[5]; ?>;
   let checkAmount = accountSize - maxDD;
   let tempChartData = [];
   let chartData = [];
   let chartLabel = [];
   let lots = 0;
 
-  let positiveSum = 0;
   let negativeSum = 0;
 
   const myLineChart = new Chart(ctx, {
@@ -349,13 +363,55 @@ $this->load->view('user/includes/header');
   `);
 
   function userFailed(){
-    alert('userFailed');
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/userFailed'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let maxDDStatus = JSON.parse(data).status;
+        if(maxDDStatus == 200){
+          $('#max_dd').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
   }
   
-  function userPassed(){
-    alert('userPassed');
+  function checkIfFail(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/checkIfFail'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let maxDDStatus = JSON.parse(data).status;
+        if(maxDDStatus == 200){
+          $('#max_dd').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
+        }else if(maxDDStatus == 400){
+          $('#max_dd').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
   }
-
+  
   function saveDate(){
     $.ajax({
       type: "POST",
@@ -364,7 +420,6 @@ $this->load->view('user/includes/header');
       dataType: "html",
       success: function(data){
         let res = JSON.parse(data);
-        console.log(res);
       },
       error: function(data){
         alert(data);
@@ -376,13 +431,27 @@ $this->load->view('user/includes/header');
     $.ajax({
       type: "POST",
       url: "<?php echo base_url('user/metrix/accounts'); ?>",
-      data: accountNum,
+      data: {r},
       dataType: "html",
       success: function(data){
 
         let res = JSON.parse(data);
-        $('#closed_profit').val(((res['balance'])-accountSize).toFixed(2));
-        $('#floating_profit').val(((res['equity'])-(res['balance'])).toFixed(2));
+
+        if(((res['balance'])-accountSize) < 0){
+          $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+        }else if(((res['balance'])-accountSize) > 0){
+          $('#closed_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+        }else{
+          $('#closed_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+        }
+
+        if((res['equity'])-(res['balance']) < 0){
+          $('#floating_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }else if((res['equity'])-(res['balance']) > 0){
+          $('#floating_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }else{
+          $('#floating_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+        }
 
         //load statistics
         $('#stats').html(`
@@ -404,13 +473,28 @@ $this->load->view('user/includes/header');
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
-                <span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>
+                ${(((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) < 0 ? 
+                  `<span class="text-danger fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                  (
+                    (((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) > 0 ?
+                    `<span class="text-success fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                    `<span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`
+                  )
+                }
+                
               </div>
             </td>
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
-                <span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>
+                ${((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) < 0 ?
+                  `<span class="text-danger fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                  (
+                    ((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) > 0 ?
+                    `<span class="text-success fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                    `<span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`
+                  )
+                }
               </div>
             </td>
           </tr>
@@ -430,23 +514,12 @@ $this->load->view('user/includes/header');
           </tr>
         `);
 
-
         //max drawdown render
+        // $('#max_dd').html('');  
         if(res['equity'] > checkAmount){
-          userPassed();
-          $('#max_dd').html('');
-          $('#max_dd').html(`
-            <div class="d-flex align-items-center justify-content-start text-success" >
-              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-            </div>
-          `);
+          checkIfFail();
         }else{
-          userFailed()
-          $('#max_dd').html(`
-            <div class="d-flex align-items-center justify-content-start text-danger" >
-              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-            </div>
-          `);
+          userFailed();
         };
 
         //profit target render
@@ -566,10 +639,10 @@ $this->load->view('user/includes/header');
   }
 
   getAccounts();
-  // setTimeout(() => {
-  //   setInterval(() => {
-  //     getAccounts();
-  //   }, 2500);
-  // }, 4000);
+  setTimeout(() => {
+    setInterval(() => {
+      getAccounts();
+    }, 2500);
+  }, 4000);
 
 </script>

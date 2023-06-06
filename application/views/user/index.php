@@ -2,12 +2,36 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  .hover:hover{
+    background-color:#ccc
+  }
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="modal fade" id="modalAlert" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCenterTitle"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <span class="text-dark"><i class="bx bx-x-circle text-warning"></i>Oops!</span>&nbsp;&nbsp;&nbsp;
+                You already have a Free Trial Account.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
   <div class="accordion mt-3 mb-5" id="accordionExample">
     <?php  
       foreach ($res as $key => $value) { 
@@ -26,11 +50,11 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <div id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow hover pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
+                    </a>
                     <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
@@ -60,13 +84,13 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <?php foreach ($res as $key => $value) { ?>
-                    <div class="d-flex mb-3 justify-content-between align-items-center shadow pointer btn w-100">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $100,000</label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </div>
-                    <?php } ?>
+                    </a>
+                    <?php } }?>
                     <div style="margin-bottom:-12px"></div>
                   </div>
                 </div>
@@ -151,6 +175,8 @@ $this->load->view('user/includes/header');
         let res = JSON.parse(data);
         if(res.status == 200){
           window.location.href = "<?= base_url('user/account-overview') ?>";
+        }else if(res.status == 401){
+          $('#modalAlert').modal('show');
         }
       },
       error: function() { 
@@ -165,5 +191,9 @@ $this->load->view('user/includes/header');
   $('#redirect').click(()=>{
     redirection();
   });
+
+  // setInterval(() => {
+  //   $('#accordionExample').load(' #accordionExample')
+  // }, 5000);
 </script>
 <?php $this->load->view('user/includes/footer');?>
