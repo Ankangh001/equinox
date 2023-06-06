@@ -37,7 +37,7 @@ window.createPayment = async function(token) {
   });
 
   try {
-    var paymentUrl  = "https://uat.equinoxtradingcapital.com/user/payment/squarePayment";
+    var paymentUrl  = PANEL_URL+"user/payment/squarePayment";
     const response = await fetch(paymentUrl, {
       method: 'POST',
       headers: {
