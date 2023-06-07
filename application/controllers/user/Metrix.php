@@ -153,4 +153,70 @@ class Metrix extends APIMaster {
 
         echo json_encode($response);
     }
+
+
+    public function checkFailPt(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+        // print_r($decrypted);exit;
+
+        // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '1']);
+        
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        $equity = $check[0]['equity'];
+        
+        //0 = failed
+        //1 = pass
+        // if($equity > ){
+
+        // }
+        if($check[0]['maxDl_status'] == 0){
+            $response = array(
+                'status'=> 200,
+                'message'=>'User Failed'
+            );
+        }elseif($check[0]['maxDl_status'] == 1){
+            $response = array(
+                'status'=> 400,
+                'message'=>'User Not Failed'
+            );
+        }
+
+        echo json_encode($response);
+    }
+    
+
+    public function userFailedPT(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+
+        
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        //0 = failed
+        //1 = pass
+        if($check[0]['maxdd_status'] == 0){
+            $response = array(
+                'status'=> 200,
+                'message'=>'User Already Failed'
+            );
+        }elseif($check[0]['maxdd_status'] == 1){
+            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '0', 'product_status' => '3']);
+            if($update){
+                $response = array(
+                    'status'=> 200,
+                    'message'=>'User Made Failed'
+                );
+            }
+        }else{
+            $response = array(
+                'status'=> 400,
+                'message'=>'Server Error !'
+            );
+        }
+
+        echo json_encode($response);
+    }
+
+
+
 }

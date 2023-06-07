@@ -51,4 +51,50 @@ class Payout extends APIMaster {
 		}
 		echo json_encode($response);  
     }
+
+	public function requestPayout()
+	{
+		// print_r($this->input->post());die;
+// 		Array
+// (
+//     [payoutType] => Profit Split
+//     [accountNum] => 850760
+//     [paymentMode] => 1
+//     [payoutAmount] => 776
+//     [emailAddress] => test@gg.com
+//     [receipantName] => 
+//     [receipantAddress] => 
+//     [accountNumber] => 
+//     [sortCode] => 
+//     [swiftCode] => 
+//     [bankName] => 
+//     [branchAddress] => 
+// )
+
+		$data = array(
+			'account_id' => $this->input->post('payoutType'),
+			'account_password' =>  $this->input->post('account_password'),
+			'server' =>  $this->input->post('server'),
+			'ip' =>  $this->input->post('ip'),
+			'port' =>  $this->input->post('port'),
+			'product_status' =>  '1',
+		);
+
+		$iD = $this->input->post('id');
+		
+		$res = $this->db->where(['id' =>  $iD])->update('userproducts', $data);
+
+		if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'Added successfully',
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'Unable to add data',
+			);
+		}
+		echo json_encode($response);  
+	}
 }
