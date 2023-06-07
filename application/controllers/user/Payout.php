@@ -32,4 +32,23 @@ class Payout extends APIMaster {
 		}
 		echo json_encode($response);  
     }
+
+	public function getAccountBalance(){
+        $accountId = $this->input->post('number');
+        $res = $this->db->where(['account_id' => $accountId, 'phase' => '3'])->get('userproducts')->result_array();
+
+        if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'success',
+                'data' => $res
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'You dont have any funded accounts yet.',
+			);
+		}
+		echo json_encode($response);  
+    }
 }

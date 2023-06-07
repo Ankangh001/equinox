@@ -54,6 +54,7 @@ $this->load->view('user/includes/header');
                       <label class="form-label d-flex align-items-center" for="amount">Amount &nbsp;&nbsp;
                         <span id="available_amount" class="ml-3 text-info text-transform-none float-end"></span></label>
                         <input type="number" id="amount" class="form-control phone-mask" placeholder="Enter amount">
+                        <p class="amnt-error d-none">You dont have enough balance</p>
                     </div>
                   </div>
 
@@ -178,6 +179,7 @@ $this->load->view('user/includes/header');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
 
+  let balance = 0;
   $('#payout').change((e)=>{
     if(e.target.value == "Profit Split"){
       $('#payout').removeClass('col-lg-6');
@@ -187,8 +189,6 @@ $this->load->view('user/includes/header');
       $('#mode').addClass('col-lg-4');
 
       $('#account').css('display','block');
-      $('#available_amount').text('Availble amount : $89');
-
     }else if(e.target.value == "Affiliate"){
       $('#payout').addClass('col-lg-6');
       $('#payout').removeClass('col-lg-4');
@@ -223,43 +223,58 @@ $this->load->view('user/includes/header');
     if(e.target.value == "2"){
       $('#bank-details').css('display','block');
     }else{
-  $('#bank-details').css('display','none');
+      $('#bank-details').css('display','none');
+    }
+  });
 
+  $('#account-numbers').change((e)=>{
+    let account  = {};
+    account.number  = e.target.value;
+    $.ajax({
+      type: "POST",
+      url: "<?= base_url('user/payout/getAccountBalance'); ?>",
+      data: account,
+      dataType: "html",
+      success: function(data){
+        let res = JSON.parse(data);
+        balance += res.data[0].balance;
+        $('#available_amount').text(`Availble amount : $`+res.data[0].balance);
+      },
+      error: function() { alert("Error posting feed."); }
+    });
+  });
+
+  $('#amount').keyup(function(e){
+    if(balance < e.target.value){
+      console.log(e.target.value);
+      // $('amnt-error').removeClass('d-none');
     }
   });
 
   let user = {};
   user.user_id = "<?= $_SESSION['user_id'] ?>";
   $.ajax({
-      type: "POST",
-      url: "<?= base_url('user/payout/getAccounts'); ?>",
-      data: user,
-      dataType: "html",
-      // beforeSend: function(){
-      //   $('body').prepend(`<div id="loading" class="demo-inline-spacing">
-      //       <div class="spinner-border" role="status">
-      //         <span class="visually-hidden">Loading...</span>
-      //       </div>
-      //     </div>`
-      //     );
-      // },
-      success: function(data){
-        let res = JSON.parse(data);
-        if(res.status == 200){
-          $('div#loading').hide(200);
-          if(res.data){
-            res.data.forEach(element => {
-              $('#account-numbers').append(`
-                <option value="${element.account_id}">${element.account_id}</option>
-              `);
-            });
-          }
-        }else{
-          $('#account-numbers').append(`
-            <option selected>${res.message}</option>
-          `);
+    type: "POST",
+    url: "<?= base_url('user/payout/getAccounts'); ?>",
+    data: user,
+    dataType: "html",
+    success: function(data){
+      let res = JSON.parse(data);
+      if(res.status == 200){
+        $('div#loading').hide(200);
+        if(res.data){
+          res.data.forEach(element => {
+            $('#account-numbers').append(`
+              <option value="${element.account_id}">${element.account_id}</option>
+            `);
+          });
         }
-      },
-      error: function() { alert("Error posting feed."); }
-    });
+      }else{
+        $('#account-numbers').append(`
+          <option selected>${res.message}</option>
+        `);
+      }
+    },
+    error: function() { alert("Error posting feed."); }
+  });
 </script>
