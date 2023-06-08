@@ -65,7 +65,7 @@ $this->load->view('includes/header');
 							</a>
 						</div>
 					</div>
-					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="24px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
+					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="44px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
 						<a href="https://www.trustpilot.com/review/equinoxtradingcapital.com" target="_blank" rel="noopener">Trustpilot</a>
 					</div>
 				</div>
@@ -111,7 +111,7 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 	</div> -->
-	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/FvjcruU_XSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 	<!-- ======= Trade for Proprietary ======= -->
 	<section id="about" class="payout why-trade payoutee" style="background:#fff; padding-top:0">
