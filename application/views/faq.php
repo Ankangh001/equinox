@@ -432,7 +432,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item d-none">
                         <h2 class="accordion-header" id="orders-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         What is ‘Trading according to a real market?
@@ -457,12 +457,30 @@ $this->load->view('includes/header');
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="orders-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Can we use expert advisors?
+                        Can we use malicious trading strategies?
                         </button>
                         </h2>
                         <div id="services-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionServicesExample2">
                             <div class="accordion-body">
-                                <strong style= "color:#0d6efd">Yes</strong>, you can trade using an Expert Advisor. We do not allow any malicious expert advisors such as:
+                                <strong style= "color:#0d6efd">Yes</strong>, you can use all malicious trading strategies such as:
+                                <br/><br/>
+                                HFT<br/>
+                                Grid / Martingale<br/>
+                                Arbitrage<br/>
+                                Tick scalping<br/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="orders-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapse23456" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Can we use expert advisors?
+                        </button>
+                        </h2>
+                        <div id="services-collapse23456" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionServicesExample2">
+                            <div class="accordion-body">
+                                <strong style= "color:#0d6efd">Yes</strong>, you can trade using an Expert Advisor. We allow all malicious expert advisors such as:
                                 <br/><br/>
                                 HFT<br/>
                                 Grid / Martingale<br/>
