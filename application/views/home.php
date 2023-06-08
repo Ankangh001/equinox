@@ -16,7 +16,7 @@ $this->load->view('includes/header');
 
 				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
-						<span id="day" class="text-xl sm:text-5xl">110</span>
+						<span id="day" class="text-xl sm:text-5xl">10</span>
 						<p style="font-size:0.8rem">Days</p>
 					</div>
 					<div class="timer-m text-center">
@@ -49,7 +49,7 @@ $this->load->view('includes/header');
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;">
+						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important; padding: 5px 12px 2px !important;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-instagram"></i>
 							</a>
@@ -71,7 +71,7 @@ $this->load->view('includes/header');
 				</div>
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
+				<a href="https://youtu.be/FvjcruU_XSY" class="glightbox play-btn"></a>
 			</div>
       	</div>
     </div>
@@ -241,7 +241,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right text-right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -332,7 +332,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -1266,7 +1266,7 @@ $this->load->view('includes/header');
     </section>
 
 	<!-- ======= Game Section ======= -->
-	<section id="about" class="game payout2">
+	<section id="about" class="d-none game payout2">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1291,7 +1291,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	 <!-- ======= About Section ======= -->
-	<section id="about" class="payout">
+	<section id="about" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
@@ -1319,7 +1319,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	<!-- ======= After Payout ======= -->
-	<section id="about" class="payout2">
+	<section id="about" class="payout">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1349,7 +1349,7 @@ $this->load->view('includes/header');
             <p class=" mb-3">Find out how you can benefit with Equinox Trading Capital.</p>
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+					<button class="nav-link active" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
 						<span>Market Watch</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
@@ -1358,7 +1358,7 @@ $this->load->view('includes/header');
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
 						<span>Economic Calendar</span>
 					</button>
-					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+					<button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
 						<span>Risk Manager</span>
 					</button>
 					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
@@ -1370,7 +1370,7 @@ $this->load->view('includes/header');
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<div class="row py-5">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>etc_risk_manager.png" alt="" srcset="">
@@ -1379,7 +1379,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Risk Manager</h6>
 							<br><br>
 							<p class="text-muted">It lets you manage trades and control your profit and loss across multiple currency pairs using a number of parameters and settings</p>
-							<a href="tools" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="tools" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
@@ -1392,7 +1392,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Manager</h6>
 							<br><br>
 							<p class="text-muted">Execute your trades with precision. You can also calculate your lot size, close partial trades, or efficiently move your stop-loss to breakeven.</p>
-							<a href="tools#trade" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="tools#trade" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
@@ -1405,11 +1405,11 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">ETC Trade Journal</h6>
 							<br><br>
 							<p class="text-muted">Here you can record and review you daily trades for better output and for future reference. This can help you to keep track of your success as well as study mistakes made when entering or exiting a trade.</p>
-							<a href="tools#journal" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="tools#journal" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+				<div class="tab-pane fade show active" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
 					<div class="row py-5 m-auto" style="width:95%;">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>market-watch.png" alt="" srcset="">
@@ -1418,7 +1418,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
 							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
-							<a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
@@ -1431,7 +1431,7 @@ $this->load->view('includes/header');
 							<h6 class="fw-bold mt-3 card-title">Market Analysis</h6>
 							<br><br>
 							<p class="text-muted">See what the technical analysis says about a given symbol with our display ratings, made for easy viewing.</p>
-							<a href="market-data" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="market-data" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
@@ -1445,7 +1445,7 @@ $this->load->view('includes/header');
 							<br><br>
 							<p class="text-muted">
 							Keep an eye on key upcoming economic events, announcements, and news. Plus, set up filters in a few clicks, selecting for event importance and affected currencies.</p>
-							<a href="economic-calendar" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
+							<!-- <a href="economic-calendar" class="btn btn-primary mt-5 gradient-btn">Learn More</a> -->
 						</div>
 					</div>
 				</div>
@@ -1486,7 +1486,7 @@ $this->load->view('includes/header');
     </section><!-- ========= Icons arund you ======== -->	
 
 	<!-- ======= Key Benefits ======= -->
-    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
+    <section id="why-us" class="payout key-feature" style="padding:120px 0 0 0; background: linear-gradient(180deg, #ffffff 50%, #eee 100%) !important;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">

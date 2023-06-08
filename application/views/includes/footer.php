@@ -230,26 +230,61 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-<script>$(function(){
-      var calcNewYear = setInterval(function(){
-        date_future = new Date('2023-06-22');
-        date_now = new Date();
+<script>
+  // $(function(){
+  //     var calcNewYear = setInterval(function(){
+  //       date_future = new Date('2023-06-16');
+  //       date_now = new Date();
 
-        seconds = Math.floor((date_future - (date_now))/1000);
-        minutes = Math.floor(seconds/60);
-        hours = Math.floor(minutes/60);
-        days = Math.floor(hours/24);
+  //       seconds = Math.floor((date_future - (date_now))/1000);
+  //       minutes = Math.floor(seconds/60);
+  //       hours = Math.floor(minutes/60);
+  //       days = Math.floor(hours/24);
         
-        hours = hours-(days*24);
-        minutes = minutes-(days*24*60)-(hours*60);
-        seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+  //       hours = hours-(days*24);
+  //       minutes = minutes-(days*24*60)-(hours*60);
+  //       seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
 
-        $("#day").text(days);
-        $("#hours").text(hours);
-        $("#min").text(minutes);
-        $("#sec").text(seconds);
-      },1000);
-	});
+        // $("#day").text(days);
+        // $("#hours").text(hours);
+        // $("#min").text(minutes);
+        // $("#sec").text(seconds);
+  //     },1000);
+	// });
+
+  // Set the date we're counting down to
+  var countDownDate = new Date("June 16, 2023 18:00:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    // Output the result in an element with id="demo"
+    // document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    // + minutes + "m " + seconds + "s ";
+      
+    $("#day").text(days);
+    $("#hours").text(hours);
+    $("#min").text(minutes);
+    $("#sec").text(seconds);
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
   
   $(document).ready(function(){
     $("#eqLogoWhite").css("display" , "none");
