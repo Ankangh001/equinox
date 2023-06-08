@@ -41,22 +41,22 @@ $this->load->view('includes/header');
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
 					
 					<div class="d-flex justify-content-center">
-						<div class="btn-box p-1 text-center bg-dark" style="background: red !important;">
+						<div class="btn-box text-center" style="background: red;">
 							<a target="_blank" href="https://youtube.com/@EquinoxTradingCapital">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important; padding: 5px 12px 2px !important;">
+						<div class="btn-box text-center" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); padding: 5px 12px 2px;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-instagram"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: #177bf2 !important;">
+						<div class="btn-box text-center" style="background: #177bf2;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-facebook"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
+						<div class="btn-box text-center" style="background: #4f4fd0;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-discord"></i>
 							</a>
