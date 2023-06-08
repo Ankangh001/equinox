@@ -265,7 +265,7 @@ h6 {
 .navbar a {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: start;
 	padding: 10px 0 10px 30px;
 	/* color: #000000; */
 	white-space: nowrap;
@@ -1712,7 +1712,11 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-	background: #d3af71;
+    background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: inset 2px 0px 0px #ff5757, inset -2px 0px 0px #ff5757, inset 1px 2px 0px #ff5757, inset 0px -2px 0px #ff5757;
+    font-weight: 600;
 }
 
 @-webkit-keyframes animate-loading {
@@ -2893,7 +2897,7 @@ a.icons-video-btn2 i {
 }
 
 .btn-box {
-	padding: 5px 10px 4px !important;
+	padding: 5px 10px 2px !important;
     border-radius: 12px;
     font-size: 1.25rem;
     text-align: center !important;
@@ -3087,13 +3091,13 @@ iframe.mob-tuto{
 		justify-content: space-evenly !important;
 	}
 	#hero h1 {
-		font-size: 33px;
+		font-size: 40px;
 		line-height: 38px;
 		margin: 0;
 	}
 	.trade-cap{
 		margin: 1rem auto; 
-		font-size:18px; 
+		font-size:14px; 
 		color:#000000;
 	}
 	.f-25{
@@ -3248,7 +3252,7 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 22px !important;
+		font-size: 14px !important;
 		padding: 3% 3% !important;
 		margin: 1rem 0 !important;
 	}

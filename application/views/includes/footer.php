@@ -17,14 +17,16 @@
                 <strong>About Us</strong>
                 <ul>
                   <li class="ml-3" style="color:#ffffff90"><a href="mailto:support@equinoxtradingcapital.com">support@equinoxtradingcapital.com</a></li>
-                  <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="contact">Support</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="about">Global Reach</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="complaints">Complaints</a></li>
                 </ul>
                 <br>
                 <div class="social-links d-flex justify-content-start">
-                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
                   <a style="background: red !important;" href="#" class="facebook"><i class="fa-brands fa-youtube"></i></a>
+                  <a style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;" href="#" class="facebook"><i class="fa-brands fa-instagram"></i></a>
+                  <a style="background: #177bf2 !important;" href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
                 </div>
               
             </div>
@@ -44,19 +46,17 @@
 
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
            <br> 
-           <br> 
-            <h4 class="text-left">User Tools</h4>
-            <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="tools">Risk Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="tools#trade">Trade Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="tools#journal">Trade Journal</a></li>
-            </ul>
-            <br>
             <h4 class="text-left">Market Analysis</h4>
             <ul>
               <li><a class="ml-3" style="color:#ffffff90" href="market-data">Technical Indicators</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="market-data">Market Sentiments</a></li>
               <li><a class="ml-3" style="color:#ffffff90" href="market-data">COT Data</a></li>
+            </ul>
+            <h4 class="text-left">User Tools</h4>
+            <ul>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools">Risk Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#trade">Trade Manager</a></li>
+              <li><a class="ml-3" style="color:#ffffff90" href="tools#journal">Trade Journal</a></li>
             </ul>
           </div>
 
@@ -267,23 +267,23 @@
 
 
     // Disable right-click
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    // document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    function ctrlShiftKey(e, keyCode) {
-      return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-    }
+    // function ctrlShiftKey(e, keyCode) {
+    //   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    // }
 
-    document.onkeydown = (e) => {
-      // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-      if (
-        event.keyCode === 123 ||
-        ctrlShiftKey(e, 'I') ||
-        ctrlShiftKey(e, 'J') ||
-        ctrlShiftKey(e, 'C') ||
-        (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-      )
-        return false;
-    };
+    // document.onkeydown = (e) => {
+    //   // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+    //   if (
+    //     event.keyCode === 123 ||
+    //     ctrlShiftKey(e, 'I') ||
+    //     ctrlShiftKey(e, 'J') ||
+    //     ctrlShiftKey(e, 'C') ||
+    //     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+    //   )
+    //     return false;
+    // };
 
   </script>
 </body>

@@ -11,18 +11,16 @@ $this->load->view('user/includes/header');
               <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-receipt"></i>Withdraw your earnings</h5>
             </div>
             <div class="card-body">
-              <form>
+              <form id="payout-form">
                 <div class="row">
                   <div class="col-lg-6" id="payout">
                     <div class="mb-3">
                       <label for="payout-type" class="form-label">Payout Type</label>
-                      <select class="form-select" id="payout-type" aria-label="Default select example">
+                      <select class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
                         <option selected="">Select Payout Type</option>
-                        <!-- static  -->
                         <option value="Profit Split">Profit Split</option>
                         <option value="Affiliate">Affiliate</option>
                         <!-- <option value="Rewards">Games & Rewards</option> -->
-                        <!-- static  -->
                       </select>
                     </div>
                   </div>
@@ -31,7 +29,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-4" id="account">
                     <div class="mb-3">
                       <label for="account-numbers" class="form-label">Account Number</label>
-                      <select class="form-select" id="account-numbers" aria-label="Default select example">
+                      <select class="form-select" id="account-numbers" name="accountNum" aria-label="Default select example">
                         <option selected="">Select Account Number</option>
                       </select>
                     </div>
@@ -41,10 +39,11 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-6" id="mode">
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
-                      <select class="form-select" id="payment-mode" aria-label="Default select example">
+                      <select class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
                         <option selected="">Select Payment Mode</option>
-                        <option value="1">Deel</option>
-                        <option value="2">Bank Transfer</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Crypto Currency">Crypto Currency</option>
+                        <option value="Paypal">Paypal</option>
                       </select>
                     </div>
                   </div>
@@ -53,14 +52,15 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label class="form-label d-flex align-items-center" for="amount">Amount &nbsp;&nbsp;
                         <span id="available_amount" class="ml-3 text-info text-transform-none float-end"></span></label>
-                        <input type="number" id="amount" class="form-control phone-mask" placeholder="Enter amount">
+                        <input type="number" id="amount" class="form-control phone-mask" name="payoutAmount" placeholder="Enter amount">
+                        <p class="amnt-error d-none">You dont have enough balance</p>
                     </div>
                   </div>
 
                   <div class="col-lg-8" id="wallet">
                     <div class="mb-3">
                       <label class="form-label" for="walletAddress">Email / Wallet Address</label>
-                      <input type="text" id="walletAddress" class="form-control phone-mask" placeholder="Enter your address">
+                      <input type="text" id="walletAddress" class="form-control phone-mask" name="emailAddress" placeholder="Enter your address">
                     </div>
                   </div>
                 </div>
@@ -73,7 +73,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Receipant Name &nbsp;&nbsp;
                           <span id="receipant-name" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="receipant-name" class="form-control phone-mask" placeholder="Enter Receipant Name">
+                        <input type="text" id="receipant-name" class="form-control phone-mask" name="receipantName" placeholder="Enter Receipant Name">
                       </div>
                     </div>
   
@@ -82,7 +82,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Receipant Address &nbsp;&nbsp;
                           <span id="receipant-address" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="receipant-address" class="form-control phone-mask" placeholder="Enter Receipant Address">
+                        <input type="text" id="receipant-address" class="form-control phone-mask" name="receipantAddress" placeholder="Enter Receipant Address">
                       </div>
                     </div>
   
@@ -91,7 +91,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Account Number/IBAN&nbsp;&nbsp;
                           <span id="iban" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="iban" class="form-control phone-mask" placeholder="Enter Account Number/IBAN">
+                        <input type="text" id="iban" class="form-control phone-mask" name="accountNumber" placeholder="Enter Account Number/IBAN">
                       </div>
                     </div>
   
@@ -100,7 +100,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Sortcode/ABN/Routing Code&nbsp;&nbsp;
                           <span id="sort-code" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="sort-code" class="form-control phone-mask" placeholder="Enter Sortcode/ABN/Routing Code">
+                        <input type="text" id="sort-code" class="form-control phone-mask" name="sortCode" placeholder="Enter Sortcode/ABN/Routing Code">
                       </div>
                     </div>
   
@@ -109,7 +109,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Swift Code&nbsp;&nbsp;
                           <span id="swift-code" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="swift-code" class="form-control phone-mask" placeholder="Enter Swift Code">
+                        <input type="text" id="swift-code" class="form-control phone-mask" name="swiftCode" placeholder="Enter Swift Code">
                       </div>
                     </div>
   
@@ -118,7 +118,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Bank Name&nbsp;&nbsp;
                           <span id="bank-name" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="bank-name" class="form-control phone-mask" placeholder="Enter Bank Name">
+                        <input type="text" id="bank-name" class="form-control phone-mask" name="bankName" placeholder="Enter Bank Name">
                       </div>
                     </div>
   
@@ -127,7 +127,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Branch Address&nbsp;&nbsp;
                           <span id="branch_address" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input type="text" id="branch_address" class="form-control phone-mask" placeholder="Enter Branch Address">
+                        <input type="text" id="branch_address" class="form-control phone-mask" name="branchAddress" placeholder="Enter Branch Address">
                       </div>
                     </div>
   
@@ -178,6 +178,7 @@ $this->load->view('user/includes/header');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
 
+  let balance = 0;
   $('#payout').change((e)=>{
     if(e.target.value == "Profit Split"){
       $('#payout').removeClass('col-lg-6');
@@ -187,8 +188,33 @@ $this->load->view('user/includes/header');
       $('#mode').addClass('col-lg-4');
 
       $('#account').css('display','block');
-      $('#available_amount').text('Availble amount : $89');
 
+      let user = {};
+      user.user_id = "<?= $_SESSION['user_id'] ?>";
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url('user/payout/getAccounts'); ?>",
+        data: user,
+        dataType: "html",
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            $('div#loading').hide(200);
+            if(res.data){
+              res.data.forEach(element => {
+                $('#account-numbers').append(`
+                  <option value="${element.account_id}">${element.account_id}</option>
+                `);
+              });
+            }
+          }else{
+            $('#account-numbers').append(`
+              <option selected>${res.message}</option>
+            `);
+          }
+        },
+        error: function() { alert("Error posting feed."); }
+      });
     }else if(e.target.value == "Affiliate"){
       $('#payout').addClass('col-lg-6');
       $('#payout').removeClass('col-lg-4');
@@ -220,46 +246,68 @@ $this->load->view('user/includes/header');
   });
 
   $('#payment-mode').change((e)=>{
-    if(e.target.value == "2"){
+    if(e.target.value == "Bank Transfer"){
       $('#bank-details').css('display','block');
     }else{
-  $('#bank-details').css('display','none');
-
+      $('#bank-details').css('display','none');
     }
   });
 
-  let user = {};
-  user.user_id = "<?= $_SESSION['user_id'] ?>";
-  $.ajax({
+  $('#account-numbers').change((e)=>{
+    let account  = {};
+    account.number  = e.target.value;
+    $.ajax({
       type: "POST",
-      url: "<?= base_url('user/payout/getAccounts'); ?>",
-      data: user,
+      url: "<?= base_url('user/payout/getAccountBalance'); ?>",
+      data: account,
       dataType: "html",
-      // beforeSend: function(){
-      //   $('body').prepend(`<div id="loading" class="demo-inline-spacing">
-      //       <div class="spinner-border" role="status">
-      //         <span class="visually-hidden">Loading...</span>
-      //       </div>
-      //     </div>`
-      //     );
-      // },
       success: function(data){
         let res = JSON.parse(data);
-        if(res.status == 200){
-          $('div#loading').hide(200);
-          if(res.data){
-            res.data.forEach(element => {
-              $('#account-numbers').append(`
-                <option value="${element.account_id}">${element.account_id}</option>
-              `);
-            });
-          }
-        }else{
-          $('#account-numbers').append(`
-            <option selected>${res.message}</option>
-          `);
-        }
+        balance += res.data[0].balance;
+        $('#available_amount').text(`Availble amount : $`+res.data[0].balance+` You get ($${(res.data[0].balance * 80)/100})`);
       },
       error: function() { alert("Error posting feed."); }
     });
+  });
+
+  $('#amount').keyup(function(e){
+    if(balance < e.target.value){
+      console.log(e.target.value);
+      // $('amnt-error').removeClass('d-none');
+    }
+  });
+
+
+  $('#payout-form').on('submit',(e)=>{
+    e.preventDefault();
+    var form = $('#payout-form').serializeArray();
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payout/requestPayout'); ?>",
+        data: form,
+        dataType: "html",
+        beforeSend: function(){
+          $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+           );
+        },
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            loadTable();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 3000);
+          }
+        },
+        error: function() { alert("Error posting feed."); }
+    });
+  });
 </script>

@@ -2,7 +2,7 @@
 $this->load->view('includes/header');
 ?>
 <style>
-	.container {
+	.ss {
 		width:80%;
 	}
 	.get-funded{
@@ -11,7 +11,7 @@ $this->load->view('includes/header');
 </style>
 <main id="main">
 	<section id="contact" class="contact">
-		<div class="container aos-init aos-animate" data-aos="fade-up">
+		<div class="container ss aos-init aos-animate" data-aos="fade-up">
 
 			<div class="section-title text-center">
 				<h2>Contact</h2>
@@ -25,9 +25,9 @@ $this->load->view('includes/header');
 				frameborder="0" allowfullscreen=""></iframe>
 		</div> -->
 
-		<div class="container aos-init aos-animate"  data-aos="fade-up">
+		<div class="container ss aos-init aos-animate"  data-aos="fade-up">
 			<div class="row mt-5">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-envelope"></i>
@@ -36,23 +36,13 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="open-hours d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-clock"></i>
-							<h4>Open Hours</h4>
+							<h4>Response Time</h4>
 							<!-- <p>24*5</p> -->
-							<p>Monday to Friday</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="phone d-flex flex-column justify-content-center align-items-center">
-							<i class="bi bi-phone"></i>
-							<h4>Live Chat</h4>
-							<!-- <p>24*5</p> -->
-							<p>Monday to Friday</p>
+							<p>Within 48hours</p>
 						</div>
 					</div>
 				</div>
@@ -75,30 +65,22 @@ $this->load->view('includes/header');
 			</div>
 
 			<div class="row mt-3">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
 							<h4>EQUINOX TRADING CAPITAL LTD</h4>
-							<p>71-75 SHELTON STREET, COVENT GARDEN LONDON WC2H 9JQ<br>CIN: 14729881</p>
+							<p>71-75 SHELTON STREET, COVENT GARDEN <br/>LONDON WC2H 9JQ<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
-				<!-- <div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
 							<h4>EQUINOX TRADING CAPITAL LLC</h4>
-							<p>412 N Main St100, Buffalo, WY 82834, United States<br>CIN: 000000XX</p>
+							<p>16192 COASTAL HIGHWAY, LEWES <br>DELAWARE, 19958<br>CIN: 7448069</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="email about-text">
-							<h4>ETC TECHSOLUTIONS LLC</h4>
-							<p>2/F, Tern Centre, Tower 1, 237 Queen’s Road Central, Hong Kong<br>CIN: 000000XX</p>
-						</div>
-					</div>
-				</div> -->
 			</div>
 			
 			<div class="row" style="margin-top:6rem !important">
