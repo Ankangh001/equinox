@@ -265,7 +265,7 @@ h6 {
 .navbar a {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: start;
 	padding: 10px 0 10px 30px;
 	/* color: #000000; */
 	white-space: nowrap;
@@ -3091,13 +3091,13 @@ iframe.mob-tuto{
 		justify-content: space-evenly !important;
 	}
 	#hero h1 {
-		font-size: 33px;
+		font-size: 40px;
 		line-height: 38px;
 		margin: 0;
 	}
 	.trade-cap{
 		margin: 1rem auto; 
-		font-size:18px; 
+		font-size:14px; 
 		color:#000000;
 	}
 	.f-25{
@@ -3252,7 +3252,7 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 22px !important;
+		font-size: 14px !important;
 		padding: 3% 3% !important;
 		margin: 1rem 0 !important;
 	}
