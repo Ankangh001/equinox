@@ -1,9 +1,6 @@
 <?php
 $this->load->view('includes/header');
 ?>
-
-
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -77,40 +74,7 @@ $this->load->view('includes/header');
     </div>
   </section><!-- End Hero -->
 
-
   <main id="main">
-	<!-- ====== As seen on ====== -->
-	<!-- <div class="row bg-transparent" id="pc-logo" style="position: inherit;">
-		<div class="row">
-			<div class="col-lg-12 photos d-flex justify-content-center">
-				<img src="<?=base_url('assets/') ?>img/bloomberg.png" style="width:8% !important" alt="Bloomberg" srcset="">
-				<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga" srcset="">
-				<img src="<?=base_url('assets/') ?>img/nasdaq.png" style="width:8% !important" alt="Nasdac" srcset="">
-				<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal" srcset="">
-				<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="" srcset="">
-				<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" style="width:6% !important" alt="" srcset="">
-				<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="" srcset="">
-				<img src="<?=base_url('assets/') ?>img/cnbc.png" alt=""style="width:8% !important" srcset="">
-			</div>
-		</div>
-	</div>
-
-	<div class="row bg-transparent" id="mobile-logo" style="position: inherit; margin:1rem auto;">
-		<div class="row"  style="margin:auto;padding:0">
-			<div class="col-lg-12 photos d-flex justify-content-center" style="padding:0">
-				<img src="<?=base_url('assets/') ?>img/bloomberg.png"	alt="Bloomberg" style="width:16% !important">
-				<img src="<?=base_url('assets/') ?>img/Benzinga.png" alt="Benzinga">
-				<img src="<?=base_url('assets/') ?>img/nasdaq.png" alt="Nasdac">
-				<img src="<?=base_url('assets/') ?>img/d-journal.png" alt="D Journal">
-			</div>
-			<div class="col-lg-12 photos d-flex justify-content-center" style="padding:0">
-				<img src="<?=base_url('assets/') ?>img/street_insider.png" alt="street">
-				<img src="<?=base_url('assets/') ?>img/yahoo_finance.png" alt="yahoo" style="width:13% !important">
-				<img src="<?=base_url('assets/') ?>img/marketwatch.png" alt="marketwatch">
-				<img src="<?=base_url('assets/') ?>img/cnbc.png" alt="cnbc">
-			</div>
-		</div>
-	</div> -->
 	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/FvjcruU_XSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 	<!-- ======= Trade for Proprietary ======= -->
@@ -1101,10 +1065,6 @@ $this->load->view('includes/header');
 		</div>
     </section>
 	<!-- ===== End Pricing ===== -->
-
-
-
-
 	
 	<!-- ======= Key Feature ======= -->
     <section id="key-feature" class="key-feature">
@@ -1156,114 +1116,6 @@ $this->load->view('includes/header');
       </div>
     </section>
 	<!-- ====== End Key Feature ======  -->
-	
-	<section id="testimonials" class="hidden testimonials section-bg" style="padding:120px 80px">
-      <div class="container aos-init aos-animate" data-aos="fade-up">
-
-        <div class="section-title text-center">
-          <h2>Key Highlights</h2>
-          <p>What they're saying about us</p>
-        </div>
-
-        <div class="hidden testimonials-slider swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events aos-init aos-animate swiper-coverflow swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" data-aos="fade-up" data-aos-delay="100">
-          	<div class="swiper-wrapper" id="swiper-wrapper-7d8ae3358c76f485" aria-live="polite" style="transform: translate3d(-1566.25px, 0px, 0px); transition-duration: 0ms; cursor: grab;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="6" role="group" aria-label="7 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(1200px, 0px, -600px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -5;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 6; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-visible swiper-slide-prev" data-swiper-slide-index="7" role="group" aria-label="8 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(600.069px, 0px, -300.035px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -2;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 3.00035; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-visible swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(0.138182px, 0px, -0.0690912px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0.000690912; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div>
-			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next swiper-slide-visible swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="2 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-599.793px, 0px, -299.896px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -2;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 2.99896; transition-duration: 0ms;"></div></div>
-			<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group" aria-label="3 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-1199.72px, 0px, -599.862px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -5;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 5.99862; transition-duration: 0ms;"></div></div>
-
-            <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-1800.34px, 0px, -900.169px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -8;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 9.00169; transition-duration: 0ms;"></div></div><!-- End testimonial item -->
-
-            <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="5 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-2400.27px, 0px, -1200.13px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -11;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 12.0013; transition-duration: 0ms;"></div></div><!-- End testimonial item -->
-
-          	<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" role="group" aria-label="6 / 8" style="width: 358.667px; transition-duration: 0ms; transform: translate3d(-3000.2px, 0px, -1500.1px) rotateX(0deg) rotateY(0deg) scale(1); z-index: -14;">
-                <img src="https://fundednext.fra1.digitaloceanspaces.com/what-is-fundednext.jpg?auto=format&amp;fit=max&amp;w=1920">
-				<a href="https://youtu.be/HyYpY69Zk6Y" class="glightbox slider-video-btn"><i class="fas fa-play" aria-hidden="true"></i></a>
-				<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-				
-            <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 15.001; transition-duration: 0ms;"></div></div>
-			
-			
-			
-			
-
-		</div>
-
-        <!-- <div class="hidden swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
-			<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span>
-			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
-			<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span>
-		</div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
-
-      </div>
-
-		<div class="swiper mySwiper">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" id="iframe1">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
-				</div>
-				<div class="swiper-slide" id="iframe2">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
-				</div>
-				<div class="swiper-slide" id="iframe3">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
-				</div>
-				<div class="swiper-slide" id="iframe4">
-					<br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a>
-				</div>
-			</div>
-
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
-
-			<!-- If we need navigation buttons -->
-			<!-- <div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div> -->
-
-			<!-- If we need scrollbar -->
-			<div class="swiper-scrollbar"></div>
-		</div>
-    </section>
 
 	<!-- ======= Game Section ======= -->
 	<section id="about" class="d-none game payout2">
@@ -1455,36 +1307,6 @@ $this->load->view('includes/header');
       </div>
     </section><!-- End About Section -->
 
-	<!-- ======= Icons Around you ======= -->
-	<section id="about" class="hidden payout3">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-            <div class="about-img d-flex justify-content-evenly align-item-center">
-				<div class="icons">
-					<a href="https://youtu.be/lnzr0lSc2Uo" class="glightbox icons-video-btn1"><i class="fas fa-play"></i></a>
-					<img src="https://fundednext.fra1.digitaloceanspaces.com/moron.png?auto=format&fit=max&w=384" alt="" srcset="">
-				</div>
-				<div class="icons">
-					<a href="https://youtu.be/lnzr0lSc2Uo" class="glightbox icons-video-btn2"><i class="fas fa-play"></i></a>
-					<img src="https://fundednext.fra1.digitaloceanspaces.com/chris.png?auto=format&fit=max&w=384" alt="" srcset="">
-				</div>
-            </div>
-			<!-- <div class="thumbnail d-flex justify-content-evenly align-item-center">
-				<img src="https://fundednext.fra1.digitaloceanspaces.com/moron.png?auto=format&fit=max&w=384" alt="" srcset="">
-			</div> -->
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3 style="margin-bottom:2rem; font-size:4rem; font-weight: 600;">Icons Around the World Support FundedNext</h3>
-            <p class="fst-italic">
-				Global leaders are cheering for and supporting FundedNext! Now it is your turn to be a part of the best funded trader program.
-			</p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- ========= Icons arund you ======== -->	
-
 	<!-- ======= Key Benefits ======= -->
     <section id="why-us" class="payout key-feature" style="padding:120px 0 0 0; background: linear-gradient(180deg, #ffffff 50%, #eee 100%) !important;">
       <div class="container" data-aos="fade-up">
@@ -1545,32 +1367,6 @@ $this->load->view('includes/header');
         </div>
       </div>
     </section><!-- ====== End Key Benefits ====== -->
-
-	<!-- ======= Trusted patner logos ======= -->
-	<section id="about" class="hidden payout">
-      <div class="container" data-aos="fade-up">
-	  	<div class="section-title text-center">
-			<h2>Trusted Partners</h2>
-			<p>Our Payout System</p>
-		</div>
-        <div class="row trusted-row">
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="trustedpartners">
-              <img src="assets/img/trading-view.png" alt="">
-              <img src="assets/img/wise.png" alt="">
-            </div>
-          </div>
-		  <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="trustedpartners">
-				<img src="assets/img/wise.png" alt="">
-				<img class="mt-5" src="assets/img/paysera.png" alt="">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-	<!-- ====== End Trusted patner logos ====== -->
   </main><!-- End #main -->
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 <?php

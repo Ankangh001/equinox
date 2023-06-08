@@ -3438,8 +3438,7 @@ iframe.mob-tuto{
 	}
 
 	.key-feature{
-		padding: 0 !important;
-		background: #fff !important;
+		padding: 0 0 3rem 0 !important;
 	}
 	.sligh-left{
 		margin-left: 0 !important;
@@ -3469,6 +3468,7 @@ iframe.mob-tuto{
 	.swiper-slide, .swiper-slide{
 		height: 35vh !important;
 		width: inherit !important;
+		background-color: #ffffff !important;
 	}
 	.game{
 		padding-top: 0rem !important;
