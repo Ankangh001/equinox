@@ -18,15 +18,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets/') ?>vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+  <link href="<?= base_url('assets/') ?>vendor/animate.css/animate.min.css?v=1" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/aos/aos.css?v=1" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/bootstrap/css/bootstrap.min.css?v=1" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/bootstrap-icons/bootstrap-icons.css?v=1" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/boxicons/css/boxicons.min.css?v=1" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/glightbox/css/glightbox.min.css?v=1" rel="stylesheet">
+  <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css?v=1" rel="stylesheet"> -->
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?v=1" />
 
 <!-- Demo styles -->
 <style>
@@ -94,8 +94,8 @@
 
 
   <link href="<?= base_url('assets/') ?>css/style.css?v=1" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css?v=1" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css?v=1" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
