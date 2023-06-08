@@ -4,79 +4,40 @@
     <div class="footer-top">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-start align-items-center text-left about-footer">
+          <div class="col-lg-4 col-md-6 d-flex flex-column justify-content-start align-items-center text-left about-footer">
             <div class="footer-info">
               <br>
               <img id="eqLogoWhite" width="50%" src="<?= base_url('assets/') ?>img/equinoxLogo.png" />
-                <br>
-                <strong>About Us</strong>
+                <!-- <strong>About Us</strong>
                 <ul>
                   <li class="ml-3" style="color:#ffffff90">support@equinoxtradingcapital.com</li>
                   <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="#">Global Reach</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="#">Complaints</a></li>
-                </ul>
+                </ul> -->
                 <br>
                 <div class="social-links d-flex justify-content-start">
-                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
                   <a style="background: red !important;" href="#" class="facebook"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-              
+                  <a style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;" href="#" class="facebook"><i class="fa-brands fa-instagram"></i></a>
+                  <a style="background: #177bf2 !important;" href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
+                </div>               
             </div>
           </div>
 
-          <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
-            <h4>Important Links</h4>
-            <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">FAQ</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Rules</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Reviews</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Tutorials</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Press Release</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Promotions</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
-           <br> 
-           <br> 
-            <h4 class="text-left">User Tools</h4>
-            <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Manager</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Trade Journal</a></li>
-            </ul>
+          <div class="col-lg-4 col-md-6 footer-newsletter mb-5 text-left">
             <br>
-            <h4 class="text-left">Market Analysis</h4>
-            <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Screener</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Economic Calendar</a></li>
-            </ul>
+            <h4>Stay Updated</h4>
+            <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
           </div>
 
-          <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-center footer-links">
-            <h4>Legal</h4>
-            <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Terms of Service</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Privacy Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Refund Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Cookie Policy</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Risk Disclosure</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="#">Live Account Disclaimer</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
+          <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-center align-items-center text-center">
             <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
-                <br>
-                <h4>Stay Updated</h4>
-                <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
-                <br>
-                <form action="" method="post" >
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
-                </form>
-              </div>
+              <br>
+              <form action="" method="post" >
+                <input type="email" name="email"><input type="submit" value="Subscribe">
+              </form>
+            </div>
             <div class="footer-info">
               
             </div>
