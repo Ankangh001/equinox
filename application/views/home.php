@@ -9,7 +9,7 @@ $this->load->view('includes/header');
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
 				<p class="trade-cap">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
-				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
+				<h2 class="coming-soon-text">Coming Soon</h2>
 
 				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
@@ -28,7 +28,7 @@ $this->load->view('includes/header');
 						<span id="sec" class="text-xl sm:text-5xl">20</span>
 						<p style="font-size:0.8rem">Seconds</p>
 					</div>
-				</div> -->
+				</div>
 
 				<!-- <div class="btns d-flex justify-content-center" style="width:80%">
 					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn">
