@@ -1712,7 +1712,11 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-	background: #d3af71;
+    background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: inset 2px 0px 0px #ff5757, inset -2px 0px 0px #ff5757, inset 1px 2px 0px #ff5757, inset 0px -2px 0px #ff5757;
+    font-weight: 600;
 }
 
 @-webkit-keyframes animate-loading {
@@ -2893,7 +2897,7 @@ a.icons-video-btn2 i {
 }
 
 .btn-box {
-	padding: 5px 10px 4px !important;
+	padding: 5px 10px 2px !important;
     border-radius: 12px;
     font-size: 1.25rem;
     text-align: center !important;

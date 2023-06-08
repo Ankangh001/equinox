@@ -554,6 +554,7 @@ $this->load->view('user/includes/header');
       <?php } }?>
     </div>
   </div>
+
 <?php }else{ ?>
       <div class="row my-5 mx-auto">
         <div class="col-md-12 m-auto">
@@ -569,9 +570,31 @@ $this->load->view('user/includes/header');
   <?php } ?>
     <!-- / Content -->
 
+
+
 <?php $this->load->view('user/includes/footer');?>
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
+  let requestData = {};
+  requestData.uid = "<?= $_SESSION['user_id']?>";
+
+  $.ajax({
+    type: "POST",
+    url: "<?php echo base_url('user/account/getAccounts'); ?>",
+    data: requestData,
+    dataType: "html",
+    success: function(data){
+      let res = JSON.parse(data);
+      if(res.status == 200){
+        // console.log(res.data);
+      }
+    },
+    error: function() { 
+      alert("Error posting feed."); 
+    }
+  });
+
+
   function withJquery(){
     console.time('time1');
     var temp = $("<input>");

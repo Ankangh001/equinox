@@ -20,6 +20,29 @@ class Account extends APIMaster {
         $this->load->view('user/account-overview', $response);
 	}
 
+	public function getAccounts()
+	{
+        $this->db->select('*');
+        $this->db->from('userproducts');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['user_id' => $this->input->post('uid')]);
+        $res = $this->db->get()->result_array();
+
+        if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'success',
+				'data' => $res
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'Failed'
+			);
+		}
+		echo json_encode($response);
+	}
+
     public function freeTrial()
     {
         try {

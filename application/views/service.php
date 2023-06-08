@@ -75,7 +75,7 @@ Section 12 – Restricted Uses
 <br/><br/>
 You are prohibited from using the site or its content: (a) for any illegal purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any regional and global, federal, provincial, or state regulations, rules, laws, or state regulations; (d) to infringe upon or violate our intellectual rights or the intellectual property rights of others; and (e) to infringe upon or infringe our intellectual rights or the intellectual property rights of others.(e) to harass, misuse, insult, harm, besmirch, slander, disparage, intimidate, or discriminate due to gender, sexual orientation, faith, ethnic background, race, age, national or ethnic origin, or incapacity; (f) to submit misinformation; (g) to upload or transmit viruses or any other type of malicious code that will or may be used to affect the functionality or operation of the Service or any related website, other websites, or the Internet; (h) to submit false or misleadingFor breaching any of the prohibited uses, we retain the right to suspend your usage of the Service or any connected website.
 <br/><br/><br/>
-Section 13 - Unauthorised TRADING PRACTICES
+Section 13 - Unauthorised TRADING PRACTICES (Allowed in <strong class="text-primary">evaluation</strong> phases and restricted in <strong class="text-primary">funded</strong> phase)
 <br/><br/>
 It is prohibited for the Customer to intentionally or unintentionally use trading strategies that take advantage of errors in the Services, such as inaccuracies in displayed prices or delays in their updates.
 <br/><br/>The Customer is not permitted to execute trades using an external or slow data feed.

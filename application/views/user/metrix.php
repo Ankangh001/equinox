@@ -146,9 +146,7 @@ $myArray = explode(',', $myString);
                     </div>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center justify-content-start">
-                      <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-                    </div>
+                    <div id="dailyDrawdown"></div>
                   </td>
                 </tr>
                 <?php }?>
@@ -319,6 +317,7 @@ $myArray = explode(',', $myString);
   let chartData = [];
   let chartLabel = [];
   let lots = 0;
+  let equity = 0;
 
   let negativeSum = 0;
 
@@ -427,6 +426,22 @@ $myArray = explode(',', $myString);
     })
   };
 
+  function checkMaxDailyLoss(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/getEquity'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let res = JSON.parse(data);
+        equity = res.equity;
+      },
+      error: function(data){
+        alert(data);
+      }
+    })
+  };
+
   function getAccounts(){
     $.ajax({
       type: "POST",
@@ -465,7 +480,7 @@ $myArray = explode(',', $myString);
             <td>
               <div class="hol">
                 <p class="text-dark text-left" style="margin-bottom:-1px">Equity</p>
-                <span class="text-dark fw-bold text-left">$${res['equity']}</span>
+                <span class="text-dark fw-bold text-left">$${res['equity'].toFixed(2)}</span>
               </div>
             </td>
           </tr>
@@ -515,27 +530,71 @@ $myArray = explode(',', $myString);
         `);
 
         //max drawdown render
-        // $('#max_dd').html('');  
         if(res['equity'] > checkAmount){
           checkIfFail();
         }else{
           userFailed();
         };
 
-        //profit target render
-        $('#pt').html('');
-        if(((res['balance'])-accountSize).toFixed(2) >= target){  
-          $('#pt').html(`
-            <div class="d-flex align-items-center justify-content-start text-success" >
-              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-            </div>
-          `);
+        //max daily loss
+        checkMaxDailyLoss();
+        console.log(equity);
+
+        if(  res['equity'] > (equity - Daily Drawdown)  ){
+          echo pass
         }else{
-          $('#pt').html(`
-            <div class="d-flex align-items-center justify-content-start text-danger" >
-              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-            </div>
-          `);
+          echo fail
+        }
+
+        //profit target render
+        if(((res['balance'])-accountSize).toFixed(2) >= target){ 
+          //check if previously failed or not 
+          $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('user/metrix/checkFailPt'); ?>",
+            data: {r},
+            dataType: "html",
+            success: function(data){
+              let maxDailyStatus = JSON.parse(data).status;
+              if(maxDailyStatus == 200){
+                $('#pt').html(`
+                  <div class="d-flex align-items-center justify-content-start text-danger" >
+                    <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+                  </div>
+                `);
+              }else if(maxDailyStatus == 400){
+                $('#pt').html(`
+                  <div class="d-flex align-items-center justify-content-start text-success" >
+                    <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                  </div>
+                `);
+              }
+            },
+            error: function(data){
+              console.log(data);
+            }
+          });
+        }else{
+          //make the user fail
+          $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
+            data: {r},
+            dataType: "html",
+            success: function(data){
+              let pTargetDStatus = JSON.parse(data).status;
+              if(pTargetDStatus == 200){
+                $('#pt').html(`
+                  <div class="d-flex align-items-center justify-content-start text-danger" >
+                    <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+                  </div>
+                `);
+              }
+            },
+            error: function(data){
+              console.log(data);
+            }
+          });
         }
 
         $('#orders').html('');
@@ -570,7 +629,7 @@ $myArray = explode(',', $myString);
             </tr>
           `);
         });
-        $('#lots').text(lots)
+        $('#lots').text(lots.toFixed(2))
         chartData[0] = accountSize;
 
         tempChartData.forEach((element, i) => {
@@ -586,7 +645,7 @@ $myArray = explode(',', $myString);
         $('#openOrders').html('');
         
         if((res['openorders'].length) > 0){
-          console.log((res['openorders'][0]['openTime']).slice(0,10));
+          // console.log((res['openorders'][0]['openTime']).slice(0,10));
           saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10);
           saveDate();
           res['openorders'].forEach((element) => {
@@ -639,10 +698,10 @@ $myArray = explode(',', $myString);
   }
 
   getAccounts();
-  setTimeout(() => {
-    setInterval(() => {
-      getAccounts();
-    }, 2500);
-  }, 4000);
+  // setTimeout(() => {
+  //   setInterval(() => {
+  //     getAccounts();
+  //   }, 2500);
+  // }, 4000);
 
 </script>

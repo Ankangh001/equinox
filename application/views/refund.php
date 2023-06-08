@@ -15,7 +15,7 @@ $this->load->view('includes/header');
 <br/><br/>
 a.    You may request a withdrawal without giving a reason within fourteen (14) days.
 <br/><br/>
-b.    YOU AUTOMATICALLY LOSE YOUR RIGHT TO WITHDRAW FROM THE CONTRACT IF YOU HAVE ALREADY OPENED A POSITION ON YOUR DEMO ACCOUNT, BEFORE THE EXPIRY OF THE SPECIFIED TIME LIMIT.
+b.    You automatically lose your right to withdraw from the contract is you have already opened a position on your DEMO account, BEFORE THE EXPIRY OF THE SPECIFIED TIME LIMIT or if you have used HFT, arbitrage, grid trading or any other abusive stratergies.
 <br/><br/>
 c.    You will receive your refund via the platform you made your payment, within fourteen (14) days.
 <br/><br/>
@@ -23,19 +23,19 @@ c.    You will receive your refund via the platform you made your payment, withi
 <br/><br/>
 2. Notification
 <br/><br/>
-If you need a refund, please submit your notice of refund to us on the following e-mail: support@trueforexfunds.com with the subject indicating “Refund”.
+If you need a refund, please submit your notice of refund to us on the following e-mail: support@equinoxtradingcapital.com with the subject indicating “Refund”.
 For a smooth process we kindly ask you to be concise and add all the information we do need to process your request in the most efficient and effective way.
-<br/>
+<br/><br/>
 3. Refund during resolution of claims
 <br/>
 You may not be eligible for refund in respect of any Service pending the resolution of a claim for a refund.  
-<br/>
+<br/><br/>
 5. Our discretion
 <br/>
 Refunds are issued at our discretion and may be accepted or rejected as such.
-<br/>
-6. Refunds After successful completion of the Standard Challenge
 <br/><br/>
+6. Refunds After successful completion of the Standard Challenge
+<br/>
 After you have successfully completed Phase 2 and proceeded to the funded phase you will receive a refund of the initial sign up fee with your first monthly withdrawal. 
 Your sign up fee will not be refunded until you have generated sufficient profits for a withdrawal.
 <br/><br/>
