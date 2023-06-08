@@ -23,8 +23,10 @@
                 </ul>
                 <br>
                 <div class="social-links d-flex justify-content-start">
-                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
                   <a style="background: red !important;" href="#" class="facebook"><i class="fa-brands fa-youtube"></i></a>
+                  <a style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;" href="#" class="facebook"><i class="fa-brands fa-instagram"></i></a>
+                  <a style="background: #177bf2 !important;" href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+                  <a style="background: #4f4fd0 !important; margin-right:0.5rem;" href="#" class="twitter"><i class="fa-brands fa-discord"></i></a>
                 </div>
               
             </div>

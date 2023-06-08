@@ -12,7 +12,7 @@ $this->load->view('includes/header');
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
 				<p class="trade-cap">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
 				
-				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
+				<h2 class="coming-soon-text">Coming Soon</h2>
 
 				<div class="flex items-end justify-start z-10" style="color:#000000">
 					<div class="timer-m text-center">
@@ -31,14 +31,14 @@ $this->load->view('includes/header');
 						<span id="sec" class="text-xl sm:text-5xl">20</span>
 						<p style="font-size:0.8rem">Seconds</p>
 					</div>
-				</div> -->
+				</div>
 
-				<div class="btns d-flex justify-content-center" style="width:80%">
+				<!-- <div class="btns d-flex justify-content-center" style="width:80%">
 					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
 					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
-				</div>
+				</div> -->
 
 				<div class="btn2" style="width:80%">
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
@@ -49,7 +49,7 @@ $this->load->view('includes/header');
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;">
+						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;padding: 3px 11px 2px !important;font-size: 24px;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-instagram"></i>
 							</a>
@@ -71,7 +71,7 @@ $this->load->view('includes/header');
 				</div>
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
+				<a href="https://youtu.be/lUxS-7KV9A0" class="glightbox play-btn"></a>
 			</div>
       	</div>
     </div>
@@ -111,8 +111,8 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 	</div>
-	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+	<!-- <iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/lUxS-7KV9A0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/lUxS-7KV9A0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 	<!-- ======= Trade for Proprietary ======= -->
 	<section id="about" class="payout why-trade payoutee" style="background:#fff; padding-top:0">
 		<div class="container mt-5" data-aos="fade-up">
@@ -1349,7 +1349,7 @@ $this->load->view('includes/header');
             <p class=" mb-3">Find out how you can benefit with Equinox Trading Capital.</p>
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+					<button class="nav-link active" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
 						<span>Market Watch</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
@@ -1358,7 +1358,7 @@ $this->load->view('includes/header');
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
 						<span>Economic Calendar</span>
 					</button>
-					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+					<button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
 						<span>Risk Manager</span>
 					</button>
 					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
@@ -1370,7 +1370,7 @@ $this->load->view('includes/header');
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<div class="row py-5">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>etc_risk_manager.png" alt="" srcset="">
@@ -1409,7 +1409,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+				<div class="tab-pane fade show active" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
 					<div class="row py-5 m-auto" style="width:95%;">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>market-watch.png" alt="" srcset="">

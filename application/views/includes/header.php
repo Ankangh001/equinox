@@ -156,15 +156,15 @@ body{
         <ul>
 		 	<li class="dropdown"><a><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-				<li><a href="./#evaluation">Evaluation Process</a></li>
-				<li><a href="./#table-pricing">Pricing</a></li>
-				<li><a href="scaling-plan">Scaling Plan</a></li>
+				<li><a href="./#evaluation"><i class="fas fa-sort-amount-up"></i>&nbsp;&nbsp;Evaluation Process</a></li>
+				<li><a href="./#table-pricing"><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;&nbsp;Pricing</a></li>
+				<li><a href="scaling-plan"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;Scaling Plan</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a><span>Help</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="faq">FAQ</a></li>
-					<li><a href="rules">Rules</a></li>
+					<li><a href="faq"><i class="fas fa-question"></i>&nbsp;&nbsp;FAQ</a></li>
+					<li><a href="rules"><i class="fas fa-info"></i>&nbsp;&nbsp;&nbsp;Rules</a></li>
 				</ul>
 			</li>
       <!-- <li class="dropdown"><a><span>Testimonials</span> <i class="bi bi-chevron-down"></i></a>
@@ -176,29 +176,29 @@ body{
       
 			<li class="dropdown"><a><span>Trading</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="quotes">Market Watch</a></li>
-					<li><a href="advance-chart">Advanced Chart</a></li>
-					<li><a href="mt5-web-terminal">MT5 Web Terminal</a></li>
-					<li><a href="economic-calendar">Economic Calendar</a></li>
-					<lis><a href="market-data">Market Analysis</a></li>
-					<li><a href="calculators">Calculators</a></li>
-					<li><a href="tools">User Tools</a></li>
+					<li><a href="quotes"><i class="fas fa-chart-area"></i>&nbsp;&nbsp;Market Watch</a></li>
+					<li><a href="advance-chart"><i class="far fa-chart-bar"></i>&nbsp;&nbsp;Advanced Chart</a></li>
+					<li><a href="mt5-web-terminal"><i class="far fa-window-maximize"></i>&nbsp;&nbsp;MT5 Web Terminal</a></li>
+					<li><a href="economic-calendar"><i class="fas fa-calendar-week"></i>&nbsp;&nbsp;Economic Calendar</a></li>
+					<lis><a href="market-data"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;Market Analysis</a></li>
+					<li><a href="calculators"><i class="fas fa-calculator"></i>&nbsp;&nbsp;Calculators</a></li>
+					<li><a href="tools"><i class="fas fa-wrench"></i>&nbsp;&nbsp;User Tools</a></li>
 				</ul>
 			</li>
 			<li><a class="nav-link scrollto" href="affiliate">Affiliate</a></li>
 
       <li class="dropdown"><a><span>Insights</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="notice">Announcements</a></li>
-					<li><a href="promotion">Promotions</a></li>
+					<li><a href="notice"><i class="fas fa-bullhorn"></i>&nbsp;&nbsp;Announcements</a></li>
+					<li><a href="promotion"><i class="fas fa-percent"></i>&nbsp;&nbsp;Promotions</a></li>
 					<!-- <li><a href="press-releases">Press Release</a></li> -->
 				</ul>
 			</li>
       <li class="dropdown"><a href="#"><span>Contact</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="contact">Contact Us</a></li>
-					<li><a href="about">About Us</a></li>
-					<li><a href="complaints">Complaints</a></li>
+					<li><a href="contact"><i class="fas fa-headset"></i>&nbsp;&nbsp;Contact Us</a></li>
+					<li><a href="about"><i class="far fa-building"></i>&nbsp;&nbsp;About Us</a></li>
+					<li><a href="complaints"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Complaints</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
