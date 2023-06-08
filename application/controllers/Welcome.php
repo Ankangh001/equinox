@@ -28,24 +28,14 @@ class Welcome extends CI_Controller {
 		$this->load->view('notice');
 	}
 
-	public function symbol()
+	public function quotes()
 	{
-		$this->load->view('symbol');
+		$this->load->view('quotes');
 	}
 
 	public function calender()
 	{
 		$this->load->view('calender');
-	}
-
-	public function client()
-	{
-		$this->load->view('client');
-	}
-
-	public function clientSignup()
-	{
-		$this->load->view('client-signup');
 	}
 
 	public function affiliate()
@@ -66,5 +56,98 @@ class Welcome extends CI_Controller {
 	public function about()
 	{
 		$this->load->view('about');
+	}
+
+	public function scalingPlan()
+	{
+		$this->load->view('scalingPlan');
+	}
+	public function maerketData()
+	{
+		$this->load->view('maerketData');
+	}
+
+	public function calculators()
+	{
+		$this->load->view('calculators');
+	}
+
+	public function tools()
+	{
+		$this->load->view('tools');
+	}
+
+	public function webTerminal()
+	{
+		$this->load->view('webTerminal');
+	}
+
+	public function complaints()
+	{
+		$this->load->view('complaints');
+	}
+
+	public function advanceChart()
+	{
+		$this->load->view('advance-chart');
+	}
+
+	public function promotion()
+	{
+		$this->load->view('promotion');
+	}
+
+	public function service()
+	{
+		$this->load->view('service');
+	}
+
+	public function policy()
+	{
+		$this->load->view('policy');
+	}
+
+	public function refund()
+	{
+		$this->load->view('refund');
+	}
+
+	public function disclosure()
+	{
+		$this->load->view('disclosure');
+	}
+
+	public function liveAccount()
+	{
+		$this->load->view('liveAccount');
+	}
+
+	public function cookie()
+	{
+		$this->load->view('cookie');
+	}
+
+	public function test()
+	{
+		$url = "https://www.fxblue.com/users/51634880/overviewscript";
+		$response = file_get_contents($url);
+		$pattern = '/document.MTIntelligenceAccounts.push\((.*?)\);/s';
+		preg_match($pattern, $response, $matches);
+
+		if (isset($matches[1])) {
+			$json = $matches[1];
+			$data = json_decode($json, true);
+			$userId = $data['userid'];
+			$balance = $data['balance'];
+			$equity = $data['equity'];
+			echo "User ID: $userId\n";
+			echo "Balance: $balance\n";
+			echo "Equity: $equity\n";
+		}
+	}
+
+	public function gettest()
+	{
+		$this->load->view('test');
 	}
 }

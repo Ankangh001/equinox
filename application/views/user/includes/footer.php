@@ -44,6 +44,11 @@
     </div>
     <!-- / Layout wrapper -->
 
+    <script>
+        $(window).on('load', function () {
+          $('#loading').hide();
+        }); 
+    </script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
@@ -62,8 +67,14 @@
 
     <!-- Page JS -->
     <script src="<?= base_url('assets/user/assets/') ?>js/dashboards-analytics.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+    <script>
+        // ClassicEditor
+        //     .create( document.querySelector( '#editor' ) )
+        //     .catch( error => {
+        //         console.error( error );
+        //     } );
+    </script>
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>

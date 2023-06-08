@@ -77,17 +77,51 @@
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
-  let selectHeader = select('#header')
-  let selectTopbar = select('#topbar')
+
+  // $(document).ready(function(){
+    $("#eqLogoWhite").css("display" , "none");
+  //   $(window).scroll(function(){
+  //     var scroll = $(window).scrollTop();
+  //     if (scroll > 90) {
+  //       alert();
+  //       $("#eqLogoblack").css("display" , "none");  	
+  //       $("#eqLogoWhite").css("display" , "block");
+  //       $('.mobile-nav-toggle').css("color" , "#fff");
+  //     }
+      
+  //     else{
+  //       $("#eqLogoblack").css("display" , "block");  	
+  //       $("#eqLogoWhite").css("display" , "none");
+  //       $("select.goog-te-combo").css("color" , "#000000 !important");
+  //       $('.mobile-nav-toggle').css("color" , "#000");
+  //     }
+  //   })
+  // })
+
+
+  let selectHeader = select('#header');
+  let selectTopbar = select('#topbar');
+  let navbar = select('#navbar');
   if (selectHeader) {
     const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
+      if (window.scrollY > 80) {
+        navbar.classList.add('whites');
+        navbar.classList.remove('black');
+        selectHeader.classList.add('header-scrolled');
+        $("#eqLogoblack").css("display" , "none");  	
+        $("#eqLogoWhite").css("display" , "block");
+        $('.mobile-nav-toggle').css("color" , "#fff");
         if (selectTopbar) {
           selectTopbar.classList.add('topbar-scrolled')
         }
       } else {
-        selectHeader.classList.remove('header-scrolled')
+        selectHeader.classList.remove('header-scrolled');
+        navbar.classList.remove('whites');
+        navbar.classList.add('black');
+        $("#eqLogoblack").css("display" , "block");  	
+        $("#eqLogoWhite").css("display" , "none");
+        $("select.goog-te-combo").css("color" , "#000000 !important");
+        $('.mobile-nav-toggle').css("color" , "#000");
         if (selectTopbar) {
           selectTopbar.classList.remove('topbar-scrolled')
         }

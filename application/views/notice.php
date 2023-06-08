@@ -1,80 +1,64 @@
 <?php
 $this->load->view('includes/header');
 ?>
-<section id="faq-hero" class="testimonial d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-12 pt-5 justify-content-center d-flex f-row">
-          <h1>IMPORTANT UPDATES AND<span> NOTICE</span></h1>
-          <h2>go through schedule</h2>
-        </div>
-      </div>
-    </div>
-</section>
-
 
 <main id="main">
-	<!-- ======= Why Us Section ======= -->
-    <section id="faq" class="faq">
+    <!-- ======= Why Us Section ======= -->
+    <section style="margin: 6rem auto 0 auto;padding-bottom: 0;">
         <div class="container" data-aos="fade-up">
-            <div class="section-title notice-title">
-                <!-- <h2>Follow as per</h2> -->
-                <p>TRADING UPDATES</p>
+            <div class="section-title text-center">
+                <h2>Trading Updates</h2>
+                <p class="d-block border-bottom pb-3">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
+                Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
+                Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
+                </p>
+                
+                <p class="d-block border-bottom pb-3">20th JUN 2023
+                </p>
+            </div>
+            <div class="pt-5 pb-3">
+                <h2 class="text-dark fw-bold fs-3">Previous Trading Updates</h2>
             </div>
             <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="" data-aos="fade-up" data-aos-delay='100'>
-                        <div class="card-body">
-                            <h5 class="card-title">Daylight Saving Time</h5>
-                            <!-- <h6 class="card-subtitle mb-2 text-muted">#rule 1</h6> -->
-                            <p class="card-text">
-                                Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content. Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content. Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content.
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
 
-            <div class="section-title notice-title">
-                <!-- <h2>Follow as per</h2> -->
-                <p>TRADING UPDATES</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="" data-aos="fade-up" data-aos-delay='100'>
-                        <div class="card-body">
-                            <h5 class="card-title">Daylight Saving Time</h5>
-                            <!-- <h6 class="card-subtitle mb-2 text-muted">#rule 1</h6> -->
-                            <p class="card-text">
-                                Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content. Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content. Some quick example text to build on the
-                                card title and make up the
-                                bulk of the card's content.
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <a href="client-login">
+                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                            <div class="card-body">
+                                <!-- <img src="<?= base_url('assets/img/')?>why-us-bg2.jpg" alt="" srcset=""> -->
+                                <div class="header text-center py-1">20th July 2023</div>
+                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
-            
         </div>
     </section><!-- End Pricing -->
-	
-  </main><!-- End #main -->
-
-
+</main><!-- End #main -->
 <?php
 $this->load->view('includes/footer');
 ?>

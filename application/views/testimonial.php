@@ -1,21 +1,11 @@
 <?php
 $this->load->view('includes/header');
 ?>
-<section id="faq-hero" class="testimonial d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-12 pt-5 justify-content-center d-flex f-row">
-          <h1>What others<span> Suggest</span></h1>
-          <h2>go through testimonials</h2>
-        </div>
-      </div>
-    </div>
-</section>
 
 <main id="main">
-    <section id="video" class="video">
+    <section id="video" class="mt-5">
         <div class="container aos-init aos-animate text-center" data-aos="fade-up">
-            <iframe width="70%" style="height:70vh" src="https://www.youtube.com/embed/RrN3Aa9ohnk?feature=oembed&autoplay=0&loop=0&controls=1&mute=0&wmode=opaque&rel=0" frameborder="0"></iframe>
+            <iframe class="m-auto" width="70%" style="height:70vh" src="https://www.youtube.com/embed/RrN3Aa9ohnk?feature=oembed&autoplay=0&loop=0&controls=1&mute=0&wmode=opaque&rel=0" frameborder="0"></iframe>
         </div>
     </section>
 

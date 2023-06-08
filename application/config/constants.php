@@ -83,3 +83,15 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+define('pass_enc','India#2023');
+define('pass_iv','qwe#67%#qw986tva');
+define('SMPT_HOST','');
+define('SMPT_PORT',587);
+define('SMPT_USER','');
+define('SMPT_PASS','');
+define('EMAIL_FROM','');
+define('APPLICATION_NAME','');
+define('SQUARE_ENVIRONMENT','sandbox');
+define('SQUARE_APPLICATION_ID','sandbox-sq0idb-bKU_tsCUTINR2tS0wUGVnA');
+define('SQUARE_ACCESS_TOKEN','EAAAEJdTHMCu2J4gUK2q_hL7EuRKJFdtcPiIlAhrrsjvDuF8hAf7Lep_y-UT7Xjc');
+define('SQUARE_LOCATION_ID','LHAPGWEHZ7HYC');
