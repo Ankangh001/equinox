@@ -36,8 +36,8 @@ $this->load->view('includes/header');
                             <td>#</td>
                             <td>Account Size</td>
                             <td>Profit Target</td>
-                            <td>Maximum Loss</td>
-                            <td style="border-right:0;">Profit Share</td>
+                            <td style="border-right:0;">Maximum Loss</td>
+                            <!-- <td style="border-right:0;">Profit Share</td> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -45,50 +45,50 @@ $this->load->view('includes/header');
                             <td>1</td>
                             <td x-text="currentConfig[0][0]">500,000</td>
                             <td x-text="currentConfig[1][0]">50,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">50,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">80%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">50,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">80%</td> -->
                         </tr>
                         <tr>
                             <td>2</td>
                             <td x-text="currentConfig[0][0]">750,000</td>
                             <td x-text="currentConfig[1][0]">75,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">75,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">75,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td> -->
                         </tr>
                         <tr>
                             <td>3</td>
                             <td x-text="currentConfig[0][0]">1,000,000</td>
                             <td x-text="currentConfig[1][0]">100,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">100,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">100,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td> -->
                         </tr>
                         <tr>
                             <td>4</td>
                             <td x-text="currentConfig[0][0]">1,250,000</td>
                             <td x-text="currentConfig[1][0]">125,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">125,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">125,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td> -->
                         </tr>
                         <tr>
                             <td>5</td>
                             <td x-text="currentConfig[0][0]">1,500,000</td>
                             <td x-text="currentConfig[1][0]">150,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">150,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">150,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td> -->
                         </tr>
                         <tr>
                             <td>6</td>
                             <td x-text="currentConfig[0][0]">1,750,000</td>
                             <td x-text="currentConfig[1][0]">175,000 (10%)</td>
-                            <td x-text="currentConfig[1][0]">175,000 (10%)</td>
-                            <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-right:0;" x-text="currentConfig[1][0]">175,000 (10%)</td>
+                            <!-- <td style="border-right:0;" x-text="currentConfig[2][0]">90%</td> -->
                         </tr>
                         <tr>
                             <td style="border-bottom:0;">7</td>
                             <td style="border-bottom:0;" x-text="currentConfig[0][0]">2,000,000</td>
                             <td style="border-bottom:0;" x-text="currentConfig[0][0]"></td>
-                            <td style="border-bottom:0;" x-text="currentConfig[1][0]">200,000 (10%)</td>
-                            <td style="border-right:0; border-bottom:0;" x-text="currentConfig[2][0]">90%</td>
+                            <td style="border-bottom:0; border-right:0;"  x-text="currentConfig[1][0]">200,000 (10%)</td>
+                            <!-- <td style="border-right:0; border-bottom:0;" x-text="currentConfig[2][0]">90%</td>s -->
                         </tr>
                     </tbody>
                 </table>
