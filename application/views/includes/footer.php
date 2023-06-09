@@ -30,6 +30,7 @@
                 <input required type="email" id="user_email" name="email">
                 <input type="submit" id="subscribe_btn" value="Subscribe">
               </form>
+              <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>
             </div>
             <div class="footer-info"></div>
           </div>
@@ -84,6 +85,7 @@
                 <input type="email" required name="email">
                 <input type="submit" value="Subscribe">
               </form>
+              <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>
             </div>
           </div>
         </div>
@@ -207,6 +209,8 @@
       `);
     }
 
+    $('.success-nws').css('display', 'none');
+
     $('.newsletter-form').on('submit',(e)=>{
       e.preventDefault();
       var form = $('.newsletter-form').serializeArray();
@@ -226,7 +230,12 @@
           success: function(data){
             let res = JSON.parse(data);
             if(res.status == 200){
-              $('#exampleModalCenter').modal('show');
+              $('.newsletter-form')[0].reset();
+              // $('#exampleModalCenter').modal('show');
+              $('.success-nws').css('display', 'block');
+              setTimeout(() => {
+                $('.success-nws').fadeOut();
+              }, 2000);
             }
           },
           error: function() { alert("Error posting feed."); }
