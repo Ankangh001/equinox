@@ -151,7 +151,9 @@
    * Mobile nav toggle
    */
   on('click', '.mobile-nav-toggle', function (e) {
+    window.scrollTo(0, 0);
     select('#navbar').classList.toggle('navbar-mobile')
+    select('body').classList.toggle('overflow-hidden')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
   })
