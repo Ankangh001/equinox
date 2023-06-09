@@ -3212,6 +3212,7 @@ iframe.mob-tuto{
 	}
 	.why-us {
 		padding: 0;
+		margin-top: 2rem;
 	}
 	.section-title.text-center {
 		padding-bottom: 1rem;
@@ -3312,6 +3313,7 @@ iframe.mob-tuto{
 	#hero{
 		height: 100%;
 		padding-top: 6rem;
+		margin-bottom: 2rem;
 	}
 	#hero .container {
 		padding: 0;
