@@ -85,17 +85,18 @@ $this->load->view('includes/header');
 			
 			<div class="row" style="margin-top:6rem !important">
 				<div class="col-lg-8 m-auto mt-lg-0">
-					<form action="forms/contact.php" method="post" role="form" class="php-email-form">
+					<form action="" id="contactForm" class="php-email-form">
 						<div class="row">
 							<div class="col-md-6 form-group">
-								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+								<input type="hidden" name="type" id="type" value="contact">
 							</div>
 							<div class="col-md-6 form-group mt-3 mt-md-0">
-								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
 							</div>
 						</div>
 						<div class="form-group mt-3">
-							<select class="form-control" name="complaintType" id="">
+							<select class="form-control" name="complaintType" id="ticket-type">
 								<option selected>Select Type of Ticket</option>
 								<option value="General Question">General Question</option>
 								<option value="Payments & Orders">Payments & Orders</option>
@@ -105,16 +106,13 @@ $this->load->view('includes/header');
 							</select>
 						</div>
 						<div class="form-group mt-3">
-							<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-								required="">
+							<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
 						</div>
 						<div class="form-group mt-3">
-							<textarea class="form-control" name="message" rows="8" placeholder="Description"
-								required=""></textarea>
+							<textarea class="form-control" name="message" rows="8" placeholder="Description" required></textarea>
 						</div>
 						<div class="my-3">
 							<div class="loading">Loading</div>
-							<div class="error-message"></div>
 							<div class="sent-message">Your complaint has been sent. Thank you!</div>
 						</div>
 						<div class="text-center"><button type="submit">Submit</button></div>
@@ -129,3 +127,33 @@ $this->load->view('includes/header');
 <?php
 $this->load->view('includes/footer');
 ?>
+
+<script>
+	$('.success-msg').css('display', 'none');
+
+	$('form').on('submit',(e)=>{
+	e.preventDefault();
+	var form = $('form').serializeArray();
+	$.ajax({
+		type: "POST",
+		url: "<?php echo base_url('ContactForm'); ?>",
+		data: form,
+		dataType: "html",
+		beforeSend: function(){
+			$('.loading').fadeIn();
+		},
+		success: function(data){
+			let res = JSON.parse(data);
+			if(res.status == 200){
+			$('form')[0].reset();
+			$('.loading').fadeOut();
+			$('.sent-message').fadeIn();
+			setTimeout(() => {
+				$('.sent-message').fadeOut();
+			}, 2000);
+			}
+		},
+		error: function() { alert("Error posting feed."); }
+	});
+	});
+</script>
