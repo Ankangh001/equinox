@@ -65,7 +65,7 @@ $this->load->view('includes/header');
 							</a>
 						</div>
 					</div>
-					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="24px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
+					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="40px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
 						<a href="https://www.trustpilot.com/review/equinoxtradingcapital.com" target="_blank" rel="noopener">Trustpilot</a>
 					</div>
 				</div>
