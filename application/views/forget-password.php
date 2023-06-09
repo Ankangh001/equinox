@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/css/pages/page-auth.css" />
 <!-- Helpers -->
 <script src="<?=base_url('assets/user/')?>assets/vendor/js/helpers.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
 <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
 
 </head>

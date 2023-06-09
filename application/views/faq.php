@@ -31,7 +31,7 @@ $this->load->view('includes/header');
           <h2>Get yourself clarified</h2>
         </div>
         <div class="d-flex m-5" id="myFilter">
-            <input type="text" style="width:inherit"  class="col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Faq">
+            <input type="text" style="width:inherit"  class="col-lg-3 form-control" id="accordion_search_bar" placeholder="Search for Faq">
             <button class="btn search">
                 <i class="fas fa-search text-dark"></i>
             </button>
@@ -84,19 +84,7 @@ $this->load->view('includes/header');
             <!-- normal  -->
 			<div role="tabpanel" class="tab-pane fade text-dark show in active" id="profile">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <!-- <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">How to start?</button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Before you decide to accept the evaluation, we want to make sure that you know what you are up against.
-                                After you sign up, we will offer you a <strong style= "color:#0d6efd">Free Trial</strong> where you can try trading as if you were in the evaluation, and this is completely for free. In the <strong style= "color:#0d6efd">Free Trial</strong>, you will also have the possibility to test our tools, applications and you will also receive a shortened analysis version of your performance in the Free Trial.
-                                Once you are ready to accept the evaluation, you can configure your account here or from the Client Area.
-                                <br><br>Please note you can’t receive our account based on your performance in the <strong style= "color:#0d6efd">Free Trial</strong> or any other external track record. Our evaluation process is designed in a way to provide us with sufficient grounds to ascertain your trading skills and allow you to trade our live account.
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="one">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">What is Equinox Trading Capital?</button>
                         </h2>
@@ -110,7 +98,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="two">
                         <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Who can join Equinox Trading Capital?</button>
                         </h2>
@@ -119,9 +107,7 @@ $this->load->view('includes/header');
                             Please note that Equinox Trading Capital does not provide services to persons listed on sanction lists, persons with criminal records related to financial crime or terrorism, and to persons previously banned because of breach of contract.</div>
                         </div>
                     </div>
-
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="three">
                         <h2 class="accordion-header" id="flush-headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">Why should you join Equinox Trading Capital?</button>
                         </h2>
@@ -157,21 +143,20 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
                 </div>
 			</div>
             <!-- normal  -->
 
             <!-- evaluation -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="buzz">
-                <div class="accordion accordion-flush" id="accordionFlushExample2">
+                <div class="accordion accordion-flush" id="accordionFlushExample2eee">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne1" aria-expanded="false" aria-controls="flush-collapseOne1">
                             How do i become an Equinox Trading Capital trader?
                         </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
+                        <div id="flush-collapseOne1" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2eee">
                             <div class="accordion-body">
                                 In order to become an Equinox Trading Capital trader, you will have to pass our <strong style= "color:#0d6efd">2-step Evaluation</strong> Process.<br/><br/>
                                 <ul>
@@ -196,21 +181,21 @@ $this->load->view('includes/header');
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo1" aria-expanded="false" aria-controls="flush-collapseTwo1">
                             How long does it take to become an Equinox Trading Capital trader?
                         </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
+                        <div id="flush-collapseTwo1" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2eee">
                         <div class="accordion-body">There is no minimum requirement to pass the evaluation stage. You don’t need to wait for the entire duration of the Evaluation Process. All in all, you can be managing your live account on the same day.</div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree1" aria-expanded="false" aria-controls="flush-collapseThree1">
                             I have successfully passed the phase 1, now what?
                         </button>
                         </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
+                        <div id="flush-collapseThree1" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2eee">
                             <div class="accordion-body">
                                 After you have passed all the trading objectives in the <strong style= "color:#0d6efd">phase 1</strong>, 
                                 you will see a notification in your <strong style= "color:#0d6efd">Account Metrics</strong> informing you about your success, 
@@ -222,11 +207,11 @@ $this->load->view('includes/header');
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour1" aria-expanded="false" aria-controls="flush-collapseFour1">
                             If i breach the rules, do i get a second chance?
                         </button>
                         </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample2">
+                        <div id="flush-collapseFour1" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample2eee">
                             <div class="accordion-body">
                             If you happen to breach any of the trading objectives, that particular account will be automatically invalidated and loses eligibility to continue in the <strong style= "color:#0d6efd">Evaluation Course</strong>.
                             <br/>If the breach happens on your live account, the corresponding live account agreement will be terminated. You can always try again from scratch and order a <strong style= "color:#0d6efd">brand new evaluation</strong> if you wish to become our funded trader. 
@@ -241,7 +226,7 @@ $this->load->view('includes/header');
             <!-- funded -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="funded">
                 <div class="accordion accordion-flush" id="accordionFunudedhExample2">
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="four">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             What is the legal relationship between a trader and Equinox Trading Capital during the account management?
@@ -254,7 +239,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="five">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                             How much capital will i work with?
@@ -276,7 +261,7 @@ $this->load->view('includes/header');
                         </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="six">
                         <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                         How do I withdraw my profits?
@@ -294,8 +279,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="seven">
                         <h2 class="accordion-header" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                             Do i have to tax my income?
@@ -314,7 +298,7 @@ $this->load->view('includes/header');
              <!-- platforms -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="platforms">
                 <div class="accordion accordion-flush" id="accordionPlatformExample2">
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="eight">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#platform-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             What are the account specifications?
@@ -329,7 +313,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="nine">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#platform-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                             Which platform can i use for trading?
@@ -347,27 +331,27 @@ $this->load->view('includes/header');
 
             <!-- Orders & Billing -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="orders">
-                <div class="accordion accordion-flush" id="accordionFunudedhExample2">
-                    <div class="accordion-item">
+                <div class="accordion accordion-flush" id="accordionFunudedhExample3">
+                    <div class="accordion-item" id="ten">
                         <h2 class="accordion-header" id="orders-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         Do we charge any other fees? Are the fees recurrent?
                         </button>
                         </h2>
-                        <div id="order-collapseOne" class="accordion-collapse collapse" aria-labelledby="orders-headingOne" data-bs-parent="#accordionFunudedhExample2">
+                        <div id="order-collapseOne" class="accordion-collapse collapse" aria-labelledby="orders-headingOne" data-bs-parent="#accordionFunudedhExample3">
                             <div class="accordion-body">
                             No, we don’t charge any additional or hidden fees. The fee for the evaluation covers it all. 
                              There are absolutely no recurring fees with us. Moreover, your fee will be reimbursed to you with the first profit split on the live account. 
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="eleven">
                         <h2 class="accordion-header" id="orders-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         I paid for my evaluation, when will i get the account?
                         </button>
                         </h2>
-                        <div id="order-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionFunudedhExample2">
+                        <div id="order-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionFunudedhExample3">
                         <div class="accordion-body">
                             We start processing your evaluation account as soon as we receive the payment. We normally process your evaluation within just a few hours.
                             When we create your trading account, you will receive your evaluation notification by email, and your login credentials to the trading platform can be found directly in your client area. Please monitor your mailbox, including spam/junk folders.
@@ -375,13 +359,13 @@ $this->load->view('includes/header');
                         </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="twelve">
                         <h2 class="accordion-header" id="orders-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                             Why is there a fee?
                         </button>
                         </h2>
-                        <div id="order-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionFunudedhExample2">
+                        <div id="order-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionFunudedhExample3">
                             <div class="accordion-body">
                                 The fee mainly serves as a trader’s commitment to treat the account with the utmost care and responsibility.A trader has something in the game and the psychology is working. 
                                 Also, the fee is just a marginal percentage compared to the size of the live account that you will receive after succeeding in the evaluation. In other words, the fee is a key towards the live account and an opportunity to gain financial independence.
@@ -392,14 +376,13 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="thirteen">
                         <h2 class="accordion-header" id="orders-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                             How many accounts can I have?
                         </button>
                         </h2>
-                        <div id="order-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionFunudedhExample2">
+                        <div id="order-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionFunudedhExample3">
                             <div class="accordion-body">
                             We do not place any limit on the number of trading accounts you can have in the evaluation phase. However, we have a maximum capital allocation of <strong style= "color:#0d6efd">$500,000</strong> (prior to scaling) per trader or strategy, at any given time for any live account.
                             These limits are in place due to risk mitigation & diversification as we don’t want to allocate a big portion of our investment on one card.
@@ -417,21 +400,6 @@ $this->load->view('includes/header');
             <!-- servicess -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="services">
                 <div class="accordion accordion-flush" id="accordionServicesExample2">
-                    <!-- <div class="accordion-item">
-                        <h2 class="accordion-header" id="orders-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        How about the free trial?
-                        </button>
-                        </h2>
-                        <div id="services-collapseOne" class="accordion-collapse collapse" aria-labelledby="orders-headingOne" data-bs-parent="#accordionServicesExample2">
-                            <div class="accordion-body">
-                                Our free trial is a shortened version of the evaluation so you can get used to trading with us. The free trials only serve our new traders to practise their trading skills to see if they have what it takes to follow and respect our trading rules.
-                                If you are successful in the Free Trial, you have the best chances to succeed in the full evaluation as well. This should encourage you to start your journey to become one of our traders.
-                                <br><br> Please note that free trials don’t give you any eligibility to automatically secure your live account. Although your results might be good in the free trial, you still need to go through the evaluation process to become one of our traders.
-                                Our free trials are extremely popular and we have literally thousands of accounts taken every day. To accommodate the demand, only one free trial per trader is allowed at a time
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="accordion-item d-none">
                         <h2 class="accordion-header" id="orders-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -439,22 +407,22 @@ $this->load->view('includes/header');
                         </button>
                         </h2>
                         <div id="services-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionServicesExample2">
-                        <div class="accordion-body">
-                            This term is included in our T&Cs as well as in the live account agreement. Trading must be legitimate and traders must not use practices that contradict the functioning of a real market. 
-                            All strategies are allowed, provided they don’t interfere with legitimate trading or exploit practices that are intended to cause us any harm or misuse the evaluation process in any way.
-                            Trading styles deemed malicious include, but are not limited to:
-                            <br/><br/>
-                            • Exploiting errors or latency in the pricing and/or platform(s) provided by the Broker<br/>
-                            • Utilizing non-public and/or insider information<br/>
-                            • Front-running of trades placed elsewhere<br/>
-                            • Trading in any way that jeopardizes the relationship Prop Account has with a broker or may result in the canceling of trades<br/>
-                            • Trading in any way that creates regulatory issues for the Broker<br/>
-                            • Utilizing any third-party strategy, off-the-shelf strategy or one marketed to pass assessment accounts<br/>
-                            • Utilizing one strategy to pass an assessment and then utilizing a different strategy in a funded account.<br/>
-                        </div>
+                            <div class="accordion-body">
+                                This term is included in our T&Cs as well as in the live account agreement. Trading must be legitimate and traders must not use practices that contradict the functioning of a real market. 
+                                All strategies are allowed, provided they don’t interfere with legitimate trading or exploit practices that are intended to cause us any harm or misuse the evaluation process in any way.
+                                Trading styles deemed malicious include, but are not limited to:
+                                <br/><br/>
+                                • Exploiting errors or latency in the pricing and/or platform(s) provided by the Broker<br/>
+                                • Utilizing non-public and/or insider information<br/>
+                                • Front-running of trades placed elsewhere<br/>
+                                • Trading in any way that jeopardizes the relationship Prop Account has with a broker or may result in the canceling of trades<br/>
+                                • Trading in any way that creates regulatory issues for the Broker<br/>
+                                • Utilizing any third-party strategy, off-the-shelf strategy or one marketed to pass assessment accounts<br/>
+                                • Utilizing one strategy to pass an assessment and then utilizing a different strategy in a funded account.<br/>
+                            </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="fourteen">
                         <h2 class="accordion-header" id="orders-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                         Can we use malicious trading strategies?
@@ -471,8 +439,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="fifteen">
                         <h2 class="accordion-header" id="orders-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapse23456" aria-expanded="false" aria-controls="flush-collapseThree">
                         Can we use expert advisors?
@@ -484,8 +451,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="sixteen">
                         <h2 class="accordion-header" id="orders-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                         Can i trade news?
@@ -497,8 +463,7 @@ $this->load->view('includes/header');
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
+                    <div class="accordion-item" id="seventeen">
                         <h2 class="accordion-header" id="orders-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                         Which instruments can i trade?
@@ -522,3 +487,69 @@ $this->load->view('includes/header');
 <?php
 $this->load->view('includes/footer');
 ?>
+<script>
+    (function(){
+        var searchTerm, panelContainerId;
+        // Create a new contains that is case insensitive
+        jQuery.expr[':'].containsCaseInsensitive = function (n, i, m) {
+            return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+        };
+        
+        jQuery('#accordion_search_bar').on('change keyup paste click', function () {
+            searchTerm = jQuery(this).val();
+            if (searchTerm.length >= 3) {
+                //new here
+                jQuery('#accordionFlushExample > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+
+                //evaluation process
+                jQuery('#accordionFlushExample2eee > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+
+                //funded
+                jQuery('#accordionFunudedhExample2 > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+
+                // platform 
+                jQuery('#accordionPlatformExample2 > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+
+                //orders
+                jQuery('#accordionFunudedhExample3 > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+
+                //others
+                jQuery('#accordionServicesExample2 > .accordion-item').each(function () {
+                    panelContainerId = '#' + jQuery(this).attr('id');
+                    jQuery(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                    jQuery(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show().find(".collapse").collapse("show");
+                    console.log(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')');
+                });
+            }
+            else {
+                jQuery(".accordion-item").show();
+                jQuery(".accordion-item").find(".collapse").collapse("hide");
+            }
+        });
+  }());
+</script>
