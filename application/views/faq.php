@@ -84,7 +84,7 @@ $this->load->view('includes/header');
             <!-- normal  -->
 			<div role="tabpanel" class="tab-pane fade text-dark show in active" id="profile">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">How to start?</button>
                         </h2>
@@ -95,7 +95,7 @@ $this->load->view('includes/header');
                                 <br><br>Please note you can’t receive our account based on your performance in the <strong style= "color:#0d6efd">Free Trial</strong> or any other external track record. Our evaluation process is designed in a way to provide us with sufficient grounds to ascertain your trading skills and allow you to trade our live account.
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">What is Equinox Trading Capital?</button>
@@ -139,7 +139,7 @@ $this->load->view('includes/header');
                                     </ul>
                                     <br><br>
                                 It is difficult to make a living as a trader. With Equinox Trading Capital, you can manage the live account with an initial balance of up to <strong style= "color:#0d6efd">$500,000</strong>. 
-                                If you generate profits on the live account, Equinox Trading Capital will keep from <strong style= "color:#0d6efd">10%</strong> to <strong style= "color:#0d6efd">20%</strong> as the profit split, and you will be rewarded with up to <strong style= "color:#0d6efd">90%</strong> of achieved profits. 
+                                If you generate profits on the live account, Equinox Trading Capital will keep from <strong style= "color:#0d6efd">10%</strong> to <strong style= "color:#0d6efd">25%</strong> as the profit split, and you will be rewarded with up to <strong style= "color:#0d6efd">90%</strong> of achieved profits. 
                                 However, it needs to be understood that this is the best-case scenario and similarly, traders might face periods when they don’t earn any profits. 
                                 In general, trading is a risky business. Another benefit of trading for Equinox Trading Capital is that you won’t be responsible for any losses if any. 
                                 In case things go wrong, all losses on the live account are covered by Equinox Trading Capital. You don’t need to fear losing if you literally have nothing to lose.
@@ -213,8 +213,8 @@ $this->load->view('includes/header');
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
                             <div class="accordion-body">
                                 After you have passed all the trading objectives in the <strong style= "color:#0d6efd">phase 1</strong>, 
-                                you will see a notification in your <strong style= "color:#0d6efd">Account MetriX</strong> informing you about your success, 
-                                and you don’t need to trade the account any more once your <strong style= "color:#0d6efd">trading</strong> objectives are marked as passed. 
+                                you will see a notification in your <strong style= "color:#0d6efd">Account Metrics</strong> informing you about your success, 
+                                and you don’t need to trade the account any more once your trading objectives are marked as passed. 
                                 You will be automatically alerted that you have passed your phase and within a few hours, we will then send you the new account <strong style= "color:#0d6efd">login credentials</strong> for the phase 2 stage.
                             </div>
                         </div>
@@ -284,12 +284,12 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="funded-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFunudedhExample2">
                             <div class="accordion-body">
-                                The profit split on the live account is done on a <strong style= "color:#0d6efd">bi-weekly basis.</strong>
-                                The payouts are processed within 1 business day upon confirming the invoice. 
-                                You can receive your profits by deel or cryptocurrencies. We don’t charge any commissions for withdrawals.
+                                The profit split on the live account is done on a <strong style= "color:#0d6efd">monthly basis.</strong>
+                                The payouts are processed within 3 business days upon confirming the invoice. 
+                                You can receive your profits by Bank transfer, Crypto or Paypal. We don’t charge any commissions for withdrawals.
                                 You don’t need to score any minimum profit to receive up to a <strong style= "color:#0d6efd">90%</strong> Profit Split. 
-                                Whatever amount of profit you generate, that’s what we split by <strong style= "color:#0d6efd">80/20</strong> (<strong style= "color:#0d6efd">90/10</strong> on the scale-up plan) and pay you out.
-                                If you meet the conditions of our scaling plan, not only do we increase the balance of your live account by <strong style= "color:#0d6efd">50%</strong>, but the payout ratio will also automatically change to a staggering <strong style= "color:#0d6efd">90/10</strong>
+                                Whatever amount of profit you generate, that’s what we split by <strong style= "color:#0d6efd">75/25</strong> and pay you out.
+                                If you meet the conditions of our scaling plan, not only do we increase the balance of your live account by <strong style= "color:#0d6efd">50%</strong>, but the payout ratio will also automatically change by a staggering <strong style= "color:#0d6efd">5%</strong>.
                                 If you prefer to keep your <strong style= "color:#0d6efd">profit split</strong> on account to grow and accordingly build up your balance and drawdown buffer, you can do so.
                             </div>
                         </div>
@@ -386,7 +386,7 @@ $this->load->view('includes/header');
                                 The fee mainly serves as a trader’s commitment to treat the account with the utmost care and responsibility.A trader has something in the game and the psychology is working. 
                                 Also, the fee is just a marginal percentage compared to the size of the live account that you will receive after succeeding in the evaluation. In other words, the fee is a key towards the live account and an opportunity to gain financial independence.
                                 The good news is that you cannot lose more than this fee as any potential losses on the live account are covered by us. On top of that, the fee is always refunded back to the trader with his/her first profit split from the live account.
-                                <br><br> The fee also covers the use of all our unique applications, such as the Web Terminal, Advanced Charts, Market Analysis, Calculators, Risk Management Application, Trade Management Application, Account Analysis, Account MetriX and Trading Journal.
+                                <br><br> The fee also covers the use of all our unique applications, such as the Web Terminal, Advanced Charts, Market Analysis, Calculators, Risk Management Application, Trade Management Application, Account Analysis, Account Metrics and Trading Journal.
                                 Another purpose of the fee is to filter out only the serious traders from those who just keep on trying. We are looking for traders who are experienced and can generate profits. Our capacities and resources are limited, and we simply can’t cater for all the traders out there.
                                 That’s why we take on board only those who are serious, committed and responsible. Our programme is a highly valued service we offer, and therefore it is adequately priced.
                             </div>
@@ -417,7 +417,7 @@ $this->load->view('includes/header');
             <!-- servicess -->
 			<div role="tabpanel" class="tab-pane fade text-dark show" id="services">
                 <div class="accordion accordion-flush" id="accordionServicesExample2">
-                    <div class="accordion-item">
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header" id="orders-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         How about the free trial?
@@ -431,7 +431,7 @@ $this->load->view('includes/header');
                                 Our free trials are extremely popular and we have literally thousands of accounts taken every day. To accommodate the demand, only one free trial per trader is allowed at a time
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="accordion-item d-none">
                         <h2 class="accordion-header" id="orders-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -480,12 +480,7 @@ $this->load->view('includes/header');
                         </h2>
                         <div id="services-collapse23456" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionServicesExample2">
                             <div class="accordion-body">
-                                <strong style= "color:#0d6efd">Yes</strong>, you can trade using an Expert Advisor. We allow all malicious expert advisors such as:
-                                <br/><br/>
-                                HFT<br/>
-                                Grid / Martingale<br/>
-                                Arbitrage<br/>
-                                Tick scalping<br/>
+                                <strong style= "color:#0d6efd">Yes</strong>, you can trade using an Expert Advisor. 
                             </div>
                         </div>
                     </div>
