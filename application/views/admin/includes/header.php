@@ -208,6 +208,24 @@
                 <div>Help</div>
               </a>
             </li>
+
+            <!-- contacts -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'enquiries') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>user-enquiries" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div>Enquiries</div>
+              </a>
+            </li>
+
+            <!-- complaints -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'complaints') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>user-complaints" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bulb"></i>
+                <div>Complaints</div>
+              </a>
+            </li>
+
+
           </ul>
         </aside>
         <!-- / Menu -->

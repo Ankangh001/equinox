@@ -79,7 +79,7 @@
                 <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
                 <br>
                 <form class="newsletter-form" method="post" >
-                  <input required type="email" id="user_email" name="email">
+                  <input required type="email" autocomplete="true"  id="user_email" name="email">
                   <input type="submit" id="subscribe_btn" value="Subscribe">
                 </form>
                 <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>
@@ -187,7 +187,7 @@
               <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
               <br>
               <form class="newsletter-form" method="post" >
-                <input required type="email" id="user_email" name="email">
+                <input required type="email" id="user_email" autocomplete="true"  name="email">
                 <input type="submit" id="subscribe_btn" value="Subscribe">
               </form>
               <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>

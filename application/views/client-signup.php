@@ -390,7 +390,7 @@ $this->load->view('includes/header');
         </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
     <script>
         function validateUser() {
             let email = $("#email").val();
@@ -431,7 +431,6 @@ $this->load->view('includes/header');
 </html>
 
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
 <script>
 $(document).ready(function() {
   $('#myForm').submit(function(e) {
