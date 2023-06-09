@@ -27,7 +27,7 @@
             <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
               <br>
               <form class="newsletter-form" method="post" >
-                <input type="email" id="user_email" name="email">
+                <input required type="email" id="user_email" name="email">
                 <input type="submit" id="subscribe_btn" value="Subscribe">
               </form>
             </div>
@@ -80,8 +80,9 @@
               <h4>Stay Updated</h4>
               <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
               <br>
-              <form class="mb-3" method="post" >
-                <input type="email" name="email"><input type="submit" value="Subscribe">
+              <form class="mb-3 newsletter-form" method="post" >
+                <input type="email" required name="email">
+                <input type="submit" value="Subscribe">
               </form>
             </div>
           </div>
@@ -117,12 +118,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <img id="eqLogoWhite" class="hiddden" src="<?= base_url('assets/') ?>img/equinoxLogo.png" />
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <img id="eqLogoWhite" width="20%" class="hiddden" src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" />
+          <!-- <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </button> -->
         </div>
-        <div class="modal-body text-dark">Thank You for subscribing Equinox Trading Capital Limited</div>
+        <div class="modal-body text-dark text-center">Thank You for subscribing Equinox Trading Capital Limited</div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>
