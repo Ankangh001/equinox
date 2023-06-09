@@ -49,13 +49,13 @@ $this->load->view('includes/header');
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
-						<div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;">
+						<!-- <div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-instagram"></i>
 							</a>
-						</div>
+						</div> -->
 						<div class="btn-box p-1 text-center bg-dark" style="background: #177bf2 !important;">
-							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
+							<a href="https://www.facebook.com/profile.php?id=100093223732191&mibextid=LQQJ4d" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-facebook"></i>
 							</a>
 						</div>
