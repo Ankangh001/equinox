@@ -34,7 +34,7 @@ $this->load->view('includes/header');
 				</div> -->
 
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn">
+					<a href="client-signup" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
 					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
@@ -241,7 +241,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right text-right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -332,7 +332,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -1266,7 +1266,7 @@ $this->load->view('includes/header');
     </section>
 
 	<!-- ======= Game Section ======= -->
-	<section id="about" class="game payout2">
+	<section id="about" class="game hidden payout2">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1291,7 +1291,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	 <!-- ======= About Section ======= -->
-	<section id="about" class="payout">
+	<section id="about" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
@@ -1319,7 +1319,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	<!-- ======= After Payout ======= -->
-	<section id="about" class="payout2">
+	<section id="about" class="payout">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1349,7 +1349,7 @@ $this->load->view('includes/header');
             <p class=" mb-3">Find out how you can benefit with Equinox Trading Capital.</p>
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+					<button class="nav-link active" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
 						<span>Market Watch</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
@@ -1358,7 +1358,7 @@ $this->load->view('includes/header');
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
 						<span>Economic Calendar</span>
 					</button>
-					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+					<button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
 						<span>Risk Manager</span>
 					</button>
 					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
@@ -1370,7 +1370,7 @@ $this->load->view('includes/header');
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<div class="row py-5">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>etc_risk_manager.png" alt="" srcset="">
@@ -1409,7 +1409,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+				<div class="tab-pane fade show active" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
 					<div class="row py-5 m-auto" style="width:95%;">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>market-watch.png" alt="" srcset="">
@@ -1486,7 +1486,7 @@ $this->load->view('includes/header');
     </section><!-- ========= Icons arund you ======== -->	
 
 	<!-- ======= Key Benefits ======= -->
-    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
+    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: #ffffff !important;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">

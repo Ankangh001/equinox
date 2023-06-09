@@ -2,7 +2,7 @@
 <div class="rows m-5 g-funded-container">
   <div class="col-lg-10 m-auto d-flex justify-content-center align-items-center get-funded" style="background:transparent !important">
     <p class="f-25">Join Equinox Trading Capital on an exciting adventure!</p>  
-    <a href="client-login" class="btn btn-primary m-auto gradient-btn g-f-btn">Get Funded</a>
+    <a href="client-signup" class="btn btn-primary m-auto gradient-btn g-f-btn">Get Funded</a>
   </div>
 </div>
   <footer class="for-pc" id="footer">
