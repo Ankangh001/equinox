@@ -215,7 +215,6 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
   <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
@@ -227,43 +226,13 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <!-- <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> -->
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+   <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js?v=1"></script>
-<script>$(function(){
-      var calcNewYear = setInterval(function(){
-        date_future = new Date('2023-06-22');
-        date_now = new Date();
-
-        seconds = Math.floor((date_future - (date_now))/1000);
-        minutes = Math.floor(seconds/60);
-        hours = Math.floor(minutes/60);
-        days = Math.floor(hours/24);
-        
-        hours = hours-(days*24);
-        minutes = minutes-(days*24*60)-(hours*60);
-        seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
-
-        $("#day").text(days);
-        $("#hours").text(hours);
-        $("#min").text(minutes);
-        $("#sec").text(seconds);
-      },1000);
-	});
-
-
-  // function playIframe(id, src) {
-  //   let container = '#iframe'+id;
-  //   $(container).html('');
-  //   $(container).append(`
-  //   <iframe width="90%" style="border-radius:20px" height="450px" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  //   `);
-  // }
-
-
+  <script>
     // Disable right-click
     // document.addEventListener('contextmenu', (e) => e.preventDefault());
 
