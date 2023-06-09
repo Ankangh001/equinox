@@ -3530,3 +3530,7 @@ iframe.mob-tuto{
 .btn-box:hover {
     box-shadow: 2px 3px 4px #000000;
 }
+
+.color-000{
+	color: #000 !important;
+}
