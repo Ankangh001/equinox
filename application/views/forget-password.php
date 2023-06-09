@@ -25,6 +25,9 @@
 <link rel="stylesheet" href="<?=base_url('assets/user/')?>assets/vendor/css/pages/page-auth.css" />
 <!-- Helpers -->
 <script src="<?=base_url('assets/user/')?>assets/vendor/js/helpers.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
+
 </head>
 
 <body>
@@ -42,33 +45,15 @@
                     </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-3 text-center">Sign In to your account</h4>
+                    <h4 class="mb-3 text-center">Reset your account</h4>
                     <p class="mb-5 text-center">start the adventure</p>
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
                     </div>
-                    <div class="mb-3 form-password-toggle">
-                        <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Password</label>
-                        <a href="<?=base_url('client-forget-password')?>">
-                            <small>Forgot Password?</small>
-                        </a>
-                        </div>
-                        <div class="input-group input-group-merge">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
-                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                        </div>
-                    </div>
                     <div class="mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember-me" />
-                            <label class="form-check-label" for="remember-me"> Remember Me </label>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign in</button>
+                        <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Reset</button>
                     </div>
                     <p class="text-center">
                     <span>New on our platform?</span>
@@ -82,27 +67,19 @@
         </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script>
         function validateUser() {
             let email = $("#email").val();
-            let password = $("#password").val();
             if (email == "") {
                 $.notify("Please enter email");
                 $("#email").focus();
                 return;
             }
-            if (password == "") {
-                $.notify("Please enter password");
-                $("#password").focus();
-                return;
-            }
             $.ajax({
                 type: "post",
-                url: "Auth/login",
+                url: "<?=base_url('client-forget-password')?>",
                 data: {
                     "email": email,
-                    "password": password,
                     "type":"Client"
                 },
                 success: function(response) {
