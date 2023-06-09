@@ -152,11 +152,11 @@
    */
   on('click', '.mobile-nav-toggle', function (e) {
     // window.scrollTo(0, 0);
-    $('.navbar-mobile a').addClass('color-000')
-    select('#navbar').classList.toggle('navbar-mobile')
-    select('body').classList.toggle('overflow-hidden')
+    select('#navbar').classList.toggle('navbar-mobile');
+    select('body').classList.toggle('overflow-hidden');
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
+    $('.navbar-mobile a').addClass('color-000');
   })
 
   /**
