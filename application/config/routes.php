@@ -105,7 +105,7 @@ $route['admin/mt5-webterminal'] = 'admin/webterminal';
 $route['admin/advanced-chart'] = 'admin/advance';
 $route['admin/clculators'] = 'admin/calculators';
 $route['admin/user-enquiries'] = 'admin/enquiries';
-$route['admin/user-complaints'] = 'admin/complaints';
+$route['admin/user-complaints'] = 'admin/enquiries/complaints';
 //-------------------- End Admin dashboard ------------------
 
 
