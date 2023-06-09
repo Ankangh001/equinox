@@ -121,7 +121,7 @@
                 <strong>About Us</strong>
                 <ul>
                   <li class="ml-3" style="color:#ffffff90"><a href="mailto:support@equinoxtradingcapital.com">support@equinoxtradingcapital.com</a></li>
-                  <li><a class="ml-3" style="color:#ffffff90" href="#">Live Chat</a></li>
+                  <li><a class="ml-3" style="color:#ffffff90" href="#">Support</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="about">Global Reach</a></li>
                   <li><a class="ml-3" style="color:#ffffff90" href="complaints">Complaints</a></li>
                 </ul>

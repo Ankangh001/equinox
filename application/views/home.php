@@ -10,7 +10,7 @@ $this->load->view('includes/header');
 		<div class="row">
         	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
-				<p class="trade-cap">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
+				<p class="trade-cap">Trade our capital and keep upto 90% of profits. We cover the losses.</p>
 				
 				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
 
@@ -37,7 +37,7 @@ $this->load->view('includes/header');
 					<a href="client-signup" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
-					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
+					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto learn-more" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
 				</div>
 
 				<div class="btn2" style="width:80%">

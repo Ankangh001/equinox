@@ -3076,6 +3076,7 @@ button.game-btn {
 	margin: 1rem 0 -15px 34px; 
 	font-size:16px; 
 	color:#000000;
+	width: 60%;
 }
 
 	
@@ -3086,20 +3087,24 @@ iframe.mob-tuto{
 
 /* mobile optimization */
 @media (max-width: 768px) {
+	.learn-more{
+		font-size: 12px !important;
+	}
 	#hero .btns {
 		margin: 14px auto !important;
 		width: 100% !important;
 		justify-content: space-evenly !important;
 	}
 	#hero h1 {
-		font-size: 40px;
-		line-height: 38px;
+		font-size: 44px;
+		line-height: 42px;
 		margin: 0;
 	}
 	.trade-cap{
 		margin: 1rem auto; 
-		font-size:14px; 
+		font-size:12px; 
 		color:#000000;
+		width: 70%;
 	}
 	.f-25{
 		font-size: 16px;
@@ -3109,7 +3114,7 @@ iframe.mob-tuto{
 	.g-f-btn{
 		border-radius: 30px;
 		font-size: 18px;
-		padding: 0.2rem 0.5rem !important;
+		padding: 0.2rem 0.9rem !important;
 	}
 	.get-funded {
 		padding: 12px !important;
@@ -3119,7 +3124,7 @@ iframe.mob-tuto{
 		justify-content: center !important;
 		text-align: center;
 		align-items: center !important;
-		box-shadow: 0 0 8px #00000080;
+		box-shadow: 3px 4px 8px #00000080;
 	}
 	.g-funded-container{
 		width: 90%;
@@ -3194,7 +3199,7 @@ iframe.mob-tuto{
 	}
 	ul.nav.nav-tabs.justify-content-center.mb-5.border-none {
 		width: 100%;
-		margin-bottom: 2rem !important;
+		margin-bottom: 1rem !important;
 		font-size: 12px !important;
 	}
 	.flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p {
@@ -3206,7 +3211,7 @@ iframe.mob-tuto{
 		align-items: center;
 	}
 	li.nav-item {
-		margin-right: 2rem !important;
+		margin: 10px 16px !important
 	}
 	.pricing-coming-soon span {
 		font-size: 14px;
@@ -3254,7 +3259,7 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 14px !important;
+		font-size: 14px;
 		padding: 3% 3% !important;
 		margin: 1rem 0 !important;
 	}
@@ -3471,6 +3476,7 @@ iframe.mob-tuto{
 	.swiper-slide, .swiper-slide{
 		height: 35vh !important;
 		width: inherit !important;
+		background-color: #fff;
 	}
 	.game{
 		padding-top: 0rem !important;
@@ -3501,6 +3507,7 @@ iframe.mob-tuto{
 	.nav-tabs{
 		border-bottom: none !important;
 		flex-direction: column !important;
+		width: 100%;
 	}
 	#mb-border-none{
 		border-bottom: 0px !important;
