@@ -172,9 +172,9 @@
           <div class="col-lg-2 col-md-3 mobile-50 d-flex flex-column justify-content-center align-items-start text-left footer-links">
             <h4 class="text-left">Market Analysis</h4>
             <ul>
-              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Technical Indicators</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="market-data">Market Sentiments</a></li>
-              <li><a class="ml-3" style="color:#ffffff90" href="market-data">COT Data</a></li>
+              <li><a class="ml-3" style="color:#ffffff90; text-align:left" href="market-data">Technical Indicators</a></li>
+              <li><a class="ml-3" style="color:#ffffff90; text-align:left" href="market-data">Market Sentiments</a></li>
+              <li><a class="ml-3" style="color:#ffffff90; text-align:left" href="market-data">COT Data</a></li>
             </ul>
           </div>
 
