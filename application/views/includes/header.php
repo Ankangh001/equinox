@@ -32,106 +32,85 @@
   <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css?v3=1" rel="stylesheet"> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?v3=1" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
- 
- <script>
-//      function googleTranslateElementInit() {
-//          new google.translate.TranslateElement(
-//              {pageLanguage: 'en'},
-//              'google_translate_element'
-//          );
-//      }
-//      $('.button').click(function() {
-//     $.ajax({
-//         url: "",
-//         context: document.body,
-//         success: function(s,x){
 
-//             $('html[manifest=saveappoffline.appcache]').attr('content', '');
-//                 $(this).html(s);
-//         }
-//     }); 
-// });
- </script>
+  <script type="text/javascript" src= "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- Demo styles -->
+  <style>
+    .VIpgJd-ZVi9od-l4eHX-hSRGPd{
+      display: none !important;
+    }
+    .skiptranslate iframe{
+      display: none !important;
+    }
+    body{
+      position: inherit !important;
+    }
+    .game-btn{
+      border-radius:30px;
+      padding: 6px 4%;
+    }
+    .swiper {
+      width: 80%;
+      height: fit-content;
+    }
 
- <script type="text/javascript" src= "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<!-- Demo styles -->
-<style>
-.VIpgJd-ZVi9od-l4eHX-hSRGPd{
-  display: none !important;
-}
-.skiptranslate iframe{
-  display: none !important;
-}
-body{
-  position: inherit !important;
-}
-.game-btn{
-  border-radius:30px;
-  padding: 6px 4%;
-}
-  .swiper {
-    width: 80%;
-    height: fit-content;
-  }
+    .swiper-slide {
+      border-radius:20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+    } 
 
-  .swiper-slide {
-    border-radius:20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  } 
+    .swiper-scrollbar{
+      display: none;
+    }
 
-  .swiper-scrollbar{
-    display: none;
-  }
+    .swiper-slide:nth-child(1n) {
+      background-color: rgb(206, 17, 17);
+    }
 
-  .swiper-slide:nth-child(1n) {
-    background-color: rgb(206, 17, 17);
-  }
+    .swiper-slide:nth-child(2n) {
+      background-color: rgb(0, 140, 255);
+    }
 
-  .swiper-slide:nth-child(2n) {
-    background-color: rgb(0, 140, 255);
-  }
+    .swiper-slide:nth-child(3n) {
+      background-color: rgb(10, 184, 111);
+    }
 
-  .swiper-slide:nth-child(3n) {
-    background-color: rgb(10, 184, 111);
-  }
+    .swiper-slide:nth-child(4n) {
+      background-color: rgb(211, 122, 7);
+    }
 
-  .swiper-slide:nth-child(4n) {
-    background-color: rgb(211, 122, 7);
-  }
+    .swiper-slide:nth-child(5n) {
+      background-color: rgb(118, 163, 12);
+    }
 
-  .swiper-slide:nth-child(5n) {
-    background-color: rgb(118, 163, 12);
-  }
+    .swiper-slide:nth-child(6n) {
+      background-color: rgb(180, 10, 47);
+    }
 
-  .swiper-slide:nth-child(6n) {
-    background-color: rgb(180, 10, 47);
-  }
+    .swiper-slide:nth-child(7n) {
+      background-color: rgb(35, 99, 19);
+    }
 
-  .swiper-slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
-  }
+    .swiper-slide:nth-child(8n) {
+      background-color: rgb(0, 68, 255);
+    }
 
-  .swiper-slide:nth-child(8n) {
-    background-color: rgb(0, 68, 255);
-  }
+    .swiper-slide:nth-child(9n) {
+      background-color: rgb(218, 12, 218);
+    }
 
-  .swiper-slide:nth-child(9n) {
-    background-color: rgb(218, 12, 218);
-  }
-
-  .swiper-slide:nth-child(10n) {
-    background-color: rgb(54, 94, 77);
-  }
-</style>
-
+    .swiper-slide:nth-child(10n) {
+      background-color: rgb(54, 94, 77);
+    }
+  </style>
 
   <link href="<?= base_url('assets/') ?>css/style.css?v=3" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.2/tailwind.min.css?v3=1" rel="stylesheet">
@@ -140,7 +119,7 @@ body{
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-cente">
+  <header id="header" class="fixed-top d-flex align-items-cente">
     <div style="max-width: 96% !important;" class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
       <h1 class="logo me-auto me-lg-0">
@@ -212,4 +191,4 @@ body{
   </header><!-- End Header -->
   <script>
     const BASEURL= "<?=base_url()?>"; 
-    </script>
+  </script>

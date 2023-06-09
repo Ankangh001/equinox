@@ -107,6 +107,31 @@
     </div>
   </footer><!-- End Footer -->
 
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img id="eqLogoWhite" class="hiddden" src="<?= base_url('assets/') ?>img/equinoxLogo.png" />
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-dark">Thank You for subscribing Equinox Trading Capital Limited</div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
   <div id="preloader"></div>
   <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -200,15 +225,7 @@
           success: function(data){
             let res = JSON.parse(data);
             if(res.status == 200){
-              alert(res.message);
-            //   $('div#loading').hide(200);
-            //   $('.modal').modal('hide');
-            //   $('#modalCenter').modal('show');
-            //   $('.table').DataTable().destroy();
-            //   loadTable();
-            //   setTimeout(() => {
-            //     $('#modalCenter').modal('hide');
-            //   }, 3000);
+              $('#exampleModalCenter').modal('show');
             }
           },
           error: function() { alert("Error posting feed."); }
