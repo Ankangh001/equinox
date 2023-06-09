@@ -26,13 +26,12 @@
           <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-center align-items-center text-center">
             <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
               <br>
-              <form action="" method="post" >
-                <input type="email" name="email"><input type="submit" value="Subscribe">
+              <form class="newsletter-form" method="post" >
+                <input type="email" id="user_email" name="email">
+                <input type="submit" id="subscribe_btn" value="Subscribe">
               </form>
             </div>
-            <div class="footer-info">
-              
-            </div>
+            <div class="footer-info"></div>
           </div>
         </div>
       </div>
@@ -111,7 +110,7 @@
   <div id="preloader"></div>
   <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
@@ -181,6 +180,40 @@
       <iframe width="90%" style="border-radius:20px" height="450px" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       `);
     }
+
+    $('.newsletter-form').on('submit',(e)=>{
+      e.preventDefault();
+      var form = $('.newsletter-form').serializeArray();
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('newsletter'); ?>",
+          data: form,
+          dataType: "html",
+          beforeSend: function(){
+            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            let res = JSON.parse(data);
+            if(res.status == 200){
+              alert(res.message);
+            //   $('div#loading').hide(200);
+            //   $('.modal').modal('hide');
+            //   $('#modalCenter').modal('show');
+            //   $('.table').DataTable().destroy();
+            //   loadTable();
+            //   setTimeout(() => {
+            //     $('#modalCenter').modal('hide');
+            //   }, 3000);
+            }
+          },
+          error: function() { alert("Error posting feed."); }
+      });
+    });
   </script>
 </body>
 
