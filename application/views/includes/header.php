@@ -91,7 +91,7 @@ body{
     display: none;
   }
 
-  .swiper-slide:nth-child(1n) {
+  /* .swiper-slide:nth-child(1n) {
     background-color: rgb(206, 17, 17);
   }
 
@@ -129,7 +129,7 @@ body{
 
   .swiper-slide:nth-child(10n) {
     background-color: rgb(54, 94, 77);
-  }
+  } */
 </style>
 
 

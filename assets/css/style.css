@@ -3213,6 +3213,7 @@ iframe.mob-tuto{
 	}
 	.why-us {
 		padding: 0;
+		margin-top: 2rem;
 	}
 	.section-title.text-center {
 		padding-bottom: 1rem;
@@ -3264,7 +3265,7 @@ iframe.mob-tuto{
 		font-size: 11px !important;
 	}
 	.btn-box {
-		padding: 0px 12px 0px !important;
+		padding: 5px 12px !important;
 		border-radius: 12px;
 		font-size: 1rem !important;
 		text-align: center !important;
@@ -3395,7 +3396,7 @@ iframe.mob-tuto{
 		padding: 0;
 	}
 	.payout2{
-		padding-top: 0 !important;
+		padding-top: 3rem !important;
 	}
 
 	.img-holder img{
@@ -3440,7 +3441,7 @@ iframe.mob-tuto{
 
 	.key-feature{
 		padding: 0 !important;
-		background: #fff !important;
+		padding-bottom: 1rem !important;
 	}
 	.sligh-left{
 		margin-left: 0 !important;
