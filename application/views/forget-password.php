@@ -53,7 +53,7 @@
                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Reset</button>
+                        <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Change Password</button>
                     </div>
                     <p class="text-center">
                     <span>New on our platform?</span>
