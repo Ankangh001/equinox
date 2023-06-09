@@ -71,7 +71,7 @@ $this->load->view('includes/header');
 				</div>
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
+				<a href="https://youtu.be/FvjcruU_XSY" class="glightbox play-btn"></a>
 			</div>
       	</div>
     </div>
@@ -111,7 +111,7 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 	</div>
-	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/FvjcruU_XSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 	<!-- ======= Trade for Proprietary ======= -->
 	<section id="about" class="payout why-trade payoutee" style="background:#fff; padding-top:0">
