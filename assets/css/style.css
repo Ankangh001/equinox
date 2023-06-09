@@ -5,6 +5,7 @@ body {
 	background: #fff;
 	color: #fff;
 	overflow-x: hidden;
+	width: 100% !important;
 }
 
 a {
@@ -3517,4 +3518,7 @@ iframe.mob-tuto{
 }
 :focus-visible {
     outline: -webkit-focus-ring-color auto 0px !important;
+}
+.btn-box:hover {
+    box-shadow: 2px 3px 4px #000000;
 }
