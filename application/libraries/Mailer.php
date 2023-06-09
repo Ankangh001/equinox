@@ -70,7 +70,7 @@ class Mailer
 	{
 		$template = [];
 		$template['body'] = '<h3>Hi {FULLNAME}</h3>
-            <p>Welcome to LightAdmin!</p>
+            <p>Welcome to Equinox!</p>
             <p>We have received a request to reset your password. If you did not initiate this request, you can simply ignore this message and no action will be taken.</p> 
             <p>To reset your password, please click the link below:</p> 
             <p>{RESET_LINK}</p>
@@ -78,7 +78,9 @@ class Mailer
             <br>
             <br>
 
-            <p>© 2018 CodeGlamoour - All rights reserved</p>';
+            <p>Regards, <br> 
+               Equinox Team <br> 
+            </p>';
         $template['subject'] = 'Password Reset link';
         return $template;			
 	}

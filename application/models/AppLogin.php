@@ -74,16 +74,21 @@ class AppLogin extends CI_Model
     {
         try {
             $pass_enc = pass_enc;
-            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
+            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code,email_verified FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
             $result = $this->db->query($sql)->row_array();
             if ($result) :
-                if (!empty($result['password'])) :
-                    $response['success'] = 1;
-                    $response['message'] = "USER_VALIDATED";
-                    $response['data'] = $result;
+                if ($result['email_verified']==1) :
+                    if (!empty($result['password'])) :
+                        $response['success'] = 1;
+                        $response['message'] = "USER_VALIDATED";
+                        $response['data'] = $result;
+                    else :
+                        $response['success'] = 0;
+                        $response['message'] = "Password has not been set yet, contact Admin";
+                    endif;
                 else :
                     $response['success'] = 0;
-                    $response['message'] = "Password has not been set yet, contact Admin";
+                    $response['message'] = "Email is not verified yet, contact Admin";
                 endif;
             else :
                 $response['success'] = 0;
