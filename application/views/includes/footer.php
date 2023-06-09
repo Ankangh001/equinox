@@ -78,13 +78,12 @@
                 <h4>Stay Updated</h4>
                 <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
                 <br>
-                <form action="" method="post" >
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
+                <form class="newsletter-form" method="post" >
+                  <input required type="email" id="user_email" name="email">
+                  <input type="submit" id="subscribe_btn" value="Subscribe">
                 </form>
+                <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>
               </div>
-            <div class="footer-info">
-              
-            </div>
           </div>
         </div>
       </div>
@@ -183,17 +182,15 @@
 
           <div class="col-lg-3 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
             <div class="col-lg-12 col-md-12 footer-newsletter mb-5 text-center">
-                <br>
-                <h4>Stay Updated</h4>
-                <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
-                <br>
-                <form action="" method="post" >
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
-                </form>
-              </div>
-            <div class="footer-info">
-              
-            </div>
+              <br>
+              <h4>Stay Updated</h4>
+              <span style="color:#ffffff90">Subscribe to get all the exclusive updates about the forex trading industry from the industry veterans. We will even rush our selective podcasts and top-notch ebooks to your mailbox</span>
+              <br>
+              <form class="newsletter-form" method="post" >
+                <input required type="email" id="user_email" name="email">
+                <input type="submit" id="subscribe_btn" value="Subscribe">
+              </form>
+              <p class="success-nws mt-1">Thank you for subscribing Equinox Trading Capital</p>
           </div>
         </div>
       </div>
@@ -286,6 +283,38 @@
     //     return false;
     // };
 
+    $('.success-nws').css('display', 'none');
+
+    $('.newsletter-form').on('submit',(e)=>{
+      e.preventDefault();
+      var form = $('.newsletter-form').serializeArray();
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('newsletter'); ?>",
+          data: form,
+          dataType: "html",
+          beforeSend: function(){
+            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            let res = JSON.parse(data);
+            if(res.status == 200){
+              $('.newsletter-form')[0].reset();
+              // $('#exampleModalCenter').modal('show');
+              $('.success-nws').css('display', 'block');
+              setTimeout(() => {
+                $('.success-nws').fadeOut();
+              }, 2000);
+            }
+          },
+          error: function() { alert("Error posting feed."); }
+      });
+    });
   </script>
 </body>
 
