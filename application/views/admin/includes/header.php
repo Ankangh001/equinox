@@ -111,11 +111,11 @@
                 <div>Purchase History</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
+                <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>free-trial" class="menu-link">
                     <div>Free Trial</div>
                   </a>
-                </li>
+                </li> -->
                 <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-1') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>phase-1" class="menu-link">
                     <div>Phase 1</div>
@@ -141,8 +141,8 @@
 
             
             <!-- Server -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>faq" class="menu-link">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'server-settings') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>server-settings" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-globe"></i>
                 <div>Server Settings</div>
               </a>
