@@ -375,7 +375,7 @@ $this->load->view('includes/header');
                             </div>
 
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="button">Sign Up</button>
+                                <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                             </div>
                             <p class="text-center">
                                 <span>Already have an account?</span>
@@ -391,45 +391,11 @@ $this->load->view('includes/header');
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
     <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
-    <script>
-        function validateUser() {
-            let email = $("#email").val();
-            let password = $("#password").val();
-            if (email == "") {
-                $.notify("Please enter email");
-                $("#email").focus();
-                return;
-            }
-            if (password == "") {
-                $.notify("Please enter password");
-                $("#password").focus();
-                return;
-            }
-            $.ajax({
-                type: "post",
-                url: "Auth/login",
-                data: {
-                    "email": email,
-                    "password": password,
-                    "type":"Client"
-                },
-                success: function(response) {
-                    if (response.success == 1) {
-                        window.location.href = response.data.redirect_url;	
-                    } else {
-                        $.notify(response.message);
-                    }
-                },
-                error: function(exception) {
-                    $.notify("Some error occured");
-                }
-            })
-
-        }
-    </script>
 </body>
 </html>
-
+<?php
+$this->load->view('admin/includes/footer');
+?>
 
 <script>
 $(document).ready(function() {
