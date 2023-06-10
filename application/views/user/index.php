@@ -102,7 +102,7 @@ $this->load->view('user/includes/header');
       <?php break;}} ?>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
           <div class="card mb-4">
             <div class="card-body">
               <div class="mt-5 mb-3 row  text-center d-block w-100">
@@ -128,10 +128,10 @@ $this->load->view('user/includes/header');
               <button type="button" id="free-trial-btn" class="w-100 btn btn-secondary">Try for free</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 m-auto">
           <div class="card mb-4">
             <div class="card-body">
               <div class="mt-5 mb-3 row  text-center d-block w-100">

@@ -1,4 +1,7 @@
 <?php
+echo "<pre>";
+print_r($res);
+die;
 $this->load->view('user/includes/header');
 ?>
 <style>
@@ -51,7 +54,7 @@ $this->load->view('user/includes/header');
         }
         
         .featuredPropBox ul li:nth-child(1) {
-            background-image: url('https://i.ibb.co/ZmtmLGK/a.jpg');
+            background-image: url('<?=base_url('assets/img')?>/crt.jpg');
         }
         
         .featuredPropBox ul li:nth-child(2) {
@@ -139,66 +142,18 @@ $this->load->view('user/includes/header');
    <div class="row">
     <div class="col-lg-12">
        <div class="featuredPropBox">
-        <ul>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp1"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp2"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp3"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-          
-          
-             <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp1"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp2"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp3"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-          
-          
-             <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp1"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp2"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-           <li> <a href="#">
-             <div class="fplogo"><img src="https://i.ibb.co/3MZXqZC/logo.png" alt="fp3"></div>
-             <div class="fptext">
-              <button class="btn btn-info"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-            </div>
-             </a> </li>
-             
+         <!-- <button id="submitBtn">Get Certificate</button>
+         <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
+         <ul>
+           <li> 
+             <a href="#">
+               <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
+               <div class="fptext">
+                  <input type="hidden" name="Name" autocomplete="name" id="name" value="Ankan">
+                  <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
+                </div>
+              </a>
+            </li>
          </ul>
       </div>
      </div>
@@ -206,7 +161,93 @@ $this->load->view('user/includes/header');
  </div>
     <!-- / Content -->
 
-<script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Certificates</h4>`)
+    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="<?=base_url('assets/js/FileSaver.js')?>"></script>
+    <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
+  <script>
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Certificates</h4>`);
+
+        const userName = document.getElementById("name");
+        const submitBtn = document.getElementById("submitBtn");
+
+        const { PDFDocument, rgb, degrees } = PDFLib;
+
+
+        const capitalize = (str, lower = false) =>
+            (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
+                match.toUpperCase()
+            );
+
+        submitBtn.addEventListener("click", () => {
+            const val = capitalize(userName.value);
+
+            //check if the text is empty or not
+            if (val.trim() !== "" && userName.checkValidity()) {
+                // console.log(val);
+                generatePDF(val);
+            } else {
+                userName.reportValidity();
+            }
+        });
+
+        const generatePDF = async (name, date="<?php echo date('Y-m-d')?>") => {
+            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/crt.pdf").then((res) =>
+                res.arrayBuffer()
+            );
+
+            // Load a PDFDocument from the existing PDF bytes
+            const pdfDoc = await PDFDocument.load(existingPdfBytes);
+            pdfDoc.registerFontkit(fontkit);
+
+            //get font
+            const fontBytes = await fetch("<?=base_url('assets/certificates')?>/Sanchez-Regular.ttf").then((res) =>
+                res.arrayBuffer()
+            );
+
+            // Embed our custom font in the document
+            const SanChezFont = await pdfDoc.embedFont(fontBytes);
+
+            // Get the first page of the document
+            const pages = pdfDoc.getPages();
+            const firstPage = pages[0];
+
+            // Draw a string of text diagonally across the first page
+            firstPage.drawText(name, {
+                x: 250,
+                y: 390,
+                size: 26,
+                font: SanChezFont,
+                color: rgb(0, 0, 0),
+            });
+
+            firstPage.drawText(date, {
+                x: 285,
+                y: 248,
+                size: 10,
+                font: SanChezFont,
+                color: rgb(0, 0, 0),
+            });
+
+            // Serialize the PDFDocument to bytes (a Uint8Array)
+            const pdfBytes = await pdfDoc.save();
+            console.log("Done creating");
+
+            // this was for creating uri and showing in iframe
+
+            // const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+            // document.getElementById("pdf").src = pdfDataUri;
+
+            var file = new File(
+                [pdfBytes],
+                "Certificate.pdf",
+                {
+                    type: "application/pdf;charset=utf-8",
+                }
+            );
+            saveAs(file);
+        };
+
+// init();
 </script>
+
 <?php $this->load->view('user/includes/footer');?>
