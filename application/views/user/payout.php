@@ -212,6 +212,8 @@ $this->load->view('user/includes/header');
           }else{
             $('#account-numbers').html('');
             $('#submit-btn').attr('disabled', true);
+            $('input').attr('disabled', true);
+            $('#payment-mode').attr('disabled', true);
             $('#account-numbers').append(`
               <option selected>${res.message}</option>
             `);
