@@ -540,11 +540,11 @@ $myArray = explode(',', $myString);
         checkMaxDailyLoss();
         console.log(equity);
 
-        if(  res['equity'] > (equity - Daily Drawdown)  ){
-          echo pass
-        }else{
-          echo fail
-        }
+        // if(res['equity'] > (equity - Daily Drawdown)){
+        //   echo pass
+        // }else{
+        //   echo fail
+        // }
 
         //profit target render
         if(((res['balance'])-accountSize).toFixed(2) >= target){ 

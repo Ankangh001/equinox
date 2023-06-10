@@ -19,12 +19,12 @@ $this->load->view('user/includes/header');
       <?php 
         foreach ($res as $key => $value) { 
           if ($value['phase'] == '0'){
-            echo '<div class="card-title fw-bold">Free Trial</div>';
+            // echo '<div class="card-title fw-bold">Free Trial</div>';
             break;  
           }
         };
         foreach ($res as $key => $value) { if ($value['phase'] == '0'){?>
-        <div class="card accordion-item mb-5">
+        <!-- <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
             <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button 
             <?php 
@@ -59,7 +59,7 @@ $this->load->view('user/includes/header');
                         <div class="mb-3 row border-bottom justfy-content-start">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password
@@ -68,19 +68,19 @@ $this->load->view('user/includes/header');
                             </span>
                           </label>
                           <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label"><?= @$value['account_password'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
 
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                       </div>
                     </div>
@@ -147,7 +147,7 @@ $this->load->view('user/includes/header');
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       <?php } }?>
 
       <!-- Evaluation Phase 1 -->
@@ -195,7 +195,7 @@ $this->load->view('user/includes/header');
                         <div class="mb-3 row border-bottom justfy-content-start">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password
@@ -207,19 +207,19 @@ $this->load->view('user/includes/header');
                             <?= @$value['account_password'] ?>
                             <!-- <i class='bx bxs-low-vision'></i> -->
                           </label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
 
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                       </div>
                     </div>
@@ -325,7 +325,7 @@ $this->load->view('user/includes/header');
                         <div class="mb-3 row border-bottom justfy-content-start">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password
@@ -337,19 +337,19 @@ $this->load->view('user/includes/header');
                             <?= @$value['account_password'] ?>
                             <!-- <i class='bx bxs-low-vision'></i> -->
                           </label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
 
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                       </div>
                     </div>
@@ -456,7 +456,7 @@ $this->load->view('user/includes/header');
                         <div class="mb-3 row border-bottom justfy-content-start">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password
@@ -468,19 +468,19 @@ $this->load->view('user/includes/header');
                             <?= @$value['account_password'] ?>
                             <!-- <i class='bx bxs-low-vision'></i> -->
                           </label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
 
                         <div class="mb-3 row border-bottom justfy-content-evenly">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><i class='bx bx-copy' ></i></label>
+                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                       </div>
                     </div>

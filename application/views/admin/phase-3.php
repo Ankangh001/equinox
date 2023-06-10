@@ -50,8 +50,7 @@ $this->load->view('admin/includes/header');
                 <div class="mb-3 pb-3 row border-bottom">
                   <label for="acc_id" class="col-md-4 col-form-label">Login</label>                    
                   <input required value="" id="acc_id" name="account_id" type="text" class="col-md-8 form-control w-50" placeholder="Enter Login Id" />
-                  <input name="user_id" id="user_id" type="hidden"  />
-                  <input name="product_id" id="product_id" type="hidden" />
+                  <input name="id" id="id" type="hidden"  />
                 </div>
 
                 <div class="mb-3 pb-3 row border-bottom justfy-content-evenly">
@@ -157,7 +156,7 @@ $this->load->view('admin/includes/header');
               <tbody class="table-border-bottom-0">
                 <?php 
                   foreach ($res as $key => $value) { 
-                    if ($value['phase'] == '3'  && $value['product_status'] != '1'){
+                    if ($value['phase'] == '3' && $value['product_status'] != '1'){
                 ?>
                 <tr>
                   <td><?= @$value['product_name']?></td>
@@ -178,8 +177,8 @@ $this->load->view('admin/includes/header');
                   </td>
                   <td>
                     <div class="d-flex justify-content-space-between">
-                      <a onclick="viewDetails('<?= @$value['user_id']?>',<?= @$value['product_id']?>)" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                      <a onclick="addDetails('<?= @$value['user_id']?>',<?= @$value['product_id']?>)" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                      <a onclick="viewDetails('<?= @$value['id']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                      <a onclick="addDetails('<?= @$value['id']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
                     </div>
                   </td>
                 </tr>
@@ -196,10 +195,9 @@ $this->load->view('admin/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Phase 1</h4>`);
 
-  function viewDetails(uID,pID) {
+  function viewDetails(id) {
     let request = {}
-    request.user_id = uID;
-    request.product_id = pID;
+    request.id = id;
     
     $.ajax({
         type: "POST",
@@ -208,7 +206,6 @@ $this->load->view('admin/includes/header');
         dataType: "html",
         success:function(data){
           let res = JSON.parse(data);
-          console.log(res.status);
           $('#view_acc_id').val(res[0].account_id);
           $('#view_pass').val(res[0].account_password);
           $('#view_server_add').val(res[0].server);
@@ -222,10 +219,9 @@ $this->load->view('admin/includes/header');
     });
   }
 
-  function addDetails(uID,pID) {
+  function addDetails(iD) {
     let request = {}
-    request.user_id = uID;
-    request.product_id = pID;
+    request.id = iD;
     
     $.ajax({
         type: "POST",
@@ -234,8 +230,7 @@ $this->load->view('admin/includes/header');
         dataType: "html",
         success:function(data){
           let res = JSON.parse(data);
-          $('#product_id').val(pID);
-          $('#user_id').val(uID);
+          $('#id').val(iD);
           $('#acc_id').val(res[0].account_id);
           $('#pass').val(res[0].account_password);
           $('#server-add').val(res[0].server);
@@ -268,11 +263,11 @@ $this->load->view('admin/includes/header');
         success: function(data){
           let res = JSON.parse(data);
           if(res.status == 200){
+            loadTable();
             $('div#loading').hide(200);
             $('.modal').modal('hide');
             $('#modalCenter').modal('show');
             $('.table').DataTable().destroy();
-            loadTable();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
             }, 3000);
@@ -284,7 +279,7 @@ $this->load->view('admin/includes/header');
 
   function loadTable(){
     $('.table').DataTable({
-        ajax: "<?php echo base_url('admin/purchase/getPhase1'); ?>",
+        ajax: "<?php echo base_url('admin/purchase/getPhase1Pending'); ?>",
         deferRender: true,
         "pageLength": 100,
         columns:[
@@ -320,8 +315,8 @@ $this->load->view('admin/includes/header');
             data: null,
             render: function (data, type, row) {
                 return `<div class="d-flex justify-content-space-between">
-                    <a onclick="viewDetails('${row.user_id}', '${row.product_id}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                    <a onclick="addDetails('${row.user_id}', '${row.product_id}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                    <a onclick="viewDetails('${row.id}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                    <a onclick="addDetails('${row.id}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
                   </div>`;
             }
           },
