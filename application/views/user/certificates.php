@@ -1,7 +1,7 @@
 <?php
-echo "<pre>";
-print_r($res);
-die;
+// echo "<pre>";
+// print_r($res);
+// die;
 $this->load->view('user/includes/header');
 ?>
 <style>
