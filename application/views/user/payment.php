@@ -35,7 +35,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
             <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
               <li class="nav-item">
                 <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                  <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
+                  <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="50" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
                 </button>
               </li>
 
@@ -53,7 +53,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
             </ul>
             <div class="card-body">
               <div class="tab-content">
-                <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
+                <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                   <form class="payment-form" id="fast-checkout">
                     <div class="wrapper">
                       <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->

@@ -1667,7 +1667,8 @@ section {
 }
 
 .contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .php-email-form textarea,
+.contact .php-email-form select {
 	font-size: 14px;
     background: #eeeeee;
     box-shadow: 0 0 6px #00000010;
@@ -1690,6 +1691,7 @@ section {
 }
 
 .contact .php-email-form input:focus,
+.contact .php-email-form select:focus,
 .contact .php-email-form textarea:focus {
 	/* border-color: #FF5757; */
 	border: 2px solid #FF5757;

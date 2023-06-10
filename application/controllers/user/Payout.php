@@ -55,44 +55,39 @@ class Payout extends APIMaster {
 	public function requestPayout()
 	{
 		// print_r($this->input->post());die;
-// 		Array
-// (
-//     [payoutType] => Profit Split
-//     [accountNum] => 850760
-//     [paymentMode] => 1
-//     [payoutAmount] => 776
-//     [emailAddress] => test@gg.com
-//     [receipantName] => 
-//     [receipantAddress] => 
-//     [accountNumber] => 
-//     [sortCode] => 
-//     [swiftCode] => 
-//     [bankName] => 
-//     [branchAddress] => 
-// )
-
 		$data = array(
-			'account_id' => $this->input->post('payoutType'),
-			'account_password' =>  $this->input->post('account_password'),
-			'server' =>  $this->input->post('server'),
-			'ip' =>  $this->input->post('ip'),
-			'port' =>  $this->input->post('port'),
-			'product_status' =>  '1',
+			'user_id' => $this->input->post('user_id'),
+			
+			'payout_type' =>  $this->input->post('payoutType'),
+			'mt5_accountNum' =>  $this->input->post('mt5Acc'),
+			'payment_mode' =>  $this->input->post('paymentMode'),
+			'amount' =>  $this->input->post('payoutAmount'),
+			'wallet_address' =>  $this->input->post('emailWalletAddress'),
+			
+			//for bank transfer
+			'receipant_name' =>  $this->input->post('receipantName'),
+			'receipant_address' =>  $this->input->post('receipantAddress'),
+			'account_iban' =>  $this->input->post('accountNumber'),
+			'sort_code' =>  $this->input->post('sortCode'),
+			'swift_code' =>  $this->input->post('swiftCode'),
+			'bank_name' =>  $this->input->post('bankName'),
+			'branch_address' =>  $this->input->post('branchAddress'),
+			
+			'payout_date' =>  date('Y-m-d H:m:s'),
 		);
 
-		$iD = $this->input->post('id');
 		
-		$res = $this->db->where(['id' =>  $iD])->update('userproducts', $data);
+		$res = $this->db->insert('payout_history', $data);
 
 		if($res){
 			$response = array(
 				'status' => '200',
-				'message' => 'Added successfully',
+				'message' => 'Payout Added successfully',
 			);
 		}else{
 			$response = array(
 				'status' => '400',
-				'message' => 'Unable to add data',
+				'message' => 'Unable to add payout',
 			);
 		}
 		echo json_encode($response);  

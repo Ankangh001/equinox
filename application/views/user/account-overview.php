@@ -561,8 +561,8 @@ $this->load->view('user/includes/header');
           <div class="card">
               <div class="card-body text-center text-muted ">
                 😧 Hey ! Looks like you no accounts yet .<br /><br />
-                <a href="<?=base_url('user')?>" >click here</a> to get started with a free trial account 
-                or &nbsp;&nbsp;<a href="<?=base_url('user/')?>start-new-challenge" class="btn btn-primary btn-sm"> Start New Challenge</a>
+                <!-- <a href="<?=base_url('user')?>" >click here</a> to get started with a free trial account or -->
+                 &nbsp;&nbsp;<a href="<?=base_url('user/')?>start-new-challenge" class="btn btn-primary btn-sm"> Start New Challenge</a>
               </div>
           </div>
         </div>
