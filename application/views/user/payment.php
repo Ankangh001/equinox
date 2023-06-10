@@ -56,8 +56,8 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                 <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                   <form class="payment-form" id="fast-checkout">
                     <div class="wrapper">
-                      <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
-                      <!-- <div id="google-pay-button" alt="google-pay" type="button"></div> -->
+                      <div id="apple-pay-button" alt="apple-pay" type="button"></div>
+                      <div id="google-pay-button" alt="google-pay" type="button"></div>
                       <!-- <div class="border">
                         <span>OR</span>
                       </div> -->
@@ -188,7 +188,9 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
               </div>
               <div class="mb-3 row border-bottom">
                 <label for="html5-text-input" class="col-md-4 col-form-label">Price</label>
-                <label for="html5-text-input" class="col-md-8 text-right col-form-label"> $9876</label>
+                <label for="html5-text-input" class="col-md-8 text-right col-form-label"> $
+                  <span id="product_price"><?=@$product_details['product_price']?></span>
+                </label>
               </div>
               <div class="mb-3 row border-bottom align-items-center d-flex ">
                 <label for="html5-text-input" class="col-md-4 col-form-label">Apply Coupon</label>
@@ -203,11 +205,15 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
               </div>
               <div class="mb-3 row border-bottom">
                 <label for="html5-text-input" class="col-md-4 col-form-label">Discount</label>
-                <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$5678</label>
+                <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$
+                  <span id="product_discount"><?=@$product_details['product_price']?></span>
+                </label>
               </div>
               <div class="mb-1 row border-bottom">
                 <label for="html5-text-input" class="text-dark fw-bold col-md-4 col-form-label">Total</label>
-                <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$999</label>
+                <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$
+                  <span id="final_product_price"><?=@$product_details['product_price']?></span>
+                </label>
               </div>
 
               <div class="my-3 row align-items-center d-flex ">
@@ -248,6 +254,10 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
   <?php } ?>
 
   requestData.user_id = "<?php echo $_SESSION['user_id'];?>";
+  requestData.product_price = $("#product_price").val();
+  requestData.product_discount = $("#product_discount").val();
+  requestData.final_product_price = $("#final_product_price").val();
+
   $('#coinbase_buy').click(()=>{
     $.ajax({
         type: "POST",

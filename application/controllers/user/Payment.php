@@ -41,12 +41,16 @@ class Payment extends APIMaster {
 
 	public function index()
 	{
-        $data['squareData'] = [
-            'currency' => $this->getCurrency(),
-            'country' => $this->getCountry(),
-            'idempotencyKey' => Uuid::uuid4() 
-        ];
-        $this->load->view('user/payment',$data);
+        echo "<pre>"; print_r($_SESSION); die;
+        if(!empty($_GET)){
+            $data['product_details'] = $this->db->where(['product_id' => $_GET['product-code']])->get('products')->row_array();
+            $data['squareData'] = [
+                'currency' => $this->getCurrency(),
+                'country' => $this->getCountry(),
+                'idempotencyKey' => Uuid::uuid4() 
+            ];
+            $this->load->view('user/payment',$data);
+        }
 	}
 
     public function coinbaseCreateCharge()
@@ -149,8 +153,8 @@ class Payment extends APIMaster {
           $idempotencyKey = $data->idempotencyKey;
           $requestData = $data->requestData;
           if(isset($requestData->product_id) && $requestData->product_id !=''){
-            $productPrice = $this->db->select('product_price')->where(['product_id' => $requestData->product_id])->get('products')->row_array()['product_price'];
-            
+            // $productPrice = $this->db->select('product_price')->where(['product_id' => $requestData->product_id])->get('products')->row_array()['product_price'];
+            $productPrice = $requestData->final_product_price;
             $square_client = new SquareClient([
                 'accessToken'   => SQUARE_ACCESS_TOKEN,
                 'environment'   => SQUARE_ENVIRONMENT,
@@ -170,7 +174,7 @@ class Payment extends APIMaster {
                 $response = $payments_api->createPayment($create_payment_request);
             
                 if ($response->isSuccess()) {
-                    $this->squareSuccess($requestData->user_id,$requestData->product_id,$response->getResult());
+                    $this->squareSuccess($requestData,$response->getResult());
                 echo json_encode($response->getResult());
                 } else {
                 echo json_encode(array('errors' => $response->getErrors()));
@@ -183,41 +187,93 @@ class Payment extends APIMaster {
         }
     }
 
-    public function squareSuccess($user_id,$product_id,$dump)
+    public function squareSuccess($requestData,$dump)
 	{        
         try {
-            $product_category = $this->db->where(['product_id' => $product_id])->get('products')->result_array();
+            $product_category = $this->db->where(['product_id' => $requestData->product_id])->get('products')->row_array();
 			$userProducts = array(
-				'user_id' => $user_id,
-				'product_id' => $product_id,
+				'user_id' => $requestData->user_id,
+				'product_id' => $requestData->product_id,
+				'product_price' => $requestData->product_price,
+				'product_discount' => $requestData->product_discount,
+				'final_product_price' => $requestData->final_product_price,
 				'phase' => '1',
 				'created_date' => date('Y-m-d H:m:s'),
 				'product_status' => '0',
 			);
 
             $transaction = array(
-				'user_id' => $user_id,
-				'amount' => $product_category[0]['product_price'],
-				'product_id' => $product_id,
-				'product_category' => $product_category[0]['product_category'],
-				'gateway' => 'coinbase',
+				'user_id' => $requestData->user_id,
+				'amount' => $requestData->final_product_price,
+				'product_id' => $requestData->product_id,
+				'product_category' => $product_category['product_category'],
+				'gateway' => 'square',
 				'purchase_date' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s'),
 			);
 			
-			$res = $this->db->insert('userproducts', $userProducts);
-			$res2 = $this->db->insert('transactions', $transaction);
-			if($res && $res2){
-				$response = array(
-					'status' => '200',
-					'message' => 'User Poduct Added successfully',
-				);
-			}else{
-				$response = array(
+			if($this->db->insert('userproducts', $userProducts)){
+                if( $this->db->insert('transactions', $transaction)){
+                    if(isset($_SESSION['affiliate_by']) && ($_SESSION['affiliate_by'] != '')){
+                        $this->addAffilatePoint($requestData,$_SESSION['affiliate_by']);
+                    }
+                    $response = array(
+                        'status' => '200',
+                        'message' => 'User Poduct Added successfully',
+                    );
+                }else{
+                    $response = array(
+                        'status' => '400',
+                        'message' => 'Unable to add data',
+                    );
+                }
+            }else{
+                $response = array(
 					'status' => '400',
 					'message' => 'Unable to add data',
 				);
-			}
+            }
+			echo json_encode($response);  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
+    public function addAffilatePoint($requestData,$affiliate_by)
+	{        
+        try {
+            $affiliate_user = $this->db->where(['affiliate_code' => $affiliate_by])->get('user')->row_array();
+            
+            $transaction = array(
+				'user_id' => $requestData->user_id,
+				'amount' => $requestData->final_product_price,
+				'product_id' => $requestData->product_id,
+				'product_category' => $product_category['product_category'],
+				'gateway' => 'square',
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s'),
+			);
+			
+			if($this->db->insert('userproducts', $userProducts)){
+                if( $this->db->insert('transactions', $transaction)){
+                    $response = array(
+                        'status' => '200',
+                        'message' => 'User Poduct Added successfully',
+                    );
+                }else{
+                    $response = array(
+                        'status' => '400',
+                        'message' => 'Unable to add data',
+                    );
+                }
+            }else{
+                $response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+            }
+			
 			echo json_encode($response);  
 
 		} catch (\Throwable $th) {

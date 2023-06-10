@@ -4,10 +4,10 @@ async function SquarePaymentFlow() {
   CardPay(document.getElementById('card-container'), document.getElementById('card-button'));
 
   // Create Apple pay instance
-  // ApplePay(document.getElementById('apple-pay-button'));
+  ApplePay(document.getElementById('apple-pay-button'));
 
   // Create Google pay instance
-  // GooglePay(document.getElementById('google-pay-button'));
+  GooglePay(document.getElementById('google-pay-button'));
 
   // Create ACH payment
   ACHPay(document.getElementById('ach-button'));
