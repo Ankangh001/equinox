@@ -375,7 +375,7 @@ $this->load->view('includes/header');
                             </div>
 
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign Up</button>
+                                <button class="btn btn-primary d-grid w-100" type="button">Sign Up</button>
                             </div>
                             <p class="text-center">
                                 <span>Already have an account?</span>
