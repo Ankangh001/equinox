@@ -202,12 +202,12 @@
 
             
             <!-- faq -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div>Help</div>
               </a>
-            </li>
+            </li> -->
 
             <!-- contacts -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'enquiries') { echo 'active';} ?>">
