@@ -88,11 +88,12 @@ class Auth extends APIMaster {
         }
 
         session_destroy();
-        header("Location: " . base_url());
+        header("Location: " . base_url('client-login'));
     }
 
 	//-------------------------------------------------------------------------
 	public function register(){
+		$body = file_get_contents(base_url('assets/mail/verification.txt'));
 		if($_POST){
 			$this->form_validation->set_rules('first_name', 'Firstname', 'trim|required');
 			$this->form_validation->set_rules('last_name', 'Lastname', 'trim|required');
@@ -130,7 +131,7 @@ class Auth extends APIMaster {
 					);
 					$to = $data['email'];
 					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
-					$email = send_email($to,$emailData['subject'],$emailData['content'],'','',1);
+					$email = send_email($to, $emailData['subject'], $body,'','',2);
 
 					if($email){
 						$response = array(

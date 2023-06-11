@@ -8,29 +8,70 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 
 		switch ($type) {
 			case "1":
-				$smtp_host = '';
-				$smtp_port = '';
-				$smtp_user = '';
-				$smtp_pass = '';
-				$from	=	'';
-				$application_name	=	'';
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'develop@equinoxtradingcapital.com';
+				$smtp_pass = 'Ankan@2000';
+				$from	=	'develop@equinoxtradingcapital.com';
+				$application_name = 'Equinox';
 			  break;
 			case "2":
-				$smtp_host = '';
-				$smtp_port = '';
-				$smtp_user = '';
-				$smtp_pass = '';
-				$from	=	'';
-				$application_name	=	'';
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'support@equinoxtradingcapital.com';
+				$smtp_pass = 'Support@2023';
+				$from	=	'support@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
 			  break;
 			case "3":
-				$smtp_host = '';
-				$smtp_port = '';
-				$smtp_user = '';
-				$smtp_pass = '';
-				$from	=	'';
-				$application_name	=	'';
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'accounts@equinoxtradingcapital.com';
+				$smtp_pass = 'Accounts@2023';
+				$from	=	'accounts@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
 			  break;
+			case "4":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'community@equinoxtradingcapital.com';
+				$smtp_pass = 'Community@2023';
+				$from	=	'community@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
+			  break;
+			case "5":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'payments@equinoxtradingcapital.com';
+				$smtp_pass = 'Payments@2023';
+				$from	=	'payments@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
+			  break;
+			case "6":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'noreply@equinoxtradingcapital.com';
+				$smtp_pass = 'Noreply@2023';
+				$from	=	'noreply@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
+			  break;
+			case "7":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'pressrelease@equinoxtradingcapital.com';
+				$smtp_pass = 'Pressrelease@2023';
+				$from	=	'pressrelease@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
+			  break;
+			case "8":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'complaints@equinoxtradingcapital.com';
+				$smtp_pass = 'Complaints@2023';
+				$from	=	'complaints@equinoxtradingcapital.com';
+				$application_name = 'Equinox Trading Capital LTD';
+			  break;
+			
 			default:
 				$smtp_host 	= SMPT_HOST;
 				$smtp_port 	= SMPT_PORT;
@@ -73,12 +114,13 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 		{
 			$controller->email->attach(base_url()."your_file_path/" .$attachment);
 		}
+		
 
 		if($controller->email->send()){
 			return true;
 		}else{
 			return false;
-			// echo $controller->email->print_debugger();
+// 			echo $controller->email->print_debugger();
 		}
     }
 

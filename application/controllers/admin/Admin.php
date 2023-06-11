@@ -16,6 +16,12 @@ class Admin extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('admin/index');
+        $response['phase1'] = count($this->db->where(['phase'=> '1' ])->get('userproducts')->result_array());
+        $response['phase2'] = count($this->db->where(['phase'=> '2' ])->get('userproducts')->result_array());
+        $response['funded'] = count($this->db->where(['phase'=> '3' ])->get('userproducts')->result_array());
+        $response['completed'] = count($this->db->where(['product_status'=> '1' ])->get('userproducts')->result_array());
+        $response['users'] = count($this->db->where(['admin_type'=> 'Client' ])->get('user')->result_array());
+
+        $this->load->view('admin/index',$response);
 	}
 }

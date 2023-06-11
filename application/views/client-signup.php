@@ -58,22 +58,22 @@ $this->load->view('includes/header');
 
                             <div class="mb-3">
                                 <label for="first-name" class="form-label">First Name</label>
-                                <input type="text" id="first-name" name="first_name" class="form-control" placeholder="Enter First Name" />
+                                <input type="text" id="first-name" name="first_name" class="form-control" required placeholder="Enter First Name" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="last-name" class="form-label">Last Name</label>
-                                <input type="text" id="last-name" name="last_name" class="form-control" placeholder="Enter Last Name" />
+                                <input type="text" id="last-name" name="last_name" class="form-control" required placeholder="Enter Last Name" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="A valid email address" />
+                                <input type="email" id="email" name="email" class="form-control" required placeholder="A valid email address" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="contact" class="form-label">Number</label>
-                                <input type="number" id="contact" name="contact" class="form-control" placeholder="A valid Number" />
+                                <input type="number" id="contact" name="contact" class="form-control" required placeholder="A valid Number" />
                             </div>
 
                             <div class="mb-3 form-password-toggle">
@@ -81,7 +81,7 @@ $this->load->view('includes/header');
                                     <label class="form-label" for="password">Password</label>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                                    <input type="password" id="password" name="password" class="form-control" required placeholder="Password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ $this->load->view('includes/header');
                                     <label class="form-label" for="c-password">Confirm Password</label>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="c-password" name="confirm_password" class="form-control" placeholder="Confirm Password" />
+                                    <input type="password" id="c-password" name="confirm_password" class="form-control" required placeholder="Confirm Password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
@@ -390,35 +390,55 @@ $this->load->view('includes/header');
         </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
+    <script src="<?=base_url('assets/user/')?>assets/js/notify.js"></script>
     <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
+
+    <script>
+        function notify(type, text){
+            $(window).scrollTop(0)
+            $('.authentication-inner').prepend(
+              `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
+                ${text}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`
+            );
+            setTimeout(() => {
+              $('.alert').fadeOut();
+            }, 3000);
+        }
+        $(document).ready(function() {
+        $('#myForm').submit(function(e) {
+            e.preventDefault();
+            var formData = $(this).serialize();
+            $.post({
+            url: BASEURL+'auth/register',
+            data: formData,
+            beforeSend: function(){
+                $('form').prepend(`<div id="loading" class="demo-inline-spacing">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>`
+                );
+                },
+            success: function(response) {
+                if (response.success == 1) {
+                    $('div#loading').hide(200);
+                    notify("danger", response.message,'success');
+                    window.location.href = BASEURL+'client-login';	
+                } else {
+                    $('div#loading').hide(200);
+                    notify("danger", response.message);
+                    notify("danger", $(response.data.errors).text());
+                    return;
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle the error here
+            }
+            });
+        });
+        });
+    </script>
 </body>
 </html>
-<?php
-$this->load->view('admin/includes/footer');
-?>
-
-<script>
-$(document).ready(function() {
-  $('#myForm').submit(function(e) {
-    e.preventDefault();
-    var formData = $(this).serialize();
-    $.post({
-      url: BASEURL+'auth/register',
-      data: formData,
-      success: function(response) {
-        if (response.success == 1) {
-            $.notify(response.message,'success');
-            window.location.href = BASEURL+'client-login';	
-        } else {
-            $.notify(response.message);
-            $.notify($(response.data.errors).text());
-            return;
-        }
-      },
-      error: function(xhr, status, error) {
-        // Handle the error here
-      }
-    });
-  });
-});
-</script>

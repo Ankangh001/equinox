@@ -84,16 +84,28 @@
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
     <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
     <script>
+        function notify(type, text){
+            $('.authentication-inner').prepend(
+                `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
+                ${text}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`
+            );
+            setTimeout(() => {
+                $('#alert').fadeOut();
+            }, 3000);
+        }
+
         function validateUser() {
             let email = $("#email").val();
             let password = $("#password").val();
             if (email == "") {
-                $.notify("Please enter email");
+                notify("danger","Please enter email");
                 $("#email").focus();
                 return;
             }
             if (password == "") {
-                $.notify("Please enter password");
+                notify("danger","Please enter password");
                 $("#password").focus();
                 return;
             }
@@ -109,11 +121,11 @@
                     if (response.success == 1) {
                         window.location.href = response.data.redirect_url;	
                     } else {
-                        $.notify(response.message);
+                        notify("danger",response.message);
                     }
                 },
                 error: function(exception) {
-                    $.notify("Some error occured");
+                    notify("Some error occured");
                 }
             })
 

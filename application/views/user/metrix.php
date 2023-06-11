@@ -46,11 +46,11 @@ $myArray = explode(',', $myString);
               <div class="card-body row align-items-center">
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Max Drawdown</h6>
-                    <input readonly class="form-control" value="$<?= @$myArray[4] ?>" />
+                    <input readonly name="maxDrawdown" id="max--Drawdown" class="form-control" value="$<?= @$myArray[4] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Allowed Daily Drawdown</h6>
-                    <input readonly class="form-control" value="$<?= @$myArray[5] ?>" />
+                    <input readonly name="dailyDrawdown" id="daily--Drawdown" class="form-control" value="$<?= @$myArray[5] ?>" />
                 </div>
                 <div class="mb-3 col-lg-3 col-md-3 mb-0">
                     <h6 class="alert-heading fw-bold mb-3 text-left">Closed Profit</h6>
@@ -99,7 +99,7 @@ $myArray = explode(',', $myString);
                             <div class="row">
                               <div class="col-xl">
                                 <div class="row px-1">
-                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">Maximum drawdown is the maximum your account can drawdown before you would hard breach your account. When you open the account, your Max Drawdown is set at 10% of your starting balance. This will be static for the duration of the account.</label>
+                                  <label for="max--Drawdown" class="text-dark fw-bold col-md-12 col-form-label text-white">Maximum drawdown is the maximum your account can drawdown before you would hard breach your account. When you open the account, your Max Drawdown is set at 10% of your starting balance. This will be static for the duration of the account.</label>
                                 </div>
                               </div>
                             </div>
@@ -131,7 +131,7 @@ $myArray = explode(',', $myString);
                           <div class="row">
                             <div class="col-xl">
                               <div class="row px-1">
-                                <label class="text-dark fw-bold col-md-12 col-form-label text-white">
+                                <label class="text-dark fw-bold col-md-12 col-form-label text-white" for="max--Drawdown">
                                   Daily Loss Limit is calculated based on the previous day’s end of day 
                                   (5pm EST) equity and balance. Example of daily drawdown: If you have a
                                   $105,000 account balance, and you have $5000 floating profit going into 
@@ -164,7 +164,7 @@ $myArray = explode(',', $myString);
                             <div class="row">
                               <div class="col-xl">
                                 <div class="row px-1">
-                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white">
+                                  <label class="text-dark fw-bold col-md-12 col-form-label text-white" for="max--Drawdown">
                                     Profit target means that a trader reaches a profit
                                     in the sum of closed positions on the assigned trading account.
                                   </label>
@@ -441,6 +441,57 @@ $myArray = explode(',', $myString);
       }
     })
   };
+  checkMaxDailyLoss();
+
+  function makeMaxDailylossFail(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/makeMaxDailylossFail'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let maxDDStatus = JSON.parse(data).status;
+        if(maxDDStatus == 200){
+          $('#dailyDrawdown').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
+  }
+
+  function checkIfMaxDailyLossFail(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/checkIfMaxDailyLossFail'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let maxDDStatus = JSON.parse(data).status;
+        if(maxDDStatus == 200){
+          $('#dailyDrawdown').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
+        }else if(maxDDStatus == 400){
+          $('#dailyDrawdown').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
+  }
 
   function getAccounts(){
     $.ajax({
@@ -537,13 +588,16 @@ $myArray = explode(',', $myString);
         };
 
         //max daily loss
-        checkMaxDailyLoss();
-        console.log(equity);
+        // console.log(equity);
 
-        if(  res['equity'] > (equity - Daily Drawdown)  ){
-          echo pass
+        // console.log('curent equity  ' + res['equity']);
+        // console.log('equity ' + equity);
+        // console.log('max daily loss ' + maxDD);
+
+        if(res['equity'] > (equity - maxDD)){
+          checkIfMaxDailyLossFail();
         }else{
-          echo fail
+          makeMaxDailylossFail();
         }
 
         //profit target render
@@ -669,7 +723,17 @@ $myArray = explode(',', $myString);
           );
         }else{
           $('#openOrders').html('');
-          $('#openOrders').append(`<p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>`);
+          $('#openOrders').append(`
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>
+            </td>
+          </tr>
+          `);
         }
 
         $('#orders').css('opacity', '1');
