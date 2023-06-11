@@ -56,6 +56,7 @@ window.createPayment = async function(token) {
       }
     } else {
       window.showSuccess('Payment Successful!');
+      window.location.href = PANEL_URL+"user/account-overview";
     }
   } catch (error) {
     console.error('Error:', error);

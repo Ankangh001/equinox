@@ -6,6 +6,8 @@ use Square\Models\Money;
 use Square\Models\CreatePaymentRequest;
 use Square\Exceptions\ApiException;
 use Ramsey\Uuid\Uuid;
+use AmazonPay\Client;
+use AmazonPay\ResponseParser;
 
 class Payment extends APIMaster {
 
@@ -41,7 +43,6 @@ class Payment extends APIMaster {
 
 	public function index()
 	{
-        echo "<pre>"; print_r($_SESSION); die;
         if(!empty($_GET)){
             $data['product_details'] = $this->db->where(['product_id' => $_GET['product-code']])->get('products')->row_array();
             $data['squareData'] = [
@@ -54,40 +55,40 @@ class Payment extends APIMaster {
 	}
 
     public function coinbaseCreateCharge()
-	{        
+	{
         $curl = curl_init();
         // $post = ``;
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS =>'{
-            "local_price":{
-                "amount":1,
-                "currency":"USD"
-            },
-            "metadata":{
-                "customer_id":"customer1",
-                "customer_name":"Person1"
-            },
-            "name":"Example1",
-            "description":"Create Charge using PHP",
-            "pricing_type":"fixed_price",
-            "redirect_url":"'.base_url().'/coinbase/s.php",
-            "cancel_url":"'.base_url().'coinbase/cancel.php"
-        }',
-        CURLOPT_HTTPHEADER => array(
-            'Content-Type: application/json',
-            'Accept: application/json',
-            'X-CC-Version: 2018-03-22',
-            'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
-        ),
+            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>'{
+                "local_price":{
+                    "amount":"'.$_POST['final_product_price'].'",
+                    "currency":"USD"
+                },
+                "metadata":{
+                    "customer_id":"customer1",
+                    "customer_name":"Person1"
+                },
+                "name":"Example1",
+                "description":"Create Charge using PHP",
+                "pricing_type":"fixed_price",
+                "redirect_url":"'.base_url().'/coinbase/s.php",
+                "cancel_url":"'.base_url().'coinbase/cancel.php"
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'X-CC-Version: 2018-03-22',
+                'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
+            ),
         ));
 
         $response = curl_exec($curl);
@@ -175,9 +176,9 @@ class Payment extends APIMaster {
             
                 if ($response->isSuccess()) {
                     $this->squareSuccess($requestData,$response->getResult());
-                echo json_encode($response->getResult());
+                    echo json_encode($response->getResult());
                 } else {
-                echo json_encode(array('errors' => $response->getErrors()));
+                    echo json_encode(array('errors' => $response->getErrors()));
                 }
             } catch (ApiException $e) {
                 echo json_encode(array('errors' => $e));
@@ -192,24 +193,26 @@ class Payment extends APIMaster {
         try {
             $product_category = $this->db->where(['product_id' => $requestData->product_id])->get('products')->row_array();
 			$userProducts = array(
-				'user_id' => $requestData->user_id,
-				'product_id' => $requestData->product_id,
+				'user_id'       => $requestData->user_id,
+				'product_id'    => $requestData->product_id,
 				'product_price' => $requestData->product_price,
 				'product_discount' => $requestData->product_discount,
 				'final_product_price' => $requestData->final_product_price,
-				'phase' => '1',
-				'created_date' => date('Y-m-d H:m:s'),
-				'product_status' => '0',
+				'phase'         => '1',
+				'created_date'  => date('Y-m-d H:m:s'),
+				'product_status'=> '0',
 			);
 
             $transaction = array(
-				'user_id' => $requestData->user_id,
-				'amount' => $requestData->final_product_price,
-				'product_id' => $requestData->product_id,
+				'user_id'       => $requestData->user_id,
+				'amount'        => $requestData->final_product_price,
+				'product_id'    => $requestData->product_id,
 				'product_category' => $product_category['product_category'],
-				'gateway' => 'square',
+				'gateway'       => 'square',
+                'flag'          =>  1,
+                'txn_type'      => 1,
 				'purchase_date' => date('Y-m-d H:m:s'),
-				'updated_at' => date('Y-m-d H:m:s'),
+				'updated_at'    => date('Y-m-d H:m:s'),
 			);
 			
 			if($this->db->insert('userproducts', $userProducts)){
@@ -233,7 +236,7 @@ class Payment extends APIMaster {
 					'message' => 'Unable to add data',
 				);
             }
-			echo json_encode($response);  
+			return $response;  
 
 		} catch (\Throwable $th) {
 			$res = $th;
@@ -244,40 +247,45 @@ class Payment extends APIMaster {
 	{        
         try {
             $affiliate_user = $this->db->where(['affiliate_code' => $affiliate_by])->get('user')->row_array();
-            
-            $transaction = array(
-				'user_id' => $requestData->user_id,
-				'amount' => $requestData->final_product_price,
-				'product_id' => $requestData->product_id,
-				'product_category' => $product_category['product_category'],
-				'gateway' => 'square',
-				'purchase_date' => date('Y-m-d H:m:s'),
-				'updated_at' => date('Y-m-d H:m:s'),
-			);
-			
-			if($this->db->insert('userproducts', $userProducts)){
-                if( $this->db->insert('transactions', $transaction)){
-                    $response = array(
-                        'status' => '200',
-                        'message' => 'User Poduct Added successfully',
-                    );
-                }else{
-                    $response = array(
-                        'status' => '400',
-                        'message' => 'Unable to add data',
-                    );
-                }
-            }else{
-                $response = array(
-					'status' => '400',
-					'message' => 'Unable to add data',
-				);
+            if(!empty($affiliate_user)){
+                $affiliate_user_count = $this->db->where(['user_id' => $affiliate_user['user_id'],'txn_type' => 3])->get('transactions')->num_rows();
+                $query = "SELECT percentage FROM affiliate_slab WHERE $affiliate_user_count BETWEEN min_range AND max_range";
+                $affiliate_percentage = $this->db->query($query)->row_array()['percentage'];
+                
+                $transaction = array(
+                    'user_id'       =>  $affiliate_user['user_id'],
+                    'amount'        =>  (int) (($requestData->final_product_price*$affiliate_percentage)/100),
+                    'product_id'    =>  $requestData->product_id,
+                    'flag'          =>  0,
+                    'txn_type'      =>  3,
+                    'comments'      =>  'referral amount',
+                    'purchase_date' =>  date('Y-m-d H:m:s'),
+                    'updated_at'    =>  date('Y-m-d H:m:s'),
+                );
+                
+                $this->db->insert('transactions', $transaction);
             }
-			
-			echo json_encode($response);  
-
+            return true;
 		} catch (\Throwable $th) {
 			$res = $th;
 		}
 	}
+
+    public function amazonPay(){
+        $merchantId = 'YOUR_MERCHANT_ID';
+        $accessKeyId = 'YOUR_ACCESS_KEY_ID';
+        $secretAccessKey = 'YOUR_SECRET_ACCESS_KEY';
+
+        $client = new Client($merchantId, $accessKeyId, $secretAccessKey, ['sandbox' => true]);
+
+        if (isset($_GET['access_token'])) {
+            $response = $client->getBuyerToken($_GET['access_token']);
+
+            if ($response->isSuccess()) {
+                $buyerToken = $response->getToken();
+            } else {
+                echo 'An error occurred: ' . $response->getErrorMessage();
+            }
+        }
+    }
 }
