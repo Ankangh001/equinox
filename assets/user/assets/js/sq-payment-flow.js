@@ -73,23 +73,23 @@ window.getPaymentRequest = function() {
       { amount: '4.56', label: 'Dog', pending: false },
     ],
     requestBillingContact: false,
-    requestShippingContact: true,
-    shippingContact: {
-      addressLines: ['123 Test St', ''],
-      city: 'San Francisco',
-      countryCode: 'US',
-      email: 'test@test.com',
-      familyName: 'Last Name',
-      givenName: 'First Name',
-      phone: '1111111111',
-      postalCode: '94109',
-      state: 'CA',
-    },
-    shippingOptions: [
-      { amount: '0.00', id: 'FREE', label: 'Free' },
-      { amount: '9.99', id: 'XP', label: 'Express' },
-    ],
-    total: { amount: '1.00', label: 'Total', pending: false },
+    requestShippingContact: false,
+    // shippingContact: {
+    //   addressLines: ['123 Test St', ''],
+    //   city: 'San Francisco',
+    //   countryCode: 'US',
+    //   email: 'test@test.com',
+    //   familyName: 'Last Name',
+    //   givenName: 'First Name',
+    //   phone: '1111111111',
+    //   postalCode: '94109',
+    //   state: 'CA',
+    // },
+    // shippingOptions: [
+    //   { amount: '0.00', id: 'FREE', label: 'Free' },
+    //   { amount: '9.99', id: 'XP', label: 'Express' },
+    // ],
+    total: { amount: requestData.final_product_price, label: 'Total', pending: false },
   };
 };
 
