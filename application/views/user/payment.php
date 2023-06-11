@@ -169,18 +169,23 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
               </div> -->
             <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
               <div class="col-lg-12 mt-5">
-                <div class="card-title d-flex justify-content-center">
+                <!-- <div class="card-title d-flex justify-content-center">
                   I want to continue with coinbase
                 </div>
                 <div class="card-body d-flex justify-content-center">
                   <button id="coinbase_buy" class="btn btn-primary ">Pay Now With Coinbase</button>
-                </div>
+                </div> -->
+                <form id="paymentForm">
+                  <button type="submit">Pay with Coinbase</button>
+                </form>
               </div>
             </div>
 
             <div class="tab-pane fade" id="navs-top-amazon" role="tabpanel">
-              <h1>Amazon Pay Integration</h1>
-              <div id="amazonPayButton"></div>
+              <form method="POST" action="<?=base_url('user/payment/amazonPay')?>">
+                <input type="hidden" name="action" value="checkout">
+                <div id="amazonPayButton"></div>
+              </form>
             </div>
 
             <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
@@ -270,19 +275,41 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
   requestData.product_discount = $("#product_discount").text();
   requestData.final_product_price = $("#final_product_price").text();
 
-  $('#coinbase_buy').click(()=>{
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-        data: requestData,
-        dataType: "html",
-        success: function(data){
-          window.location.href = data;
-        },
-        error: function() { 
-          alert("Error posting feed."); 
-        }
-    });
+  // $('#coinbase_buy').click(()=>{
+  //   $.ajax({
+  //       type: "POST",
+  //       url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
+  //       data: requestData,
+  //       dataType: "html",
+  //       success: function(data){
+  //         window.location.href = data;
+  //       },
+  //       error: function() { 
+  //         alert("Error posting feed."); 
+  //       }
+  //   });
+  // });
+
+
+  const form = document.getElementById('paymentForm');
+
+  form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      var coinbaseUrl = PANEL_URL+'user/payment/createCoinbasePayment';
+      const response = await fetch(coinbaseUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({requestData}),
+      });
+
+      if (response.ok) {
+          const paymentData = await response.json();
+          window.location.href = paymentData.hosted_url;
+      } else {
+          console.error('Failed to create payment');
+      }
   });
 
   $('#skip-payment').click(()=>{
@@ -316,18 +343,18 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
 <script>
 
 window.onAmazonLoginReady = function () {
-  amazon.Login.setClientId('YOUR_CLIENT_ID');
+  amazon.Login.setClientId('amzn1.application-oa2-client.3f77e56a623e45ca8fcece1d8045c39f');
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  OffAmazonPayments.Button('amazonPayButton', 'YOUR_SELLER_ID', {
+  OffAmazonPayments.Button('amazonPayButton', 'A2EN18MJPAR45R', {
     type: 'PwA',
     color: 'Gold',
     size: 'medium',
 
     authorization: function () {
-      loginOptions = { scope: 'profile postal_code payments:widget payments:shipping_address' };
-      amazon.Login.authorize(loginOptions, 'YOUR_REDIRECT_URL');
+      var paymentUrl = PANEL_URL+'user/payment/amazonPay?action=checkout&amount=' + encodeURIComponent(requestData.final_product_price);
+      window.location.href = paymentUrl;
     },
 
     onError: function (error) {
@@ -335,5 +362,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 
 </script>
