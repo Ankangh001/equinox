@@ -4,10 +4,10 @@ async function SquarePaymentFlow() {
   CardPay(document.getElementById('card-container'), document.getElementById('card-button'));
 
   // Create Apple pay instance
-  // ApplePay(document.getElementById('apple-pay-button'));
+  ApplePay(document.getElementById('apple-pay-button'));
 
   // Create Google pay instance
-  // GooglePay(document.getElementById('google-pay-button'));
+  GooglePay(document.getElementById('google-pay-button'));
 
   // Create ACH payment
   ACHPay(document.getElementById('ach-button'));
@@ -56,6 +56,7 @@ window.createPayment = async function(token) {
       }
     } else {
       window.showSuccess('Payment Successful!');
+      window.location.href = PANEL_URL+"user/account-overview";
     }
   } catch (error) {
     console.error('Error:', error);
@@ -72,23 +73,23 @@ window.getPaymentRequest = function() {
       { amount: '4.56', label: 'Dog', pending: false },
     ],
     requestBillingContact: false,
-    requestShippingContact: true,
-    shippingContact: {
-      addressLines: ['123 Test St', ''],
-      city: 'San Francisco',
-      countryCode: 'US',
-      email: 'test@test.com',
-      familyName: 'Last Name',
-      givenName: 'First Name',
-      phone: '1111111111',
-      postalCode: '94109',
-      state: 'CA',
-    },
-    shippingOptions: [
-      { amount: '0.00', id: 'FREE', label: 'Free' },
-      { amount: '9.99', id: 'XP', label: 'Express' },
-    ],
-    total: { amount: '1.00', label: 'Total', pending: false },
+    requestShippingContact: false,
+    // shippingContact: {
+    //   addressLines: ['123 Test St', ''],
+    //   city: 'San Francisco',
+    //   countryCode: 'US',
+    //   email: 'test@test.com',
+    //   familyName: 'Last Name',
+    //   givenName: 'First Name',
+    //   phone: '1111111111',
+    //   postalCode: '94109',
+    //   state: 'CA',
+    // },
+    // shippingOptions: [
+    //   { amount: '0.00', id: 'FREE', label: 'Free' },
+    //   { amount: '9.99', id: 'XP', label: 'Express' },
+    // ],
+    total: { amount: requestData.final_product_price, label: 'Total', pending: false },
   };
 };
 

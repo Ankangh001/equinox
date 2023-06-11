@@ -200,6 +200,13 @@
               </a>
             </li>
 
+            <!-- Promotions -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate-slab') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/affiliate_slab')?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-offer"></i>
+                <div>Affiliate Slab</div>
+              </a>
+            </li>
             
             <!-- faq -->
             <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
