@@ -25,13 +25,12 @@ $this->load->view('admin/includes/header');
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalCenterTitle">Credentials Updated</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="col-xl">
               <div class="card-body">
-                  Updated
+                <h5 class="modal-title" id="modalCenterTitle">Credentials Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
               </div>
             </div>
           </div>
@@ -140,57 +139,57 @@ $this->load->view('admin/includes/header');
 
     <div class="nav-align-top mb-4">
       <div class="col-xl">
-        <div class="card">
-          <h5 class="card-header">
-            Accounts 
-          </h5>
-          <div class="table-responsive text-nowrap">
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th>Product Name</th>
-                  <th>User Name</th>
-                  <th>Account Size</th>
-                  <th>Type</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody class="table-border-bottom-0">
-                <?php 
-                  foreach ($res as $key => $value) { 
-                    if ($value['phase'] == '1' && $value['product_status'] != '1'){
-                ?>
-                <tr>
-                  <td><?= @$value['product_name']?></td>
-                  <td><?= @$value['first_name'].' '.@$value['last_name']?></td>
-                  <td><?= @$value['account_size']?></td>
-                  <td><?= @$value['product_category']?></td>
-                  <td><i class="bx bx-dollar"></i><?= @$value['product_price']?></td>
-                  <td>
-                    <?php if($value['product_status'] == '0'){?>
-                      <span class="badge bg-label-warning">Pending</span>
-                    <?php }elseif($value['product_status'] == '1'){?>
-                      <span class="badge bg-label-success">Active</span>
-                    <?php }elseif($value['product_status'] == '2'){?>
-                      <span class="badge bg-label-primary">Passed</span>
-                    <?php }elseif($value['product_status'] == '3'){?>
-                      <span class="badge bg-label-danger">Failed</span>
-                    <?php }?>
-                  </td>
-                  <td>
-                    <div class="d-flex justify-content-space-between">
-                      <a onclick="viewDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                      <a onclick="addDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <?php }}; ?>
-              </tbody>
-            </table>
+          <div class="card">
+            <h5 class="card-header">
+              Accounts 
+            </h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>User Name</th>
+                    <th>Account Size</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                  <?php 
+                    foreach ($res as $key => $value) { 
+                      if ($value['phase'] == '1' && $value['product_status'] != '1'){
+                  ?>
+                  <tr>
+                    <td><?= @$value['product_name']?></td>
+                    <td><?= @$value['first_name'].' '.@$value['last_name']?></td>
+                    <td><?= @$value['account_size']?></td>
+                    <td><?= @$value['product_category']?></td>
+                    <td><i class="bx bx-dollar"></i><?= @$value['product_price']?></td>
+                    <td>
+                      <?php if($value['product_status'] == '0'){?>
+                        <span class="badge bg-label-warning">Pending</span>
+                      <?php }elseif($value['product_status'] == '1'){?>
+                        <span class="badge bg-label-success">Active</span>
+                      <?php }elseif($value['product_status'] == '2'){?>
+                        <span class="badge bg-label-primary">Passed</span>
+                      <?php }elseif($value['product_status'] == '3'){?>
+                        <span class="badge bg-label-danger">Failed</span>
+                      <?php }?>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-space-between">
+                        <a onclick="viewDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                        <a onclick="addDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <?php }}; ?>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
         </div>
       </div>  
     </div>

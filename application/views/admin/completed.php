@@ -1,4 +1,8 @@
 <?php
+// echo "<pre>";
+// print_r($res);
+// echo "</pre>";
+// die;
 $this->load->view('admin/includes/header');
 ?>
 
@@ -21,13 +25,12 @@ $this->load->view('admin/includes/header');
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalCenterTitle">Credentials Updated</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="col-xl">
               <div class="card-body">
-                  Updated
+                <h5 class="modal-title" id="modalCenterTitle">Credentials Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
               </div>
             </div>
           </div>
@@ -136,57 +139,57 @@ $this->load->view('admin/includes/header');
 
     <div class="nav-align-top mb-4">
       <div class="col-xl">
-        <div class="card">
-          <h5 class="card-header">
-            Accounts 
-          </h5>
-          <div class="table-responsive text-nowrap">
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th>Product Name</th>
-                  <th>User Name</th>
-                  <th>Account Size</th>
-                  <th>Type</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody class="table-border-bottom-0">
-                <?php 
-                  foreach ($res as $key => $value) { 
-                    if ($value['product_status'] == '1'){
-                ?>
-                <tr>
-                  <td><?= @$value['product_name']?></td>
-                  <td><?= @$value['user_id']?></td>
-                  <td><?= @$value['account_size']?></td>
-                  <td><?= @$value['product_category']?></td>
-                  <td><i class="bx bx-dollar"></i><?= @$value['product_price']?></td>
-                  <td>
-                    <?php if($value['product_status'] == '0'){?>
-                      <span class="badge bg-label-warning">Pending</span>
-                    <?php }elseif($value['product_status'] == '1'){?>
-                      <span class="badge bg-label-success">Active</span>
-                    <?php }elseif($value['product_status'] == '2'){?>
-                      <span class="badge bg-label-primary">Passed</span>
-                    <?php }elseif($value['product_status'] == '3'){?>
-                      <span class="badge bg-label-danger">Failed</span>
-                    <?php }?>
-                  </td>
-                  <td>
-                    <div class="d-flex justify-content-space-between">
-                      <a onclick="viewDetails('<?= @$value['id']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                      <a onclick="addDetails('<?= @$value['id']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <?php }}; ?>
-              </tbody>
-            </table>
+          <div class="card">
+            <h5 class="card-header">
+              Accounts 
+            </h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>User Name</th>
+                    <th>Account Size</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                  <?php 
+                    foreach ($res as $key => $value) { 
+                      if ($value['product_status'] == '1'){
+                  ?>
+                  <tr>
+                    <td><?= @$value['product_name']?></td>
+                    <td><?= @$value['first_name'].' '.@$value['last_name']?></td>
+                    <td><?= @$value['account_size']?></td>
+                    <td><?= @$value['product_category']?></td>
+                    <td><i class="bx bx-dollar"></i><?= @$value['product_price']?></td>
+                    <td>
+                      <?php if($value['product_status'] == '0'){?>
+                        <span class="badge bg-label-warning">Pending</span>
+                      <?php }elseif($value['product_status'] == '1'){?>
+                        <span class="badge bg-label-success">Active</span>
+                      <?php }elseif($value['product_status'] == '2'){?>
+                        <span class="badge bg-label-primary">Passed</span>
+                      <?php }elseif($value['product_status'] == '3'){?>
+                        <span class="badge bg-label-danger">Failed</span>
+                      <?php }?>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-space-between">
+                        <a onclick="viewDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                        <a onclick="addDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <?php }}; ?>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
         </div>
       </div>  
     </div>
@@ -195,7 +198,26 @@ $this->load->view('admin/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Phase 1</h4>`);
 
-  function viewDetails(id) {
+  //global variables for aggressive p-type = 0
+  let asIp = "<?= @$servers[0]['sIp']; ?>";
+  let asPort = "<?= @$servers[0]['sPort']; ?>";
+  let aserverName = "<?= @$servers[0]['serverName']; ?>";
+  let ap_type = "<?= @$servers[0]['p_type']; ?>";
+
+  //global variables for normal p-type = 1
+  let nsIp = "<?= @$servers[1]['sIp']; ?>";
+  let nsPort = "<?= @$servers[1]['sPort']; ?>";
+  let nserverName = "<?= @$servers[1]['serverName']; ?>";
+  let np_type = "<?= @$servers[1]['p_type']; ?>";
+
+  //global variables for funded p-type = 2
+  let fsIp = "<?= @$servers[2]['sIp']; ?>";
+  let fsPort = "<?= @$servers[2]['sPort']; ?>";
+  let fserverName = "<?= @$servers[2]['serverName']; ?>";
+  let fp_type = "<?= @$servers[2]['p_type']; ?>";
+  
+  
+  function viewDetails(id, product_category) {
     let request = {}
     request.id = id;
     
@@ -219,7 +241,7 @@ $this->load->view('admin/includes/header');
     });
   }
 
-  function addDetails(iD) {
+  function addDetails(iD, product_category) {
     let request = {}
     request.id = iD;
     
@@ -230,12 +252,67 @@ $this->load->view('admin/includes/header');
         dataType: "html",
         success:function(data){
           let res = JSON.parse(data);
+          if(product_category == 'Normal'){
+            if(res[0].ip == ''){
+              $('#ip-add').val(nsIp);
+            }else{
+              $('#ip-add').val(res[0].ip);
+            }
+
+            if(res[0].port == ''){
+              $('#port-id').val(nsPort);
+            }else{
+              $('#port-id').val(res[0].port);
+            }
+
+            if(res[0].server == ''){
+              $('#server-add').val(nserverName);
+            }else{
+              $('#server-add').val(res[0].server);
+            }
+          }else if(product_category == 'Aggressive'){
+            if(res[0].ip == ''){
+              $('#ip-add').val(asIp);
+            }else{
+              $('#ip-add').val(res[0].ip);
+            }
+
+            if(res[0].port == ''){
+              $('#port-id').val(asPort);
+            }else{
+              $('#port-id').val(res[0].port);
+            }
+
+            if(res[0].server == ''){
+              $('#server-add').val(aserverName);
+            }else{
+              $('#server-add').val(res[0].server);
+            }
+          }else if(product_category == 'Funded'){
+            if(res[0].ip == ''){
+              $('#ip-add').val(fsIp);
+            }else{
+              $('#ip-add').val(res[0].ip);
+            }
+
+            if(res[0].port == ''){
+              $('#port-id').val(fsPort);
+            }else{
+              $('#port-id').val(res[0].port);
+            }
+
+            if(res[0].server == ''){
+              $('#server-add').val(fserverName);
+            }else{
+              $('#server-add').val(res[0].server);
+            }
+          }
+
+
           $('#id').val(iD);
           $('#acc_id').val(res[0].account_id);
           $('#pass').val(res[0].account_password);
-          $('#server-add').val(res[0].server);
-          $('#ip-add').val(res[0].ip);
-          $('#port-id').val(res[0].port);
+
           $('#modalCred').modal('show');
         },
         error:function(params) {
@@ -278,9 +355,8 @@ $this->load->view('admin/includes/header');
   });
 
   function loadTable(){
-    $('.table').DataTable().destroy();
     $('.table').DataTable({
-        ajax: "<?php echo base_url('admin/purchase/getCompleted'); ?>",
+        ajax: "<?php echo base_url('admin/purchase/getPhase1Pending'); ?>",
         deferRender: true,
         "pageLength": 100,
         columns:[
@@ -316,8 +392,8 @@ $this->load->view('admin/includes/header');
             data: null,
             render: function (data, type, row) {
                 return `<div class="d-flex justify-content-space-between">
-                    <a onclick="viewDetails('${row.id}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                    <a onclick="addDetails('${row.id}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                    <a onclick="viewDetails('${row.id}','${row.product_category}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                    <a onclick="addDetails('${row.id}','${row.product_category}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
                   </div>`;
             }
           },
@@ -325,11 +401,7 @@ $this->load->view('admin/includes/header');
     });
   }
 
-  setInterval(() => {
-    loadTable();
-  }, 5000);
   $('.paginate_button').addClass('btn btn-primary');
-
 
 </script>
 </body>

@@ -39,12 +39,28 @@ $this->load->view('admin/includes/header'); ?>
                         <td><a href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><?php echo $data['first_name'].' '.$data['last_name'] ?></a></td>
                         <td><?= @$data['email'] ?></td>
                         <td><?= @$data['number'] ?></td>
-                        <td><span class="text-warning">Pending</span></td>
+                        <td><span class="text-<?php 
+                        if($data['kyc_status'] =='0'){ 
+                          echo 'warning';
+                        }elseif($data['kyc_status'] =='1') {
+                          echo 'success';
+                        }elseif($data['kyc_status'] =='2') {
+                          echo 'danger'; 
+                        }
+                      ?>"><?php 
+                        if($data['kyc_status'] =='0'){ 
+                          echo 'PENDING';
+                        }elseif($data['kyc_status'] =='1') {
+                          echo 'SUCCESS';
+                        }elseif($data['kyc_status'] =='2') {
+                          echo 'REJECTED'; 
+                        }
+                      ?></span></td>
                         <td>
                           <div class="d-flex justify-content-start">
-                            <a class="text-success" href="<?= base_url('admin/user/edit/')?><?php echo $data['user_id'] ?>"><i class="bx bx-edit-alt me-1"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a class="text-primary" href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><i class="bx bx-link-external me-1"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a class="text-danger" onclick="delete_user(<?php echo $data['user_id'] ?>)" href="javascript:void(0);"><i class="bx bx-trash me-1"></i></a>
+                            <!-- <a class="text-success" href="<?= base_url('admin/user/edit/')?><?php echo $data['user_id'] ?>"><i class="bx bx-edit-alt me-1"></i></a>&nbsp;&nbsp;&nbsp; -->
+                            <a class="btn-sm btn btn-primary" href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><i class="bx bx-link-external me-1"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-sm btn-danger" onclick="delete_user(<?php echo $data['user_id'] ?>)" href="javascript:void(0);"><i class="bx bx-trash me-1"></i></a>
                           </div>
                         </td>
                       </tr>
