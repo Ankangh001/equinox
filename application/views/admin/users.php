@@ -39,7 +39,7 @@ $this->load->view('admin/includes/header'); ?>
                         <td><a href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><?php echo $data['first_name'].' '.$data['last_name'] ?></a></td>
                         <td><?= @$data['email'] ?></td>
                         <td><?= @$data['number'] ?></td>
-                        <td><span class="text-<?php 
+                        <td><span class="badge bg-label-<?php 
                         if($data['kyc_status'] =='0'){ 
                           echo 'warning';
                         }elseif($data['kyc_status'] =='1') {

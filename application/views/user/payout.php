@@ -19,7 +19,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payout-type" class="form-label">Payout Type</label>
                       <select class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
-                        <option required selected="">Select Payout Type</option>
+                        <option selected="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
                         <option value="Affiliate">Affiliate</option>
                         <!-- <option value="Rewards">Games & Rewards</option> -->
@@ -31,7 +31,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-4" id="account">
                     <div class="mb-3">
                       <label for="account-numbers" class="form-label">Account Number</label>
-                      <select required class="form-select" id="account-numbers" name="mt5Acc" aria-label="Default select example">
+                      <select class="form-select" id="account-numbers" name="mt5Acc" aria-label="Default select example">
                         <option selected="">Select Account Number</option>
                       </select>
                     </div>
@@ -41,7 +41,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-6" id="mode">
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
-                      <select required class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
+                      <select class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
                         <option selected="">Select Payment Mode</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                         <option value="Crypto Currency">Crypto Currency</option>
@@ -54,7 +54,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label class="form-label d-flex align-items-center" for="amount">Amount &nbsp;&nbsp;
                         <span id="available_amount" class="ml-3 text-info text-transform-none float-end"></span></label>
-                        <input required type="number" id="amount" class="form-control phone-mask" name="payoutAmount" placeholder="Enter amount">
+                        <input type="number" id="amount" class="form-control phone-mask" name="payoutAmount" placeholder="Enter amount">
                         <p class="amnt-error d-none">You dont have enough balance</p>
                     </div>
                   </div>
@@ -62,7 +62,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-8" id="wallet">
                     <div class="mb-3">
                       <label class="form-label" for="walletAddress">Email / Wallet Address</label>
-                      <input required type="text" id="walletAddress" class="form-control phone-mask" name="emailWalletAddress" placeholder="Enter your address">
+                      <input type="text" id="walletAddress" class="form-control phone-mask" name="emailWalletAddress" placeholder="Enter your address">
                     </div>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Receipant Name &nbsp;&nbsp;
                           <span id="receipant-name" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="receipant-name" class="form-control phone-mask" name="receipantName" placeholder="Enter Receipant Name">
+                        <input type="text" id="receipant-name" class="form-control phone-mask" name="receipantName" placeholder="Enter Receipant Name">
                       </div>
                     </div>
   
@@ -84,7 +84,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Receipant Address &nbsp;&nbsp;
                           <span id="receipant-address" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="receipant-address" class="form-control phone-mask" name="receipantAddress" placeholder="Enter Receipant Address">
+                        <input type="text" id="receipant-address" class="form-control phone-mask" name="receipantAddress" placeholder="Enter Receipant Address">
                       </div>
                     </div>
   
@@ -93,7 +93,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Account Number/IBAN&nbsp;&nbsp;
                           <span id="iban" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="iban" class="form-control phone-mask" name="accountNumber" placeholder="Enter Account Number/IBAN">
+                        <input type="text" id="iban" class="form-control phone-mask" name="accountNumber" placeholder="Enter Account Number/IBAN">
                       </div>
                     </div>
   
@@ -102,7 +102,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Sortcode/ABN/Routing Code&nbsp;&nbsp;
                           <span id="sort-code" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="sort-code" class="form-control phone-mask" name="sortCode" placeholder="Enter Sortcode/ABN/Routing Code">
+                        <input type="text" id="sort-code" class="form-control phone-mask" name="sortCode" placeholder="Enter Sortcode/ABN/Routing Code">
                       </div>
                     </div>
   
@@ -111,7 +111,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Swift Code&nbsp;&nbsp;
                           <span id="swift-code" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="swift-code" class="form-control phone-mask" name="swiftCode" placeholder="Enter Swift Code">
+                        <input type="text" id="swift-code" class="form-control phone-mask" name="swiftCode" placeholder="Enter Swift Code">
                       </div>
                     </div>
   
@@ -120,7 +120,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Bank Name&nbsp;&nbsp;
                           <span id="bank-name" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="bank-name" class="form-control phone-mask" name="bankName" placeholder="Enter Bank Name">
+                        <input type="text" id="bank-name" class="form-control phone-mask" name="bankName" placeholder="Enter Bank Name">
                       </div>
                     </div>
   
@@ -129,7 +129,7 @@ $this->load->view('user/includes/header');
                         <label class="form-label d-flex align-items-center" for="amount">Branch Address&nbsp;&nbsp;
                           <span id="branch_address" class="ml-3 text-info text-transform-none float-end"></span>
                         </label>
-                        <input required type="text" id="branch_address" class="form-control phone-mask" name="branchAddress" placeholder="Enter Branch Address">
+                        <input type="text" id="branch_address" class="form-control phone-mask" name="branchAddress" placeholder="Enter Branch Address">
                       </div>
                     </div>  
                   </div>
