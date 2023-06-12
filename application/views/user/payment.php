@@ -18,9 +18,6 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
     window.country = "<?= $squareData['country']?>";
     window.idempotencyKey ="<?= $squareData['idempotencyKey']?>";
   </script>
-<div class="buy-now">
-  <button id="skip-payment" class="btn btn-danger btn-buy-now">Skip Payment For testing</button>
-</div>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
@@ -124,7 +121,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                 <div class="input-group input-group-merge">
                   <input type="number" id="basic-default-card-number" class="form-control" placeholder="KJH9" aria-label="KJH9" aria-describedby="basic-default-email2">
                   <span class="input-group-text p-1" id="basic-default-email2">
-                    <button class="btn btn-sm btn-secondary">Apply</button>
+                    <button class="btn btn-sm btn-secondary m-1">Apply</button>
                   </span>
                 </div>
               </div>
@@ -132,7 +129,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Discount</label>
               <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$
-                <span id="product_discount"><?=@$product_details['product_price']?></span>
+                <span id="product_discount">0</span>
               </label>
             </div>
             <div class="mb-1 row border-bottom">
@@ -222,24 +219,6 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
           console.error('Failed to create payment');
       }
   });
-
-  $('#skip-payment').click(()=>{
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payment/success'); ?>",
-        data: requestData,
-        dataType: "html",
-        success: function(data){
-          let res = JSON.parse(data);
-          if(res.status == 200){
-            window.location.href = "<?= base_url('user/account-overview') ?>";
-          }
-        },
-        error: function() { 
-          alert("Error posting feed."); 
-        }
-    });
-  })
 
 </script>
 
