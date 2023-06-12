@@ -59,8 +59,6 @@ class Payment extends APIMaster {
     public function coinbaseCreateCharge()
 	{
         $curl = curl_init();
-        // $post = ``;
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
             CURLOPT_RETURNTRANSFER => true,
@@ -83,7 +81,7 @@ class Payment extends APIMaster {
                 "description":"Create Charge using PHP",
                 "pricing_type":"fixed_price",
                 "redirect_url":"'.base_url().'user/payment/coinbaseSuccess",
-                "cancel_url":"'.base_url().'coinbase/cancel.php"
+                "cancel_url":"'.base_url().'user/payment/coinbaseFailure"
             }',
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
@@ -96,58 +94,135 @@ class Payment extends APIMaster {
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo json_decode($response)->data->hosted_url;
+        $response  = json_decode($response,true);
+        $this->coinbaseDataInsert($_POST,$response,0);
+        echo $response['data']['hosted_url'];
         // header('Location:'.json_decode($response)->data->hosted_url);
 	}
 
-    public function createCoinbasePayment(){
-        $apiKey = '408fe58b-6bc2-428e-84b4-b87bd44e3a07';
-        $apiSecret = 'YOUR_API_SECRET';
-        $coinbase = new CoinbaseCommerce\ApiClient($apiKey, $apiSecret);
-
-        // Retrieve the payment data from the request body
-        $requestData = json_decode(file_get_contents('php://input'), true);
-        $amount = $requestData['final_product_price'];
-
-        // Create a new charge
-        $chargeData = [
-            'name' => 'Sample Charge',
-            'description' => 'Payment for a product',
-            'pricing_type' => 'fixed_price',
-            'local_price' => [
-                'amount' => $amount,
-                'currency' => 'USD',
-            ],
-            'redirect_url' => base_url('user/payment/coinbaseSuccess'),
-        ];
-
-        $charge = $coinbase->createCharge($chargeData);
-
-        // Return the charge details to the client
-        header('Content-Type: application/json');
-        echo json_encode([
-            'hosted_url' => $charge->hosted_url,
-        ]);
-    }
-
     public function coinbaseSuccess(){
-        $apiKey = '408fe58b-6bc2-428e-84b4-b87bd44e3a07';
-        $apiSecret = 'YOUR_API_SECRET';
-        $coinbase = new CoinbaseCommerce\ApiClient($apiKey, $apiSecret);
+        $curl = curl_init();
 
-        // Retrieve the charge ID from the query parameters
-        $chargeId = $_GET['charge_id'];
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges/HXBXZGYE',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'X-CC-Version: 2018-03-22',
+                'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
+            ),
+        ));
 
-        // Get the charge details
-        $charge = $coinbase->getCharge($chargeId);
+        $response = curl_exec($curl);
 
-        // Process the charge details as needed
-        // ...
+        curl_close($curl);
 
-        // Redirect the user to a success or failure page
-        header('Location: https://yourwebsite.com/payment_status.php');
-        exit();
+        $response = json_decode($response,true);
+        $responseStatus = end($response['data']['timeline'])['status'];
+        $payment_code = $response['data']['code'];
+        $this->db->where(['payment_code'=> $payment_code])->update('userproducts',['payment_status'=>1]);
+        $this->db->where(['payment_code'=> $payment_code])->update('transactions',['payment_status'=>1]);
+        $txnData = $this->db->where(['payment_code'=> $payment_code])->get('transactions')->row_array();
+        $this->addCoinbaseAffilatePoint($txnData);
+        redirect(base_url('user/account-overview'));
     }
+
+    public function coinbaseFailure(){
+        redirect(base_url('user/account-overview'));
+    }
+
+    public function coinbaseDataInsert($requestData,$dump,$status=0)
+	{        
+        try {
+            $product_category = $this->db->where(['product_id' => $requestData['product_id']])->get('products')->row_array();
+			$userProducts = array(
+				'user_id'       => $requestData['user_id'],
+				'product_id'    => $requestData['product_id'],
+				'product_price' => $requestData['product_price'],
+				'product_discount' => $requestData['product_discount'],
+				'final_product_price' => $requestData['final_product_price'],
+				'phase'         => '1',
+				'created_date'  => date('Y-m-d H:m:s'),
+				'product_status'=> '0',
+				'payment_status'=> $status,
+			);
+
+            $transaction = array(
+				'user_id'       => $requestData['user_id'],
+				'amount'        => $requestData['final_product_price'],
+				'product_id'    => $requestData['product_id'],
+				'product_category' => $product_category['product_category'],
+				'gateway'       => 'coinbase',
+                'flag'          =>  1,
+                'txn_type'      => 1,
+				'payment_status'=> $status,
+				'payment_code'  => $dump['data']['code'],
+				'purchase_date' => date('Y-m-d H:m:s'),
+				'updated_at'    => date('Y-m-d H:m:s'),
+                'dump'          =>  json_encode($dump)
+			);
+			
+			if($this->db->insert('userproducts', $userProducts)){
+                if( $this->db->insert('transactions', $transaction)){
+                    $response = array(
+                        'status' => '200',
+                        'message' => 'User Poduct Added successfully',
+                    );
+                }else{
+                    $response = array(
+                        'status' => '400',
+                        'message' => 'Unable to add data',
+                    );
+                }
+            }else{
+                $response = array(
+					'status' => '400',
+					'message' => 'Unable to add data',
+				);
+            }
+			return $response;  
+
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
+    public function addCoinbaseAffilatePoint($requestData)
+	{        
+        try {
+            $affiliate_by = $this->db->where(['user_id' => $requestData['user_id']])->get('user')->row_array()['reffered_by'];
+            $affiliate_user = $this->db->where(['affiliate_code' => $affiliate_by])->get('user')->row_array();
+            if(!empty($affiliate_user)){
+                $affiliate_user_count = $this->db->where(['user_id' => $affiliate_user['user_id'],'txn_type' => 3])->get('transactions')->num_rows();
+                $query = "SELECT percentage FROM affiliate_slab WHERE $affiliate_user_count BETWEEN min_range AND max_range";
+                $affiliate_percentage = $this->db->query($query)->row_array()['percentage'];
+                
+                $transaction = array(
+                    'user_id'       =>  $affiliate_user['user_id'],
+                    'amount'        =>  (int) (($requestData['final_product_price']*$affiliate_percentage)/100),
+                    'product_id'    =>  $requestData['product_id'],
+                    'flag'          =>  0,
+                    'txn_type'      =>  3,
+                    'comments'      =>  'referral amount',
+                    'purchase_date' =>  date('Y-m-d H:m:s'),
+                    'updated_at'    =>  date('Y-m-d H:m:s'),
+                );
+                
+                $this->db->insert('transactions', $transaction);
+            }
+            return true;
+		} catch (\Throwable $th) {
+			$res = $th;
+            return true;
+		}
+	}
 
     public function success()
 	{        
@@ -252,6 +327,7 @@ class Payment extends APIMaster {
 				'phase'         => '1',
 				'created_date'  => date('Y-m-d H:m:s'),
 				'product_status'=> '0',
+				'payment_status'=> 1,
 			);
 
             $transaction = array(
@@ -262,8 +338,10 @@ class Payment extends APIMaster {
 				'gateway'       => 'square',
                 'flag'          =>  1,
                 'txn_type'      => 1,
+				'payment_status'=> 1,
 				'purchase_date' => date('Y-m-d H:m:s'),
 				'updated_at'    => date('Y-m-d H:m:s'),
+                'dump'          =>  json_encode($dump)
 			);
 			
 			if($this->db->insert('userproducts', $userProducts)){
@@ -325,10 +403,11 @@ class Payment extends APIMaster {
     public function amazonPay(){
 
         $amazonpay_config = array(
-            'public_key_id' => 'LIVE-AGUOJSD5QAUH44X27UFIVX7P',
-            'private_key'   => 'AmazonPay_LIVE-AGUOJSD5QAUH44X27UFIVX7P.pem',
+            'public_key_id' => 'SANDBOX-AE4FD7KU2KXHY6UEW3HI3QBB',
+            'private_key'   => 'sandbox.pem',
             'region'        => 'US',
-            'sandbox'       => true
+            'sandbox'       => true,
+            'algorithm'     => 'AMZN-PAY-RSASSA-PSS-V2'
         );
 
         $payload = array(
