@@ -32,7 +32,10 @@ $this->load->view('user/includes/header');
                       <div class="nav-align-left mb-4 row">
                         <ul class="nav nav-pills mb-3 col-lg-6" id="tabs" role="tablist">
 
-                          <?php foreach($res as $data){if($data['product_category'] == 'Aggressive') {?>
+                          <?php 
+                            foreach($res as $data){
+                              if($data['product_category'] == 'Aggressive') {
+                          ?>
                           <li class="nav-item">
                             <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
                               <label class="card-body pointer">
@@ -48,11 +51,17 @@ $this->load->view('user/includes/header');
                               </label>
                             </div>
                           </li>
-                          <?php }} ?>
+                          <?php 
+                              }
+                            } 
+                          ?>
 
                         </ul>
                         <div id="contents" class="tab-content shadow-none col-lg-6">
-                          <?php foreach($res as $data){ if($data['product_category'] == 'Aggressive') {?>
+                          <?php 
+                            foreach($res as $data){ 
+                              if($data['product_category'] == 'Aggressive') {
+                          ?>
 
                             <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
                               <div class="col-md-12 col-xl-12">
@@ -75,7 +84,10 @@ $this->load->view('user/includes/header');
                               </div>
                             </div>
                             
-                          <?php }} ?>
+                          <?php 
+                              }
+                            } 
+                          ?>
                         </div>
                       </div>
 
@@ -101,7 +113,7 @@ $this->load->view('user/includes/header');
                                 <label class="card-body pointer">
                                   <div class="form-check d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-start align-items-center">
-                                      <input name="normal-product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
+                                      <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
                                       <div class="d-flex flex-column">
                                         <label class="fw-bold form-check-label" for="defaultRadio1"><?=@$data['product_name']?></label>
                                       </div>

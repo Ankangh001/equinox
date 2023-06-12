@@ -30,7 +30,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-credit-card-alt"></i>Our Payment Methods</h5>
-            <!-- <small class="text-muted float-end">Default label</small> -->
+            <small class="text-muted float-end">Choose Your Payment Method</small>
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">
@@ -81,118 +81,28 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                   </div>
                 </form>
               </div>
-            </div>
-                <!-- <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
-                <form>
-                  <div class="mb-3">
-                    <label class="form-label" for="basic-default-fullname">Card Holder Name</label>
-                    <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe">
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-phone">Phone No</label>
-                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">Billing Country</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                          <option selected="">Select Billing Country</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-phone">Zip Code</label>
-                        <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="987 980">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">State/Province</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                          <option selected="">Select State/Province</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">Card Number</label>
-                        <div class="input-group input-group-merge">
-                          <input type="number" id="basic-default-card-number" class="form-control" placeholder="0000 0000 0000 0000" aria-label="0000 0000 0000 0000" aria-describedby="basic-default-email2">
-                          <span class="input-group-text" id="basic-default-email2">
-                            <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="40" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png">
-                            <img src="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png" width="40" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png">
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label class="form-label" for="basic-default-phone">Expiration</label>
-                              <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="01/20">
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label class="form-label" for="basic-default-email">CVV</label>
-                              <div class="input-group input-group-merge">
-                                <input type="number" id="basic-default-card-number" class="form-control" placeholder="123" aria-label="123" aria-describedby="basic-default-email2">
-                                <span class="input-group-text" id="basic-default-email2">
-                                  <i class="fs-3 bx bx-credit-card-alt"></i>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <div class="form-text">By providing your card information you allow Equinox Trading Capital Limited</div>
-                  </div>
-                  <button type="submit" class="w-100 btn btn-primary">Purchase</button>
-                </form>
-              </div> -->
-            <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
-              <div class="col-lg-12 mt-5">
-                <!-- <div class="card-title d-flex justify-content-center">
-                  I want to continue with coinbase
+
+              <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+                <div class="col-lg-12 mt-5">
+                  <form id="paymentForm">
+                    <button type="submit">Pay with Coinbase</button>
+                  </form>
                 </div>
-                <div class="card-body d-flex justify-content-center">
-                  <button id="coinbase_buy" class="btn btn-primary ">Pay Now With Coinbase</button>
-                </div> -->
-                <form id="paymentForm">
-                  <button type="submit">Pay with Coinbase</button>
+              </div>
+
+              <div class="tab-pane fade" id="navs-top-amazon" role="tabpanel">
+                <form method="POST" action="<?=base_url('user/payment/amazonPay')?>">
+                  <input type="hidden" name="action" value="checkout">
+                  <div id="amazonPayButton"></div>
                 </form>
               </div>
-            </div>
 
-            <div class="tab-pane fade" id="navs-top-amazon" role="tabpanel">
-              <form method="POST" action="<?=base_url('user/payment/amazonPay')?>">
-                <input type="hidden" name="action" value="checkout">
-                <div id="amazonPayButton"></div>
-              </form>
-            </div>
-
-            <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
-              UPI
-            </div>
+              <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
+                UPI
+              </div>
           </div>
         </div>
+      </div>
       </div>
       <div class="col-xl">
         <div class="card mb-4">
@@ -256,6 +166,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
         </div>
       </div>
     </div>
+  </div>
 <?php $this->load->view('user/includes/footer');?>
 <script>
   const PANEL_URL = "<?=base_url()?>";
