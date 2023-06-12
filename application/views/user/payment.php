@@ -1,6 +1,6 @@
 <?php
 $this->load->view('user/includes/header');
-$web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.squarecdn.com/v1/square.js" : "https://sandbox.web.squarecdn.com/v1/square.js";
+$web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web.squarecdn.com/v1/square.js" : "https://sandbox.web.squarecdn.com/v1/square.js";
 ?>
   <link rel="stylesheet" type="text/css" href="<?=base_url('assets/user/assets/css/sq-payment.css')?>">
 
@@ -18,29 +18,43 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
     window.country = "<?= $squareData['country']?>";
     window.idempotencyKey ="<?= $squareData['idempotencyKey']?>";
   </script>
-<div class="buy-now">
-  <button id="skip-payment" class="btn btn-danger btn-buy-now">Skip Payment For testing</button>
-</div>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
+    <!-- update alert modal -->
+    <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <h5 class="modal-title" id="modalCenterTitle">Payment successfull <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12 col-lg-7">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-credit-card-alt"></i>Our Payment Methods</h5>
-            <!-- <small class="text-muted float-end">Default label</small> -->
+            <small class="text-muted float-end">Choose Your Payment Method</small>
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">
-              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
+              <button type="button" class="btn " role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="50" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
               </button>
             </li>
 
             <li class="nav-item">
-              <button type="button" class="btn" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png">
               </button>
             </li>
@@ -50,19 +64,13 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png">
               </button>
             </li>
-
-            <li class="nav-item">
-              <button type="button" class="btn" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile-upi" aria-controls="navs-top-profile" aria-selected="false">
-                <img src="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png">
-              </button>
-            </li>
           </ul>
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
+              <div class="tab-pane fade" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
-                    <div id="apple-pay-button" alt="apple-pay" type="button"></div>
+                    <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
                     <div id="google-pay-button" alt="google-pay" type="button"></div>
                     <!-- <div class="border">
                       <span>OR</span>
@@ -81,116 +89,21 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                   </div>
                 </form>
               </div>
-            <!-- </div> -->
-                <!-- <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
-                <form>
-                  <div class="mb-3">
-                    <label class="form-label" for="basic-default-fullname">Card Holder Name</label>
-                    <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe">
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-phone">Phone No</label>
-                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">Billing Country</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                          <option selected="">Select Billing Country</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-phone">Zip Code</label>
-                        <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="987 980">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">State/Province</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                          <option selected="">Select State/Province</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">Card Number</label>
-                        <div class="input-group input-group-merge">
-                          <input type="number" id="basic-default-card-number" class="form-control" placeholder="0000 0000 0000 0000" aria-label="0000 0000 0000 0000" aria-describedby="basic-default-email2">
-                          <span class="input-group-text" id="basic-default-email2">
-                            <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="40" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png">
-                            <img src="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png" width="40" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png">
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label class="form-label" for="basic-default-phone">Expiration</label>
-                              <input type="text" id="basic-default-zip" class="form-control phone-mask" placeholder="01/20">
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label class="form-label" for="basic-default-email">CVV</label>
-                              <div class="input-group input-group-merge">
-                                <input type="number" id="basic-default-card-number" class="form-control" placeholder="123" aria-label="123" aria-describedby="basic-default-email2">
-                                <span class="input-group-text" id="basic-default-email2">
-                                  <i class="fs-3 bx bx-credit-card-alt"></i>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <div class="form-text">By providing your card information you allow Equinox Trading Capital Limited</div>
-                  </div>
-                  <button type="submit" class="w-100 btn btn-primary">Purchase</button>
-                </form>
-              </div> -->
-            <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
-              <div class="col-lg-12 mt-5">
-                <!-- <div class="card-title d-flex justify-content-center">
-                  I want to continue with coinbase
+
+              <div class="tab-pane fade active show" id="navs-top-profile" role="tabpanel">
+                <div class="col-lg-12 mt-5">
+                  <button id="coinbase_buy" type="submit">Pay with Coinbase</button>
+                  <form id="paymentForm">
+                  </form>
                 </div>
-                <div class="card-body d-flex justify-content-center">
-                  <button id="coinbase_buy" class="btn btn-primary ">Pay Now With Coinbase</button>
-                </div> -->
-                <form id="paymentForm">
-                  <button type="submit">Pay with Coinbase</button>
+              </div>
+
+              <div class="tab-pane fade" id="navs-top-amazon" role="tabpanel">
+                <form method="POST" action="<?=base_url('user/payment/amazonPay')?>">
+                  <input type="hidden" name="action" value="checkout">
+                  <div id="amazonPayButton"></div>
                 </form>
               </div>
-            </div>
-
-            <div class="tab-pane fade" id="navs-top-amazon" role="tabpanel">
-              <form method="POST" action="<?=base_url('user/payment/amazonPay')?>">
-                <input type="hidden" name="action" value="checkout">
-                <div id="amazonPayButton"></div>
-              </form>
-            </div>
-
-            <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
-              UPI
-            </div>
           </div>
         </div>
       </div>
@@ -201,7 +114,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
           <div class="card-body">
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Plan</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label">Evaluation- &nbsp; 098765678</label>
+              <label for="html5-text-input" class="col-md-8 text-right col-form-label"><?=@$product_details['product_name']?></label>
             </div>
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Price</label>
@@ -213,9 +126,9 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
               <label for="html5-text-input" class="col-md-4 col-form-label">Apply Coupon</label>
               <div for="html5-text-input" class="col-md-8 text-right col-form-label">
                 <div class="input-group input-group-merge">
-                  <input type="number" id="basic-default-card-number" class="form-control" placeholder="KJH9" aria-label="KJH9" aria-describedby="basic-default-email2">
+                  <input type="number" id="basic-default-card-number" class="form-control" placeholder="Enter Coupon Code" aria-label="KJH9" aria-describedby="basic-default-email2">
                   <span class="input-group-text p-1" id="basic-default-email2">
-                    <button class="btn btn-sm btn-secondary">Apply</button>
+                    <button class="btn btn-sm btn-secondary m-1">Apply</button>
                   </span>
                 </div>
               </div>
@@ -223,7 +136,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Discount</label>
               <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$
-                <span id="product_discount"><?=@$product_details['product_price']?></span>
+                <span id="product_discount">0</span>
               </label>
             </div>
             <div class="mb-1 row border-bottom">
@@ -257,6 +170,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
         </div>
       </div>
     </div>
+  </div>
 <?php $this->load->view('user/includes/footer');?>
 <script>
   const PANEL_URL = "<?=base_url()?>";
@@ -276,65 +190,48 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
   requestData.product_discount = $("#product_discount").text();
   requestData.final_product_price = $("#final_product_price").text();
 
-  // $('#coinbase_buy').click(()=>{
-  //   $.ajax({
-  //       type: "POST",
-  //       url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-  //       data: requestData,
-  //       dataType: "html",
-  //       success: function(data){
-  //         window.location.href = data;
-  //       },
-  //       error: function() { 
-  //         alert("Error posting feed."); 
-  //       }
-  //   });
-  // });
-
-
-  const form = document.getElementById('paymentForm');
-
-  form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      var coinbaseUrl = PANEL_URL+'user/payment/createCoinbasePayment';
-      const response = await fetch(coinbaseUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({requestData}),
-      });
-
-      if (response.ok) {
-          const paymentData = await response.json();
-          window.location.href = paymentData.hosted_url;
-      } else {
-          console.error('Failed to create payment');
-      }
-  });
-
-  $('#skip-payment').click(()=>{
+  $('#coinbase_buy').click(()=>{
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url('user/payment/success'); ?>",
+        url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
         data: requestData,
         dataType: "html",
         success: function(data){
-          let res = JSON.parse(data);
-          if(res.status == 200){
-            window.location.href = "<?= base_url('user/account-overview') ?>";
-          }
+          console.log(data);
+          window.location.href = data;
         },
         error: function() { 
           alert("Error posting feed."); 
         }
     });
-  })
+  });
+
+
+  // const form = document.getElementById('paymentForm');
+
+  // form.addEventListener('submit', async (e) => {
+  //     e.preventDefault();
+  //     var coinbaseUrl = PANEL_URL+'user/payment/createCoinbasePayment';
+  //     const response = await fetch(coinbaseUrl, {
+  //         method: 'POST',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({requestData}),
+  //     });
+
+  //     if (response.ok) {
+  //         const paymentData = await response.json();
+  //         window.location.href = paymentData.hosted_url;
+  //     } else {
+  //         console.error('Failed to create payment');
+  //     }
+  // });
 
 </script>
 
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script>
+<!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script> -->
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>

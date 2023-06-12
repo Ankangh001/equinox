@@ -32,44 +32,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
     </div>
-  <div class="accordion mt-3 mb-5" id="accordionExample">
-    <?php  
-      foreach ($res as $key => $value) { 
-        if ($value['phase'] == '0'){
-    ?>
-      <div class="card accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="false" aria-controls="accordionOne">
-            Free Trial
-          </button>
-        </h2>
-
-        <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
-          <div class="accordion-body p-0">
-            <div class="row">
-              <div class="col-xl">
-                <div class="">
-                  <div class="card-body">
-                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow hover pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </a>
-                    <div style="margin-bottom:-12px"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
-          break;
-        }
-      };
-    ?>
-
-
+    <div class="accordion mt-3 mb-5" id="accordionExample">
       <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne2">
@@ -100,7 +63,70 @@ $this->load->view('user/includes/header');
         </div>
       </div>
       <?php break;}} ?>
+
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '2'){?>
+      <div class="card accordion-item">
+        <h2 class="accordion-header" id="headingOne2">
+          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-phase2" aria-expanded="false" aria-controls="accordion-phase2">
+            Evaluation Phase 2
+          </button>
+        </h2>
+
+        <div id="accordion-phase2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
+          <div class="accordion-body p-0">
+            <div class="row">
+              <div class="col-xl">
+                <div class="">
+                  <div class="card-body">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '2'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
+                    </a>
+                    <?php } }?>
+                    <div style="margin-bottom:-12px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php break;}} ?>
+
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '3'){?>
+      <div class="card accordion-item">
+        <h2 class="accordion-header" id="headingOne2">
+          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-funded" aria-expanded="false" aria-controls="accordion-funded">
+            Evaluation Funded
+          </button>
+        </h2>
+
+        <div id="accordion-funded" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
+          <div class="accordion-body p-0">
+            <div class="row">
+              <div class="col-xl">
+                <div class="">
+                  <div class="card-body">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '3'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
+                    </a>
+                    <?php } }?>
+                    <div style="margin-bottom:-12px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php break;}} ?>
     </div>
+
     <div class="row">
         <!-- <div class="col-lg-6">
           <div class="card mb-4">
@@ -129,8 +155,6 @@ $this->load->view('user/includes/header');
             </div>
           </div>
         </div> -->
-
-
         <div class="col-lg-6 m-auto">
           <div class="card mb-4">
             <div class="card-body">
