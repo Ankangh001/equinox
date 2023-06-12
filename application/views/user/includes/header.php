@@ -54,7 +54,7 @@
     <script src="<?= base_url('assets/user/assets/') ?>js/config.js">
     </script>
     <script>
-      let PANEL_URL = "<?= base_url()?>";
+      // let PANEL_URL = "<?= base_url()?>";
     </script>
   </head>
   <body>
