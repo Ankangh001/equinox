@@ -81,7 +81,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                   </div>
                 </form>
               </div>
-            </div>
+            <!-- </div> -->
                 <!-- <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
                 <form>
                   <div class="mb-3">
@@ -193,6 +193,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div class="col-xl">
         <div class="card mb-4">

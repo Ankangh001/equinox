@@ -325,11 +325,12 @@ class Payment extends APIMaster {
     public function amazonPay(){
 
         $amazonpay_config = array(
-            'public_key_id' => 'SANDBOX-AE4FD7KU2KXHY6UEW3HI3QBB',
-            'private_key'   => 'keys/private.pem',
+            'public_key_id' => 'LIVE-AGUOJSD5QAUH44X27UFIVX7P',
+            'private_key'   => 'AmazonPay_LIVE-AGUOJSD5QAUH44X27UFIVX7P.pem',
             'region'        => 'US',
             'sandbox'       => true
         );
+
         $payload = array(
             'webCheckoutDetail' => array(
                 'checkoutReviewReturnUrl' => 'https://localhost/store/checkout_review',
@@ -337,6 +338,9 @@ class Payment extends APIMaster {
             ),
             'storeId' => 'amzn1.application-oa2-client.3f77e56a623e45ca8fcece1d8045c39f'
         );
+
+        $payload = json_encode($payload);
+
         $headers = array('x-amz-pay-Idempotency-Key' => uniqid());
         try {
             $client = new Amazon\Pay\API\Client($amazonpay_config);
