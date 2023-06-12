@@ -11,8 +11,9 @@ $this->load->view('user/includes/header');
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-center align-items-center">
             <h5 class="card-title pt-3 me-3">Your Unique Affiliate Link-</h5>
-            <a href="javascript:void(0)" class="text-primary"><?=base_url('client-signup/').$_SESSION['affiliate_code']?></a>&nbsp;&nbsp;&nbsp;
-            <a href="javascript:void(0)" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</a>
+            <a href="javascript:void(0)" id="aflcode" class="text-primary"><?=base_url('client-signup/').$_SESSION['affiliate_code']?></a>&nbsp;&nbsp;&nbsp;
+            <button onclick="copyToClipboard('#aflcode')" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</button>&nbsp;&nbsp;
+            <span id="copied" class="text-dark text-sm text-muted ">Copied</span>
           </div>
         </div>
       </div>
@@ -138,7 +139,20 @@ $this->load->view('user/includes/header');
   </div>
     <!-- / Content -->
 
+    <?php $this->load->view('user/includes/footer');?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Affiliate</h4>`)
+  $('#copied').hide(1);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Affiliate</h4>`);
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    $('#copied').show(200);
+    setTimeout(() => {
+      $('#copied').hide(500);
+    }, 1000);
+
+  }
 </script>
-<?php $this->load->view('user/includes/footer');?>
