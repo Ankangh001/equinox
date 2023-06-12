@@ -4,7 +4,7 @@ async function SquarePaymentFlow() {
   CardPay(document.getElementById('card-container'), document.getElementById('card-button'));
 
   // Create Apple pay instance
-  ApplePay(document.getElementById('apple-pay-button'));
+  // ApplePay(document.getElementById('apple-pay-button'));
 
   // Create Google pay instance
   GooglePay(document.getElementById('google-pay-button'));
@@ -30,6 +30,12 @@ window.showError = function(message) {
 }
 
 window.createPayment = async function(token) {
+  $('.container-xxl').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+           );
   const dataJsonString = JSON.stringify({
     token,
     idempotencyKey: window.idempotencyKey,
@@ -53,10 +59,21 @@ window.createPayment = async function(token) {
         window.showError(data.errors[0].detail);
       } else {
         window.showError('Payment Failed.');
+        $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
+        $('#modalCenter').modal('show');
+        setTimeout(() => {
+          $('#modalCenter').modal('hide');
+          window.location.href = PANEL_URL+"user/account-overview";
+        }, 1000);
       }
     } else {
       window.showSuccess('Payment Successful!');
-      window.location.href = PANEL_URL+"user/account-overview";
+      $('#modalCenterTitle').html('Payment Success Full<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+      $('#modalCenter').modal('show');
+      setTimeout(() => {
+        $('#modalCenter').modal('hide');
+        window.location.href = PANEL_URL+"user/account-overview";
+      }, 1000);
     }
   } catch (error) {
     console.error('Error:', error);

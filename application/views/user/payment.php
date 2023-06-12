@@ -1,6 +1,6 @@
 <?php
 $this->load->view('user/includes/header');
-$web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.squarecdn.com/v1/square.js" : "https://sandbox.web.squarecdn.com/v1/square.js";
+$web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web.squarecdn.com/v1/square.js" : "https://sandbox.web.squarecdn.com/v1/square.js";
 ?>
   <link rel="stylesheet" type="text/css" href="<?=base_url('assets/user/assets/css/sq-payment.css')?>">
 
@@ -22,6 +22,23 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
 <div class="content-wrapper">
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
+    <!-- update alert modal -->
+    <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <h5 class="modal-title" id="modalCenterTitle">Payment successfull <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12 col-lg-7">
         <div class="card mb-4">
@@ -31,13 +48,13 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">
-              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
+              <button type="button" class="btn " role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="50" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
               </button>
             </li>
 
             <li class="nav-item">
-              <button type="button" class="btn" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png">
               </button>
             </li>
@@ -50,10 +67,10 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
           </ul>
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
+              <div class="tab-pane fade" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
-                    <div id="apple-pay-button" alt="apple-pay" type="button"></div>
+                    <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
                     <div id="google-pay-button" alt="google-pay" type="button"></div>
                     <!-- <div class="border">
                       <span>OR</span>
@@ -73,10 +90,10 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                 </form>
               </div>
 
-              <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+              <div class="tab-pane fade active show" id="navs-top-profile" role="tabpanel">
                 <div class="col-lg-12 mt-5">
+                  <button id="coinbase_buy" type="submit">Pay with Coinbase</button>
                   <form id="paymentForm">
-                    <button type="submit">Pay with Coinbase</button>
                   </form>
                 </div>
               </div>
@@ -97,7 +114,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
           <div class="card-body">
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Plan</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label">Evaluation- &nbsp; 098765678</label>
+              <label for="html5-text-input" class="col-md-8 text-right col-form-label"><?=@$product_details['product_name']?></label>
             </div>
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Price</label>
@@ -109,7 +126,7 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
               <label for="html5-text-input" class="col-md-4 col-form-label">Apply Coupon</label>
               <div for="html5-text-input" class="col-md-8 text-right col-form-label">
                 <div class="input-group input-group-merge">
-                  <input type="number" id="basic-default-card-number" class="form-control" placeholder="KJH9" aria-label="KJH9" aria-describedby="basic-default-email2">
+                  <input type="number" id="basic-default-card-number" class="form-control" placeholder="Enter Coupon Code" aria-label="KJH9" aria-describedby="basic-default-email2">
                   <span class="input-group-text p-1" id="basic-default-email2">
                     <button class="btn btn-sm btn-secondary m-1">Apply</button>
                   </span>
@@ -173,47 +190,48 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
   requestData.product_discount = $("#product_discount").text();
   requestData.final_product_price = $("#final_product_price").text();
 
-  // $('#coinbase_buy').click(()=>{
-  //   $.ajax({
-  //       type: "POST",
-  //       url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-  //       data: requestData,
-  //       dataType: "html",
-  //       success: function(data){
-  //         window.location.href = data;
-  //       },
-  //       error: function() { 
-  //         alert("Error posting feed."); 
-  //       }
-  //   });
-  // });
-
-
-  const form = document.getElementById('paymentForm');
-
-  form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      var coinbaseUrl = PANEL_URL+'user/payment/createCoinbasePayment';
-      const response = await fetch(coinbaseUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({requestData}),
-      });
-
-      if (response.ok) {
-          const paymentData = await response.json();
-          window.location.href = paymentData.hosted_url;
-      } else {
-          console.error('Failed to create payment');
-      }
+  $('#coinbase_buy').click(()=>{
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
+        data: requestData,
+        dataType: "html",
+        success: function(data){
+          console.log(data);
+          window.location.href = data;
+        },
+        error: function() { 
+          alert("Error posting feed."); 
+        }
+    });
   });
+
+
+  // const form = document.getElementById('paymentForm');
+
+  // form.addEventListener('submit', async (e) => {
+  //     e.preventDefault();
+  //     var coinbaseUrl = PANEL_URL+'user/payment/createCoinbasePayment';
+  //     const response = await fetch(coinbaseUrl, {
+  //         method: 'POST',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({requestData}),
+  //     });
+
+  //     if (response.ok) {
+  //         const paymentData = await response.json();
+  //         window.location.href = paymentData.hosted_url;
+  //     } else {
+  //         console.error('Failed to create payment');
+  //     }
+  // });
 
 </script>
 
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script>
+<!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script> -->
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>
