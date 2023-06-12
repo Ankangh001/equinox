@@ -12,7 +12,6 @@ class Purchase extends APIMaster {
 	public function index()
 	{
         $purchase['history'] = $this->db->where(['user_id' => $_SESSION['user_id']])->get('transactions')->result_array();
-
         $this->load->view('user/purchase-history', $purchase);
 	}
 }

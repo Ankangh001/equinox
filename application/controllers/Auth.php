@@ -131,7 +131,8 @@ class Auth extends APIMaster {
 					);
 					$to = $data['email'];
 					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
-					$email = send_email($to, $emailData['subject'], $body,'','',2);
+					$finaltemp = str_replace("{VERIFICATION_LINK}", base_url('auth/verify/').$data['verification_key'], $body);
+					$email = send_email($to, $emailData['subject'], $finaltemp,'','',2);
 
 					if($email){
 						$response = array(
@@ -157,16 +158,18 @@ class Auth extends APIMaster {
 		$verification_id = $this->uri->segment(3);
 		$result = $this->AppLogin->email_verification($verification_id);
 		if($result){
-			$response = array(
+			$response['res'] = array(
 				"success" => 1,
 				"message" => "Your email has been verified, you can now login."
 			);
+			$this->load->view('user/email-verifications', $response);
 		}
 		else{
-			$response = array(
+			$response['res'] = array(
 				"success" => 0,
 				"message" => "The url is either invalid or you already have activated your account."
 			);
+			$this->load->view('user/email-verifications', $response);
 		}
 		$this->jsonOutput($response);
 	}
