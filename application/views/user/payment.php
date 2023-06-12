@@ -47,12 +47,6 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png">
               </button>
             </li>
-
-            <li class="nav-item">
-              <button type="button" class="btn" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile-upi" aria-controls="navs-top-profile" aria-selected="false">
-                <img src="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>UPI.png">
-              </button>
-            </li>
           </ul>
           <div class="card-body">
             <div class="tab-content">
@@ -92,10 +86,6 @@ $web_payment_sdk_url = SQUARE_ENVIRONMENT === 'PRODUCTION' ? "https://web.square
                   <input type="hidden" name="action" value="checkout">
                   <div id="amazonPayButton"></div>
                 </form>
-              </div>
-
-              <div class="tab-pane fade" id="navs-top-profile-upi" role="tabpanel">
-                UPI
               </div>
           </div>
         </div>
