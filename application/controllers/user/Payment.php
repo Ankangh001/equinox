@@ -58,11 +58,12 @@ class Payment extends APIMaster {
 
     public function coinbaseCreateCharge()
 	{
+        
         $curl = curl_init();
         // $post = ``;
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
+            CURLOPT_URL => 'https://api.commerce.coinbase.com/checkouts',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -72,7 +73,7 @@ class Payment extends APIMaster {
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS =>'{
                 "local_price":{
-                    "amount":"'.$_POST['final_product_price'].'",
+                    "amount":"88",
                     "currency":"USD"
                 },
                 "metadata":{
@@ -101,33 +102,34 @@ class Payment extends APIMaster {
 	}
 
     public function createCoinbasePayment(){
-        $apiKey = '408fe58b-6bc2-428e-84b4-b87bd44e3a07';
-        $apiSecret = 'YOUR_API_SECRET';
-        $coinbase = new CoinbaseCommerce\ApiClient($apiKey, $apiSecret);
 
-        // Retrieve the payment data from the request body
-        $requestData = json_decode(file_get_contents('php://input'), true);
-        $amount = $requestData['final_product_price'];
+        
+$curl = curl_init();
 
-        // Create a new charge
-        $chargeData = [
-            'name' => 'Sample Charge',
-            'description' => 'Payment for a product',
-            'pricing_type' => 'fixed_price',
-            'local_price' => [
-                'amount' => $amount,
-                'currency' => 'USD',
-            ],
-            'redirect_url' => base_url('user/payment/coinbaseSuccess'),
-        ];
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.commerce.coinbase.com/checkouts',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{"name":"Ankan","description":"test","pricing_type":"1","local_price":{"currency":"USD"}}',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json',
+    'Accept: application/json',
+    'X-CC-Version: 2018-03-22',
+    'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
+  ),
+));
 
-        $charge = $coinbase->createCharge($chargeData);
+$response = curl_exec($curl);
 
-        // Return the charge details to the client
-        header('Content-Type: application/json');
-        echo json_encode([
-            'hosted_url' => $charge->hosted_url,
-        ]);
+curl_close($curl);
+echo $response;
+
+
     }
 
     public function coinbaseSuccess(){
@@ -326,9 +328,10 @@ class Payment extends APIMaster {
 
         $amazonpay_config = array(
             'public_key_id' => 'SANDBOX-AE4FD7KU2KXHY6UEW3HI3QBB',
-            'private_key'   => 'keys/private.pem',
+            'private_key'   => 'sandbox.pem',
             'region'        => 'US',
-            'sandbox'       => true
+            'sandbox'       => true,
+            'algorithm'     => 'AMZN-PAY-RSASSA-PSS-V2'
         );
         $payload = array(
             'webCheckoutDetail' => array(
