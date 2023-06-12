@@ -6,8 +6,10 @@ use Square\Models\Money;
 use Square\Models\CreatePaymentRequest;
 use Square\Exceptions\ApiException;
 use Ramsey\Uuid\Uuid;
-use AmazonPay\Client;
+use Amazon\Pay\API\Client;
+use Amazon\Pay\Api\CheckoutSession;
 use AmazonPay\ResponseParser;
+use CoinbaseCommerce\ApiClient;
 
 class Payment extends APIMaster {
 
@@ -56,11 +58,12 @@ class Payment extends APIMaster {
 
     public function coinbaseCreateCharge()
 	{
+        
         $curl = curl_init();
         // $post = ``;
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
+            CURLOPT_URL => 'https://api.commerce.coinbase.com/checkouts',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -70,7 +73,7 @@ class Payment extends APIMaster {
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS =>'{
                 "local_price":{
-                    "amount":"'.$_POST['final_product_price'].'",
+                    "amount":"88",
                     "currency":"USD"
                 },
                 "metadata":{
@@ -80,7 +83,7 @@ class Payment extends APIMaster {
                 "name":"Example1",
                 "description":"Create Charge using PHP",
                 "pricing_type":"fixed_price",
-                "redirect_url":"'.base_url().'/coinbase/s.php",
+                "redirect_url":"'.base_url().'user/payment/coinbaseSuccess",
                 "cancel_url":"'.base_url().'coinbase/cancel.php"
             }',
             CURLOPT_HTTPHEADER => array(
@@ -97,6 +100,56 @@ class Payment extends APIMaster {
         echo json_decode($response)->data->hosted_url;
         // header('Location:'.json_decode($response)->data->hosted_url);
 	}
+
+    public function createCoinbasePayment(){
+
+        
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.commerce.coinbase.com/checkouts',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{"name":"Ankan","description":"test","pricing_type":"1","local_price":{"currency":"USD"}}',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json',
+    'Accept: application/json',
+    'X-CC-Version: 2018-03-22',
+    'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+
+    }
+
+    public function coinbaseSuccess(){
+        $apiKey = '408fe58b-6bc2-428e-84b4-b87bd44e3a07';
+        $apiSecret = 'YOUR_API_SECRET';
+        $coinbase = new CoinbaseCommerce\ApiClient($apiKey, $apiSecret);
+
+        // Retrieve the charge ID from the query parameters
+        $chargeId = $_GET['charge_id'];
+
+        // Get the charge details
+        $charge = $coinbase->getCharge($chargeId);
+
+        // Process the charge details as needed
+        // ...
+
+        // Redirect the user to a success or failure page
+        header('Location: https://yourwebsite.com/payment_status.php');
+        exit();
+    }
 
     public function success()
 	{        
@@ -272,20 +325,115 @@ class Payment extends APIMaster {
 	}
 
     public function amazonPay(){
-        $merchantId = 'YOUR_MERCHANT_ID';
-        $accessKeyId = 'YOUR_ACCESS_KEY_ID';
-        $secretAccessKey = 'YOUR_SECRET_ACCESS_KEY';
 
-        $client = new Client($merchantId, $accessKeyId, $secretAccessKey, ['sandbox' => true]);
-
-        if (isset($_GET['access_token'])) {
-            $response = $client->getBuyerToken($_GET['access_token']);
-
-            if ($response->isSuccess()) {
-                $buyerToken = $response->getToken();
+        $amazonpay_config = array(
+            'public_key_id' => 'SANDBOX-AE4FD7KU2KXHY6UEW3HI3QBB',
+            'private_key'   => 'sandbox.pem',
+            'region'        => 'US',
+            'sandbox'       => true,
+            'algorithm'     => 'AMZN-PAY-RSASSA-PSS-V2'
+        );
+        $payload = array(
+            'webCheckoutDetail' => array(
+                'checkoutReviewReturnUrl' => 'https://localhost/store/checkout_review',
+                'checkoutResultReturnUrl' => 'https://localhost/store/checkout_result'
+            ),
+            'storeId' => 'amzn1.application-oa2-client.3f77e56a623e45ca8fcece1d8045c39f'
+        );
+        $headers = array('x-amz-pay-Idempotency-Key' => uniqid());
+        try {
+            $client = new Amazon\Pay\API\Client($amazonpay_config);
+            $result = $client->createCheckoutSession($payload, $headers);
+            if ($result['status'] === 201) {
+                // created
+                $response = json_decode($result['response'], true);
+                $checkoutSessionId = $response['checkoutSessionId'];
+                echo "checkoutSessionId=$checkoutSessionId\n";
             } else {
-                echo 'An error occurred: ' . $response->getErrorMessage();
+                // check the error
+                echo 'status=' . $result['status'] . '; response=' . $result['response'] . "\n";
             }
+        } catch (\Exception $e) {
+            // handle the exception
+            echo $e . "\n";
         }
+
+
+
+
+
+
+
+        // $config = [
+        //     'merchant_id' => 'A2EN18MJPAR45R',
+        //     'access_key' => 'AKIAJSIU4KMNQOU5SYZQ',
+        //     'secret_key' => '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',
+        //     'region' => 'us',
+        //     'sandbox' => true, // Set to false for production environment
+        // ];
+        
+        // $client = new Client($config);
+
+        // $payload = [
+        //     'webCheckoutDetails' => [
+        //         'checkoutReviewReturnUrl' => 'https://example.com/checkout-review',
+        //         'checkoutResultReturnUrl' => 'https://example.com/checkout-result',
+        //     ],
+        //     'paymentDetails' => [
+        //         'paymentIntent' => 'AuthorizeAndCapture',
+        //         'canHandlePendingAuthorization' => true,
+        //         'chargeAmount' => [
+        //             'amount' => '10.00',
+        //             'currencyCode' => 'USD',
+        //         ],
+        //     ],
+        // ];
+        // $headers = array('x-amz-pay-Idempotency-Key' => uniqid());
+        // $response =  $client->createCheckoutSession($payload, $headers);
+        // print_r($response); die;
+
+        // if ($response->getStatusCode() === 201) {
+        //     $checkoutSessionId = $response->getCheckoutSessionId();
+        //     // Redirect the user to the Amazon Pay checkout page or perform additional actions
+        // } else {
+        //     // Handle the error
+        //     $error = $response->getBody();
+        //     echo 'Error creating checkout session: ' . $error['message'];
+        // }
+
+
+
+
+
+
+
+        // $result = $client->instoreMerchantScan($payload);
+
+        // $response = json_decode($result['response'], true);
+        // print_r($response); die;
+        // if (isset($_GET['access_token'])) {
+        //     $response = $client->getBuyerToken($_GET['access_token']);
+
+        //     if ($response->isSuccess()) {
+        //         $buyerToken = $response->getToken();
+        //         // Process the buyer token and complete the payment flow
+        //         // You can access the buyer's details using $response->getBuyerDetails()
+        //         // and perform additional actions as needed
+        //         // For example, you might want to store the buyer's information in your database
+
+        //         // Retrieve the amount and additional data
+        //         $amount = $_GET['amount'];
+        //         $additionalData = $_GET['additionalData'];
+
+        //         // Use the amount and additional data in your payment processing logic
+        //         // ...
+
+        //         // Example: Log the amount and additional data
+        //         echo "Amount: $amount<br>";
+        //         echo "Additional Data: $additionalData<br>";
+        //     } else {
+        //         echo 'An error occurred: ' . $response->getErrorMessage();
+        //     }
+        // }
     }
 }

@@ -13,7 +13,7 @@ class Square extends CI_Controller {
 
         $apiClient = new \Square\SquareClient([
             'accessToken' => $accessToken,
-            'environment' => \Square\Environment::SANDBOX,
+            'environment' => \Square\Environment::PRODUCTION,
         ]);
 
         $data = json_decode(file_get_contents('php://input'), true);

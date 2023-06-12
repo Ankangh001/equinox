@@ -157,35 +157,6 @@ $this->load->view('admin/includes/header');
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                  <?php 
-                    foreach ($res as $key => $value) { 
-                      if ($value['phase'] == '1' && $value['product_status'] != '1'){
-                  ?>
-                  <tr>
-                    <td><?= @$value['product_name']?></td>
-                    <td><?= @$value['first_name'].' '.@$value['last_name']?></td>
-                    <td><?= @$value['account_size']?></td>
-                    <td><?= @$value['product_category']?></td>
-                    <td><i class="bx bx-dollar"></i><?= @$value['product_price']?></td>
-                    <td>
-                      <?php if($value['product_status'] == '0'){?>
-                        <span class="badge bg-label-warning">Pending</span>
-                      <?php }elseif($value['product_status'] == '1'){?>
-                        <span class="badge bg-label-success">Active</span>
-                      <?php }elseif($value['product_status'] == '2'){?>
-                        <span class="badge bg-label-primary">Passed</span>
-                      <?php }elseif($value['product_status'] == '3'){?>
-                        <span class="badge bg-label-danger">Failed</span>
-                      <?php }?>
-                    </td>
-                    <td>
-                      <div class="d-flex justify-content-space-between">
-                        <a onclick="viewDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                        <a onclick="addDetails('<?= @$value['id']?>','<?= @$value['product_category']?>')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
-                      </div>
-                    </td>
-                  </tr>
-                  <?php }}; ?>
                 </tbody>
               </table>
             </div>
@@ -343,6 +314,27 @@ $this->load->view('admin/includes/header');
             loadTable();
             $('div#loading').hide(200);
             $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Credentials Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 3000);
+          }else if(res.status == 401){
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Wrong Credentials !');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 3000);
+          }else{
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Server Error !');
             $('#modalCenter').modal('show');
             $('.table').DataTable().destroy();
             setTimeout(() => {
@@ -355,6 +347,7 @@ $this->load->view('admin/includes/header');
   });
 
   function loadTable(){
+    $('.table').DataTable().destroy();
     $('.table').DataTable({
         ajax: "<?php echo base_url('admin/purchase/getPhase1Pending'); ?>",
         deferRender: true,
@@ -374,7 +367,12 @@ $this->load->view('admin/includes/header');
             }
           },
           {data:'product_category'},
-          {data:'product_price'},
+          {
+            data: null,
+            render: function (data, type, row) {
+                return '$'+row.product_price;
+            }
+          },
           {
             data: null,
             render: function (data, type, row) {
@@ -401,6 +399,7 @@ $this->load->view('admin/includes/header');
     });
   }
 
+  loadTable();
   $('.paginate_button').addClass('btn btn-primary');
 
 </script>
