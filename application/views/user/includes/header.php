@@ -87,7 +87,7 @@
             <!-- Start New Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'start-new-challenge' || $this->uri->segment(2) == 'payment') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>start-new-challenge" class="menu-link">
-                <button class="btn btn-primary">Start New Challenge</button>
+                <button class="btn btn-primary m-1">Start New Challenge</button>
               </a>
             </li>
 
