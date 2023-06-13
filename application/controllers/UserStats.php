@@ -1,14 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cron extends CI_Controller {
+class UserStats extends CI_Controller {
     public function index()
 	{
         $res = $this->db->where(['product_status' => '1'])->get('userproducts')->result_array();
 
         foreach ($res as $key => $value) {
-            $equity = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
-            $saveTodb = $this->db->where(['id'=>$value['id']])->update('userproducts',['equity' => $equity]);
+            echo "<pre>";
+            echo $value['maxdd_status']."<br/>";
+            echo $value['maxDl_status']."<br/>";
+            echo $value['target_status']."<br/>";
+
+            if($value['maxdd_status'] == '0' || $value['maxDl_status'] == '0' || $value['target_status'] == 0){
+
+            }else{
+                
+            }
         }
 	}
 

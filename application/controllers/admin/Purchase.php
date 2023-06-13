@@ -76,6 +76,8 @@ class Purchase extends APIMaster {
 			
 			$res = $this->db->where(['id' =>  $iD])->update('userproducts', $data);
 	
+
+			$email = $this->send_email('ankanghosh010@gmail.com');
 			if($res){
 				$response = array(
 					'status' => '200',
@@ -101,7 +103,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 1------
 	public function phase1(){
-        $this->load->view('admin/phase-1');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-1',$response);
 	}
 	public function getPhase1Pending(){
         $this->db->select('*');
@@ -114,7 +117,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 2------
 	public function phase2(){
-        $this->load->view('admin/phase-2');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-2', $response);
 	}
 	public function getPhase2Pending(){
         $this->db->select('*');
@@ -127,7 +131,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 3------
 	public function phase3(){
-        $this->load->view('admin/phase-3');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-3', $response);
 	}
 	public function getPhase3Pending(){
         $this->db->select('*');
@@ -186,4 +191,28 @@ class Purchase extends APIMaster {
         curl_close($curl);
         return $response;
     }
+
+	//send mail for credentials
+	public function send_email($user_email){
+		$this->load->helper('email_helper');
+		$this->load->library('mailer');
+
+		$body = file_get_contents(base_url('assets/mail/verification.txt'));
+		$finaltemp = str_replace("{VERIFICATION_LINK}", 'Test', $body);
+
+		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
+
+		if($email){
+			$response = array(
+				"success" => 1,
+				"message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
+			);
+		}	
+		else{
+			$response = array(
+				"success" => 0,
+				"message" => "Some error occured!"
+			);
+		}
+	}
 }

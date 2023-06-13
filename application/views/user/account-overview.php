@@ -108,7 +108,7 @@ $this->load->view('user/includes/header');
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; </label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
