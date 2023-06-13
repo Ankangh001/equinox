@@ -101,7 +101,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 1------
 	public function phase1(){
-        $this->load->view('admin/phase-1');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-1',$response);
 	}
 	public function getPhase1Pending(){
         $this->db->select('*');
@@ -114,7 +115,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 2------
 	public function phase2(){
-        $this->load->view('admin/phase-2');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-2', $response);
 	}
 	public function getPhase2Pending(){
         $this->db->select('*');
@@ -127,7 +129,8 @@ class Purchase extends APIMaster {
 
 	//-------phase 3------
 	public function phase3(){
-        $this->load->view('admin/phase-3');
+		$response['servers'] = $this->db->get('servers')->result_array();
+        $this->load->view('admin/phase-3', $response);
 	}
 	public function getPhase3Pending(){
         $this->db->select('*');
