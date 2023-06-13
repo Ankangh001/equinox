@@ -45,7 +45,7 @@ class Purchase extends APIMaster {
 
 	}
 	//end servers--------------------------------
-
+	
 
 	//-----------credentials------------
 	public function getCredentials(){
@@ -77,7 +77,15 @@ class Purchase extends APIMaster {
 			$res = $this->db->where(['id' =>  $iD])->update('userproducts', $data);
 	
 
-			$email = $this->send_email('ankanghosh010@gmail.com');
+			//semding credentials email to user
+			$this->db->select('userproducts.user_id, user.email');
+			$this->db->from('userproducts');
+			$this->db->join('user', 'userproducts.user_id=user.user_id');
+			$this->db->where(['id' => $iD, 'payment_status' => '1']);
+			$check = $this->db->get()->result_array();
+
+			$this->send_credentials_email($check[0]['email'], $this->input->post('account_id'), $this->input->post('account_password'), $this->input->post('server'), $addEquity['balance']);
+
 			if($res){
 				$response = array(
 					'status' => '200',
@@ -97,8 +105,6 @@ class Purchase extends APIMaster {
 			);
 			echo json_encode($response);  
 		}
-
-		
 	}
 
 	//-------phase 1------
@@ -143,7 +149,6 @@ class Purchase extends APIMaster {
 		echo  json_encode($response);
 	}
 
-
 	//completed
 	public function completed(){
         $this->load->view('admin/completed');
@@ -157,7 +162,6 @@ class Purchase extends APIMaster {
 
 		echo  json_encode($response);
 	}
-
 
 	//get equity
 	public function accounts($accountId, $password, $host, $port){
@@ -193,12 +197,15 @@ class Purchase extends APIMaster {
     }
 
 	//send mail for credentials
-	public function send_email($user_email){
+	public function send_credentials_email($user_email, $accountId,  $password, $server, $balance){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
 		$body = file_get_contents(base_url('assets/mail/verification.txt'));
-		$finaltemp = str_replace("{VERIFICATION_LINK}", 'Test', $body);
+		$finaltemp = str_replace("{ACC_ID}", $accountId, $body);
+		$finaltemp = str_replace("{PASSWORD}", $password, $body);
+		$finaltemp = str_replace("{SERVER}", $server, $body);
+		$finaltemp = str_replace("{BALANCE}", $balance, $body);
 
 		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
 

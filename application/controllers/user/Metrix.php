@@ -288,14 +288,72 @@ class Metrix extends APIMaster {
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
 
-        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        $this->db->select('userproducts.maxdd_status, userproducts.maxDl_status, userproducts.target_status, userproducts.phase, user.email');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1']);
+        $check = $this->db->get()->result_array();
+
+        // $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
 
         $maxdd_status = $check[0]['maxdd_status'];
         $maxDl_status = $check[0]['maxDl_status'];
         $target_status = $check[0]['target_status'];
+        $phase = $check[0]['phase'];
+        $email = $check[0]['email'];
+
         
         if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
-            $this->send_email('ankanghosh010@gmail.com');
+
+            //----- checking stage phase1-------
+
+            //-passing stages on by one
+            if($phase == '1'){
+                //--move to phse 2
+                $this->db->where([
+                        'id' => $decrypted['eqid'], 
+                        'payment_status' => '1', 
+                        'product_status'=>'1'
+                    ])
+                    ->update('userproducts', [
+                        'phase' => '2',
+                        'account_id'=> '',
+                        'account_password'=>'',
+                        'ip'=>'',
+                        'port'=>'',
+                        'equity'=>'00.000',
+                        'server'=>'',
+                        'start_date'=>'0000-00-00 00:00:00',
+                        'end_date'=>'0000-00-00 00:00:00',
+                        'product_status'=>'0',
+                        'target_status'=>'0'
+                    ]);
+                $this->send_email($email);  
+            }elseif($phase == '2'){
+                // move to phase3
+                $this->db->where([
+                    'id' => $decrypted['eqid'], 
+                    'payment_status' => '1', 
+                    'product_status'=>'1'
+                ])
+                ->update('userproducts', [
+                    'phase' => '3',
+                    'account_id'=> '',
+                    'account_password'=>'',
+                    'ip'=>'',
+                    'port'=>'',
+                    'equity'=>'00.000',
+                    'server'=>'',
+                    'start_date'=>'0000-00-00 00:00:00',
+                    'end_date'=>'0000-00-00 00:00:00',
+                    'product_status'=>'0',
+                    'target_status'=>'0'
+                ]);
+                $this->send_email($email);  
+            }elseif($phase == '3'){
+                //congrats
+                $this->send_email($email);  
+            }
             $response = array(
                 'status'=> 200,
                 'message'=>'User account is passed',
