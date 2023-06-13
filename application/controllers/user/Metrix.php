@@ -295,8 +295,7 @@ class Metrix extends APIMaster {
         $target_status = $check[0]['target_status'];
         
         if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
-		    $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
-            send_email('ankanghosh010@gmail.com', "Congratulations For passing phase 1", $body,'','',2);
+            $this->send_email('ankanghosh010@gmail.com');
             $response = array(
                 'status'=> 200,
                 'message'=>'User account is passed',
@@ -315,10 +314,8 @@ class Metrix extends APIMaster {
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
-		$body = file_get_contents(base_url('assets/mail/verification.txt'));
-		$finaltemp = str_replace("{VERIFICATION_LINK}", 'Test', $body);
-
-		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
+		$body = file_get_contents(base_url('assets/mail/accountPassed.html'));
+		$email = send_email($user_email, 'Congratulations for passing into equinox account ', $body,'','',2);
 
 		if($email){
 			$response = array(

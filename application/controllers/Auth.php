@@ -154,9 +154,9 @@ class Auth extends APIMaster {
 
 	//----------------------------------------------------------	
 	public function verify(){
-
 		$verification_id = $this->uri->segment(3);
 		$result = $this->AppLogin->email_verification($verification_id);
+		
 		if($result){
 			$response['res'] = array(
 				"success" => 1,
