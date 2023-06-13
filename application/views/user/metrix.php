@@ -151,6 +151,7 @@ $myArray = explode(',', $myString);
                 </tr>
                 <?php }?>
 
+                <?php if($myArray[10] != '3') {?>
                 <tr>
                   <td style="width:50%">
                       <div class="accordion-item">
@@ -181,6 +182,7 @@ $myArray = explode(',', $myString);
                     </div>
                   </td>
                 </tr>
+                <?php }?>
               </tbody>
             </table>
           </div>
@@ -304,7 +306,9 @@ $myArray = explode(',', $myString);
 
   let accountSize = <?= $myArray[2]; ?>;
   let maxDD = <?= $myArray[4]; ?>;
-  let target = <?= $myArray[5]; ?>;
+  let target = <?= $myArray[6]; ?>;
+  let product_current_phase = <?= $myArray[10]; ?>;
+  let product_type_en = "<?= $myArray[3]; ?>";
   let checkAmount = accountSize - maxDD;
   let tempChartData = [];
   let chartData = [];
@@ -579,68 +583,69 @@ $myArray = explode(',', $myString);
           userFailed();
         };
 
-        //max daily loss
-        // console.log(equity);
-
-        // console.log('curent equity  ' + res['equity']);
-        // console.log('equity ' + equity);
-        // console.log('max daily loss ' + maxDD);
-
-        if(res['equity'] > (equity - maxDD)){
-          checkIfMaxDailyLossFail();
-        }else{
-          makeMaxDailylossFail();
+        if(product_type_en != 'Aggressive'){
+          //max daily loss
+          if(res['equity'] > (equity - maxDD)){
+            checkIfMaxDailyLossFail();
+          }else{
+            makeMaxDailylossFail();
+          }
         }
 
-        //profit target render
-        if(((res['balance'])-accountSize).toFixed(2) >= target){ 
-          //check if previously failed or not 
-          $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('user/metrix/checkFailPt'); ?>",
-            data: {r},
-            dataType: "html",
-            success: function(data){
-              let maxDailyStatus = JSON.parse(data).status;
-              if(maxDailyStatus == 200){
-                $('#pt').html(`
-                  <div class="d-flex align-items-center justify-content-start text-danger" >
-                    <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-                  </div>
-                `);
-              }else if(maxDailyStatus == 400){
-                $('#pt').html(`
-                  <div class="d-flex align-items-center justify-content-start text-success" >
-                    <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-                  </div>
-                `);
+        //profit target
+        if(product_current_phase != '3'){
+          //profit target render
+          if(((res['balance'])-accountSize).toFixed(2) >= target){ 
+            //check if previously failed or not 
+            $.ajax({
+              type: "POST",
+              url: "<?php echo base_url('user/metrix/checkFailPt'); ?>",
+              data: {r},
+              dataType: "html",
+              success: function(data){
+                if(data){
+                  let maxDailyStatus = JSON.parse(data);
+                  if(maxDailyStatus.status == 200){
+                    $('#pt').html(`
+                      <div class="d-flex align-items-center justify-content-start text-success" >
+                        <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                      </div>
+                    `);
+                  }else if(maxDailyStatus.status == 400){
+                    $('#pt').html(`
+                      <div class="d-flex align-items-center justify-content-start text-danger" >
+                        <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+                      </div>
+                    `);
+                  }
+                }
+              },
+              error: function(data){
+                console.log(data);
               }
-            },
-            error: function(data){
-              console.log(data);
-            }
-          });
-        }else{
-          //make the user fail
-          $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
-            data: {r},
-            dataType: "html",
-            success: function(data){
-              let pTargetDStatus = JSON.parse(data).status;
-              if(pTargetDStatus == 200){
-                $('#pt').html(`
-                  <div class="d-flex align-items-center justify-content-start text-danger" >
-                    <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-                  </div>
-                `);
+            });
+          }else{
+            //make the user fail
+            $.ajax({
+              type: "POST",
+              url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
+              data: {r},
+              dataType: "html",
+              success: function(data){
+                let pTargetDStatus = JSON.parse(data).status;
+                if(pTargetDStatus == 200){
+                  $('#pt').html(`
+                    <div class="d-flex align-items-center justify-content-start text-danger" >
+                      <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+                    </div>
+                  `);
+                }
+              },
+              error: function(data){
+                console.log(data);
               }
-            },
-            error: function(data){
-              console.log(data);
-            }
-          });
+            });
+          }
         }
 
         $('#orders').html('');

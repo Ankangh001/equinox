@@ -1,4 +1,7 @@
 <?php 
+// echo "<pre>";
+// print_r($res);
+// exit;
 $this->CI = & get_instance();
 $this->load->view('user/includes/header');
 ?>
@@ -134,10 +137,11 @@ $this->load->view('user/includes/header');
                               $value['product_category'].','.
                               $value['max_drawdown'].','.
                               $value['daily_drawdown'].','.
-                              $value['profit_target'].','.
+                              $value['p1_target'].','.
                               $value['ip'].','.
                               $value['port'].','.
-                              $value['id']
+                              $value['id'].','.
+                              $value['phase']
                               ,"mm"
                             );
                           ?>
@@ -278,10 +282,11 @@ $this->load->view('user/includes/header');
                               $value['product_category'].','.
                               $value['max_drawdown'].','.
                               $value['daily_drawdown'].','.
-                              $value['profit_target'].','.
+                              $value['p2_target'].','.
                               $value['ip'].','.
                               $value['port'].','.
-                              $value['id']
+                              $value['id'].','.
+                              $value['phase']
                               ,"mm"
                             );
                           ?>
@@ -307,7 +312,7 @@ $this->load->view('user/includes/header');
       <?php 
           foreach ($res as $key => $value) { 
             if ($value['phase'] == '3'){
-              echo '<div class="card-title fw-bold">Evaluation Phase 2</div>';
+              echo '<div class="card-title fw-bold">Evaluation Funded</div>';
               break;  
             }
           };
@@ -424,7 +429,8 @@ $this->load->view('user/includes/header');
                               $value['profit_target'].','.
                               $value['ip'].','.
                               $value['port'].','.
-                              $value['id']
+                              $value['id'].','.
+                              $value['phase']
                               ,"mm"
                             );
                           ?>

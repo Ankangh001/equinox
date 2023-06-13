@@ -8,7 +8,7 @@ class Purchase extends APIMaster {
         $this->verifyAdminAuth();
     }
 
-	//----------------------servers starts--------------
+	//----------servers starts--------------
 	public function servers(){
         $this->load->view('admin/servers');
 	}
@@ -44,9 +44,9 @@ class Purchase extends APIMaster {
 		echo  json_encode($response);
 
 	}
-	//end servers--------------------------------
+	//----------end servers--------------------------------
 
-	
+
 
 	//-----------credentials------------
 	public function getCredentials(){
