@@ -295,16 +295,9 @@ $myArray = explode(',', $myString);
   $('#openOrders').html(`Loading Open Orders...`);
 
   let accountNum ={};
-  accountNum.ieqd = "<?= $myArray[0] ?>";
-  accountNum.peqd = "<?= $myArray[1] ?>";
-  accountNum.aeqe = "<?= $myArray[2] ?>";
-  accountNum.teqe = "<?= $myArray[3] ?>";
-  accountNum.meqx = "<?= $myArray[4] ?>";
-  accountNum.deqy = "<?= $myArray[5] ?>";
-  accountNum.peqt = "<?= $myArray[6] ?>";
-  accountNum.ieqp = "<?= $myArray[7] ?>";
-  accountNum.peqt = "<?= $myArray[8] ?>";
-  accountNum.eqid = "<?= $myArray[9] ?>";
+  accountNum.ieqd = "<?= $myArray[0] ?>";  accountNum.peqd = "<?= $myArray[1] ?>";  accountNum.aeqe = "<?= $myArray[2] ?>";  accountNum.teqe = "<?= $myArray[3] ?>";
+  accountNum.meqx = "<?= $myArray[4] ?>";  accountNum.deqy = "<?= $myArray[5] ?>";  accountNum.peqt = "<?= $myArray[6] ?>";  accountNum.ieqp = "<?= $myArray[7] ?>";
+  accountNum.peqt = "<?= $myArray[8] ?>";  accountNum.eqid = "<?= $myArray[9] ?>";
 
   const r = window.btoa(JSON.stringify(accountNum));
   let saveStartDate ={};
@@ -441,7 +434,6 @@ $myArray = explode(',', $myString);
       }
     })
   };
-  checkMaxDailyLoss();
 
   function makeMaxDailylossFail(){
     $.ajax({
@@ -761,11 +753,43 @@ $myArray = explode(',', $myString);
     });
   }
 
-  getAccounts();
-  // setTimeout(() => {
-  //   setInterval(() => {
-  //     getAccounts();
-  //   }, 2500);
-  // }, 4000);
+  function checkUserStatus(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/checkUserStatus'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let dataRes = JSON.parse(data).status;
+        if(dataRes == 200){
+          getAccounts();
+          $('#max_dd').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+          $('#dailyDrawdown').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+          $('#pt').html(`
+            <div class="d-flex align-items-center justify-content-start text-success" >
+              <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+        }else if(dataRes == 400){
+          getAccounts();
+          setTimeout(() => {
+            checkUserStatus();
+          }, 10000);
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
+  }
 
+  checkUserStatus();
 </script>
