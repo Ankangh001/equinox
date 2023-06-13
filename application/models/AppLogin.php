@@ -111,7 +111,7 @@ class AppLogin extends CI_Model
         $this->load->helper('email_helper');
         $this->load->library('mailer');
         $body = file_get_contents(base_url('assets/mail/welcomeEmail.html'));
-        $email = send_email($result['email'], 'Welcome to Equinox Family ', $body,'','',2);
+        $email = send_email($result[0]['email'], 'Welcome to Equinox Family ', $body,'','',2);
 
 		$match = count($result);
 		if($match > 0){
