@@ -24,6 +24,7 @@ class Metrix extends APIMaster {
         $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
         $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
         echo json_encode($data, true);
+        // print_r($token);
     }
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
@@ -92,12 +93,12 @@ class Metrix extends APIMaster {
         if($check[0]['maxdd_status'] == 0){
             $response = array(
                 'status'=> 200,
-                'message'=>'User Failed'
+                'message'=>'User was peviouly failed in max drawdown, cannot be made pass!'
             );
         }elseif($check[0]['maxdd_status'] == 1){
             $response = array(
                 'status'=> 400,
-                'message'=>'User Not Failed'
+                'message'=>'User not failed yet'
             );
         }
 
@@ -118,10 +119,12 @@ class Metrix extends APIMaster {
             );
         }elseif($check[0]['maxdd_status'] == 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '0', 'product_status' => '3']);
+            $email = $this->db->where(['id' => $_SESSION['user_id']])->get('user')->result_array();
+            $this->send_user_email($email[0]['email'], "FAIL", "DRAWDOWN");  
             if($update){
                 $response = array(
                     'status'=> 200,
-                    'message'=>'User Made Failed'
+                    'message'=>'User Made Failed for max draw down!'
                 );
             }
         }else{
@@ -143,14 +146,20 @@ class Metrix extends APIMaster {
         //0 = failed
         //1 = pass
         if($check[0]['target_status'] == 0){
+            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '1']);
             $response = array(
                 'status'=> 200,
-                'message'=>'User Failed'
+                'message'=>'User made the criteria and made pass in profit target'
             );
         }elseif($check[0]['target_status'] == 1){
             $response = array(
+                'status'=> 200,
+                'message'=>'User was already passed.'
+            );
+        }elseif($check[0]['target_status'] == 2){
+            $response = array(
                 'status'=> 400,
-                'message'=>'User Not Failed'
+                'message'=>'User previously failed once, so he cannot be pass'
             );
         }
         echo json_encode($response);
@@ -160,28 +169,23 @@ class Metrix extends APIMaster {
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
         
-        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-        //0 = failed
-        //1 = pass
-        if($check[0]['maxdd_status'] == 0){
+        $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2', 'product_status' => '3']);
+        if($update){
+            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '0', 'product_status' => '3']);
+            $email = $this->db->where(['id' => $_SESSION['user_id']])->get('user')->result_array();
+            $this->send_user_email($email[0]['email'], "FAIL", "PROFITTARGET");  
+
             $response = array(
                 'status'=> 200,
-                'message'=>'User Already Failed'
+                'message'=>'User Made Failed due to profit target'
             );
-        }elseif($check[0]['maxdd_status'] == 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '0', 'product_status' => '3']);
-            if($update){
-                $response = array(
-                    'status'=> 200,
-                    'message'=>'User Made Failed'
-                );
-            }
         }else{
             $response = array(
                 'status'=> 400,
-                'message'=>'Server Error !'
+                'message'=>'Server Error !, unable to fail user'
             );
         }
+        
         echo json_encode($response);
     }
 
@@ -224,6 +228,11 @@ class Metrix extends APIMaster {
             );
         }elseif($check[0]['maxDl_status'] == 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '0', 'product_status' => '3']);
+
+            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '0', 'product_status' => '3']);
+            $email = $this->db->where(['id' => $_SESSION['user_id']])->get('user')->result_array();
+            $this->send_user_email($email[0]['email'], "FAIL", "DAILYLOSS");  
+
             if($update){
                 $response = array(
                     'status'=> 200,
@@ -288,92 +297,217 @@ class Metrix extends APIMaster {
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
 
-        $this->db->select('userproducts.maxdd_status, userproducts.maxDl_status, userproducts.target_status, userproducts.phase, user.email');
+        $this->db->select('userproducts.*, products.*, user.email');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1']);
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check = $this->db->get()->result_array();
 
+        print_r($check);die;
         // $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
 
-        $maxdd_status = $check[0]['maxdd_status'];
-        $maxDl_status = $check[0]['maxDl_status'];
-        $target_status = $check[0]['target_status'];
-        $phase = $check[0]['phase'];
-        $email = $check[0]['email'];
+        if(!empty($check[0])){
+            $maxdd_status = $check[0]['maxdd_status'];
+            $maxDl_status = $check[0]['maxDl_status'];
+            $target_status = $check[0]['target_status'];
+            $phase = $check[0]['phase'];
+            $product_category = $check[0]['product_category'];
+            $email = $check[0]['email'];
+            
+            if($product_category == 'Aggressive'){
+                if($phase == '1') {
+                    if($maxdd_status == 1 && $target_status ==1){
+                        //--move to phse 2
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])->update('userproducts', ['product_status'=>'2']);
+                
+                        $userProducts = array(
+                            'user_id' => $check[0]['user_id'],
+                            'product_id' => $check[0]['product_id'],
+                            'phase' => '2',
+                            'created_date' => date('Y-m-d H:m:s'),
+                            'product_status' => '0',
 
-        
-        if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
+                            'product_price' => $check[0]['product_price'],
+                            'product_discount' => $check[0]['product_discount'],
+                            'final_product_price' => $check[0]['final_product_price'],
+                            'equity' => '0.0',
+                            'payment_status' => $check[0]['payment_status']
+                        );
+                        $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email); 
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
+                        );                           
+                    }
+                }elseif($phase == '2') {
+                    if($maxdd_status == 1 && $target_status ==1){
+                        // move to phase3
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])->update('userproducts', ['product_status'=>'3']);
+                        
+                        $userProducts = array(
+                            'user_id' => $check[0]['user_id'],
+                            'product_id' => $check[0]['product_id'],
+                            'phase' => '3',
+                            'created_date' => date('Y-m-d H:m:s'),
+                            'product_status' => '0',
 
-            //----- checking stage phase1-------
+                            'product_price' => $check[0]['product_price'],
+                            'product_discount' => $check[0]['product_discount'],
+                            'final_product_price' => $check[0]['final_product_price'],
+                            'equity' => '0.0',
+                            'payment_status' => $check[0]['payment_status']
+                        );
+                        $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($emai, "PASS"l); 
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product',
+                        );                           
+                    }
+                }elseif($phase == '3') {
+                    if($maxdd_status == 1){
+                        // Only send passing email
+                        $this->send_user_email($email, "PASS");  
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
+                        );                          
+                    }
+                }
+            }elseif ($product_category == 'Normal') {
+                if($phase == '1') {
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
+                        //--move to phse 2
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])->update('userproducts', ['product_status'=>'2']);
+                
+                        $userProducts = array(
+                            'user_id' => $check[0]['user_id'],
+                            'product_id' => $check[0]['product_id'],
+                            'phase' => '2',
+                            'created_date' => date('Y-m-d H:m:s'),
+                            'product_status' => '0',
 
-            //-passing stages on by one
-            if($phase == '1'){
-                //--move to phse 2
-                $this->db->where([
-                        'id' => $decrypted['eqid'], 
-                        'payment_status' => '1', 
-                        'product_status'=>'1'
-                    ])
-                    ->update('userproducts', [
-                        'phase' => '2',
-                        'account_id'=> '',
-                        'account_password'=>'',
-                        'ip'=>'',
-                        'port'=>'',
-                        'equity'=>'00.000',
-                        'server'=>'',
-                        'start_date'=>'0000-00-00 00:00:00',
-                        'end_date'=>'0000-00-00 00:00:00',
-                        'product_status'=>'0',
-                        'target_status'=>'0'
-                    ]);
-                $this->send_email($email);  
-            }elseif($phase == '2'){
-                // move to phase3
-                $this->db->where([
-                    'id' => $decrypted['eqid'], 
-                    'payment_status' => '1', 
-                    'product_status'=>'1'
-                ])
-                ->update('userproducts', [
-                    'phase' => '3',
-                    'account_id'=> '',
-                    'account_password'=>'',
-                    'ip'=>'',
-                    'port'=>'',
-                    'equity'=>'00.000',
-                    'server'=>'',
-                    'start_date'=>'0000-00-00 00:00:00',
-                    'end_date'=>'0000-00-00 00:00:00',
-                    'product_status'=>'0',
-                    'target_status'=>'0'
-                ]);
-                $this->send_email($email);  
-            }elseif($phase == '3'){
-                //congrats
-                $this->send_email($email);  
+                            'product_price' => $check[0]['product_price'],
+                            'product_discount' => $check[0]['product_discount'],
+                            'final_product_price' => $check[0]['final_product_price'],
+                            'equity' => '0.0',
+                            'payment_status' => $check[0]['payment_status']
+                        );
+                        $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS");  
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
+                        );                             
+                    }
+                }elseif($phase == '2') {
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
+                        // move to phase3
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])->update('userproducts', ['product_status'=>'3']);
+                        
+                        $userProducts = array(
+                            'user_id' => $check[0]['user_id'],
+                            'product_id' => $check[0]['product_id'],
+                            'phase' => '3',
+                            'created_date' => date('Y-m-d H:m:s'),
+                            'product_status' => '0',
+
+                            'product_price' => $check[0]['product_price'],
+                            'product_discount' => $check[0]['product_discount'],
+                            'final_product_price' => $check[0]['final_product_price'],
+                            'equity' => '0.0',
+                            'payment_status' => $check[0]['payment_status']
+                        );
+                        $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS");  
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product',
+                        );                          
+                    }
+                }elseif($phase == '3') {
+                    if($maxdd_status == 1 && $maxDl_status == 1){
+                        // Only send passing email
+                        $this->send_user_email($email, "PASS");  
+                        $response = array(
+                            'status'=> 200,
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
+                        );                          
+                    }
+                }
+            }else{
+                $response = array(
+                    'status'=> 400,
+                    'message'=>'User account no passed yet'
+                );
             }
-            $response = array(
-                'status'=> 200,
-                'message'=>'User account is passed',
-            );
         }else{
             $response = array(
                 'status'=> 400,
-                'message'=>'User account no passed yet'
+                'message'=>'Data not found user might be failed'
             );
         }
         echo json_encode($response);
     }
 
-    //send mail for credentials
-	public function send_email($user_email){
+    //send mail for passing phases
+    //violation_type = 0,1,2
+	public function send_user_email($user_email, $stage){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
-		$body = file_get_contents(base_url('assets/mail/accountPassed.html'));
-		$email = send_email($user_email, 'Congratulations for passing into equinox account ', $body,'','',2);
+        if ($stage == "PASS") {
+            $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
+            $email = send_email($user_email, 'Congratulations for passing into equinox account ', $body,'','',3);
+        }elseif ($stage == "FAIL") {
+            $body = file_get_contents(base_url('assets/mail/accountFailed.html'));
+            $content = '
+            <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+                <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+                    <p style="font-size: 14px; line-height: 160%;">
+                        <span style="font-size: 20px; line-height: 35.2px;">Dear User,</span>
+                    </p>
+                    <br>
+                    <p style="font-size: 14px; line-height: 160%;">
+                        <span style="font-size: 18px; line-height: 28.8px;">
+                            We regret to inform you that your account {ACCOUNT_NUM} has violated one of the rules of the program.
+                        </span>
+                    </p>
+                    <br>
+                    <p style="font-size: 14px; line-height: 160%;">
+                        <span style="font-size: 18px; line-height: 28.8px;">
+                            For details of the violation please go to your dashboard.
+                        </span>
+                    </p>
+                    <br>
+                    <br>
+                    <p style="font-size: 14px; line-height: 160%;">
+                        <span style="font-size: 14px; line-height: 28.8px;">
+                            Account Number: <strong>{ACCOUNT_NUM}</strong><br>
+                            Message: {DYNAMIC BREACH MESSAGE}, <br>
+                            Daily Equity Breach on <strong>02/20/2023 01:39:56 AM.</strong>
+                        </span>
+                    </p>
+                    <br>
+                    <p style="font-size: 14px; line-height: 160%;">
+                        <span style="font-size: 18px; line-height: 28.8px;">
+                            Please take some time and review your strategy and what may have caused the violation before trying again.
+                            <br>
+                            <br>
+                            <br>
+                            As always, our support team are at your disposal should you need further assistance
+                        </span>
+                    </p>
+                </div>
+            </td>
+            ';
+
+		    $finaltemp = str_replace("{CONTENT}", $content, $body);
+        
+            $email = send_email($user_email, 'Sorry! You have failed.', $body,'','',3);
+        }
 
 		if($email){
 			$response = array(

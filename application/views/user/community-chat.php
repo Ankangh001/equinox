@@ -21,7 +21,7 @@ $this->load->view('user/includes/header');
     </div>
     <div class="row mb-5">
       <div class="col-md-12">
-        <widgetbot server="299881420891881473" channel="355719584830980096" width="100%" height="600"></widgetbot>
+        <widgetbot server="1098460516579557416"  channel="1098460516579557419" width="100%" height="600"></widgetbot>
       </div>
     </div>
   </div>
