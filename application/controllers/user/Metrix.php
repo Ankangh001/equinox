@@ -296,7 +296,7 @@ class Metrix extends APIMaster {
         
         if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
 		    $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
-            send_email($to, $emailData['subject'], $body,'','',2);
+            send_email('ankanghosh010@gmail.com', "Congratulations For passing phase 1", $body,'','',2);
             $response = array(
                 'status'=> 200,
                 'message'=>'User account is passed',
