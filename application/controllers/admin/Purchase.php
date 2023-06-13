@@ -45,6 +45,7 @@ class Purchase extends APIMaster {
 
 	}
 	//end servers--------------------------------
+
 	
 
 	//-----------credentials------------
@@ -202,7 +203,7 @@ class Purchase extends APIMaster {
 		$this->load->library('mailer');
 
 		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
-		$content = '<td>'.$accountId.'</td><td>'.$password.'</td><td>'.$server.'</td><td>1:100</td><td>'.$balance.'</td>';
+		$content = '<td>'.$accountId.'</td><td>'.$password.'</td><td>'.$server.'</td><td>1:100</td><td>'.$balance.'USD</td>';
 
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 

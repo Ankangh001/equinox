@@ -317,18 +317,9 @@ class Metrix extends APIMaster {
                     ])
                     ->update('userproducts', [
                         'phase' => '2',
-                        'account_id'=> '',
-                        'account_password'=>'',
-                        'ip'=>'',
-                        'port'=>'',
-                        'equity'=>'00.000',
-                        'server'=>'',
-                        'start_date'=>'0000-00-00 00:00:00',
-                        'end_date'=>'0000-00-00 00:00:00',
-                        'product_status'=>'0',
-                        'target_status'=>'0'
+                        'product_status'=>'2'
                     ]);
-                $this->send_email($email);  
+                $this->send_user_email($email);  
             }elseif($phase == '2'){
                 // move to phase3
                 $this->db->where([
@@ -349,10 +340,10 @@ class Metrix extends APIMaster {
                     'product_status'=>'0',
                     'target_status'=>'0'
                 ]);
-                $this->send_email($email);  
+                $this->send_user_email($email);  
             }elseif($phase == '3'){
                 //congrats
-                $this->send_email($email);  
+                $this->send_user_email($email);  
             }
             $response = array(
                 'status'=> 200,
@@ -368,7 +359,7 @@ class Metrix extends APIMaster {
     }
 
     //send mail for credentials
-	public function send_email($user_email){
+	public function send_user_email($user_email){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
