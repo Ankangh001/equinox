@@ -107,6 +107,12 @@ class AppLogin extends CI_Model
 		$this->db->where('verification_key', $code);
 		$query = $this->db->get();
 		$result= $query->result_array();
+
+        $this->load->helper('email_helper');
+        $this->load->library('mailer');
+        $body = file_get_contents(base_url('assets/mail/welcomeEmail.html'));
+        $email = send_email($result['email'], 'Welcome to Equinox Family ', $body,'','',2);
+
 		$match = count($result);
 		if($match > 0){
 			$this->db->where('verification_key', $code);
