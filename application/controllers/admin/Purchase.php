@@ -201,11 +201,10 @@ class Purchase extends APIMaster {
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
-		$body = file_get_contents(base_url('assets/mail/verification.txt'));
-		$finaltemp = str_replace("{ACC_ID}", $accountId, $body);
-		$finaltemp = str_replace("{PASSWORD}", $password, $body);
-		$finaltemp = str_replace("{SERVER}", $server, $body);
-		$finaltemp = str_replace("{BALANCE}", $balance, $body);
+		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
+		$content = '<td>'.$accountId.'</td><td>'.$password.'</td><td>'.$server.'</td><td>1:100</td><td>'.$balance.'</td>';
+
+		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
 		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
 
