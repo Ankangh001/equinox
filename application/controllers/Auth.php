@@ -93,7 +93,7 @@ class Auth extends APIMaster {
 
 	//-------------------------------------------------------------------------
 	public function register(){
-		$body = file_get_contents(base_url('assets/mail/verification.txt'));
+		$body = file_get_contents(base_url('assets/mail/verification.html'));
 		if($_POST){
 			$this->form_validation->set_rules('first_name', 'Firstname', 'trim|required');
 			$this->form_validation->set_rules('last_name', 'Lastname', 'trim|required');

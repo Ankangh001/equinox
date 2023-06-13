@@ -33,7 +33,7 @@ $this->load->view('user/includes/header');
       </div>
     </div>
     <div class="accordion mt-3 mb-5" id="accordionExample">
-      <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '1' && $value['payment_status'] == '1'){?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne2">
           <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
@@ -64,7 +64,7 @@ $this->load->view('user/includes/header');
       </div>
       <?php break;}} ?>
 
-      <?php foreach ($res as $key => $value) { if ($value['phase'] == '2'){?>
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '2'  && $value['payment_status'] == '1'){?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne2">
           <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-phase2" aria-expanded="false" aria-controls="accordion-phase2">

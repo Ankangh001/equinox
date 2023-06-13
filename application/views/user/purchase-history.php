@@ -18,7 +18,7 @@
         <tbody class="table-border-bottom-0">
           <?php foreach ($history as $key => $value) {?>
             <tr>
-              <td><strong>Evaluation $100,000</strong></td>
+              <td><strong><?= @$value['product_name'] ?></strong></td>
               <td><?php echo substr($value['purchase_date'], 0, 10) ?></td>
               <td>$<?= @$value['product_price'] ?></td>
               <td><?= @$value['product_category'] ?></td>
