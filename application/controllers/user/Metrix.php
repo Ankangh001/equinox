@@ -57,9 +57,7 @@ class Metrix extends APIMaster {
     }
     //-api call ends-------
 
-
-
-
+    //----save start and end date---
     public function saveStartDate(){
         $start_date =  $this->input->post('date');
         $end_date = date('Y-m-d', strtotime($start_date. ' +30 days'));
@@ -104,8 +102,7 @@ class Metrix extends APIMaster {
         }
 
         echo json_encode($response);
-    }
-    
+    }    
     public function userFailed(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -285,4 +282,55 @@ class Metrix extends APIMaster {
         }
 	}
 
+
+    //user status controller
+    public function checkUserStatus(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+
+        $maxdd_status = $check[0]['maxdd_status'];
+        $maxDl_status = $check[0]['maxDl_status'];
+        $target_status = $check[0]['target_status'];
+        
+        if($maxdd_status == 1 && $maxDl_status == 1 && $target_status ==1){
+		    $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
+            send_email($to, $emailData['subject'], $body,'','',2);
+            $response = array(
+                'status'=> 200,
+                'message'=>'User account is passed',
+            );
+        }else{
+            $response = array(
+                'status'=> 400,
+                'message'=>'User account no passed yet'
+            );
+        }
+        echo json_encode($response);
+    }
+
+    //send mail for credentials
+	public function send_email($user_email){
+		$this->load->helper('email_helper');
+		$this->load->library('mailer');
+
+		$body = file_get_contents(base_url('assets/mail/verification.txt'));
+		$finaltemp = str_replace("{VERIFICATION_LINK}", 'Test', $body);
+
+		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
+
+		if($email){
+			$response = array(
+				"success" => 1,
+				"message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
+			);
+		}	
+		else{
+			$response = array(
+				"success" => 0,
+				"message" => "Some error occured!"
+			);
+		}
+	}
 }
