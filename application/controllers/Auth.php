@@ -162,16 +162,15 @@ class Auth extends APIMaster {
 				"success" => 1,
 				"message" => "Your email has been verified, you can now login."
 			);
-			$this->load->view('user/email-verifications', $response);
 		}
 		else{
 			$response['res'] = array(
 				"success" => 0,
 				"message" => "The url is either invalid or you already have activated your account."
 			);
-			$this->load->view('user/email-verifications', $response);
 		}
-		$this->jsonOutput($response);
+		// $this->jsonOutput($response);
+		$this->load->view('email-verifications', $response);
 	}
 
 	//--------------------------------------------------		

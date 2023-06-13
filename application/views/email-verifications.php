@@ -40,12 +40,15 @@
 </head>
 <body>
   <div class="container">
-	<?php if($res == 1){ ?>
-		<h1>Account Verified</h1>
+	<?php if($res['success'] == 1){ ?>
+		<h1><?= $res['message'] ?></h1>
+		<p class="success-message">Please login to your account.</p>
 	<?php }elseif($res == 0){?>
-		<h1>Account Already Verified</h1>
+		<h1><?= $res['message'] ?></h1>
+		<p class="success-message">Please login to your account.</p>
+	<?php }else{?>
+		<h1><?= $res['message'] ?></h1>
 	<?php }?>
-	<p class="success-message">Please login to your account.</p>
   </div>
 </body>
 </html>

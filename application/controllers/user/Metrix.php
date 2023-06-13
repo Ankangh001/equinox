@@ -13,6 +13,7 @@ class Metrix extends APIMaster {
         $this->load->view('user/metrix');
     }
     
+    //-api call-------
     public function accounts(){
         $response = base64_decode($this->input->post('r'));
         $decrypted = json_decode($response, true);
@@ -24,36 +25,15 @@ class Metrix extends APIMaster {
         $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
         echo json_encode($data, true);
     }
-
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
     }
-
     public function OpenedOrders($token){
         return $this->get_curl('https://mt5.mtapi.be/OpenedOrders?id='.$token);
     }
-
     public function OrderHistory($token){
         return $this->get_curl('https://mt5.mtapi.be/OrderHistory?id='.$token.'&from=1900-01-01T12%3A00%3A00&to=2100-09-01T01%3A00%3A00');
     }
-
-    public function userMetrix()
-	{
-        $account =  $this->input->post('num');
-        $url = "https://www.fxblue.com/users/".$account."/overviewscript";
-        $response = file_get_contents($url);
-        $pattern = '/document.MTIntelligenceAccounts.push\((.*?)\);/s';
-        preg_match($pattern, $response, $matches);
-        if (isset($matches[1])) {
-            $json = $matches[1];
-            $data = json_decode($json, true);
-            $userId = $data['userid'];
-            $balance = $data['balance'];
-            $equity = $data['equity'];
-            echo $json;
-        }
-	}
-
     public function get_curl($url){
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -75,6 +55,10 @@ class Metrix extends APIMaster {
         curl_close($curl);
         return $response;
     }
+    //-api call ends-------
+
+
+
 
     public function saveStartDate(){
         $start_date =  $this->input->post('date');
@@ -122,7 +106,6 @@ class Metrix extends APIMaster {
         echo json_encode($response);
     }
     
-
     public function userFailed(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -154,7 +137,6 @@ class Metrix extends APIMaster {
         echo json_encode($response);
     }
 
-
     public function checkFailPt(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -176,7 +158,6 @@ class Metrix extends APIMaster {
         }
         echo json_encode($response);
     }
-    
 
     public function userFailedPT(){
         $request = base64_decode($this->input->post('r'));
@@ -285,4 +266,23 @@ class Metrix extends APIMaster {
 
         echo json_encode($response);
     }
+
+    // --not in use------
+    public function userMetrix()
+	{
+        $account =  $this->input->post('num');
+        $url = "https://www.fxblue.com/users/".$account."/overviewscript";
+        $response = file_get_contents($url);
+        $pattern = '/document.MTIntelligenceAccounts.push\((.*?)\);/s';
+        preg_match($pattern, $response, $matches);
+        if (isset($matches[1])) {
+            $json = $matches[1];
+            $data = json_decode($json, true);
+            $userId = $data['userid'];
+            $balance = $data['balance'];
+            $equity = $data['equity'];
+            echo $json;
+        }
+	}
+
 }
