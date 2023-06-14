@@ -205,7 +205,7 @@ $myArray = explode(',', $myString);
                   <td>
                     <div id="pt">
                       <div class="d-flex align-items-center justify-content-start text-danger" >
-                        <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Fail
+                        <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
                       </div>
                     </div>
                   </td>
@@ -427,7 +427,7 @@ $myArray = explode(',', $myString);
         }else if(maxDDStatus == 400){
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-danger" >
-              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Fail
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
             </div>
           `);
         }
@@ -654,11 +654,34 @@ $myArray = explode(',', $myString);
             });
           }else{
             //make the user fail
-            $('#pt').html(`
-              <div class="d-flex align-items-center justify-content-start text-danger" >
-                <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-              </div>
-            `);
+            $.ajax({
+              type: "POST",
+              url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
+              data: {r},
+              dataType: "html",
+              success: function(data){
+                if(data){
+                  let maxDailyStatus = JSON.parse(data);
+                  if(maxDailyStatus.status == 200){
+                    $('#pt').html(`
+                      <div class="d-flex align-items-center justify-content-start text-success" >
+                        <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                      </div>
+                    `);
+                  }else if(maxDailyStatus.status == 400){
+                    console.log('unable to pass profit target');
+                  }
+                }
+              },
+              error: function(data){
+                console.log(data);
+              }
+            });
+            // $('#pt').html(`
+            //   <div class="d-flex align-items-center justify-content-start text-danger" >
+            //     <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            //   </div>
+            // `);
           }
         }
 
@@ -782,7 +805,6 @@ $myArray = explode(',', $myString);
         let dataRes = JSON.parse(data).status;
         if(dataRes == 200){
           getAccounts();
-          checkUserStatus();
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
