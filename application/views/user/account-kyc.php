@@ -48,7 +48,7 @@ $this->load->view('user/includes/header');
             <form id="formAccountSettings" method="POST" >
               <div class="row">
                 <div class="mb-3">
-                  <label for="formFile" class="form-label">Upload your ID proof</label>
+                  <label for="formFile" class="form-label">Upload your National ID / Drivers Liscence/ Passport proof</label>
                   <input class="form-control" type="file" id="idProof" name="idProof">
                 </div>
                 <div class="mb-3">

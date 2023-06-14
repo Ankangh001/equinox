@@ -94,17 +94,17 @@ class Metrix extends APIMaster {
         $email = $check2[0]['email'];
 
         //0 = failed
-        //1 = pass
+        //1 = initial pass
         //2 = permanent pass
         //3 = permanent fail
+        //4 = fluctuate pass
         if($check[0]['maxdd_status'] == 3){
             $response = array(
                 'status'=> 400,
                 'message'=>'User permanently failed in Maximum drawdown'
             );
         }elseif($check[0]['maxdd_status'] == 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '2']);
-            $this->send_user_email($email, "PASS");
+            // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '2']);
             $response = array(
                 'status'=> 200,
                 'message'=>'User still pass for Maximum Drawdown!'
@@ -118,21 +118,22 @@ class Metrix extends APIMaster {
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
  
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
+        $name = $check2[0]['first_name'].' '.$check2[0]['last_name'];
+        $account = $check2[0]['account_id'];
         //0 = failed
         //1 = pass
         //2 = permanent pass
         //3 = permanent fail
-        // $update= false;
-        if($check[0]['maxdd_status'] == 1){
+        if($check[0]['maxdd_status'] == 1 && $check[0]['metrics_status'] != 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
-            $this->send_user_email($email, "FAIL");
+            $this->send_user_email($email, "FAIL", "1", $name, $account, "");
         }else{
             $update = 0;
         }
@@ -177,7 +178,7 @@ class Metrix extends APIMaster {
             );
         }else{
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2']);
-            $this->send_user_email($email, "PASS");
+            $this->send_user_email($email, "PASS", "", "", "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User made permanently pass for profit target!'
@@ -185,35 +186,24 @@ class Metrix extends APIMaster {
         }
         echo json_encode($response);
     }
-    // public function userFailedPT(){
-    //     $request = base64_decode($this->input->post('r'));
-    //     $decrypted = json_decode($request, true);
+    public function userFailedPT(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
         
-    //     if($check[0]['target_status'] == 0){
-    //         $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '1']);
-    //         $response = array(
-    //             'status'=> 200,
-    //             'message'=>'User made the criteria and made pass in profit target'
-    //         );
-    //     }
-    //     $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '3']);//user made failed permanently
-    //     if($update){
-    //         $email = $this->db->where(['user_id' => $_SESSION['user_id']])->get('user')->result_array();
-    //         $this->send_user_email($email[0]['email'], "FAIL", "PROFITTARGET");  
-
-    //         $response = array(
-    //             'status'=> 200,
-    //             'message'=>'User Made Failed due to profit target'
-    //         );
-    //     }else{
-    //         $response = array(
-    //             'status'=> 400,
-    //             'message'=>'Server Error !, unable to fail user'
-    //         );
-    //     }
+        if($check[0]['target_status'] == 2 && $check[0]['metrics_status'] == 1){
+            $response = array(
+                'status'=> 200,
+                'message'=>'User pass in profit target, cant be failed'
+            );
+        }else{
+            $response = array(
+                'status'=> 400,
+                'message'=>'no change in profit target'
+            );
+        }
         
-    //     echo json_encode($response);
-    // }
+        echo json_encode($response);
+    }
 
     public function makeMaxDailylossFail(){
         $request = base64_decode($this->input->post('r'));
@@ -232,7 +222,7 @@ class Metrix extends APIMaster {
         if($check[0]['maxDl_status'] == 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])
                 ->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
-            $this->send_user_email($email, "FAIL");
+            $this->send_user_email($email, "FAIL", "", "", "", "");
         }else{
             $update = 0;
         }
@@ -274,7 +264,7 @@ class Metrix extends APIMaster {
             );
         }elseif($check[0]['maxDl_status'] == 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '2']);
-            $this->send_user_email($email, "FAIL");
+            $this->send_user_email($email, "FAIL", "", "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User still & pass for MAXIMUM DAILY LOSS!'
@@ -344,6 +334,7 @@ class Metrix extends APIMaster {
             $maxdd_status = $check[0]['maxdd_status'];
             $maxDl_status = $check[0]['maxDl_status'];
             $target_status = $check[0]['target_status'];
+            $metrics_status = $check[0]['metrics_status'];
             $phase = $check[0]['phase'];
             $product_category = $check[0]['product_category'];
             $email = $check[0]['email'];
@@ -355,9 +346,10 @@ class Metrix extends APIMaster {
 
             if($product_category == 'Aggressive'){
                 if($phase == '1') {
-                    if($maxdd_status == 2 && $target_status ==2){
+                    if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
-                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])->update('userproducts', ['product_status'=>'2']);
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
                 
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -373,6 +365,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", "", "");
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
@@ -384,9 +377,10 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '2') {
-                    if($maxdd_status == 2 && $target_status == 2){
+                    if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
-                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])->update('userproducts', ['product_status'=>'3']);
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'3', 'metrics_status'=> '1']);
                         
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -427,9 +421,10 @@ class Metrix extends APIMaster {
                 }
             }elseif ($product_category == 'Normal') {
                 if($phase == '1') {
-                    if($maxdd_status == 2 && $maxDl_status == 2 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
                         //--move to phse 2
-                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])->update('userproducts', ['product_status'=>'2']);
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2']);
                 
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -456,7 +451,7 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '2') {
-                    if($maxdd_status == 2 && $maxDl_status == 2 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])->update('userproducts', ['product_status'=>'3']);
                         
@@ -485,7 +480,7 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 2 && $maxDl_status == 2){  
+                    if($maxdd_status == 1 && $maxDl_status == 1){  
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
@@ -514,7 +509,7 @@ class Metrix extends APIMaster {
 
     //send mail for passing phases
     //violation_type = 0,1,2
-	public function send_user_email($user_email, $stage){
+	public function send_user_email($user_email, $stage, $violation_type, $name, $account){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
@@ -527,7 +522,7 @@ class Metrix extends APIMaster {
             <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
                 <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
                     <p style="font-size: 14px; line-height: 160%;">
-                        <span style="font-size: 20px; line-height: 35.2px;">Dear User,</span>
+                        <span style="font-size: 20px; line-height: 35.2px;">Dear '.$name.',</span>
                     </p>
                     <br>
                     <p style="font-size: 14px; line-height: 160%;">
@@ -563,7 +558,6 @@ class Metrix extends APIMaster {
                 </div>
             </td>
             ';
-
 		    $finaltemp = str_replace("{CONTENT}", $content, $body);
         
             $email = send_email($user_email, 'Sorry! You have failed.', $body,'','',3);
