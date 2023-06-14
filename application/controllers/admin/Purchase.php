@@ -203,8 +203,55 @@ class Purchase extends APIMaster {
 		$this->load->library('mailer');
 
 		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
-		$content = '<td>'.$accountId.'</td><td>'.$password.'</td><td>'.$server.'</td><td>1:100</td><td>'.$balance.'USD</td>';
-
+		$content = '<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tr>
+							<td align="left" bgcolor="#CCCCCC" width="75%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								<strong>Account Details:</strong></td>
+							<td align="left" bgcolor="#CCCCCC" width="25%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								<strong></strong>
+							</td>
+							</tr>
+							<tr>
+							<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								Account</td>
+							<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								'.$accountId.'</td>
+							</tr>
+							<tr>
+							<td align="left" width="75%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								Password</td>
+							<td align="left" width="25%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								'.$password.'</td>
+							</tr>
+							<tr>
+							<td align="left" width="75%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								Server</td>
+							<td align="left" width="25%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								'.$server.'</td>
+							</tr>
+							<tr>
+							<td align="left" width="75%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								Leverage</td>
+							<td align="left" width="25%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								1:100</td>
+							</tr>
+							<tr>
+							<td align="left" width="75%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								Balance</td>
+							<td align="left" width="25%"
+								style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+								'.$balance.'</td>
+							</tr>
+						</table>
+					</td>';
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
 		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);

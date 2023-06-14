@@ -167,7 +167,7 @@ $this->load->view('user/includes/header');
           </div>
           <!-- /Account -->
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <h5 class="card-header">Delete Account</h5>
           <div class="card-body">
             <div class="mb-3 col-12 mb-0">
@@ -184,7 +184,7 @@ $this->load->view('user/includes/header');
               <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
             </form>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

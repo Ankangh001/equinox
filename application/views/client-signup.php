@@ -424,8 +424,14 @@ $this->load->view('includes/header');
             success: function(response) {
                 if (response.success == 1) {
                     $('div#loading').hide(200);
-                    notify("danger", response.message,'success');
-                    window.location.href = BASEURL+'client-login';	
+                    if(response.message == "Your Account has been made, please verify it by clicking the activation link that has been send to your email."){
+                        notify("success", response.message,'success');
+                    }else{
+                        notify("success", response.message,'success');
+                    }
+                    setTimeout(() => {
+                        window.location.href = BASEURL+'client-login';	
+                    }, 5000);
                 } else {
                     $('div#loading').hide(200);
                     notify("danger", response.message);
