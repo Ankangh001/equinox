@@ -572,7 +572,7 @@ class Metrix extends APIMaster {
             ';
 		    $finaltemp = str_replace("{CONTENT}", $content, $body);
         
-            $email = send_email($user_email, 'Sorry! You have failed.', $body,'','',3);
+            $email = send_email($user_email, 'Sorry! You have failed.', $finaltemp,'','',3);
         }
 
 		if($email){

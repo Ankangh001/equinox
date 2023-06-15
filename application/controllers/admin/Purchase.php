@@ -254,7 +254,7 @@ class Purchase extends APIMaster {
 					</td>';
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
-		$email = send_email($user_email, 'Equinox Account Credentials', $finaltemp,'','',2);
+		$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',2);
 
 		if($email){
 			$response = array(
