@@ -189,6 +189,15 @@ class Metrix extends APIMaster {
     public function userFailedPT(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
+
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
+        $check2 = $this->db->get()->result_array();
+        $email = $check2[0]['email'];
         
         if($check[0]['target_status'] == 2 && $check[0]['metrics_status'] == 1){
             $response = array(

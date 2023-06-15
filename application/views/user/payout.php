@@ -32,7 +32,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="account-numbers" class="form-label">Account Number</label>
                       <select class="form-select" id="account-numbers" name="mt5Acc" aria-label="Default select example">
-                        <option selected="">Select Account Number</option>
+                        <option>Select Account Number</option>
                       </select>
                     </div>
                   </div>
@@ -202,6 +202,7 @@ $this->load->view('user/includes/header');
           if(res.status == 200){
             $('div#loading').hide(200);
             $('#account-numbers').html('');
+            $('#account-numbers').html('<option>Select Account Number</option>');
             if(res.data){
               res.data.forEach(element => {
                 $('#account-numbers').append(`
@@ -230,7 +231,7 @@ $this->load->view('user/includes/header');
       $('#mode').addClass('col-lg-6');
 
       $('#account').css('display','none');
-      // $('#available_amount').text('Availble amount : $83');
+      $('#available_amount').text('Availble amount : $83');
     }else if(e.target.value == "Rewards"){
       $('#payout').addClass('col-lg-6');
       $('#payout').removeClass('col-lg-4');
@@ -270,8 +271,16 @@ $this->load->view('user/includes/header');
       dataType: "html",
       success: function(data){
         let res = JSON.parse(data);
-        balance += res.data[0].balance;
-        $('#available_amount').text(`Availble amount : $`+res.data[0].balance+` You get ($${(res.data[0].balance * 80)/100})`);
+        balance = res.data[0].balance;
+        if(res.data[0].balance == "0.000000"){
+          $('#available_amount').html(`<span class="text-danger">You don't have enough amount to withdraw !</span>`);
+          $('#amount').attr('disabled', true);
+          $('#submit-btn').attr('disabled', true);
+        }else{
+          $('#available_amount').text(`Availble amount : $`+(balance.toFixed(2))+` You get ($${(res.data[0].balance * 80)/100})`);
+          $('#amount').attr('disabled', false);
+          $('#submit-btn').attr('disabled', false);
+        }
       },
       error: function() { alert("Error posting feed."); }
     });
