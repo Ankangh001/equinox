@@ -1,28 +1,47 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Metrix extends APIMaster {
+class MetricsCron extends APIMaster {
 
-	public function __construct(){
-        parent::__construct();
-        $this->verifyAuth();
-    }
 	public function index(){
-        $this->load->view('user/metrix');
+        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['product_status' => '1']);
+        $check = $this->db->get()->result_array();
+
+        // echo "<pre>";
+        // print_r($check);
+
+        // echo $check[0]['account_size'].'<br/>';
+        // echo $check[0]['email'].'<br/>';
+        // echo $check[0]['phase'].'<br/>';
+
+        // exit;
+        
+        foreach ($check as $key => $value) {
+            $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
+            $data = json_decode($res, true);
+            $equity = $data['equity'];
+            $balance = $data['balance']-$value['account_size'];
+            $saveTodb = $this->db->where(['id'=>$value['id']])
+                ->update('userproducts',[
+                    'equity' => $equity,
+                    'balance' => $balance
+                ]);
+        }
     }
     
-    //----------- api call-------
-    public function accounts(){
-        $response = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($response, true);
-        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$decrypted['ieqd'].'&password='.$decrypted['peqd'].'&host='.$decrypted['ieqp'].'&port='.$decrypted['peqt']);
+    //---mt5 swagger api call to get account info----
+    public function accounts($accountId, $password, $host, $port){
+        $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$accountId.'&password='.$password.'&host='.$host.'&port='.$port);
         $accountSummary = $this->accountSummary($token);
         $orderHistory = $this->OrderHistory($token);
         $openedOrders = $this->OpenedOrders($token);
         $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
         $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
-        echo json_encode($data, true);
-        // print_r($token);
+        return json_encode($data, true);
     }
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
@@ -54,10 +73,10 @@ class Metrix extends APIMaster {
         curl_close($curl);
         return $response;
     }
-    //----------- api call ends-------
+    //---mt5 swagger api call to get account info----
 
     //----save start and end date---
-    public function saveStartDate(){
+    public function check_account_expiry(){
         $start_date =  $this->input->post('date');
         $end_date = date('Y-m-d', strtotime($start_date. ' +30 days'));
         $data = array(
@@ -111,7 +130,8 @@ class Metrix extends APIMaster {
             );
         }
         echo json_encode($response);
-    }    
+    } 
+    // --- FAIL MAX DRAWDOWN ---
     public function make_userFail_for_maxDrawdown(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -153,7 +173,6 @@ class Metrix extends APIMaster {
         echo json_encode($response);
     }
 
-    // --- FAIL MAX DRAWDOWN ---
     public function makeUserPassProfitTarget(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -214,6 +233,38 @@ class Metrix extends APIMaster {
         echo json_encode($response);
     }
 
+    public function pass_max_dailyLoass(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+
+        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
+        $check2 = $this->db->get()->result_array();
+        $email = $check2[0]['email'];
+
+        //0 = failed
+        //1 = initial pass
+        //2 = permanent pass
+        //3 = permanent fail
+        //4 = fluctuate pass
+        if($check[0]['maxDl_status'] == 3){
+            $response = array(
+                'status'=> 400,
+                'message'=>'User permanently failed in Maximum drawdown'
+            );
+        }elseif($check[0]['maxDl_status'] == 1){
+            // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '2']);
+            $response = array(
+                'status'=> 200,
+                'message'=>'User still pass for Maximum Drawdown!'
+            );
+        }
+        echo json_encode($response);
+    }
     public function makeMaxDailylossFail(){
         
         $request = base64_decode($this->input->post('r'));
@@ -254,38 +305,7 @@ class Metrix extends APIMaster {
         }
         echo json_encode($response);
     }
-    public function pass_max_dailyLoass(){
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
-        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
 
-        $this->db->select('userproducts.*, products.*, user.email');
-        $this->db->from('userproducts');
-        $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
-        $check2 = $this->db->get()->result_array();
-        $email = $check2[0]['email'];
-
-        //0 = failed
-        //1 = initial pass
-        //2 = permanent pass
-        //3 = permanent fail
-        //4 = fluctuate pass
-        if($check[0]['maxDl_status'] == 3){
-            $response = array(
-                'status'=> 400,
-                'message'=>'User permanently failed in Maximum drawdown'
-            );
-        }elseif($check[0]['maxDl_status'] == 1){
-            // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '2']);
-            $response = array(
-                'status'=> 200,
-                'message'=>'User still pass for Maximum Drawdown!'
-            );
-        }
-        echo json_encode($response);
-    }
 
     public function getEquity(){
         $request = base64_decode($this->input->post('r'));
@@ -310,23 +330,6 @@ class Metrix extends APIMaster {
         }
         echo json_encode($response);
     }
-    // --not in use------
-    public function userMetrix()
-	{
-        $account =  $this->input->post('num');
-        $url = "https://www.fxblue.com/users/".$account."/overviewscript";
-        $response = file_get_contents($url);
-        $pattern = '/document.MTIntelligenceAccounts.push\((.*?)\);/s';
-        preg_match($pattern, $response, $matches);
-        if (isset($matches[1])) {
-            $json = $matches[1];
-            $data = json_decode($json, true);
-            $userId = $data['userid'];
-            $balance = $data['balance'];
-            $equity = $data['equity'];
-            echo $json;
-        }
-	}
 
     //user status controller
     public function checkUserStatus(){

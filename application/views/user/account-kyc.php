@@ -30,12 +30,12 @@ $this->load->view('user/includes/header');
           <li class="nav-item">
             <a class="nav-link" href="<?=base_url('user/')?>profile"><i class="bx bx-user me-1"></i> Personal Information</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?=base_url('user/')?>account-info"><i class="bx bx-info-circle me-1"></i> Account Information</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?=base_url('user/')?>account-security"><i class="bx bx-cog me-1"></i> Security</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link active" href="<?=base_url('user/')?>account-kyc"><i class="bx bx-link-alt me-1"></i> KYC</a>
           </li>
