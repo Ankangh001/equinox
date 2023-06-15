@@ -2,21 +2,35 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserStats extends CI_Controller {
+
     public function index()
 	{
-        $res = $this->db->where(['product_status' => '1'])->get('userproducts')->result_array();
+        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+        $this->db->where(['product_status' => '1']);
+        $check = $this->db->get()->result_array();
 
-        foreach ($res as $key => $value) {
-            echo "<pre>";
-            echo $value['maxdd_status']."<br/>";
-            echo $value['maxDl_status']."<br/>";
-            echo $value['target_status']."<br/>";
+        // echo "<pre>";
+        // print_r($check);
 
-            if($value['maxdd_status'] == '0' || $value['maxDl_status'] == '0' || $value['target_status'] == 0){
+        // echo $check[0]['account_size'].'<br/>';
+        // echo $check[0]['email'].'<br/>';
+        // echo $check[0]['phase'].'<br/>';
 
-            }else{
-                
-            }
+        // exit;
+        
+        foreach ($check as $key => $value) {
+            $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
+            $data = json_decode($res, true);
+            $equity = $data['equity'];
+            $balance = $data['balance']-$value['account_size'];
+            $saveTodb = $this->db->where(['id'=>$value['id']])
+                ->update('userproducts',[
+                    'equity' => $equity,
+                    'balance' => $equity
+                ]);
         }
 	}
 
@@ -28,7 +42,7 @@ class UserStats extends CI_Controller {
         $openedOrders = $this->OpenedOrders($token);
         $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
         $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
-        return json_encode($data['equity'], true);
+        return json_encode($data, true);
     }
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
@@ -61,5 +75,6 @@ class UserStats extends CI_Controller {
         return $response;
     }
     //---mt5 swagger api call to get account info----
+
 }
 ?>
