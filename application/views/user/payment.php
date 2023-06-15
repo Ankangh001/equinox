@@ -171,9 +171,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       </div>
     </div>
   </div>
-  <div class="buy-now">
+  <!-- <div class="buy-now">
   <button id="skip-payment" class="btn btn-danger btn-buy-now">Skip Payment For testing</button>
-</div>
+</div> -->
 <?php $this->load->view('user/includes/footer');?>
 <script>
   const PANEL_URL = "<?=base_url()?>";
@@ -209,23 +209,23 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
     });
   });
 
-  $('#skip-payment').click(()=>{
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payment/success'); ?>",
-        data: requestData,
-        dataType: "html",
-        success: function(data){
-          let res = JSON.parse(data);
-          if(res.status == 200){
-            window.location.href = "<?= base_url('user/account-overview') ?>";
-          }
-        },
-        error: function() { 
-          alert("Error posting feed."); 
-        }
-    });
-  })
+  // $('#skip-payment').click(()=>{
+  //   $.ajax({
+  //       type: "POST",
+  //       url: "<?php echo base_url('user/payment/success'); ?>",
+  //       data: requestData,
+  //       dataType: "html",
+  //       success: function(data){
+  //         let res = JSON.parse(data);
+  //         if(res.status == 200){
+  //           window.location.href = "<?= base_url('user/account-overview') ?>";
+  //         }
+  //       },
+  //       error: function() { 
+  //         alert("Error posting feed."); 
+  //       }
+  //   });
+  // })
   // const form = document.getElementById('paymentForm');
 
   // form.addEventListener('submit', async (e) => {

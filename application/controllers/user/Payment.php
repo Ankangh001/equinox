@@ -353,6 +353,8 @@ class Payment extends APIMaster {
                         'status' => '200',
                         'message' => 'User Poduct Added successfully',
                     );
+                    $email = $this->db->where(['user_id' =>  $requestData->user_id])->get('user')->result_array();
+                    $this->send_user_email($email[0]['email']);
                 }else{
                     $response = array(
                         'status' => '400',
@@ -516,4 +518,27 @@ class Payment extends APIMaster {
         //     }
         // }
     }
+    
+    //send mail for passing phases
+    //violation_type = 0,1,2
+	public function send_user_email($user_email){
+		$this->load->helper('email_helper');
+		$this->load->library('mailer');
+        
+        $body = file_get_contents(base_url('assets/mail/receipt.html'));
+        $email = send_email($user_email, 'Payment Receipt', $body,'','',3);
+
+        if($email){
+			$response = array(
+				"success" => 1,
+				"message" => "Account receipt has been sent."
+			);
+		}	
+		else{
+			$response = array(
+				"success" => 0,
+				"message" => "Some error occured! to dend receipt email"
+			);
+		}
+	}
 }

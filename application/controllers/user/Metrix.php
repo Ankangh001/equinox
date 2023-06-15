@@ -402,7 +402,8 @@ class Metrix extends APIMaster {
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+                            'payoutDate' => date('Y-d-m H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $response = array(
@@ -475,7 +476,9 @@ class Metrix extends APIMaster {
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+                            'payoutDate' => date('Y-d-m H:m:s')
+
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $response = array(

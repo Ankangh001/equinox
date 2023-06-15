@@ -29,7 +29,7 @@ class UserStats extends CI_Controller {
             $saveTodb = $this->db->where(['id'=>$value['id']])
                 ->update('userproducts',[
                     'equity' => $equity,
-                    'balance' => $equity
+                    'balance' => $balance
                 ]);
         }
 	}
