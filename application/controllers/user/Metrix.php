@@ -215,23 +215,28 @@ class Metrix extends APIMaster {
     }
 
     public function makeMaxDailylossFail(){
+        
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
-        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
 
-        $this->db->select('userproducts.*, products.*, user.email');
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+ 
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
-
-        //0 = failed, 1 = pass, 2 = permanent pass, 3 = permanent fail
-        if($check[0]['maxDl_status'] == 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])
-                ->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
-            $this->send_user_email($email, "FAIL", "", "", "", "");
+        $name = $check2[0]['first_name'].' '.$check2[0]['last_name'];
+        $account = $check2[0]['account_id'];
+        //0 = failed
+        //1 = pass
+        //2 = permanent pass
+        //3 = permanent fail
+        if($check[0]['maxDl_status'] == 1 && $check[0]['metrics_status'] != 1){
+            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            $this->send_user_email($email, "FAIL", "1", $name, $account, "");
         }else{
             $update = 0;
         }
@@ -252,8 +257,8 @@ class Metrix extends APIMaster {
     public function pass_max_dailyLoass(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
-
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+
         $this->db->select('userproducts.*, products.*, user.email');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
@@ -261,22 +266,22 @@ class Metrix extends APIMaster {
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
+
         //0 = failed
-        //1 = pass
+        //1 = initial pass
         //2 = permanent pass
         //3 = permanent fail
-
+        //4 = fluctuate pass
         if($check[0]['maxDl_status'] == 3){
             $response = array(
                 'status'=> 400,
-                'message'=>'User permanently failed in MAXIMUM DAILY LOSS'
+                'message'=>'User permanently failed in Maximum drawdown'
             );
         }elseif($check[0]['maxDl_status'] == 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '2']);
-            $this->send_user_email($email, "FAIL", "", "", "");
+            // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '2']);
             $response = array(
                 'status'=> 200,
-                'message'=>'User still & pass for MAXIMUM DAILY LOSS!'
+                'message'=>'User still pass for Maximum Drawdown!'
             );
         }
         echo json_encode($response);
@@ -572,7 +577,7 @@ class Metrix extends APIMaster {
             ';
 		    $finaltemp = str_replace("{CONTENT}", $content, $body);
         
-            $email = send_email($user_email, 'Sorry! You have failed.', $finaltemp,'','',3);
+            $email = send_email($user_email, 'Account Breach Detected', $finaltemp,'','',3);
         }
 
 		if($email){
