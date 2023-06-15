@@ -544,7 +544,7 @@ class Metrix extends APIMaster {
                     <br>
                     <p style="font-size: 14px; line-height: 160%;">
                         <span style="font-size: 18px; line-height: 28.8px;">
-                            We regret to inform you that your account {ACCOUNT_NUM} has violated one of the rules of the program.
+                            We regret to inform you that your account '.$account.' has violated one of the rules of the program.
                         </span>
                     </p>
                     <br>
@@ -558,7 +558,7 @@ class Metrix extends APIMaster {
                     <p style="font-size: 14px; line-height: 160%;">
                         <span style="font-size: 14px; line-height: 28.8px;">
                             Account Number: <strong>'.$account.'</strong><br>
-                            Message: '.(($violation_type ==1) ? "Maxdrawdown Violated" : "Daily Drawdown Violated" ).' on <strong>'.date('Y-m-d H:m:s').'.</strong>
+                            Message: '.(($violation_type ==1) ? "Maxdrawdown Violated" : "Daily Drawdown Violated" ).' on <strong>'.date('Y-m-d').'.</strong>
                         </span>
                     </p>
                     <br>
