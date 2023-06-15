@@ -499,16 +499,16 @@ $myArray = explode(',', $myString);
       dataType: "html",
       success: function(data){
         let maxDDStatus = JSON.parse(data).status;
-        if(maxDDStatus == 400 || 401){
-          $('#dailyDrawdown').html(`
-            <div class="d-flex align-items-center justify-content-start text-danger" >
-              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-            </div>
-          `);
-        }else if(maxDDStatus == 200){
+        if(maxDDStatus == 200){
           $('#dailyDrawdown').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+            </div>
+          `);
+        }else if(maxDDStatus == 400){
+          $('#dailyDrawdown').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
             </div>
           `);
         }
