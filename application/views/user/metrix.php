@@ -334,6 +334,7 @@ $myArray = explode(',', $myString);
 
   let accountSize = <?= $myArray[2]; ?>;
   let maxDD = <?= $myArray[4]; ?>;
+  let maxDL = <?= $myArray[5]; ?>;
   let target = <?= $myArray[6]; ?>;
   let product_current_phase = <?= $myArray[10]; ?>;
   let product_type_en = "<?= $myArray[3]; ?>";
@@ -468,7 +469,7 @@ $myArray = explode(',', $myString);
       }
     })
   };
-
+  checkMaxDailyLoss();
   function makeMaxDailylossFail(){
     $.ajax({
       type: "POST",
@@ -520,6 +521,7 @@ $myArray = explode(',', $myString);
   }
 
   function getAccounts(){
+    checkMaxDailyLoss();
     $.ajax({
       type: "POST",
       url: "<?php echo base_url('user/metrix/accounts'); ?>",
@@ -616,7 +618,7 @@ $myArray = explode(',', $myString);
 
         //-------------max daily loss render------------
         if(product_type_en != 'Aggressive'){
-          if(res['equity'] > (equity - maxDD)){
+          if(res['equity'] > (equity - maxDL)){
             makeUser_pass_for_dailyLoss();
           }else{
             makeMaxDailylossFail();
@@ -824,7 +826,7 @@ $myArray = explode(',', $myString);
           getAccounts();
           setTimeout(() => {
             checkUserStatus();
-          }, 10000);
+          }, 8000);
         }
       },
       error: function(data){

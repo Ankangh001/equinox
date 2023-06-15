@@ -236,7 +236,7 @@ class Metrix extends APIMaster {
         //3 = permanent fail
         if($check[0]['maxDl_status'] == 1 && $check[0]['metrics_status'] != 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
-            $this->send_user_email($email, "FAIL", "1", $name, $account, "");
+            $this->send_user_email($email, "FAIL", "2", $name, $account, "");
         }else{
             $update = 0;
         }
@@ -557,9 +557,8 @@ class Metrix extends APIMaster {
                     <br>
                     <p style="font-size: 14px; line-height: 160%;">
                         <span style="font-size: 14px; line-height: 28.8px;">
-                            Account Number: <strong>{ACCOUNT_NUM}</strong><br>
-                            Message: {DYNAMIC BREACH MESSAGE}, <br>
-                            Daily Equity Breach on <strong>02/20/2023 01:39:56 AM.</strong>
+                            Account Number: <strong>'.$account.'</strong><br>
+                            Message: '.(($violation_type ==1) ? "Maxdrawdown Violated" : "Daily Drawdown Violated" ).' on <strong>'.date('Y-m-d H:m:s').'.</strong>
                         </span>
                     </p>
                     <br>
@@ -575,7 +574,7 @@ class Metrix extends APIMaster {
                 </div>
             </td>
             ';
-		    $finaltemp = str_replace("{CONTENT}", $content, $body);
+		    $finaltemp = str_replace("{FAILED CONTENT}", $content, $body);
         
             $email = send_email($user_email, 'Account Breach Detected', $finaltemp,'','',3);
         }
