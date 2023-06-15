@@ -42,13 +42,26 @@
   <div class="container">
 	<?php if($res['success'] == 1){ ?>
 		<h1><?= $res['message'] ?></h1>
-		<p class="success-message">Please login to your account.</p>
+		<a  href="<?=base_url('user')?>" class="success-message">
+    Please login to your account.</a>
+    <br>or <br> 
+		<p class="message">You will be redirected to login page shortly...</p>
 	<?php }elseif($res == 0){?>
 		<h1><?= $res['message'] ?></h1>
-		<p class="success-message">Please login to your account.</p>
+		
+    <a  href="<?=base_url('user')?>" class="success-message">
+    Please login to your account.</a>
+    <br>or <br> 
+		<p class="message">You will be redirected to login page shortly...</p>
 	<?php }else{?>
 		<h1><?= $res['message'] ?></h1>
 	<?php }?>
   </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href="<?=base_url('user')?>"
+    }, 2000);
+  </script>
 </body>
 </html>

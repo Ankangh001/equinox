@@ -9,9 +9,9 @@ class Payout extends APIMaster {
         $this->verifyAuth();
     }
 
-	public function index()
-	{
-        $this->load->view('user/payout');
+	public function index(){
+        $res['res'] = $this->db->where(['user_id' => $_SESSION['user_id']])->get('user')->result_array();
+        $this->load->view('user/payout', $res);
 	}
 
     public function getAccounts(){
@@ -38,18 +38,37 @@ class Payout extends APIMaster {
         $res = $this->db->where(['account_id' => $accountId, 'phase' => '3'])->get('userproducts')->result_array();
 
         if($res){
-			$response = array(
-				'status' => '200',
-				'message' => 'success',
-                'data' => $res
-			);
+			$last_payout_date = $res[0]['payoutDate'];
+			$add30days = date('Y-m-d H:m:s', strtotime($last_payout_date. ' +30 days'));
+	
+			$current_date = date('Y-m-d H:m:s');
+	
+			if($current_date > $add30days){ //can take payout
+				$response = array(
+					'status' => '200',
+					'message' => 'success',
+					'data' => $res
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => "Sorry! You can't request a payout now.",
+					'data' => $res
+				);
+			}
 		}else{
 			$response = array(
 				'status' => '400',
 				'message' => 'You dont have any funded accounts yet.',
 			);
 		}
+		
 		echo json_encode($response);  
+    }
+
+	public function getPayouts(){
+        $res['data'] = $this->db->where(['user_id' => $_SESSION['user_id']])->get('payout_history')->result_array();
+		echo json_encode($res);  
     }
 
 	public function requestPayout()
@@ -78,6 +97,7 @@ class Payout extends APIMaster {
 
 		
 		$res = $this->db->insert('payout_history', $data);
+		$res2 = $this->db->where(['account_id'=>$this->input->post('mt5Acc')])->update('userproducts',['payoutDate'=>date('Y-m-d H:m:s')]);
 
 		if($res){
 			$response = array(

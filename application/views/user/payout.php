@@ -1,11 +1,28 @@
 <?php
+// echo "<pre>";
+// print_r($res[0]['kyc_status']);
+// die;
+
 $this->load->view('user/includes/header');
 ?>
+<style>
+  .table-responsive{
+    padding: 1rem;
+  }
+  a.paginate_button.current {
+    border: none !important;
+    background: transparent !important;
+    color: blue !important;
+}
+</style>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
         <div class="col-md-12 col-lg-12">
+          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 2){   ?>
+          <span class="badge bg-label-warning mx-auto my-3 w-100 fs-5" style="text-transform : none">You can't request a payout as your KYC is not completed !</span>
+          <?php }elseif ($res[0]['kyc_status'] == 1) { ?>
           <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
               <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-receipt"></i>Withdraw your earnings</h5>
@@ -18,7 +35,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-6" id="payout">
                     <div class="mb-3">
                       <label for="payout-type" class="form-label">Payout Type</label>
-                      <select class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
+                      <select required class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
                         <option selected="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
                         <option value="Affiliate">Affiliate</option>
@@ -31,8 +48,8 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-4" id="account">
                     <div class="mb-3">
                       <label for="account-numbers" class="form-label">Account Number</label>
-                      <select class="form-select" id="account-numbers" name="mt5Acc" aria-label="Default select example">
-                        <option selected="">Select Account Number</option>
+                      <select required class="form-select" id="account-numbers" name="mt5Acc" aria-label="Default select example">
+                        <option>Select Account Number</option>
                       </select>
                     </div>
                   </div>
@@ -41,7 +58,7 @@ $this->load->view('user/includes/header');
                   <div class="col-lg-6" id="mode">
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
-                      <select class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
+                      <select required class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
                         <option selected="">Select Payment Mode</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                         <option value="Crypto Currency">Crypto Currency</option>
@@ -50,19 +67,19 @@ $this->load->view('user/includes/header');
                     </div>
                   </div>
 
-                  <div class="col-lg-4">
+                  <div class="col-lg-6">
                     <div class="mb-3">
                       <label class="form-label d-flex align-items-center" for="amount">Amount &nbsp;&nbsp;
                         <span id="available_amount" class="ml-3 text-info text-transform-none float-end"></span></label>
-                        <input type="number" id="amount" class="form-control phone-mask" name="payoutAmount" placeholder="Enter amount">
-                        <p class="amnt-error d-none">You dont have enough balance</p>
+                        <input required type="number" id="amount" class="form-control phone-mask" name="payoutAmount" placeholder="Enter amount">
+                        <p class="amnt-error d-none text-danger">You dont have enough balance</p>
                     </div>
                   </div>
 
-                  <div class="col-lg-8" id="wallet">
+                  <div class="col-lg-6" id="wallet">
                     <div class="mb-3">
                       <label class="form-label" for="walletAddress">Email / Wallet Address</label>
-                      <input type="text" id="walletAddress" class="form-control phone-mask" name="emailWalletAddress" placeholder="Enter your address">
+                      <input required type="text" id="walletAddress" class="form-control phone-mask" name="emailWalletAddress" placeholder="Enter your address">
                     </div>
                   </div>
                 </div>
@@ -154,7 +171,7 @@ $this->load->view('user/includes/header');
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                  <tr>
+                  <!-- <tr>
                     <td>05/04/2023</td>
                     <td>$999</td>
                     <td>Free Trial</td>
@@ -163,12 +180,13 @@ $this->load->view('user/includes/header');
                       <span class="badge bg-label-success me-1">Paid</span>
                       <span class="badge bg-label-danger me-1">Denied</span>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+        <?php }?>
       </div>
       <?php $this->load->view('user/includes/footer');?>
 
@@ -179,9 +197,10 @@ $this->load->view('user/includes/header');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
 
-  let balance = 0;
+  let accBalance = 0;
   $('#payout').change((e)=>{
     if(e.target.value == "Profit Split"){
+      $('#available_amount').text('');
       $('#payout').removeClass('col-lg-6');
       $('#payout').addClass('col-lg-4');
 
@@ -202,6 +221,7 @@ $this->load->view('user/includes/header');
           if(res.status == 200){
             $('div#loading').hide(200);
             $('#account-numbers').html('');
+            $('#account-numbers').html('<option>Select Account Number</option>');
             if(res.data){
               res.data.forEach(element => {
                 $('#account-numbers').append(`
@@ -222,6 +242,7 @@ $this->load->view('user/includes/header');
         error: function() { alert("Error posting feed."); }
       });
     }else if(e.target.value == "Affiliate"){
+      $('.amnt-error').addClass('d-none');
       $('#submit-btn').attr('disabled', false);
       $('#payout').addClass('col-lg-6');
       $('#payout').removeClass('col-lg-4');
@@ -230,7 +251,7 @@ $this->load->view('user/includes/header');
       $('#mode').addClass('col-lg-6');
 
       $('#account').css('display','none');
-      // $('#available_amount').text('Availble amount : $83');
+      $('#available_amount').text('Availble amount : $83');
     }else if(e.target.value == "Rewards"){
       $('#payout').addClass('col-lg-6');
       $('#payout').removeClass('col-lg-4');
@@ -270,17 +291,36 @@ $this->load->view('user/includes/header');
       dataType: "html",
       success: function(data){
         let res = JSON.parse(data);
-        balance += res.data[0].balance;
-        $('#available_amount').text(`Availble amount : $`+res.data[0].balance+` You get ($${(res.data[0].balance * 80)/100})`);
+
+        if(res.status == 200){
+          accBalance = Number(res.data[0].balance);
+          console.log(accBalance.toFixed(2));
+          if(res.data[0].balance == "0.000000"){
+            $('#available_amount').html(`<span class="text-danger">You don't have enough amount to withdraw !</span>`);
+            $('#amount').attr('disabled', true);
+            $('#submit-btn').attr('disabled', true);
+          }else{
+            $('#available_amount').html(`Availble amount : $`+accBalance.toFixed(2));
+            // $('#available_amount').html(`Availble amount : $`+accBalance.toFixed(2)+` You get ($${(accBalance.toFixed(2) * 80)/100})`);
+            $('#amount').attr('disabled', false);
+            $('#submit-btn').attr('disabled', false);
+          }
+        }else{
+          $('.amnt-error').text(res.message);
+          $('.amnt-error').removeClass('d-none');
+          $('#submit-btn').attr('disabled', true);
+        }
       },
       error: function() { alert("Error posting feed."); }
     });
   });
 
   $('#amount').keyup(function(e){
-    if(balance < e.target.value){
+    if(accBalance < e.target.value){
       console.log(e.target.value);
-      // $('amnt-error').removeClass('d-none');
+      $('.amnt-error').removeClass('d-none');
+    }else{
+      $('.amnt-error').addClass('d-none');
     }
   });
 
@@ -304,6 +344,7 @@ $this->load->view('user/includes/header');
         success: function(data){
           let res = JSON.parse(data);
           if(res.status == 200){
+            loadTable();
             $('div#loading').hide(200);
             $('.modal').modal('hide');
             $('#modalCenter').modal('show');
@@ -317,4 +358,48 @@ $this->load->view('user/includes/header');
         error: function() { alert("Error posting feed."); }
     });
   });
+
+  function loadTable(){
+    $('.table').DataTable().destroy();
+    $('.table').DataTable({
+        ajax: "<?php echo base_url('user/payout/getPayouts'); ?>",
+        deferRender: true,
+        "pageLength": 100,
+        columns:[
+          {data:'payout_date'},
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `${(Number(row.amount)).toFixed(2)}`;
+            }
+          },
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `${row.payout_type}`;
+            }
+          },
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `${
+                  row.payout_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
+                  (row.payout_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
+                    (row.payout_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
+                      row.payout_status == 3 ? '<span class="badge bg-label-danger">Failed</span>' :''
+                    )
+                  )
+                }`;
+            }
+          }
+        ]
+    });
+  }
+
+  loadTable();
+  // setInterval(() => {
+  //   loadTable();
+    
+  // }, 5000);
+  $('.paginate_button').addClass('btn btn-primary');
 </script>

@@ -377,9 +377,9 @@ $this->load->view('includes/header');
                             <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                             </div>
-                            <p class="text-center">
+                            <p class="text-center text-dark">
                                 <span>Already have an account?</span>
-                                <a href="<?= base_url('client-login');?>">
+                                <a class="text-primary" href="<?= base_url('client-login');?>">
                                     <span>Login</span>
                                 </a>
                             </p>

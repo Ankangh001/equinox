@@ -68,6 +68,8 @@
     <!-- Page JS -->
     <script src="<?= base_url('assets/user/assets/') ?>js/dashboards-analytics.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
     <script>
         // ClassicEditor
         //     .create( document.querySelector( '#editor' ) )
