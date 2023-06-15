@@ -436,7 +436,7 @@ class Metrix extends APIMaster {
                 }
             }elseif ($product_category == 'Normal') {
                 if($phase == '1') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
@@ -466,7 +466,7 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '2') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])
                         ->update('userproducts', ['product_status'=>'3','metrics_status'=> '1']);
