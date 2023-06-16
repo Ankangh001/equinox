@@ -72,6 +72,15 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$application_name = 'Equinox Trading Capital LTD';
 			  break;
 			
+			  case "9":
+				$smtp_host = 'smtp.hostinger.com';
+				$smtp_port = '587';
+				$smtp_user = 'press@equinoxtradingcapital.press';
+				$smtp_pass = 'Press@2023';
+				$from	=	'press@equinoxtradingcapital.press';
+				$application_name = 'Equinox Trading Capital';
+				
+			  break;
 			default:
 				$smtp_host 	= SMPT_HOST;
 				$smtp_port 	= SMPT_PORT;
