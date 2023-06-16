@@ -578,7 +578,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Target</td>
 											<td x-text="currentConfig[0][0]">$7500</td>
 											<td x-text="currentConfig[1][0]">$5000</td>
-											<td x-text="currentConfig[2][0]">indefinite%</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
 										</tr>
 										<tr>
 											<td style="text-align:left !important; width:40%">Max Drawdown</td>
