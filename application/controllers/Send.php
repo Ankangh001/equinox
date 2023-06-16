@@ -8,148 +8,36 @@ class Send extends APIMaster {
     {
         $emails = array(           
 
-            'ankanghosh010@gmail.com',
           
-            'nkushedahustler@gmail.com',
-            'sywin.mooc@hotmail.co.uk',
-            'angelojohnson94@gmail.com',
-            'jb_mistry@hotmail.com',
-            'angelojohnson9494@gmail.com',
-            'momodibs4@gmail.com',
-            'momodibs4@gmail.com',
-            'lucignolo30@gmail.com',
-            'boercisimone@gmail.com',
-            'rrdavis21@yahoo.com',
-            'brendon.samuel777@gmail.com',
-            'shaun011235@gmail.com',
-            'inje.usa@gmail.com',
-            'hdcddiez73@gmail.com',
-            'hdcddiez73@gmail.com',
-            'ericanpat20@gmail.com',
-            'arjaymuzik@gmail.com',
-            'ajanioluwatimilehinsamuel@gmail.com',
-            'ajanioluwatimilehinsamuel@gmail.com',
-            'ajanioluwatimilehinsamuel@gmail.com',
-            'treed@cypresslinux.com',
-            'treed@cypresslinux.com',
-            'treed@cypresslinux.com',
-            'alichukwudaniel@gmail.com',
-            'ajanioluwatimilehinsamuel@gmail.com',
-            'jakkarinsuknate@gmail.com',
-            'terryodion84@gmail.com',
-            'alexflex.ca31@gmail.com',
-            'abiola4fx@gmail.com',
-            'bashing04@gmail.com',
-            'mona.sj.alhosani@hotmail.com',
-            'georgennamdij@gmail.com',
-            'georgennamdij@gmail.com',
-            'abiola4fx.@gmail.com',
-            'umarsule500@gmail.com',
-            'matthewclinton12@icloud.com',
-            'abiola4fx.@gmail.com',
-            'seektruth144@gmail.com',
-            'ogilvysam13@gmail.com',
-            'anthojeux30@gmail.com',
-            'cloete.jade@gmail.com',
-            'Abdisamad3565@gmail.com',
-            'ogbesjefferson@gmail.com',
-            'mitkoo1111@gmail.com',
-            'georgennamdij@gmail.com',
-            'ssgroupcareerbuilder@gmail.com',
-            'abiola4fx.@gmail.com',
-            'jerryovat@yahoo.com',
-            'frankfx001@gmail.com',
-            'josephmadukwe9@gmail.com',
-            'abiola4fx.@gmail.com',
-            'terkulam@gmail.com',
-            'bertram2323@gmail.com',
-            'ejikemartinedmund.k@gmail.com',
-            'ejikemartinedmund.k@gmail.com',
-            'nchedochuks@gmail.com',
-            // izman584@yahoo.com
-            // 'frankfx001@gmail.com',
-            // 'ubenduprosper@gmail.com',
-            // 'masaweanold47@gmail.com',
-            // 'atukuzwensemwa@gmail.com',
-            // 'chukwumatihachi7@gmail.com',
-            // 'chukwumatihachi7@gmail.com',
-            // izman584@yahoo.com
-            // bengas236@yahoo.com
-            // 'donald.baze1@gmail.com',
-            // 'agyemanduah.fund@gmail.com',
-            // 'chawjinhao@gmail.com',
-            // 'wongwinghan123@gmail.com',
-            // 'daveob801@gmail.com',
-            // 'daveob801@gmail.com',
-            // 'wiseoneobisike@gmail.com',
-            // 'wongwinghan123@gmail.com',
-            // 'andrewbertram2389@gmail.com',
-            // 'talktoebere@gmail.com',
-            // 'avishal.khusial@gmail.com',
-            // 'ogehelen9@gmail.com',
-            // 'skgmalinga@gmail.com',
-            // 'skgmalinga@gmail.com',
-            // 'b.costin23@gmail.com',
-            // 'ejikecele@gmail.com',
-            // 'serenaizuakor2017@gmail.com',
-            // 'elishailuore1@gmail.com',
-            // millie90@icloud.com
-            // 'tramourn1@gmail.com',
-            // issa.diallo25@yahoo.com
-            // 'aridanaden2020@gmail.com',
-            // Alexanderbmet@outlook.com
-            // 'ayesujeffry.fund@gmail.com',
-            // issa.diallo25@yahoo.com
-            // 'anuragjatav007@gmail.com',
-            // 'seektruth144@gmail.com',
-            // 'ogbesjefferson@gmail.com',
-            // sony.t@gmx.ch
-            // 'tandy.vangtan@gmail.com',
-            // 'gofcusacademy@gmail.com',
-            // zain@basits.com
-            // 'chukspaul.cp@gmail.com',
-            // rrdavis21@yahoo.com
-            // delmarbennett@revoroof.com
-            // 'TEKNO_TRADER.work@gmail.com',
-            // 'nathanielgorroh5@gmail.com',
-            // ravjotsb@icloud.com
-            // 'elishailuore1@gmail.com',
-            // ashahzaib366@icloud.com
-            // 'abtiga73439@gmail.com',
-            // 'elishailuore1@gmail.com',
-            // 'masaweanold47@gmail.com',
-            // 'elishailuore1@gmail.com',
-            // 'ashahzaib366@gmail.com',
+        
 
             // 'harbhyodun@gmail.com',
             // 'harbhyodun@gmail.com',
             // 'sukhveer251002@gmail.com',
             // 'chukspaul.cp@gmail.com',
-            // johnhicks3674@att.net
+            // 'johnhicks3674@att.net',
             // 'blagovest8410@gmail.com',
             // 'blagovest8410@gmail.com',
             // 'nathanielgorroh5@gmail.com',
-            // ravjotsb@icloud.com
-            // ashahzaib366@icloud.com
-            // izman584@yahoo.com
+            // 'ashahzaib366@icloud.com',
+            // 'izman584@yahoo.com',
             // 'anazorkosi@gmail.com',
             // 'a.sonu786@gmail.com',
             // 'kelvinsarfo17@gmail.com',
             // 'aromeabikiaje@gmail.com',
             // 'aromeabikiaje@gmail.com',
-            // delmarbennett@revoroof.com
+            // 'delmarbennett@revoroof.com',
             // 'talhaismail20@gmail.com',
             // 'profx48@gmail.com',
             // 'mr.tradzuma@gmail.com',
             // 'mr.tradzuma@gmail.com',
             // 'mr.tradzuma@gmail.com',
-            // dg_building@yahoo.com
-            // ravjotsb@icloud.com
+            // 'dg_building@yahoo.com',
             // 'aromeabikiaje@gmail.com',
             // 'fosuaforson@gmail.com',
-            // Alexanderbmet@outlook.com
+            // 'Alexanderbmet@outlook.com',
             // 'jb_mistry@hotmail.com',
-            // Alexanderbmet@outlook.com
+            // 'Alexanderbmet@outlook.com',
             // 'saidmuhumed98@gmail.com',
             // 'harnoric@gmail.com',
             // 'ashwinshaumia@gmail.com',
@@ -162,29 +50,29 @@ class Send extends APIMaster {
             // 'abdisalandahirahmed@gmail.com',
             // 'mr.tradzuma@gmail.com',
             // 'mr.tradzuma@gmail.com',
-            // kayodeab@outlook.com
-            // ith4941@naver.com
+            // 'kayodeab@outlook.com',
+            // 'ith4941@naver.com',
             // 'ashwinshaumia@gmail.com',
             // 'ashwinshaumia@gmail.com',
             // 'yadavpraveen898@gmail.com',
             // 'alichukwudaniel@gmail.com',
             // 'jcwc69@gmail.com',
             // 'seektruth144@gmail.com',
-            // rapheal205@YAHOO.COM
+            // 'rapheal205@YAHOO.COM',
             // 'adekunlegolden3@gmail.com',
             // 'danial.da95@gmail.com',
             // 'nathiraaden@gmail.com',
             // 'slyb20087@gmail.com',
             // 'mona.sj.alhosani@hotmail.com',
             // 'fernandoarevalo1097@gmail.com',
-            // ozzoude.matt@yahoo.com
+            // 'ozzoude.matt@yahoo.com',
             // 'simmyb2917@gmail.com',
             // 'Olaf.klein74@googlemail.com',
             // 'fdavibarbosa@gmail.com',
             // 'jobsani2424@gmail.com',
             // 'simor200@gmail.com',
-            // guenther.h2016@outlook.de
-            // jonasokani@yahoo.com
+            // 'guenther.h2016@outlook.de',
+            // 'jonasokani@yahoo.com',
             // 'bernardbarka@gmail.com',
             // 'mteiwilfredmuya11@gmail.com',
             // 'mteiwilfredmuya11@gmail.com',
@@ -237,14 +125,14 @@ class Send extends APIMaster {
             // 'berangermededji@hotmail.com',
             // 'okwomaelvis@gmail.com',
             // 'michaelgbolahan360@gmail.com',
-            // sediq.mangal13@yahoo.com
+            // 'sediq.mangal13@yahoo.com',
             // 'njienggaston@gmail.com',
             // 'abbasali.tk@gmail.com',
             // 'olajubuolalekan@gmail.com',
             // 'mwangierick007@gmail.com',
             // 'etuk.iniabasi@gmail.com',
-            // izman584@yahoo.com
-            // izman584@yahoo.com
+            // 'izman584@yahoo.com',
+            // 'izman584@yahoo.com',
             // 'santiagomefr@gmail.com',
             // 'saif.elfarhani@gmail.com',
             // 'hassan395251@gmail.com',
@@ -252,16 +140,20 @@ class Send extends APIMaster {
             // 'profx48@gmail.com',
             // 'kulkb46@gmail.com',
             // 'cjweave4@gmail.com',
-            // ashahzaib366@icloud.com
+            // 'ashahzaib366@icloud.com',
             // 'm.ali.nour2013@gmail.com',
             // 'ebuka4power247@gmail.com',
             // 'rotimiojo247@gmail.com',
             // 'suavereal@gmail.com',
-            // ith4941@naver.com
-            // izman584@yahoo.com
+            // 'ith4941@naver.com',
+            // 'izman584@yahoo.com',
             // 'etuk.iniabasi@gmail.com',
             // 'etuk.iniabasi@gmail.com',
             // 'palleramulu@gmail.com',
+
+            
+            // 'ankanghosh010@gmail.com',
+            // 'gigabytelite.001@gmail.com',
             // 'andrefx930@gmail.com',
             // 'maximus.trade.management@gmail.com',
             // 'fayprince02@gmail.com',
@@ -289,17 +181,17 @@ class Send extends APIMaster {
             // 'skgmalinga@gmail.com',
             // 'kayodek505@gmail.com',
             // 'kayodek505@gmail.com',
-            // johnhicks3674@att.net
+            // 'johnhicks3674@att.net',
             // 'abdiazizs853@gmail.com',
             // 'investmentnadeau@gmail.com',
             // 'abdiazizs853@gmail.com',
             // 'abdiazizs853@gmail.com',
             // 'samueladeoti77@gmail.com',
-            // johnhicks3674@att.net
+            // 'johnhicks3674@att.net',
             // 'adanmohamoud1@gmail.com',
             // 'vsev12@gmail.com',
             // 'Ronaldo_martins7@hotmail.com',
-            // johnhicks3674@att.net
+            // 'johnhicks3674@att.net',
             // 'eb.dramm@gmail.com',
             // 'inosakhare005@gmail.com',
             // 'ubaisaiah405@gmail.com',
@@ -338,710 +230,11 @@ class Send extends APIMaster {
             // 'michaelgbolahan360@gmail.com',
             // 'davsondavidjob@gmail.com',
             // 'Bamidelesalawe@gmail.com',
-            // 'palleramulu@gmail.com',
-            // 'manishkumarthakur8696@gmail.com',
-            // 'ernestekuje@gmail.com',
-            // 'traderkockelbergh@gmail.com',
-            // 'mkraminer@gmail.com',
-            // 'idogbegabriel0@gmail.com',
-            // stefaneradus@live.nl
-            // okoyechuma@yahoo.com
-            // 'dessua@gmail.com',
-            // toomaru.mirko@mail.pf
-            // toomaru.mirko@mail.pf
-            // toomaru.mirko@mail.pf
-            // 'tiger07y@hotmail.com',
-            // shamim@uaebrc.ae
-            // stefaneradus@live.nl
-            // stefaneradus@live.nl
-            // toomaru.mirko@mail.pf
-            // stefaneradus@live.nl
-            // stefaneradus@live.nl
-            // stefaneradus@live.nl
-            // freddyaguirre05@yahoo.com
-            // 'cesar9diaz6@gmail.com',
-            // 'winnerspropfirm@gmail.com',
-            // 'willy.shen01@gmail.com',
-            // 'ngovinhthaotien@gmail.com',
-            // 'palleramulu@gmail.com',
-            // 'romy.stone@gmail.com',
-            // 'kvist.johan@gmail.com',
-            // 'dusechristian@yahoo.co.uk',
-            // 'dusechristian@yahoo.co.uk',
-            // 'karstenvolding@gmail.com',
-            // 'mona.sj.alhosani@hotmail.com',
-            // 'varun541@gmail.com',
-            // sediqjalalzai99@outlook.com
-            // 'eicapitalgroupinc@gmail.com',
-            // 'nojanf@gmail.com',
-            // 'b.costin23@gmail.com',
-            // johnhicks3674@att.net
-            // '94falcon94@gmail.com',
-            // 'abu.darries@gmail.com',
-            // 'biomedcastle@gmail.com',
-            // freddyaguirre05@yahoo.com
-            // 'asihag724@gmail.com',
-            // 'briansiaw5@gmail.com',
-            // 'palleramulu@gmail.com',
-            // account@chicagolandteam.com
-            // 'ngvu119008@gmail.com',
-            // bianelis16@outlook.com
-            // 'wealthmaniax@gmail.com',
-            // aimeeelumah@yahoo.com
-            // 'suhaybali77@gmail.com',
-            // 'francoisbernard.contact@gmail.com',
-            // 'brianbhp07@gmail.com',
-            // 'brianbhp07@gmail.com',
-            // 'djoh.koo@gmail.com',
-            // 'jdh01312@gmail.com',
-            // 'deannational@gmail.com',
-            // 'syyedkaram@gmail.com',
-            // 'mona.sj.alhosani@hotmail.com',
-            // 'valentineakin07@gmail.com',
-            // diplomatzone@yahoo.com
-            // kvsodha@outlook.com
-            // diplomatzone@yahoo.com
-            // 'traderkockelbergh@gmail.com',
-            // 'khadar2928@gmail.com',
-            // 'khadar2928@gmail.com',
-            // vamariciuc@icloud.com
-            // 'dusechristian@yahoo.co.uk',
-            // 'craxyboy666@gmail.com',
-            // 'philipenright29@gmail.com',
-            // 'deangm@hotmail.com',
-            // 'ericanpat20@gmail.com',
-            // 'faitheroic@gmail.com',
-            // okoyechuma@yahoo.com
-            // okoyechuma@yahoo.com
-            // okoyechuma@yahoo.com
-            // 'abbasali.tk@gmail.com',
-            // lifespan555@yahoo.com
-            // 'hizribfunded@gmail.com',
-            // 'mrmohan.c@gmail.com',
-            // 'samidaima@gmail.com',
+            
 
-            // 'jakkarinsuknate@gmail.com',
-            // 'suhaybali77@gmail.com',
-            // freddyaguirre05@yahoo.com
-            // 'cristianchoqueruiz@gmail.com',
-            // freddyaguirre05@yahoo.com
-            // freddyaguirre05@yahoo.com
-            // 'phantrungxstq@gmail.com',
-            // 'suhaybali77@gmail.com',
-            // lifespan555@yahoo.com
-            // 'nguyenhongngat12011998@gmail.com',
-            // 'nguyenhongngat12011998@gmail.com',
-            // mjworld77@yahoo.com
-            // 'willy.shen01@gmail.com',
-            // 'lsem45@gmail.com',
-            // 'kudzaibmatanga@gmail.com',
-            // 'suhaybali77@gmail.com',
-            // 'inkmun.contact@gmail.com',
-            // 'jb_mistry@hotmail.com',
-            // 'mohitsharm291@gmail.com',
-            // 'msangaa@gmail.com',
-            // lifespan555@yahoo.com
-            // mjworld77@yahoo.com
-            // 'sukhveer251002@gmail.com',
-            // 'khadar2929@gmail.com',
-            // 'sukhveer251002@gmail.com',
-            // 'robert.wwanjohi@gmail.com',
-            // 'syyedkaram@gmail.com',
-            // 'inkmun.contact@gmail.com',
-            // 'dubgali4@gmail.com',
-            // 'Ayanhusain34@gmail.com',
-            // 'Ayanhusain34@gmail.com',
-            // 'lokeshbangara25@gmail.com',
-            // 'Ayanhusain34@gmail.com',
-            // mjworld77@yahoo.com
-            // mjworld77@yahoo.com
-            // 'lokeshbangara25@gmail.com',
-            // 'dessua@gmail.com',
-            // 'dubgali4@gmail.com',
-            // 'Harveyluke.383@gmail.com',
-            // 'Harveyluke.383@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'mona.sj.alhosani@hotmail.com',
-            // 'jdh01312@gmail.com',
-            // 'inkmun.contact@gmail.com',
-            // 'inkmun.contact@gmail.com',
-            // 'ngvu119008@gmail.com',
-            // 'ngvu119008@gmail.com',
-            // 'lolomucyo@gmail.com',
-            // 'ericanpat20@gmail.com',
-            // 'reinhart.dh@gmail.com',
-            // 'dubgali4@gmail.com',
-            // 'dubgali4@gmail.com',
-            // 'yashyashnayak@gmail.com',
-            // 'temuemmanuel45@gmail.com',
-            // 'temuemmanuel45@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // 'dubgali4@gmail.com',
-            // 'lucignolo30@gmail.com',
-            // andrewdwane2@yahoo.com
-            // 'ialvaro.ezequiel@gmail.com',
-            // freddyaguirre05@yahoo.com
-            // andrewdwane2@yahoo.com
-            // andrewdwane2@yahoo.com
-            // 'kingfaithugorji@gmail.com',
-            // m.eggenweiler@bluewin.ch
-            // 'reemtrader1@gmail.com',
-            // 'bvigneshit@gmail.com',
-            // 'philongngo281@gmail.com',
-            // 'pvtnam@gmail.com',
-            // 'dhananjeyun@gmail.com',
-            // 'otherbackup007@gmail.com',
-            // 'inmyforces@gmail.com',
-
-            // 'lazarusmarwisa@gmail.com',
-            // 'donald.baze1@gmail.com',
-            // 'inmyforces@gmail.com',
-            // 'colintrevor@hotmail.com',
-            // 'colintrevor@hotmail.com',
-            // 'mohitsharm291@gmail.com',
-            // 'shlokhpredy@gmail.com',
-            // 'rdtunks1@gmail.com',
-            // 'tubman2016@gmail.com',
-            // 'tubman2016@gmail.com',
-            // 'tubman2016@gmail.com',
-            // 'lolomucyo@gmail.com',
-            // khawaja.waqas@outlook.com
-            // 'tosandaniel10@gmail.com',
-            // 'philongngo281@gmail.com',
-            // 'Harveyluke.383@gmail.com',
-            // 'Kameronmiller911@gmail.com',
-            // 'lsem45@gmail.com',
-            // 'lsem45@gmail.com',
-            // 'philipenright29@gmail.com',
-            // 'cesar9diaz6@gmail.com',
-            // 'reinhart.dh@gmail.com',
-
-            // 'charlesu100@gmail.com',
-            // 'Kameronmiller911@gmail.com',
-            // 'shaquilleweston02@gmail.com',
-            // 'Monehelaben@gmail.com',
-            // 'maximus.trade.management@gmail.com',
-            // 'lokeshbangara25@gmail.com',
-            // 'ads.demny@gmail.com',
-            // 'hollabodey.kilaso@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // treed@cypresslinux.com
-            // 'android.joemer@gmail.com',
-            // 'android.joemer@gmail.com',
-            // 'android.joemer@gmail.com',
-            // 'android.joemer@gmail.com',
-            // 'android.joemer@gmail.com',
-            // 'joshua.webb29@gmail.com',
-            // 'alwaystrustyoursoul@gmail.com',
-            // 'chimentinicola02@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'eicapitalgroupinc@gmail.com',
-            // 'eicapitalgroupinc@gmail.com',
-            // 'collinsuh@gmail.com',
-            // 'donald.baze1@gmail.com',
-            // sirwilbert@icloud.com
-            // 'toilaai26869@gmail.com',
-            // macvinbabas@yahoo.com
-            // 'brinconrd@gmail.com',
-            // 'Abdelali.demny@gmail.com',
-
-
-            // ider_s@yahoo.com
-            // ider_s@yahoo.com
-            // ider_s@yahoo.com
-            // ider_s@yahoo.com
-            // ider_s@yahoo.com
-            // ider_s@yahoo.com
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'inje.usa@gmail.com',
-            // 'omorg002@gmail.com',
-            // 'rorkemitchell@gmail.com',
-            // 'sara.insanitysupps@gmail.com',
-            // 'al.bert@hotmail.co.uk',
-            // 'shimbapaul@gmail.com',
-            // 'ludi.sego@gmail.com',
-            // 'jossyhoro@gmail.com',
-            // 'al.bert@hotmail.co.uk',
-            // 'christopheemy@gmail.com',
-            // 'sulaadriano33@gmail.com',
-            // 'chimentinicola02@gmail.com',
-            // 'ceriwilliams05@hotmail.co.uk',
-            // 'dianalantasnim@gmail.com',
-            // 'teozamir@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'bvegafx@gmail.com',
-            // 'jouharkv2460206@gmail.com',
-            // 'ansmohm@gmail.com',
-            // 'njue002@gmail.com',
-            // 'asher0shaji@gmail.com',
-            // 'asher0shaji@gmail.com',
-            // 'yaroslav77@hotmail.com',
-            // 'q_ahmad50@hotmail.co.uk',
-            // 'john.dise.mason@gmail.com',
-            // 'wealthwithalfredo@gmail.com',
-            // 'dianalantasnim@gmail.com',
-            // treed@cypresslinux.com
-            // 'blagovest8410@gmail.com',
-            // 'jasonorona@gmail.com',
-            // 'rhinofutures@ymail.com',
-            // 'brendon.samuel777@gmail.com',
-            // 'brendon.samuel777@gmail.com',
-            // okoyechuma@yahoo.com
-            // 'alebrad33@gmail.com',
-            // 'bmajamandagenize@gmail.com',
-            // 'vipinkrishna4321@gmail.com',
-            // sediq.mangal13@yahoo.com
-            // 'ejakimey@gmail.com',
-            // 'ejakimey@gmail.com',
-            // 'vipinkrishna4321@gmail.com',
-            // 'mohitsharm291@gmail.com',
-            // 'otahukeni@gmail.com',
-            // 'terryodion84@gmail.com',
-            // 'uttarraj31@gmail.com',
-            // 'reprofitsinc@gmail.com',
-            // 'dessua@gmail.com',
-            // 'robertkamangirazw@gmail.com',
-            // franklinrea@me.com
-            // kayology@yahoo.com
-            // kayology@yahoo.com
-            // 'sabasedibe@gmail.com',
-            // 'surfgangcapital@gmail.com',
-            // 'surfgangeek@gmail.com',
-            // 'shlokhpredy@gmail.com',
-            // 'surfgangeek@gmail.com',
-            // 'reprofitsinc@gmail.com',
-            // 'renatosemedo@hotmail.com',
-            // 'gravettej@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'hugoruelasilva@gmail.com',
-            // 'competencesga@gmail.com',
-            // 'borbabarby@gmail.com',
-            // 'aleixbargallo@gmail.com',
-            // 'karstenvolding@gmail.com',
-            // 'shamim.koreasouth@gmail.com',
-            // 'karstenvolding@gmail.com',
-            // 'banuadam1988@gmail.com',
-            // 'banuadam1988@gmail.com',
-            // 'theproptrading21@gmail.com',
-            // 'karstenvolding@gmail.com',
-            // 'issa98jaber@gmail.com',
-            // 'ialvaro.ezequiel@gmail.com',
-            // 'cristianchoqueruiz@gmail.com',
-            // ghurooyeshna@yahoo.com
-            // 'karstenvolding@gmail.com',
-            // 'gozf911@gmail.com',
-            // 'Asadyare3563@gmail.com',
-            // 'Asadyare3563@gmail.com',
-            // 'Asadyare3564@gmail.com',
-            // 'jouharkv2460206@gmail.com',
-            // 'aashiq00225@gmail.com',
-            // 'aashiq00225@gmail.com',
-            // 'aashiq00225@gmail.com',
-            // 'mohamadmohiyadin55@gmail.com',
-            // 'asadyare3565@gmail.com',
-            // 'aopassiveincome@gmail.com',
-            // 'davsondavidjob@gmail.com',
-            // 'davsondavidjob@gmail.com',
-            // stefaneradus@live.nl
-            // 'kerrod.holzheimer@gmail.com',
-            // 'b.costin23@gmail.com',
-            // 'asadyare3562@gmail.com',
-            // 'Asadyare3562@gmail.com',
-            // 'memangkennedy@gmail.com',
-            // gilbertlim98@icloud.com
-            // 'wongwinghan123@gmail.com',
-            // 'chawjinhao@gmail.com',
-            // aaman3@web.de
-            // 'kanyiwriter@gmail.com',
-            // nicolas_jannes@msn.com
-            // 'blagovest8410@gmail.com',
-            // 'phantrungxstq@gmail.com',
-            // ocansey@windowslive.com
-            // 'dangachoka@gmail.com',
-            // 'rqdcapital@gmail.com',
-            // 'drambitiousfx@gmail.com',
-            // 'davidakinwale95@gmail.com',
-            // 'markramlochan21@gmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'gops1970@gmail.com',
-            // 'asasenaforex@gmail.com',
-            // 'alharethalshaheen@gmail.com',
-            // 'alharethalshaheen@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // sediqjalalzai99@outlook.com
-            // dmgtraders@icloud.com
-            // 'asasenaforex@gmail.com',
-            // 'sukhveer251002@gmail.com',
-            // 'Abaadir503@gmail.com',
-            // 'agusamyify@protonmail.com',
-
-
-            // 'dn3skass@gmail.com',
-            // 'shamim.koreasouth@gmail.com',
-            // 'sywin.mooc@hotmail.co.uk',
-            // 'jesse.anyaegbu198@gmail.com',
-            // jamesgregory759@yahoo.com
-            // 'asher0shaji@gmail.com',
-            // 'asher0shaji@gmail.com',
-            // 'brendabea70@gmail.com',
-            // 'cohen.jellisa@hotmail.com',
-            // 'thirxx84@gmail.com',
-            // 'olajubuolalekan@gmail.com',
-            // 'csanto10@gmail.com',
-            // 'akuaku7695@gmail.com',
-            // 'akuaku7695@gmail.com',
-            // 'mrrdiamante@gmail.com',
-            // 'kevindelgado007@gmail.com',
-            // 'Antoniocosby86@gmail.com',
-            // 'sonnypemberton1@gmail.com',
-            // 'd.saravana21@gmail.com',
-            // nicolas_jannes@msn.com
-            // 'vijayantkumar15@gmail.com',
-            // aaman3@web.de
-            // 'reprofitsinc@gmail.com',
-            // 'surfgangeek@gmail.com',
-            // 'p.smith297@yahoo.co.uk',
-            // 'alepiergentili@gmail.com',
-            // 'isaiahkobli123@gmail.com',
-            // 'axmedliibaan5@gmail.com',
-            // 'sear99@gmail.com',
-            // 'botan701@gmail.com',
-            // 'Dn3skass@gmail.com',
-            // 'isaiahkobli123@gmail.com',
-            // 'benjamin.tunaru@gmail.com',
-            // 'gozf911@gmail.com',
-            // 'guerrerotorresjuliocesar@gmail.com',
-            // 'mr.tradzuma@gmail.com',
-            // 'maadan14@hotmail.com',
-            // 'blagovest8410@gmail.com',
-            // 'amisadaimenasheh2021@gmail.com',
-            // 'amisadaimenasheh2021@gmail.com',
-            // 'amisadaimenasheh2021@gmail.com',
-            // dimitrikolios@yahoo.com
-            // 'desifoli78@gmail.com',
-            // 'mr.tradzuma@gmail.com',
-            // 'khanfx007@gmail.com',
-            // 'joynasim4@gmail.com',
-            // 'colintrevor@hotmail.com',
-            // 'colintrevor@hotmail.com',
-            // 'dessua@gmail.com',
-            // 'barnl41979@gmail.com',
-            // 'rihardsbreicis@gmail.com',
-            // ForexTrader173@outlook.com
-            // khalifalawalshehu@yahoo.com
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // shamim@uaebrc.ae
-            // 'mohamedpromagri@gmail.com',
-            // johnny.l1@web.de
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // 'mohamedpromagri@gmail.com',
-            // adelchirani@yahoo.fr
-            // 'benkaptumo@gmail.com',
-            // erwin.temmerman@skynet.be
-            // 'daavidofx@gmail.com',
-            // jamie.hayday@yahoo.com
-            // 'fondas7@gmail.com',
-            // 'bo.oleinik@gmail.com',
-            // frederic.bachelier@itech.fr
-            // 'sufiyan-patel@live.co.uk',
-            // roygmbh@web.de
-            // 'garygibbons20@gmail.com',
-            // 'tresorjonathan@gmail.com',
-            // 'benkaptumo@gmail.com',
-            // 'dangachoka@gmail.com',
-            // 'fondas7@gmail.com',
-            // 'pattionyango@gmail.com',
-            // 'pattionyango@gmail.com',
-            // 'pattionyango@gmail.com',
-            // 'mrrdiamante@gmail.com',
-            // 'sear99@gmail.com',
-            // frederic.bachelier@itech.fr
-            // 'e.rodriguez045@gmail.com',
-            // 'lucignolo30@gmail.com',
-            // 'assadhuuu@gmail.com',
-            // freddyaguirre05@yahoo.com
-            // 'kashyapdarji300@gmail.com',
-            // nathanwaweru123@yahoo.com
-            // 'sukhveer251002@gmail.com',
-            // 'partnerwithrob@gmail.com',
-            // 'dessua@gmail.com',
-            // 'otahukeni@gmail.com',
-            // shamim@uaebrc.ae
-            // 'pacavi10@gmail.com',
-            // frederic.bachelier@itech.fr
-            // 'chahal@blueyonder.co.uk',
-            // r.gnath@gmx.de
-            // 'k3rz1n@gmail.com',
-            // 'raxxe@gmail.com',
-            // 'klimentlaszlo@gmail.com',
-            // 'kelvin.kulola@gmail.com',
-            // 'younas.edu@gmail.com',
-            // 'abdulamin300@gmail.com',
-            // j_tielman@yahoo.com
-            // ForexTrader173@outlook.com
-            // 'dinesh8492@gmail.com',
-            // 'iazaydre@gmail.com',
-            // jonmorin100@outlook.com
-            // 'aryasotofx@gmail.com',
-            // 'princecristo@hotmail.com',
-            // sediq.mangal13@yahoo.com
-            // 'd.saravana21@gmail.com',
-            // 'm.ziyaatasoy@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // 'm.ziyaatasoy@gmail.com',
-            // 'decarvalho92@gmail.com',
-            // 'traderfromnowhere@gmail.com',
-            // scottsn2001@icloud.com
-            // lawrenceandsap@btinternet.com
-            // 'salvitraderfx@gmail.com',
-            // 'mikedunn4814@gmail.com',
-            // 'lavieandvila@gmail.com',
-            // 'newdealforex7@gmail.com',
-            // 'heartyness@protonmail.com',
-            // 'arnaudmmt@gmail.com',
-            // 'arnaudmmt@gmail.com',
-            // 'minaiethoola9@gmail.com',
-            // 'gunter.hellmuth@ymail.com',
-            // 'lee19902017@gmail.com',
-            // 'asadyare3565@gmail.com',
-            // 'ramsnd25@gmail.com',
-            // 'asadyare3565@gmail.com',
-            // sayuerediauwa@yahoo.com
-            // 'asadyare3565@gmail.com',
-            // 'keeganfal@gmail.com',
-            // 'suudaanifx97@gmail.com',
-            // 'donald.baze1@gmail.com',
-            // erwin.temmerman@skynet.be
-            // 'joynasim4@gmail.com',
-            // 'dias.betinho@uol.com.br',
-            // 'ialvaro.ezequiel@gmail.com',
-            // 'marcstokestrading@gmail.com',
-            // 'hashmi@hushcapital.com',
-            // 'apostleprecious50@gmail.com',
-            // 'jacquan0789@gmail.com',
-            // 'Dn3skass@gmail.com',
-            // 'jason0181@gmail.com',
-            // dmgtraders@icloud.com
-            // 'S_OLOKE@HOTMAIL.COM',
-            // 'Beniyasir4525azer@gmail.com',
-            // 'pramere15@gmail.com',
-            // stefanvogt@icloud.com
-            // 'drambitiousfx@gmail.com',
-            // 'advancetechnicals1@gmail.com',
-            // r.gnath@gmx.de
-            // 'mr_aniwat@hotmail.com',
-            // 'khadijashabir16@gmail.com',
-            // 'elidon_123@hotmail.co.uk',
-            // stefanvogt@icloud.com
-            // 'theproptrading21@gmail.com',
-            // sediqjalalzai99@outlook.com
-            // 'greenmonday123@gmail.com',
-            // 'stanleymokalu@gmail.com',
-            // sediq.mangal13@yahoo.com
-            // 'MATTHEW.PHILPOTT2@GMAIL.COM',
-            // 'dhananjeyun@gmail.com',
-
-            // 'csanto10@gmail.com',
-            // erwin.temmerman@skynet.be
-            // 'rohandirpal@gmail.com',
-            // williamkpettersen@outlook.com
-            // 'moreiramanuel10@gmail.com',
-            // 'marcofilippi83@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // 'drjhilaire@gmail.com',
-            // 'drjhilaire@gmail.com',
-            // 'drjhilaire@gmail.com',
-            // 'elier.trading@gmail.com',
-            // khalidkkochaei@outlook.com
-            // 'colaci.rocco@gmail.com',
-            // 'msaxane20@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // 'raanyare44@gmail.com',
-            // 'csanto10@gmail.com',
-            // ashokk1991@outlook.com
-            // 'ckhaimun@hotmail.com',
-            // 'donald.baze1@gmail.com',
-            // 'chawjinhao@gmail.com',
-            // 'm.ziyaatasoy@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // 'daavidofx@gmail.com',
-            // bogie6953@comcast.net
-            // 'drjeremysteiner@gmail.com',
-            // 'marcofilippi83@gmail.com',
-            // 'otherbackup007@gmail.com',
-            // 'wongwinghan123@gmail.com',
-            // Ashokk1991@outlook.com
-            // 'arielsendon21@gmail.com',
-            // 'dinesh8492@gmail.com',
-            // 'andrewtsai82@gmail.com',
-            // 'dhananjeyun@gmail.com',
-            // money@thepc.de
-            // 'RAFEEQTKOFFICIAL@GMAIL.COM',
-            // 'dessua@gmail.com',
-            // 'dessua@gmail.com',
-            // 'dessua@gmail.com',
-            // donatello.montanari@yahoo.com
-            // 'webtrading0@gmail.com',
-            // 'webtrading0@gmail.com',
-            // sediq.mangal13@yahoo.com
-            // 'ckhaimun@hotmail.com',
-            // 'abdikadirmohamed733@gmail.com',
-            // williamkpettersen@outlook.com
-            // 'dessua@gmail.com',
-            // 'mdakamlesh@gmail.com',
-            // 'nhaldson2801@gmail.com',
-            // sediq.mangal13@yahoo.com
-            // sediq.jalalzai@outlook.com
-            // 'nurakmalramli@gmail.com',
-            // 'rmtfx.ltd@gmail.com',
-            // 'umairanwer@gmail.com',
-            // 'morerajorge3@gmail.com',
-            // 'elier.trading@gmail.com',
-            // bogie6953@comcast.net
-            // 'marcofilippi83@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // williamkpettersen@outlook.com
-            // 'Dn3skass@gmail.com',
-            // ravjotsb@icloud.com
-            // cristianramirez451@icloud.com
-            // 'bolkstores@gmail.com',
-            // greysoncollins@me.com
-            // 'elier.trading@gmail.com',
-            // rqazi@yahoo.com
-            // 'jswilkeson@gmail.com',
-            // 'advancetechnicals1@gmail.com',
-            // 'princeomas10@gmail.com',
-            // 'andrewtsai82@gmail.com',
-            // ravjotsb@icloud.com
-            // 'princeomas10@gmail.com',
-            // 'dessua@gmail.com',
-            // claudekinney@live.ca
-            // 'princeomas10@gmail.com',
-            // 'princeomas10@gmail.com',
-            // 'renidyazangisa@gmail.com',
-            // 'sandyy14@gmail.com',
-            // 'sandyy14@gmail.com',
-            // dmgtraders@icloud.com
-            // 'notary1st@gmail.com',
-            // 'princeomas0@gmail.com',
-            // dmgtraders@icloud.com
-            // 'jordanmark1011@gmail.com',
-            // 'princeomas0@gmail.com',
-            // dmgtraders@icloud.com
-            // 'damianeconstudwnt@gmail.com',
-            // donatello.montanari@yahoo.com
-            // dmgtraders@icloud.com
-            // 'giannill737@gmail.com',
-            // 'alexksandland@gmail.com',
-            // 'travelbrit@gmail.com',
-            // 'bob2211845@gmail.com',
-            // 'aimhigher200@gmail.com',
-            // dmgtraders@icloud.com
-            // 'Dn3skass@gmail.com',
-            // 'hai.h.do@gmail.com',
-            // 'sharankmultani@gmail.com',
-            // 'sharankmultani@gmail.com',
-            // 'dessua@gmail.com',
-            // dmgtraders@icloud.com
-            // 'kuda600@hotmail.com',
-            // ravjotsb@icloud.com
-            // tmuresan67@yahoo.com
-            // bram-nunnikhoven@pytman.trading
-            // hozy1968@yahoo.com
-            // dmgtraders@icloud.com
-            // 'beyondluxury8k@gmail.com',
-            // 'brent2683@hotmail.com',
-            // office@manhart-transporte.com
-            // tim@carolina.rr.com
-            // 'charlesu100@gmail.com',
-            // 'marcofilippi83@gmail.com',
-            // ravjotsb@icloud.com
-            // 'adriankaranjanjoroge@gmail.com',
-            // 'adriankaranjanjoroge@gmail.com',
-            // 'blakeolson5@gmail.com',
-            // 'dessua@gmail.com',
-            // 'vineshdarji@gmail.com',
-            // dmgtraders@icloud.com
-            // dmgtraders@icloud.com
-            // erwin.temmerman@skynet.be
-            // malcom_nic@yahoo.com
-            // haphulam_69@yahoo.com.vn
-            // 'ihor105mail@gmail.com',
-            // 'sheyhan2021@gmail.com',
-            // 'arielsendon21@gmail.com',
-            // 'tavy.snug@gmail.com',
-            // claudekinney@live.ca
-            // sediq.mangal13@yahoo.com
-            // ahba1914@yahoo.com
-            // 'pf0210@gmail.com',
-            // 'abbasali.tk@gmail.com',
-            // dmgtraders@icloud.com
-            // 'nwensi@gmail.com',
-            // dmgtraders@icloud.com
-            // 'brendonsamuel777@gmail.com',
-            // 'csanto10@gmail.com',
-            // jckc2211845@outlook.com
-            // 'thedeltabull@gmail.com',
-            // 'cfpc75@gmail.com',
-            // ravjotsb@icloud.com
-            // 'marcofilippi83@gmail.com',
-            // 'gozf911@gmail.com',
-            // 'advancetechnicals1@gmail.com',
-
-            // 'fongzicheng7@gmail.com',
-            // ahba1914@yahoo.com
-            // 'andrewboon97@gmail.com',
-            // 'pf0210@gmail.com',
-            // 'john.tielman@gmail.com',
-            // 'khristineck2@gmail.com',
-            // claudekinney@live.ca
-            // 'jeremymbenson9@gmail.com',
-            // ravjotsb@icloud.com
-            // rdtunks1@yahoo.ca
-            // 'khanfx007@gmail.com',
-            // 'ramis.homecleaning@hotmail.com',
-            // 'andrewtsai82@gmail.com',
-            // 'ijazmr4@gmail.com',
-            // 'colossalfunds@gmail.com',
-            // 'asadshariifmahud@gmail.com',
-            // erwin.temmerman@skynet.be
-            // 'kiplayman@gmail.com',
-            // 'lucathomasleigh@gmail.com',
-            // 'jorgen_vigsten@hotmail.com',
-            // 'dessua@gmail.com',
-            // 'harkarn1699@gmail.com',
-            // 'mclarenautocenter@hotmail.com',
-            // 'hai.h.do@gmail.com',
-            // djsjross@iinet.net.au
-            // 'charlesu100@gmail.com',
-            // anshuman_sen@outlook.com
-            // dario.barna@icloud.com
-            // 'yaroslav77@hotmail.com',
-            // 'antonjerecalmes@gmail.com',
-            // 'simonemantoo@gmail.com',
-            // rajeevthakur_ca@yahoo.co.in
-
-            'gigabytelite.001@gmail.com',
-
+            // "ankanghosh010@gmail.com",
+            // "gigabytelite.001@gmail.com"
+           
         );
         $users = array_unique($emails);
 
