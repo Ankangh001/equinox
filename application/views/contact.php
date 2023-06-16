@@ -106,7 +106,7 @@ $this->load->view('includes/header');
 						</div>
 						<div class="my-3">
 							<div class="loading">Loading</div>
-							<div class="sent-message">Your complaint has been sent. Thank you!</div>
+							<div class="sent-message">Your ticket has been received. Thank you!</div>
 						</div>
 						<div class="text-center"><button type="submit">Submit</button></div>
 					</form>

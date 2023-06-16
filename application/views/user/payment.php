@@ -9,6 +9,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
     border-bottom: 4px solid #535355;
     border-radius: 0;
 }
+.input-group:focus-within .form-control, .input-group:focus-within .input-group-text {
+    border-color: #ffffff;
+}
 </style>
 <script type="text/javascript" src="<?php echo $web_payment_sdk_url ?>"></script>
   <script type="text/javascript">
@@ -70,8 +73,8 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
               <div class="tab-pane fade" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
-                    <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
-                    <!-- <div id="google-pay-button" alt="google-pay" type="button"></div> -->
+                     <!--<div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
+                     <div id="google-pay-button" alt="google-pay" type="button"></div> 
                     <!-- <div class="border">
                       <span>OR</span>
                     </div> -->
