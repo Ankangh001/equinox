@@ -8,7 +8,7 @@ class ComplaintsForm extends CI_Controller {
 
         $data = array(
             'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
+            'email' => $this->input->post('email-add'),
             'complaintType' => $this->input->post('complaintType'),
             'subject' => $this->input->post('subject'),
             'message' => $this->input->post('message'),

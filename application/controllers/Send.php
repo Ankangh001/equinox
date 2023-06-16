@@ -30,9 +30,9 @@ class Send extends APIMaster {
             'ajanioluwatimilehinsamuel@gmail.com',
             'ajanioluwatimilehinsamuel@gmail.com',
             'ajanioluwatimilehinsamuel@gmail.com',
-            treed@cypresslinux.com
-            treed@cypresslinux.com
-            treed@cypresslinux.com
+            'treed@cypresslinux.com',
+            'treed@cypresslinux.com',
+            'treed@cypresslinux.com',
             'alichukwudaniel@gmail.com',
             'ajanioluwatimilehinsamuel@gmail.com',
             'jakkarinsuknate@gmail.com',
@@ -45,7 +45,7 @@ class Send extends APIMaster {
             'georgennamdij@gmail.com',
             'abiola4fx.@gmail.com',
             'umarsule500@gmail.com',
-            matthewclinton12@icloud.com
+            'matthewclinton12@icloud.com',
             'abiola4fx.@gmail.com',
             'seektruth144@gmail.com',
             'ogilvysam13@gmail.com',
@@ -57,7 +57,7 @@ class Send extends APIMaster {
             'georgennamdij@gmail.com',
             'ssgroupcareerbuilder@gmail.com',
             'abiola4fx.@gmail.com',
-            jerryovat@yahoo.com
+            'jerryovat@yahoo.com',
             'frankfx001@gmail.com',
             'josephmadukwe9@gmail.com',
             'abiola4fx.@gmail.com',
