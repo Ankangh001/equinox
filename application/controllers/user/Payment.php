@@ -77,8 +77,8 @@ class Payment extends APIMaster {
                     "customer_id":"customer1",
                     "customer_name":"Person1"
                 },
-                "name":"Example1",
-                "description":"Payment for Evaluation Product",
+                "name":"Payment for",
+                "description":"Evaluation Product",
                 "pricing_type":"fixed_price",
                 "redirect_url":"'.base_url().'user/payment/coinbaseSuccess",
                 "cancel_url":"'.base_url().'user/payment/coinbaseFailure"
