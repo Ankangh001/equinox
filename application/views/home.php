@@ -1417,7 +1417,7 @@ $this->load->view('includes/header');
 						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
-							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
+							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.</p>
 							<a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>

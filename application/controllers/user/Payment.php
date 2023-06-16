@@ -499,7 +499,7 @@ class Payment extends APIMaster {
         
         $body = file_get_contents(base_url('assets/mail/receipt.html'));
 
-        $content = '<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+        $content = '<td align="left" bgcolor="#ffffff" style="margin-auto; padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                             <td align="left" bgcolor="#D2C7BA" width="75%"
@@ -527,6 +527,14 @@ class Payment extends APIMaster {
                         </tr>
                         <tr>
                             <td align="left" width="75%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            Discount</td>
+                            <td align="left" width="25%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            -$'.$product_Price-$priceAfterDiscount.'</td>
+                        </tr>
+                        <tr>
+                            <td align="left" width="75%"
                             style="padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;">
                             <strong>Total</strong></td>
                             <td align="left" width="25%"
@@ -536,7 +544,8 @@ class Payment extends APIMaster {
                         </table>
                     </td>';
         $finaltemp = str_replace("{PAYMENT}", $content, $body);
-    
+        echo $finaltemp;die;
+
         $email = send_email($user_email, 'Payment Receipt', $finaltemp,'','',3);
 
         if($email){

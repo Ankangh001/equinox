@@ -33,7 +33,7 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<p>
-							Equinox Trading Capital strives to build strong, long-lasting relationships with all our stakeholders, including and most importantly with our clients. In keeping with this, we view your comments, suggestions and concerns as matters of premiere importance. We also recognize that a client's dissatisfaction is an opportunity for us to improve by enhancing our products and level of service.
+							Equinox Trading Capital strives to build strong, long-lasting relationships with our stakeholders, including and most importantly with our clients. In keeping with this, we view your comments, suggestions and concerns as matter of premiere importance. We also recognize that a client's dissatisfaction is an opportunity for us to improve by enhancing our products and level of service.
 							</p>
 						</div>
 					</div>
@@ -58,8 +58,8 @@ $this->load->view('includes/header');
 					<div class="info">
 						<div class="email about-text">
 							<p>In the unlikely event that you are dissatisfied with the product or service provided by Equinox Trading Capital, please contact our Customer Service as soon as possible on live chat or via email at <strong class="text-primary">support@equinoxtradingcapital.com</strong></p><br>
-							<p>If our customer service team is unable to resolve the matter or if you wish to submit a complaint without working with our customer service team, you may submit a formal complaint by completing our Online Complaint Form mentioned below.</p><br>
-							<p>The complaint will receive an impartial review to determine if we have acted fairly within our rights and have met our contractual obligations. We will acknowledge your complaint promptly, and a full written response will be provided within  <strong class="text-primary">eight weeks</strong> of receiving the complaint.</p>
+							<p>If our customer service team is unable to resolve the matter or if you wish to submit a complaint, you may submit a formal complaint by completing our Online Complaint Form below.</p><br>
+							<p>The complaint will receive an impartial review to determine if we have acted fairly within our rights and have met our contractual obligations. We will acknowledge your complaint promptly and a full written response will be provided within  <strong class="text-primary">eight weeks</strong> of receiving the complaint.</p>
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@ $this->load->view('includes/header');
 						</div>
 						<div class="form-group mt-3">
 							<select class="form-control" name="complaintType" id="ticket-type">
-								<option selected>Select Type of Ticket</option>
+								<option selected>Select Type of Complaint</option>
 								<option value="General Question">General Question</option>
 								<option value="Payments & Orders">Payments & Orders</option>
 								<option value="Evaluation/Funded Phase">Evaluation/Funded Phase</option>
