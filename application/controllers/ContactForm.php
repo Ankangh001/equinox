@@ -26,7 +26,7 @@ class ContactForm extends CI_Controller {
                 <p>Message - '.$this->input->post('message').'</p>
                 Reply To User<a href="mailto:'.$this->input->post('email').'"> '.$this->input->post('email').'</a>';
         
-        $email = send_email('support@equinoxtradingcapital.com', $this->input->post('subject'), $body,'','',2);
+        $email = send_email('support@equinoxtradingcapital.com', $this->input->post('subject'), $body,'','',8);
 
         if($res){
             $response = array(
