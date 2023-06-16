@@ -10,10 +10,10 @@
   <meta http-equiv='pragma' content='no-cache'>
 
 
-  <meta description ="Equinox trading Capital Limited">
-  <title>Equinox</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta description ="Funding for traders - Simplified! | Equinox Trading Capital">
+  <title>Funding for traders - Simplified! | Equinox Trading Capital</title>
+  <meta content="We developed a unique 2-step evaluation course for traders. This evaluation process consists of Phase 1 & Phase 2 and is specially tailored to discover trading talents. Upon successful completion of the evaluation course, you are offered a placement in our firm where you can remotely manage accounts with a balance of up to $500,000." name="description">
+  <meta content="thefundedtrader, myforexfunds, forexlifestyle, Forex, fundedtrader, forexpropfirm, propfirm, forextrading, forextrader, forexlifestyle, forexmarket, equinoxtradingcapital, ftmo, myforexfunds, thefundedtrader, fundednext, fundedtrader" name="keywords">
 
   <!-- Favicons -->
   <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
@@ -206,7 +206,7 @@ body{
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="client-login" class="book-a-table-btn scrollto d-none d-lg-flex">Client Area</a>
+      <a href="client-login" class="book-a-table-btn scrollto  d-lg-flex">Client Area</a>
 
     </div>
   </header><!-- End Header -->

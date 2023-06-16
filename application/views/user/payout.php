@@ -38,7 +38,7 @@ $this->load->view('user/includes/header');
                       <select required class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
                         <option selected="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
-                        <option value="Affiliate">Affiliate</option>
+                        <!-- <option value="Affiliate">Affiliate</option> -->
                         <!-- <option value="Rewards">Games & Rewards</option> -->
                       </select>
                     </div>

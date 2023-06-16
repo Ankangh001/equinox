@@ -61,7 +61,7 @@ class Mailer
             <p>Regards, <br> 
                Equinox Team <br> 
             </p>';
-        $template['subject'] = 'Email verification link';
+        $template['subject'] = 'Account Email Verification';
 		return $template;		
 	}
 
