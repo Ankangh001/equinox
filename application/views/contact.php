@@ -85,7 +85,7 @@ $this->load->view('includes/header');
 								<input type="hidden" name="type" id="type" value="contact">
 							</div>
 							<div class="col-md-6 form-group mt-3 mt-md-0">
-								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+								<input type="email" class="form-control" name="email-add" id="email-add" placeholder="Your Email" required>
 							</div>
 						</div>
 						<div class="form-group mt-3">
