@@ -117,7 +117,7 @@ $this->load->view('includes/footer');
 	var form = $('form').serializeArray();
 	$.ajax({
 		type: "POST",
-		url: "<?php echo base_url('ContactForm'); ?>",
+		url: "<?php echo base_url('ComplaintsForm'); ?>",
 		data: form,
 		dataType: "html",
 		beforeSend: function(){

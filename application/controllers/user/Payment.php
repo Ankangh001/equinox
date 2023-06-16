@@ -78,7 +78,7 @@ class Payment extends APIMaster {
                     "customer_name":"Person1"
                 },
                 "name":"Example1",
-                "description":"Create Charge using PHP",
+                "description":"Payment for Evaluation Product",
                 "pricing_type":"fixed_price",
                 "redirect_url":"'.base_url().'user/payment/coinbaseSuccess",
                 "cancel_url":"'.base_url().'user/payment/coinbaseFailure"

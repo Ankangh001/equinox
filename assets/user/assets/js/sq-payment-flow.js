@@ -57,6 +57,12 @@ window.createPayment = async function(token) {
     if (data.errors && data.errors.length > 0) {
       if (data.errors[0].detail) {
         window.showError(data.errors[0].detail);
+        $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
+        $('#modalCenter').modal('show');
+        setTimeout(() => {
+          $('#modalCenter').modal('hide');
+          location.reload();
+        }, 4000);
       } else {
         window.showError('Payment Failed.');
         $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
@@ -64,16 +70,16 @@ window.createPayment = async function(token) {
         setTimeout(() => {
           $('#modalCenter').modal('hide');
           window.location.href = PANEL_URL+"user/account-overview";
-        }, 1000);
+        }, 4000);
       }
     } else {
       window.showSuccess('Payment Successful!');
-      $('#modalCenterTitle').html('Payment Success Full<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+      $('#modalCenterTitle').html('Payment Successfull<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
       $('#modalCenter').modal('show');
       setTimeout(() => {
         $('#modalCenter').modal('hide');
         window.location.href = PANEL_URL+"user/account-overview";
-      }, 1000);
+      }, 4000);
     }
   } catch (error) {
     console.error('Error:', error);
