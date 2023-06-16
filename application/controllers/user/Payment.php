@@ -346,6 +346,7 @@ class Payment extends APIMaster {
 			
 			if($this->db->insert('userproducts', $userProducts)){
                 if( $this->db->insert('transactions', $transaction)){
+                    $orderId = 'EQ'.$this->db->insert_id().'LTD';
                     if(isset($_SESSION['affiliate_by']) && ($_SESSION['affiliate_by'] != '')){
                         $this->addAffilatePoint($requestData,$_SESSION['affiliate_by']);
                     }
@@ -354,7 +355,11 @@ class Payment extends APIMaster {
                         'message' => 'User Poduct Added successfully',
                     );
                     $email = $this->db->where(['user_id' =>  $requestData->user_id])->get('user')->result_array();
-                    $this->send_user_email($email[0]['email']);
+                    $productName = $this->db->where(['product_id' =>  $requestData->product_id])->get('products')->result_array();
+                    $final_product_name = $productName[0]['product_name'].' '. $product_category['product_category'];
+                    $userName = $email[0]['first_name'].' '.$email[0]['last_name'];
+
+                    $this->send_user_email($email[0]['email'], $userName, $orderId, $requestData->product_price, $final_product_name, $requestData->final_product_price );
                 }else{
                     $response = array(
                         'status' => '400',
@@ -546,12 +551,51 @@ class Payment extends APIMaster {
     
     //send mail for passing phases
     //violation_type = 0,1,2
-	public function send_user_email($user_email){
+	public function send_user_email($user_email, $userName, $orderId, $product_Price, $productName, $priceAfterDiscount){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
         
         $body = file_get_contents(base_url('assets/mail/receipt.html'));
-        $email = send_email($user_email, 'Payment Receipt', $body,'','',3);
+
+        $content = '<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="left" bgcolor="#D2C7BA" width="75%"
+                            style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            <strong>Order #</strong></td>
+                            <td align="left" bgcolor="#D2C7BA" width="25%"
+                            style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            <strong>'.$orderId.'</strong></td>
+                        </tr>
+                        <tr>
+                            <td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                                '.$productName.'
+                            </td>
+                            <td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                                $'.$product_Price.'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" width="75%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            Sales Tax</td>
+                            <td align="left" width="25%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            $0.00</td>
+                        </tr>
+                        <tr>
+                            <td align="left" width="75%"
+                            style="padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;">
+                            <strong>Total</strong></td>
+                            <td align="left" width="25%"
+                            style="padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;">
+                            <strong>$'.$priceAfterDiscount.'</strong></td>
+                        </tr>
+                        </table>
+                    </td>';
+        $finaltemp = str_replace("{PAYMENT}", $content, $body);
+    
+        $email = send_email($user_email, 'Payment Receipt', $finaltemp,'','',3);
 
         if($email){
 			$response = array(

@@ -21,18 +21,22 @@ class MetricsCron extends APIMaster {
         // exit;
         
         foreach ($check as $key => $value) {
-            $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
-            $data = json_decode($res, true);
-            $equity = $data['equity'];
-            $balance = $data['balance']-$value['account_size'];
-            $saveTodb = $this->db->where(['id'=>$value['id']])
-                ->update('userproducts',[
-                    'equity' => $equity,
-                    'balance' => $balance
-                ]);
+            // $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
+            // $data = json_decode($res, true);
+            // $equity = $value['equity'];
+            // $balance = $value['balance']-$value['account_size'];
+            
+            $this->checkUserStatus($value['id']);
+            // $saveTodb = $this->db->where(['id'=>$value['id']])
+            //     ->update('userproducts',[
+            //         'equity' => $equity,
+            //         'balance' => $balance
+            //     ]);
         }
     }
     
+
+
     //---mt5 swagger api call to get account info----
     public function accounts($accountId, $password, $host, $port){
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$accountId.'&password='.$password.'&host='.$host.'&port='.$port);
@@ -74,6 +78,8 @@ class MetricsCron extends APIMaster {
         return $response;
     }
     //---mt5 swagger api call to get account info----
+
+
 
     //----save start and end date---
     public function check_account_expiry(){
@@ -332,9 +338,8 @@ class MetricsCron extends APIMaster {
     }
 
     //user status controller
-    public function checkUserStatus(){
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
+    public function checkUserStatus($rowId){
+        $decrypted['eqid'] = $rowId;
 
         $this->db->select('userproducts.*, products.*, user.email');
         $this->db->from('userproducts');
@@ -439,7 +444,7 @@ class MetricsCron extends APIMaster {
                 }
             }elseif ($product_category == 'Normal') {
                 if($phase == '1') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
@@ -469,7 +474,7 @@ class MetricsCron extends APIMaster {
                         );  
                     }
                 }elseif($phase == '2') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2){
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])
                         ->update('userproducts', ['product_status'=>'3','metrics_status'=> '1']);
@@ -525,7 +530,9 @@ class MetricsCron extends APIMaster {
                 'message'=>'Data not found user might be failed'
             );
         }
-        echo json_encode($response);
+        echo "<pre>";
+        print_r($response);
+        echo "<br/>";
     }
 
     //send mail for passing phases
