@@ -1,7 +1,7 @@
 <?php
 // echo "<pre>";
 // print_r($res);
-// die;
+
 $this->load->view('user/includes/header');
 ?>
 <style>
@@ -144,17 +144,19 @@ $this->load->view('user/includes/header');
        <div class="featuredPropBox">
          <!-- <button id="submitBtn">Get Certificate</button>
          <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
+         <?php //if($res){?>
          <ul>
            <li> 
              <a href="#">
                <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
                <div class="fptext">
-                  <input type="hidden" name="Name" autocomplete="name" id="name" value="Ankan">
+                  <input type="hidden" name="Name" autocomplete="name" id="name" value="User Name">
                   <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
                 </div>
               </a>
             </li>
          </ul>
+         <?php //} ?>
       </div>
      </div>
   </div>
@@ -191,7 +193,7 @@ $this->load->view('user/includes/header');
         });
 
         const generatePDF = async (name, date="<?php echo date('Y-m-d')?>") => {
-            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/crt.pdf").then((res) =>
+            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
                 res.arrayBuffer()
             );
 
@@ -213,17 +215,17 @@ $this->load->view('user/includes/header');
 
             // Draw a string of text diagonally across the first page
             firstPage.drawText(name, {
-                x: 250,
-                y: 390,
+                x: 650,
+                y: 375,
                 size: 26,
                 font: SanChezFont,
                 color: rgb(0, 0, 0),
             });
 
             firstPage.drawText(date, {
-                x: 285,
-                y: 248,
-                size: 10,
+                x: 700,
+                y: 187,
+                size: 12,
                 font: SanChezFont,
                 color: rgb(0, 0, 0),
             });
