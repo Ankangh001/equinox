@@ -42,6 +42,13 @@ $this->load->view('includes/header');
     .header.text-center.pb-1.percent-text {
         font-size: 2.5rem;
     }
+    @media (max-width: 768px){
+        .btn-book {
+            font-size: 14px !important;
+            padding: 3% 5% !important;
+            margin: 1rem 0 !important;
+        }
+    }
 </style>
 <main id="main">
     <!-- ======= Why Us Section ======= -->
@@ -56,7 +63,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1 percent-text">5%</div>
-                                <p class="mt-3" style="font-size:14px; text-align:center">Referal count (1 to 250)</p>
+                                <p class="mt-3" style="font-size:14px; text-align:center">Referral count (1 to 250)</p>
                             </div>
                         </div>
                     </a>
@@ -67,7 +74,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1 percent-text">10%</div>
-                                <p class="mt-3" style="font-size:14px; text-align:center">Referal count (251 to 500)</p>
+                                <p class="mt-3" style="font-size:14px; text-align:center">Referral count (251 to 500)</p>
                             </div>
                         </div>
                     </a>
@@ -78,7 +85,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1 percent-text">15%</div>
-                                <p class="mt-3" style="font-size:14px; text-align:center">Referal count (501 to 1000)</p>
+                                <p class="mt-3" style="font-size:14px; text-align:center">Referral count (501 to 1000)</p>
                             </div>
                         </div>
                     </a>
@@ -89,7 +96,7 @@ $this->load->view('includes/header');
                         <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
                             <div class="card-body">
                                 <div class="header text-center pb-1 percent-text">Custom</div>
-                                <p class="mt-3" style="font-size:14px; text-align:center">Referal count (1001 & above)</p>
+                                <p class="mt-3" style="font-size:14px; text-align:center">Referral count (1001 & above)</p>
                             </div>
                         </div>
                     </a>
