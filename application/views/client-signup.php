@@ -97,7 +97,7 @@ $this->load->view('includes/header');
                             </div>
 
                             <div class="form-outline mb-3">
-                                <select class="form-control" name="country">
+                                <select required class="form-control" name="country">
                                     <option selected value="NA">Select your Country</option>
                                     <option value="Afghanistan">Afghanistan</option>
                                     <option value="Åland Islands">Åland Islands</option>
@@ -348,9 +348,9 @@ $this->load->view('includes/header');
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0 text-dark">
-                                    <input class="form-check-input me-2" type="checkbox" name="checkbox1" value="" id="form2Example3" />
+                                    <input class="form-check-input me-2" type="checkbox" required name="checkbox1" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
-                                        I agree to the processing of personal data according to privacy policy
+                                        I agree to the processing of personal data according to <a class="text-primary" href="<?=base_url('privacy-policy')?>">privacy policy</a>
                                     </label>
                                 </div>
                             </div>
@@ -358,7 +358,7 @@ $this->load->view('includes/header');
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0 text-dark">
-                                    <input class="form-check-input me-2" type="checkbox" name="checkbox2" value="" id="form2Example3" />
+                                    <input class="form-check-input me-2" type="checkbox" required name="checkbox2" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
                                         Do you want to receive news about our project? Sign up to our
                                     </label>
@@ -367,7 +367,7 @@ $this->load->view('includes/header');
                             <br>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0 text-dark">
-                                    <input class="form-check-input me-2" type="checkbox" name="checkbox3" value="" id="form2Example3" />
+                                    <input class="form-check-input me-2" type="checkbox" required name="checkbox3" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
                                         I acknowledge my name is correct and corresponds to the government issued identification.
                                     </label>
