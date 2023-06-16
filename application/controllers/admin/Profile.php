@@ -11,6 +11,6 @@ class Profile extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/profile');
+        $this->load->view('admin/profile');
 	}
 }

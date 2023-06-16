@@ -348,56 +348,56 @@ $this->load->view('admin/includes/header');
 
   function loadTable(){
     $('.table').DataTable().destroy();
-    $('.table').DataTable({
-        ajax: "<?php echo base_url('admin/purchase/getPhase1Pending'); ?>",
-        deferRender: true,
-        "pageLength": 100,
-        columns:[
-          {data:'product_name'},
-          {
-            data: null,
-            render: function (data, type, row) {
-                return `${row.first_name + ' ' + row.last_name}` ;
-            }
-          },
-          {
-            data: null,
-            render: function (data, type, row) {
-                return '$'+row.account_size;
-            }
-          },
-          {data:'product_category'},
-          {
-            data: null,
-            render: function (data, type, row) {
-                return '$'+row.product_price;
-            }
-          },
-          {
-            data: null,
-            render: function (data, type, row) {
-                return `${
-                  row.product_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.product_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
-                    (row.product_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
-                      row.product_status == 3 ? '<span class="badge bg-label-danger">Failed</span>' :''
+      $('.table').DataTable({
+          ajax: "<?php echo base_url('admin/purchase/getPhase1Pending'); ?>",
+          deferRender: true,
+          "pageLength": 100,
+          columns:[
+            {data:'product_name'},
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.first_name + ' ' + row.last_name}` ;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return '$'+row.account_size;
+              }
+            },
+            {data:'product_category'},
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return '$'+row.product_price;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${
+                    row.product_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
+                    (row.product_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
+                      (row.product_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
+                        row.product_status == 3 ? '<span class="badge bg-label-danger">Failed</span>' :''
+                      )
                     )
-                  )
-                }`;
-            }
-          },
-          {
-            data: null,
-            render: function (data, type, row) {
-                return `<div class="d-flex justify-content-space-between">
-                    <a onclick="viewDetails('${row.id}','${row.product_category}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
-                    <a onclick="addDetails('${row.id}','${row.product_category}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
-                  </div>`;
-            }
-          },
-        ]
-    });
-  }
+                  }`;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `<div class="d-flex justify-content-space-between">
+                      <a onclick="viewDetails('${row.id}','${row.product_category}')" class="btn btn-info btn-sm" href="javascript:void(0);"><i class="bx bx-key me-1"></i></a>&nbsp;&nbsp;
+                      <a onclick="addDetails('${row.id}','${row.product_category}')" data-bs-toggle="modal" data-bs-target="#modalCred"  class="btn btn-primary btn-sm" href="javascript:void(0);"><i class="bx bx-edit me-1"></i></a>
+                    </div>`;
+              }
+            },
+          ]
+      });
+    }
 
   loadTable();
   $('.paginate_button').addClass('btn btn-primary');

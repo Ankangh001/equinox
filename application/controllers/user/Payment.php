@@ -518,6 +518,31 @@ class Payment extends APIMaster {
         //     }
         // }
     }
+
+    public function checkCoupon(){
+        $code = $this->input->post('code');
+        $product_price = $this->input->post('product_price');
+        
+        $res = $this->db->where(['code' => $code])->get('coupons')->result_array();
+        $product_discount = round($product_price *  ($res[0]['percentage']/100));
+        $final_product_price = round($product_price - ($product_price *  ($res[0]['percentage']/100)));
+
+        if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'Coupon Code Valid',
+                'percentage' => $res[0]['percentage'],
+                'final_product_price' => $final_product_price,
+                'product_discount' => $product_discount,
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'Invalid coupon code',
+			);
+		}
+		echo json_encode($response);  
+    }
     
     //send mail for passing phases
     //violation_type = 0,1,2

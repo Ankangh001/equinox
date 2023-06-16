@@ -344,6 +344,7 @@ $this->load->view('user/includes/header');
         success: function(data){
           let res = JSON.parse(data);
           if(res.status == 200){
+            $('#payout-form')[0].reset();
             loadTable();
             $('div#loading').hide(200);
             $('.modal').modal('hide');
@@ -364,7 +365,8 @@ $this->load->view('user/includes/header');
     $('.table').DataTable({
         ajax: "<?php echo base_url('user/payout/getPayouts'); ?>",
         deferRender: true,
-        "pageLength": 100,
+        searching: false, paging: false, info: false,
+        // "pageLength": 100,
         columns:[
           {data:'payout_date'},
           {
@@ -384,10 +386,8 @@ $this->load->view('user/includes/header');
             render: function (data, type, row) {
                 return `${
                   row.payout_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.payout_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
-                    (row.payout_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
-                      row.payout_status == 3 ? '<span class="badge bg-label-danger">Failed</span>' :''
-                    )
+                  (row.payout_status == 1 ? '<span class="badge bg-label-success">PAID</span>' : 
+                    (row.payout_status == 2 ? '<span class="badge bg-label-danger">DENIED</span>' :'')
                   )
                 }`;
             }
