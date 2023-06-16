@@ -128,7 +128,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 <div class="input-group input-group-merge">
                   <input type="text" id="coupon-code" class="form-control" placeholder="Enter Coupon Code">
                   <span class="input-group-text p-1" id="basic-default-email2">
-                    <button class="btn btn-sm btn-secondary m-1" id="apply-btn">Apply</button>
+                    <button class="btn btn-sm btn-primary m-1" id="apply-btn">Apply</button>
                   </span>
                 </div>
               </div>
