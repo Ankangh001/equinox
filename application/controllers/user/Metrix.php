@@ -111,7 +111,8 @@ class Metrix extends APIMaster {
             );
         }
         echo json_encode($response);
-    }    
+    } 
+    // --- FAIL MAX DRAWDOWN ---
     public function make_userFail_for_maxDrawdown(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -153,7 +154,7 @@ class Metrix extends APIMaster {
         echo json_encode($response);
     }
 
-    // --- FAIL MAX DRAWDOWN ---
+
     public function makeUserPassProfitTarget(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
@@ -166,6 +167,9 @@ class Metrix extends APIMaster {
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
+        $name = $check2[0]['first_name'].' '.$check2[0]['last_name'];
+        $account = $check2[0]['account_id'];
+
         //0 = failed
         //1 = pass
         //2 = permanent pass
@@ -178,7 +182,7 @@ class Metrix extends APIMaster {
             );
         }else{
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2']);
-            $this->send_user_email($email, "PASS", "", "", "", "");
+            $this->send_user_email($email, "PASS", "", $name, "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User made permanently pass for profit target!'
@@ -333,7 +337,7 @@ class Metrix extends APIMaster {
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
 
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
@@ -352,6 +356,8 @@ class Metrix extends APIMaster {
             $phase = $check[0]['phase'];
             $product_category = $check[0]['product_category'];
             $email = $check[0]['email'];
+            $name = $check[0]['first_name'].' '.$check2[0]['last_name'];
+            $account = $check[0]['account_id'];
 
             //0 = failed
             //1 = pass
@@ -379,7 +385,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", "", "");
+                        $this->send_user_email($email, "PASS", "", $name, "");
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
