@@ -148,22 +148,22 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a>. </label>
+                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck22">
+                <label class="form-check-label" for="defaultCheck22"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a>. </label>
               </div>
             </div>
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('privacy-policy')?>">privacy policy</a>. </label>
+                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck233">
+                <label class="form-check-label" for="defaultCheck233"> I agree that i have read <a href="<?=base_url('privacy-policy')?>">privacy policy</a>. </label>
               </div>
             </div>
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                <label class="form-check-label" for="defaultCheck2"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
+                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck244">
+                <label class="form-check-label" for="defaultCheck244"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
               </div>
             </div>
           </div>
