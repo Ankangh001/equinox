@@ -125,7 +125,7 @@ class Purchase extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->where(['phase'=> '1', 'product_status'=>'0'])->get()->result_array();
+        $response['data'] = $this->db->where(['phase'=> '1', 'product_status'=>'0','payment_status'=>'1'])->get()->result_array();
 		echo  json_encode($response);
 	}
 
@@ -139,7 +139,7 @@ class Purchase extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->where(['phase'=> '2', 'product_status'=>'0'])->get()->result_array();
+        $response['data'] = $this->db->where(['phase'=> '2', 'product_status'=>'0', 'payment_status'=>'1'])->get()->result_array();
 		echo  json_encode($response);
 	}
 
@@ -153,7 +153,7 @@ class Purchase extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->where(['phase'=> '3', 'product_status'=>'0'])->get()->result_array();
+        $response['data'] = $this->db->where(['phase'=> '3', 'product_status'=>'0', 'payment_status'=>'1'])->get()->result_array();
 		echo  json_encode($response);
 	}
 
@@ -166,7 +166,7 @@ class Purchase extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->where(['product_status'=>'1'])->get()->result_array();
+        $response['data'] = $this->db->where(['product_status'=>'1', 'payment_status'=>'1'])->get()->result_array();
 
 		echo  json_encode($response);
 	}
