@@ -59,11 +59,11 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
               </button>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <button type="button" class="btn" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-amazon" aria-controls="navs-top-amazon" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>amazonpay-logo.png">
               </button>
-            </li>
+            </li> -->
           </ul>
           <div class="card-body">
             <div class="tab-content">
@@ -71,7 +71,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
                     <!-- <div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
-                    <div id="google-pay-button" alt="google-pay" type="button"></div>
+                    <!-- <div id="google-pay-button" alt="google-pay" type="button"></div> -->
                     <!-- <div class="border">
                       <span>OR</span>
                     </div> -->
@@ -126,9 +126,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
               <label for="html5-text-input" class="col-md-4 col-form-label">Apply Coupon</label>
               <div for="html5-text-input" class="col-md-8 text-right col-form-label">
                 <div class="input-group input-group-merge">
-                  <input type="number" id="basic-default-card-number" class="form-control" placeholder="Enter Coupon Code" aria-label="KJH9" aria-describedby="basic-default-email2">
+                  <input type="text" id="coupon-code" class="form-control" placeholder="Enter Coupon Code">
                   <span class="input-group-text p-1" id="basic-default-email2">
-                    <button class="btn btn-sm btn-secondary m-1">Apply</button>
+                    <button class="btn btn-sm btn-secondary m-1" id="apply-btn">Apply</button>
                   </span>
                 </div>
               </div>
@@ -202,6 +202,27 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
         success: function(data){
           console.log(data);
           window.location.href = data;
+        },
+        error: function() { 
+          alert("Error posting feed."); 
+        }
+    });
+  });
+
+
+  //coupon code check
+  $('#apply-btn').click(()=>{    
+    requestData.code = $('#coupon-code').val();
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payment/checkCoupon'); ?>",
+        data: requestData,
+        dataType: "html",
+        success: function(data){
+          let res = JSON.parse(data);
+          requestData.final_product_price = res.final_product_price;
+          $('#final_product_price').text(res.final_product_price);
+          $("#product_discount").text(res.product_discount);
         },
         error: function() { 
           alert("Error posting feed."); 

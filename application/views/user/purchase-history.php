@@ -1,4 +1,6 @@
-<?php $this->load->view('user/includes/header'); ?>
+<?php 
+// echo "<pre>"; print_r($history); die;
+$this->load->view('user/includes/header'); ?>
 
 <div class="content-wrapper">
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -20,7 +22,7 @@
             <tr>
               <td><strong><?= @$value['product_name'] ?></strong></td>
               <td><?php echo substr($value['purchase_date'], 0, 10) ?></td>
-              <td>$<?= @$value['product_price'] ?></td>
+              <td>$<?= @$value['amount'] ?></td>
               <td><?= @$value['product_category'] ?></td>
               <td>
                 <span class="badge bg-label-success me-1">Paid</span>

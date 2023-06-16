@@ -106,6 +106,16 @@ $route['admin/faq'] = 'admin/faq';
     //----complaints-----------//
 $route['admin/user-enquiries'] = 'admin/enquiries';
 $route['admin/user-complaints'] = 'admin/enquiries/complaints';
+
+    //----accounts admin record----//
+$route['admin/accounts/pending-passed-accounts'] = 'admin/account/pendingPassedAccounts';
+$route['admin/accounts/approved-passed-accounts'] = 'admin/account/approvedPassedAccounts';
+
+$route['admin/accounts/pending-failed-accounts'] = 'admin/account/pendingFailedAccounts';
+$route['admin/accounts/approved-failed-accounts'] = 'admin/account/approvedFailedAccounts';
+
+    //------add coupons------//
+$route['admin/add-coupons'] = 'admin/coupon';
 //-------------------- End Admin dashboard ------------------
 
 $route['404_override'] = '';

@@ -173,14 +173,54 @@
               </ul>
             </li>
 
+            <!-- Accounts  -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'passed-accounts' || $this->uri->segment(3) == 'pending-passed-accounts' || $this->uri->segment(3) == 'approved-passed-accounts' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Passed Accounts</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-passed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>pending-passed-accounts" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-passed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>approved-passed-accounts" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!--Failed  Accounts  -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'failed-accounts' || $this->uri->segment(3) == 'pending-failed-accounts' || $this->uri->segment(3) == 'approved-failed-accounts' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Failed Accounts</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-failed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>pending-failed-accounts" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-failed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>approved-failed-accounts" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
 
             <!-- Payouts -->
-            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>payout" class="menu-link">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'coupons') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>add-coupons" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
-                <div>Payout</div>
+                <div>Coupons</div>
               </a>
-            </li> -->
+            </li>
 
 
             <!-- Announcements -->
@@ -285,27 +325,12 @@
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="<?=base_url('admin/')?>profile">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
+                    </li> -->
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
