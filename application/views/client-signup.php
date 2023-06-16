@@ -72,8 +72,8 @@ $this->load->view('includes/header');
                             </div>
 
                             <div class="mb-3">
-                                <label for="contact" class="form-label">Number</label>
-                                <input type="number" id="contact" name="contact" class="form-control" required placeholder="A valid Number" />
+                                <label for="contact" class="form-label">Phone Number</label>
+                                <input type="number" id="contact" name="contact" class="form-control" required placeholder="A valid phone number" />
                             </div>
 
                             <div class="mb-3 form-password-toggle">
