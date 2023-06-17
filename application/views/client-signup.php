@@ -38,6 +38,9 @@ $this->load->view('includes/header');
             display: inline-block;
             font-size: 0.85rem;
         }
+        .form-control {
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
