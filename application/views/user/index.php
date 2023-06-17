@@ -186,7 +186,7 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Dashboard</h4>`);
 
   var user ={};
   user.id = <?php echo $_SESSION['user_id']; ?>;

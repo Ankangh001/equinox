@@ -199,7 +199,7 @@ $this->load->view('user/includes/header');
   $('#account').css('display','none');
   $('#bank-details').css('display','none');
 
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Payout / Withdraw</h4>`);
 
   let accBalance = 0;
   $('#payout').change((e)=>{

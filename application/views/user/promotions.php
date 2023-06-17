@@ -63,6 +63,6 @@ $this->load->view('user/includes/header');
     </div>
   </div>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Promotions</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Promotions</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

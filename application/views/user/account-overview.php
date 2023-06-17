@@ -473,7 +473,7 @@ $this->load->view('user/includes/header');
 
 <?php $this->load->view('user/includes/footer');?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Account Overview</h4>`);
   let requestData = {};
   requestData.uid = "<?= $_SESSION['user_id']?>";
 

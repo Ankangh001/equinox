@@ -68,7 +68,7 @@ $this->load->view('user/includes/header');
   </div>
     <!-- / Content -->
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0 mr-3"><span class="text-muted fw-light">User /</span> MT5 Webterminal</h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0 mr-3"><span class="text-muted fw-light"></span> MT5 Webterminal</h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button class="btn btn-outline-dark ml-3 btn-sm" onclick="var el = document.getElementById('element'); el.requestFullscreen();">
             <i class='bx bx-fullscreen' ></i>
           </button>`)

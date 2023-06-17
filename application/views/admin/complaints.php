@@ -69,7 +69,7 @@ $this->load->view('admin/includes/header');
 
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Complaints</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Complaints</h4>`);
   $('.paginate_button').addClass('btn btn-primary');
 
 </script>

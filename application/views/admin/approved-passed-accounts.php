@@ -67,7 +67,7 @@ $this->load->view('admin/includes/header');
 
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Pending Failed Accounts</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Pending Failed Accounts</h4>`);
 
   function toggleAccount(id, admin_account_status) {
     let request = {}

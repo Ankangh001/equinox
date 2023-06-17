@@ -125,7 +125,7 @@ $this->load->view('user/includes/header');
     <?php $this->load->view('user/includes/footer');?>
 <script>
   $('#copied').hide(1);
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Affiliate</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Affiliate</h4>`);
   function copyToClipboard(element) {
     var $temp = $("<input>");
     $("body").append($temp);

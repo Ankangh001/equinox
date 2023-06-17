@@ -180,7 +180,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 <?php $this->load->view('user/includes/footer');?>
 <script>
   const PANEL_URL = "<?=base_url()?>";
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Account Overview</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Account Overview</h4>`);
 
   var requestData ={};
 
