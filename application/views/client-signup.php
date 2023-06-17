@@ -454,7 +454,7 @@
                         notify("success", response.message,'success');
                     }
                     setTimeout(() => {
-                        window.location.href = BASEURL+'client-login';	
+                        window.location.href = "<?= base_url()?>client-login";	
                     }, 8000);
                 } else {
                     $('div#loading').hide(200);
