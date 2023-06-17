@@ -34,6 +34,10 @@ $this->load->view('includes/header');
         #header{
             display:none !important;
         }
+        label {
+            display: inline-block;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -374,10 +378,10 @@ $this->load->view('includes/header');
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mt-3 mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                             </div>
-                            <p class="text-center text-dark">
+                            <p class="text-center text-dark" style="font-size:0.75rem;">
                                 <span>Already have an account?</span>
                                 <a class="text-primary" href="<?= base_url('client-login');?>">
                                     <span>Login</span>
