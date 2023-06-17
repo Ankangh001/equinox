@@ -108,7 +108,7 @@ $this->load->view('includes/header');
                                     <label class="form-label" for="country">Country</label>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <select required class="form-control" name="country">
+                                    <select id="country"  required class="form-control" name="country">
                                         <option selected value="NA">Select your Country</option>
                                         <option value="Afghanistan">Afghanistan</option>
                                         <option value="Åland Islands">Åland Islands</option>
