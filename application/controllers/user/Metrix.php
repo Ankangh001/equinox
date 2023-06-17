@@ -160,7 +160,7 @@ class Metrix extends APIMaster {
         $decrypted = json_decode($request, true);
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
@@ -356,7 +356,7 @@ class Metrix extends APIMaster {
             $phase = $check[0]['phase'];
             $product_category = $check[0]['product_category'];
             $email = $check[0]['email'];
-            $name = $check[0]['first_name'].' '.$check2[0]['last_name'];
+            $name = $check[0]['first_name'].' '.$check[0]['last_name'];
             $account = $check[0]['account_id'];
 
             //0 = failed
