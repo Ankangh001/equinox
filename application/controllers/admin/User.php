@@ -116,12 +116,12 @@ class User extends APIMaster {
 
 	public function getpendingKyc(){
 		try {
-			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '0']);
+			$res = $this->db->where(['admin_type'=>'Client', 'kyc_status' => '1'])->get('user')->result_array();
             
 			if($res){
 				$response = array(
 					'status' => '200',
-					'message' => 'User KYC Updated successfully',
+					'data' => $res
 				);
 			}else{
 				$response = array(
@@ -178,8 +178,8 @@ class User extends APIMaster {
 	}
 
 	public function viewPendingKyc(){
-		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
-		$this->load->view('admin/pending-kyc', $response);
+		// $response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
+		$this->load->view('admin/pending-kyc');
 	}
 	public function viewApproveKyc(){
 		$this->load->view('admin/approved-kyc');

@@ -33,23 +33,7 @@ $this->load->view('admin/includes/header'); ?>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                      <?php foreach($res as $data){ ?>
-                      <tr>
-                        <td><a href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><?php echo $data['first_name'].' '.$data['last_name'] ?></a></td>
-                        <td>
-                          <a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url().@$data['kyc_doc']?>">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>
-                        </td>
-                        <td>
-                          <a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url().@$data['kyc_adhar']?>">View Document&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>
-                        </td>
-                        <td>
-                          <div class="d-flex justify-content-start">
-                            <a class="btn-sm btn btn-success" href="<?= base_url('admin/user/view/')?><?php echo $data['user_id'] ?>"><i class="bx bx-check-circle me-1"></i>&nbsp; Approve</a>&nbsp;&nbsp;&nbsp;
-                            <a class="btn btn-sm btn-danger" onclick="delete_user(<?php echo $data['user_id'] ?>)" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>&nbsp; Reject</a>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php }; ?>
+                     
                     </tbody>
                   </table>
                 </div>
@@ -93,10 +77,51 @@ $this->load->view('admin/includes/header'); ?>
     };
   
   $(document).ready(function () {
-    $('.table').DataTable();
-    $('.paginate_button').addClass('btn btn-primary');
-    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Challenge</h4>`);
+    // $('.table').DataTable();
+    // $('.paginate_button').addClass('btn btn-primary');
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Pending KYC</h4>`);
   });
+
+  function loadTable(){
+    $('.table').DataTable().destroy();
+      $('.table').DataTable({
+          ajax: "<?php echo base_url('admin/user/getpendingKyc'); ?>",
+          deferRender: true,
+          "pageLength": 100,
+          columns:[
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.first_name + ' ' + row.last_name}` ;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `<a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_doc}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `<a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_adhar}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `<div class="d-flex justify-content-start">
+                            <button class="btn-sm btn btn-success" onclick="approveKyc(${row.user_id})"><i class="bx bx-check-circle me-1"></i>&nbsp; Approve</button>&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-sm btn-danger" onclick="delete_user(${row.user_id})" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>&nbsp; Reject</a>
+                          </div>`
+              }
+            }
+          ]
+      });
+    }
+
+  loadTable();
+  $('.paginate_button').addClass('btn btn-primary');
 </script>
 </body>
 </html>
