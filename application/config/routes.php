@@ -100,7 +100,7 @@ $route['admin/profile'] = 'admin/profile';
 $route['admin/announcements'] = 'admin/announcements';
 $route['admin/promotions'] = 'admin/promotions';
 $route['admin/games-rewards'] = 'admin/games';
-$route['admin/affiliate'] = 'admin/affiliate';
+$route['admin/affiliates'] = 'admin/affiliate';
 $route['admin/faq'] = 'admin/faq';
 
     //----complaints-----------//
