@@ -1,6 +1,6 @@
 <?php
 // echo "<pre>";
-// print_r($res);
+// print_r($res);die;
 
 $this->load->view('user/includes/header');
 ?>
@@ -144,19 +144,25 @@ $this->load->view('user/includes/header');
        <div class="featuredPropBox">
          <!-- <button id="submitBtn">Get Certificate</button>
          <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
-         <?php //if($res){?>
+         <?php if($res){?>
          <ul>
            <li> 
              <a href="#">
                <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
                <div class="fptext">
-                  <input type="hidden" name="Name" autocomplete="name" id="name" value="User Name">
+                  <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
                   <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
                 </div>
               </a>
             </li>
          </ul>
-         <?php //} ?>
+         <?php }else{ ?>
+            <div class="row">
+                <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+                You Need to have atleast one Funded Account.
+                </span>
+            </div>
+         <?php }?>
       </div>
      </div>
   </div>
