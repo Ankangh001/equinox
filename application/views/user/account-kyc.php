@@ -2,8 +2,6 @@
 $this->load->view('user/includes/header');
 ?>
 
-
-
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
@@ -133,7 +131,6 @@ $this->load->view('user/includes/header');
                   $('#modalCenter').modal('hide');
                   location.reload();
                 }, 8000);
-                console.log(res);
               }
               else{
                 console.log(res);

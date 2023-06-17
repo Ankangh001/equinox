@@ -30,6 +30,25 @@ $this->load->view('admin/includes/header'); ?>
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-xl">
+                <div class="card-body">
+                  <h5 class="modal-title" id="modalCenterTitle">KYC Rejected<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-danget"></i></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     <div class="row">
         <div class="col-xl-12">
           <div class="nav-align-top mb-4">
@@ -79,10 +98,10 @@ $this->load->view('admin/includes/header'); ?>
           success: function(data){
             $('div#loading').hide(200);
             $('.modal').modal('hide');
-            $('#modalCenter').modal('show');
+            $('#modalCenterr').modal('show');
             loadTable();
             setTimeout(() => {
-              $('#modalCenter').modal('hide');
+              $('#modalCenterr').modal('hide');
             }, 8000);
           },
           error: function() { alert("Error posting feed."); }
@@ -92,13 +111,13 @@ $this->load->view('admin/includes/header'); ?>
   $(document).ready(function () {
     // $('.table').DataTable();
     // $('.paginate_button').addClass('btn btn-primary');
-    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Approved KYC</h4>`);
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Rejected KYC</h4>`);
   });
 
   function loadTable(){
     $('.table').DataTable().destroy();
       $('.table').DataTable({
-          ajax: "<?php echo base_url('admin/user/getApproveKyc'); ?>",
+          ajax: "<?php echo base_url('admin/user/getRejectedKyc'); ?>",
           deferRender: true,
           "pageLength": 100,
           columns:[

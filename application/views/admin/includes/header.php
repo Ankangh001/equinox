@@ -105,7 +105,7 @@
             </li>
 
             <!-- KYC -->
-            <li class="menu-item <?php if ($this->uri->segment(3) == 'user-kyc' || $this->uri->segment(3) == 'pending-kyc' || $this->uri->segment(3) == 'approved-kyc' ) { echo 'active open';} ?>">
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'rejected-kyc' || $this->uri->segment(3) == 'pending-kyc' || $this->uri->segment(3) == 'approved-kyc' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-check-circle"></i>
                 <div>KYC</div>
@@ -119,6 +119,11 @@
                 <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-kyc') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/user/')?>approved-kyc" class="menu-link">
                     <div>Approved</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'rejected-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>rejected-kyc" class="menu-link">
+                    <div>Rejected</div>
                   </a>
                 </li>
               </ul>

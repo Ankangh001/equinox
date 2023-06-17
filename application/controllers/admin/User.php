@@ -126,7 +126,52 @@ class User extends APIMaster {
 			}else{
 				$response = array(
 					'status' => '400',
-					'message' => 'Unable to find pending kyc related to this account.',
+					'message' => 'No record found',
+					'data' => $res
+				);
+			}
+			echo json_encode($response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
+	public function getApproveKyc(){
+		try {
+			$res = $this->db->where(['admin_type'=>'Client', 'kyc_status' => '2'])->get('user')->result_array();
+            
+			if($res){
+				$response = array(
+					'status' => '200',
+					'data' => $res
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'No record found',
+					'data' => $res
+				);
+			}
+			echo json_encode($response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
+	public function getRejectedKyc(){
+		try {
+			$res = $this->db->where(['admin_type'=>'Client', 'kyc_status' => '3'])->get('user')->result_array();
+            
+			if($res){
+				$response = array(
+					'status' => '200',
+					'data' => $res
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'No record found',
+					'data' => $res
 				);
 			}
 			echo json_encode($response);
@@ -136,27 +181,6 @@ class User extends APIMaster {
 	}
 
 	public function approveKyc(){
-		try {
-			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '1']);
-            
-			if($res){
-				$response = array(
-					'status' => '200',
-					'message' => 'User KYC Updated successfully',
-				);
-			}else{
-				$response = array(
-					'status' => '400',
-					'message' => 'Unable to update kyc status',
-				);
-			}
-			echo json_encode($response);
-		} catch (\Throwable $th) {
-			$res = $th;
-		}
-	}
-
-	public function rejectKyc(){
 		try {
 			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '2']);
             
@@ -177,11 +201,36 @@ class User extends APIMaster {
 		}
 	}
 
+	public function rejectKyc(){
+		try {
+			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '3']);
+            
+			if($res){
+				$response = array(
+					'status' => '200',
+					'message' => 'User KYC Updated successfully',
+					'data' => ''
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to update kyc status',
+					'data' => ''
+				);
+			}
+			echo json_encode($response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
 	public function viewPendingKyc(){
-		// $response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
 		$this->load->view('admin/pending-kyc');
 	}
 	public function viewApproveKyc(){
 		$this->load->view('admin/approved-kyc');
+	}
+	public function viewRejectedKyc(){
+		$this->load->view('admin/rejected-kyc');
 	}
 }
