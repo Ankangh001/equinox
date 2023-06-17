@@ -11,38 +11,50 @@ class Kyc extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/account-kyc');
+		$resp['res'] = $this->db->where(['user_id' => $_SESSION['user_id']])->get('user')->result_array();
+
+        $this->load->view('user/account-kyc', $resp);
 	}
 
     public function addKyc(){
-		print_r($_FILES);exit;
-		// profile image
+		//kyc status 
+		// not applied = 0
+		// applied = 1 = pending from admin
+		// approved = 2
+		// rejected = 3
 		if(@$_FILES['proofId']){
 			$target_dir = "kyc/";
-			$target_file = $target_dir .date('dmYHis'). basename($_FILES["profileImage"]["name"]);
-			$uploadedFile = move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file);
+			$target_file = $target_dir .date('dmYHis'). basename($_FILES["proofId"]["name"]);
+			$uploadedFile = move_uploaded_file($_FILES["proofId"]["tmp_name"], $target_file);
 			if ($uploadedFile) {
-				$data['profile_image'] = $target_file;
+				$data['kyc_doc'] = $target_file;
 			}
 		}
 
-		// $config['upload_path']="./kyc/";
-        // $config['allowed_types']='gif|jpg|png';
-        // $this->load->library('upload',$config);
+		if(@$_FILES['adhar']){
+			$target_dir = "kyc/";
+			$target_file = $target_dir .date('dmYHis'). basename($_FILES["adhar"]["name"]);
+			$uploadedFile = move_uploaded_file($_FILES["adhar"]["tmp_name"], $target_file);
+			if ($uploadedFile) {
+				$data['kyc_adhar'] = $target_file;
+			}
+		}
+		
+		$data['kyc_status'] = 1;
+		
+		$resp = $this->db->where(['user_id' => $_SESSION['user_id']])->update('user', $data);
 
-        // if($this->upload->do_upload()){
-		// 	$data = array('upload_data' => $this->upload->data());
-		// 	// $data1 = array(
-		// 	// 	'menu_id' => $this->input->post('selectmenuid'),
-		// 	// 	'submenu_id' => $this->input->post('selectsubmenu'),
-		// 	// 	'imagetitle' => $this->input->post('imagetitle'),
-		// 	// 	'imgpath' => $data['upload_data']['file_name']
-        // 	// );  
-		// 	echo "Hi";
-		// 	echo $data['upload_data']['file_name'];die;
-		// 	// $result= $this->Admin_model->save_imagepath($data1);
-		// 	// if ($result == TRUE) {
-		// 	// }
-		// }
+		if ($resp == true) {
+			$response = [
+				'status' => 200,
+				'message' => 'KYC applied Successfully'
+			];
+		} else {
+			$response = [
+				'status' => 400,
+				'message' => 'Some error occured! for KYC'
+			];
+		}
+		echo json_encode($response);
 	}
 }
