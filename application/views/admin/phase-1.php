@@ -319,7 +319,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }else if(res.status == 401){
             loadTable();
             $('div#loading').hide(200);
@@ -329,7 +329,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }else{
             loadTable();
             $('div#loading').hide(200);
@@ -339,7 +339,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }
         },
         error: function() { alert("Error posting feed."); }
