@@ -212,7 +212,7 @@ $this->load->view('user/includes/header');
   });
   
 
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Start New Challenege</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Start New Challenge</h4>`);
 
   
 </script>
