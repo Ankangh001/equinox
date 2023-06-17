@@ -329,8 +329,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?=$_SESSION['user_name']?></span>
+                            <small class="text-muted">User</small>
                           </div>
                         </div>
                       </a>
