@@ -21,11 +21,12 @@ $this->load->view('admin/includes/header'); ?>
             <div class="modal-body">
               <div class="col-xl">
                 <div class="card-body">
-                  <table class="table hover" id="userTable" style="padding: 2rem 0 0 0;">
+                  <table class="table hover" id="userTable" style="padding: 2rem 0 0 0; width:100%">
                       <thead class="table-light">
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
+                          <th>Amount</th>
                         </tr>
                       </thead>
                       <tbody class="table-border-bottom-0" >
@@ -84,6 +85,13 @@ $this->load->view('admin/includes/header'); ?>
               data: null,
               render: function (data, type, row) {
                   return `${row.first_name + ' ' + row.last_name}` ;
+              }
+            },
+            {
+              width: '33.3%',
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.email}`;
               }
             },
             {

@@ -477,7 +477,7 @@ $this->load->view('user/includes/header');
   let requestData = {};
   requestData.uid = "<?= $_SESSION['user_id']?>";
 
-  let getId = "<?= $_GET['id']?>";
+  let getId = "<?= $_GET['id'] ?? ''?>";
   function getAccounts(){
     $.ajax({
       type: "POST",

@@ -28,7 +28,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Referred Users</h5>
+                <h5 class="card-title text-white">Referred <br/> Users</h5>
                 <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
