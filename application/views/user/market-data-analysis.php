@@ -246,6 +246,6 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Market Analysis</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Market Analysis</h4>`);
 </script>
 <?php $this->load->view('user/includes/footer');?>
