@@ -56,6 +56,13 @@
     <script>
       // let PANEL_URL = "<?= base_url()?>";
     </script>
+    <style>
+      @media (max-width: 500px){
+        #uname {
+            display: none;
+        }
+    }
+    </style>
   </head>
   <body>
   <div id="loading" class="demo-inline-spacing">
@@ -308,7 +315,7 @@
                   <button class="btn btn-secondary">Language</button>
                 </li> -->
 
-                <li class="nav-item lh-1 me-3">
+                <li class="nav-item lh-1 me-3" id="uname">
                   <p class="text mt-3"><?=$_SESSION['user_name']?></p>
                 </li>
 

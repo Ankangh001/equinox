@@ -435,7 +435,7 @@
             e.preventDefault();
             var formData = $(this).serialize();
             $.post({
-            url: BASEURL+'auth/register',
+            url: "<?= base_url()?>auth/register",
             data: formData,
             beforeSend: function(){
                 $('form').prepend(`<div id="loading" class="demo-inline-spacing">
