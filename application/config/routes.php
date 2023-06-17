@@ -114,6 +114,10 @@ $route['admin/accounts/approved-passed-accounts'] = 'admin/account/approvedPasse
 $route['admin/accounts/pending-failed-accounts'] = 'admin/account/pendingFailedAccounts';
 $route['admin/accounts/approved-failed-accounts'] = 'admin/account/approvedFailedAccounts';
 
+    //------kyc--------//
+$route['admin/user/pending-kyc'] = 'admin/user/viewPendingKyc';
+$route['admin/user/approved-kyc'] = 'admin/user/viewApproveKyc';
+
     //------add coupons------//
 $route['admin/add-coupons'] = 'admin/coupon';
 //-------------------- End Admin dashboard ------------------

@@ -146,7 +146,7 @@
             setTimeout(() => {
               $('#alert').fadeOut();
               // $('#alert').addClass('d-none');
-            }, 3000);
+            }, 8000);
           }
     </script>
 </body>

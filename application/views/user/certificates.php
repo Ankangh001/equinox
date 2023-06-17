@@ -1,6 +1,8 @@
 <?php
 // echo "<pre>";
-// print_r($res);die;
+// echo (substr($res[0]['phase3_issue_date'], 0, 10));
+// // print_r($res);
+// die;
 
 $this->load->view('user/includes/header');
 ?>
@@ -145,6 +147,9 @@ $this->load->view('user/includes/header');
          <!-- <button id="submitBtn">Get Certificate</button>
          <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
          <?php if($res){?>
+         <div class="card-title  text-center fw-bold mt-5">
+            Funded Account Certificate
+        </div>
          <ul>
            <li> 
              <a href="#">
@@ -198,7 +203,7 @@ $this->load->view('user/includes/header');
             }
         });
 
-        const generatePDF = async (name, date="<?php echo date('Y-m-d')?>") => {
+        const generatePDF = async (name, date="<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>") => {
             const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
                 res.arrayBuffer()
             );

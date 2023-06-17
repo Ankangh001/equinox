@@ -104,7 +104,7 @@ $this->load->view('admin/includes/header');
           setTimeout(() => {
             $('#alert').fadeOut();
             // $('#alert').addClass('d-none');
-          }, 3000);
+          }, 8000);
         },
         error: function() { alert("Error posting feed."); }
     });

@@ -113,7 +113,7 @@
             $('#alert').removeClass('d-none');
             setTimeout(() => {
               $('#alert').fadeOut();
-            }, 3000);
+            }, 8000);
             location.reload();
           },
           error: function() { alert("Error posting feed."); }

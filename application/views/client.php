@@ -93,7 +93,7 @@
             );
             setTimeout(() => {
                 $('#alert').fadeOut();
-            }, 3000);
+            }, 8000);
         }
 
         function validateUser() {
