@@ -27,21 +27,6 @@
 <!-- Helpers -->
 <script src="<?=base_url('assets/user/')?>assets/vendor/js/helpers.js"></script>
 
-<?php
-$this->load->view('includes/header');
-?>
-    <style>
-        #header{
-            display:none !important;
-        }
-        label {
-            display: inline-block;
-            font-size: 0.75rem;
-        }
-        .form-control {
-            font-size: 0.75rem;
-        }
-    </style>
 </head>
 <body>
     <div class="container-xxl">
@@ -358,8 +343,8 @@ $this->load->view('includes/header');
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="form-check mb-0 text-dark">
+                            <!-- <div class="mb-3">
+                                <div class="form-check">
                                     <input class="form-check-input me-2" type="checkbox" required name="checkbox1" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
                                         I agree to the processing of personal data according to <a class="text-primary" href="<?=base_url('privacy-policy')?>">privacy policy.</a>
@@ -368,8 +353,8 @@ $this->load->view('includes/header');
                             </div>
                             <br>
 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="form-check mb-0 text-dark">
+                            <div class="mb-3">
+                                <div class="form-check">
                                     <input class="form-check-input me-2" type="checkbox" required name="checkbox2" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
                                         Do you want to receive news about our project? Sign up to our newsletter.
@@ -377,10 +362,37 @@ $this->load->view('includes/header');
                                 </div>
                             </div>
                             <br>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="form-check mb-0 text-dark">
+                            <div class="mb-3">
+                                <div class="form-check">
                                     <input class="form-check-input me-2" type="checkbox" required name="checkbox3" value="" id="form2Example3" />
                                     <label class="form-check-label" for="form2Example3">
+                                        
+                                    </label>
+                                </div>
+                            </div> -->
+
+
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="checkbox" id="i-agree" />
+                                    <label class="form-check-label" for="i-agree">I agree to the processing of personal data according to <a class="text-primary" href="<?=base_url('privacy-policy')?>">privacy policy.</a></label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="checkbox" id="newsletter" />
+                                    <label class="form-check-label" for="newsletter">
+                                        Do you want to receive news about our project? Sign up to our newsletter.    
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="checkbox" id="acknowledge" />
+                                    <label class="form-check-label" for="acknowledge">
                                         I acknowledge my name is correct and corresponds to the government issued identification.
                                     </label>
                                 </div>
@@ -389,7 +401,7 @@ $this->load->view('includes/header');
                             <div class="mt-3 mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                             </div>
-                            <p class="text-center text-dark" style="font-size:0.8rem;">
+                            <p class="text-center">
                                 <span>Already have an account?</span>
                                 <a class="text-primary" href="<?= base_url('client-login');?>">
                                     <span>Login</span>
