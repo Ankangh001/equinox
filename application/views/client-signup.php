@@ -382,7 +382,7 @@
 
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input required class="form-check-input" type="checkbox" id="newsletter" />
+                                    <input class="form-check-input" type="checkbox" id="newsletter" />
                                     <label class="form-check-label" for="newsletter">
                                         Do you want to receive news about our project? Sign up to our newsletter.    
                                     </label>
