@@ -131,8 +131,8 @@ $this->load->view('user/includes/header');
                 $('#modalCenter').modal('show');
                 setTimeout(() => {
                   $('#modalCenter').modal('hide');
+                  location.reload();
                 }, 8000);
-                //location.reload();
                 console.log(res);
               }
               else{
