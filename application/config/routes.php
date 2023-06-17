@@ -117,6 +117,7 @@ $route['admin/accounts/approved-failed-accounts'] = 'admin/account/approvedFaile
     //------kyc--------//
 $route['admin/user/pending-kyc'] = 'admin/user/viewPendingKyc';
 $route['admin/user/approved-kyc'] = 'admin/user/viewApproveKyc';
+$route['admin/user/rejected-kyc'] = 'admin/user/viewRejectedKyc';
 
     //------add coupons------//
 $route['admin/add-coupons'] = 'admin/coupon';

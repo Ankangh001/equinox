@@ -13,6 +13,24 @@ $this->load->view('admin/includes/header'); ?>
 </style>
 <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
+    <!-- update alert modal -->
+      <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-xl">
+                <div class="card-body">
+                  <h5 class="modal-title" id="modalCenterTitle">KYC Approved<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
   <div id="alert" class="alert alert-success alert-dismissible d-none" role="alert">
       Product Deleted Successfully 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -28,7 +46,7 @@ $this->load->view('admin/includes/header'); ?>
                       <tr>
                         <th>Name</th>
                         <th>ID Proof</th>
-                        <th>Adhar</th>
+                        <th>Bank Statememnt</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
@@ -49,12 +67,11 @@ $this->load->view('admin/includes/header'); ?>
   
   let requestData = {};
   
-  function delete_product(id){
-    return;
+  function approveKyc(id){
       requestData.user_id = id;
       $.ajax({
           type: "POST",
-          url: "<?php echo base_url('admin/challenge/delete'); ?>",
+          url: "<?php echo base_url('admin/user/approveKyc'); ?>",
           data: requestData,
           beforeSend: function(){
             $('body').prepend(`<div id="loading" class="demo-inline-spacing">
@@ -65,17 +82,44 @@ $this->load->view('admin/includes/header'); ?>
             );
           },
           success: function(data){
-            $('#loading').remove();
-            $('#alert').removeClass('d-none');
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenter').modal('show');
+            loadTable();
             setTimeout(() => {
-              $('#alert').fadeOut();
+              $('#modalCenter').modal('hide');
             }, 8000);
-            location.reload();
           },
           error: function() { alert("Error posting feed."); }
       });
     };
   
+    function rejectKyc(id){
+      requestData.user_id = id;
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('admin/user/rejectKyc'); ?>",
+          data: requestData,
+          beforeSend: function(){
+            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenter').modal('show');
+            loadTable();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 8000);
+          },
+          error: function() { alert("Error posting feed."); }
+      });
+    };
   $(document).ready(function () {
     // $('.table').DataTable();
     // $('.paginate_button').addClass('btn btn-primary');
@@ -91,28 +135,32 @@ $this->load->view('admin/includes/header'); ?>
           columns:[
             {
               data: null,
+              width: '20%',
               render: function (data, type, row) {
                   return `${row.first_name + ' ' + row.last_name}` ;
               }
             },
             {
               data: null,
+              width: '20%',
               render: function (data, type, row) {
-                  return `<a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_doc}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+                  return `<a class="btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_doc}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
               }
             },
             {
               data: null,
+              width: '20%',
               render: function (data, type, row) {
-                  return `<a class="btn-sm btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_adhar}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+                  return `<a class="btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_adhar}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
               }
             },
             {
               data: null,
+              width: '20%',
               render: function (data, type, row) {
                   return `<div class="d-flex justify-content-start">
-                            <button class="btn-sm btn btn-success" onclick="approveKyc(${row.user_id})"><i class="bx bx-check-circle me-1"></i>&nbsp; Approve</button>&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-sm btn-danger" onclick="delete_user(${row.user_id})" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>&nbsp; Reject</a>
+                            <button class=" btn btn-success" onclick="approveKyc(${row.user_id})"><i class="bx bx-check-circle me-1"></i>&nbsp; Approve</button>&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger" onclick="rejectKyc(${row.user_id})" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>&nbsp; Reject</a>
                           </div>`
               }
             }
