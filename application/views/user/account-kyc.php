@@ -54,7 +54,7 @@ $this->load->view('user/includes/header');
                     <!-- <input required class="form-control" type="hidden" id="user_id" name="user_id" value="<?= $_SESSION['user_id']?>"> -->
                   </div>
                   <div class="mb-3 col-lg-12">
-                    <label for="formFile" class="form-label">Upload your Adhar</label>
+                    <label for="formFile" class="form-label">Upload your Bank Statememnt / Utility Bill / Water Bill</label>
                     <input required class="form-control" type="file" id="adhar" name="adhar">
                   </div>
                   
