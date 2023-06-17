@@ -278,7 +278,7 @@
               $('.success-nws').css('display', 'block');
               setTimeout(() => {
                 $('.success-nws').fadeOut();
-              }, 2000);
+              }, 5000);
             }
           },
           error: function() { alert("Error posting feed."); }

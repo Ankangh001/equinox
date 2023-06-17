@@ -220,7 +220,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -258,7 +258,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -296,7 +296,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {

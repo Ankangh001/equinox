@@ -104,6 +104,26 @@
               </a>
             </li>
 
+            <!-- KYC -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'user-kyc' || $this->uri->segment(3) == 'pending-kyc' || $this->uri->segment(3) == 'approved-kyc' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-check-circle"></i>
+                <div>KYC</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>pending-kyc" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>approved-kyc" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             <!-- Purchase History  -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial'|| $this->uri->segment(2) == 'completed' || $this->uri->segment(2) == 'phase-3'  || $this->uri->segment(2) == 'phase-1'||$this->uri->segment(2) == 'phase-2' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
@@ -240,7 +260,15 @@
               </a>
             </li>
 
-            <!-- Promotions -->
+            <!-- Affiliates -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate-slab') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/affiliate_slab')?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-offer"></i>
+                <div>Affiliates</div>
+              </a>
+            </li>
+
+            <!-- Affiliate Slab -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate-slab') { echo 'active';} ?>">
               <a href="<?=base_url('admin/affiliate_slab')?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-offer"></i>
@@ -322,9 +350,9 @@
                         </div>
                       </a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <div class="dropdown-divider"></div>
-                    </li>
+                    </li> -->
                     <!-- <li>
                       <a class="dropdown-item" href="<?=base_url('admin/')?>profile">
                         <i class="bx bx-user me-2"></i>

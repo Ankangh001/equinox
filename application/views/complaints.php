@@ -131,7 +131,7 @@ $this->load->view('includes/footer');
 			$('.sent-message').fadeIn();
 			setTimeout(() => {
 				$('.sent-message').fadeOut();
-			}, 2000);
+			}, 8000);
 			}
 		},
 		error: function() { alert("Error posting feed."); }

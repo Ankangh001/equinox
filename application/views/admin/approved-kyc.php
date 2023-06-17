@@ -26,7 +26,7 @@ $this->load->view('admin/includes/header');
           <div class="modal-body">
             <div class="col-xl">
               <div class="card-body">
-                <h5 class="modal-title" id="modalCenterTitle">Payout Approved <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+                <h5 class="modal-title" id="modalCenterTitle">KYC Approved <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
               </div>
             </div>
           </div>
@@ -178,8 +178,10 @@ $this->load->view('admin/includes/header');
           $('#bank-name').val(res[0].bank_name);
           $('#branch_address').val(res[0].branch_address);
 
+
           $('#payout-status').html(`
             <label for="flexSwitchCheckChecked" class="col-md-4 col-form-label d-flex">Payout Action</label>                                
+            <button type="button" onclick="approvePayout(${res[0].payout_id})" class="col-md-3 btn btn-sm btn-primary">Approve Payout</button>&nbsp;
             <button type="button" onclick="rejectPayout(${res[0].payout_id})" class="col-md-3 btn btn-sm btn-danger">Reject Payout</button>
           `);
           $('#modalCred').modal('show');
@@ -305,7 +307,7 @@ $this->load->view('admin/includes/header');
 
   function loadTable(){
     $('.table').DataTable({
-        ajax: "<?php echo base_url('admin/payout/getApprovedPayouts'); ?>",
+        ajax: "<?php echo base_url('admin/payout/getPendingPayouts'); ?>",
         deferRender: true,
         "pageLength": 100,
         columns:[
@@ -334,8 +336,10 @@ $this->load->view('admin/includes/header');
             render: function (data, type, row) {
                 return `${
                   row.payout_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.payout_status == 1 ? '<span class="badge bg-label-success">Approved</span>' : 
-                    (row.payout_status == 2 ? '<span class="badge bg-label-primary">Rejected</span>':'')
+                  (row.payout_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
+                    (row.payout_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
+                      row.payout_status == 3 ? '<span class="badge bg-label-danger">Rejected</span>' :''
+                    )
                   )
                 }`;
             }

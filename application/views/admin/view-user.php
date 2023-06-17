@@ -133,7 +133,7 @@ $this->load->view('admin/includes/header');
                   </div>
               </div>
               <div class="col-lg-3 d-flex align-items-center">
-                <a target="_blank" href="<?= base_url('assets/user/kyc/').@$res[0]['kyc_doc'] ?>" id="kyc-btn" class="btn btn-<?= @$res[0]['kyc_status'] == '0' ? 'warning':'success'?> w-100">View KYC Document</a>
+                <a target="_blank" href="<?= base_url('kyc/').@$res[0]['kyc_doc'] ?>" id="kyc-btn" class="btn btn-<?= @$res[0]['kyc_status'] == '0' ? 'warning':'success'?> w-100">View KYC Document</a>
               </div>
               <div class="col-lg-4 d-flex align-items-center justify-content-between">
                 <button id="approve-kyc-btn" class="btn btn-primary">Approve KYC</button>
@@ -229,7 +229,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -267,7 +267,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {

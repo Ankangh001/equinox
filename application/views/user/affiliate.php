@@ -135,7 +135,7 @@ $this->load->view('user/includes/header');
     $('#copied').show(200);
     setTimeout(() => {
       $('#copied').hide(500);
-    }, 1000);
+    }, 8000);
 
   }
 </script>

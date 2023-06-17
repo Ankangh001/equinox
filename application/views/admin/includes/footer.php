@@ -80,7 +80,7 @@
         );
         setTimeout(() => {
           $('#alert').fadeOut();
-        }, 3000);
+        }, 5000);
       }
 </script>
 

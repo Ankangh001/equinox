@@ -61,7 +61,7 @@
   <script>
     setTimeout(() => {
       window.location.href="<?=base_url('user')?>"
-    }, 2000);
+    }, 5000);
   </script>
 </body>
 </html>

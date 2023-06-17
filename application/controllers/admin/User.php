@@ -14,7 +14,7 @@ class User extends APIMaster {
 		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
 		$this->load->view('admin/users', $response);
 	}
-    
+
     public function view(){
 		try {
 			$last_segment = $this->uri->segment($this->uri->total_segments());
@@ -114,6 +114,27 @@ class User extends APIMaster {
 		}
 	}
 
+	public function getpendingKyc(){
+		try {
+			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '0']);
+            
+			if($res){
+				$response = array(
+					'status' => '200',
+					'message' => 'User KYC Updated successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to find pending kyc related to this account.',
+				);
+			}
+			echo json_encode($response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
+	}
+
 	public function approveKyc(){
 		try {
 			$res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['kyc_status' => '1']);
@@ -154,5 +175,13 @@ class User extends APIMaster {
 		} catch (\Throwable $th) {
 			$res = $th;
 		}
+	}
+
+	public function viewPendingKyc(){
+		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
+		$this->load->view('admin/pending-kyc', $response);
+	}
+	public function viewApproveKyc(){
+		$this->load->view('admin/approved-kyc');
 	}
 }

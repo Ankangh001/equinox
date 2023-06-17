@@ -404,7 +404,7 @@ $this->load->view('includes/header');
             );
             setTimeout(() => {
               $('.alert').fadeOut();
-            }, 3000);
+            }, 8000);
         }
         $(document).ready(function() {
         $('#myForm').submit(function(e) {
@@ -431,7 +431,7 @@ $this->load->view('includes/header');
                     }
                     setTimeout(() => {
                         window.location.href = BASEURL+'client-login';	
-                    }, 5000);
+                    }, 8000);
                 } else {
                     $('div#loading').hide(200);
                     notify("danger", response.message);
