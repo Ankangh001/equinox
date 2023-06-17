@@ -629,7 +629,7 @@ $myArray = explode(',', $myString);
         //-----profit target render----------------
         if(product_current_phase != '3'){
           //profit target render
-          if(((res['balance'])-accountSize).toFixed(2) >= target){ 
+          if(((res['balance']) - accountSize).toFixed(2) >= target){ 
             //make user permanently pass
             $.ajax({
               type: "POST",

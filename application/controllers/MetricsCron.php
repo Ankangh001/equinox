@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MetricsCron extends APIMaster {
@@ -12,39 +13,55 @@ class MetricsCron extends APIMaster {
         $check = $this->db->get()->result_array();
 
         //store values 
-        $account_size = $check[0]['account_size'];
-        $max_drawdown =  $check[0]['max_drawdown'];
-        $daily_drawdown = $check[0]['daily_drawdown'];
-        $p1_target = $check[0]['p1_target'];
-        $p2_target = $check[0]['p2_target'];
-        $equity = $check[0]['equity'];
-        $product_category = $check[0]['product_category'];
+        
 
 
-        echo "<pre>";
-        print_r($check);
+        // echo "<pre>";
+        // print_r($check);
 
-        echo "account_size ".$check[0]['account_size'].'<br/>';
-        echo "max_drawdown ". $check[0]['max_drawdown'].'<br/>';
-        echo "daily_drawdown ".$check[0]['daily_drawdown'].'<br/>';
-        echo "p1_target ".$check[0]['p1_target'].'<br/>';
-        echo "p2_target ".$check[0]['p2_target'].'<br/>';
-        echo "equity ".$check[0]['equity'].'<br/>';
-        echo "equity ".$check[0]['phase'].'<br/>';
+        // echo "account_size ".$check[0]['account_size'].'<br/>';
+        // echo "max_drawdown ". $check[0]['max_drawdown'].'<br/>';
+        // echo "daily_drawdown ".$check[0]['daily_drawdown'].'<br/>';
+        // echo "p1_target ".$check[0]['p1_target'].'<br/>';
+        // echo "p2_target ".$check[0]['p2_target'].'<br/>';
+        // echo "equity ".$check[0]['equity'].'<br/>';
+        // echo "phase ".$check[0]['phase'].'<br/>';
 
-        exit;
+        // exit;
         
         foreach ($check as $key => $value) {
+
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
             $data = json_decode($res, true);
-            $service_equity = $value['equity'];
-            // $balance = $value['balance']-$value['account_size'];
+            $service_equity = $data['equity'];
+            $service_balance = $data['balance'];
             
+            //store values
+            $account_size = $value['account_size'];
+            $max_drawdown =  $value['max_drawdown'];
+            $daily_drawdown = $value['daily_drawdown'];
+            $p1_target = $value['p1_target'];
+            $p2_target = $value['p2_target'];
+            $equity = $value['equity'];
+            $product_category = $value['product_category'];
 
 
+            if($value['phase'] == '1'){
+                $profit_target = $value['p1_target'];
+            }else {
+                $profit_target = $value['p2_target'];
+            }
+
+            echo "USER PROFIT TARGET IS ".$profit_target."<br/><br/>";
+            
+            //checking user status 
+            echo "<br/>checking user stats";
             $this->checkUserStatus($value['id']);
 
-
+            echo "<br/><br/>checking max dd <br/>";
+            echo "<br/>EQUITY FROM API IS ".$service_equity."<br/>";
+            echo "<br/>ACCOUNT SIZE IS IS ".$account_size."<br/>";
+            echo "<br/>MAX DRAWDOWN ".$max_drawdown."<br/>";
 
             //------check max drawdown fail or pass || equity from api > accountSize - max drawdown
             if($service_equity > ($account_size - $max_drawdown)){
@@ -58,17 +75,12 @@ class MetricsCron extends APIMaster {
 
 
 
-            //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-            if($service_equity > ($equity - $daily_drawdown)){
-                //user still passed for max drawdown
-                $this->pass_max_dailyLoass($value['id']);
-            }else{
-                //user made failed for max drawdown and full account goes to fail
-                $this->make_userFail_for_maxDrawdown($value['id']);
-            }
-            //------check max daily loss fail or pass------------------------
 
-
+            echo "<br/>checking max daily loss <br/>";
+            echo "<br/><br/>checking max dd <br/>";
+            echo "<br/>EQUITY FROM API IS ".$service_equity."<br/>";
+            echo "<br/>EQUITY SAVED IN DB ".$equity."<br/>";
+            echo "<br/>DAILY DRAWDOWN ".$daily_drawdown."<br/>";
 
             if($value['product_category'] == 'Normal'){
                 //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
@@ -81,25 +93,38 @@ class MetricsCron extends APIMaster {
                 }
                 //------check max daily loss fail or pass------------------------
             }
+            echo "<br/>";
 
 
 
+            echo "checking profit trget <br/>";
+            echo "BALANCE FROM SERVICE ".$service_balance."<br/>";
+            echo "ACCOUNT SIZE ".$value['account_size']."<br/>";
+            echo "profit target ".$profit_target."<br/>";
+            echo "service_equity ".$service_equity."<br/>";
 
             if($value['phase'] != '3'){
                 //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                if($service_equity > ($equity - $daily_drawdown)){
+                if(round(($service_balance - $value['account_size']), 2) > $profit_target){
                     //user still passed for max drawdown
-                    $this->pass_max_dailyLoass($value['id']);
+                    $this->makeUserPassProfitTarget($value['id']);
                 }else{
                     //user made failed for max drawdown and full account goes to fail
-                    $this->make_userFail_for_maxDrawdown($value['id']);
+                    $this->userFailedPT($value['id']);
                 }
                 //------check max daily loss fail or pass------------------------
-            }            
+            }
+            echo "<br/>";
             
+
+            echo "checking user stats again <br/>";
+            //checking user status 
+            $this->checkUserStatus($value['id']);  
+            echo "============================================================================================<br/><br/>";
         }
     }
     
+
 
 
     //---mt5 swagger api call to get account info----
@@ -142,7 +167,7 @@ class MetricsCron extends APIMaster {
         curl_close($curl);
         return $response;
     }
-    //---mt5 swagger api call to get account info----
+    //---END mt5 swagger api call to get account info----
 
 
 
@@ -169,6 +194,7 @@ class MetricsCron extends APIMaster {
         echo json_encode($response);
     }
 
+    
     //--- PASS MAXIMUM DRAWDOWN ---
     public function maxDDPass($id){
         $decrypted['eqid'] = $id;
@@ -202,7 +228,7 @@ class MetricsCron extends APIMaster {
         }
         echo json_encode($response)."<br/>";
     } 
-    // --- FAIL MAX DRAWDOWN ---
+    //--- FAIL MAX DRAWDOWN ---
     public function make_userFail_for_maxDrawdown($id){
         $decrypted['eqid'] = $id;
 
@@ -243,9 +269,10 @@ class MetricsCron extends APIMaster {
         echo json_encode($response)."<br/>";
     }
 
-    public function makeUserPassProfitTarget(){
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
+
+    //--------PASS PROFIT TARGET-------
+    public function makeUserPassProfitTarget($id){
+        $decrypted['eqid'] = $id;
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
         $this->db->select('userproducts.*, products.*, user.email');
@@ -273,11 +300,11 @@ class MetricsCron extends APIMaster {
                 'message'=>'User made permanently pass for profit target!'
             );
         }
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
-    public function userFailedPT(){
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
+    //--------PASS PROFIT TARGET-------
+    public function userFailedPT($id){
+        $decrypted['eqid'] = $id;
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
         $this->db->select('userproducts.*, products.*, user.email');
@@ -299,10 +326,11 @@ class MetricsCron extends APIMaster {
                 'message'=>'no change in profit target'
             );
         }
-        
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
 
+
+    //--------PASS DAILY DRAWDOWN-------
     public function pass_max_dailyLoass($id){
         $decrypted['eqid'] = $id;
 
@@ -333,8 +361,9 @@ class MetricsCron extends APIMaster {
                 'message'=>'User still pass for Maximum Drawdown!'
             );
         }
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
+    //--------FAIL DAILY DRAWDOWN-------
     public function makeMaxDailylossFail(){
         
         $request = base64_decode($this->input->post('r'));
@@ -373,8 +402,9 @@ class MetricsCron extends APIMaster {
                 'message'=>'Server Error !, unable to fail user'
             );
         }
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
+
 
 
     public function getEquity(){
@@ -398,9 +428,8 @@ class MetricsCron extends APIMaster {
                 'message'=>'error'
             );
         }
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
-
     //user status controller
     public function checkUserStatus($rowId){
         $decrypted['eqid'] = $rowId;
@@ -595,10 +624,10 @@ class MetricsCron extends APIMaster {
                 'message'=>'Data not found user might be failed'
             );
         }
-        echo "<pre>";
-        print_r($response);
-        echo "<br/>";
+        echo json_encode($response)."<br/>";
     }
+
+
 
     //send mail for passing phases
     //violation_type = 0,1,2

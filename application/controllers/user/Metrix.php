@@ -182,7 +182,6 @@ class Metrix extends APIMaster {
             );
         }else{
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2']);
-            $this->send_user_email($email, "PASS", "", $name, "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User made permanently pass for profit target!'
@@ -462,6 +461,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, "");
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
@@ -554,7 +554,7 @@ class Metrix extends APIMaster {
                           </tr>
                         </tbody>
             ';
-		    $finaltemp = str_replace("{FAILED CONTENT}", $content, $body);
+		    $finaltemp = str_replace("{CONTENT}", $content, $body);
             $email = send_email($user_email, 'Congratulations for passing into equinox account', $finaltemp,'','',3);
         }elseif ($stage == "FAIL") {
             $body = file_get_contents(base_url('assets/mail/accountFailed.html'));

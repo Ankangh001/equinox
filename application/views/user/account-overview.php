@@ -126,7 +126,11 @@ $this->load->view('user/includes/header');
 
                       <div class="row">
                         <div class="col-lg-6 text-left">
-                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
+                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary"
+                            <?php if($value['account_id'] == ''){?> 
+                              style="pointer-events: none; opacity: 0.5; background: #696cff; color: #ffffff; border: 2px solid #696cff; cursor: not-allowed;" 
+                            <?php }?> 
+                          >
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
                           <?php 
