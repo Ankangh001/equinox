@@ -20,7 +20,7 @@ $this->load->view('user/includes/header');
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
         <div class="col-md-12 col-lg-12">
-          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 2){   ?>
+          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 2 ||  $res[0]['kyc_status'] == 3){  ?>
           <span class="badge bg-label-warning mx-auto my-3 fs-5" style="text-transform : none">You can't request a payout as your KYC is not completed !</span>
           <?php }elseif ($res[0]['kyc_status'] == 1) { ?>
           <div class="card mb-4">
