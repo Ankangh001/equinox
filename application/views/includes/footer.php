@@ -215,42 +215,43 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script>
+
+  <!-- <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <!-- <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> -->
-   <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script> -->
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
+  <!-- Swiper JS -->
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js?v=1"></script>
+  <script src="assets/js/main.js?v=2"></script>
   <script>
     // Disable right-click
-    // document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    // function ctrlShiftKey(e, keyCode) {
-    //   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-    // }
+    function ctrlShiftKey(e, keyCode) {
+      return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    }
 
-    // document.onkeydown = (e) => {
-    //   // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-    //   if (
-    //     event.keyCode === 123 ||
-    //     ctrlShiftKey(e, 'I') ||
-    //     ctrlShiftKey(e, 'J') ||
-    //     ctrlShiftKey(e, 'C') ||
-    //     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-    //   )
-    //     return false;
-    // };
+    document.onkeydown = (e) => {
+      // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+      if (
+        event.keyCode === 123 ||
+        ctrlShiftKey(e, 'I') ||
+        ctrlShiftKey(e, 'J') ||
+        ctrlShiftKey(e, 'C') ||
+        (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+      )
+        return false;
+    };
 
     $('.success-nws').css('display', 'none');
 
