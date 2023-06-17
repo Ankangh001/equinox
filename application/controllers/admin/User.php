@@ -3,16 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends APIMaster {
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->verifyAdminAuth();
     }
 
-	public function index()
-	{
+	public function index(){
 		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
 		$this->load->view('admin/users', $response);
+	}
+
+	public function deleteUser(){
+		try {
+            $res = $this->db->where(['user_id'=>$this->input->post('user_id')])->delete('user');
+            if($res){
+				$response = array(
+					'status' => '200',
+					'message' => 'User Deleted successfully',
+				);
+			}else{
+				$response = array(
+					'status' => '400',
+					'message' => 'Unable to delete user',
+				);
+			}
+			echo json_encode($response);
+		} catch (\Throwable $th) {
+			$res = $th;
+		}
 	}
 
     public function view(){
@@ -71,8 +89,7 @@ class User extends APIMaster {
 		}
 	}
     
-    public function adduserProduct()
-	{        
+    public function adduserProduct(){        
         // print_r($this->input->post());die;
         try {
             $product_category = $this->db->where(['product_id' => $this->input->post('product_id')])->get('products')->result_array();

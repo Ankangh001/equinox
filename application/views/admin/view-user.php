@@ -132,13 +132,13 @@ $this->load->view('admin/includes/header');
                       ?>">
                   </div>
               </div>
-              <div class="col-lg-3 d-flex align-items-center">
+              <!-- <div class="col-lg-3 d-flex align-items-center">
                 <a target="_blank" href="<?= base_url('kyc/').@$res[0]['kyc_doc'] ?>" id="kyc-btn" class="btn btn-<?= @$res[0]['kyc_status'] == '0' ? 'warning':'success'?> w-100">View KYC Document</a>
               </div>
               <div class="col-lg-4 d-flex align-items-center justify-content-between">
                 <button id="approve-kyc-btn" class="btn btn-primary">Approve KYC</button>
                 <button id="reject-kyc-btn" class="btn btn-danger">Reject KYC</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

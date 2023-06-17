@@ -132,14 +132,14 @@ $this->load->view('admin/includes/header'); ?>
               width: '33.3%',
               data: null,
               render: function (data, type, row) {
-                  return `<a class=" btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_doc}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+                  return `<a class=" btn btn-danger" target="_blank" href="<?= base_url() ?>${row.kyc_doc}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
               }
             },
             {
               width: '33.3%',
               data: null,
               render: function (data, type, row) {
-                  return `<a class=" btn btn-primary" target="_blank" href="<?= base_url() ?>${row.kyc_adhar}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
+                  return `<a class=" btn btn-danger" target="_blank" href="<?= base_url() ?>${row.kyc_adhar}">View ID Proof&nbsp;&nbsp;<i class="bx bx-link-external me-1"></i></a>`;
               }
             },
             // {

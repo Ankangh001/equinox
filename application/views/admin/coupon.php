@@ -11,6 +11,23 @@ $this->load->view('admin/includes/header');
       Coupon Added Successfully 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+     <!-- update alert modal -->
+     <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-xl">
+                <div class="card-body">
+                  <h5 class="modal-title" id="modalCenterTitle"></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="row">
       <div class="col-md-6 col-lg-6 mx-auto my-5">
         <div class="card mb-4">
@@ -31,10 +48,11 @@ $this->load->view('admin/includes/header');
                   <div class="mb-3">
                       <label class="form-label" for="coupon-percentage">Coupon Percentage</label>
                       <input required type="number" id="coupon-percentage" name="coupon-percentage" class="form-control phone-mask" placeholder="Enter Coupon Percentage">
+                      <span class="text-danger d-none" id="p-err">Percentage cannot be greater than 100</span>
                     </div>
                 </div>
               </div>
-              <button type="submit" name="submit" class="w-100 btn btn-primary">Add Coupon</button>
+              <button type="submit" name="submit" id="add-coupon" class="w-100 btn btn-primary">Add Coupon</button>
             </form>
           </div>
         </div>
@@ -70,6 +88,50 @@ $this->load->view('admin/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Admin /</span> Add Coupon</h4>`);
 
+  $('#coupon-percentage').keyup((e)=>{
+    let percentage = e.target.value;
+    if(percentage > 100){
+      $('#p-err').removeCLass('d-none');
+      $('#add-coupon').attr('disabled', 'true');
+    }else{
+      $('#p-err').addCLass('d-none');
+      $('#add-coupon').attr('disabled', 'false');
+    }
+  })
+
+  function deleteCoupon(id){
+      let requestData = {};
+      requestData.id = id;
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('admin/coupon/deleteCoupon'); ?>",
+          data: requestData,
+          beforeSend: function(){
+            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Coupon Deleted &nbsp;&nbsp;<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+            $('#modalCenterr').modal('show');
+            loadTable();
+            setTimeout(() => {
+              $('#modalCenterr').modal('hide');
+            }, 8000);
+          },
+          error: function() { 
+            console.log("Error posting feed."); 
+            location.reload();
+          }
+      });
+    };
+  
+  
 
   function loadTable(){
     $('.table').DataTable().destroy();
