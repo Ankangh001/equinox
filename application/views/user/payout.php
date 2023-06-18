@@ -13,7 +13,21 @@ $this->load->view('user/includes/header');
     border: none !important;
     background: transparent !important;
     color: blue !important;
-}
+  }
+  @media (max-width: 786px){
+    .badge {
+    display: inline-block;
+    padding: 0.52em 0.593em;
+    font-size: 0.8125em;
+    font-weight: 500;
+    line-height: 26px !important;
+    color: #fff;
+    text-align: center;
+    white-space: break-spaces;
+    vertical-align: baseline;
+    border-radius: 0.25rem;}
+  }
+
 </style>
 
 <div class="content-wrapper">
