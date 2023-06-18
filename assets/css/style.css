@@ -3096,7 +3096,6 @@ iframe.mob-tuto{
 	#hero .btns {
 		margin: 14px auto !important;
 		width: 100% !important;
-		justify-content: space-evenly !important;
 	}
 	#hero h1 {
 		font-size: 44px;
@@ -3206,15 +3205,15 @@ iframe.mob-tuto{
 		font-size: 12px !important;
 	}
 	.flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p {
-		margin: 0 auto 10% auto !important;
-		font-size: 18px !important;
-		padding: 6% 14% !important;
+		margin: 12px 4px !important;
+		font-size: 16px !important;
+		padding: 6% 10% !important;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	li.nav-item {
-		margin: 10px 16px !important
+		margin: 3px 9px !important
 	}
 	.pricing-coming-soon span {
 		font-size: 14px;
@@ -3264,7 +3263,7 @@ iframe.mob-tuto{
 	.btn-book {
 		font-size: 14px;
 		padding: 3% 3% !important;
-		margin: 1rem 0 !important;
+		margin: 1rem 6px !important;
 	}
 	#hero .btn2 {
 		margin: auto !important;
