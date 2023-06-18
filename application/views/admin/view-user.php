@@ -113,20 +113,20 @@ $this->load->view('admin/includes/header');
                     <label class="form-label" for="reffered-by">KYC Status</label>
                     <input readonly required type="text" id="kyc-status" name="kyc-status" 
                       class="form-control phone-mask text-<?php 
-                        if($res[0]['kyc_status'] =='0'){ 
+                        if($res[0]['kyc_status'] =='1'){ 
                           echo 'warning';
-                        }elseif($res[0]['kyc_status'] =='1') {
-                          echo 'success';
                         }elseif($res[0]['kyc_status'] =='2') {
+                          echo 'success';
+                        }elseif($res[0]['kyc_status'] =='3') {
                           echo 'danger'; 
                         }
                       ?>" 
                       value="<?php 
-                        if($res[0]['kyc_status'] =='0'){ 
+                        if($res[0]['kyc_status'] =='1'){ 
                           echo 'PENDING';
-                        }elseif($res[0]['kyc_status'] =='1') {
-                          echo 'SUCCESS';
                         }elseif($res[0]['kyc_status'] =='2') {
+                          echo 'SUCCESS';
+                        }elseif($res[0]['kyc_status'] =='3') {
                           echo 'REJECTED'; 
                         }
                       ?>">
