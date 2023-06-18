@@ -66,19 +66,19 @@ $this->load->view('admin/includes/header');
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                   <label for="user-email" class="form-label">User Email</label>
                   <input readonly required type="text" readonly id="user-email" name="email" class="form-control phone-mask" value="<?= @$res[0]['email']?>">
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="country">Country</label>
                     <input readonly required type="text" id="country" name="country" class="form-control phone-mask" value= "<?= @$res[0]['country']?>">
                   </div>
               </div>
-              <div class="col-lg-3">
+              <!-- <div class="col-lg-3">
                 <div class="mb-3">
                     <label class="form-label" for="price">State</label>
                     <input readonly required type="text" id="price" name="price" class="form-control phone-mask" value="<?= @$res[0]['state']?>">
@@ -89,26 +89,26 @@ $this->load->view('admin/includes/header');
                     <label class="form-label" for="city">City</label>
                     <input readonly required type="text" id="city" name="city" class="form-control phone-mask" value="<?= @$res[0]['city']?>" >
                   </div>
-              </div>
-              <div class="col-lg-3">
+              </div> -->
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="number">Number</label>
                     <input readonly required type="text" id="number" name="number" class="form-control phone-mask" value="<?= @$res[0]['number']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="affiliate-code">Affiliate Code</label>
                     <input readonly required type="text" id="affiliate-code" name="affiliate-code" class="form-control phone-mask"  value="<?= @$res[0]['affiliate_code']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="reffered-by">Reffered By</label>
                     <input readonly required type="text" id="reffered-by" name="reffered-by" class="form-control phone-mask" value="<?= @$res[0]['reffered_by']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="reffered-by">KYC Status</label>
                     <input readonly required type="text" id="kyc-status" name="kyc-status" 
