@@ -22,9 +22,10 @@ async function CardPay(fieldEl, buttonEl) {
         // Use global method from sq-payment-flow.js
         // return;
         if($('#defaultCheck22').is(":checked") && $('#defaultCheck244').is(":checked") && $('#defaultCheck233').is(":checked")){
+          $("#error").addClass('d-none');
           window.createPayment(result.token);
         }else{
-          alert('not check');
+          $("#error").removeClass('d-none');
         }
       }
     } catch (e) {
