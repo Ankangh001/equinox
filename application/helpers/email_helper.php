@@ -21,7 +21,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'support@equinoxtradingcapital.com';
 				$smtp_pass = 'Support@2023';
 				$from	=	'support@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "3":
 				$smtp_host = 'smtp.hostinger.com';
@@ -29,7 +29,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'accounts@equinoxtradingcapital.com';
 				$smtp_pass = 'Accounts@2023';
 				$from	=	'accounts@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "4":
 				$smtp_host = 'smtp.hostinger.com';
@@ -37,7 +37,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'community@equinoxtradingcapital.com';
 				$smtp_pass = 'Community@2023';
 				$from	=	'community@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "5":
 				$smtp_host = 'smtp.hostinger.com';
@@ -45,7 +45,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'payments@equinoxtradingcapital.com';
 				$smtp_pass = 'Payments@2023';
 				$from	=	'payments@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "6":
 				$smtp_host = 'smtp.hostinger.com';
@@ -53,7 +53,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'noreply@equinoxtradingcapital.com';
 				$smtp_pass = 'Noreply@2023';
 				$from	=	'noreply@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "7":
 				$smtp_host = 'smtp.hostinger.com';
@@ -61,7 +61,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'pressrelease@equinoxtradingcapital.com';
 				$smtp_pass = 'Pressrelease@2023';
 				$from	=	'pressrelease@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			case "8":
 				$smtp_host = 'smtp.hostinger.com';
@@ -69,7 +69,7 @@ function send_email($to = '', $subject  = '', $body = '', $attachment = '', $cc 
 				$smtp_user = 'complaints@equinoxtradingcapital.com';
 				$smtp_pass = 'Complaints@2023';
 				$from	=	'complaints@equinoxtradingcapital.com';
-				$application_name = 'Equinox Trading Capital LTD';
+				$application_name = 'Equinox Trading Capital';
 			  break;
 			
 			  case "9":

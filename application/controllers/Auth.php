@@ -97,7 +97,7 @@ class Auth extends APIMaster {
 		if($_POST){
 			$this->form_validation->set_rules('first_name', 'Firstname', 'trim|required');
 			$this->form_validation->set_rules('last_name', 'Lastname', 'trim|required');
-			$this->form_validation->set_rules('contact', 'Contact', 'trim|required');
+			$this->form_validation->set_rules('number', 'Phone Number', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|is_unique[user.email]|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 			$this->form_validation->set_rules('confirm_password', 'Password Confirmation', 'trim|required|matches[password]');
@@ -110,7 +110,8 @@ class Auth extends APIMaster {
 				$data = array(
 					'first_name' 	=> $this->input->post('first_name'),
 					'last_name' 	=> $this->input->post('last_name'),
-					'number' 		=> $this->input->post('contact'),
+					'number' 		=> $this->input->post('number'),
+					'country' 		=> $this->input->post('country'),
 					'email' 		=> $this->input->post('email'),
 					'password' 		=> $this->encryptAES($this->input->post('password')),
 					'admin_type'	=> 'Client',	
@@ -131,7 +132,57 @@ class Auth extends APIMaster {
 					);
 					$to = $data['email'];
 					$emailData = $this->mailer->mail_template($to,'registration_email',$mail_data);
-					$finaltemp = str_replace("{VERIFICATION_LINK}", base_url('auth/verify/').$data['verification_key'], $body);
+					$content = '<div style="pading:50px">
+									<table style="font-family:"Cabin",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+										<tbody>
+											<tr>
+												<td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+												<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+													<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 35.2px;">Hi '.$mail_data['fullname'].', </span></p><br/>
+													<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 28.8px;">You are almost ready to get started. Please click on the button below to verify your email address to activate you account! </span></p>
+												</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<table style="font-family:"Cabin",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+										<tbody>
+										<tr>
+											<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:"Cabin",sans-serif;" align="left">
+											<div align="center">
+											<br/>
+											<br/>
+												<a style="text-decoration: none; " href="'.$mail_data['verification_link'].'" target="_blank" class="v-button" style="box-sizing: border-box;display: inline-block;font-family:"Cabin",sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #ff6600; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;">
+												<span style="display:block;padding:14px 44px 13px;line-height:120%;">
+													<span style="color:#fff;font-weight:bold;font-size:16px;line-height:19.2px;background: #f18700;padding:15px 20px;border-radius: 5px;letter-spacing:2px;font-family:sans-serif;box-shadow: 5px 4px 3px #00000070;">
+													<strong>
+														<span style="line-height: 19.2px; font-size: 16px;">VERIFY YOUR EMAIL</span>
+													</strong>
+													</span>
+												</span>
+											<br/>
+											<br/>
+											</a>
+											</div>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+									<br/>
+									<table style="font-family:"Cabin",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+										<tbody>
+										<tr>
+											<td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px 60px;font-family:"Cabin",sans-serif;" align="left">
+											<div style="font-size: 14px; line-height: 160%; text-align: center; word-wrap: break-word;">
+												<p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;">Thanks,</span></p>
+												<p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;">Equinox Trading Capital</span></p>
+											</div>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>';
+					$finaltemp = str_replace("{CONTENT}", $content, $body);
 					$email = send_email($to, $emailData['subject'], $finaltemp,'','',2);
 
 					if($email){

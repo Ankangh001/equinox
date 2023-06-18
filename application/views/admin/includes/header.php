@@ -67,7 +67,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="<?= base_url() ?>" class="app-brand-link">
                 <!-- Favicons -->
                 <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" width="80%">
             </a>

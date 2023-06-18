@@ -11,6 +11,34 @@ $this->load->view('user/includes/header');
     border-radius: 0.375rem;
     box-shadow: 0 0 5px #00000050;
 }
+
+.ribbon {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.ribbons span {
+  width: 150px;
+  height: 22px;
+  top: 9px;
+  right: -58px;
+  position: absolute;
+  display: block;
+  /* background: #FF0000; */
+  color: #333;
+  font-family: arial;
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  line-height: 16px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 </style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -32,7 +60,7 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button 
+            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon
             <?php 
               if(isset($_GET['id'])){
                 if($_GET['id'] != $value['id']){
@@ -42,6 +70,15 @@ $this->load->view('user/includes/header');
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               Login :  <?= @$value['account_id'] ?>
+              <?php if($value['product_status'] == '0'){ ?>
+                <span class="badge bg-warning text-white me-1">PENDING</span>
+              <?php }elseif($value['product_status'] == '1'){ ?>
+                <span class="badge bg-primary text-white me-1">ACTIVE</span>
+              <?php }elseif($value['product_status'] == '2'){?>
+                <span class="badge bg-success text-white me-1">PASSED</span>
+              <?php }elseif($value['product_status'] == '3'){?>
+                <span class="badge bg-danger text-white me-1">FAILED</span>
+              <?php }?>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -115,9 +152,9 @@ $this->load->view('user/includes/header');
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">PASSED</span>
                           <?php }elseif($value['product_status'] == '3'){?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
                           <?php }?>
@@ -181,7 +218,7 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button 
+            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon 
             <?php 
               if(isset($_GET['id'])){
                 if($_GET['id'] != $value['id']){
@@ -191,6 +228,15 @@ $this->load->view('user/includes/header');
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               Login :  <?= @$value['account_id'] ?>
+              <?php if($value['product_status'] == '0'){ ?>
+                <span class="badge bg-warning text-white me-1">PENDING</span>
+              <?php }elseif($value['product_status'] == '1'){ ?>
+                <span class="badge bg-primary text-white me-1">ACTIVE</span>
+              <?php }elseif($value['product_status'] == '2'){?>
+                <span class="badge bg-success text-white me-1">PASSED</span>
+              <?php }elseif($value['product_status'] == '3'){?>
+                <span class="badge bg-danger text-white me-1">FAILED</span>
+              <?php }?>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -264,9 +310,9 @@ $this->load->view('user/includes/header');
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">PASSED</span>
                           <?php }elseif($value['product_status'] == '3'){?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
                           <?php }?>
@@ -275,7 +321,11 @@ $this->load->view('user/includes/header');
 
                       <div class="row">
                         <div class="col-lg-6 text-left">
-                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
+                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary"
+                            <?php if($value['account_id'] == ''){?> 
+                              style="pointer-events: none; opacity: 0.5; background: #696cff; color: #ffffff; border: 2px solid #696cff; cursor: not-allowed;" 
+                            <?php }?> 
+                          >
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
                           <?php 
@@ -325,7 +375,7 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button 
+            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon 
             <?php 
               if(isset($_GET['id'])){
                 if($_GET['id'] != $value['id']){
@@ -335,6 +385,15 @@ $this->load->view('user/includes/header');
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               Login :  <?= @$value['account_id'] ?>
+              <?php if($value['product_status'] == '0'){ ?>
+                <span class="badge bg-warning text-white me-1">PENDING</span>
+              <?php }elseif($value['product_status'] == '1'){ ?>
+                <span class="badge bg-primary text-white me-1">ACTIVE</span>
+              <?php }elseif($value['product_status'] == '2'){?>
+                <span class="badge bg-success text-white me-1">PASSED</span>
+              <?php }elseif($value['product_status'] == '3'){?>
+                <span class="badge bg-danger text-white me-1">FAILED</span>
+              <?php }?>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -408,9 +467,9 @@ $this->load->view('user/includes/header');
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">PASSED</span>
                           <?php }elseif($value['product_status'] == '3'){?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
                           <?php }?>
@@ -419,7 +478,11 @@ $this->load->view('user/includes/header');
 
                       <div class="row">
                         <div class="col-lg-6 text-left">
-                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary">
+                          <button data-bs-toggle="modal" data-bs-target="#modalCenter<?= @$value['id'] ?>" class="me-3 btn btn-sm btn-outline-primary"
+                            <?php if($value['account_id'] == ''){?> 
+                              style="pointer-events: none; opacity: 0.5; background: #696cff; color: #ffffff; border: 2px solid #696cff; cursor: not-allowed;" 
+                            <?php }?> 
+                          >
                             <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
                           </button>
                           <?php 
@@ -463,7 +526,7 @@ $this->load->view('user/includes/header');
         <div class="col-md-12 m-auto">
           <div class="card">
               <div class="card-body text-center text-muted ">
-                😧 Hey ! Looks like you have no accounts yet .<br /><br />
+                😧 Hey ! Looks like you have no account yet .<br /><br />
                 <!-- <a href="<?=base_url('user')?>" >click here</a> to get started with a free trial account or -->
                  &nbsp;&nbsp;<a href="<?=base_url('user/')?>start-new-challenge" class="btn btn-primary btn-sm"> Start New Challenge</a>
               </div>

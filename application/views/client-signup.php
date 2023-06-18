@@ -65,7 +65,7 @@
 
                             <div class="mb-3">
                                 <label for="contact" class="form-label">Phone Number</label>
-                                <input type="number" id="contact" name="contact" class="form-control" required placeholder="A valid phone number" />
+                                <input type="number" id="contact" name="number" class="form-control" required placeholder="A valid phone number" />
                             </div>
 
                             <div class="mb-3 form-password-toggle">
