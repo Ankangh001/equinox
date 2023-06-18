@@ -1,7 +1,21 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
+<style>
+    @media (max-width: 786px){
+    .badge {
+    display: inline-block;
+    padding: 0.52em 0.593em;
+    font-size: 0.8125em;
+    font-weight: 500;
+    line-height: 26px !important;
+    color: #fff;
+    text-align: center;
+    white-space: break-spaces;
+    vertical-align: baseline;
+    border-radius: 0.25rem;}
+  }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
