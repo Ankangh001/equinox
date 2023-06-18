@@ -9,6 +9,16 @@ $this->load->view('user/includes/header');
   p.card-title.fw-bold.text-primary {
       font-size: 20px;
   }
+  @media (max-width: 992px){
+    .card-title, label.fw-bold.form-check-label {
+      margin-bottom: 0;
+      font-size: 18px !important;
+    }
+    .nav-align-left>.tab-content {
+        border-radius: 0 0.375rem 0.375rem 0.375rem;
+        padding: 0;
+    }
+  }
 </style>
 
 <!-- Content wrapper -->
@@ -74,6 +84,7 @@ $this->load->view('user/includes/header');
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
+                                    <div class="card-text">Objectives</div><br>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong> </p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
@@ -138,6 +149,7 @@ $this->load->view('user/includes/header');
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
+                                    <div class="card-text">Objectives</div><br>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Daily Drawdown <strong> - $<?=@$data['daily_drawdown']?> </strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
