@@ -77,7 +77,7 @@ class MetricsCron extends APIMaster {
 
 
             echo "<br/>checking max daily loss <br/>";
-            echo "<br/><br/>checking max dd <br/>";
+            echo "<br/><br/>checking max daily loss <br/>";
             echo "<br/>EQUITY FROM API IS ".$service_equity."<br/>";
             echo "<br/>EQUITY SAVED IN DB ".$equity."<br/>";
             echo "<br/>DAILY DRAWDOWN ".$daily_drawdown."<br/>";
@@ -89,7 +89,7 @@ class MetricsCron extends APIMaster {
                     $this->pass_max_dailyLoass($value['id']);
                 }else{
                     //user made failed for max drawdown and full account goes to fail
-                    $this->make_userFail_for_maxDrawdown($value['id']);
+                    $this->makeMaxDailylossFail($value['id']);
                 }
                 //------check max daily loss fail or pass------------------------
             }
@@ -364,10 +364,9 @@ class MetricsCron extends APIMaster {
         echo json_encode($response)."<br/>";
     }
     //--------FAIL DAILY DRAWDOWN-------
-    public function makeMaxDailylossFail(){
+    public function makeMaxDailylossFail($id){
         
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
+        $decrypted['eqid'] = $id;
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
  
