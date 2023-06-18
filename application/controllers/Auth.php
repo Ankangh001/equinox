@@ -313,7 +313,7 @@ class Auth extends APIMaster {
 
 	public function client()
 	{
-        // session_destroy();
+        session_destroy();
 		if (isset($_SESSION['token']) && $_SESSION['admin_type']=='Client') {
 			redirect(base_url('user'));
 		}
