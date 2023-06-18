@@ -3272,9 +3272,9 @@ iframe.mob-tuto{
 		font-size: 11px !important;
 	}
 	.btn-box {
-		padding: 5px 12px !important;
+		padding: 1px 8px !important;
 		border-radius: 12px;
-		font-size: 1rem !important;
+		font-size: 20px !important;
 		text-align: center !important;
 		display: flex;
 		justify-content: center;
