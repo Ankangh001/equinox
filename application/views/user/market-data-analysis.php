@@ -15,25 +15,27 @@ $this->load->view('user/includes/header');
     padding: 0.5rem;
     transition: 0.3s ease-in-out !important;
     flex-direction: row;
-}
-.nav-tabs:not(.nav-fill):not(.nav-justified) .nav-link, .nav-pills:not(.nav-fill):not(.nav-justified) .nav-link {
-    width: fit-content !important;
-    color: #000000;
-    font-size: 16px;
-    border: 1px solid #444;
-    padding: 6px 14px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 8px #00000090;
-    letter-spacing: 1.2px;
-    font-weight: bold;
-}
-.nav-tabs .nav-link.active {
-    background: #444;
-    color: #fff !important;
-}
-.tradingview-widget-container{
-  margin:auto
-}
+  }
+  .nav-tabs:not(.nav-fill):not(.nav-justified) .nav-link, .nav-pills:not(.nav-fill):not(.nav-justified) .nav-link {
+      width: fit-content !important;
+      color: #000000;
+      font-size: 16px;
+      border: 1px solid #444;
+      padding: 6px 14px;
+      border-radius: 25px;
+      box-shadow: 0px 0px 8px #00000090;
+      letter-spacing: 1.2px;
+      font-weight: bold;
+  }
+  .nav-tabs .nav-link.active {
+      background: #444;
+      color: #fff !important;
+  }
+  .tradingview-widget-container{
+    margin:auto
+  }
+
+
 /* iframe {
   pointer-events: none;
 } */
