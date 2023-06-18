@@ -189,7 +189,7 @@ $this->load->view('admin/includes/header');
           $('#userId').val(uId);
           res.forEach(element => {
             $('#products').append(`
-              <option value="${element.product_id}">${element.product_name}    |     $${element.product_price}   |    Size:${element.account_size}</option>
+              <option value="${element.product_id}">${element.product_name}    |     $${element.product_price}   |    Size:${element.account_size}    |    ${element.product_category}</option>
             `);
           });
           $('#modalCred').modal('show');
