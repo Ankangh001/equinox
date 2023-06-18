@@ -8,10 +8,25 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
   button.btn.active {
     border-bottom: 4px solid #535355;
     border-radius: 0;
-}
-.input-group:focus-within .form-control, .input-group:focus-within .input-group-text {
-    border-color: #ffffff;
-}
+  }
+  .input-group:focus-within .form-control, .input-group:focus-within .input-group-text {
+      border-color: #ffffff;
+  }
+  @media (max-width: 992px){
+    .tab-content>.active {
+        display: block;
+        margin: 0 !important;
+    }
+  }
+  .payment-form {
+      padding: 0 !important;
+      border-radius: 0;
+      margin: 0;
+      height: auto;
+      max-width: 100%;
+      background: #fff !important;
+      margin-bottom: -3rem;
+  }
 </style>
 <script type="text/javascript" src="<?php echo $web_payment_sdk_url ?>"></script>
   <script type="text/javascript">
@@ -70,7 +85,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
           </ul>
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
+              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
                      <!--<div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
@@ -94,8 +109,8 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
               </div>
 
               <div class="tab-pane fade " id="navs-top-profile" role="tabpanel">
-                <div class="col-lg-12 mt-5">
-                  <button id="coinbase_buy" type="submit">Pay with Coinbase</button>
+                <div class="col-lg-12">
+                  <button id="coinbase_buy" class="m-auto" type="submit">Pay with Coinbase</button>
                   <form id="paymentForm">
                   </form>
                 </div>
@@ -200,19 +215,24 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
   requestData.final_product_price = $("#final_product_price").text();
 
   $('#coinbase_buy').click(()=>{
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
-        data: requestData,
-        dataType: "html",
-        success: function(data){
-          console.log(data);
-          window.location.href = data;
-        },
-        error: function() { 
-          alert("Error posting feed."); 
-        }
-    });
+    if($('#defaultCheck22').is(":checked") && $('#defaultCheck244').is(":checked") && $('#defaultCheck233').is(":checked")){
+      $("#error").addClass('d-none');
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('user/payment/coinbaseCreateCharge'); ?>",
+          data: requestData,
+          dataType: "html",
+          success: function(data){
+            console.log(data);
+            window.location.href = data;
+          },
+          error: function() { 
+            alert("Error posting feed."); 
+          }
+      });
+    }else{
+      $("#error").removeClass('d-none');
+    }
   });
 
 
