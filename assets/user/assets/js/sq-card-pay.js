@@ -20,7 +20,12 @@ async function CardPay(fieldEl, buttonEl) {
       const result = await card.tokenize();
       if (result.status === 'OK') {
         // Use global method from sq-payment-flow.js
-        window.createPayment(result.token);
+        // return;
+        if($('#defaultCheck22').is(":checked") && $('#defaultCheck244').is(":checked") && $('#defaultCheck233').is(":checked")){
+          window.createPayment(result.token);
+        }else{
+          alert('not check');
+        }
       }
     } catch (e) {
       if (e.message) {

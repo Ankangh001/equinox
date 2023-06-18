@@ -74,7 +74,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
                      <!--<div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
-                     <div id="google-pay-button" alt="google-pay" type="button"></div> 
+                     <!-- <div id="google-pay-button" alt="google-pay" type="button"></div>  -->
                     <!-- <div class="border">
                       <span>OR</span>
                     </div> -->
@@ -151,21 +151,21 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck22">
+                <input class="form-check-input" type="checkbox" required name="1" value="" id="defaultCheck22">
                 <label class="form-check-label" for="defaultCheck22"> I agree that i have read <a href="<?=base_url('terms-of-service')?>">terms and conditions</a>. </label>
               </div>
             </div>
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck233">
+                <input class="form-check-input" type="checkbox" required name="2" value="" id="defaultCheck233">
                 <label class="form-check-label" for="defaultCheck233"> I agree that i have read <a href="<?=base_url('privacy-policy')?>">privacy policy</a>. </label>
               </div>
             </div>
 
             <div class="my-3 row align-items-center d-flex ">
               <div class="form-check text-dark fw-bold">
-                <input class="form-check-input" type="checkbox" required value="" id="defaultCheck244">
+                <input class="form-check-input" type="checkbox" required name="3" value="" id="defaultCheck244">
                 <label class="form-check-label" for="defaultCheck244"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
               </div>
             </div>
@@ -273,9 +273,10 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 
 </script>
 
-<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script>
+<!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-google-pay.js')?>"></script> -->
 <!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-apple-pay.js')?>"></script> -->
-<script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script>
+<!-- <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-ach.js')?>"></script> -->
+
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-card-pay.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/user/assets/js/sq-payment-flow.js')?>"></script>
 

@@ -77,7 +77,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Available</h5>
-                <p class="card-text fs-1 text-white"><?= (int) (@$transaction['credit'] -  @$transaction['debit'])?></p>
+                <p class="card-text fs-1 text-white"><?= (@$transaction['credit'] -  @$transaction['debit'])?></p>
               </div>
             </div>
           </div>

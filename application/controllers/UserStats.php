@@ -124,7 +124,7 @@ class UserStats extends CI_Controller {
                     
                     $transaction = array(
                         'user_id'       =>  $affiliate_user['user_id'],
-                        'amount'        =>  (int) (($code['amount']*$affiliate_percentage)/100),
+                        'amount'        =>  (($code['amount']*$affiliate_percentage)/100),
                         'product_id'    =>  $code['product_id'],
                         'flag'          =>  0,
                         'txn_type'      =>  3,
