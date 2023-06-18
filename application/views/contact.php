@@ -8,6 +8,26 @@ $this->load->view('includes/header');
 	.get-funded{
         display:none !important;
     }
+	@media (max-width: 992px){
+		.mob-form-group{
+			width: 100% !important;
+			padding: 0;
+		}
+		form {
+			width: 100% !important;
+			margin: 5rem auto;
+		}
+		.m-mt-0{
+			margin-top:0 !important;
+		}
+		.mt-m{
+			margin-top:1rem;
+		}
+  	}
+	.m-mt-0{
+		margin-top: 6rem;
+	}
+
 </style>
 <main id="main">
 	<section id="contact" class="contact">
@@ -19,7 +39,7 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 		<div class="container ss aos-init aos-animate"  data-aos="fade-up">
-			<div class="row mt-5">
+			<div class="row mt-5  mt-m">
 				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-center align-items-center">
@@ -29,7 +49,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6  mt-m">
 					<div class="info">
 						<div class="open-hours d-flex flex-column justify-content-center align-items-center">
 							<i class="bi bi-clock"></i>
@@ -66,7 +86,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6  mt-m">
 					<div class="info">
 						<div class="email about-text">
 							<h4>EQUINOX TRADING CAPITAL LLC</h4>
@@ -76,15 +96,15 @@ $this->load->view('includes/header');
 				</div>
 			</div>
 			
-			<div class="row" style="margin-top:6rem !important">
+			<div class="row m-mt-0">
 				<div class="col-lg-8 m-auto mt-lg-0">
 					<form action="" id="contactForm" class="php-email-form">
 						<div class="row">
-							<div class="col-md-6 form-group">
+							<div class="col-md-6 form-group mob-form-group">
 								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
 								<input type="hidden" name="type" id="type" value="contact">
 							</div>
-							<div class="col-md-6 form-group mt-3 mt-md-0">
+							<div class="col-md-6 form-group mob-form-group mt-3 mt-md-0">
 								<input type="email" class="form-control" name="email-add" id="email-add" placeholder="Your Email" required>
 							</div>
 						</div>

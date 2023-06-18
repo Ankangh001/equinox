@@ -1,6 +1,12 @@
 <?php
 $this->load->view('includes/header');
 ?>
+<style>
+	@media (max-width: 992px){
+#nav-contact {
+    margin-top: 2rem !important;
+}}
+</style>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">

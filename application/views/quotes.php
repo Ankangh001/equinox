@@ -58,6 +58,19 @@ $this->load->view('includes/header');
     body{
         background: linear-gradient(180deg, #ffffff 20%, #eee 100%)  !important;
     }
+    @media (max-width: 992px){
+        .nav-tabs .nav-link{
+            width: 50% !important;
+        }
+        iframe{
+            width: 100% !important;
+        }   
+        .nav-tabs {
+            border-bottom: none !important;
+            flex-direction: row !important;
+            width: 100%;
+        }
+    }
 </style>
 <main id="main">
 <section id="navtabs-count" style="margin:6rem auto 0 auto; background:#ffffff !important; ">
