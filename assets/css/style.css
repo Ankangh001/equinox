@@ -3407,7 +3407,7 @@ iframe.mob-tuto{
 	}
 
 	.img-holder img{
-		width: 50%;
+		width: 30%  !important;
 		margin-bottom: 3rem;
 	}
 
