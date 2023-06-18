@@ -105,7 +105,7 @@ class MetricsCron extends APIMaster {
 
             if($value['phase'] != '3'){
                 //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                if(round(($service_balance - $value['account_size']), 2) > $profit_target){
+                if(($service_balance - $value['account_size']) > $profit_target){
                     //user still passed for max drawdown
                     $this->makeUserPassProfitTarget($value['id']);
                 }else{

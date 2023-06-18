@@ -46,18 +46,18 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       <div class="col-md-12 col-lg-7">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-credit-card-alt"></i>Our Payment Methods</h5>
+            <h5 class="mb-0"><img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" style="width: 15%;" />&nbsp;Our Payment Methods</h5>
             <small class="text-muted float-end">Choose Your Payment Method</small>
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">
-              <button type="button" class="btn " role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
+              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="50" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
               </button>
             </li>
 
             <li class="nav-item">
-              <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+              <button type="button" class="btn " role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
                 <img src="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png" width="100" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>coinbase.png">
               </button>
             </li>
@@ -70,7 +70,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
           </ul>
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane fade" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
+              <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel" style="margin-top: -5rem;">
                 <form class="payment-form" id="fast-checkout">
                   <div class="wrapper">
                      <!--<div id="apple-pay-button" alt="apple-pay" type="button"></div> -->
@@ -93,7 +93,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 </form>
               </div>
 
-              <div class="tab-pane fade active show" id="navs-top-profile" role="tabpanel">
+              <div class="tab-pane fade " id="navs-top-profile" role="tabpanel">
                 <div class="col-lg-12 mt-5">
                   <button id="coinbase_buy" type="submit">Pay with Coinbase</button>
                   <form id="paymentForm">
@@ -116,8 +116,8 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
           <h5 class="card-header">Order Summary</h5>
           <div class="card-body">
             <div class="mb-3 row border-bottom">
-              <label for="html5-text-input" class="col-md-4 col-form-label">Plan</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label"><?=@$product_details['product_name']?></label>
+              <label for="html5-text-input" class="col-md-4 col-form-label">Evaluation</label>
+              <label for="html5-text-input" class="col-md-8 text-right col-form-label"><?=@$product_details['account_size']?>K</label>
             </div>
             <div class="mb-3 row border-bottom">
               <label for="html5-text-input" class="col-md-4 col-form-label">Price</label>
@@ -182,6 +182,8 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 <script>
   const PANEL_URL = "<?=base_url()?>";
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Checkout</h4>`);
+  
+
 
   var requestData ={};
 
@@ -285,26 +287,30 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
  
 <script>
 
-window.onAmazonLoginReady = function () {
-  amazon.Login.setClientId('amzn1.application-oa2-client.3f77e56a623e45ca8fcece1d8045c39f');
-};
+// window.onAmazonLoginReady = function () {
+//   amazon.Login.setClientId('amzn1.application-oa2-client.3f77e56a623e45ca8fcece1d8045c39f');
+// };
 
-document.addEventListener('DOMContentLoaded', function () {
-  OffAmazonPayments.Button('amazonPayButton', 'A2EN18MJPAR45R', {
-    type: 'PwA',
-    color: 'Gold',
-    size: 'medium',
+// document.addEventListener('DOMContentLoaded', function () {
+//   OffAmazonPayments.Button('amazonPayButton', 'A2EN18MJPAR45R', {
+//     type: 'PwA',
+//     color: 'Gold',
+//     size: 'medium',
 
-    authorization: function () {
-      var paymentUrl = PANEL_URL+'user/payment/amazonPay?action=checkout&amount=' + encodeURIComponent(requestData.final_product_price);
-      window.location.href = paymentUrl;
-    },
+//     authorization: function () {
+//       var paymentUrl = PANEL_URL+'user/payment/amazonPay?action=checkout&amount=' + encodeURIComponent(requestData.final_product_price);
+//       window.location.href = paymentUrl;
+//     },
 
-    onError: function (error) {
-      console.log('Amazon Pay Button error:', error.getErrorCode(), error.getErrorMessage());
-    }
-  });
-});
-
+//     onError: function (error) {
+//       console.log('Amazon Pay Button error:', error.getErrorCode(), error.getErrorMessage());
+//     }
+//   });
+// });
+  // $('#loading').show(1000);
+  $('#fast-checkout').css('opacity', '0.05');
+  setTimeout(() => {
+    $('#fast-checkout').css('opacity', '1');
+  }, 3000);
 
 </script>
