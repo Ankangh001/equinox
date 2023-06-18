@@ -7,10 +7,10 @@ async function SquarePaymentFlow() {
   // ApplePay(document.getElementById('apple-pay-button'));
 
   // Create Google pay instance
-  GooglePay(document.getElementById('google-pay-button'));
+  // GooglePay(document.getElementById('google-pay-button'));
 
   // Create ACH payment
-  ACHPay(document.getElementById('ach-button'));
+  // ACHPay(document.getElementById('ach-button'));
 }
 
 window.payments = Square.payments(window.applicationId, window.locationId);
@@ -43,6 +43,7 @@ window.createPayment = async function(token) {
   });
 
   try {
+    // debugger;
     var paymentUrl  = PANEL_URL+"user/payment/squarePayment";
     const response = await fetch(paymentUrl, {
       method: 'POST',

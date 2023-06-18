@@ -331,7 +331,7 @@ class Payment extends APIMaster {
                 
                 $transaction = array(
                     'user_id'       =>  $affiliate_user['user_id'],
-                    'amount'        =>  (int) (($requestData->final_product_price*$affiliate_percentage)/100),
+                    'amount'        =>  (($requestData->final_product_price*$affiliate_percentage)/100),
                     'product_id'    =>  $requestData->product_id,
                     'flag'          =>  0,
                     'txn_type'      =>  3,
@@ -544,7 +544,7 @@ class Payment extends APIMaster {
                         </table>
                     </td>';
         $finaltemp = str_replace("{PAYMENT}", $content, $body);
-        echo $finaltemp;die;
+        // echo $finaltemp;die;
 
         $email = send_email($user_email, 'Payment Receipt', $finaltemp,'','',3);
 
