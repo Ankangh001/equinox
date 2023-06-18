@@ -2,7 +2,14 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  label.fw-bold.form-check-label {
+    font-size: 20px;
+  }
+  p.card-title.fw-bold.text-primary {
+      font-size: 20px;
+  }
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -67,8 +74,7 @@ $this->load->view('user/includes/header');
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['max_drawdown']?> Maximum Drawdown</p>
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['daily_drawdown']?> Daily Drawdown</p>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong> </p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
                                   </div>
@@ -132,8 +138,8 @@ $this->load->view('user/includes/header');
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['max_drawdown']?> Maximum Drawdown</p>
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['daily_drawdown']?> Daily Drawdown</p>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong></p>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Daily Drawdown <strong> - $<?=@$data['daily_drawdown']?> </strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
                                   </div>

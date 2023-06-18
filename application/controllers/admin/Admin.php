@@ -16,9 +16,9 @@ class Admin extends APIMaster {
 
 	public function index()
 	{
-        $response['phase1'] = count($this->db->where(['phase'=> '1', 'payment_status'=> '1' ])->get('userproducts')->result_array());
-        $response['phase2'] = count($this->db->where(['phase'=> '2', 'payment_status'=> '1'  ])->get('userproducts')->result_array());
-        $response['funded'] = count($this->db->where(['phase'=> '3', 'payment_status'=> '1'  ])->get('userproducts')->result_array());
+        $response['phase1'] = count($this->db->where(['phase'=> '1', 'product_status'=> '1', 'payment_status'=> '1' ])->get('userproducts')->result_array());
+        $response['phase2'] = count($this->db->where(['phase'=> '2', 'product_status'=> '1', 'payment_status'=> '1'  ])->get('userproducts')->result_array());
+        $response['funded'] = count($this->db->where(['phase'=> '3', 'product_status'=> '1', 'payment_status'=> '1'  ])->get('userproducts')->result_array());
         $response['completed'] = count($this->db->where(['product_status'=> '1' ])->get('userproducts')->result_array());
         $response['users'] = count($this->db->where(['admin_type'=> 'Client' ])->get('user')->result_array());
 
