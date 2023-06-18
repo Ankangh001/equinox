@@ -99,6 +99,7 @@ class User extends APIMaster {
 				'phase' => '1',
 				'created_date' => date('Y-m-d H:m:s'),
 				'product_status' => '0',
+				'payment_status' => '1'
 			);
 
             $transaction = array(
@@ -109,6 +110,7 @@ class User extends APIMaster {
 				'gateway' => 'coinbase',
 				'purchase_date' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s'),
+				'payment_status' => '1'
 			);
 			
 			$res = $this->db->insert('userproducts', $userProducts);
