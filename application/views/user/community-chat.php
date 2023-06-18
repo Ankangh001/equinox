@@ -15,13 +15,13 @@ $this->load->view('user/includes/header');
     <div class="row">
       <div class="col-lg-12">
       </div>
-      <div class="col-lg-2 pointer">
+      <!-- <div class="col-lg-2 pointer">
         &nbsp;&nbsp;&nbsp;<i class="bx bx-refresh"></i>Refresh 
-      </div>
+      </div> -->
     </div>
     <div class="row mb-5">
       <div class="col-md-12">
-        <widgetbot server="1098460516579557416"  channel="1098460516579557419" width="100%" height="600"></widgetbot>
+        <widgetbot server="1098460516579557416"  channel="1108292722760101920" width="100%" height="600"></widgetbot>
       </div>
     </div>
   </div>

@@ -1,7 +1,17 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
+<style>
+      @media (max-width: 786px){
+          .card-body, .card-body.d-flex.justify-content-center.align-items-center {
+            flex-direction: column;
+            text-align: center;
+        }
+        i{
+          padding-top:12px;
+        }
+      }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
@@ -23,10 +33,10 @@ $this->load->view('user/includes/header');
       <div class="col-md-3">
         <div class="card mb-3" style="background: linear-gradient(60deg, #fcfc, #ea1cea);">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-user text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
                 <h5 class="card-title text-white">Referred <br/> Users</h5>
                 <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
@@ -39,10 +49,10 @@ $this->load->view('user/includes/header');
       <div class="col-md-3">
         <div class="card mb-3 bg-warning">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-dollar text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Earned</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['credit']?></p>

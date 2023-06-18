@@ -32,7 +32,7 @@
   <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css?v3=1" rel="stylesheet"> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?v3=1" />
-  <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
+  <!-- <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script> -->
  
  <script>
 //      function googleTranslateElementInit() {
