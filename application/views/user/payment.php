@@ -169,6 +169,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 <label class="form-check-label" for="defaultCheck244"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
               </div>
             </div>
+            <span id="error" class="d-none text-danger">Please check all the required fields !</span>
           </div>
         </div>
       </div>
@@ -180,7 +181,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 <?php $this->load->view('user/includes/footer');?>
 <script>
   const PANEL_URL = "<?=base_url()?>";
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Account Overview</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Checkout</h4>`);
 
   var requestData ={};
 
