@@ -414,7 +414,7 @@
         </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
-    <script src="<?=base_url('assets/user/')?>assets/js/notify.js"></script>
+    <!-- <script src="<?=base_url('assets/user/')?>assets/js/notify.js"></script> -->
     <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
 
     <script>

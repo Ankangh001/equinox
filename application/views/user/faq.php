@@ -575,7 +575,7 @@ $this->load->view('user/includes/header');
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
                     <div class="container" data-aos="fade-up">
                         <div class="d-flex m-5" id="myFilter2">
-                            <input type="text" style="width:30%"  class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
+                            <input type="text" class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
                             <!-- <button class="btn btn-secondary search"><i class="bx bx-search-alt-2 text-white"></i></button> -->
                         </div>
                         <ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
@@ -717,7 +717,7 @@ $this->load->view('user/includes/header');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <script>
-    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Faq & Rules</h4>`)
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Help</h4>`)
 
     const faqs = document.querySelectorAll('.accordion-button');
     const searchInput = document.getElementById('search');

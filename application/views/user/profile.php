@@ -172,6 +172,6 @@ $this->load->view('user/includes/header');
   </div>
     <!-- / Content -->
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">Account Settings /</span> Profile</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Profile</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

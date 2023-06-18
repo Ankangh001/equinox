@@ -71,6 +71,7 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
     <script>
+      $('iframe').attr('scrolling','yes')
         // ClassicEditor
         //     .create( document.querySelector( '#editor' ) )
         //     .catch( error => {

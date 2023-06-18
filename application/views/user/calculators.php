@@ -26,6 +26,8 @@ $this->load->view('user/includes/header');
       box-shadow: 0px 0px 8px #00000090;
       letter-spacing: 1.2px;
       font-weight: bold;
+      margin:12px;
+
   }
   .nav-tabs .nav-link.active {
       background: #444;
