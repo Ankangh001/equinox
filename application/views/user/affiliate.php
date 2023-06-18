@@ -30,7 +30,7 @@ $this->load->view('user/includes/header');
     </div>
 
     <div class="row mb-5">
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3" style="background: linear-gradient(60deg, #fcfc, #ea1cea);">
           <div class="row g-0">
             <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
@@ -46,7 +46,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-warning">
           <div class="row g-0">
             <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
@@ -62,7 +62,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-danger">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -78,7 +78,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-info">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
