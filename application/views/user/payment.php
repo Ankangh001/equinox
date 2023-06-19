@@ -12,10 +12,19 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
   .input-group:focus-within .form-control, .input-group:focus-within .input-group-text {
       border-color: #ffffff;
   }
-  @media (max-width: 992px){
+  @media (max-width: 786px){
     .tab-content>.active {
         display: block;
         margin: 0 !important;
+    }
+    #mob{
+      display:none;
+    }
+    #p-method{
+      display:none !important;
+    }
+    .mp{
+      display:block !important;
     }
   }
   .payment-form {
@@ -26,6 +35,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       max-width: 100%;
       background: #fff !important;
       margin-bottom: -3rem;
+  }
+  .mp{
+    display:none;
   }
 </style>
 <script type="text/javascript" src="<?php echo $web_payment_sdk_url ?>"></script>
@@ -61,8 +73,10 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       <div class="col-md-12 col-lg-7">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" style="width: 15%;" />&nbsp;Our Payment Methods</h5>
-            <small class="text-muted float-end">Choose Your Payment Method</small>
+            <img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" class="mp" style="width: 15%;" />
+            <h5 class="mb-0 mp">&nbsp;Our Payment Methods</h5>
+            <h5 class="mb-0" id="p-method"><img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" style="width: 15%;" />&nbsp;Our Payment Methods</h5>
+            <small id="mob" class="text-muted float-end">Choose Your Payment Method</small>
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">

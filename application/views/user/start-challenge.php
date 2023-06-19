@@ -54,7 +54,10 @@ $this->load->view('user/includes/header');
                               if($data['product_category'] == 'Aggressive') {
                           ?>
                           <li class="nav-item">
-                            <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
+                            <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" 
+                              data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" 
+                              aria-controls="navs-pills-top-home<?=@$data['product_id']?>" 
+                              aria-selected="false">
                               <label class="card-body pointer">
                                 <div class="form-check d-flex justify-content-between align-items-center">
                                   <div class="d-flex justify-content-start align-items-center">
@@ -80,7 +83,7 @@ $this->load->view('user/includes/header');
                               if($data['product_category'] == 'Aggressive') {
                           ?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="normal_proucts_<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
@@ -123,10 +126,14 @@ $this->load->view('user/includes/header');
                   <div class="col-md-12 col-xl-12">
                     <form id="form2" action="<?=base_url('user/')?>payment">
                       <div class="nav-align-left mb-4 row">
-                        <ul class="nav nav-pills mb-3 col-lg-6" id="normalTabs" role="tablist">
+                        <ul class="nav nav-pills mb-3 col-lg-6" id="normal-tabs" role="tablist">
                           <?php foreach($res as $data){if($data['product_category'] == 'Normal') {?>
                             <li class="nav-item">
-                              <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
+                              <div class="card bg-white text-dark mb-3" role="tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#normal_proucts_<?=@$data['product_id']?>" 
+                                aria-controls="normal_proucts_<?=@$data['product_id']?>" 
+                                aria-selected="false">
                                 <label class="card-body pointer">
                                   <div class="form-check d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-start align-items-center">
@@ -145,7 +152,7 @@ $this->load->view('user/includes/header');
                         <div id="normal-contents" class="tab-content shadow-none col-lg-6">
                           <?php foreach($res as $data){ if($data['product_category'] == 'Normal') {?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="normal_proucts_<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="normal_proucts_<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
