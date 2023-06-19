@@ -315,9 +315,9 @@
                   <button class="btn btn-secondary">Language</button>
                 </li> -->
 
-                <li class="nav-item lh-1 me-3" id="uname">
+                <!-- <li class="nav-item lh-1 me-3" id="uname">
                   <p class="text mt-3"><?=$_SESSION['user_name']?></p>
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -337,7 +337,15 @@
                           </div>
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block"><?=$_SESSION['user_name']?></span>
-                            <small class="text-muted">User</small>
+                              <?php 
+                                if($_SESSION['kyc_status'] == '2'){ 
+                                  echo '<span class="badge bg-label-success">KYC Verified</span>';
+                                }else{
+                                  echo '<span class="badge bg-label-danger">KYC Un verified</span>';
+                                }
+                              ?>
+                            <small class="text-muted">
+                            </small>
                           </div>
                         </div>
                       </a>

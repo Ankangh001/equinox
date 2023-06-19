@@ -34,14 +34,21 @@ $this->load->view('user/includes/header');
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
         <div class="col-md-12 col-lg-12">
-          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 2 ||  $res[0]['kyc_status'] == 3){  ?>
+          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 1){  ?>
             <div class="row">
-              <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+              <span class="card badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
                 You can't request a payout as your KYC is not completed !
               </span>
               <a href="<?= base_url('user/account-kyc') ?>" class="text-center"><button class="btn btn-primary">Apply for KYC</button></a>
             </div>
-          <?php }elseif ($res[0]['kyc_status'] == 1) { ?>
+          <?php }elseif($res[0]['kyc_status'] == 3){  ?>
+            <div class="row">
+              <span class="card badge bg-label-danger mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+                You can't request a payout as your KYC is rejected !
+              </span>
+              <a href="<?= base_url('user/account-kyc') ?>" class="text-center"><button class="btn btn-primary">Apply for KYC</button></a>
+            </div>
+          <?php }elseif ($res[0]['kyc_status'] == 2) { ?>
           <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
               <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-receipt"></i>Withdraw your earnings</h5>

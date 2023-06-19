@@ -60,27 +60,20 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon
-            <?php 
-              if(isset($_GET['id'])){
-                if($_GET['id'] != $value['id']){
-                  echo "collapsed";
-                }
-              }
-            ?>" 
-            data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <?php if($value['product_status'] == '0'){ ?>
-                <span class="badge bg-warning text-white me-1">PENDING</span>
-              <?php }elseif($value['product_status'] == '1'){ ?>
-                <span class="badge bg-primary text-white me-1">ACTIVE</span>
-              <?php }elseif($value['product_status'] == '2'){?>
-                <span class="badge bg-success text-white me-1">PASSED</span>
-              <?php }elseif($value['product_status'] == '3'){?>
-                <span class="badge bg-danger text-white me-1">FAILED</span>
-              <?php }?>
+            <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex collapsed<?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
+              <span class="col-lg-3 col-md-3">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3">$<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                  <span class="badge bg-warning text-white me-1">PENDING</span>
+                <?php }elseif($value['product_status'] == '1'){ ?>
+                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                <?php }elseif($value['product_status'] == '2'){?>
+                  <span class="badge bg-success text-white me-1">PASSED</span>
+                <?php }elseif($value['product_status'] == '3'){?>
+                  <span class="badge bg-danger text-white me-1">FAILED</span>
+                <?php }?>
+              </span>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -220,27 +213,21 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon 
-            <?php 
-              if(isset($_GET['id'])){
-                if($_GET['id'] != $value['id']){
-                  echo "collapsed";
-                }
-              }
-            ?>" 
-            data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <?php if($value['product_status'] == '0'){ ?>
-                <span class="badge bg-warning text-white me-1">PENDING</span>
-              <?php }elseif($value['product_status'] == '1'){ ?>
-                <span class="badge bg-primary text-white me-1">ACTIVE</span>
-              <?php }elseif($value['product_status'] == '2'){?>
-                <span class="badge bg-success text-white me-1">PASSED</span>
-              <?php }elseif($value['product_status'] == '3'){?>
-                <span class="badge bg-danger text-white me-1">FAILED</span>
-              <?php }?>
+            <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex collapsed<?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
+
+              <span class="col-lg-3 col-md-3">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3">$<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                  <span class="badge bg-warning text-white me-1">PENDING</span>
+                <?php }elseif($value['product_status'] == '1'){ ?>
+                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                <?php }elseif($value['product_status'] == '2'){?>
+                  <span class="badge bg-success text-white me-1">PASSED</span>
+                <?php }elseif($value['product_status'] == '3'){?>
+                  <span class="badge bg-danger text-white me-1">FAILED</span>
+                <?php }?>
+              </span>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -304,21 +291,21 @@ $this->load->view('user/includes/header');
                   <div class="">
                     <div class="card-body">
                       <div class="row">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp; $<?= @$value['account_size'] ?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
                       </div>
                       <div class="row mb-3">
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp; <?= @$value['product_category'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
                           <?php if($value['product_status'] == '0'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
+                            Status: &nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
+                            Status: &nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">PASSED</span>
+                            Status: &nbsp;<span class="badge bg-success text-white me-1">PASSED</span>
                           <?php }elseif($value['product_status'] == '3'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
+                            Status: &nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
                           <?php }?>
                         </label>
                       </div>
@@ -379,27 +366,20 @@ $this->load->view('user/includes/header');
       ?>
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
-            <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button ribbon 
-            <?php 
-              if(isset($_GET['id'])){
-                if($_GET['id'] != $value['id']){
-                  echo "collapsed";
-                }
-              }
-            ?>" 
-            data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <?php if($value['product_status'] == '0'){ ?>
-                <span class="badge bg-warning text-white me-1">PENDING</span>
-              <?php }elseif($value['product_status'] == '1'){ ?>
-                <span class="badge bg-primary text-white me-1">ACTIVE</span>
-              <?php }elseif($value['product_status'] == '2'){?>
-                <span class="badge bg-success text-white me-1">PASSED</span>
-              <?php }elseif($value['product_status'] == '3'){?>
-                <span class="badge bg-danger text-white me-1">FAILED</span>
-              <?php }?>
+          <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex collapsed<?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
+              <span class="col-lg-3 col-md-3">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-3 col-md-3">$<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                  <span class="badge bg-warning text-white me-1">PENDING</span>
+                <?php }elseif($value['product_status'] == '1'){ ?>
+                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                <?php }elseif($value['product_status'] == '2'){?>
+                  <span class="badge bg-success text-white me-1">PASSED</span>
+                <?php }elseif($value['product_status'] == '3'){?>
+                  <span class="badge bg-danger text-white me-1">FAILED</span>
+                <?php }?>
+              </span>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 

@@ -36,11 +36,15 @@ $this->load->view('user/includes/header');
   .tradingview-widget-container{
     margin:auto
   }
-
-
-/* iframe {
-  pointer-events: none;
-} */
+  .tradingview-widget-container {
+    /* pointer-events: none; */
+    overflow:scroll;
+    width:100%;
+  }
+  .tab-content {
+    padding: 0;
+    border-radius: 0.375rem;
+  }
 </style>
 
 

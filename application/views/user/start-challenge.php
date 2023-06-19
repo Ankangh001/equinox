@@ -92,7 +92,7 @@ $this->load->view('user/includes/header');
                               if($data['product_category'] == 'Aggressive') {
                           ?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="navs-pills-top-home<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
@@ -157,7 +157,7 @@ $this->load->view('user/includes/header');
                         <div id="normal-contents" class="tab-content shadow-none col-lg-6">
                           <?php foreach($res as $data){ if($data['product_category'] == 'Normal') {?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="navs-pills-top-home<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">

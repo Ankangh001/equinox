@@ -74,7 +74,7 @@ class AppLogin extends CI_Model
     {
         try {
             $pass_enc = pass_enc;
-            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code,email_verified,reffered_by FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
+            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code,email_verified,reffered_by,kyc_status FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
             $result = $this->db->query($sql)->row_array();
             if ($result) :
                 if ($result['email_verified']==1) :
