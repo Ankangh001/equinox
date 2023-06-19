@@ -471,10 +471,10 @@ class Payment extends APIMaster {
         $product_price = $this->input->post('product_price');
         
         $res = $this->db->where(['code' => $code])->get('coupons')->result_array();
-        $product_discount = round($product_price *  ($res[0]['percentage']/100));
-        $final_product_price = round($product_price - ($product_price *  ($res[0]['percentage']/100)));
-
+        
         if($res){
+            $product_discount = round($product_price *  ($res[0]['percentage']/100));
+            $final_product_price = round($product_price - ($product_price *  ($res[0]['percentage']/100)));
 			$response = array(
 				'status' => '200',
 				'message' => 'Coupon Code Valid',
