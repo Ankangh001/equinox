@@ -69,7 +69,9 @@ $this->load->view('user/includes/header');
               }
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-              Login :  <?= @$value['account_id'] ?>
+            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php if($value['product_status'] == '0'){ ?>
                 <span class="badge bg-warning text-white me-1">PENDING</span>
               <?php }elseif($value['product_status'] == '1'){ ?>
@@ -227,7 +229,9 @@ $this->load->view('user/includes/header');
               }
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-              Login :  <?= @$value['account_id'] ?>
+            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php if($value['product_status'] == '0'){ ?>
                 <span class="badge bg-warning text-white me-1">PENDING</span>
               <?php }elseif($value['product_status'] == '1'){ ?>
@@ -384,7 +388,9 @@ $this->load->view('user/includes/header');
               }
             ?>" 
             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-              Login :  <?= @$value['account_id'] ?>
+            Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Account Size : $<?= @$value['account_size'] ? $value['account_size'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php if($value['product_status'] == '0'){ ?>
                 <span class="badge bg-warning text-white me-1">PENDING</span>
               <?php }elseif($value['product_status'] == '1'){ ?>

@@ -825,7 +825,7 @@ $myArray = explode(',', $myString);
         }else if(dataRes == 400){
           getAccounts();
           setTimeout(() => {
-            checkUserStatus();
+            // checkUserStatus();
           }, 8000);
         }
       },
