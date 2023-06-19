@@ -23,7 +23,7 @@ $this->load->view('user/includes/header');
     line-height: 26px !important;
     color: #fff;
     text-align: center;
-    white-space: break-spaces;
+    white-space: initial;
     vertical-align: baseline;
     border-radius: 0.25rem;}
   }
@@ -39,6 +39,7 @@ $this->load->view('user/includes/header');
               <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
                 You can't request a payout as your KYC is not completed !
               </span>
+              <a href="<?= base_url('user/account-kyc') ?>" class="text-center"><button class="btn btn-primary">Apply for KYC</button></a>
             </div>
           <?php }elseif ($res[0]['kyc_status'] == 1) { ?>
           <div class="card mb-4">
@@ -213,7 +214,7 @@ $this->load->view('user/includes/header');
   $('#account').css('display','none');
   $('#bank-details').css('display','none');
 
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Payout / Withdraw</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Payout</h4>`);
 
   let accBalance = 0;
   $('#payout').change((e)=>{
