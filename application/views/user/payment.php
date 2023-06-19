@@ -9,6 +9,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
     border-bottom: 4px solid #535355;
     border-radius: 0;
   }
+  .form-label, .col-form-label {
+    font-size: 0.80rem;
+  }
   .input-group:focus-within .form-control, .input-group:focus-within .input-group-text {
       border-color: #ffffff;
   }
@@ -16,6 +19,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
     .tab-content>.active {
         display: block;
         margin: 0 !important;
+    }
+    .col-md-6{
+      width:50%;
     }
     #mob{
       display:none;
@@ -25,6 +31,9 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
     }
     .mp{
       display:block !important;
+    }
+    #payment-flow-message {
+      height:30px;
     }
   }
   .payment-form {
@@ -141,39 +150,40 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       </div>
       </div>
       <div class="col-xl">
-        <div class="card mb-4">
+        <div class="card mb-4" id="order-summary">
           <h5 class="card-header">Order Summary</h5>
           <div class="card-body">
             <div class="mb-3 row border-bottom">
-              <label for="html5-text-input" class="col-md-4 col-form-label">Evaluation</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label"><?=@$product_details['account_size']?>K</label>
+              <div class="col-md-6 col-form-label">Evaluation</div>
+              <div class="col-md-6 text-right col-form-label"><?=@$product_details['account_size']?>K</div>
             </div>
             <div class="mb-3 row border-bottom">
-              <label for="html5-text-input" class="col-md-4 col-form-label">Price</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label"> $
+              <label class="col-md-6 col-form-label">Price</label>
+              <label class="col-md-6 text-right col-form-label"> $
                 <span id="product_price"><?=@$product_details['product_price']?></span>
               </label>
             </div>
             <div class="mb-3 row border-bottom align-items-center d-flex ">
-              <label for="html5-text-input" class="col-md-4 col-form-label">Apply Coupon</label>
-              <div for="html5-text-input" class="col-md-8 text-right col-form-label">
+              <label class="col-md-5 col-form-label">Apply Coupon</label>
+              <div class="col-md-7 text-right col-form-label">
                 <div class="input-group input-group-merge">
                   <input type="text" id="coupon-code" class="form-control" placeholder="Enter Coupon Code">
                   <span class="input-group-text p-1" id="basic-default-email2">
                     <button class="btn btn-sm btn-primary m-1" id="apply-btn">Apply</button>
                   </span>
                 </div>
+                <span class="text-danger d-block" style="text-align: left; padding: 6px 0 0 0;" id="coupon-error"></span>
               </div>
             </div>
             <div class="mb-3 row border-bottom">
-              <label for="html5-text-input" class="col-md-4 col-form-label">Discount</label>
-              <label for="html5-text-input" class="col-md-8 text-right col-form-label">-$
+              <label for="html5-text-input" class="col-md-6 col-form-label">Discount</label>
+              <label for="html5-text-input" class="col-md-6 text-right col-form-label">-$
                 <span id="product_discount">0</span>
               </label>
             </div>
             <div class="mb-1 row border-bottom">
-              <label for="html5-text-input" class="text-dark fw-bold col-md-4 col-form-label">Total</label>
-              <label for="html5-text-input" class="text-dark fw-bold col-md-8 text-right col-form-label">$
+              <label for="html5-text-input" class="text-dark fw-bold col-md-6 col-form-label">Total</label>
+              <label for="html5-text-input" class="text-dark fw-bold col-md-6 text-right col-form-label">$
                 <span id="final_product_price"><?=@$product_details['product_price']?></span>
               </label>
             </div>
@@ -250,24 +260,49 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
   });
 
 
+  $('#coupon-code').keyup((e)=>{
+    if(e.target.value != ''){
+      $('#coupon-error').text('');
+    }else{
+      $('#coupon-error').text('Enter coupon code first !');
+    }
+  });
+
   //coupon code check
-  $('#apply-btn').click(()=>{    
-    requestData.code = $('#coupon-code').val();
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payment/checkCoupon'); ?>",
-        data: requestData,
-        dataType: "html",
-        success: function(data){
-          let res = JSON.parse(data);
-          requestData.final_product_price = res.final_product_price;
-          $('#final_product_price').text(res.final_product_price);
-          $("#product_discount").text(res.product_discount);
-        },
-        error: function() { 
-          alert("Error posting feed."); 
-        }
-    });
+  $('#apply-btn').click(()=>{   
+    if($('#coupon-code').val() != '') {
+      requestData.code = $('#coupon-code').val();
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('user/payment/checkCoupon'); ?>",
+          data: requestData,
+          dataType: "html",
+          beforeSend: function(){
+            $('#order-summary').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            $('div#loading').hide(200);
+            let res = JSON.parse(data);
+            if(res.status == 200){
+              requestData.final_product_price = res.final_product_price;
+              $('#final_product_price').text(res.final_product_price);
+              $("#product_discount").text(res.product_discount);
+            }else{
+              $('#coupon-error').text(res.message);
+            }
+          },
+          error: function() { 
+            console.log("Error posting feed."); 
+          }
+      });
+    }else{
+      $('#coupon-error').text('Enter coupon code first !');
+    }
   });
 
   // $('#skip-payment').click(()=>{
