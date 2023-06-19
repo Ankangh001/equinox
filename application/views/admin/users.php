@@ -40,19 +40,19 @@ $this->load->view('admin/includes/header'); ?>
                         <td><?= @$data['email'] ?></td>
                         <td><?= @$data['number'] ?></td>
                         <td><span class="badge bg-label-<?php 
-                        if($data['kyc_status'] =='0'){ 
+                        if($data['kyc_status'] =='1'){ 
                           echo 'warning';
-                        }elseif($data['kyc_status'] =='1') {
-                          echo 'success';
                         }elseif($data['kyc_status'] =='2') {
+                          echo 'success';
+                        }elseif($data['kyc_status'] =='3') {
                           echo 'danger'; 
                         }
                       ?>"><?php 
-                        if($data['kyc_status'] =='0'){ 
+                        if($data['kyc_status'] =='1'){ 
                           echo 'PENDING';
-                        }elseif($data['kyc_status'] =='1') {
-                          echo 'SUCCESS';
                         }elseif($data['kyc_status'] =='2') {
+                          echo 'APPROVED';
+                        }elseif($data['kyc_status'] =='3') {
                           echo 'REJECTED'; 
                         }
                       ?></span></td>

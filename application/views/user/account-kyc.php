@@ -80,21 +80,24 @@ $this->load->view('user/includes/header');
       </div>
     <?php }elseif($res[0]['kyc_status'] == 1){?>
       <div class="row">
-        <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+        <span class="card badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
           You have already applied for KYC.
         </span>
+        <a href="<?= base_url('user/profile') ?>" class="text-center"><button class="btn btn-primary"><i class='bx bx-arrow-back' ></i>&nbsp;&nbsp;Go to Profile</button></a>
       </div>
     <?php }elseif($res[0]['kyc_status'] == 2){?>
       <div class="row">
-        <span class="badge bg-label-success mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
-          Your KYC is already verified by the admin.
+        <span class="card badge bg-label-success mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+          Your KYC is completed. <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>
         </span>
+        <a href="<?= base_url('user/profile') ?>" class="text-center"><button class="btn btn-primary"><i class='bx bx-arrow-back' ></i>&nbsp;&nbsp;Go to Profile</button></a>
       </div>
     <?php }elseif($res[0]['kyc_status'] == 3){?>
       <div class="row">
-        <span class="badge bg-label-danger mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+        <span class="card badge bg-label-danger mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
           Your KYC is Rejected
         </span>
+        <a href="<?= base_url('user/profile') ?>" class="text-center"><button class="btn btn-primary"><i class='bx bx-arrow-back' ></i>&nbsp;&nbsp;Go to Profile</button></a>
       </div>
     <?php } ?>
 
@@ -144,7 +147,7 @@ $this->load->view('user/includes/header');
                 setTimeout(() => {
                   $('#modalCenter').modal('hide');
                   location.reload();
-                }, 8000);
+                }, 3000);
               }
               else{
                 console.log(res);

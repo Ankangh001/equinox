@@ -12,6 +12,9 @@ $this->load->view('user/includes/header');
             font-family: 'Open Sans', sans-serif;
         }
         
+        .featuredPropBox ul li{
+            width:100% !important
+        }
         a:hover {
             text-decoration: none;
         }

@@ -84,13 +84,14 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
           <div class="card-header d-flex justify-content-between align-items-center">
             <img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" class="mp" style="width: 15%;" />
             <h5 class="mb-0 mp">&nbsp;Our Payment Methods</h5>
-            <h5 class="mb-0" id="p-method"><img src="<?= base_url('assets/img/card-checkout.png')?>" alt="card-image" style="width: 15%;" />&nbsp;Our Payment Methods</h5>
+            <h5 class="mb-0" id="p-method"><i class='bx bx-credit-card-alt'></i>&nbsp;Our Payment Methods</h5>
             <small id="mob" class="text-muted float-end">Choose Your Payment Method</small>
           </div>
           <ul class="card-header d-flex justify-content-around align-items-center nav nav-" role="tablist">
             <li class="nav-item">
               <button type="button" class="btn active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                <img src="<?= base_url('assets/user/assets/img/elements/') ?>stripe.png" width="50" alt="stripe-logo" srcset="<?= base_url('assets/user/assets/img/elements/') ?>square.png">
+              <!-- <i class='bx bx-credit-card fs-3' ></i> -->
+                <img src="<?= base_url('assets/img/card-checkout-page.png') ?>" width="50" alt="card-checkout-page-logo" srcset="<?= base_url('assets/img/card-checkout-page.png') ?>">
               </button>
             </li>
 

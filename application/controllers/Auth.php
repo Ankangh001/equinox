@@ -42,6 +42,7 @@ class Auth extends APIMaster {
 				$this->session->set_userdata("user_name", $user_data['user_name']);
 				$this->session->set_userdata("affiliate_code", $user_data['affiliate_code']);
 				$this->session->set_userdata("affiliate_by", $user_data['reffered_by']);
+				$this->session->set_userdata("kyc_status", $user_data['kyc_status']);
 	
 				//store data in login analaytics
 				$generateToken = rand(10,100).$user_data['user_id'].''.$user_data['user_id'].''.$user_data['email'];
