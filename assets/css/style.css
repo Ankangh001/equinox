@@ -236,10 +236,11 @@ h6 {
 
 @media (max-width: 992px) {
 	.book-a-table-btn {
-		margin: 0 0 0 2rem;
-		padding: 4px 10px;
-		font-size: 12px;
+		margin: 0 -20px 0 0;
+		padding: 5px 10px;
+		font-size: 14px;
 	}
+
 }
 
 /*--------------------------------------------------------------
@@ -3099,7 +3100,7 @@ iframe.mob-tuto{
 	}
 	#hero h1 {
 		font-size: 44px;
-		line-height: 42px;
+		line-height: 48px;
 		margin: 0;
 	}
 	.trade-cap{
@@ -3261,7 +3262,7 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 14px;
+		font-size: 14px !important;
 		padding: 3% 3% !important;
 		margin: 1rem 6px !important;
 	}
@@ -3298,6 +3299,11 @@ iframe.mob-tuto{
 	.payouts{
 		padding: 0;
 		margin-bottom: 3rem;
+	}
+
+	.img-holder.d-flex.justify-content-center.align-items-center.p-3{
+		display: flex !important;
+		flex-wrap: wrap;
 	}
 }
 
@@ -3407,8 +3413,8 @@ iframe.mob-tuto{
 	}
 
 	.img-holder img{
-		width: 30%  !important;
-		margin-bottom: 3rem;
+		width: 40%  !important;
+		/* margin-bottom: 3rem; */
 	}
 
 	#eqLogoWhite{
@@ -3535,4 +3541,7 @@ iframe.mob-tuto{
 
 .color-000{
 	color: #000 !important;
+}
+.color-fff{
+	color: #fff !important;
 }

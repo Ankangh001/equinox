@@ -23,6 +23,30 @@
             l = e(t).offsetTop;
         window.scrollTo({ top: l - s, behavior: "smooth" });
     };
+    $("a.color-000").click(function (t) {
+        alert();
+    })
+
+    //on clicking evaluation process
+    $('#evp').click(()=>{       
+        $('.mobile-nav-toggle').removeClass("bi-x");
+        if($("#navbar").hasClass("navbar-mobile")){
+            $('ul').removeClass("dropdown-active");
+        }
+        $("#navbar").removeClass("navbar-mobile");
+        $('.navbar-mobile').fadeOut('100');
+    });
+
+    //on clicking pricing
+    $('#pricing-nav').click(()=>{       
+        $('.mobile-nav-toggle').removeClass("bi-x");
+        if($("#navbar").hasClass("navbar-mobile")){
+            $('ul').removeClass("dropdown-active");
+        }
+        $("#navbar").removeClass("navbar-mobile");
+        $('.navbar-mobile').fadeOut('100');
+    });
+
     $("#eqLogoWhite").css("display", "none");
     let i = e("#header"),
         r = e("#topbar"),
@@ -57,9 +81,10 @@
     }
     t("click", ".mobile-nav-toggle", function (t) {
         e("#navbar").classList.toggle("navbar-mobile"), 
-        e("body").classList.toggle("overflow-hidden"), 
-        this.classList.toggle("bi-list"), 
-        this.classList.toggle("bi-x"), 
+        e(".mobile-nav-toggle").classList.toggle("color-fff"), 
+        // e("body").classList.toggle("overflow-hidden"), 
+        // this.classList.toggle("bi-list"), 
+        this.classList.toggle("bi-x");
         $(".navbar-mobile a").addClass("color-000");
     }),
         t(

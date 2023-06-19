@@ -23,7 +23,7 @@ $this->load->view('includes/header');
     }
 </style>
   <main id="main">
-    <section id="faq" class="faq" style="padding-bottom:1rem">
+    <section id="faq" class="faq" style="padding: 5rem 0 1rem 0">
         <div class="container" data-aos="fade-up">
             <div class="section-title  text-center">
                 <h2>Scaling Plan</h2>

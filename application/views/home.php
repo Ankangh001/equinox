@@ -3,9 +3,10 @@ $this->load->view('includes/header');
 ?>
 <style>
 	@media (max-width: 992px){
-#nav-contact {
-    margin-top: 2rem !important;
-}}
+		#nav-contact {
+				margin-top: 2rem !important;
+		}
+	}
 </style>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
