@@ -154,8 +154,8 @@ body{
         <ul>
 		 	<li class="dropdown"><a><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-				<li><a href="./#evaluation"><i class="fas fa-sort-amount-up"></i>&nbsp;&nbsp;Evaluation Process</a></li>
-				<li><a href="./#table-pricing"><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;&nbsp;Pricing</a></li>
+				<li><a id="evp" href="./#evaluation"><i class="fas fa-sort-amount-up"></i>&nbsp;&nbsp;Evaluation Process</a></li>
+				<li><a id="pricing-nav" href="./#table-pricing"><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;&nbsp;Pricing</a></li>
 				<li><a href="scaling-plan"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;Scaling Plan</a></li>
 				</ul>
 			</li>
