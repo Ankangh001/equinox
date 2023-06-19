@@ -209,7 +209,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
                 <label class="form-check-label" for="defaultCheck244"> I agree that i have read <a href="<?=base_url('live-account')?>">funded account  disclaimer</a></label>
               </div>
             </div>
-            <span id="error" class="d-none text-danger">Please check all the required fields !</span>
+            <span id="error" class="d-none text-danger">Please accept the above mentioned !</span>
           </div>
         </div>
       </div>
