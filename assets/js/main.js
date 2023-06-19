@@ -91,6 +91,7 @@
             "click",
             ".navbar .dropdown > a",
             function (t) {
+                $('ul').removeClass("dropdown-active");
                 e("#navbar").classList.contains("navbar-mobile") && (t.preventDefault(), this.nextElementSibling.classList.toggle("dropdown-active"));
             },
             !0
