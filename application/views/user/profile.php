@@ -71,11 +71,11 @@ $this->load->view('user/includes/header');
                     <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="<?= @$res[0]['number']?>" placeholder="202 555 0111">
                   </div>
                 </div>
-                  <!-- <div class="mb-3 col-md-6">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-                  </div> -->
-                <div class="mb-3 col-md-6">
+                  <div class="mb-3 col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" name="country" placeholder="country">
+                  </div>
+                <!-- <div class="mb-3 col-md-6">
                   <label class="form-label" for="country">Country</label>
                     <select id="country"  required class="form-control" name="country">
                       <option selected value="NA">Select your Country</option>
@@ -324,7 +324,7 @@ $this->load->view('user/includes/header');
                       <option value="Zambia">Zambia</option>
                       <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                </div>
+                </div> -->
                 <!-- <div class="mb-3 col-md-6">
                   <label for="timeZones" class="form-label">Timezone</label>
                   <select id="timeZones" class="select2 form-select">
