@@ -52,7 +52,7 @@ class User extends APIMaster {
             $this->db->from('userproducts');
             $this->db->join('products', 'userproducts.product_id=products.product_id');
             $this->db->where(['user_id' => $last_segment]);
-            $response['data'] = $this->db->get()->result_array();
+            $response['data'] = $this->db->where(['payment_status' => '1'])->get()->result_array();
 
             echo json_encode($response);
 		} catch (\Throwable $th) {
