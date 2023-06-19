@@ -19,6 +19,18 @@ $this->load->view('user/includes/header');
         padding: 0;
     }
   }
+  .obj{
+    color:#000;
+    font-weight:800;
+  }
+  .nav-tabs .nav-item .nav-link {
+    color: #566a7f;
+    border: 0;
+    border-radius: 0;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+}
 </style>
 
 <!-- Content wrapper -->
@@ -54,10 +66,7 @@ $this->load->view('user/includes/header');
                               if($data['product_category'] == 'Aggressive') {
                           ?>
                           <li class="nav-item">
-                            <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" 
-                              data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" 
-                              aria-controls="navs-pills-top-home<?=@$data['product_id']?>" 
-                              aria-selected="false">
+                            <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
                               <label class="card-body pointer">
                                 <div class="form-check d-flex justify-content-between align-items-center">
                                   <div class="d-flex justify-content-start align-items-center">
@@ -83,11 +92,11 @@ $this->load->view('user/includes/header');
                               if($data['product_category'] == 'Aggressive') {
                           ?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="normal_proucts_<?=@$data['product_id']?>">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <div class="card-text">Objectives</div><br>
+                                    <div class="card-text obj">Objectives</div><br>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong> </p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
@@ -126,14 +135,10 @@ $this->load->view('user/includes/header');
                   <div class="col-md-12 col-xl-12">
                     <form id="form2" action="<?=base_url('user/')?>payment">
                       <div class="nav-align-left mb-4 row">
-                        <ul class="nav nav-pills mb-3 col-lg-6" id="normal-tabs" role="tablist">
+                        <ul class="nav nav-pills mb-3 col-lg-6" id="normalTabs" role="tablist">
                           <?php foreach($res as $data){if($data['product_category'] == 'Normal') {?>
                             <li class="nav-item">
-                              <div class="card bg-white text-dark mb-3" role="tab" 
-                                data-bs-toggle="tab" 
-                                data-bs-target="#normal_proucts_<?=@$data['product_id']?>" 
-                                aria-controls="normal_proucts_<?=@$data['product_id']?>" 
-                                aria-selected="false">
+                              <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
                                 <label class="card-body pointer">
                                   <div class="form-check d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-start align-items-center">
@@ -152,11 +157,11 @@ $this->load->view('user/includes/header');
                         <div id="normal-contents" class="tab-content shadow-none col-lg-6">
                           <?php foreach($res as $data){ if($data['product_category'] == 'Normal') {?>
 
-                            <div class="tab-pane fade" id="normal_proucts_<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="normal_proucts_<?=@$data['product_id']?>">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <div class="card-text">Objectives</div><br>
+                                    <div class="card-text obj">Objectives</div><br>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Daily Drawdown <strong> - $<?=@$data['daily_drawdown']?> </strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>

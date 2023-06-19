@@ -155,7 +155,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
           <div class="card-body">
             <div class="mb-3 row border-bottom">
               <div class="col-md-6 col-form-label">Evaluation</div>
-              <div class="col-md-6 text-right col-form-label"><?=@$product_details['account_size']?>K</div>
+              <div class="col-md-6 text-right col-form-label"><?=@$product_details['account_size']?></div>
             </div>
             <div class="mb-3 row border-bottom">
               <label class="col-md-6 col-form-label">Price</label>
