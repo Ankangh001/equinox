@@ -3,12 +3,15 @@ $this->load->view('user/includes/header');
 ?>
 <style>
       @media (max-width: 786px){
-          .card-body, .card-body.d-flex.justify-content-center.align-items-center {
+        .card-body, .card-body.d-flex.justify-content-center.align-items-center {
             flex-direction: column;
             text-align: center;
         }
-        i{
-          padding-top:12px;
+        i.lg-text.bx.text-white{
+          padding-top:20px;
+        }
+        h5.card-title.text-white {
+            font-size: 16px;
         }
       }
 </style>

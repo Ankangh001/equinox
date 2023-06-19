@@ -58,9 +58,9 @@ $this->load->view('user/includes/header');
                               <label class="card-body pointer">
                                 <div class="form-check d-flex justify-content-between align-items-center">
                                   <div class="d-flex justify-content-start align-items-center">
-                                    <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
+                                    <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1<?=@$data['product_id']?>">
                                     <div class="d-flex flex-column">
-                                      <label class="fw-bold form-check-label" for="defaultRadio1"><?=@$data['product_name']?></label>
+                                      <label class="fw-bold form-check-label" for="defaultRadio1<?=@$data['product_id']?>"><?=@$data['product_name']?></label>
                                     </div>
                                   </div>
                                   <p class="card-title fw-bold text-primary">$<?=@$data['account_size']?></p>
@@ -130,9 +130,9 @@ $this->load->view('user/includes/header');
                                 <label class="card-body pointer">
                                   <div class="form-check d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-start align-items-center">
-                                      <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
+                                      <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1<?=@$data['product_id']?>">
                                       <div class="d-flex flex-column">
-                                        <label class="fw-bold form-check-label" for="defaultRadio1"><?=@$data['product_name']?></label>
+                                        <label class="fw-bold form-check-label" for="defaultRadio1<?=@$data['product_id']?>"><?=@$data['product_name']?></label>
                                       </div>
                                     </div>
                                     <p class="card-title fw-bold text-primary">$<?=@$data['account_size']?></p>
