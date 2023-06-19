@@ -505,7 +505,7 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1 && $maxDl_status == 1){  
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){  
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
