@@ -285,13 +285,15 @@ class MetricsCron extends APIMaster {
         $decrypted['eqid'] = $id;
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
+        $name = $check2[0]['first_name'].' '.$check2[0]['last_name'];
+        $account = $check2[0]['account_id'];
         //0 = failed
         //1 = pass
         //2 = permanent pass
@@ -304,7 +306,6 @@ class MetricsCron extends APIMaster {
             );
         }else{
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2']);
-            $this->send_user_email($email, "PASS", "", "", "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User made permanently pass for profit target!'
@@ -416,9 +417,8 @@ class MetricsCron extends APIMaster {
 
 
 
-    public function getEquity(){
-        $request = base64_decode($this->input->post('r'));
-        $decrypted = json_decode($request, true);
+    public function getEquity($id){
+        $decrypted['eqid'] = $id;
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
         $equity = $check[0]['equity'];
@@ -443,7 +443,7 @@ class MetricsCron extends APIMaster {
     public function checkUserStatus($rowId){
         $decrypted['eqid'] = $rowId;
 
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
@@ -462,6 +462,8 @@ class MetricsCron extends APIMaster {
             $phase = $check[0]['phase'];
             $product_category = $check[0]['product_category'];
             $email = $check[0]['email'];
+            $name = $check[0]['first_name'].' '.$check[0]['last_name'];
+            $account = $check[0]['account_id'];
 
             //0 = failed
             //1 = pass
@@ -489,7 +491,7 @@ class MetricsCron extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", "", "");
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
@@ -566,6 +568,7 @@ class MetricsCron extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
