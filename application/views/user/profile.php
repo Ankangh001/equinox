@@ -6,7 +6,14 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  @media (max-width: 767.98px){
+    ul.nav.nav-pills.flex-column.flex-md-row.mb-3 {
+      flex-direction: row !important;
+      justify-content: center;
+    }
+  }
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -51,7 +58,7 @@ $this->load->view('user/includes/header');
           </div> -->
           <hr class="my-0">
           <div class="card-body">
-            <form id="formAccountSettings" method="POST" onsubmit="return false">
+            <form id="update-profile" method="POST" >
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="firstName" class="form-label">First Name</label>
@@ -73,7 +80,7 @@ $this->load->view('user/includes/header');
                 </div>
                   <div class="mb-3 col-md-6">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="country">
+                    <input type="text" class="form-control" id="country" name="country" placeholder="country" value="<?= @$res[0]['country']?>">
                   </div>
                 <!-- <div class="mb-3 col-md-6">
                   <label class="form-label" for="country">Country</label>
@@ -393,6 +400,58 @@ $this->load->view('user/includes/header');
 <script>
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Profile</h4>`);
 
-  $('#country').val("<?= @$res[0]['country']?>");
+  $('#update-profile').on('submit',(e)=>{
+    e.preventDefault();
+    var form = $('#update-profile').serializeArray();
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/updateProfile'); ?>",
+        data: form,
+        dataType: "html",
+        beforeSend: function(){
+          $('#update-profile').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+           );
+        },
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Credentials Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 8000);
+          }else if(res.status == 401){
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Wrong Credentials !');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 8000);
+          }else{
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenterTitle').html('Server Error !');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 8000);
+          }
+        },
+        error: function() { alert("Error posting feed."); }
+    });
+  });
 </script>
 <?php $this->load->view('user/includes/footer');?>

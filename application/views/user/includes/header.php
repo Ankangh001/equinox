@@ -61,7 +61,17 @@
         #uname {
             display: none;
         }
-    }
+      }
+
+      @media (max-width: 767.98px){
+        .layout-navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+            position: absolute;
+            right: 0.9rem;
+            min-width: auto;
+            width: 60%;
+            left: inherit;
+        }
+      }
     </style>
   </head>
   <body>
