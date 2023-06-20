@@ -84,6 +84,7 @@ class MetricsCron extends APIMaster {
                     $this->pass_max_dailyLoass($value['id']);
                 }else{
                     //user made failed for max drawdown and full account goes to fail
+                    echo "<br/>calling make_userFail_for_maxDrawdown<br/>";
                     $this->makeMaxDailylossFail($value['id']);
                 }
                 //------check max daily loss fail or pass------------------------
