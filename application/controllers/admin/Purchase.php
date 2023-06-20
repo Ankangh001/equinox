@@ -205,7 +205,7 @@ class Purchase extends APIMaster {
     }
 
 	//send mail for credentials
-	public function send_credentials_email($user_email, $accountId,  $password, $server, $balance){
+	public function send_credentials_email($user_email, $accountId,  $password, $server, $balance, $name){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
@@ -216,7 +216,7 @@ class Purchase extends APIMaster {
 		  	<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
 				<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
 				<p style="font-size: 14px; line-height: 160%;"><span
-					style="font-size: 20px; line-height: 35.2px;">Hello, </span></p>
+					style="font-size: 20px; line-height: 35.2px;">Hello '.$name.', </span></p>
 				<p style="font-size: 14px; line-height: 160%;">
 					<span style="font-size: 18px; line-height: 28.8px;">
 					We are excited that you have decided to be a part of our ETC family and we wish you

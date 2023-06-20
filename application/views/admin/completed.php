@@ -152,6 +152,7 @@ $this->load->view('admin/includes/header');
                     <th>Account Size</th>
                     <th>Type</th>
                     <th>Price</th>
+                    <th>Phase</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -371,6 +372,12 @@ $this->load->view('admin/includes/header');
             data: null,
             render: function (data, type, row) {
                 return '$'+row.product_price;
+            }
+          },
+          {
+            data: null,
+            render: function (data, type, row) {
+                return 'Phase '+row.phase;
             }
           },
           {
