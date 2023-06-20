@@ -31,6 +31,24 @@ $this->load->view('user/includes/header');
 </style>
 
 <div class="content-wrapper">
+  <!-- update alert modal -->
+  <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <h5 class="modal-title" id="modalCenterTitle">Payout Requested<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
         <div class="col-md-12 col-lg-12">
@@ -85,11 +103,12 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
                       <select required class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
-                        <option selected="">Select Payment Mode</option>
+                        <option>Select Payment Mode</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                         <option value="Crypto Currency">Crypto Currency</option>
                         <option value="Paypal">Paypal</option>
                       </select>
+                      <p class="mode-error d-none text-danger">Select a payment method first !</p>
                     </div>
                   </div>
 
@@ -193,6 +212,7 @@ $this->load->view('user/includes/header');
                     <th>Date</th>
                     <th>Amount</th>
                     <th>Type</th>
+                    <th>Payment Mode</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -255,6 +275,8 @@ $this->load->view('user/includes/header');
                 `);
               });
             }
+            $('input').attr('disabled', false);
+            $('#payment-mode').attr('disabled', false);
           }else{
             $('#account-numbers').html('');
             $('#submit-btn').attr('disabled', true);
@@ -320,7 +342,6 @@ $this->load->view('user/includes/header');
 
         if(res.status == 200){
           accBalance = Number(res.data[0].balance);
-          console.log(accBalance.toFixed(2));
           if(res.data[0].balance == "0.000000"){
             $('#available_amount').html(`<span class="text-danger">You don't have enough amount to withdraw !</span>`);
             $('#amount').attr('disabled', true);
@@ -343,7 +364,6 @@ $this->load->view('user/includes/header');
 
   $('#amount').keyup(function(e){
     if(accBalance < e.target.value){
-      console.log(e.target.value);
       $('.amnt-error').removeClass('d-none');
     }else{
       $('.amnt-error').addClass('d-none');
@@ -353,37 +373,45 @@ $this->load->view('user/includes/header');
 
   $('#payout-form').on('submit',(e)=>{
     e.preventDefault();
-    var form = $('#payout-form').serializeArray();
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('user/payout/requestPayout'); ?>",
-        data: form,
-        dataType: "html",
-        beforeSend: function(){
-          $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>`
-           );
-        },
-        success: function(data){
-          let res = JSON.parse(data);
-          if(res.status == 200){
-            $('#payout-form')[0].reset();
-            loadTable();
-            $('div#loading').hide(200);
-            $('.modal').modal('hide');
-            $('#modalCenter').modal('show');
-            $('.table').DataTable().destroy();
-            loadTable();
-            setTimeout(() => {
-              $('#modalCenter').modal('hide');
-            }, 8000);
-          }
-        },
-        error: function() { alert("Error posting feed."); }
-    });
+    if ($('#payment-mode').val() != "Select Payment Mode") {
+      var form = $('#payout-form').serializeArray();      
+      $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('user/payout/requestPayout'); ?>",
+          data: form,
+          dataType: "html",
+          beforeSend: function(){
+            $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`
+            );
+          },
+          success: function(data){
+            let res = JSON.parse(data);
+            if(res.status == 200){
+              $('#payout-form')[0].reset();
+              loadTable();
+              $('div#loading').hide(200);
+              $('.modal').modal('hide');
+              $('#modalCenter').modal('show');
+              $('.table').DataTable().destroy();
+              loadTable();
+              setTimeout(() => {
+                $('#modalCenter').modal('hide');
+              }, 8000);
+            }
+          },
+          error: function() { alert("Error posting feed."); }
+      });
+    }else{
+      $('.mode-error').removeClass('d-none');
+    }
+  });
+  
+  $('#payment-mode').change(()=>{
+    $('.mode-error').addClass('d-none');
   });
 
   function loadTable(){
@@ -392,10 +420,16 @@ $this->load->view('user/includes/header');
         ajax: "<?php echo base_url('user/payout/getPayouts'); ?>",
         deferRender: true,
         searching: false, paging: false, info: false,
-        // "pageLength": 100,
+        "pageLength": 100,
         columns:[
-          {data:'payout_date'},
           {
+            data: null,
+            render: function (data, type, row) {
+                return `${(row.payout_date).slice(0,10)}`;
+            }
+          },
+          {
+            width: '20%',
             data: null,
             render: function (data, type, row) {
                 return `${(Number(row.amount)).toFixed(2)}`;
@@ -407,7 +441,16 @@ $this->load->view('user/includes/header');
                 return `${row.payout_type}`;
             }
           },
+          
           {
+            width: '20%',
+            data: null,
+            render: function (data, type, row) {
+                return `${row.payment_mode}`;
+            }
+          },
+          {
+            width: '10%',
             data: null,
             render: function (data, type, row) {
                 return `${
@@ -417,7 +460,7 @@ $this->load->view('user/includes/header');
                   )
                 }`;
             }
-          }
+          },
         ]
     });
   }
