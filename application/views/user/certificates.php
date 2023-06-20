@@ -39,7 +39,7 @@ $this->load->view('user/includes/header');
             background-position: 50% 50%;
             background-repeat: no-repeat;
             display: block;
-            height: 250px;
+            height: 300px;
             margin: 5px;
             width: 32%;
             position: relative;
@@ -54,7 +54,7 @@ $this->load->view('user/includes/header');
             height: 100%;
             left: 0;
             top: 0;
-            background-color: rgba(22, 22, 22, 0.6);
+            /* background-color: rgba(22, 22, 22, 0.6); */
             transition: all 0.3s;
         }
         
@@ -70,26 +70,26 @@ $this->load->view('user/includes/header');
             background-image: url('https://i.ibb.co/QMrtWT1/c.jpg');
         }
 
- .featuredPropBox ul li:nth-child(4) {
-            background-image: url('https://i.ibb.co/DL5pvY6/bg-1-2.jpg');
-        }
+    .featuredPropBox ul li:nth-child(4) {
+                background-image: url('https://i.ibb.co/DL5pvY6/bg-1-2.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(5) {
-            background-image: url('https://i.ibb.co/FWV1BJG/bg-1.jpg');
-        }
- .featuredPropBox ul li:nth-child(6) {
-            background-image: url('https://i.ibb.co/ZXmWmSZ/14.jpg');
-        }
+    .featuredPropBox ul li:nth-child(5) {
+                background-image: url('https://i.ibb.co/FWV1BJG/bg-1.jpg');
+            }
+    .featuredPropBox ul li:nth-child(6) {
+                background-image: url('https://i.ibb.co/ZXmWmSZ/14.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(7) {
-            background-image: url('https://i.ibb.co/hLcmWbT/15646.jpg');
-        }
+    .featuredPropBox ul li:nth-child(7) {
+                background-image: url('https://i.ibb.co/hLcmWbT/15646.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(8) {
-            background-image: url('https://i.ibb.co/89P5rTs/15678.jpg');
-        }
+    .featuredPropBox ul li:nth-child(8) {
+                background-image: url('https://i.ibb.co/89P5rTs/15678.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(9) {
+    .featuredPropBox ul li:nth-child(9) {
             background-image: url('https://i.ibb.co/RhZgpSG/20845.jpg');
         }
         
@@ -145,7 +145,7 @@ $this->load->view('user/includes/header');
     <div class="container-xxl flex-grow-1 container-p-y">
     <div class="container">
    <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6 m-auto">
        <div class="featuredPropBox">
          <!-- <button id="submitBtn">Get Certificate</button>
          <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
@@ -155,8 +155,8 @@ $this->load->view('user/includes/header');
         </div>
          <ul>
            <li> 
-             <a href="#">
-               <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
+             <a href="#" class="card-body">
+               <!-- <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div> -->
                <div class="fptext">
                   <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
                   <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
