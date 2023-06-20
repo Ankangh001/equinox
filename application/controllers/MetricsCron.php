@@ -601,7 +601,7 @@ class MetricsCron extends APIMaster {
                         // no phase after this
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
                         
                         $response = array(
                             'status'=> 200,
@@ -639,20 +639,38 @@ class MetricsCron extends APIMaster {
 
         if ($stage == "PASS") {
             $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
-            $content = '
-            <tbody>
-                          <tr>
-                            <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
-                              <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-            ';
+
+            if($violation_type == "FUNDED"){
+                $content = '
+                <tbody>
+                    <tr>
+                    <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+                        <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
+                ';
+            }else{
+                $content = '
+                <tbody>
+                    <tr>
+                    <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+                        <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
+                            <p style="line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
+                ';
+            }
+
 		    $finaltemp = str_replace("{CONTENT}", $content, $body);
             $email = send_email($user_email, 'Congratulations for passing into equinox account', $finaltemp,'','',3);
         }elseif ($stage == "FAIL") {
