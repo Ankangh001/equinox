@@ -97,8 +97,34 @@ class Payout extends APIMaster {
 
 		
 		$res = $this->db->insert('payout_history', $data);
-		// $this->send_credentials_email();
+		$id = $this->db->insert_id();
+		
+        $get_payout = $this->db->where(['payout_id' => $id])->get('payout_history')->result_array();
 
+		$user_id = $get_payout[0]['user_id'];
+		$account_number = $get_payout[0]['mt5_accountNum'];
+		$payout_amount = $get_payout[0]['amount'];
+		
+		
+		
+		$this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
+        $this->db->from('userproducts');
+        $this->db->join('user', 'userproducts.user_id=user.user_id');
+        $this->db->join('products', 'userproducts.product_id=products.product_id');
+		
+        $check = $this->db->where(['account_id' => $account_number])->get()->result_array();
+		
+		
+        $email = $check[0]['email'];
+        $name = $check[0]['first_name'].' '.$check[0]['last_name'];
+        $account_num = $check[0]['account_id'];
+        $account_size = $check[0]['account_size'];
+        $product_category = $check[0]['product_category'];
+		$grossAmount = $payout_amount;
+
+		
+		$this->send_credentials_email($email, $name, $product_category, $account_size, $account_num, $grossAmount);
+		
 		$res2 = $this->db->where(['account_id'=>$this->input->post('mt5Acc')])
 		->update('userproducts',['payoutDate'=>date('Y-m-d H:m:s')]);
 
@@ -118,298 +144,106 @@ class Payout extends APIMaster {
 
 
 		//send mail for credentials
-		public function send_credentials_email($user_email, $accountId,  $password, $server, $balance, $name, $phase){
+		public function send_credentials_email($user_email, $name, $product_category, $account_size, $account_num, $grossAmount){
 			$this->load->helper('email_helper');
 			$this->load->library('mailer');
 	
 			$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
-			if($phase == '1'){
-				$content = '
-				<tbody>
-					<tr>
-						<td align="left">
-							<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
-								<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 35.2px;">Payout Request
-										Dear , '.$name.', </span>
-									</p>
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 28.8px;">
-											We are excited that you have decided to be a part of our ETC family and we wish you
-											very best with the evaluation.<br /><br />
-											You can monitor the performance of your account from the metrics section in your
-											dashboard.
-										</span>
-									</p>
-									<br />
-									<br />
-									<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
-										<tbody>
-											<tr>
-												<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-													<table border="0" cellpadding="0" cellspacing="0" width="100%">
-														<tr>
-															<td align="left" bgcolor="#CCCCCC" width="75%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong>Account Details:</strong>
-															</td>
-															<td align="left" bgcolor="#CCCCCC" width="25%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong></strong>
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Account
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$accountId.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Password
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$password.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Server
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$server.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Leverage
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																1:100
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Balance
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$balance.'
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<br>
-								<br>
-								<br>
-								<br>
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
 								<p style="font-size: 14px; line-height: 160%;">
-								<span style="font-size: 16px; line-height: 28.8px;">
-									Please test the above credentials right away and let us know if you have any issues.
-									If you have any questions, please feel free to get in touch with us. Best of luck with
-									your trading account!
-								</span>
+									<span style="font-size: 18px; line-height: 35.2px;">
+										Payout Request<br/>
+										Dear '.$name.', 
+									</span>
 								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 0px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Your account details:</strong>
+														</td>
+														<td align="right" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Phase
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Evaluation Funded
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account Type
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$product_category.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account Size
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															$'.number_format($account_size, 0, '.',',').'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															MT5 Account Number
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$account_num.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Payout Amount
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															$'.round($grossAmount, 2).'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-						</td>
-					</tr>
-				</tbody>';
-			}elseif($phase == '2'){
-				$content = '
-				<tbody>
-					<tr>
-						<td align="left">
-							<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
-								<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
-									</p>
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 28.8px;">
-											Congratulations again on passing your Evaluation Phase-1. We wish you very best in your Phase 2 and on your path to a becoming part of the ETC live trader family.<br /><br />
-											Always remember, “The Sky is the limit”.
-										</span>
-									</p>
-									<br />
-									<br />
-									<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
-										<tbody>
-											<tr>
-												<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-													<table border="0" cellpadding="0" cellspacing="0" width="100%">
-														<tr>
-															<td align="left" bgcolor="#CCCCCC" width="75%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong>Account Details:</strong>
-															</td>
-															<td align="left" bgcolor="#CCCCCC" width="25%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong></strong>
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Account
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$accountId.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Password
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$password.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Server
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$server.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Leverage
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																1:100
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Balance
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$balance.'
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<br>
-								<br>
-								<br>
-								<br>
-								<p style="font-size: 14px; line-height: 160%;">
-								<span style="font-size: 16px; line-height: 28.8px;">
-									Please test the above credentials right away and let us know if you have any issues.
-									If you have any questions, please feel free to get in touch with us. Best of luck with
-									your trading account!
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+								<span style="font-size: 18px; line-height: 28.8px;">
+									We have received your request and it will be processed within 3 Business days.<br/>
+									Feel free to contact us for assiatance regarding anything.
 								</span>
-								</p>
-							</div>
-						</td>
-					</tr>
-				</tbody>';
-			}elseif($phase == '3'){
-				$content = '
-				<tbody>
-					<tr>
-						<td align="left">
-							<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
-								<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
-									</p>
-									<p style="font-size: 14px; line-height: 160%;">
-										<span style="font-size: 18px; line-height: 28.8px;">
-											Congratulations again on passing your Evaluation Phase-2. Welcome to the ETC funded family.<br /><br />
-										</span>
-									</p>
-									<br />
-									<br />
-									<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
-										<tbody>
-											<tr>
-												<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-													<table border="0" cellpadding="0" cellspacing="0" width="100%">
-														<tr>
-															<td align="left" bgcolor="#CCCCCC" width="75%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong>Account Details:</strong>
-															</td>
-															<td align="left" bgcolor="#CCCCCC" width="25%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																<strong></strong>
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Account
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$accountId.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Password
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$password.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Server
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$server.'
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Leverage
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																1:100
-															</td>
-														</tr>
-														<tr>
-															<td align="left" width="75%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																Balance
-															</td>
-															<td align="left" width="25%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-																'.$balance.'
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<br>
-								<br>
-								<br>
-								<br>
-								<p style="font-size: 14px; line-height: 160%;">
-								<span style="font-size: 16px; line-height: 28.8px;">
-									Please test the above credentials right away and let us know if you have any issues.
-									If you have any questions, please feel free to get in touch with us. Best of luck with
-									your trading account!
-								</span>
-								</p>
-							</div>
-						</td>
-					</tr>
-				</tbody>';
-			}
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
 			$finaltemp = str_replace("{CONTENT}", $content, $body);
 	
-			$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',2);
+			$email = send_email($user_email, 'Funded account payout request', $finaltemp,'','',3);
 	
 			if($email){
 				$response = array(
 					"success" => 1,
-					"message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
+					"message" => "Your payout mail is send."
 				);
 			}	
 			else{
