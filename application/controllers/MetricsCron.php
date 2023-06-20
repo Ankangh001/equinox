@@ -11,23 +11,6 @@ class MetricsCron extends APIMaster {
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->where(['product_status' => '1']);
         $check = $this->db->get()->result_array();
-
-        //store values 
-        
-
-
-        // echo "<pre>";
-        // print_r($check);
-
-        // echo "account_size ".$check[0]['account_size'].'<br/>';
-        // echo "max_drawdown ". $check[0]['max_drawdown'].'<br/>';
-        // echo "daily_drawdown ".$check[0]['daily_drawdown'].'<br/>';
-        // echo "p1_target ".$check[0]['p1_target'].'<br/>';
-        // echo "p2_target ".$check[0]['p2_target'].'<br/>';
-        // echo "equity ".$check[0]['equity'].'<br/>';
-        // echo "phase ".$check[0]['phase'].'<br/>';
-
-        // exit;
         
         foreach ($check as $key => $value) {
 
@@ -101,7 +84,7 @@ class MetricsCron extends APIMaster {
                     $this->pass_max_dailyLoass($value['id']);
                 }else{
                     //user made failed for max drawdown and full account goes to fail
-                    $this->make_userFail_for_maxDrawdown($value['id']);
+                    $this->makeMaxDailylossFail($value['id']);
                 }
                 //------check max daily loss fail or pass------------------------
             }
