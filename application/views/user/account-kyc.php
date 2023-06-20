@@ -3,18 +3,26 @@ $this->load->view('user/includes/header');
 ?>
 <style>
     @media (max-width: 786px){
-    .badge {
-    display: inline-block;
-    padding: 0.52em 0.593em;
-    font-size: 0.8125em;
-    font-weight: 500;
-    line-height: 26px !important;
-    color: #fff;
-    text-align: center;
-    white-space: break-spaces;
-    vertical-align: baseline;
-    border-radius: 0.25rem;}
-  }
+      .badge {
+        display: inline-block;
+        padding: 0.52em 0.593em;
+        font-size: 0.8125em;
+        font-weight: 500;
+        line-height: 26px !important;
+        color: #fff;
+        text-align: center;
+        white-space: break-spaces;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+      }
+      
+      @media (max-width: 767.98px){
+        ul.nav.nav-pills.flex-column.flex-md-row.mb-3 {
+          flex-direction: row !important;
+          justify-content: center;
+        }
+      }
+    }
 </style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
