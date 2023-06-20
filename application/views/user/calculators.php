@@ -26,6 +26,8 @@ $this->load->view('user/includes/header');
       box-shadow: 0px 0px 8px #00000090;
       letter-spacing: 1.2px;
       font-weight: bold;
+      margin:12px;
+
   }
   .nav-tabs .nav-link.active {
       background: #444;
@@ -217,6 +219,6 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Calcualtors</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Calcualtors</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

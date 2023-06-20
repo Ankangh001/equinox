@@ -26,7 +26,7 @@
 <!-- Helpers -->
 <script src="<?=base_url('assets/user/')?>assets/vendor/js/helpers.js"></script>
 <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
-<script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
+<!-- <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script> -->
 
 </head>
 

@@ -149,7 +149,7 @@ $this->load->view('admin/includes/header');
 
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Pending Payouts</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Pending Payouts</h4>`);
   
   function viewPayout(pcid) {
     let request = {}
@@ -220,7 +220,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -258,7 +258,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -296,7 +296,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               // location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {

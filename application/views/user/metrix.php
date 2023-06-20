@@ -314,7 +314,7 @@ $myArray = explode(',', $myString);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Metrics</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Metrics</h4>`);
 
   const ctx = document.getElementById('myChart');
 
@@ -629,7 +629,7 @@ $myArray = explode(',', $myString);
         //-----profit target render----------------
         if(product_current_phase != '3'){
           //profit target render
-          if(((res['balance'])-accountSize).toFixed(2) >= target){ 
+          if(((res['balance']) - accountSize).toFixed(2) >= target){ 
             //make user permanently pass
             $.ajax({
               type: "POST",
@@ -825,7 +825,7 @@ $myArray = explode(',', $myString);
         }else if(dataRes == 400){
           getAccounts();
           setTimeout(() => {
-            checkUserStatus();
+            // checkUserStatus();
           }, 8000);
         }
       },

@@ -15,28 +15,36 @@ $this->load->view('user/includes/header');
     padding: 0.5rem;
     transition: 0.3s ease-in-out !important;
     flex-direction: row;
-}
-.nav-tabs:not(.nav-fill):not(.nav-justified) .nav-link, .nav-pills:not(.nav-fill):not(.nav-justified) .nav-link {
-    width: fit-content !important;
-    color: #000000;
-    font-size: 16px;
-    border: 1px solid #444;
-    padding: 6px 14px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 8px #00000090;
-    letter-spacing: 1.2px;
-    font-weight: bold;
-}
-.nav-tabs .nav-link.active {
-    background: #444;
-    color: #fff !important;
-}
-.tradingview-widget-container{
-  margin:auto
-}
-/* iframe {
-  pointer-events: none;
-} */
+  }
+  .nav-tabs:not(.nav-fill):not(.nav-justified) .nav-link, .nav-pills:not(.nav-fill):not(.nav-justified) .nav-link {
+      width: fit-content !important;
+      color: #000000;
+      font-size: 16px;
+      border: 1px solid #444;
+      padding: 6px 14px;
+      border-radius: 25px;
+      box-shadow: 0px 0px 8px #00000090;
+      letter-spacing: 1.2px;
+      font-weight: bold;
+    margin-bottom:2rem;
+
+  }
+  .nav-tabs .nav-link.active {
+      background: #444;
+      color: #fff !important;
+  }
+  .tradingview-widget-container{
+    margin:auto
+  }
+  .tradingview-widget-container {
+    /* pointer-events: none; */
+    overflow:scroll;
+    width:100%;
+  }
+  .tab-content {
+    padding: 0;
+    border-radius: 0.375rem;
+  }
 </style>
 
 
@@ -246,6 +254,6 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Market Analysis</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Market Analysis</h4>`);
 </script>
 <?php $this->load->view('user/includes/footer');?>

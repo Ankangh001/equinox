@@ -55,7 +55,7 @@ $this->load->view('admin/includes/header');
                 <div class="col-lg-4" id="daily-drawdown">
                   <div class="mb-3">
                       <label class="form-label" for="daily-drawdown">Daily Drawdown</label>
-                      <input required type="number" id="daily-drawdown" name="daily-drawdown" class="form-control phone-mask" placeholder="Enter Daily Drawdown">
+                      <input type="number" id="daily-drawdown" name="daily-drawdown" class="form-control phone-mask" placeholder="Enter Daily Drawdown">
                     </div>
                 </div>
                 <div class="col-lg-4" id="p1">
@@ -138,7 +138,7 @@ $this->load->view('admin/includes/header');
           setTimeout(() => {
             $('#alert').fadeOut();
             // $('#alert').addClass('d-none');
-          }, 3000);
+          }, 8000);
         },
         error: function() { alert("Error posting feed."); }
     });

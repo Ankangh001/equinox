@@ -25,7 +25,8 @@ class Welcome extends CI_Controller {
 
 	public function notice()
 	{
-		$this->load->view('notice');
+		$res['announcements'] = $this->db->get('announcements')->result_array();
+		$this->load->view('notice', $res);
 	}
 
 	public function quotes()
@@ -94,7 +95,8 @@ class Welcome extends CI_Controller {
 
 	public function promotion()
 	{
-		$this->load->view('promotion');
+		$res['promotions'] = $this->db->get('promotions')->result_array();
+		$this->load->view('promotion', $res);
 	}
 
 	public function service()

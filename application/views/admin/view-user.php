@@ -66,19 +66,19 @@ $this->load->view('admin/includes/header');
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                   <label for="user-email" class="form-label">User Email</label>
                   <input readonly required type="text" readonly id="user-email" name="email" class="form-control phone-mask" value="<?= @$res[0]['email']?>">
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="country">Country</label>
                     <input readonly required type="text" id="country" name="country" class="form-control phone-mask" value= "<?= @$res[0]['country']?>">
                   </div>
               </div>
-              <div class="col-lg-3">
+              <!-- <div class="col-lg-3">
                 <div class="mb-3">
                     <label class="form-label" for="price">State</label>
                     <input readonly required type="text" id="price" name="price" class="form-control phone-mask" value="<?= @$res[0]['state']?>">
@@ -89,56 +89,56 @@ $this->load->view('admin/includes/header');
                     <label class="form-label" for="city">City</label>
                     <input readonly required type="text" id="city" name="city" class="form-control phone-mask" value="<?= @$res[0]['city']?>" >
                   </div>
-              </div>
-              <div class="col-lg-3">
+              </div> -->
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="number">Number</label>
                     <input readonly required type="text" id="number" name="number" class="form-control phone-mask" value="<?= @$res[0]['number']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="affiliate-code">Affiliate Code</label>
                     <input readonly required type="text" id="affiliate-code" name="affiliate-code" class="form-control phone-mask"  value="<?= @$res[0]['affiliate_code']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="reffered-by">Reffered By</label>
                     <input readonly required type="text" id="reffered-by" name="reffered-by" class="form-control phone-mask" value="<?= @$res[0]['reffered_by']?>" >
                   </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <div class="mb-3">
                     <label class="form-label" for="reffered-by">KYC Status</label>
                     <input readonly required type="text" id="kyc-status" name="kyc-status" 
                       class="form-control phone-mask text-<?php 
-                        if($res[0]['kyc_status'] =='0'){ 
+                        if($res[0]['kyc_status'] =='1'){ 
                           echo 'warning';
-                        }elseif($res[0]['kyc_status'] =='1') {
-                          echo 'success';
                         }elseif($res[0]['kyc_status'] =='2') {
+                          echo 'success';
+                        }elseif($res[0]['kyc_status'] =='3') {
                           echo 'danger'; 
                         }
                       ?>" 
                       value="<?php 
-                        if($res[0]['kyc_status'] =='0'){ 
+                        if($res[0]['kyc_status'] =='1'){ 
                           echo 'PENDING';
-                        }elseif($res[0]['kyc_status'] =='1') {
-                          echo 'SUCCESS';
                         }elseif($res[0]['kyc_status'] =='2') {
+                          echo 'SUCCESS';
+                        }elseif($res[0]['kyc_status'] =='3') {
                           echo 'REJECTED'; 
                         }
                       ?>">
                   </div>
               </div>
-              <div class="col-lg-3 d-flex align-items-center">
-                <a target="_blank" href="<?= base_url('assets/user/kyc/').@$res[0]['kyc_doc'] ?>" id="kyc-btn" class="btn btn-<?= @$res[0]['kyc_status'] == '0' ? 'warning':'success'?> w-100">View KYC Document</a>
+              <!-- <div class="col-lg-3 d-flex align-items-center">
+                <a target="_blank" href="<?= base_url('kyc/').@$res[0]['kyc_doc'] ?>" id="kyc-btn" class="btn btn-<?= @$res[0]['kyc_status'] == '0' ? 'warning':'success'?> w-100">View KYC Document</a>
               </div>
               <div class="col-lg-4 d-flex align-items-center justify-content-between">
                 <button id="approve-kyc-btn" class="btn btn-primary">Approve KYC</button>
                 <button id="reject-kyc-btn" class="btn btn-danger">Reject KYC</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -189,7 +189,7 @@ $this->load->view('admin/includes/header');
           $('#userId').val(uId);
           res.forEach(element => {
             $('#products').append(`
-              <option value="${element.product_id}">${element.product_name}    |     $${element.product_price}   |    Size:${element.account_size}</option>
+              <option value="${element.product_id}">${element.product_name}    |     $${element.product_price}   |    Size:${element.account_size}    |    ${element.product_category}</option>
             `);
           });
           $('#modalCred').modal('show');
@@ -229,7 +229,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {
@@ -267,7 +267,7 @@ $this->load->view('admin/includes/header');
             setTimeout(() => {
               $('#modalCenter').modal('hide');
               location.reload(true);
-            }, 1000);
+            }, 8000);
           }
         },
         error:function(params) {

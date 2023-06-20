@@ -23,6 +23,12 @@ $this->load->view('includes/header');
         list-style: disc;
         margin-left: 5rem;
     }
+    @media (max-width: 768px){
+        .why-us {
+            padding: 5rem 0 0 0;
+            margin-top: 0;
+        }
+    }
 </style>
 <!-- ======= Evaluation ======= -->
 <section id="evaluation" class="why-us">

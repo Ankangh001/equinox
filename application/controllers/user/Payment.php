@@ -77,8 +77,8 @@ class Payment extends APIMaster {
                     "customer_id":"customer1",
                     "customer_name":"Person1"
                 },
-                "name":"Example1",
-                "description":"Create Charge using PHP",
+                "name":"Payment for",
+                "description":"Evaluation Product",
                 "pricing_type":"fixed_price",
                 "redirect_url":"'.base_url().'user/payment/coinbaseSuccess",
                 "cancel_url":"'.base_url().'user/payment/coinbaseFailure"
@@ -101,36 +101,6 @@ class Payment extends APIMaster {
 	}
 
     public function coinbaseSuccess(){
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges/HXBXZGYE',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Accept: application/json',
-                'X-CC-Version: 2018-03-22',
-                'X-CC-Api-Key: 408fe58b-6bc2-428e-84b4-b87bd44e3a07'
-            ),
-        ));
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-
-        $response = json_decode($response,true);
-        $responseStatus = end($response['data']['timeline'])['status'];
-        $payment_code = $response['data']['code'];
-        $this->db->where(['payment_code'=> $payment_code])->update('userproducts',['payment_status'=>1]);
-        $this->db->where(['payment_code'=> $payment_code])->update('transactions',['payment_status'=>1]);
-        $txnData = $this->db->where(['payment_code'=> $payment_code])->get('transactions')->row_array();
-        $this->addCoinbaseAffilatePoint($txnData);
         redirect(base_url('user/account-overview'));
     }
 
@@ -191,36 +161,6 @@ class Payment extends APIMaster {
 
 		} catch (\Throwable $th) {
 			$res = $th;
-		}
-	}
-
-    public function addCoinbaseAffilatePoint($requestData)
-	{        
-        try {
-            $affiliate_by = $this->db->where(['user_id' => $requestData['user_id']])->get('user')->row_array()['reffered_by'];
-            $affiliate_user = $this->db->where(['affiliate_code' => $affiliate_by])->get('user')->row_array();
-            if(!empty($affiliate_user)){
-                $affiliate_user_count = $this->db->where(['user_id' => $affiliate_user['user_id'],'txn_type' => 3])->get('transactions')->num_rows();
-                $query = "SELECT percentage FROM affiliate_slab WHERE $affiliate_user_count BETWEEN min_range AND max_range";
-                $affiliate_percentage = $this->db->query($query)->row_array()['percentage'];
-                
-                $transaction = array(
-                    'user_id'       =>  $affiliate_user['user_id'],
-                    'amount'        =>  (int) (($requestData['final_product_price']*$affiliate_percentage)/100),
-                    'product_id'    =>  $requestData['product_id'],
-                    'flag'          =>  0,
-                    'txn_type'      =>  3,
-                    'comments'      =>  'referral amount',
-                    'purchase_date' =>  date('Y-m-d H:m:s'),
-                    'updated_at'    =>  date('Y-m-d H:m:s'),
-                );
-                
-                $this->db->insert('transactions', $transaction);
-            }
-            return true;
-		} catch (\Throwable $th) {
-			$res = $th;
-            return true;
 		}
 	}
 
@@ -346,9 +286,10 @@ class Payment extends APIMaster {
 			
 			if($this->db->insert('userproducts', $userProducts)){
                 if( $this->db->insert('transactions', $transaction)){
-                    $orderId = 'EQ'.$this->db->insert_id().'LTD';
+                    $lastTxnId = $this->db->insert_id();
+                    $orderId = 'EQ'.$lastTxnId.'LTD';
                     if(isset($_SESSION['affiliate_by']) && ($_SESSION['affiliate_by'] != '')){
-                        $this->addAffilatePoint($requestData,$_SESSION['affiliate_by']);
+                        $this->addAffilatePoint($requestData,$_SESSION['affiliate_by'],$lastTxnId);
                     }
                     $response = array(
                         'status' => '200',
@@ -379,7 +320,7 @@ class Payment extends APIMaster {
 		}
 	}
 
-    public function addAffilatePoint($requestData,$affiliate_by)
+    public function addAffilatePoint($requestData,$affiliate_by,$refId)
 	{        
         try {
             $affiliate_user = $this->db->where(['affiliate_code' => $affiliate_by])->get('user')->row_array();
@@ -390,10 +331,11 @@ class Payment extends APIMaster {
                 
                 $transaction = array(
                     'user_id'       =>  $affiliate_user['user_id'],
-                    'amount'        =>  (int) (($requestData->final_product_price*$affiliate_percentage)/100),
+                    'amount'        =>  (($requestData->final_product_price*$affiliate_percentage)/100),
                     'product_id'    =>  $requestData->product_id,
                     'flag'          =>  0,
                     'txn_type'      =>  3,
+                    'ref_id'        =>  $refId,
                     'comments'      =>  'referral amount',
                     'purchase_date' =>  date('Y-m-d H:m:s'),
                     'updated_at'    =>  date('Y-m-d H:m:s'),
@@ -529,10 +471,10 @@ class Payment extends APIMaster {
         $product_price = $this->input->post('product_price');
         
         $res = $this->db->where(['code' => $code])->get('coupons')->result_array();
-        $product_discount = round($product_price *  ($res[0]['percentage']/100));
-        $final_product_price = round($product_price - ($product_price *  ($res[0]['percentage']/100)));
-
+        
         if($res){
+            $product_discount = round($product_price *  ($res[0]['percentage']/100));
+            $final_product_price = round($product_price - ($product_price *  ($res[0]['percentage']/100)));
 			$response = array(
 				'status' => '200',
 				'message' => 'Coupon Code Valid',
@@ -557,7 +499,7 @@ class Payment extends APIMaster {
         
         $body = file_get_contents(base_url('assets/mail/receipt.html'));
 
-        $content = '<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+        $content = '<td align="left" bgcolor="#ffffff" style="margin-auto; padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                             <td align="left" bgcolor="#D2C7BA" width="75%"
@@ -585,6 +527,14 @@ class Payment extends APIMaster {
                         </tr>
                         <tr>
                             <td align="left" width="75%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            Discount</td>
+                            <td align="left" width="25%"
+                            style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                            -$'.$product_Price-$priceAfterDiscount.'</td>
+                        </tr>
+                        <tr>
+                            <td align="left" width="75%"
                             style="padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;">
                             <strong>Total</strong></td>
                             <td align="left" width="25%"
@@ -594,7 +544,8 @@ class Payment extends APIMaster {
                         </table>
                     </td>';
         $finaltemp = str_replace("{PAYMENT}", $content, $body);
-    
+        // echo $finaltemp;die;
+
         $email = send_email($user_email, 'Payment Receipt', $finaltemp,'','',3);
 
         if($email){

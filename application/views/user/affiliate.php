@@ -1,7 +1,20 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
+<style>
+      @media (max-width: 786px){
+        .card-body, .card-body.d-flex.justify-content-center.align-items-center {
+            flex-direction: column;
+            text-align: center;
+        }
+        i.lg-text.bx.text-white{
+          padding-top:20px;
+        }
+        h5.card-title.text-white {
+            font-size: 16px;
+        }
+      }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
@@ -20,15 +33,15 @@ $this->load->view('user/includes/header');
     </div>
 
     <div class="row mb-5">
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3" style="background: linear-gradient(60deg, #fcfc, #ea1cea);">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-user text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
-                <h5 class="card-title text-white">Referred Users</h5>
+                <h5 class="card-title text-white">Referred <br/> Users</h5>
                 <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
@@ -36,13 +49,13 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-warning">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-dollar text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Earned</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['credit']?></p>
@@ -52,7 +65,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-danger">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -68,7 +81,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-info">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -77,7 +90,7 @@ $this->load->view('user/includes/header');
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title text-white">Comission Available</h5>
-                <p class="card-text fs-1 text-white"><?= (int) (@$transaction['credit'] -  @$transaction['debit'])?></p>
+                <p class="card-text fs-1 text-white"><?= (@$transaction['credit'] -  @$transaction['debit'])?></p>
               </div>
             </div>
           </div>
@@ -125,7 +138,7 @@ $this->load->view('user/includes/header');
     <?php $this->load->view('user/includes/footer');?>
 <script>
   $('#copied').hide(1);
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Affiliate</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Affiliate</h4>`);
   function copyToClipboard(element) {
     var $temp = $("<input>");
     $("body").append($temp);
@@ -135,7 +148,7 @@ $this->load->view('user/includes/header');
     $('#copied').show(200);
     setTimeout(() => {
       $('#copied').hide(500);
-    }, 1000);
+    }, 8000);
 
   }
 </script>

@@ -54,7 +54,7 @@ $this->load->view('user/includes/header');
     }
     
     .form-control:focus, .form-select:focus {
-        box-shadow: inset -12px -2px 0px #61dbff, inset -12px 2px 0px #61dbff, 2px 3px 6px #00000030  !important;
+        box-shadow: 0 0 6px #00000070 !important;
         border: none  !important;
     }
 
@@ -73,9 +73,17 @@ $this->load->view('user/includes/header');
         -moz-appearance: none;
         appearance: none;
         border-radius: 0.375rem;
-        box-shadow: inset -6px 0px 0px #61dbff, inset 6px 0px 0px #61dbff, 2px 3px 6px #00000030;
+        box-shadow: 2px 3px 6px #00000030;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
+    .nav-tabs .nav-item .nav-link {
+    color: #566a7f;
+    border: 0;
+    border-radius: 0;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+}
 
 </style>
 
@@ -310,9 +318,9 @@ $this->load->view('user/includes/header');
                                 <div class="accordion accordion-flush" id="accordionFunudedhExample2">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            What is the legal relationship between a trader and Equinox Trading Capital during the account management?
-                                        </button>
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funded-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                What is the legal relationship between a trader and Equinox Trading Capital during the account management?
+                                            </button>
                                         </h2>
                                         <div id="funded-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFunudedhExample2">
                                             <div class="accordion-body">
@@ -379,7 +387,7 @@ $this->load->view('user/includes/header');
                             <!-- funded -->
 
                             <!-- platforms -->
-                                <div role="tabpanel" class="tab-pane fade text-dark show" id="platforms">
+                            <div role="tabpanel" class="tab-pane fade text-dark show" id="platforms">
                                 <div class="accordion accordion-flush" id="accordionPlatformExample2">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
@@ -409,19 +417,19 @@ $this->load->view('user/includes/header');
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                             <!-- platforms -->
 
                             <!-- Orders & Billing -->
                             <div role="tabpanel" class="tab-pane fade text-dark show" id="orders">
-                                <div class="accordion accordion-flush" id="accordionFunudedhExample2">
+                                <div class="accordion accordion-flush" id="accordionFunudedhExample2000">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="orders-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Do we charge any other fees? Are the fees recurrent?
-                                        </button>
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne000">
+                                            Do we charge any other fees? Are the fees recurrent?
+                                            </button>
                                         </h2>
-                                        <div id="order-collapseOne" class="accordion-collapse collapse" aria-labelledby="orders-headingOne" data-bs-parent="#accordionFunudedhExample2">
+                                        <div id="order-collapseOne" class="accordion-collapse collapse" aria-labelledby="orders-headingOne" data-bs-parent="#accordionFunudedhExample2000">
                                             <div class="accordion-body">
                                             No, we don’t charge any additional or hidden fees. The fee for the evaluation covers it all. 
                                             There are absolutely no recurring fees with us. Moreover, your fee will be reimbursed to you with the first profit split on the live account. 
@@ -434,7 +442,7 @@ $this->load->view('user/includes/header');
                                         I paid for my evaluation, when will I get the account?
                                         </button>
                                         </h2>
-                                        <div id="order-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionFunudedhExample2">
+                                        <div id="order-collapseTwo" class="accordion-collapse collapse" aria-labelledby="orders-headingTwo" data-bs-parent="#accordionFunudedhExample2000">
                                         <div class="accordion-body">
                                             We start processing your evaluation account as soon as we receive the payment. We normally process your evaluation within just a few hours.
                                             When we create your trading account, you will receive your evaluation notification by email, and your login credentials to the trading platform can be found directly in your client area. Please monitor your mailbox, including spam/junk folders.
@@ -448,7 +456,7 @@ $this->load->view('user/includes/header');
                                             Why is there a fee?
                                         </button>
                                         </h2>
-                                        <div id="order-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionFunudedhExample2">
+                                        <div id="order-collapseThree" class="accordion-collapse collapse" aria-labelledby="orders-headingThree" data-bs-parent="#accordionFunudedhExample2000">
                                             <div class="accordion-body">
                                                 The fee mainly serves as a trader’s commitment to treat the account with the utmost care and responsibility.A trader has something in the game and the psychology is working. 
                                                 Also, the fee is just a marginal percentage compared to the size of the live account that you will receive after succeeding in the evaluation. In other words, the fee is a key towards the live account and an opportunity to gain financial independence.
@@ -466,7 +474,7 @@ $this->load->view('user/includes/header');
                                             How many accounts can I have?
                                         </button>
                                         </h2>
-                                        <div id="order-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionFunudedhExample2">
+                                        <div id="order-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionFunudedhExample2000">
                                             <div class="accordion-body">
                                             We do not place any limit on the number of trading accounts you can have in the evaluation phase. However, we have a maximum capital allocation of <strong style= "color:#0d6efd">$500,000</strong> (prior to scaling) per trader or strategy, at any given time for any live account.
                                             These limits are in place due to risk mitigation & diversification as we don’t want to allocate a big portion of our investment on one card.
@@ -540,12 +548,12 @@ $this->load->view('user/includes/header');
                                             </div>
 
                                             <div class="accordion-item">
-                                                <h2 class="accordion-header" id="orders-headingFour">
-                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                                <h2 class="accordion-header" id="orders-headingFour00">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services-collapseFour000" aria-expanded="false" aria-controls="flush-collapseFour">
                                                 Can I trade news?
                                                 </button>
                                                 </h2>
-                                                <div id="services-collapseFour" class="accordion-collapse collapse" aria-labelledby="orders-headingFour" data-bs-parent="#accordionServicesExample2">
+                                                <div id="services-collapseFour000" class="accordion-collapse collapse" aria-labelledby="orders-headingFour00" data-bs-parent="#accordionServicesExample2">
                                                     <div class="accordion-body">
                                                         <strong style= "color:#0d6efd">Yes</strong>, you can trade news.
                                                     </div>
@@ -575,7 +583,8 @@ $this->load->view('user/includes/header');
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
                     <div class="container" data-aos="fade-up">
                         <div class="d-flex m-5" id="myFilter2">
-                            <input type="text" style="width:30%"  class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
+                            <input type="text" class="m-auto col-lg-3 form-control" onkeyup="myFunction()" placeholder="Search for Rules">
+                            <i style="margin-left: -2em; margin-top: 10px" class='bx bx-search-alt-2'></i>
                             <!-- <button class="btn btn-secondary search"><i class="bx bx-search-alt-2 text-white"></i></button> -->
                         </div>
                         <ul class="nav nav-tabs justify-content-center mb-5 border-none" role="tablist">
@@ -597,8 +606,7 @@ $this->load->view('user/includes/header');
                                 <div class="accordion accordion-flush" id="accordionFlushExampleRules">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                                data-bs-target="#flush-collapseOneRules" aria-expanded="false" aria-controls="flush-collapseOneRules">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneRules" aria-expanded="false" aria-controls="flush-collapseOneRules">
                                                 How do you calculate the daily loss limit?
                                             </button>
                                         </h2>
@@ -664,15 +672,15 @@ $this->load->view('user/includes/header');
                                 </div>
                             </div>
                             
-                            <div role="tabpanel" class="tab-pane fade text-dark show" id="buzzRules">
+                            <div role="tabpanel" class="tab-pane fade text-dark" id="buzzRules">
                                 <div class="accordion accordion-flush" id="accordionFlushExample2Rules">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOneRules">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneRules" aria-expanded="false" aria-controls="flush-collapseOneRules">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneRules0001" aria-expanded="false" aria-controls="flush-collapseOneRules0001">
                                                 How do you calculate the overall max drawdown?                                                        
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseOneRules" class="accordion-collapse show" aria-labelledby="flush-headingOneRules" data-bs-parent="#accordionFlushExample2Rules">
+                                        <div id="flush-collapseOneRules0001" class="accordion-collapse collapse" aria-labelledby="flush-headingOneRules" data-bs-parent="#accordionFlushExample2Rules">
                                             <div class="accordion-body">
                                             Maximum drawdown is the maximum your account can drawdown before you would hard breach your account. 
                                             When you open the account, your Max Drawdown is set at <strong style= "color:#0d6efd">10%</strong> of your starting balance. This will be static for the duration of the account.   
@@ -681,11 +689,11 @@ $this->load->view('user/includes/header');
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwoRules" aria-expanded="false" aria-controls="flush-collapseTwoRules">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwoRules123" aria-expanded="false" aria-controls="flush-collapseTwoRules123">
                                                 Can I hold position over the weekend?
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseTwoRules" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2Rules">
+                                        <div id="flush-collapseTwoRules123" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2Rules">
                                             <div class="accordion-body">
                                                 <strong style= "color:#0d6efd">Yes</strong>, you are allowed to hold over the weekend.
                                             </div>
@@ -693,11 +701,11 @@ $this->load->view('user/includes/header');
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingThreeRules">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThreeRules" aria-expanded="false" aria-controls="flush-collapseThreeRules">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThreeRules123" aria-expanded="false" aria-controls="flush-collapseThreeRules123">
                                                 Is there any consistency rule?
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseThreeRules" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeRules" data-bs-parent="#accordionFlushExample2Rules">
+                                        <div id="flush-collapseThreeRules123" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeRules" data-bs-parent="#accordionFlushExample2Rules">
                                             <div class="accordion-body">
                                                 <strong style= "color:#0d6efd">No</strong>, there is no consistency rule
                                             </div>
@@ -717,7 +725,7 @@ $this->load->view('user/includes/header');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <script>
-    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Faq & Rules</h4>`)
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Help</h4>`)
 
     const faqs = document.querySelectorAll('.accordion-button');
     const searchInput = document.getElementById('search');

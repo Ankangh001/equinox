@@ -7,10 +7,10 @@ async function SquarePaymentFlow() {
   // ApplePay(document.getElementById('apple-pay-button'));
 
   // Create Google pay instance
-  GooglePay(document.getElementById('google-pay-button'));
+  // GooglePay(document.getElementById('google-pay-button'));
 
   // Create ACH payment
-  ACHPay(document.getElementById('ach-button'));
+  // ACHPay(document.getElementById('ach-button'));
 }
 
 window.payments = Square.payments(window.applicationId, window.locationId);
@@ -43,6 +43,7 @@ window.createPayment = async function(token) {
   });
 
   try {
+    // debugger;
     var paymentUrl  = PANEL_URL+"user/payment/squarePayment";
     const response = await fetch(paymentUrl, {
       method: 'POST',
@@ -57,6 +58,12 @@ window.createPayment = async function(token) {
     if (data.errors && data.errors.length > 0) {
       if (data.errors[0].detail) {
         window.showError(data.errors[0].detail);
+        $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
+        $('#modalCenter').modal('show');
+        setTimeout(() => {
+          $('#modalCenter').modal('hide');
+          location.reload();
+        }, 4000);
       } else {
         window.showError('Payment Failed.');
         $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
@@ -64,16 +71,16 @@ window.createPayment = async function(token) {
         setTimeout(() => {
           $('#modalCenter').modal('hide');
           window.location.href = PANEL_URL+"user/account-overview";
-        }, 1000);
+        }, 4000);
       }
     } else {
       window.showSuccess('Payment Successful!');
-      $('#modalCenterTitle').html('Payment Success Full<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+      $('#modalCenterTitle').html('Payment Successfull<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
       $('#modalCenter').modal('show');
       setTimeout(() => {
         $('#modalCenter').modal('hide');
         window.location.href = PANEL_URL+"user/account-overview";
-      }, 1000);
+      }, 4000);
     }
   } catch (error) {
     console.error('Error:', error);

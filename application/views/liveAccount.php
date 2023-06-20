@@ -14,7 +14,7 @@ Also, because the trades have not actually been executed, the results may have u
 Simulated trading programs, in general, are also subject to the fact that they are designed with the benefit of hindsight. No representation is being made that any account will or is likely to achieve profit or losses similar to those shown.
 ETC - Equinox Trading Capital funded accounts are not live trading accounts, they are fully simulated accounts utilizing real market quotes from liquidity providers.
 The Traders featured are representative only and includes selected traders who allow their names to be publicly disclosed. Trader performance quoted represents past performance in a simulated environment and does not guarantee current or future performance.
-Further, financial instrument trading involves substantial risk of loss and is not suitable for every investor, trading activities referenced by or undertaken utilizing The Funded Trader may not be suitable for all persons.</p>
+Further, financial instrument trading involves substantial risk of loss and is not suitable for every investor, trading activities referenced by or undertaken utilizing The Equinox Trading Capital may not be suitable for all persons.</p>
             </div>
         </div>
     </section><!-- End Pricing -->

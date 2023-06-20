@@ -14,13 +14,13 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Equinox User Dashboard</title>
+    <title>ETC-Client area</title>
 
     <meta name="description" content="" />
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +56,13 @@
     <script>
       // let PANEL_URL = "<?= base_url()?>";
     </script>
+    <style>
+      @media (max-width: 500px){
+        #uname {
+            display: none;
+        }
+    }
+    </style>
   </head>
   <body>
   <div id="loading" class="demo-inline-spacing">
@@ -70,7 +77,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="<?= base_url() ?>" class="app-brand-link">
                 <!-- Favicons -->
                 <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" width="80%">
             </a>
@@ -308,9 +315,9 @@
                   <button class="btn btn-secondary">Language</button>
                 </li> -->
 
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3" id="uname">
                   <p class="text mt-3"><?=$_SESSION['user_name']?></p>
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -329,8 +336,16 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?=$_SESSION['user_name']?></span>
+                              <?php 
+                                if($_SESSION['kyc_status'] == '2'){ 
+                                  echo '<span class="badge bg-label-success">KYC Verified</span>';
+                                }else{
+                                  echo '<span class="badge bg-label-danger">KYC Un verified</span>';
+                                }
+                              ?>
+                            <small class="text-muted">
+                            </small>
                           </div>
                         </div>
                       </a>

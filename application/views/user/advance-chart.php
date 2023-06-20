@@ -1,7 +1,13 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
+<style>
+    @media (max-width: 786px){
+      #mob-title{
+        display:none;
+      }
+    }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
@@ -48,7 +54,7 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 <script>
   $('#navbar-collapse').prepend(
-    `<h4 class="fw-bold mb-0 mr-3"><span class="text-muted fw-light">User /</span> Advanced Chart</h4> 
+    `<h4 class="fw-bold mb-0 mr-3" id="mob-title">Advanced Chart</h4> 
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button class="btn btn-outline-dark ml-3 btn-sm" onclick="var el = document.getElementById('element'); el.requestFullscreen();">
         <i class='bx bx-fullscreen' ></i>

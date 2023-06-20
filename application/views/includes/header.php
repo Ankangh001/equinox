@@ -16,8 +16,8 @@
   <meta content="thefundedtrader, myforexfunds, forexlifestyle, Forex, fundedtrader, forexpropfirm, propfirm, forextrading, forextrader, forexlifestyle, forexmarket, equinoxtradingcapital, ftmo, myforexfunds, thefundedtrader, fundednext, fundedtrader" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -32,8 +32,7 @@
   <!-- <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css?v3=1" rel="stylesheet"> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?v3=1" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script>
+  <!-- <script type="text/javascript" src= "<?= base_url('assets/js/notify.js') ?>"></script> -->
  
  <script>
 //      function googleTranslateElementInit() {
@@ -155,8 +154,8 @@ body{
         <ul>
 		 	<li class="dropdown"><a><span>How it Works</span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-				<li><a href="./#evaluation"><i class="fas fa-sort-amount-up"></i>&nbsp;&nbsp;Evaluation Process</a></li>
-				<li><a href="./#table-pricing"><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;&nbsp;Pricing</a></li>
+				<li><a id="evp" href="./#evaluation"><i class="fas fa-sort-amount-up"></i>&nbsp;&nbsp;Evaluation Process</a></li>
+				<li><a id="pricing-nav" href="./#table-pricing"><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;&nbsp;Pricing</a></li>
 				<li><a href="scaling-plan"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;Scaling Plan</a></li>
 				</ul>
 			</li>

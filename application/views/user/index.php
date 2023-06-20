@@ -163,17 +163,17 @@ $this->load->view('user/includes/header');
                 <label for="html5-text-input" class="fs-1 text-dark my-3 col-form-label fw-bold text-transform-none ">Challenge</label>
               </div>
               <div class="mb-5 d-flex flex-column text-center">
-                <label for="html5-text-input" class="text-primary col-form-label">Trade upto $200,000 SmartProp trde account</label>
-                <label for="html5-text-input" class="col-form-label">Pass the simple Evaluation and Trader Account</label>
+                <label for="html5-text-input" class="text-primary col-form-label">Manage upto $500,000 Equinox Trading Capital account</label>
+                <label for="html5-text-input" class="col-form-label">Pass the evaluation phase and become a funder trader</label>
               </div>
 
               <div class="mb-3 d-flex flex-column text-left border-bottom">
                 <ul class="list-unstyled mt-2">
                   <li>
                     <ul>
-                      <li>Basic account featured</li>
-                      <li>Master your trading stratergy</li>
-                      <li>Trading upto 14 days</li>
+                      <li>All strategies accepted.</li>
+                      <li>One time refundable fee only.</li>
+                      <li>EA's, copy trading and news trading allowed.</li>
                     </ul>
                   </li>
                 </ul>
@@ -186,7 +186,7 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Dashboard</h4>`);
 
   var user ={};
   user.id = <?php echo $_SESSION['user_id']; ?>;

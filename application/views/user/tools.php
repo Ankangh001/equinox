@@ -22,7 +22,7 @@ $this->load->view('user/includes/header');
               </div>
             </div>
             <div class="col-md-2 d-flex align-items-center justify-content-center text-center">
-              <a href="<?=base_url('assets/user/files/ETC Trade Journal.xlsx')?>" class="pointer btn btn-outline-secondary p-2"><i class='bx bx-download fs-3' ></i></a>
+              <a href="<?=base_url('assets/user/files/ETC Trade Manager.ex5')?>" class="pointer btn btn-outline-secondary p-2"><i class='bx bx-download fs-3' ></i></a>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ $this->load->view('user/includes/header');
                 </div>
               </div>
               <div class="col-md-2 d-flex align-items-center justify-content-center text-center">
-                <a href="<?=base_url('assets/user/files/ETC Trade Journal.xlsx')?>" class="pointer btn btn-outline-secondary p-2"><i class='bx bx-download fs-3' ></i></a>
+                <a href="<?=base_url('assets/user/files/ETC Trade Manager.ex5')?>" class="pointer btn btn-outline-secondary p-2"><i class='bx bx-download fs-3' ></i></a>
               </div>
             </div>
           </div>
@@ -74,6 +74,6 @@ $this->load->view('user/includes/header');
   </div>
     <!-- / Content -->
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Applications or Tools</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> User Tools</h4>`)
 </script>
 <?php $this->load->view('user/includes/footer');?>

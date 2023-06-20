@@ -61,21 +61,21 @@ class Coupon extends APIMaster {
 		}
 	}
 
-	public function delete()
+	public function deleteCoupon()
 	{
         try {
-			$product_id = $this->input->post('product_id');		
-			$res = $this->db->where(['product_id' =>$product_id])->delete('products');
+			$id = $this->input->post('id');		
+			$res = $this->db->where(['id' =>$id])->delete('coupons');
 
 			if($res){
 				$response = array(
 					'status' => '200',
-					'message' => 'Added successfully',
+					'message' => 'Deleted successfully',
 				);
 			}else{
 				$response = array(
 					'status' => '400',
-					'message' => 'Unable to add data',
+					'message' => 'Unable to delete data',
 				);
 			}
 			echo json_encode($response);

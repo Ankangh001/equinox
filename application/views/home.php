@@ -1,9 +1,13 @@
 <?php
 $this->load->view('includes/header');
 ?>
-
-
-
+<style>
+	@media (max-width: 992px){
+		#nav-contact {
+				margin-top: 2rem !important;
+		}
+	}
+</style>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -11,35 +15,12 @@ $this->load->view('includes/header');
         	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
 				<p class="trade-cap">Trade our capital and keep upto 90% of profits. We cover the losses.</p>
-				
-				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
-
-				<div class="flex items-end justify-start z-10" style="color:#000000">
-					<div class="timer-m text-center">
-						<span id="day" class="text-xl sm:text-5xl">110</span>
-						<p style="font-size:0.8rem">Days</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="hours" class="text-xl sm:text-5xl">13</span>
-						<p style="font-size:0.8rem">Hours</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="min" class="text-xl sm:text-5xl">47</span>
-						<p style="font-size:0.8rem">Minutes</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="sec" class="text-xl sm:text-5xl">20</span>
-						<p style="font-size:0.8rem">Seconds</p>
-					</div>
-				</div> -->
-
 				<div class="btns d-flex justify-content-center" style="width:80%">
 					<a href="client-signup" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
 					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto learn-more" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
 				</div>
-
 				<div class="btn2" style="width:80%">
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
 					
@@ -578,7 +559,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Target</td>
 											<td x-text="currentConfig[0][0]">$7500</td>
 											<td x-text="currentConfig[1][0]">$5000</td>
-											<td x-text="currentConfig[2][0]">indefinite%</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
 										</tr>
 										<tr>
 											<td style="text-align:left !important; width:40%">Max Drawdown</td>
@@ -1417,7 +1398,7 @@ $this->load->view('includes/header');
 						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
-							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
+							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.</p>
 							<a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>

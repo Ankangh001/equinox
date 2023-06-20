@@ -100,7 +100,7 @@ $route['admin/profile'] = 'admin/profile';
 $route['admin/announcements'] = 'admin/announcements';
 $route['admin/promotions'] = 'admin/promotions';
 $route['admin/games-rewards'] = 'admin/games';
-$route['admin/affiliate'] = 'admin/affiliate';
+$route['admin/affiliates'] = 'admin/affiliate';
 $route['admin/faq'] = 'admin/faq';
 
     //----complaints-----------//
@@ -113,6 +113,11 @@ $route['admin/accounts/approved-passed-accounts'] = 'admin/account/approvedPasse
 
 $route['admin/accounts/pending-failed-accounts'] = 'admin/account/pendingFailedAccounts';
 $route['admin/accounts/approved-failed-accounts'] = 'admin/account/approvedFailedAccounts';
+
+    //------kyc--------//
+$route['admin/user/pending-kyc'] = 'admin/user/viewPendingKyc';
+$route['admin/user/approved-kyc'] = 'admin/user/viewApproveKyc';
+$route['admin/user/rejected-kyc'] = 'admin/user/viewRejectedKyc';
 
     //------add coupons------//
 $route['admin/add-coupons'] = 'admin/coupon';

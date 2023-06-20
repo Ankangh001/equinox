@@ -236,10 +236,11 @@ h6 {
 
 @media (max-width: 992px) {
 	.book-a-table-btn {
-		margin: 0;
-		padding: 4px 10px;
-		font-size: 12px;
+		margin: 0 -20px 0 0;
+		padding: 5px 10px;
+		font-size: 14px;
 	}
+
 }
 
 /*--------------------------------------------------------------
@@ -362,7 +363,7 @@ h6 {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-	color: #000;
+	color: #fff;
 	font-size: 28px;
 	cursor: pointer;
 	display: none;
@@ -3096,11 +3097,10 @@ iframe.mob-tuto{
 	#hero .btns {
 		margin: 14px auto !important;
 		width: 100% !important;
-		justify-content: space-evenly !important;
 	}
 	#hero h1 {
 		font-size: 44px;
-		line-height: 42px;
+		line-height: 48px;
 		margin: 0;
 	}
 	.trade-cap{
@@ -3206,15 +3206,15 @@ iframe.mob-tuto{
 		font-size: 12px !important;
 	}
 	.flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p {
-		margin: 0 auto 10% auto !important;
-		font-size: 18px !important;
-		padding: 6% 14% !important;
+		margin: 12px 4px !important;
+		font-size: 16px !important;
+		padding: 6% 10% !important;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	li.nav-item {
-		margin: 10px 16px !important
+		margin: 3px 9px !important
 	}
 	.pricing-coming-soon span {
 		font-size: 14px;
@@ -3262,9 +3262,9 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 14px;
+		font-size: 14px !important;
 		padding: 3% 3% !important;
-		margin: 1rem 0 !important;
+		margin: 1rem 6px !important;
 	}
 	#hero .btn2 {
 		margin: auto !important;
@@ -3273,9 +3273,9 @@ iframe.mob-tuto{
 		font-size: 11px !important;
 	}
 	.btn-box {
-		padding: 5px 12px !important;
+		padding: 1px 8px !important;
 		border-radius: 12px;
-		font-size: 1rem !important;
+		font-size: 20px !important;
 		text-align: center !important;
 		display: flex;
 		justify-content: center;
@@ -3299,6 +3299,11 @@ iframe.mob-tuto{
 	.payouts{
 		padding: 0;
 		margin-bottom: 3rem;
+	}
+
+	.img-holder.d-flex.justify-content-center.align-items-center.p-3{
+		display: flex !important;
+		flex-wrap: wrap;
 	}
 }
 
@@ -3408,8 +3413,8 @@ iframe.mob-tuto{
 	}
 
 	.img-holder img{
-		width: 50%;
-		margin-bottom: 3rem;
+		width: 40%  !important;
+		/* margin-bottom: 3rem; */
 	}
 
 	#eqLogoWhite{
@@ -3536,4 +3541,7 @@ iframe.mob-tuto{
 
 .color-000{
 	color: #000 !important;
+}
+.color-fff{
+	color: #fff !important;
 }

@@ -176,7 +176,7 @@ $this->load->view('admin/includes/header'); ?>
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }
         },
         error: function() { alert("Error posting feed."); }

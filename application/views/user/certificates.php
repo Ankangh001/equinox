@@ -1,7 +1,9 @@
 <?php
 // echo "<pre>";
-// print_r($res);
+// echo (substr($res[0]['phase3_issue_date'], 0, 10));
+// // print_r($res);
 // die;
+
 $this->load->view('user/includes/header');
 ?>
 <style>
@@ -10,6 +12,9 @@ $this->load->view('user/includes/header');
             font-family: 'Open Sans', sans-serif;
         }
         
+        .featuredPropBox ul li{
+            width:100% !important
+        }
         a:hover {
             text-decoration: none;
         }
@@ -144,17 +149,28 @@ $this->load->view('user/includes/header');
        <div class="featuredPropBox">
          <!-- <button id="submitBtn">Get Certificate</button>
          <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
+         <?php if($res){?>
+         <div class="card-title  text-center fw-bold mt-5">
+            Funded Account Certificate
+        </div>
          <ul>
            <li> 
              <a href="#">
                <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
                <div class="fptext">
-                  <input type="hidden" name="Name" autocomplete="name" id="name" value="Ankan">
+                  <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
                   <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
                 </div>
               </a>
             </li>
          </ul>
+         <?php }else{ ?>
+            <div class="row">
+                <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+                You Need to have atleast one Funded Account.
+                </span>
+            </div>
+         <?php }?>
       </div>
      </div>
   </div>
@@ -165,7 +181,7 @@ $this->load->view('user/includes/header');
     <script src="<?=base_url('assets/js/FileSaver.js')?>"></script>
     <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
   <script>
-    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Certificates</h4>`);
+    $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Certificates</h4>`);
 
         const userName = document.getElementById("name");
         const submitBtn = document.getElementById("submitBtn");
@@ -190,8 +206,8 @@ $this->load->view('user/includes/header');
             }
         });
 
-        const generatePDF = async (name, date="<?php echo date('Y-m-d')?>") => {
-            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/crt.pdf").then((res) =>
+        const generatePDF = async (name, date="<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>") => {
+            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
                 res.arrayBuffer()
             );
 
@@ -213,17 +229,17 @@ $this->load->view('user/includes/header');
 
             // Draw a string of text diagonally across the first page
             firstPage.drawText(name, {
-                x: 250,
-                y: 390,
+                x: 650,
+                y: 375,
                 size: 26,
                 font: SanChezFont,
                 color: rgb(0, 0, 0),
             });
 
             firstPage.drawText(date, {
-                x: 285,
-                y: 248,
-                size: 10,
+                x: 700,
+                y: 187,
+                size: 12,
                 font: SanChezFont,
                 color: rgb(0, 0, 0),
             });

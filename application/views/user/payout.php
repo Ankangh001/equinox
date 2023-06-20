@@ -13,16 +13,42 @@ $this->load->view('user/includes/header');
     border: none !important;
     background: transparent !important;
     color: blue !important;
-}
+  }
+  @media (max-width: 786px){
+    .badge {
+    display: inline-block;
+    padding: 0.52em 0.593em;
+    font-size: 0.8125em;
+    font-weight: 500;
+    line-height: 26px !important;
+    color: #fff;
+    text-align: center;
+    white-space: initial;
+    vertical-align: baseline;
+    border-radius: 0.25rem;}
+  }
+
 </style>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
         <div class="col-md-12 col-lg-12">
-          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 2){   ?>
-          <span class="badge bg-label-warning mx-auto my-3 w-100 fs-5" style="text-transform : none">You can't request a payout as your KYC is not completed !</span>
-          <?php }elseif ($res[0]['kyc_status'] == 1) { ?>
+          <?php if($res[0]['kyc_status'] == 0 || $res[0]['kyc_status'] == 1){  ?>
+            <div class="row">
+              <span class="card badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+                You can't request a payout as your KYC is not completed !
+              </span>
+              <a href="<?= base_url('user/account-kyc') ?>" class="text-center"><button class="btn btn-primary">Apply for KYC</button></a>
+            </div>
+          <?php }elseif($res[0]['kyc_status'] == 3){  ?>
+            <div class="row">
+              <span class="card badge bg-label-danger mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
+                You can't request a payout as your KYC is rejected !
+              </span>
+              <a href="<?= base_url('user/account-kyc') ?>" class="text-center"><button class="btn btn-primary">Apply for KYC</button></a>
+            </div>
+          <?php }elseif ($res[0]['kyc_status'] == 2) { ?>
           <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
               <h5 class="mb-0"><i class="menu-icon tf-icons bx bx-receipt"></i>Withdraw your earnings</h5>
@@ -195,7 +221,7 @@ $this->load->view('user/includes/header');
   $('#account').css('display','none');
   $('#bank-details').css('display','none');
 
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Payout / Withdraw</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Payout</h4>`);
 
   let accBalance = 0;
   $('#payout').change((e)=>{
@@ -353,7 +379,7 @@ $this->load->view('user/includes/header');
             loadTable();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }
         },
         error: function() { alert("Error posting feed."); }

@@ -160,7 +160,7 @@ class Metrix extends APIMaster {
         $decrypted = json_decode($request, true);
 
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-        $this->db->select('userproducts.*, products.*, user.email');
+        $this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
@@ -182,7 +182,6 @@ class Metrix extends APIMaster {
             );
         }else{
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['target_status' => '2']);
-            $this->send_user_email($email, "PASS", "", $name, "", "");
             $response = array(
                 'status'=> 200,
                 'message'=>'User made permanently pass for profit target!'
@@ -356,7 +355,7 @@ class Metrix extends APIMaster {
             $phase = $check[0]['phase'];
             $product_category = $check[0]['product_category'];
             $email = $check[0]['email'];
-            $name = $check[0]['first_name'].' '.$check2[0]['last_name'];
+            $name = $check[0]['first_name'].' '.$check[0]['last_name'];
             $account = $check[0]['account_id'];
 
             //0 = failed
@@ -414,7 +413,8 @@ class Metrix extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s')
+                            'payoutDate' => date('Y-d-m H:m:s'),
+                            'phase3_issue_date' => date('Y-d-m H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $response = array(
@@ -461,6 +461,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, "");
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
@@ -474,8 +475,8 @@ class Metrix extends APIMaster {
                 }elseif($phase == '2') {
                     if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
-                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'2'])
-                        ->update('userproducts', ['product_status'=>'3','metrics_status'=> '1']);
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
                         
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -489,8 +490,8 @@ class Metrix extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s')
-
+                            'payoutDate' => date('Y-d-m H:m:s'),
+                            'phase3_issue_date' => date('Y-d-m H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $response = array(
@@ -504,7 +505,7 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1 && $maxDl_status == 1){  
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){  
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
@@ -540,20 +541,20 @@ class Metrix extends APIMaster {
         if ($stage == "PASS") {
             $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
             $content = '
-            <tbody>
-                          <tr>
-                            <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
-                              <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
-                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
+                <tbody>
+                    <tr>
+                    <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+                        <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
+                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
+                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
+                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
             ';
-		    $finaltemp = str_replace("{FAILED CONTENT}", $content, $body);
+		    $finaltemp = str_replace("{CONTENT}", $content, $body);
             $email = send_email($user_email, 'Congratulations for passing into equinox account', $finaltemp,'','',3);
         }elseif ($stage == "FAIL") {
             $body = file_get_contents(base_url('assets/mail/accountFailed.html'));

@@ -167,7 +167,7 @@ $this->load->view('admin/includes/header');
 
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Phase 1</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Phase 1</h4>`);
 
   //global variables for aggressive p-type = 0
   let asIp = "<?= @$servers[0]['sIp']; ?>";
@@ -319,7 +319,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }else if(res.status == 401){
             loadTable();
             $('div#loading').hide(200);
@@ -329,7 +329,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }else{
             loadTable();
             $('div#loading').hide(200);
@@ -339,7 +339,7 @@ $this->load->view('admin/includes/header');
             $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }
         },
         error: function() { alert("Error posting feed."); }
