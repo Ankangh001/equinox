@@ -384,7 +384,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, "");
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
@@ -461,7 +461,7 @@ class Metrix extends APIMaster {
                             'payment_status' => $check[0]['payment_status']
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, "");
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
@@ -469,7 +469,7 @@ class Metrix extends APIMaster {
                     }else{
                         $response = array(
                             'status'=> 400,
-                            'message'=>'account not passed phase-1 yet',
+                            'message'=>'account not passed phase-1 yet or normal',
                         );  
                     }
                 }elseif($phase == '2') {
@@ -494,6 +494,7 @@ class Metrix extends APIMaster {
                             'phase3_issue_date' => date('Y-d-m H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product',
@@ -505,15 +506,20 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){  
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){
+                        // no phase after this
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        
                         $response = array(
                             'status'=> 200,
-                            'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
-                        );                          
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase3 he/she can do a payout now',
+                        );                         
                     }else{
                         $response = array(
                             'status'=> 400,
-                            'message'=>'account not passed phase-1 yet',
+                            'message'=>'account not passed phase-3 yet',
                         );  
                     }
                 }
@@ -529,32 +535,32 @@ class Metrix extends APIMaster {
                 'message'=>'Data not found user might be failed'
             );
         }
-        echo json_encode($response);
+        echo json_encode($response)."<br/>";
     }
 
     //send mail for passing phases
     //violation_type = 0,1,2
-	public function send_user_email($user_email, $stage, $violation_type, $name, $account){
-		$this->load->helper('email_helper');
-		$this->load->library('mailer');
+    public function send_user_email($user_email, $stage, $violation_type, $name, $account){
+        $this->load->helper('email_helper');
+        $this->load->library('mailer');
 
         if ($stage == "PASS") {
             $body = file_get_contents(base_url('assets/mail/accountPassed.html'));
             $content = '
-                <tbody>
-                    <tr>
-                    <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
-                        <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
-                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
-                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
-                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
-                        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
-                        </div>
-                    </td>
-                    </tr>
-                </tbody>
+            <tbody>
+                        <tr>
+                            <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;" align="left">
+                            <div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Hello '.$name.',</span></p><br>
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Congratulations once again.</span></p><br>
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We would like to congratulate you on achieving the target within time frame and with proper risk management.</span></p><br>
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We look forward to having you as part of our Funded Trader Program. Good luck!</span></p>
+                            </div>
+                            </td>
+                        </tr>
+                        </tbody>
             ';
-		    $finaltemp = str_replace("{CONTENT}", $content, $body);
+            $finaltemp = str_replace("{CONTENT}", $content, $body);
             $email = send_email($user_email, 'Congratulations for passing into equinox account', $finaltemp,'','',3);
         }elseif ($stage == "FAIL") {
             $body = file_get_contents(base_url('assets/mail/accountFailed.html'));
@@ -597,22 +603,22 @@ class Metrix extends APIMaster {
                 </div>
             </td>
             ';
-		    $finaltemp = str_replace("{FAILED CONTENT}", $content, $body);
+            $finaltemp = str_replace("{FAILED CONTENT}", $content, $body);
         
             $email = send_email($user_email, 'Account Breach Detected', $finaltemp,'','',3);
         }
 
-		if($email){
-			$response = array(
-				"success" => 1,
-				"message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
-			);
-		}	
-		else{
-			$response = array(
-				"success" => 0,
-				"message" => "Some error occured!"
-			);
-		}
-	}
+        if($email){
+            $response = array(
+                "success" => 1,
+                "message" => "Your Account has been made, please verify it by clicking the activation link that has been send to your email."
+            );
+        }	
+        else{
+            $response = array(
+                "success" => 0,
+                "message" => "Some error occured!"
+            );
+        }
+    }
 }

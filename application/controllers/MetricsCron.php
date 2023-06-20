@@ -584,6 +584,7 @@ class MetricsCron extends APIMaster {
                             'phase3_issue_date' => date('Y-d-m H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product',
@@ -595,15 +596,20 @@ class MetricsCron extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){  
+                    if($maxdd_status == 1 && $maxDl_status == 1 && $metrics_status == 0){
+                        // no phase after this
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        
                         $response = array(
                             'status'=> 200,
-                            'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
-                        );                          
+                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase3 he/she can do a payout now',
+                        );                         
                     }else{
                         $response = array(
                             'status'=> 400,
-                            'message'=>'account not passed phase-1 yet',
+                            'message'=>'account not passed phase-3 yet',
                         );  
                     }
                 }
