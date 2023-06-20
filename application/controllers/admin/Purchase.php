@@ -492,7 +492,7 @@ class Purchase extends APIMaster {
 		}
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
-		$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',2);
+		$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',3);
 
 		if($email){
 			$response = array(
