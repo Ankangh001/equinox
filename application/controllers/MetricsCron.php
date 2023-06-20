@@ -582,7 +582,7 @@ class MetricsCron extends APIMaster {
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
                             'payoutDate' => date('Y-d-m H:m:s'),
-                            'phase3_issue_date' => date('Y-d-m H:m:s')
+                            'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $this->send_user_email($email, "PASS", "", $name, $account);

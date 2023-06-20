@@ -392,6 +392,7 @@ $this->load->view('user/includes/header');
             let res = JSON.parse(data);
             if(res.status == 200){
               $('#payout-form')[0].reset();
+              $('#available_amount').html('');
               loadTable();
               $('div#loading').hide(200);
               $('.modal').modal('hide');
