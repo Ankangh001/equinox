@@ -200,7 +200,7 @@ $this->load->view('admin/includes/header');
         data: request,
         dataType: "html",
         beforeSend: function(){
-          $('.container').prepend(`<div id="loading" class="demo-inline-spacing">
+          $('form').prepend(`<div id="loading" class="demo-inline-spacing">
               <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
@@ -238,7 +238,7 @@ $this->load->view('admin/includes/header');
         data: request,
         dataType: "html",
         beforeSend: function(){
-          $('.container').prepend(`<div id="loading" class="demo-inline-spacing">
+          $('form').prepend(`<div id="loading" class="demo-inline-spacing">
               <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>

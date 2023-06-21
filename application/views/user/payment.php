@@ -134,7 +134,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
 
               <div class="tab-pane fade " id="navs-top-profile" role="tabpanel">
                 <div class="col-lg-12">
-                  <button id="coinbase_buy" class="m-auto" type="submit">Pay with Coinbase</button>
+                  <button id="coinbase_buy" class="m-auto w-100" type="submit">Pay with Coinbase</button>
                   <form id="paymentForm">
                   </form>
                 </div>
