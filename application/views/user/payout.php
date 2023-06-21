@@ -455,8 +455,8 @@ $this->load->view('user/includes/header');
             data: null,
             render: function (data, type, row) {
                 return `${
-                  row.payout_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.payout_status == 1 ? '<span class="badge bg-label-success">PAID</span>' : 
+                  row.payout_status == 0 ? '<span class="badge bg-label-warning">PEDING</span>' : 
+                  (row.payout_status == 1 ? '<span class="badge bg-label-success">APPROVED</span>' : 
                     (row.payout_status == 2 ? '<span class="badge bg-label-danger">DENIED</span>' :'')
                   )
                 }`;
