@@ -332,7 +332,7 @@ class Metrix extends APIMaster {
 	}
 
     //user status controller
-    public function checkUserStatus($rowId){
+    public function checkUserStatus(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
 

@@ -98,7 +98,7 @@ $this->load->view('user/includes/header');
                 </div>
                   <div class="mb-3 col-md-6">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="country" value="<?= @$res[0]['country']?>">
+                    <input type="text" readonly class="form-control" id="country" name="country" placeholder="country" value="<?= @$res[0]['country']?>">
                   </div>
                 <!-- <div class="mb-3 col-md-6">
                   <label class="form-label" for="country">Country</label>
