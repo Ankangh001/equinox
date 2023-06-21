@@ -77,7 +77,7 @@ $this->load->view('user/includes/header');
           <h2 class="accordion-header" id="headingOne">
             <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <div class="closed-details row col-lg-8">
+              <div class="closed-details col-lg-8">
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
@@ -233,7 +233,7 @@ $this->load->view('user/includes/header');
           <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
               
-              <div class="closed-details  row col-lg-8">
+              <div class="closed-details col-lg-8">
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
@@ -387,7 +387,7 @@ $this->load->view('user/includes/header');
           <h2 class="accordion-header" id="headingOne">
           <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <div class="closed-details  row col-lg-8">
+              <div class="closed-details col-lg-8">
               
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
