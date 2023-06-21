@@ -332,11 +332,11 @@ $myArray = explode(',', $myString);
   const r = window.btoa(JSON.stringify(accountNum));
   let saveStartDate ={};
 
-  let accountSize = <?= $myArray[2]; ?>;
-  let maxDD = <?= $myArray[4]; ?>;
-  let maxDL = <?= $myArray[5]; ?>;
-  let target = <?= $myArray[6]; ?>;
-  let product_current_phase = <?= $myArray[10]; ?>;
+  let accountSize = "<?= $myArray[2]; ?>";
+  let maxDD = "<?= $myArray[4]; ?>";
+  let maxDL = "<?= $myArray[5]; ?>";
+  let target = "<?= $myArray[6]; ?>";
+  let product_current_phase = "<?= $myArray[10]; ?>";
   let product_type_en = "<?= $myArray[3]; ?>";
   let checkAmount = accountSize - maxDD;
   let tempChartData = [];
