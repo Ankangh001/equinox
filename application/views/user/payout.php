@@ -82,9 +82,10 @@ $this->load->view('user/includes/header');
                       <select required class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
                         <option selected="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
-                        <!-- <option value="Affiliate">Affiliate</option> -->
+                        <option value="Affiliate">Affiliate</option>
                         <!-- <option value="Rewards">Games & Rewards</option> -->
                       </select>
+                      <p class="payout-type-error d-none text-danger">Select a payout type first !</p>
                     </div>
                   </div>
 
@@ -242,6 +243,7 @@ $this->load->view('user/includes/header');
   $('#bank-details').css('display','none');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Payout</h4>`);
+  $('input').attr('readonly', true);
 
   let accBalance = 0;
   $('#payout').change((e)=>{
@@ -275,12 +277,12 @@ $this->load->view('user/includes/header');
                 `);
               });
             }
-            $('input').attr('disabled', false);
+            $('input').attr('readonly', false);
             $('#payment-mode').attr('disabled', false);
           }else{
             $('#account-numbers').html('');
             $('#submit-btn').attr('disabled', true);
-            $('input').attr('disabled', true);
+            $('input').attr('readonly', true);
             $('#payment-mode').attr('disabled', true);
             $('#account-numbers').append(`
               <option selected>${res.message}</option>
@@ -290,34 +292,58 @@ $this->load->view('user/includes/header');
         error: function() { alert("Error posting feed."); }
       });
     }else if(e.target.value == "Affiliate"){
+      
       $('.amnt-error').addClass('d-none');
       $('#submit-btn').attr('disabled', false);
-      $('#payout').addClass('col-lg-6');
+
       $('#payout').removeClass('col-lg-4');
+      $('#payout').addClass('col-lg-6');
 
       $('#mode').removeClass('col-lg-4');
       $('#mode').addClass('col-lg-6');
 
       $('#account').css('display','none');
-      $('#available_amount').text('Availble amount : $83');
+
+
+      let user = {};
+      user.user_id = "<?= $_SESSION['user_id'] ?>";
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url('user/payout/getAffiliate'); ?>",
+        data: user,
+        dataType: "html",
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            accBalance = (res.data.credit)-(res.data.debit);
+            $('div#loading').hide(200);
+            $('#available_amount').text(`Availble amount : $${accBalance}`);
+            $('input').attr('readonly', false);
+            $('#payment-mode').attr('disabled', false);
+          }else{
+            $('#submit-btn').attr('disabled', true);
+            $('input').attr('readonly', true);
+          }
+        },
+        error: function() { 
+          $('#payment-mode').attr('disabled', true);
+        }
+      });
+
+
+
     }else if(e.target.value == "Rewards"){
-      $('#payout').addClass('col-lg-6');
-      $('#payout').removeClass('col-lg-4');
+      // $('#payout').addClass('col-lg-6');
+      // $('#payout').removeClass('col-lg-4');
 
-      $('#mode').removeClass('col-lg-4');
-      $('#mode').addClass('col-lg-6');
+      // $('#mode').removeClass('col-lg-4');
+      // $('#mode').addClass('col-lg-6');
 
-      $('#account').css('display','none');
-      $('#available_amount').text('Availble amount : $39');
+      // $('#account').css('display','none');
+      // $('#available_amount').text('Availble amount : $39');
     }else{
-      $('#payout').addClass('col-lg-6');
-      $('#payout').removeClass('col-lg-4');
-
-      $('#mode').removeClass('col-lg-4');
-      $('#mode').addClass('col-lg-6');
-
-      $('#account').css('display','none');
-      $('#available_amount').text('');
+      $('input').attr('readonly', true);
+      $('#available_amount').text(``);
     }
   });
 
@@ -370,10 +396,19 @@ $this->load->view('user/includes/header');
     }
   });
 
+  function validate(params) {
+    
+  }
 
   $('#payout-form').on('submit',(e)=>{
     e.preventDefault();
-    if ($('#payment-mode').val() != "Select Payment Mode") {
+    if($('#payout-type').val() != '') {
+      $('.payout-type-error').removeClass('d-none');    
+    }else if ($('#payment-mode').val() == "Select Payment Mode"){
+      $('.mode-error').removeClass('d-none');    
+    }else if($('#amount').val() != ''){
+      $('.amnt-error').removeClass('d-none');    
+    }else{
       var form = $('#payout-form').serializeArray();      
       $.ajax({
           type: "POST",
@@ -406,13 +441,23 @@ $this->load->view('user/includes/header');
           },
           error: function() { alert("Error posting feed."); }
       });
-    }else{
-      $('.mode-error').removeClass('d-none');
     }
   });
   
   $('#payment-mode').change(()=>{
-    $('.mode-error').addClass('d-none');
+    if($('#payment-mode').val() == "Select Payment Mode"){
+      $('.mode-error').removeClass('d-none');    
+    }else{
+      $('.mode-error').addClass('d-none');
+    }
+  });
+
+  $('#payout-type').change(()=>{
+    if($('#payout-type').val() == "Select Payout Type"){
+      $('.payout-type-error').removeClass('d-none');    
+    }else{
+      $('.payout-type-error').addClass('d-none');
+    }
   });
 
   function loadTable(){

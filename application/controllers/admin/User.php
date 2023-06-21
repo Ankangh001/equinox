@@ -107,7 +107,7 @@ class User extends APIMaster {
 				'amount' => $product_category[0]['product_price'],
 				'product_id' => $this->input->post('product_id'),
 				'product_category' => $product_category[0]['product_category'],
-				'gateway' => 'coinbase',
+				'gateway' => 'admin',
 				'purchase_date' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s'),
 				'payment_status' => '1'
