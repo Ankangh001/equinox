@@ -52,7 +52,7 @@ class Payout extends APIMaster {
 			}else{
 				$response = array(
 					'status' => '400',
-					'message' => "Sorry! You can't request two payouts within a month.",
+					'message' => "Sorry! You can't request payout now.",
 					'data' => $res
 				);
 			}
