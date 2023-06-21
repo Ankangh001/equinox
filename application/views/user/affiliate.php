@@ -41,7 +41,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8 col-sm-12">
               <div class="card-body">
-                <h5 class="card-title text-white">Referred <br/> Users</h5>
+                <h5 class="card-title text-white">Referred<br/>Users</h5>
                 <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
@@ -57,7 +57,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8 col-sm-12">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Earned</h5>
+                <h5 class="card-title text-white">Comission<br />Earned</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['credit']?></p>
               </div>
             </div>
@@ -73,7 +73,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Withdrawn</h5>
+                <h5 class="card-title text-white">Comission<br/>Withdrawn</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['debit']?></p>
               </div>
             </div>
@@ -89,7 +89,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Available</h5>
+                <h5 class="card-title text-white">Comission<br/>Available</h5>
                 <p class="card-text fs-1 text-white"><?= (@$transaction['credit'] -  @$transaction['debit'])?></p>
               </div>
             </div>
