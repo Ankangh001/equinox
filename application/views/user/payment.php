@@ -257,6 +257,7 @@ $web_payment_sdk_url = SQUARE_CUSTOM_ENVIRONMENT === 'PRODUCTION' ? "https://web
       });
     }else{
       $("#error").removeClass('d-none');
+      $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
     }
   });
 
