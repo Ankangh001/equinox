@@ -535,7 +535,7 @@ class Metrix extends APIMaster {
                 'message'=>'Data not found user might be failed'
             );
         }
-        echo json_encode($response)."<br/>";
+        echo json_encode($response);
     }
 
 
