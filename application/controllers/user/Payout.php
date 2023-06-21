@@ -7,6 +7,7 @@ class Payout extends APIMaster {
     {
         parent::__construct();
         $this->verifyAuth();
+        $this->load->model('Affiliate_model','Affiliate');
     }
 
 	public function index(){
@@ -30,6 +31,27 @@ class Payout extends APIMaster {
 				'message' => 'You dont have any funded accounts yet.',
 			);
 		}
+		echo json_encode($response);  
+    }
+
+	
+
+	public function getAffiliate(){
+        $res = $this->Affiliate->getAffiliateAmount($_SESSION['user_id']);
+
+        if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'success',
+				'data' => $res
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'You dont have any funded accounts yet.',
+			);
+		}
+		
 		echo json_encode($response);  
     }
 
