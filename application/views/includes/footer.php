@@ -222,7 +222,7 @@
 
 
 
-  <button class="chatbox-open">
+  <!-- <button class="chatbox-open">
     <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
   </button>
 <button class="chatbox-close">
@@ -282,7 +282,7 @@
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </aside>
   </footer>
-</section>
+</section> -->
 
 
 <style>
