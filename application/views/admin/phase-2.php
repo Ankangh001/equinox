@@ -259,7 +259,7 @@ $this->load->view('admin/includes/header');
             }else{
               $('#server-add').val(res[0].server);
             }
-          }else if(product_category == 'Funded'){
+          }else if(phase == '3'){
             if(res[0].ip == ''){
               $('#ip-add').val(fsIp);
             }else{

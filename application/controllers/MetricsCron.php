@@ -490,7 +490,7 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'3', 'metrics_status'=> '1']);
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
                         
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -508,6 +508,7 @@ class MetricsCron extends APIMaster {
                             'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product',
