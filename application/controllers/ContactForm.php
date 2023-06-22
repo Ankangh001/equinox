@@ -5,7 +5,7 @@ class ContactForm extends CI_Controller {
 
 	public function index()
 	{     
-        print_r($this->input->post());die;
+        // print_r($this->input->post());die;
 
         $data = array(
             'name' => $this->input->post('name'),

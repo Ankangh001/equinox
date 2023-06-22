@@ -222,7 +222,7 @@
 
 
 
-  <button class="chatbox-open">
+  <!-- <button class="chatbox-open">
     <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
   </button>
 <button class="chatbox-close">
@@ -282,7 +282,7 @@
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </aside>
   </footer>
-</section>
+</section> -->
 
 
 <style>
@@ -499,23 +499,23 @@ textarea::placeholder {
 
 
     // Disable right-click
-    // document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    // function ctrlShiftKey(e, keyCode) {
-    //   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-    // }
+    function ctrlShiftKey(e, keyCode) {
+      return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    }
 
-    // document.onkeydown = (e) => {
-    //   // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-    //   if (
-    //     event.keyCode === 123 ||
-    //     ctrlShiftKey(e, 'I') ||
-    //     ctrlShiftKey(e, 'J') ||
-    //     ctrlShiftKey(e, 'C') ||
-    //     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-    //   )
-    //     return false;
-    // };
+    document.onkeydown = (e) => {
+      // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+      if (
+        event.keyCode === 123 ||
+        ctrlShiftKey(e, 'I') ||
+        ctrlShiftKey(e, 'J') ||
+        ctrlShiftKey(e, 'C') ||
+        (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+      )
+        return false;
+    };
 
     $('.success-nws').css('display', 'none');
 
