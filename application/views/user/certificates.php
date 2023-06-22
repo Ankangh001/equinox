@@ -1,7 +1,7 @@
 <?php
 // echo "<pre>";
 // echo (substr($res[0]['phase3_issue_date'], 0, 10));
-// // print_r($res);
+// print_r($certificates);
 // die;
 
 $this->load->view('user/includes/header');
@@ -39,7 +39,7 @@ $this->load->view('user/includes/header');
             background-position: 50% 50%;
             background-repeat: no-repeat;
             display: block;
-            height: 250px;
+            height: 300px;
             margin: 5px;
             width: 32%;
             position: relative;
@@ -54,7 +54,7 @@ $this->load->view('user/includes/header');
             height: 100%;
             left: 0;
             top: 0;
-            background-color: rgba(22, 22, 22, 0.6);
+            /* background-color: rgba(22, 22, 22, 0.6); */
             transition: all 0.3s;
         }
         
@@ -70,26 +70,26 @@ $this->load->view('user/includes/header');
             background-image: url('https://i.ibb.co/QMrtWT1/c.jpg');
         }
 
- .featuredPropBox ul li:nth-child(4) {
-            background-image: url('https://i.ibb.co/DL5pvY6/bg-1-2.jpg');
-        }
+    .featuredPropBox ul li:nth-child(4) {
+                background-image: url('https://i.ibb.co/DL5pvY6/bg-1-2.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(5) {
-            background-image: url('https://i.ibb.co/FWV1BJG/bg-1.jpg');
-        }
- .featuredPropBox ul li:nth-child(6) {
-            background-image: url('https://i.ibb.co/ZXmWmSZ/14.jpg');
-        }
+    .featuredPropBox ul li:nth-child(5) {
+                background-image: url('https://i.ibb.co/FWV1BJG/bg-1.jpg');
+            }
+    .featuredPropBox ul li:nth-child(6) {
+                background-image: url('https://i.ibb.co/ZXmWmSZ/14.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(7) {
-            background-image: url('https://i.ibb.co/hLcmWbT/15646.jpg');
-        }
+    .featuredPropBox ul li:nth-child(7) {
+                background-image: url('https://i.ibb.co/hLcmWbT/15646.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(8) {
-            background-image: url('https://i.ibb.co/89P5rTs/15678.jpg');
-        }
+    .featuredPropBox ul li:nth-child(8) {
+                background-image: url('https://i.ibb.co/89P5rTs/15678.jpg');
+            }
 
- .featuredPropBox ul li:nth-child(9) {
+    .featuredPropBox ul li:nth-child(9) {
             background-image: url('https://i.ibb.co/RhZgpSG/20845.jpg');
         }
         
@@ -143,127 +143,158 @@ $this->load->view('user/includes/header');
 </style>
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="container">
-   <div class="row">
-    <div class="col-lg-12">
-       <div class="featuredPropBox">
-         <!-- <button id="submitBtn">Get Certificate</button>
-         <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
-         <?php if($res){?>
-         <div class="card-title  text-center fw-bold mt-5">
-            Funded Account Certificate
-        </div>
-         <ul>
-           <li> 
-             <a href="#">
-               <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div>
-               <div class="fptext">
-                  <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
-                  <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
-                </div>
-              </a>
-            </li>
-         </ul>
-         <?php }else{ ?>
+        <div class="container">
             <div class="row">
-                <span class="badge bg-label-warning mx-auto my-5 fs-5 col-lg-6" style="text-transform : none">
-                You Need to have atleast one Funded Account.
-                </span>
-            </div>
-         <?php }?>
-      </div>
-     </div>
-  </div>
- </div>
-    <!-- / Content -->
+                <div class="col-lg-6 m-auto">
+                    <div class="featuredPropBox">
+                        <!-- <button id="submitBtn">Get Certificate</button>
+                        <iframe src="" id="pdf" width="500" height="600" frameborder="0"></iframe> -->
+                        <?php if($res){?>
+                            <div class="card-title  text-center fw-bold mt-5">
+                                Funded Account Certificate
+                            </div>
+                            <ul>
+                                <li> 
+                                    <a href="#" class="card-body">
+                                        <!-- <div class="fplogo"><img src="<?=base_url('assets/img')?>/equinoxLogo.png" alt="fp1"></div> -->
+                                        <div class="fptext">
+                                            <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
+                                            <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php }else{ ?>
+                            <div class="row">
+                                <span class="card badge bg-label-warning mx-auto my-5 fs-3" style="text-transform : none;white-space: normal;line-height: 3rem;">
+                                    You Need to have atleast one Funded Account.
+                                </span>
+                            </div>
+                        <?php }?>
 
-    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
-    <script src="<?=base_url('assets/js/FileSaver.js')?>"></script>
-    <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
-  <script>
+
+                        <?php if($certificates){?>
+                            <div class="card-title  text-center fw-bold mt-5">
+                                Payout Certificates
+                            </div>
+                            <ul id="payout_certificates">
+                                <li> 
+                                    <a href="#" class="card-body">
+                                        <div class="fptext">
+                                            <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
+                                            <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- / Content -->
+    <?php $this->load->view('user/includes/footer');?>
+
+<script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+<script src="<?=base_url('assets/js/FileSaver.js')?>"></script>
+<script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
+<script>
     $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Certificates</h4>`);
 
-        const userName = document.getElementById("name");
-        const submitBtn = document.getElementById("submitBtn");
+    const userName = document.getElementById("name");
+    const submitBtn = document.getElementById("submitBtn");
 
-        const { PDFDocument, rgb, degrees } = PDFLib;
+    const { PDFDocument, rgb, degrees } = PDFLib;
 
 
-        const capitalize = (str, lower = false) =>
-            (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
-                match.toUpperCase()
-            );
+    const capitalize = (str, lower = false) =>
+        (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
+            match.toUpperCase()
+        );
 
-        submitBtn.addEventListener("click", () => {
-            const val = capitalize(userName.value);
+    submitBtn.addEventListener("click", () => {
+        const val = capitalize(userName.value);
 
-            //check if the text is empty or not
-            if (val.trim() !== "" && userName.checkValidity()) {
-                // console.log(val);
-                generatePDF(val);
-            } else {
-                userName.reportValidity();
-            }
+        //check if the text is empty or not
+        if (val.trim() !== "" && userName.checkValidity()) {
+            // console.log(val);
+            generatePDF(val);
+        } else {
+            userName.reportValidity();
+        }
+    });
+
+    const generatePDF = async (name, date="<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>") => {
+        const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
+            res.arrayBuffer()
+        );
+
+        // Load a PDFDocument from the existing PDF bytes
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
+        pdfDoc.registerFontkit(fontkit);
+
+        //get font
+        const fontBytes = await fetch("<?=base_url('assets/certificates')?>/Sanchez-Regular.ttf").then((res) =>
+            res.arrayBuffer()
+        );
+
+        // Embed our custom font in the document
+        const SanChezFont = await pdfDoc.embedFont(fontBytes);
+
+        // Get the first page of the document
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
+
+        // Draw a string of text diagonally across the first page
+        firstPage.drawText(name, {
+            x: 650,
+            y: 375,
+            size: 26,
+            font: SanChezFont,
+            color: rgb(0, 0, 0),
         });
 
-        const generatePDF = async (name, date="<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>") => {
-            const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
-                res.arrayBuffer()
-            );
+        firstPage.drawText(date, {
+            x: 700,
+            y: 187,
+            size: 12,
+            font: SanChezFont,
+            color: rgb(0, 0, 0),
+        });
 
-            // Load a PDFDocument from the existing PDF bytes
-            const pdfDoc = await PDFDocument.load(existingPdfBytes);
-            pdfDoc.registerFontkit(fontkit);
+        // Serialize the PDFDocument to bytes (a Uint8Array)
+        const pdfBytes = await pdfDoc.save();
+        console.log("Done creating");
 
-            //get font
-            const fontBytes = await fetch("<?=base_url('assets/certificates')?>/Sanchez-Regular.ttf").then((res) =>
-                res.arrayBuffer()
-            );
+        // this was for creating uri and showing in iframe
 
-            // Embed our custom font in the document
-            const SanChezFont = await pdfDoc.embedFont(fontBytes);
+        // const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+        // document.getElementById("pdf").src = pdfDataUri;
 
-            // Get the first page of the document
-            const pages = pdfDoc.getPages();
-            const firstPage = pages[0];
+        var file = new File(
+            [pdfBytes],
+            "Certificate.pdf",
+            {
+                type: "application/pdf;charset=utf-8",
+            }
+        );
+        saveAs(file);
+    };
 
-            // Draw a string of text diagonally across the first page
-            firstPage.drawText(name, {
-                x: 650,
-                y: 375,
-                size: 26,
-                font: SanChezFont,
-                color: rgb(0, 0, 0),
+    $.ajax({
+      type: "GET",
+      url: "<?php echo base_url('user/certificates/getPayoutCertificates'); ?>",
+      dataType: "html",
+      success: function(data){
+        let res = JSON.parse(data);
+        if(data.status == 200){
+            data.data.forEach(element => {
+                console.log(element.user_id);                
             });
+        }
+      },
+      error: function(){
 
-            firstPage.drawText(date, {
-                x: 700,
-                y: 187,
-                size: 12,
-                font: SanChezFont,
-                color: rgb(0, 0, 0),
-            });
-
-            // Serialize the PDFDocument to bytes (a Uint8Array)
-            const pdfBytes = await pdfDoc.save();
-            console.log("Done creating");
-
-            // this was for creating uri and showing in iframe
-
-            // const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-            // document.getElementById("pdf").src = pdfDataUri;
-
-            var file = new File(
-                [pdfBytes],
-                "Certificate.pdf",
-                {
-                    type: "application/pdf;charset=utf-8",
-                }
-            );
-            saveAs(file);
-        };
-
-// init();
+      }
+    })
 </script>
-
-<?php $this->load->view('user/includes/footer');?>

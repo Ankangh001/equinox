@@ -133,7 +133,8 @@ class Metrix extends APIMaster {
         //2 = permanent pass
         //3 = permanent fail
         if($check[0]['maxdd_status'] == 1 && $check[0]['metrics_status'] != 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            $update = $this->db->where(['id' => $decrypted['eqid']])
+            ->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
             $this->send_user_email($email, "FAIL", "1", $name, $account, "");
         }else{
             $update = 0;
@@ -332,7 +333,7 @@ class Metrix extends APIMaster {
 	}
 
     //user status controller
-    public function checkUserStatus($rowId){
+    public function checkUserStatus(){
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
 
@@ -399,8 +400,8 @@ class Metrix extends APIMaster {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'3', 'metrics_status'=> '1']);
-                        
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
+                        echo "hi";
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
@@ -413,10 +414,11 @@ class Metrix extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s'),
-                            'phase3_issue_date' => date('Y-d-m H:m:s')
+                            'payoutDate' => date('Y-m-d H:m:s'),
+                            'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product',
@@ -428,7 +430,12 @@ class Metrix extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1){
+                    if($maxdd_status == 1 && $metrics_status == 0){
+                        // no phase after this
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
+                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
@@ -490,8 +497,8 @@ class Metrix extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s'),
-                            'phase3_issue_date' => date('Y-d-m H:m:s')
+                            'payoutDate' => date('Y-m-d H:m:s'),
+                            'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $this->send_user_email($email, "PASS", "", $name, $account);
@@ -535,7 +542,7 @@ class Metrix extends APIMaster {
                 'message'=>'Data not found user might be failed'
             );
         }
-        echo json_encode($response)."<br/>";
+        echo json_encode($response);
     }
 
 

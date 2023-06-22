@@ -332,11 +332,11 @@ $myArray = explode(',', $myString);
   const r = window.btoa(JSON.stringify(accountNum));
   let saveStartDate ={};
 
-  let accountSize = <?= $myArray[2]; ?>;
-  let maxDD = <?= $myArray[4]; ?>;
-  let maxDL = <?= $myArray[5]; ?>;
-  let target = <?= $myArray[6]; ?>;
-  let product_current_phase = <?= $myArray[10]; ?>;
+  let accountSize = "<?= $myArray[2]; ?>";
+  let maxDD = "<?= $myArray[4]; ?>";
+  let maxDL = "<?= $myArray[5]; ?>";
+  let target = "<?= $myArray[6]; ?>";
+  let product_current_phase = "<?= $myArray[10]; ?>";
   let product_type_en = "<?= $myArray[3]; ?>";
   let checkAmount = accountSize - maxDD;
   let tempChartData = [];
@@ -629,7 +629,7 @@ $myArray = explode(',', $myString);
         //-----profit target render----------------
         if(product_current_phase != '3'){
           //profit target render
-          if(((res['balance']) - accountSize).toFixed(2) >= target){ 
+          if(res['balance']-accountSize >= target){ 
             //make user permanently pass
             $.ajax({
               type: "POST",
@@ -646,12 +646,12 @@ $myArray = explode(',', $myString);
                       </div>
                     `);
                   }else if(maxDailyStatus.status == 400){
-                    console.log('unable to pass profit target');
+                    // console.log('unable to pass profit target');
                   }
                 }
               },
               error: function(data){
-                console.log(data);
+                // console.log(data);
               }
             });
           }else{
@@ -671,12 +671,12 @@ $myArray = explode(',', $myString);
                       </div>
                     `);
                   }else if(maxDailyStatus.status == 400){
-                    console.log('unable to pass profit target');
+                    // console.log('unable to pass profit target');
                   }
                 }
               },
               error: function(data){
-                console.log(data);
+                // console.log(data);
               }
             });
             // $('#pt').html(`
@@ -825,7 +825,7 @@ $myArray = explode(',', $myString);
         }else if(dataRes == 400){
           getAccounts();
           setTimeout(() => {
-            // checkUserStatus();
+            checkUserStatus();
           }, 8000);
         }
       },

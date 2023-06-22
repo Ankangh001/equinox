@@ -97,7 +97,7 @@ class MetricsCron extends APIMaster {
 
             if($value['phase'] != '3'){
                 //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                if(($service_balance - $value['account_size']) > $profit_target){
+                if(($service_balance - $value['account_size']) >= $profit_target){
                     //user still passed for max drawdown
                     echo "<br/>makeUserPassProfitTarget<br/>";
                     $this->makeUserPassProfitTarget($value['id']);
@@ -490,7 +490,7 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'3', 'metrics_status'=> '1']);
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
                         
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -504,10 +504,11 @@ class MetricsCron extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s'),
-                            'phase3_issue_date' => date('Y-d-m H:m:s')
+                            'payoutDate' => date('Y-m-d H:m:s'),
+                            'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
+                        $this->send_user_email($email, "PASS", "", $name, $account);
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product',
@@ -519,7 +520,12 @@ class MetricsCron extends APIMaster {
                         );  
                     }
                 }elseif($phase == '3') {
-                    if($maxdd_status == 1){
+                    if($maxdd_status == 1 && $metrics_status == 0){
+                        // no phase after this
+                        $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
+                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed funded phase for aggressive product',
@@ -581,8 +587,8 @@ class MetricsCron extends APIMaster {
                             'final_product_price' => $check[0]['final_product_price'],
                             'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-d-m H:m:s'),
-                            'phase3_issue_date' => date('Y-d-m H:m:s')
+                            'payoutDate' => date('Y-m-d H:m:s'),
+                            'phase3_issue_date' => date('Y-m-d H:m:s')
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $this->send_user_email($email, "PASS", "", $name, $account);

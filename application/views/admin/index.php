@@ -83,6 +83,20 @@ $this->load->view('admin/includes/header');
         </a>
       </div>
 
+      <div class="col-lg-4 col-md-4 col-3 mb-4">
+        <a href="<?=base_url('admin/')?>completed"  class="card text-dark">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <i class="bx bx-dollar fs-3"></i>
+              </div>
+            </div>
+            <span class="fw-bold fs-3 d-block mb-1">Revenue Generated</span>
+            <h3 class="card-title mb-2 text-primary fw-bold">$<?= @$revenue ?></h3>
+          </div>
+        </a>
+      </div>
+
       
     </div>
 

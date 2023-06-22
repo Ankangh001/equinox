@@ -17,6 +17,23 @@ $this->load->view('user/includes/header');
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
+  <!-- update alert modal -->
+  <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-xl">
+              <div class="card-body">
+                <h5 class="modal-title" id="modalCenterTitle">Profile Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -63,6 +80,7 @@ $this->load->view('user/includes/header');
                 <div class="mb-3 col-md-6">
                   <label for="firstName" class="form-label">First Name</label>
                   <input readonly class="form-control" type="text" id="firstName" name="firstName" value="<?= @$res[0]['first_name']?>" autofocus="">
+                  <input type="hidden" id="user_id" name="user_id" value="<?= @$res[0]['user_id']?>" >
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="lastName" class="form-label">Last Name</label>
@@ -80,7 +98,7 @@ $this->load->view('user/includes/header');
                 </div>
                   <div class="mb-3 col-md-6">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="country" value="<?= @$res[0]['country']?>">
+                    <input type="text" readonly class="form-control" id="country" name="country" placeholder="country" value="<?= @$res[0]['country']?>">
                   </div>
                 <!-- <div class="mb-3 col-md-6">
                   <label class="form-label" for="country">Country</label>
@@ -405,7 +423,7 @@ $this->load->view('user/includes/header');
     var form = $('#update-profile').serializeArray();
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url('user/updateProfile'); ?>",
+        url: "<?php echo base_url('user/user/updateProfile'); ?>",
         data: form,
         dataType: "html",
         beforeSend: function(){
@@ -419,35 +437,21 @@ $this->load->view('user/includes/header');
         success: function(data){
           let res = JSON.parse(data);
           if(res.status == 200){
-            loadTable();
             $('div#loading').hide(200);
             $('.modal').modal('hide');
-            $('#modalCenterTitle').html('Credentials Updated <i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
             $('#modalCenter').modal('show');
-            $('.table').DataTable().destroy();
-            setTimeout(() => {
-              $('#modalCenter').modal('hide');
-            }, 8000);
-          }else if(res.status == 401){
-            loadTable();
-            $('div#loading').hide(200);
-            $('.modal').modal('hide');
-            $('#modalCenterTitle').html('Wrong Credentials !');
-            $('#modalCenter').modal('show');
-            $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
             }, 8000);
           }else{
             loadTable();
+            $('#modalCenterTitle').html('Something went wrong ! Please try again later. <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
             $('div#loading').hide(200);
             $('.modal').modal('hide');
-            $('#modalCenterTitle').html('Server Error !');
             $('#modalCenter').modal('show');
-            $('.table').DataTable().destroy();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 8000);
+            }, 5000);
           }
         },
         error: function() { alert("Error posting feed."); }

@@ -98,7 +98,7 @@ $this->load->view('admin/includes/header'); ?>
               width: '33.3%',
               data: null,
               render: function (data, type, row) {
-                  return `${row.email}`;
+                  return `${row.credit}`;
               }
             }
           ]

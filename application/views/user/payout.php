@@ -80,11 +80,12 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payout-type" class="form-label">Payout Type</label>
                       <select required class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
-                        <option selected="">Select Payout Type</option>
+                        <option value="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
-                        <!-- <option value="Affiliate">Affiliate</option> -->
+                        <option value="Affiliate">Affiliate</option>
                         <!-- <option value="Rewards">Games & Rewards</option> -->
                       </select>
+                      <p class="payout-type-error d-none text-danger">Select a payout type first !</p>
                     </div>
                   </div>
 
@@ -103,7 +104,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
                       <select required class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
-                        <option>Select Payment Mode</option>
+                        <option value="">Select Payment Mode</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                         <option value="Crypto Currency">Crypto Currency</option>
                         <option value="Paypal">Paypal</option>
@@ -242,6 +243,7 @@ $this->load->view('user/includes/header');
   $('#bank-details').css('display','none');
 
   $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span>Payout</h4>`);
+  $('input').attr('readonly', true);
 
   let accBalance = 0;
   $('#payout').change((e)=>{
@@ -275,12 +277,12 @@ $this->load->view('user/includes/header');
                 `);
               });
             }
-            $('input').attr('disabled', false);
+            $('input').attr('readonly', false);
             $('#payment-mode').attr('disabled', false);
           }else{
             $('#account-numbers').html('');
             $('#submit-btn').attr('disabled', true);
-            $('input').attr('disabled', true);
+            $('input').attr('readonly', true);
             $('#payment-mode').attr('disabled', true);
             $('#account-numbers').append(`
               <option selected>${res.message}</option>
@@ -290,34 +292,58 @@ $this->load->view('user/includes/header');
         error: function() { alert("Error posting feed."); }
       });
     }else if(e.target.value == "Affiliate"){
+      
       $('.amnt-error').addClass('d-none');
       $('#submit-btn').attr('disabled', false);
-      $('#payout').addClass('col-lg-6');
+
       $('#payout').removeClass('col-lg-4');
+      $('#payout').addClass('col-lg-6');
 
       $('#mode').removeClass('col-lg-4');
       $('#mode').addClass('col-lg-6');
 
       $('#account').css('display','none');
-      $('#available_amount').text('Availble amount : $83');
+
+
+      let user = {};
+      user.user_id = "<?= $_SESSION['user_id'] ?>";
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url('user/payout/getAffiliate'); ?>",
+        data: user,
+        dataType: "html",
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            accBalance = (res.data.credit)-(res.data.debit);
+            $('div#loading').hide(200);
+            $('#available_amount').text(`Availble amount : $${accBalance.toFixed(2)}`);
+            $('input').attr('readonly', false);
+            $('#payment-mode').attr('disabled', false);
+          }else{
+            $('#submit-btn').attr('disabled', true);
+            $('input').attr('readonly', true);
+          }
+        },
+        error: function() { 
+          $('#payment-mode').attr('disabled', true);
+        }
+      });
+
+
+
     }else if(e.target.value == "Rewards"){
-      $('#payout').addClass('col-lg-6');
-      $('#payout').removeClass('col-lg-4');
+      // $('#payout').addClass('col-lg-6');
+      // $('#payout').removeClass('col-lg-4');
 
-      $('#mode').removeClass('col-lg-4');
-      $('#mode').addClass('col-lg-6');
+      // $('#mode').removeClass('col-lg-4');
+      // $('#mode').addClass('col-lg-6');
 
-      $('#account').css('display','none');
-      $('#available_amount').text('Availble amount : $39');
+      // $('#account').css('display','none');
+      // $('#available_amount').text('Availble amount : $39');
     }else{
-      $('#payout').addClass('col-lg-6');
-      $('#payout').removeClass('col-lg-4');
-
-      $('#mode').removeClass('col-lg-4');
-      $('#mode').addClass('col-lg-6');
-
-      $('#account').css('display','none');
-      $('#available_amount').text('');
+      $('input').attr('readonly', true);
+      $('#available_amount').text(``);
     }
   });
 
@@ -370,49 +396,47 @@ $this->load->view('user/includes/header');
     }
   });
 
+  function validate(params) {
+    
+  }
 
   $('#payout-form').on('submit',(e)=>{
     e.preventDefault();
-    if ($('#payment-mode').val() != "Select Payment Mode") {
-      var form = $('#payout-form').serializeArray();      
-      $.ajax({
-          type: "POST",
-          url: "<?php echo base_url('user/payout/requestPayout'); ?>",
-          data: form,
-          dataType: "html",
-          beforeSend: function(){
-            $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>`
-            );
-          },
-          success: function(data){
-            let res = JSON.parse(data);
-            if(res.status == 200){
-              $('#payout-form')[0].reset();
-              loadTable();
-              $('div#loading').hide(200);
-              $('.modal').modal('hide');
-              $('#modalCenter').modal('show');
-              $('.table').DataTable().destroy();
-              loadTable();
-              setTimeout(() => {
-                $('#modalCenter').modal('hide');
-              }, 8000);
-            }
-          },
-          error: function() { alert("Error posting feed."); }
-      });
-    }else{
-      $('.mode-error').removeClass('d-none');
-    }
+    var form = $('#payout-form').serializeArray();      
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payout/requestPayout'); ?>",
+        data: form,
+        dataType: "html",
+        beforeSend: function(){
+          $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+          );
+        },
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            $('#payout-form')[0].reset();
+            $('#available_amount').html('');
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            loadTable();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 5000);
+            $('input').attr('readonly', true);
+          }
+        },
+        error: function() { alert("Error posting feed."); }
+    });
   });
   
-  $('#payment-mode').change(()=>{
-    $('.mode-error').addClass('d-none');
-  });
 
   function loadTable(){
     $('.table').DataTable().destroy();
@@ -454,8 +478,8 @@ $this->load->view('user/includes/header');
             data: null,
             render: function (data, type, row) {
                 return `${
-                  row.payout_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.payout_status == 1 ? '<span class="badge bg-label-success">PAID</span>' : 
+                  row.payout_status == 0 ? '<span class="badge bg-label-warning">PEDING</span>' : 
+                  (row.payout_status == 1 ? '<span class="badge bg-label-success">APPROVED</span>' : 
                     (row.payout_status == 2 ? '<span class="badge bg-label-danger">DENIED</span>' :'')
                   )
                 }`;

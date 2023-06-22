@@ -11,6 +11,9 @@ $this->load->view('user/includes/header');
     border-radius: 0.375rem;
     box-shadow: 0 0 5px #00000050;
 }
+.justfy-content-between{
+  justify-content: space-between;
+}
 
 .ribbon {
   display: block;
@@ -76,19 +79,21 @@ $this->load->view('user/includes/header');
         <div class="card accordion-item mb-5">
           <h2 class="accordion-header" id="headingOne">
             <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-              <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <!-- <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
-                  <span class="badge bg-warning text-white me-1">PENDING</span>
-                <?php }elseif($value['product_status'] == '1'){ ?>
-                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
-                <?php }elseif($value['product_status'] == '2'){?>
-                  <span class="badge bg-success text-white me-1">PASSED</span>
-                <?php }elseif($value['product_status'] == '3'){?>
-                  <span class="badge bg-danger text-white me-1">FAILED</span>
-                <?php }?>
-              </span> -->
+              <span class="col-lg-2 col-md-2">Login : <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+              <div class="closed-details col-lg-8 d-flex align-items-center">
+                <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                    <span class="badge bg-warning text-white me-1">PENDING</span>
+                  <?php }elseif($value['product_status'] == '1'){ ?>
+                    <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                  <?php }elseif($value['product_status'] == '2'){?>
+                    <span class="badge bg-success text-white me-1">PASSED</span>
+                  <?php }elseif($value['product_status'] == '3'){?>
+                    <span class="badge bg-danger text-white me-1">FAILED</span>
+                  <?php }?>
+                </span>
+              </div>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -108,30 +113,23 @@ $this->load->view('user/includes/header');
                   <div class="modal-body">
                     <div class="col-xl">
                       <div class="card-body">
-                        <div class="mb-3 row border-bottom justfy-content-start">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 d-flex border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Login</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label"><?= @$value['account_id'] ?></label>
                         </div>
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password                          </label>
-                          <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
-                            <?= @$value['account_password'] ?>
-                            <!-- <i class='bx bxs-low-vision'></i> -->
-                          </label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label d-flex">Password</label>
+                          <label for="html5-text-input" style="text-transform: none;" class="col-md-6 text-right col-form-label"><?= @$value['account_password'] ?></label>
                         </div>
                         
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Server</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label"><?= @$value['server'] ?></label>
                         </div>
 
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Platform</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label">Meta Trader 5</label>
                         </div>
                       </div>
                     </div>
@@ -140,7 +138,6 @@ $this->load->view('user/includes/header');
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                       Close
                     </button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                   </div>
                 </div>
               </div>
@@ -230,18 +227,21 @@ $this->load->view('user/includes/header');
           <h2 class="accordion-header" id="headingOne">
           <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <!-- <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
-                  <span class="badge bg-warning text-white me-1">PENDING</span>
-                <?php }elseif($value['product_status'] == '1'){ ?>
-                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
-                <?php }elseif($value['product_status'] == '2'){?>
-                  <span class="badge bg-success text-white me-1">PASSED</span>
-                <?php }elseif($value['product_status'] == '3'){?>
-                  <span class="badge bg-danger text-white me-1">FAILED</span>
-                <?php }?>
-              </span> -->
+              
+              <div class="closed-details col-lg-8 d-flex align-items-center">
+                <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                    <span class="badge bg-warning text-white me-1">PENDING</span>
+                  <?php }elseif($value['product_status'] == '1'){ ?>
+                    <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                  <?php }elseif($value['product_status'] == '2'){?>
+                    <span class="badge bg-success text-white me-1">PASSED</span>
+                  <?php }elseif($value['product_status'] == '3'){?>
+                    <span class="badge bg-danger text-white me-1">FAILED</span>
+                  <?php }?>
+                </span>
+              </div>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -261,30 +261,23 @@ $this->load->view('user/includes/header');
                   <div class="modal-body">
                     <div class="col-xl">
                       <div class="card-body">
-                        <div class="mb-3 row border-bottom justfy-content-start">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 d-flex border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Login</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label"><?= @$value['account_id'] ?></label>
                         </div>
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password                          </label>
-                          <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
-                            <?= @$value['account_password'] ?>
-                            <!-- <i class='bx bxs-low-vision'></i> -->
-                          </label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label d-flex">Password</label>
+                          <label for="html5-text-input" style="text-transform: none;" class="col-md-6 text-right col-form-label"><?= @$value['account_password'] ?></label>
                         </div>
                         
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Server</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label"><?= @$value['server'] ?></label>
                         </div>
 
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
-                          <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                          <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+                        <div class="mb-3 row border-bottom justfy-content-between">
+                          <label for="html5-text-input" class="col-md-6 col-form-label">Platform</label>
+                          <label for="html5-text-input" class="col-md-6 text-right col-form-label">Meta Trader 5</label>
                         </div>
                       </div>
                     </div>
@@ -382,18 +375,21 @@ $this->load->view('user/includes/header');
           <h2 class="accordion-header" id="headingOne">
           <button type="button" class="bg-light text-dark fw-bold p-3 accordion-button d-flex <?php if(isset($_GET['id'])){ if($_GET['id'] != $value['id']){ echo "collapsed";  } } ?>" data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
               <span class="col-lg-2 col-md-2">Login :  <?= @$value['account_id'] ? $value['account_id'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <!-- <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-              <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
-                  <span class="badge bg-warning text-white me-1">PENDING</span>
-                <?php }elseif($value['product_status'] == '1'){ ?>
-                  <span class="badge bg-primary text-white me-1">ACTIVE</span>
-                <?php }elseif($value['product_status'] == '2'){?>
-                  <span class="badge bg-success text-white me-1">PASSED</span>
-                <?php }elseif($value['product_status'] == '3'){?>
-                  <span class="badge bg-danger text-white me-1">FAILED</span>
-                <?php }?>
-              </span> -->
+              <div class="closed-details col-lg-8 d-flex align-items-center">
+              
+                <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
+                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                    <span class="badge bg-warning text-white me-1">PENDING</span>
+                  <?php }elseif($value['product_status'] == '1'){ ?>
+                    <span class="badge bg-primary text-white me-1">ACTIVE</span>
+                  <?php }elseif($value['product_status'] == '2'){?>
+                    <span class="badge bg-success text-white me-1">PASSED</span>
+                  <?php }elseif($value['product_status'] == '3'){?>
+                    <span class="badge bg-danger text-white me-1">FAILED</span>
+                  <?php }?>
+                </span>
+              </div>
             </button>
           </h2>
           <div id="accordionOne_<?= @$value['id'] ?>" class="accordion-collapse 
@@ -418,7 +414,7 @@ $this->load->view('user/includes/header');
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['account_id'] ?></label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <div class="mb-3 row border-bottom justfy-content-between">
                           <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password                          </label>
                           <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
                             <?= @$value['account_password'] ?>
@@ -427,13 +423,13 @@ $this->load->view('user/includes/header');
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
                         
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <div class="mb-3 row border-bottom justfy-content-between">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"><?= @$value['server'] ?></label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                         </div>
 
-                        <div class="mb-3 row border-bottom justfy-content-evenly">
+                        <div class="mb-3 row border-bottom justfy-content-between">
                           <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
                           <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
@@ -584,7 +580,7 @@ $this->load->view('user/includes/header');
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.account_id}</label>
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                                       </div>
-                                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                                      <div class="mb-3 row border-bottom justfy-content-between">
                                         <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password                          </label>
                                         <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
                                           ${element.account_password}
@@ -593,13 +589,13 @@ $this->load->view('user/includes/header');
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                                       </div>
                                       
-                                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                                      <div class="mb-3 row border-bottom justfy-content-between">
                                         <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.server}</label>
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                                       </div>
 
-                                      <div class="mb-3 row border-bottom justfy-content-evenly">
+                                      <div class="mb-3 row border-bottom justfy-content-between">
                                         <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
@@ -684,20 +680,14 @@ $this->load->view('user/includes/header');
     console.timeEnd('time1');
   }
   
-  let temp = '';
   
   $("button").click(function(){
-    var title = $(this).html();
-    temp = title;
-    console.log(temp);
-
-    // if(!$(this).hasClass('collapsed')){
-    //   $(this).html('');
-    // }else{
-    //   $(this).html(title);
-    // }
-
-    // title = temp;
+    if($(this).hasClass('collapsed')){
+      $(this).children().eq(1).css('opacity', '1');
+    }else{
+      console.log($(this).children().eq(1));
+      $(this).children().eq(1).css('opacity', '0');
+    }
   });
 
   // setInterval(() => {

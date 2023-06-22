@@ -22,26 +22,26 @@ $this->load->view('user/includes/header');
                 <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/symbols/EURUSD/?exchange=FX" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                 <script type="text/javascript">
-                new TradingView.widget(
-                {
-                "width": "100%",
-                "height": 610,
-                "symbol": "FX:EURUSD",
-                "interval": "60",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "withdateranges": true,
-                "hide_side_toolbar": false,
-                "allow_symbol_change": true,
-                "details": true,
-                "hotlist": true,
-                "calendar": true,
-                "container_id": "tradingview_6bb72"
-              }
+                  new TradingView.widget(
+                    {
+                      "width": "100%",
+                      "height": 900,
+                      "symbol": "FX:EURUSD",
+                      "interval": "60",
+                      "timezone": "Etc/UTC",
+                      "theme": "light",
+                      "style": "1",
+                      
+                      "toolbar_bg": "#f1f3f6",
+                      "enable_publishing": false,
+                      "withdateranges": true,
+                      "hide_side_toolbar": false,
+                      "allow_symbol_change": true,
+                      "details": true,
+                      "hotlist": true,
+                      "calendar": true,
+                      "container_id": "tradingview_6bb72"
+                    }
                 );
                 </script>
             </div>

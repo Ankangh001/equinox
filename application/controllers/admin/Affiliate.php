@@ -30,12 +30,14 @@ class Affiliate extends APIMaster {
                 }
                 echo json_encode($response);
         }
+        
 
         public function getAffiliateUserData(){
                 if($_GET['affiliate_code']){
-                        $query = "SELECT user.user_id,user.first_name,user.last_name,user.email FROM `user` where user.admin_type='Client' AND reffered_by = '".$_GET['affiliate_code']."'";
+                        $query = "SELECT user.user_id,user.first_name,user.last_name,user.email,IFNULL(SUM(CASE WHEN et.flag = 0 AND et.txn_type = 3 THEN et.amount END), 0) credit, IFNULL(SUM(CASE WHEN et.flag = 1 AND et.txn_type = 3 THEN et.amount END), 0) debit FROM `user` LEFT JOIN transactions et on et.user_id = user.user_id where user.admin_type='Client' AND reffered_by = '".$_GET['affiliate_code']."' GROUP BY user.user_id";
 
                         $res = $this->db->query($query)->result_array();
+
                         if($res){
                                 $response = array(
                                         'status' => '200',

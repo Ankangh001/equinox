@@ -9,13 +9,13 @@ class User extends APIMaster {
     }
 
 	public function index(){
-		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
+		$response['res'] = $this->db->where(['admin_type'=>'Client', 'profile_status' => '1'])->get('user')->result_array();
 		$this->load->view('admin/users', $response);
 	}
 
 	public function deleteUser(){
 		try {
-            $res = $this->db->where(['user_id'=>$this->input->post('user_id')])->delete('user');
+            $res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['profile_status' => '0']);
             if($res){
 				$response = array(
 					'status' => '200',
@@ -107,7 +107,7 @@ class User extends APIMaster {
 				'amount' => $product_category[0]['product_price'],
 				'product_id' => $this->input->post('product_id'),
 				'product_category' => $product_category[0]['product_category'],
-				'gateway' => 'coinbase',
+				'gateway' => 'admin',
 				'purchase_date' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s'),
 				'payment_status' => '1'

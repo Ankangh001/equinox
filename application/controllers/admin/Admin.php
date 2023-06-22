@@ -21,6 +21,8 @@ class Admin extends APIMaster {
         $response['funded'] = count($this->db->where(['phase'=> '3', 'product_status'=> '0', 'payment_status'=> '1'  ])->get('userproducts')->result_array());
         $response['completed'] = count($this->db->where(['product_status'=> '1' ])->get('userproducts')->result_array());
         $response['users'] = count($this->db->where(['admin_type'=> 'Client' ])->get('user')->result_array());
+        $response['revenue'] = $this->db->query("SELECT sum(amount) as totalAmount FROM `transactions` WHERE payment_status = 1 and gateway in ('square','coinbase')")->row_array()['totalAmount'];
+
 
         $this->load->view('admin/index',$response);
 	}
