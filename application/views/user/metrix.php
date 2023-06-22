@@ -629,7 +629,7 @@ $myArray = explode(',', $myString);
         //-----profit target render----------------
         if(product_current_phase != '3'){
           //profit target render
-          if(((res['balance']) - accountSize).toFixed(2) >= target){ 
+          if(res['balance']-accountSize >= target){ 
             //make user permanently pass
             $.ajax({
               type: "POST",
@@ -646,12 +646,12 @@ $myArray = explode(',', $myString);
                       </div>
                     `);
                   }else if(maxDailyStatus.status == 400){
-                    console.log('unable to pass profit target');
+                    // console.log('unable to pass profit target');
                   }
                 }
               },
               error: function(data){
-                console.log(data);
+                // console.log(data);
               }
             });
           }else{
@@ -671,12 +671,12 @@ $myArray = explode(',', $myString);
                       </div>
                     `);
                   }else if(maxDailyStatus.status == 400){
-                    console.log('unable to pass profit target');
+                    // console.log('unable to pass profit target');
                   }
                 }
               },
               error: function(data){
-                console.log(data);
+                // console.log(data);
               }
             });
             // $('#pt').html(`
@@ -825,7 +825,7 @@ $myArray = explode(',', $myString);
         }else if(dataRes == 400){
           getAccounts();
           setTimeout(() => {
-            // checkUserStatus();
+            checkUserStatus();
           }, 8000);
         }
       },

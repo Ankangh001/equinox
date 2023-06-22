@@ -34,7 +34,7 @@ $this->load->view('admin/includes/header');
       </div>
     </div>
 
-    <!-- moda to add credentials  -->
+    <!-- modal to add credentials  -->
     <div class="modal fade" id="modalCred" tabindex="-1" style="display: none;" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -46,7 +46,7 @@ $this->load->view('admin/includes/header');
           <div class="modal-body">
             <div class="col-xl">
               <div class="card-body">
-                <div class="mb-3 pb-3 row border-bottom">
+                <div class="mb-3 pb-3 row border-bottom" id="show_account">
                   <label for="payout-id" class="col-md-4 col-form-label">Account Number</label>                    
                   <input required value="" id="acc_id" name="account_id" type="text" class="col-md-8 form-control w-50"/>
                   <input name="payout_id" id="payout-id" type="hidden"  />
@@ -130,9 +130,8 @@ $this->load->view('admin/includes/header');
                 <thead class="table-light">
                   <tr>
                     <th>User Name</th>
-                    <th>Product Name</th>
+                    <th>Payout Type</th>
                     <th>Amount</th>
-                    <th>Type</th>
                     <th>Date</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -162,6 +161,7 @@ $this->load->view('admin/includes/header');
         dataType: "html",
         success:function(data){
           let res = JSON.parse(data);
+          
           $('#acc_id').val(res[0].mt5_accountNum);
           $('#payout-id').val(res[0].payout_id);
           $('#payout-amount').val(res[0].amount);
@@ -181,9 +181,14 @@ $this->load->view('admin/includes/header');
 
           $('#payout-status').html(`
             <label for="flexSwitchCheckChecked" class="col-md-4 col-form-label d-flex">Payout Action</label>                                
-            <button type="button" onclick="approvePayout(${res[0].payout_id})" class="col-md-3 btn btn-sm btn-primary">Approve Payout</button>&nbsp;
-            <button type="button" onclick="rejectPayout(${res[0].payout_id})" class="col-md-3 btn btn-sm btn-danger">Reject Payout</button>
+            <button type="button" onclick="approvePayout('${res[0].payout_id}','${res[0].payout_type}')" class="col-md-3 btn btn-sm btn-primary">Approve Payout</button>&nbsp;
+            <button type="button" onclick="rejectPayout('${res[0].payout_id}','${res[0].payout_type}')" class="col-md-3 btn btn-sm btn-danger">Reject Payout</button>
           `);
+
+          if(res[0].payout_type == "Affiliate"){
+            $('#show_account').hide(100);
+          }
+
           $('#modalCred').modal('show');
         },
         error:function(params) {
@@ -191,9 +196,10 @@ $this->load->view('admin/includes/header');
         }
     });
   }
-  function approvePayout(pId){
+  function approvePayout(pId, ptype){
     let request ={};
     request.payout_id= pId;
+    request.payout_type= ptype;
     $.ajax({
         type: "POST",
         url: "<?php echo base_url('admin/payout/approvePayout'); ?>",
@@ -208,6 +214,7 @@ $this->load->view('admin/includes/header');
            );
         },
         success:function(data){
+          console.log(data);
           let res = JSON.parse(data);
           if(res.status == 200){
             $('.table').DataTable().destroy();
@@ -317,14 +324,18 @@ $this->load->view('admin/includes/header');
                 return `${row.first_name + ' ' + row.last_name}` ;
             }
           },
-          {data:'product_name'},
           {
             data: null,
             render: function (data, type, row) {
-                return '$'+row.amount;
+                return `${row.payout_type}` ;
             }
           },
-          {data:'product_category'},
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `$${(Number(row.amount)).toFixed(2)}`;
+            }
+          },
           {
             data: null,
             render: function (data, type, row) {

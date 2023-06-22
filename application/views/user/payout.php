@@ -80,7 +80,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payout-type" class="form-label">Payout Type</label>
                       <select required class="form-select" id="payout-type" name="payoutType" aria-label="Default select example">
-                        <option selected="">Select Payout Type</option>
+                        <option value="">Select Payout Type</option>
                         <option value="Profit Split">Profit Split</option>
                         <option value="Affiliate">Affiliate</option>
                         <!-- <option value="Rewards">Games & Rewards</option> -->
@@ -104,7 +104,7 @@ $this->load->view('user/includes/header');
                     <div class="mb-3">
                       <label for="payment-mode" class="form-label">Payment Mode</label>
                       <select required class="form-select" id="payment-mode" name="paymentMode" aria-label="Default select example">
-                        <option>Select Payment Mode</option>
+                        <option value="">Select Payment Mode</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                         <option value="Crypto Currency">Crypto Currency</option>
                         <option value="Paypal">Paypal</option>
@@ -317,7 +317,7 @@ $this->load->view('user/includes/header');
           if(res.status == 200){
             accBalance = (res.data.credit)-(res.data.debit);
             $('div#loading').hide(200);
-            $('#available_amount').text(`Availble amount : $${accBalance}`);
+            $('#available_amount').text(`Availble amount : $${accBalance.toFixed(2)}`);
             $('input').attr('readonly', false);
             $('#payment-mode').attr('disabled', false);
           }else{
@@ -402,63 +402,41 @@ $this->load->view('user/includes/header');
 
   $('#payout-form').on('submit',(e)=>{
     e.preventDefault();
-    if($('#payout-type').val() != '') {
-      $('.payout-type-error').removeClass('d-none');    
-    }else if ($('#payment-mode').val() == "Select Payment Mode"){
-      $('.mode-error').removeClass('d-none');    
-    }else if($('#amount').val() != ''){
-      $('.amnt-error').removeClass('d-none');    
-    }else{
-      var form = $('#payout-form').serializeArray();      
-      $.ajax({
-          type: "POST",
-          url: "<?php echo base_url('user/payout/requestPayout'); ?>",
-          data: form,
-          dataType: "html",
-          beforeSend: function(){
-            $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>`
-            );
-          },
-          success: function(data){
-            let res = JSON.parse(data);
-            if(res.status == 200){
-              $('#payout-form')[0].reset();
-              $('#available_amount').html('');
-              loadTable();
-              $('div#loading').hide(200);
-              $('.modal').modal('hide');
-              $('#modalCenter').modal('show');
-              $('.table').DataTable().destroy();
-              loadTable();
-              setTimeout(() => {
-                $('#modalCenter').modal('hide');
-              }, 8000);
-            }
-          },
-          error: function() { alert("Error posting feed."); }
-      });
-    }
+    var form = $('#payout-form').serializeArray();      
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('user/payout/requestPayout'); ?>",
+        data: form,
+        dataType: "html",
+        beforeSend: function(){
+          $('#payout-form').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+          );
+        },
+        success: function(data){
+          let res = JSON.parse(data);
+          if(res.status == 200){
+            $('#payout-form')[0].reset();
+            $('#available_amount').html('');
+            loadTable();
+            $('div#loading').hide(200);
+            $('.modal').modal('hide');
+            $('#modalCenter').modal('show');
+            $('.table').DataTable().destroy();
+            loadTable();
+            setTimeout(() => {
+              $('#modalCenter').modal('hide');
+            }, 5000);
+            $('input').attr('readonly', true);
+          }
+        },
+        error: function() { alert("Error posting feed."); }
+    });
   });
   
-  $('#payment-mode').change(()=>{
-    if($('#payment-mode').val() == "Select Payment Mode"){
-      $('.mode-error').removeClass('d-none');    
-    }else{
-      $('.mode-error').addClass('d-none');
-    }
-  });
-
-  $('#payout-type').change(()=>{
-    if($('#payout-type').val() == "Select Payout Type"){
-      $('.payout-type-error').removeClass('d-none');    
-    }else{
-      $('.payout-type-error').addClass('d-none');
-    }
-  });
 
   function loadTable(){
     $('.table').DataTable().destroy();
