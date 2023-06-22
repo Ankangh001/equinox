@@ -9,13 +9,13 @@ class User extends APIMaster {
     }
 
 	public function index(){
-		$response['res'] = $this->db->where(['admin_type'=>'Client'])->get('user')->result_array();
+		$response['res'] = $this->db->where(['admin_type'=>'Client', 'profile_status' => '1'])->get('user')->result_array();
 		$this->load->view('admin/users', $response);
 	}
 
 	public function deleteUser(){
 		try {
-            $res = $this->db->where(['user_id'=>$this->input->post('user_id')])->delete('user');
+            $res = $this->db->where(['user_id'=>$this->input->post('user_id')])->update('user', ['profile_status' => '0']);
             if($res){
 				$response = array(
 					'status' => '200',

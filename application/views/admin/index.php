@@ -92,7 +92,7 @@ $this->load->view('admin/includes/header');
               </div>
             </div>
             <span class="fw-bold fs-3 d-block mb-1">Revenue Generated</span>
-            <h3 class="card-title mb-2 text-primary fw-bold"><?= @$revenue ?></h3>
+            <h3 class="card-title mb-2 text-primary fw-bold">$<?= @$revenue ?></h3>
           </div>
         </a>
       </div>

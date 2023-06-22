@@ -128,27 +128,33 @@ class Payout extends APIMaster {
 		$payout_amount = $get_payout[0]['amount'];
 		
 		
-		
-		$this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
-        $this->db->from('userproducts');
-        $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $this->db->join('products', 'userproducts.product_id=products.product_id');
-		
-        $check = $this->db->where(['account_id' => $account_number])->get()->result_array();
-		
-		
-        $email = $check[0]['email'];
-        $name = $check[0]['first_name'].' '.$check[0]['last_name'];
-        $account_num = $check[0]['account_id'];
-        $account_size = $check[0]['account_size'];
-        $product_category = $check[0]['product_category'];
-		$grossAmount = $payout_amount;
+		if($this->input->post('payoutType') == 'Affiliate'){
+			$check = $this->db->select('user.email, user.first_name, user.last_name')->where(['user_id' => $_SESSION['user_id']])->get('user')->result_array();
 
-		
-		$this->send_payout_email($email, $name, $product_category, $account_size, $account_num, $grossAmount);
-		
-		$res2 = $this->db->where(['account_id'=>$this->input->post('mt5Acc')])
-		->update('userproducts',['payoutDate'=>date('Y-m-d H:m:s')]);
+			$email = $check[0]['email'];
+			$name = $check[0]['first_name'].' '.$check[0]['last_name'];
+			$affiliateAmount = $this->input->post('payoutAmount');			
+			$this->send_payout_email($email, $name, "", "", "", $affiliateAmount, "AFFILIATE");
+		}else{
+			$this->db->select('userproducts.*, products.*, user.email, user.first_name, user.last_name');
+			$this->db->from('userproducts');
+			$this->db->join('user', 'userproducts.user_id=user.user_id');
+			$this->db->join('products', 'userproducts.product_id=products.product_id');
+			
+			$check = $this->db->where(['account_id' => $account_number])->get()->result_array();
+			$email = $check[0]['email'];
+			$name = $check[0]['first_name'].' '.$check[0]['last_name'];
+			$account_num = $check[0]['account_id'];
+			$account_size = $check[0]['account_size'];
+			$product_category = $check[0]['product_category'];
+			$grossAmount = $payout_amount;
+
+			$res2 = $this->db->where(['account_id'=>$this->input->post('mt5Acc')])
+			->update('userproducts',['payoutDate'=>date('Y-m-d H:m:s')]);
+			
+			$this->send_payout_email($email, $name, $product_category, $account_size, $account_num, $grossAmount, "PROFITSPLIT");
+		}
+				
 
 		if($res){
 			$response = array(
@@ -166,98 +172,164 @@ class Payout extends APIMaster {
 
 
 	//send mail for credentials
-	public function send_payout_email($user_email, $name, $product_category, $account_size, $account_num, $grossAmount){
+	public function send_payout_email($user_email, $name, $product_category, $account_size, $account_num, $grossAmount, $type){
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
 		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
-		$content = '
-		<tbody>
-			<tr>
-				<td align="left">
-					<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
-						<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+		if ($type == "AFFILIATE") {
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">
+										Dear '.$name.', <br/>
+										Your payout request is submitted
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 0px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Your payout details:</strong>
+														</td>
+														<td align="right" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account Type
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Affiliate
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Payout Amount
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															$'.round($grossAmount, 2).'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
 							<p style="font-size: 14px; line-height: 160%;">
-								<span style="font-size: 18px; line-height: 35.2px;">
-									Dear '.$name.', <br/>
-									Your payout request is submitted
+								<span style="font-size: 18px; line-height: 28.8px;">
+									We have received your request and it will be processed within 3 Business days.<br/>
+									Feel free to contact us for assiatance regarding anything.
 								</span>
 							</p>
-							<br />
-							<br />
-							<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
-								<tbody>
-									<tr>
-										<td align="left" bgcolor="#ffffff" style="padding: 0px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-											<table border="0" cellpadding="0" cellspacing="0" width="100%">
-												<tr>
-													<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														<strong>Your account details:</strong>
-													</td>
-													<td align="right" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														<strong></strong>
-													</td>
-												</tr>
-												<tr>
-													<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														Phase
-													</td>
-													<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														Evaluation Funded
-													</td>
-												</tr>
-												<tr>
-													<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														Account Type
-													</td>
-													<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														'.$product_category.'
-													</td>
-												</tr>
-												<tr>
-													<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														Account Size
-													</td>
-													<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														$'.number_format($account_size, 0, '.',',').'
-													</td>
-												</tr>
-												<tr>
-													<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														MT5 Account Number
-													</td>
-													<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														'.$account_num.'
-													</td>
-												</tr>
-												<tr>
-													<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														Payout Amount
-													</td>
-													<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-														$'.round($grossAmount, 2).'
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-								</tbody>
-							</table>
 						</div>
-						<br>
-						<br>
-						<br>
-						<br>
-						<p style="font-size: 14px; line-height: 160%;">
-							<span style="font-size: 18px; line-height: 28.8px;">
-								We have received your request and it will be processed within 3 Business days.<br/>
-								Feel free to contact us for assiatance regarding anything.
-							</span>
-						</p>
-					</div>
-				</td>
-			</tr>
-		</tbody>';
+					</td>
+				</tr>
+			</tbody>';
+		}else{
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">
+										Dear '.$name.', <br/>
+										Your payout request is submitted
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 0px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Your account details:</strong>
+														</td>
+														<td align="right" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Phase
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Evaluation Funded
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account Type
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$product_category.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account Size
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															$'.number_format($account_size, 0, '.',',').'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															MT5 Account Number
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$account_num.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Payout Amount
+														</td>
+														<td align="right" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															$'.round($grossAmount, 2).'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+								<span style="font-size: 18px; line-height: 28.8px;">
+									We have received your request and it will be processed within 3 Business days.<br/>
+									Feel free to contact us for assiatance regarding anything.
+								</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
 		$email = send_email($user_email, 'Funded account payout request', $finaltemp,'','',3);
