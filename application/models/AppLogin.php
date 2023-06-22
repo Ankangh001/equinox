@@ -74,16 +74,21 @@ class AppLogin extends CI_Model
     {
         try {
             $pass_enc = pass_enc;
-            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
+            $sql = "SELECT  user_id,client_id,concat(first_name,' ',last_name) as user_name,email,password,admin_type,affiliate_code,email_verified,reffered_by,kyc_status FROM user where email = '{$email}' and admin_type = '{$admin_type}'";
             $result = $this->db->query($sql)->row_array();
             if ($result) :
-                if (!empty($result['password'])) :
-                    $response['success'] = 1;
-                    $response['message'] = "USER_VALIDATED";
-                    $response['data'] = $result;
+                if ($result['email_verified']==1) :
+                    if (!empty($result['password'])) :
+                        $response['success'] = 1;
+                        $response['message'] = "USER_VALIDATED";
+                        $response['data'] = $result;
+                    else :
+                        $response['success'] = 0;
+                        $response['message'] = "Password has not been set yet, contact Admin";
+                    endif;
                 else :
                     $response['success'] = 0;
-                    $response['message'] = "Password has not been set yet, contact Admin";
+                    $response['message'] = "Email is not verified yet, contact Admin";
                 endif;
             else :
                 $response['success'] = 0;
@@ -97,13 +102,26 @@ class AppLogin extends CI_Model
     }
 
     public function email_verification($code){
-		$this->db->select('email, verification_key','email_verified');
+		$this->db->select('email, verification_key, email_verified, first_name, last_name');
 		$this->db->from('user');
 		$this->db->where('verification_key', $code);
 		$query = $this->db->get();
 		$result= $query->result_array();
+        $fullName = $result[0]['first_name'].' '.$result[0]['last_name'];
+    
+
 		$match = count($result);
 		if($match > 0){
+            $this->load->helper('email_helper');
+            $this->load->library('mailer');
+            $body = file_get_contents(base_url('assets/mail/welcomeEmail.html'));
+
+            $content = '<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;"><p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 35.2px;">Welcome to the Family <br />Hello '.$fullName.',</span></p><br> <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Equinox Trading Capital is delighted to welcome you into our family. We applaud your decision and look forward to learning more about your trading style.</span></p><br> <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Feel free to look around and let us know if you have any questions!</span></p><br><p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Ready to show your skills and earn profit with <strong>Equinox Trading Capital?</strong></span></p> <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">We wish you a profitable trading journey with us and encourage you to go through our terms & conditions to be on the same page with us always.</span></p></div>';
+			$finaltemp = str_replace("{CONTENT}", $content, $body);
+
+
+            $email = send_email($result[0]['email'], 'Welcome to Equinox Family ', $finaltemp,'','',2);
+
 			$this->db->where('verification_key', $code);
 			$this->db->update('user', array('email_verified' => 1, 'verification_key'=> ''));
 			return true;

@@ -14,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Equinox User Dashboard</title>
+    <title>ETC-Admin area</title>
 
     <meta name="description" content="" />
 
@@ -67,7 +67,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="<?= base_url() ?>" class="app-brand-link">
                 <!-- Favicons -->
                 <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" width="80%">
             </a>
@@ -104,6 +104,31 @@
               </a>
             </li>
 
+            <!-- KYC -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'rejected-kyc' || $this->uri->segment(3) == 'pending-kyc' || $this->uri->segment(3) == 'approved-kyc' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-check-circle"></i>
+                <div>KYC</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>pending-kyc" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>approved-kyc" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'rejected-kyc') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/user/')?>rejected-kyc" class="menu-link">
+                    <div>Rejected</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             <!-- Purchase History  -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial'|| $this->uri->segment(2) == 'completed' || $this->uri->segment(2) == 'phase-3'  || $this->uri->segment(2) == 'phase-1'||$this->uri->segment(2) == 'phase-2' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
@@ -111,11 +136,11 @@
                 <div>Purchase History</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
+                <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>free-trial" class="menu-link">
                     <div>Free Trial</div>
                   </a>
-                </li>
+                </li> -->
                 <li class="menu-item <?php if ($this->uri->segment(2) == 'phase-1') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>phase-1" class="menu-link">
                     <div>Phase 1</div>
@@ -141,8 +166,8 @@
 
             
             <!-- Server -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>faq" class="menu-link">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'server-settings') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>server-settings" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-globe"></i>
                 <div>Server Settings</div>
               </a>
@@ -173,14 +198,54 @@
               </ul>
             </li>
 
+            <!-- Accounts  -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'passed-accounts' || $this->uri->segment(3) == 'pending-passed-accounts' || $this->uri->segment(3) == 'approved-passed-accounts' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Passed Accounts</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-passed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>pending-passed-accounts" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-passed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>approved-passed-accounts" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!--Failed  Accounts  -->
+            <li class="menu-item <?php if ($this->uri->segment(3) == 'failed-accounts' || $this->uri->segment(3) == 'pending-failed-accounts' || $this->uri->segment(3) == 'approved-failed-accounts' ) { echo 'active open';} ?>">
+              <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Failed Accounts</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'pending-failed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>pending-failed-accounts" class="menu-link">
+                    <div>Pending</div>
+                  </a>
+                </li>
+                <li class="menu-item <?php if ($this->uri->segment(3) == 'approved-failed-accounts') { echo 'active';} ?>">
+                  <a href="<?=base_url('admin/accounts/')?>approved-failed-accounts" class="menu-link">
+                    <div>Approved</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
 
             <!-- Payouts -->
-            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'payout') { echo 'active';} ?>">
-              <a href="<?=base_url('admin/')?>payout" class="menu-link">
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'coupons') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>add-coupons" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
-                <div>Payout</div>
+                <div>Coupons</div>
               </a>
-            </li> -->
+            </li>
 
 
             <!-- Announcements -->
@@ -200,14 +265,47 @@
               </a>
             </li>
 
+            <!-- Affiliates -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliates') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/affiliates')?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-offer"></i>
+                <div>Affiliates</div>
+              </a>
+            </li>
+
+            <!-- Affiliate Slab -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'affiliate-slab') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/affiliate_slab')?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-offer"></i>
+                <div>Affiliate Slab</div>
+              </a>
+            </li>
             
             <!-- faq -->
-            <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
+            <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'faq') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>faq" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div>Help</div>
               </a>
+            </li> -->
+
+            <!-- contacts -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'enquiries') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>user-enquiries" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div>Enquiries</div>
+              </a>
             </li>
+
+            <!-- complaints -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'complaints') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>user-complaints" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bulb"></i>
+                <div>Complaints</div>
+              </a>
+            </li>
+
+
           </ul>
         </aside>
         <!-- / Menu -->
@@ -257,30 +355,15 @@
                         </div>
                       </a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <a class="dropdown-item" href="<?=base_url('admin/')?>profile">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
+                    </li> -->
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>

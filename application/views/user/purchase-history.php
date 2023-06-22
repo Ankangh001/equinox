@@ -1,4 +1,6 @@
-<?php $this->load->view('user/includes/header'); ?>
+<?php 
+// echo "<pre>"; print_r($history); die;
+$this->load->view('user/includes/header'); ?>
 
 <div class="content-wrapper">
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -18,9 +20,9 @@
         <tbody class="table-border-bottom-0">
           <?php foreach ($history as $key => $value) {?>
             <tr>
-              <td><strong>Evaluation $100,000</strong></td>
+              <td><strong><?= @$value['product_name'] ?></strong></td>
               <td><?php echo substr($value['purchase_date'], 0, 10) ?></td>
-              <td>$<?= @$value['product_price'] ?></td>
+              <td>$<?= @$value['amount'] ?></td>
               <td><?= @$value['product_category'] ?></td>
               <td>
                 <span class="badge bg-label-success me-1">Paid</span>
@@ -35,5 +37,5 @@
 
 <?php $this->load->view('user/includes/footer');?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Purchase History</h4>`)
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Purchase History</h4>`)
 </script>

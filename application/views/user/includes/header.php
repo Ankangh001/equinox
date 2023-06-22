@@ -14,13 +14,13 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Equinox User Dashboard</title>
+    <title>ETC-Client Area</title>
 
     <meta name="description" content="" />
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,7 +51,28 @@
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="<?= base_url('assets/user/assets/') ?>js/config.js"></script>
+    <script src="<?= base_url('assets/user/assets/') ?>js/config.js">
+    </script>
+    <script>
+      // let PANEL_URL = "<?= base_url()?>";
+    </script>
+    <style>
+      @media (max-width: 500px){
+        #uname {
+            display: none;
+        }
+      }
+
+      @media (max-width: 767.98px){
+        .layout-navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+            position: absolute;
+            right: 0.9rem;
+            min-width: auto;
+            width: 60%;
+            left: inherit;
+        }
+      }
+    </style>
   </head>
   <body>
   <div id="loading" class="demo-inline-spacing">
@@ -66,7 +87,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="<?= base_url() ?>" class="app-brand-link">
                 <!-- Favicons -->
                 <img src="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" width="80%">
             </a>
@@ -83,7 +104,7 @@
             <!-- Start New Challenge -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'start-new-challenge' || $this->uri->segment(2) == 'payment') { echo 'active';} ?>">
               <a href="<?=base_url('user/')?>start-new-challenge" class="menu-link">
-                <button class="btn btn-primary">Start New Challenge</button>
+                <button class="btn btn-primary m-1">Start New Challenge</button>
               </a>
             </li>
 
@@ -304,9 +325,9 @@
                   <button class="btn btn-secondary">Language</button>
                 </li> -->
 
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3" id="uname">
                   <p class="text mt-3"><?=$_SESSION['user_name']?></p>
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -325,8 +346,16 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?=$_SESSION['user_name']?></span>
+                              <?php 
+                                if($_SESSION['kyc_status'] == '2'){ 
+                                  echo '<span class="badge bg-label-success">KYC Verified</span>';
+                                }else{
+                                  echo '<span class="badge bg-label-danger">KYC Un verified</span>';
+                                }
+                              ?>
+                            <small class="text-muted">
+                            </small>
                           </div>
                         </div>
                       </a>

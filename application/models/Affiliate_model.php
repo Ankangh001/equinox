@@ -7,9 +7,11 @@
 			$data['referredUser'] = $stmt->result_array();
 			if($data['count'] > 0){
 				foreach($data['referredUser'] as $key => $val){
-					$query = "SELECT sum(amount) as amount FROM transactions where ref_id in (SELECT id FROM transactions WHERE user_id = {$val['user_id']} AND flag = 0) AND flag=0 AND user_id = '{$userId}'";
+					$query = "SELECT sum(amount) as amount FROM transactions where ref_id in (SELECT id FROM transactions WHERE user_id = {$val['user_id']} AND flag = 1) AND flag=0 AND txn_type=3 AND user_id = '{$userId}'";
+					// print_r($query);
 					$data['referredUser'][$key]['amount'] = $this->db->query($query)->row_array()['amount']??0;
 				}	
+				// die;
 			}
 			return $data;
 		}

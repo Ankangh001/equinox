@@ -194,7 +194,7 @@ $this->load->view('admin/includes/header');
 
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Phase 1</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Phase 1</h4>`);
 
   function viewDetails(uID,pID) {
     let request = {}
@@ -275,7 +275,7 @@ $this->load->view('admin/includes/header');
             loadTable();
             setTimeout(() => {
               $('#modalCenter').modal('hide');
-            }, 3000);
+            }, 8000);
           }
         },
         error: function() { alert("Error posting feed."); }

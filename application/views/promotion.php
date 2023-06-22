@@ -1,4 +1,8 @@
 <?php
+// echo "<pre>";
+// print_r($promotions);
+// exit;
+
 $this->load->view('includes/header');
 ?>
 
@@ -8,51 +12,50 @@ $this->load->view('includes/header');
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
                 <h2>Promotions</h2>
-                <p class="d-block border-bottom pb-3">
-                    Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
-                    Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
-                    Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
-                </p>
+                <p class="d-block border-bottom pb-3"><?= @$promotions[0]['content'] ?></p>
                 
-                <p class="d-block border-bottom pb-3">Equffering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.
+                <p class="d-block border-bottom pb-3">
+                <?php 
+                if(substr(@$promotions[0]['created_at'],8,-8) == "01"){
+                    echo "1st ".date('F Y', strtotime(str_replace('-','',@$promotions[0]['created_at'])));
+                }elseif (substr(@$promotions[0]['created_at'],8,-8) == "02") {
+                    echo "2nd ".date('F Y', strtotime(str_replace('-','',@$promotions[0]['created_at'])));
+                }elseif (substr(@$promotions[0]['created_at'],8,-8) == "03") {
+                    echo "3rd ".date('F Y', strtotime(str_replace('-','',@$promotions[0]['created_at'])));
+                }else{
+                    echo substr(@$promotions[0]['created_at'],8,-8).date('F Y', strtotime(str_replace('-','',@$promotions[0]['created_at'])));
+                }
+                ?>
                 </p>
             </div>
             <div class="pt-5 pb-3">
                 <h2 class="text-dark fw-bold fs-3">Previous Promotions</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-6 mb-5">
-                    <a href="client-login">
-                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
-                            <div class="card-body">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
-                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
+                <?php foreach ($promotions as $key => $value) {  if ($key > 0){?>
+                    <div class="col-lg-4 col-sm-6 mb-5">
+                        <a href="client-login">
+                            <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
+                                <div class="card-body">
+                                    <div class="header text-center py-1">
+                                    <?php 
+                                        if(substr(@$value['created_at'],8,-8) == "01"){
+                                        echo "1st ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                                        }elseif (substr(@$value['created_at'],8,-8) == "02") {
+                                        echo "2nd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                                        }elseif (substr(@$value['created_at'],8,-8) == "03") {
+                                        echo "3rd ".date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                                        }else{
+                                        echo substr(@$value['created_at'],8,-8).date('F Y', strtotime(str_replace('-','',@$value['created_at'])));
+                                        }
+                                        ?>
+                                    </div>
+                                    <p class="mt-3" style="font-size:14px"><?= @$value['content'] ?></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 mb-5">
-                    <a href="client-login">
-                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
-                            <div class="card-body">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
-                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 mb-5">
-                    <a href="client-login">
-                        <div class="card text-dark" data-aos="fade-up" data-aos-delay='100'>
-                            <div class="card-body">
-                                <div class="header text-center py-1">Highest affiliate commission</div>
-                                <p class="mt-3" style="font-size:14px">Equinox Trading Capital is offering up to 15% commission for our affiliates which is the industry-highest. Simply register with us in a few minutes and start sharing your affiliate link to earn generously.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                <?php } }?>
             </div>
         </div>
     </section><!-- End Pricing -->

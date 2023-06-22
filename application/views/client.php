@@ -52,7 +52,7 @@
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
                             <label class="form-label" for="password">Password</label>
-                        <a href="auth-forgot-password-basic.html">
+                        <a href="<?=base_url('client-forget-password')?>">
                             <small>Forgot Password?</small>
                         </a>
                         </div>
@@ -71,10 +71,10 @@
                         <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign in</button>
                     </div>
                     <p class="text-center">
-                    <span>New on our platform?</span>
-                    <a href="<?= base_url('client-signup');?>">
-                        <span>Create an account</span>
-                    </a>
+                        <span>New on our platform?</span>
+                        <a href="<?= base_url('client-signup');?>">
+                            <span>Create an account</span>
+                        </a>
                     </p>
                 </div>
             </div>
@@ -82,18 +82,30 @@
         </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
     <script>
+        function notify(type, text){
+            $('.authentication-inner').prepend(
+                `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">
+                ${text}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`
+            );
+            setTimeout(() => {
+                $('#alert').fadeOut();
+            }, 8000);
+        }
+
         function validateUser() {
             let email = $("#email").val();
             let password = $("#password").val();
             if (email == "") {
-                $.notify("Please enter email");
+                notify("danger","Please enter email");
                 $("#email").focus();
                 return;
             }
             if (password == "") {
-                $.notify("Please enter password");
+                notify("danger","Please enter password");
                 $("#password").focus();
                 return;
             }
@@ -109,11 +121,11 @@
                     if (response.success == 1) {
                         window.location.href = response.data.redirect_url;	
                     } else {
-                        $.notify(response.message);
+                        notify("danger",response.message);
                     }
                 },
                 error: function(exception) {
-                    $.notify("Some error occured");
+                    notify("Some error occured");
                 }
             })
 

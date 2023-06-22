@@ -1,7 +1,20 @@
 <?php
 $this->load->view('user/includes/header');
 ?>
-
+<style>
+      @media (max-width: 786px){
+        .card-body, .card-body.d-flex.justify-content-center.align-items-center {
+            flex-direction: column;
+            text-align: center;
+        }
+        i.lg-text.bx.text-white{
+          padding-top:20px;
+        }
+        h5.card-title.text-white {
+            font-size: 16px;
+        }
+      }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
   <!-- Content -->
@@ -11,23 +24,24 @@ $this->load->view('user/includes/header');
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-center align-items-center">
             <h5 class="card-title pt-3 me-3">Your Unique Affiliate Link-</h5>
-            <a href="javascript:void(0)" class="text-primary"><?=base_url('client-signup/').$_SESSION['affiliate_code']?></a>&nbsp;&nbsp;&nbsp;
-            <a href="javascript:void(0)" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</a>
+            <a href="javascript:void(0)" id="aflcode" class="text-primary"><?=base_url('client-signup/').$_SESSION['affiliate_code']?></a>&nbsp;&nbsp;&nbsp;
+            <button onclick="copyToClipboard('#aflcode')" class="btn btn-sm btn-primary"><i class="bx bx-copy"></i>&nbsp;&nbsp;&nbsp;Copy</button>&nbsp;&nbsp;
+            <span id="copied" class="text-dark text-sm text-muted ">Copied</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="row mb-5">
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3" style="background: linear-gradient(60deg, #fcfc, #ea1cea);">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-user text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
-                <h5 class="card-title text-white">Referred Users</h5>
+                <h5 class="card-title text-white">Referred<br/>Users</h5>
                 <p class="card-text fs-1 text-white"><?=$userData['count']??0?></p>
               </div>
             </div>
@@ -35,15 +49,15 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-warning">
           <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <div class="col-md-4 col-sm-12 d-flex align-items-center justify-content-center ">
               <i class="lg-text bx bx-dollar text-white"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-12">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Earned</h5>
+                <h5 class="card-title text-white">Comission<br />Earned</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['credit']?></p>
               </div>
             </div>
@@ -51,7 +65,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-danger">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -59,7 +73,7 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Withdrawn</h5>
+                <h5 class="card-title text-white">Comission<br/>Withdrawn</h5>
                 <p class="card-text fs-1 text-white"><?=@$transaction['debit']?></p>
               </div>
             </div>
@@ -67,7 +81,7 @@ $this->load->view('user/includes/header');
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
         <div class="card mb-3 bg-info">
           <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center ">
@@ -75,8 +89,8 @@ $this->load->view('user/includes/header');
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-white">Comission Available</h5>
-                <p class="card-text fs-1 text-white"><?= (int) (@$transaction['credit'] -  @$transaction['debit'])?></p>
+                <h5 class="card-title text-white">Comission<br/>Available</h5>
+                <p class="card-text fs-1 text-white"><?= (@$transaction['credit'] -  @$transaction['debit'])?></p>
               </div>
             </div>
           </div>
@@ -105,29 +119,12 @@ $this->load->view('user/includes/header');
             <td>
               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                  <img src="<?=base_url('assets/user/assets/img/avatars/')?>5.png" alt="Avatar" class="rounded-circle"> &nbsp;&nbsp;<b><?=$row['first_name'].' '.$row['last_name']?></b>
+                  <?=$row['first_name'].' '.$row['last_name']?></b>
                 </li>
-                <!-- <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                  <img src="<?=base_url('assets/user/assets/img/avatars/')?>6.png" alt="Avatar" class="rounded-circle">
-                </li>
-                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                  <img src="<?=base_url('assets/user/assets/img/avatars/')?>7.png" alt="Avatar" class="rounded-circle">
-                </li> -->
               </ul>
             </td>
-            <td><?=$row['created_date']?></td>
-            <td><?=$row['amount']?></td>
-            <!-- <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                </div>
-              </div>
-            </td> -->
+            <td><?= @$row['created_date']?></td>
+            <td><?= @$row['amount']?></td>
           </tr>
           <?php endforeach; 
         }?>
@@ -138,7 +135,20 @@ $this->load->view('user/includes/header');
   </div>
     <!-- / Content -->
 
+    <?php $this->load->view('user/includes/footer');?>
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Affiliate</h4>`)
+  $('#copied').hide(1);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Affiliate</h4>`);
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    $('#copied').show(200);
+    setTimeout(() => {
+      $('#copied').hide(500);
+    }, 8000);
+
+  }
 </script>
-<?php $this->load->view('user/includes/footer');?>

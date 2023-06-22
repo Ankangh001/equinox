@@ -46,13 +46,10 @@
                   <span class="app-brand-logo demo">
                     <img src="<?=base_url('assets/img/')?>equinoxLogoBlack.png" alt="EQ logo" srcset="<?=base_url('assets/img/')?>equinoxLogoBlack.png" width="200">
                   </span>
-                  <!-- <span class="app-brand-text demo text-body fw-bolder">Sneat</span> -->
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-3 text-center">Welcome to <br>Equinox Trading Capital! 👋</h4>
-              <p class="mb-5 text-center">Start the adventure</p>
-
+              <h4 class="mb-3 text-center">Login to admin dashboard</h4>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
@@ -67,9 +64,6 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
-                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input
@@ -83,21 +77,15 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                   </div>
-                </div>
+                </div> -->
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="button" onclick="validateUser()">Sign in</button>
                 </div>
-              <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
-                </a>
-              </p>
             </div>
           </div>
           <!-- /Register -->
@@ -105,7 +93,7 @@
       </div>
     </div>
     <script src="<?=base_url('assets/user/')?>assets/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
     <script>
       var BASEURL = "<?=base_url()?>";
 
@@ -158,7 +146,7 @@
             setTimeout(() => {
               $('#alert').fadeOut();
               // $('#alert').addClass('d-none');
-            }, 3000);
+            }, 8000);
           }
     </script>
 </body>

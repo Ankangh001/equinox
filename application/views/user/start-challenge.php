@@ -2,7 +2,36 @@
 $this->load->view('user/includes/header');
 ?>
 
-
+<style>
+  label.fw-bold.form-check-label {
+    font-size: 20px;
+  }
+  p.card-title.fw-bold.text-primary {
+      font-size: 20px;
+  }
+  @media (max-width: 992px){
+    .card-title, label.fw-bold.form-check-label {
+      margin-bottom: 0;
+      font-size: 18px !important;
+    }
+    .nav-align-left>.tab-content {
+        border-radius: 0 0.375rem 0.375rem 0.375rem;
+        padding: 0;
+    }
+  }
+  .obj{
+    color:#000;
+    font-weight:800;
+  }
+  .nav-tabs .nav-item .nav-link {
+    color: #566a7f;
+    border: 0;
+    border-radius: 0;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+</style>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -32,15 +61,18 @@ $this->load->view('user/includes/header');
                       <div class="nav-align-left mb-4 row">
                         <ul class="nav nav-pills mb-3 col-lg-6" id="tabs" role="tablist">
 
-                          <?php foreach($res as $data){if($data['product_category'] == 'Aggressive') {?>
+                          <?php 
+                            foreach($res as $data){
+                              if($data['product_category'] == 'Aggressive') {
+                          ?>
                           <li class="nav-item">
                             <div class="card bg-white text-dark mb-3" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home<?=@$data['product_id']?>" aria-controls="navs-pills-top-home<?=@$data['product_id']?>" aria-selected="false">
                               <label class="card-body pointer">
                                 <div class="form-check d-flex justify-content-between align-items-center">
                                   <div class="d-flex justify-content-start align-items-center">
-                                    <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
+                                    <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1<?=@$data['product_id']?>">
                                     <div class="d-flex flex-column">
-                                      <label class="fw-bold form-check-label" for="defaultRadio1"><?=@$data['product_name']?></label>
+                                      <label class="fw-bold form-check-label" for="defaultRadio1<?=@$data['product_id']?>"><?=@$data['product_name']?></label>
                                     </div>
                                   </div>
                                   <p class="card-title fw-bold text-primary">$<?=@$data['account_size']?></p>
@@ -48,18 +80,24 @@ $this->load->view('user/includes/header');
                               </label>
                             </div>
                           </li>
-                          <?php }} ?>
+                          <?php 
+                              }
+                            } 
+                          ?>
 
                         </ul>
                         <div id="contents" class="tab-content shadow-none col-lg-6">
-                          <?php foreach($res as $data){ if($data['product_category'] == 'Aggressive') {?>
+                          <?php 
+                            foreach($res as $data){ 
+                              if($data['product_category'] == 'Aggressive') {
+                          ?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="navs-pills-top-home<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['max_drawdown']?> Maximum Drawdown</p>
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['daily_drawdown']?> Daily Drawdown</p>
+                                    <div class="card-text obj">Objectives</div><br>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong> </p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
                                   </div>
@@ -75,7 +113,10 @@ $this->load->view('user/includes/header');
                               </div>
                             </div>
                             
-                          <?php }} ?>
+                          <?php 
+                              }
+                            } 
+                          ?>
                         </div>
                       </div>
 
@@ -101,9 +142,9 @@ $this->load->view('user/includes/header');
                                 <label class="card-body pointer">
                                   <div class="form-check d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-start align-items-center">
-                                      <input name="normal-product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1">
+                                      <input name="product-code" class="form-check-input me-3 product" type="radio" value="<?=@$data['product_id']?>" id="defaultRadio1<?=@$data['product_id']?>">
                                       <div class="d-flex flex-column">
-                                        <label class="fw-bold form-check-label" for="defaultRadio1"><?=@$data['product_name']?></label>
+                                        <label class="fw-bold form-check-label" for="defaultRadio1<?=@$data['product_id']?>"><?=@$data['product_name']?></label>
                                       </div>
                                     </div>
                                     <p class="card-title fw-bold text-primary">$<?=@$data['account_size']?></p>
@@ -116,12 +157,13 @@ $this->load->view('user/includes/header');
                         <div id="normal-contents" class="tab-content shadow-none col-lg-6">
                           <?php foreach($res as $data){ if($data['product_category'] == 'Normal') {?>
 
-                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel">
+                            <div class="tab-pane fade" id="navs-pills-top-home<?=@$data['product_id']?>" role="tabpanel" aria-labelledby="navs-pills-top-home<?=@$data['product_id']?>">
                               <div class="col-md-12 col-xl-12">
                                 <div class="card shadow-none bg-transparent border border-secondary mb-3">
                                   <div class="card-body">
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['max_drawdown']?> Maximum Drawdown</p>
-                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;$<?=@$data['daily_drawdown']?> Daily Drawdown</p>
+                                    <div class="card-text obj">Objectives</div><br>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Maximum Drawdown <strong> - $<?=@$data['max_drawdown']?></strong></p>
+                                    <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Daily Drawdown <strong> - $<?=@$data['daily_drawdown']?> </strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 1 <strong>  - $<?=@$data['p1_target']?></strong></p>
                                     <p class="card-text align-items-center d-flex"><i class='text-primary bx bxs-check-circle'></i>&nbsp;&nbsp;Profit Target Phase 2 <strong>  - $<?=@$data['p2_target']?></strong></p>
                                   </div>
@@ -200,7 +242,7 @@ $this->load->view('user/includes/header');
   });
   
 
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Start New Challenege</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Start New Challenge</h4>`);
 
   
 </script>

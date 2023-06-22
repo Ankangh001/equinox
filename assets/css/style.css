@@ -5,6 +5,7 @@ body {
 	background: #fff;
 	color: #fff;
 	overflow-x: hidden;
+	width: 100% !important;
 }
 
 a {
@@ -235,9 +236,11 @@ h6 {
 
 @media (max-width: 992px) {
 	.book-a-table-btn {
-		margin: 0 15px 0 0;
-		padding: 8px 20px;
+		margin: 0 -20px 0 0;
+		padding: 5px 10px;
+		font-size: 14px;
 	}
+
 }
 
 /*--------------------------------------------------------------
@@ -265,7 +268,7 @@ h6 {
 .navbar a {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: start;
 	padding: 10px 0 10px 30px;
 	/* color: #000000; */
 	white-space: nowrap;
@@ -360,7 +363,7 @@ h6 {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-	color: #000;
+	color: #fff;
 	font-size: 28px;
 	cursor: pointer;
 	display: none;
@@ -419,7 +422,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover > a {
-	color: #00e894;
+	color: #0d6efd;
 }
 
 .navbar-mobile .getstarted {
@@ -453,7 +456,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover > a {
-	color: #00e894;
+	color: #0d6efd;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
@@ -1666,7 +1669,8 @@ section {
 }
 
 .contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .php-email-form textarea,
+.contact .php-email-form select {
 	font-size: 14px;
     background: #eeeeee;
     box-shadow: 0 0 6px #00000010;
@@ -1689,6 +1693,7 @@ section {
 }
 
 .contact .php-email-form input:focus,
+.contact .php-email-form select:focus,
 .contact .php-email-form textarea:focus {
 	/* border-color: #FF5757; */
 	border: 2px solid #FF5757;
@@ -1712,7 +1717,11 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-	background: #d3af71;
+    background: -webkit-linear-gradient(0deg, #ff5757, #8c52ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: inset 2px 0px 0px #ff5757, inset -2px 0px 0px #ff5757, inset 1px 2px 0px #ff5757, inset 0px -2px 0px #ff5757;
+    font-weight: 600;
 }
 
 @-webkit-keyframes animate-loading {
@@ -2893,7 +2902,7 @@ a.icons-video-btn2 i {
 }
 
 .btn-box {
-	padding: 5px 10px 4px !important;
+	padding: 5px 10px 2px !important;
     border-radius: 12px;
     font-size: 1.25rem;
     text-align: center !important;
@@ -2954,7 +2963,7 @@ a.icons-video-btn2 i {
 }
 
 section#navtabs-count{
-	background:linear-gradient(180deg, #ffffff 20%, #eee 100%)  !important;
+	background:linear-gradient(0deg, #ffffff 20%, #eee 100%)  !important;
 }
 
 button.game-btn {
@@ -3071,6 +3080,7 @@ button.game-btn {
 	margin: 1rem 0 -15px 34px; 
 	font-size:16px; 
 	color:#000000;
+	width: 60%;
 }
 
 	
@@ -3081,30 +3091,33 @@ iframe.mob-tuto{
 
 /* mobile optimization */
 @media (max-width: 768px) {
+	.learn-more{
+		font-size: 12px !important;
+	}
 	#hero .btns {
 		margin: 14px auto !important;
 		width: 100% !important;
-		justify-content: space-evenly !important;
 	}
 	#hero h1 {
-		font-size: 33px;
-		line-height: 38px;
+		font-size: 44px;
+		line-height: 48px;
 		margin: 0;
 	}
 	.trade-cap{
 		margin: 1rem auto; 
-		font-size:18px; 
+		font-size:12px; 
 		color:#000000;
+		width: 70%;
 	}
 	.f-25{
-		font-size: 16px;
+		font-size: 10px;
 		width: 100%;
 		margin-bottom: 1em;
 	}
 	.g-f-btn{
 		border-radius: 30px;
-		font-size: 18px;
-		padding: 0.2rem 0.5rem !important;
+		font-size: 12px;
+		padding: 0.2rem 0.9rem !important;
 	}
 	.get-funded {
 		padding: 12px !important;
@@ -3114,7 +3127,7 @@ iframe.mob-tuto{
 		justify-content: center !important;
 		text-align: center;
 		align-items: center !important;
-		box-shadow: 0 0 8px #00000080;
+		box-shadow: 3px 4px 8px #00000080;
 	}
 	.g-funded-container{
 		width: 90%;
@@ -3189,25 +3202,26 @@ iframe.mob-tuto{
 	}
 	ul.nav.nav-tabs.justify-content-center.mb-5.border-none {
 		width: 100%;
-		margin-bottom: 2rem !important;
+		margin-bottom: 1rem !important;
 		font-size: 12px !important;
 	}
 	.flex.justify-center.items-center.flex-row.px-16p.py-8p.bg-primary-500\/16.border-pricing.border-primary-500.rounded-full.-my-12p.h-40p.gap-8p {
-		margin: 0 auto 10% auto !important;
-		font-size: 18px !important;
-		padding: 6% 14% !important;
+		margin: 12px 4px !important;
+		font-size: 16px !important;
+		padding: 6% 10% !important;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	li.nav-item {
-		margin-right: 2rem !important;
+		margin: 3px 9px !important
 	}
 	.pricing-coming-soon span {
 		font-size: 14px;
 	}
 	.why-us {
 		padding: 0;
+		margin-top: 2rem;
 	}
 	.section-title.text-center {
 		padding-bottom: 1rem;
@@ -3248,9 +3262,9 @@ iframe.mob-tuto{
 		background: none !important;
 	}
 	.btn-book {
-		font-size: 22px !important;
+		font-size: 14px !important;
 		padding: 3% 3% !important;
-		margin: 1rem 0 !important;
+		margin: 1rem 6px !important;
 	}
 	#hero .btn2 {
 		margin: auto !important;
@@ -3259,9 +3273,9 @@ iframe.mob-tuto{
 		font-size: 11px !important;
 	}
 	.btn-box {
-		padding: 0px 12px 0px !important;
+		padding: 1px 8px !important;
 		border-radius: 12px;
-		font-size: 1rem !important;
+		font-size: 20px !important;
 		text-align: center !important;
 		display: flex;
 		justify-content: center;
@@ -3285,6 +3299,11 @@ iframe.mob-tuto{
 	.payouts{
 		padding: 0;
 		margin-bottom: 3rem;
+	}
+
+	.img-holder.d-flex.justify-content-center.align-items-center.p-3{
+		display: flex !important;
+		flex-wrap: wrap;
 	}
 }
 
@@ -3390,12 +3409,12 @@ iframe.mob-tuto{
 		padding: 0;
 	}
 	.payout2{
-		padding-top: 0 !important;
+		padding-top: 3rem !important;
 	}
 
 	.img-holder img{
-		width: 50%;
-		margin-bottom: 3rem;
+		width: 40%  !important;
+		/* margin-bottom: 3rem; */
 	}
 
 	#eqLogoWhite{
@@ -3435,7 +3454,7 @@ iframe.mob-tuto{
 
 	.key-feature{
 		padding: 0 !important;
-		background: #fff !important;
+		padding-bottom: 1rem !important;
 	}
 	.sligh-left{
 		margin-left: 0 !important;
@@ -3465,6 +3484,7 @@ iframe.mob-tuto{
 	.swiper-slide, .swiper-slide{
 		height: 35vh !important;
 		width: inherit !important;
+		background-color: #fff;
 	}
 	.game{
 		padding-top: 0rem !important;
@@ -3495,6 +3515,7 @@ iframe.mob-tuto{
 	.nav-tabs{
 		border-bottom: none !important;
 		flex-direction: column !important;
+		width: 100%;
 	}
 	#mb-border-none{
 		border-bottom: 0px !important;
@@ -3510,4 +3531,17 @@ iframe.mob-tuto{
 	.text-left {
 		text-align: center;
 	}
+}
+:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px !important;
+}
+.btn-box:hover {
+    box-shadow: 2px 3px 4px #000000;
+}
+
+.color-000{
+	color: #000 !important;
+}
+.color-fff{
+	color: #fff !important;
 }

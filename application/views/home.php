@@ -1,45 +1,26 @@
 <?php
 $this->load->view('includes/header');
 ?>
-
-
-
+<style>
+	@media (max-width: 992px){
+		#nav-contact {
+				margin-top: 2rem !important;
+		}
+	}
+</style>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
 		<div class="row">
         	<div class="col-lg-6 m-funding" style="margin-top:-2rem">
 				<h1>Funding for traders <br><span>Simplified !</span></h1>
-				<p class="trade-cap">Trade our capital and keep upto 90% of profits. <br> We cover the losses.</p>
-				
-				<!-- <h2 class="coming-soon-text">Coming Soon</h2>
-
-				<div class="flex items-end justify-start z-10" style="color:#000000">
-					<div class="timer-m text-center">
-						<span id="day" class="text-xl sm:text-5xl">110</span>
-						<p style="font-size:0.8rem">Days</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="hours" class="text-xl sm:text-5xl">13</span>
-						<p style="font-size:0.8rem">Hours</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="min" class="text-xl sm:text-5xl">47</span>
-						<p style="font-size:0.8rem">Minutes</p>
-					</div>
-					<div class="timer-m text-center">
-						<span id="sec" class="text-xl sm:text-5xl">20</span>
-						<p style="font-size:0.8rem">Seconds</p>
-					</div>
-				</div> -->
-
+				<p class="trade-cap">Trade our capital and keep upto 90% of profits. We cover the losses.</p>
 				<div class="btns d-flex justify-content-center" style="width:80%">
-					<a href="client-login" class="btn-book animated fadeInUp scrollto gradient-btn">
+					<a href="client-signup" class="btn-book animated fadeInUp scrollto gradient-btn">
 						<span>&nbsp;&nbsp;Get Funded&nbsp;&nbsp;</span>
 					</a>
-					<a href="client-login" class="btn-book animated text-secondary fadeInUp scrollto" style="border: 2px solid #00000080;">Free Trial</a>
+					<a href="#about" class="btn-book animated text-secondary fadeInUp scrollto learn-more" style="border: 2px solid #00000080;padding: 10px 14px;font-size: 16px;">Learn More</a>
 				</div>
-
 				<div class="btn2" style="width:80%">
 					<p class="text-secondary text-center w-100 text-small d-inline-block" style="font-size:16px">Stay Updated</p><br>
 					
@@ -49,19 +30,29 @@ $this->load->view('includes/header');
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-youtube"></i>
 							</a>
 						</div>
+						<!-- <div class="btn-box p-1 text-center bg-dark" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;">
+							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
+								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-instagram"></i>
+							</a>
+						</div> -->
+						<div class="btn-box p-1 text-center bg-dark" style="background: #177bf2 !important;">
+							<a href="https://www.facebook.com/profile.php?id=100093223732191&mibextid=LQQJ4d" target="_blank">
+								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-facebook"></i>
+							</a>
+						</div>
 						<div class="btn-box p-1 text-center bg-dark" style="background: #4f4fd0 !important;">
 							<a href="https://discord.gg/98MVWDvEr9" target="_blank">
 								<i style="color: #1586d4;" style="font-size:30px" class="text-white fa-brands fa-discord"></i>
 							</a>
 						</div>
 					</div>
-					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="24px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
+					<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="6440b29141a0d9256c41b368" data-style-height="40px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-without-reviews-preferred-string-id="1" data-style-alignment="center">
 						<a href="https://www.trustpilot.com/review/equinoxtradingcapital.com" target="_blank" rel="noopener">Trustpilot</a>
 					</div>
 				</div>
 			</div>
 			<div id="device" class="col-lg-6 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-				<a href="https://youtu.be/FkXlV-v7uSs" class="glightbox play-btn"></a>
+				<a href="https://youtu.be/FvjcruU_XSY" class="glightbox play-btn"></a>
 			</div>
       	</div>
     </div>
@@ -101,7 +92,7 @@ $this->load->view('includes/header');
 			</div>
 		</div>
 	</div>
-	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/E7mGqt7v3Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	<iframe width="90%" height="180" class="mx-auto mt-5 mob-tuto" src="https://www.youtube.com/embed/FvjcruU_XSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 	<!-- ======= Trade for Proprietary ======= -->
 	<section id="about" class="payout why-trade payoutee" style="background:#fff; padding-top:0">
@@ -231,7 +222,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right text-right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -322,7 +313,7 @@ $this->load->view('includes/header');
 										<p class="left-p" >Trading with <br>substantial funds</p>
 									</div>
 									<div class="right">
-										<span>80/20</span>
+										<span>75/25</span>
 										<p class="left-p" >Profit Split</p>
 									</div>
 								</div>
@@ -488,7 +479,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$69</span>
+													<span>$79</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -543,7 +534,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<a href="client-area" class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$149</span>
+													<span>$179</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</a>
 											</td>
@@ -568,7 +559,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Target</td>
 											<td x-text="currentConfig[0][0]">$7500</td>
 											<td x-text="currentConfig[1][0]">$5000</td>
-											<td x-text="currentConfig[2][0]">indefinite%</td>
+											<td x-text="currentConfig[2][0]">indefinite</td>
 										</tr>
 										<tr>
 											<td style="text-align:left !important; width:40%">Max Drawdown</td>
@@ -598,7 +589,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$249</span>
+													<span>$329</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -654,7 +645,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$449</span>
+													<span>$599</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -710,7 +701,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$849</span>
+													<span>$999</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -827,7 +818,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$69</span>
+													<span>$79</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -889,7 +880,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$149</span>
+													<span>$179</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -951,7 +942,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$249</span>
+													<span>$329</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -1013,7 +1004,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$449</span>
+													<span>$599</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -1075,7 +1066,7 @@ $this->load->view('includes/header');
 											<td style="text-align:left !important; width:40%">Refundable one time fee</td>
 											<td colspan="3">
 												<div class="pricing-coming-soon fw-bold fs-8 table-button flex justify-center items-center flex-row px-16p py-8p bg-primary-500/16 border border-primary-500 rounded-full -my-12p h-40p gap-8p">
-													<span>$849</span>
+													<span>$999</span>
 													<strong x-text="currentConfig[0][5]"></strong>
 												</div>
 											</td>
@@ -1107,21 +1098,9 @@ $this->load->view('includes/header');
 
 		<div class="swiper mySwiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b1.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe1">
-					<!-- <br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(1, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
-				</div>
 				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b2.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe2">
-					<!-- <br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(2, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
 				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b3.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe3">
-					<!-- <br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(3, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
-				</div>
-				<div class="swiper-slide" style="background-image:url(<?=base_url('assets/img/')?>b4.png); background-size:contain; background-repeat:no-repeat; background-position:center;" id="iframe4">
-					<!-- <br><br><br>Your Thumbnail Here
-					<a class="slider-video-btn" onClick="playIframe(4, 'https://www.youtube.com/embed/HyYpY69Zk6Y?autoplay=1')"><i class="fas fa-play" aria-hidden="true"></i></a> -->
 				</div>
 			</div>
 
@@ -1268,7 +1247,7 @@ $this->load->view('includes/header');
     </section>
 
 	<!-- ======= Game Section ======= -->
-	<section id="about" class="game payout2">
+	<section id="about" class="game hidden payout2">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-5 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1279,7 +1258,7 @@ $this->load->view('includes/header');
           </div>
           <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-2 content sligh-left" style="margin-left:-5rem">
             <h3 class="most-popular-text game-title">Play and win <br/>Assured rewards!</h3>
-            <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win upto <strong  style="font-weight:600; color:#06bd0d">$2,000 Cash</strong>, evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">20%</strong> discount.</p>
+            <p class="mb-5 game-para" style="font-family: 'Montserrat', sans-serif;">Win evaluation accounts, discount coupons and <br> minimum rewards of <strong  style="font-weight:600; color:#06bd0d">10%</strong> discount.</p>
 			<div class="img-holder row justify-content-center align-item-center p-3">
 				<a href="client-login" class=" game-btn border-none col-lg-12 btn btn-primary mb-3 playnow">Play Now</a>
 				<div class="d-flex justify-content-center">
@@ -1293,7 +1272,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	 <!-- ======= About Section ======= -->
-	<section id="about" class="payout">
+	<section id="about" class="payout2">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
@@ -1304,13 +1283,15 @@ $this->load->view('includes/header');
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3 class="payout-h3" style="margin-bottom:2rem; font-size:2rem; font-weight: 600;">Payout System</h3>
             <p class="fst-italic">
-			<strong>Profit Split</strong> :  Your profit split ratio starts at level 1 &nbsp;<strong class="text-primary">[ 80:20 ]</strong>. <br><br>
-			<strong>Scaling Plan</strong> : If you meet the scaling conditions we increase your current balance by <strong class="text-primary">50%</strong> of the initial balance. With scaling your payout split goes to level 2 &nbsp;<strong class="text-primary">[ 90:10 ]</strong>.<br><br>
-			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">14 days</strong>  from the first trade. You will get paid on your most convinient date.
+			<strong>Profit Split</strong> :  Your profit split ratio starts at level 1 &nbsp;<strong class="text-primary">[ 75:25 ]</strong>. <br><br>
+			<strong>Scaling Plan</strong> : If you meet the scaling conditions we increase your current balance by <strong class="text-primary">50%</strong> of the initial balance. With scaling your payout split increases by&nbsp;<strong class="text-primary">5%</strong>.<br><br>
+			<strong>Payout Requests</strong> : You can request payout on-demand through the dashboard. The default payout schedule is every <strong class="text-primary">30 days</strong>  from the first trade. You will get paid on your most convinient date.
 			</p>
 			<div class="img-holder d-flex justify-content-center align-items-center p-3">
-				<img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content; margin-right:2rem">
+				<!-- <img src="<?=base_url('assets/img/')?>deel.png" alt="mt4-image" style="width:25%; height:fit-content; margin-right:2rem"> -->
+				<img class="ml-3" src="<?=base_url('assets/img/')?>bank-transfer.png" alt="mt4-image" style="width:20%; height:fit-content">
 				<img class="ml-3" src="<?=base_url('assets/img/')?>wallet.png" alt="mt4-image" style="width:20%; height:fit-content">
+				<img class="ml-3" src="<?=base_url('assets/img/')?>paypal.png" alt="mt4-image" style="width:20%; height:fit-content">
 			</div>
           </div>
         </div>
@@ -1319,7 +1300,7 @@ $this->load->view('includes/header');
     </section><!-- End About Section -->
 
 	<!-- ======= After Payout ======= -->
-	<section id="about" class="payout2">
+	<section id="about" class="payout">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
@@ -1349,16 +1330,7 @@ $this->load->view('includes/header');
             <p class=" mb-3">Find out how you can benefit with Equinox Trading Capital.</p>
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-						<span>Risk Manager</span>
-					</button>
-					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-						<span>Trade Manager</span>
-					</button>
-					<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-						<span>Trade Journal</span>
-					</button>
-					<button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
+					<button class="nav-link active" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
 						<span>Market Watch</span>
 					</button>
 					<button class="nav-link" id="nav-5-tab" data-bs-toggle="tab" data-bs-target="#nav-5" type="button" role="tab" aria-controls="nav-5" aria-selected="false">
@@ -1367,10 +1339,19 @@ $this->load->view('includes/header');
 					<button class="nav-link" id="nav-cot-tab" data-bs-toggle="tab" data-bs-target="#nav-cot" type="button" role="tab" aria-controls="nav-cot" aria-selected="false">
 						<span>Economic Calendar</span>
 					</button>
+					<button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+						<span>Risk Manager</span>
+					</button>
+					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+						<span>Trade Manager</span>
+					</button>
+					<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+						<span>Trade Journal</span>
+					</button>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<div class="row py-5">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>etc_risk_manager.png" alt="" srcset="">
@@ -1409,7 +1390,7 @@ $this->load->view('includes/header');
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+				<div class="tab-pane fade show active" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
 					<div class="row py-5 m-auto" style="width:95%;">
 						<div class="col-lg-6 m-auto text-left">
 							<img src="<?= base_url('assets/img/')?>market-watch.png" alt="" srcset="">
@@ -1417,7 +1398,7 @@ $this->load->view('includes/header');
 						<div class="col-lg-6 m-auto text-left">
 							<h6 class="fw-bold mt-3 card-title">Market Watch</h6>
 							<br><br>
-							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.s</p>
+							<p class="text-muted"> Grab an overview of global markets performance, including change values, Open, High, Low, and Close values for selected financial instruments.</p>
 							<a href="quotes" class="btn btn-primary mt-5 gradient-btn">Learn More</a>
 						</div>
 					</div>
@@ -1486,7 +1467,7 @@ $this->load->view('includes/header');
     </section><!-- ========= Icons arund you ======== -->	
 
 	<!-- ======= Key Benefits ======= -->
-    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: linear-gradient(0deg, #ffffff 50%, #eee 100%) !important;">
+    <section id="why-us" class="key-feature" style="padding:120px 0 0 0; background: #ffffff !important;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center">

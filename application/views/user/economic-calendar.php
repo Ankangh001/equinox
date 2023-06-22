@@ -3,6 +3,7 @@ $this->load->view('user/includes/header');
 ?>
 
 <style>
+
   .nav-tabs {
     display: flex;
     border-bottom: 1px solid #fff;
@@ -26,6 +27,7 @@ $this->load->view('user/includes/header');
     box-shadow: 0px 0px 8px #00000090;
     letter-spacing: 1.2px;
     font-weight: bold;
+    margin-bottom:2rem;
 }
 .nav-tabs .nav-link.active {
     background: #444;
@@ -34,6 +36,9 @@ $this->load->view('user/includes/header');
 .tradingview-widget-container{
   margin:auto
 }
+.tab-content {
+    padding: 0;}
+    
 /* iframe {
   pointer-events: none;
 } */
@@ -177,6 +182,6 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Economic Calendar</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Economic Calendar</h4>`);
 </script>
 <?php $this->load->view('user/includes/footer');?>

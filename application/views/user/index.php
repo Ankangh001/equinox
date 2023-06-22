@@ -32,45 +32,8 @@ $this->load->view('user/includes/header');
         </div>
       </div>
     </div>
-  <div class="accordion mt-3 mb-5" id="accordionExample">
-    <?php  
-      foreach ($res as $key => $value) { 
-        if ($value['phase'] == '0'){
-    ?>
-      <div class="card accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="false" aria-controls="accordionOne">
-            Free Trial
-          </button>
-        </h2>
-
-        <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
-          <div class="accordion-body p-0">
-            <div class="row">
-              <div class="col-xl">
-                <div class="">
-                  <div class="card-body">
-                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" id="redirect" class="d-flex mb-3 justify-content-between align-items-center shadow hover pointer btn w-100">
-                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
-                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
-                    </a>
-                    <div style="margin-bottom:-12px"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
-          break;
-        }
-      };
-    ?>
-
-
-      <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
+    <div class="accordion mt-3 mb-5" id="accordionExample">
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '1' && $value['payment_status'] == '1'){?>
       <div class="card accordion-item">
         <h2 class="accordion-header" id="headingOne2">
           <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
@@ -84,7 +47,69 @@ $this->load->view('user/includes/header');
               <div class="col-xl">
                 <div class="">
                   <div class="card-body">
-                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '1'){?>
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '1' && $value['payment_status'] == '1'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
+                    </a>
+                    <?php } }?>
+                    <div style="margin-bottom:-12px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php break;}} ?>
+
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '2'  && $value['payment_status'] == '1'){?>
+      <div class="card accordion-item">
+        <h2 class="accordion-header" id="headingOne2">
+          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-phase2" aria-expanded="false" aria-controls="accordion-phase2">
+            Evaluation Phase 2
+          </button>
+        </h2>
+
+        <div id="accordion-phase2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
+          <div class="accordion-body p-0">
+            <div class="row">
+              <div class="col-xl">
+                <div class="">
+                  <div class="card-body">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '2' && $value['payment_status'] == '1'){?>
+                    <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
+                      <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
+                      <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer"><i class='bx bx-chevrons-right'></i></label>
+                    </a>
+                    <?php } }?>
+                    <div style="margin-bottom:-12px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php break;}} ?>
+
+      <?php foreach ($res as $key => $value) { if ($value['phase'] == '3'){?>
+      <div class="card accordion-item">
+        <h2 class="accordion-header" id="headingOne2">
+          <button type="button" class="bg-primary p-3 text-white accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-funded" aria-expanded="false" aria-controls="accordion-funded">
+            Evaluation Funded
+          </button>
+        </h2>
+
+        <div id="accordion-funded" class="accordion-collapse collapse" data-bs-parent="#accordionExample">    
+          <div class="accordion-body p-0">
+            <div class="row">
+              <div class="col-xl">
+                <div class="">
+                  <div class="card-body">
+                    <?php foreach ($res as $key => $value) { if ($value['phase'] == '3' && $value['payment_status'] == '1'){?>
                     <a href="<?= base_url('user/account-overview?id=').$value['id'] ?>" class="d-flex mb-3 justify-content-between align-items-center hover shadow pointer btn w-100">
                       <label for="html5-text-input" class="col-form-label text-dark pointer">Login: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['account_id']?></label>
                       <label for="html5-text-input" class="fw-bold col-form-label text-dark pointer">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size']?></label>
@@ -101,8 +126,9 @@ $this->load->view('user/includes/header');
       </div>
       <?php break;}} ?>
     </div>
+
     <div class="row">
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
           <div class="card mb-4">
             <div class="card-body">
               <div class="mt-5 mb-3 row  text-center d-block w-100">
@@ -128,10 +154,8 @@ $this->load->view('user/includes/header');
               <button type="button" id="free-trial-btn" class="w-100 btn btn-secondary">Try for free</button>
             </div>
           </div>
-        </div>
-
-
-        <div class="col-lg-6">
+        </div> -->
+        <div class="col-lg-6 m-auto">
           <div class="card mb-4">
             <div class="card-body">
               <div class="mt-5 mb-3 row  text-center d-block w-100">
@@ -139,17 +163,17 @@ $this->load->view('user/includes/header');
                 <label for="html5-text-input" class="fs-1 text-dark my-3 col-form-label fw-bold text-transform-none ">Challenge</label>
               </div>
               <div class="mb-5 d-flex flex-column text-center">
-                <label for="html5-text-input" class="text-primary col-form-label">Trade upto $200,000 SmartProp trde account</label>
-                <label for="html5-text-input" class="col-form-label">Pass the simple Evaluation and Trader Account</label>
+                <label for="html5-text-input" class="text-primary col-form-label">Manage upto $500,000 Equinox Trading Capital account</label>
+                <label for="html5-text-input" class="col-form-label">Pass the evaluation phase and become a funder trader</label>
               </div>
 
               <div class="mb-3 d-flex flex-column text-left border-bottom">
                 <ul class="list-unstyled mt-2">
                   <li>
                     <ul>
-                      <li>Basic account featured</li>
-                      <li>Master your trading stratergy</li>
-                      <li>Trading upto 14 days</li>
+                      <li>All strategies accepted.</li>
+                      <li>One time refundable fee only.</li>
+                      <li>EA's, copy trading and news trading allowed.</li>
                     </ul>
                   </li>
                 </ul>
@@ -162,7 +186,7 @@ $this->load->view('user/includes/header');
     <!-- / Content -->
 
 <script>
-  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light">User /</span> Dashboard</h4>`);
+  $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> Dashboard</h4>`);
 
   var user ={};
   user.id = <?php echo $_SESSION['user_id']; ?>;

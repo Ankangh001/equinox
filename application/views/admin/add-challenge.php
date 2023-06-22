@@ -29,7 +29,6 @@ $this->load->view('admin/includes/header');
                     <label for="product-type" class="form-label">Product Type</label>
                     <select class="form-select" name="product-type" id="product-type" aria-label="Default select example">
                       <option selected="">Select Product Type</option>
-                      <option class="text-primary" value="Free Trial">Free Trial</option>
                       <option class="text-danger" value="Aggressive">Aggressive</option>
                       <option class="text-success" value="Normal">Normal</option>
                     </select>
@@ -56,7 +55,7 @@ $this->load->view('admin/includes/header');
                 <div class="col-lg-4" id="daily-drawdown">
                   <div class="mb-3">
                       <label class="form-label" for="daily-drawdown">Daily Drawdown</label>
-                      <input required type="number" id="daily-drawdown" name="daily-drawdown" class="form-control phone-mask" placeholder="Enter Daily Drawdown">
+                      <input type="number" id="daily-drawdown" name="daily-drawdown" class="form-control phone-mask" placeholder="Enter Daily Drawdown">
                     </div>
                 </div>
                 <div class="col-lg-4" id="p1">
@@ -139,7 +138,7 @@ $this->load->view('admin/includes/header');
           setTimeout(() => {
             $('#alert').fadeOut();
             // $('#alert').addClass('d-none');
-          }, 3000);
+          }, 8000);
         },
         error: function() { alert("Error posting feed."); }
     });

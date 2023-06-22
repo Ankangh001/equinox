@@ -6,8 +6,19 @@ $this->load->view('includes/header');
 		width:80%;
 	}
 	.get-funded{
-        display:none !important;
+        display: none !important;
     }
+	.mob{
+		display: none;
+	}
+	@media (max-width: 786px){
+		.mob{
+			display: block;
+		}
+		.pc{
+			display:none;
+		}
+	}
 </style>
 <main id="main">
 	<section id="contact" class="contact">
@@ -20,125 +31,79 @@ $this->load->view('includes/header');
 				</p>
 			</div>
 		</div>
-		<div class="container aos-init aos-animate"  data-aos="fade-up">
+		<div class="container aos-init aos-animate pc"  data-aos="fade-up">
 			<div class="row" style="margin-top:1rem !important">
 				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-start align-items-center">
-							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">UK & Global - Equinox Trading Capital Limited</h4>
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">UK & EU - Equinox Trading Capital LTD</h4>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
-				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
+					<div class="info">
+						<div class="email d-flex flex-column justify-content-start align-items-center">
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">US & Global - Equinox Trading Capital LLC</h4>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row mt-3">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
 							<h4>Address</h4>
-							<p>71-75 SHELTON STREET, COVENT GARDEN LONDON WC2H 9JQ<br>CIN: 14729881</p>
+							<p>71-75 SHELTON STREET, COVENT GARDEN <br>LONDON WC2H 9JQ<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
-							<h4>Website</h4>
-							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.com</a> <br><a href="equinoxtradingcapital.co.uk">www.equinoxtradingcapital.co.uk</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="email about-text">
-							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
+							<h4>Address</h4>
+							<p>16192 COASTAL HIGHWAY, LEWES <br>DELAWARE, 19958<br>CIN: 7448069</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- <div class="container aos-init aos-animate"  data-aos="fade-up">
+
+		<div class="container aos-init aos-animate mob"  data-aos="fade-up">
 			<div class="row" style="margin-top:1rem !important">
 				<div class="col-lg-6">
 					<div class="info">
 						<div class="email d-flex flex-column justify-content-start align-items-center">
-							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">US-Equinox Trading Capital LLC</h4>
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">UK & EU - Equinox Trading Capital LTD</h4>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4"></div>
-				<div class="col-lg-4"></div>
-			</div>
-			<div class="row mt-3">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
 							<h4>Address</h4>
-							<p>412 N Main St100, Buffalo, WY 82834, United States<br>CIN: 14729881</p>
+							<p>71-75 SHELTON STREET, COVENT GARDEN <br>LONDON WC2H 9JQ<br>CIN: 14729881</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+			</div>
+			<div class="row mt-3">
+				<div class="col-lg-6">
 					<div class="info">
-						<div class="email about-text">
-							<h4>Website</h4>
-							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.us</a></p>
+						<div class="email d-flex flex-column justify-content-start align-items-center">
+							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">US & Global - Equinox Trading Capital LLC</h4>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="info">
 						<div class="email about-text">
-							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
+							<h4>Address</h4>
+							<p>16192 COASTAL HIGHWAY, LEWES <br>DELAWARE, 19958<br>CIN: 7448069</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-    	<div class="container aos-init aos-animate"  data-aos="fade-up">
-			<div class="row" style="margin-top:1rem !important">
-				<div class="col-lg-6">
-					<div class="info">
-						<div class="email d-flex flex-column justify-content-start align-items-center">
-							<h4 style="text-align: left; width: 100%; font-size:18px; font-weight:bold">ASIA-Equinox Trading Capital Limited</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4"></div>
-				<div class="col-lg-4"></div>
-			</div>
-			<div class="row mt-3">
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="email about-text">
-							<h4>Address</h4>
-							<p>2/F, Tern Centre, Tower 1, 237 Queen’s Road Central, Hong Kong<br>CIN: 14729881</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="email about-text">
-							<h4>Website</h4>
-							<p><a href="equinoxtradingcapital.com">www.equinoxtradingcapital.co.hk</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="info">
-						<div class="email about-text">
-							<h4>Email</h4>
-							<p><a href="mailto:equinoxtrading@gmail.com">support@equinoxtradingcapital.com</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 	</section>
 </main><!-- End #main -->
 

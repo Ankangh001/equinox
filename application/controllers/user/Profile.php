@@ -11,6 +11,9 @@ class Profile extends APIMaster {
 
 	public function index()
 	{
-        $this->load->view('user/profile');
+        $check['res'] = $this->db->where([
+            'user_id' => $_SESSION['user_id'
+            ]])->get('user')->result_array();
+        $this->load->view('user/profile', $check);
 	}
 }

@@ -10,7 +10,7 @@ async function SquarePaymentFlow() {
   // GooglePay(document.getElementById('google-pay-button'));
 
   // Create ACH payment
-  ACHPay(document.getElementById('ach-button'));
+  // ACHPay(document.getElementById('ach-button'));
 }
 
 window.payments = Square.payments(window.applicationId, window.locationId);
@@ -30,6 +30,12 @@ window.showError = function(message) {
 }
 
 window.createPayment = async function(token) {
+  $('.container-xxl').prepend(`<div id="loading" class="demo-inline-spacing">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>`
+           );
   const dataJsonString = JSON.stringify({
     token,
     idempotencyKey: window.idempotencyKey,
@@ -37,7 +43,8 @@ window.createPayment = async function(token) {
   });
 
   try {
-    var paymentUrl  = "http://localhost/equinox/user/payment/squarePayment";
+    // debugger;
+    var paymentUrl  = PANEL_URL+"user/payment/squarePayment";
     const response = await fetch(paymentUrl, {
       method: 'POST',
       headers: {
@@ -51,11 +58,29 @@ window.createPayment = async function(token) {
     if (data.errors && data.errors.length > 0) {
       if (data.errors[0].detail) {
         window.showError(data.errors[0].detail);
+        $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
+        $('#modalCenter').modal('show');
+        setTimeout(() => {
+          $('#modalCenter').modal('hide');
+          location.reload();
+        }, 4000);
       } else {
         window.showError('Payment Failed.');
+        $('#modalCenterTitle').html('Payment Failed <i class="mb-1 bx bx-x-circle fw-bold fs-1 text-danger"></i>');
+        $('#modalCenter').modal('show');
+        setTimeout(() => {
+          $('#modalCenter').modal('hide');
+          window.location.href = PANEL_URL+"user/account-overview";
+        }, 4000);
       }
     } else {
       window.showSuccess('Payment Successful!');
+      $('#modalCenterTitle').html('Payment Successfull<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i>');
+      $('#modalCenter').modal('show');
+      setTimeout(() => {
+        $('#modalCenter').modal('hide');
+        window.location.href = PANEL_URL+"user/account-overview";
+      }, 4000);
     }
   } catch (error) {
     console.error('Error:', error);
@@ -72,23 +97,23 @@ window.getPaymentRequest = function() {
       { amount: '4.56', label: 'Dog', pending: false },
     ],
     requestBillingContact: false,
-    requestShippingContact: true,
-    shippingContact: {
-      addressLines: ['123 Test St', ''],
-      city: 'San Francisco',
-      countryCode: 'US',
-      email: 'test@test.com',
-      familyName: 'Last Name',
-      givenName: 'First Name',
-      phone: '1111111111',
-      postalCode: '94109',
-      state: 'CA',
-    },
-    shippingOptions: [
-      { amount: '0.00', id: 'FREE', label: 'Free' },
-      { amount: '9.99', id: 'XP', label: 'Express' },
-    ],
-    total: { amount: '1.00', label: 'Total', pending: false },
+    requestShippingContact: false,
+    // shippingContact: {
+    //   addressLines: ['123 Test St', ''],
+    //   city: 'San Francisco',
+    //   countryCode: 'US',
+    //   email: 'test@test.com',
+    //   familyName: 'Last Name',
+    //   givenName: 'First Name',
+    //   phone: '1111111111',
+    //   postalCode: '94109',
+    //   state: 'CA',
+    // },
+    // shippingOptions: [
+    //   { amount: '0.00', id: 'FREE', label: 'Free' },
+    //   { amount: '9.99', id: 'XP', label: 'Express' },
+    // ],
+    total: { amount: requestData.final_product_price, label: 'Total', pending: false },
   };
 };
 

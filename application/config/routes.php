@@ -13,6 +13,8 @@ $route['market-data'] = 'welcome/maerketData';
 $route['economic-calendar'] = 'welcome/calender';
 $route['client-login'] = 'auth/client';
 $route['client-signup'] = 'auth/clientSignup';
+$route['client-forget-password'] = 'auth/forgot_password';
+$route['reset-password/(:any)'] = 'auth/reset_password/$1';
 $route['client-signup/(:any)'] = 'auth/clientSignup/$1';
 $route['affiliate'] = 'welcome/affiliate';
 $route['payouts'] = 'welcome/payouts';
@@ -81,30 +83,45 @@ $route['admin/phase-1'] = 'admin/purchase/phase1';
 $route['admin/phase-2'] = 'admin/purchase/phase2';
 $route['admin/phase-3'] = 'admin/purchase/phase3';
 $route['admin/completed'] = 'admin/purchase/completed';
+$route['admin/server-settings'] = 'admin/purchase/servers';
 
+    //-----payouts------------//
 $route['admin/payout/pending'] = 'admin/payout/pending';
 $route['admin/payout/approved'] = 'admin/payout/approved';
 $route['admin/payout/payout'] = 'admin/payout';
 
+    //----profiles---------//
 $route['admin/login'] = 'admin/login';
 $route['admin/register'] = 'admin/register';
 $route['admin/forget'] = 'admin/forget';
-
 $route['admin/profile'] = 'admin/profile';
 
+    //-------promotes---//
 $route['admin/announcements'] = 'admin/announcements';
 $route['admin/promotions'] = 'admin/promotions';
 $route['admin/games-rewards'] = 'admin/games';
-$route['admin/affiliate'] = 'admin/affiliate';
-$route['admin/tools'] = 'admin/tools';
-$route['admin/market-data-analysis'] = 'admin/market';
+$route['admin/affiliates'] = 'admin/affiliate';
 $route['admin/faq'] = 'admin/faq';
-$route['admin/mt5-webterminal'] = 'admin/webterminal';
-$route['admin/advanced-chart'] = 'admin/advance';
-$route['admin/clculators'] = 'admin/calculators';
+
+    //----complaints-----------//
+$route['admin/user-enquiries'] = 'admin/enquiries';
+$route['admin/user-complaints'] = 'admin/enquiries/complaints';
+
+    //----accounts admin record----//
+$route['admin/accounts/pending-passed-accounts'] = 'admin/account/pendingPassedAccounts';
+$route['admin/accounts/approved-passed-accounts'] = 'admin/account/approvedPassedAccounts';
+
+$route['admin/accounts/pending-failed-accounts'] = 'admin/account/pendingFailedAccounts';
+$route['admin/accounts/approved-failed-accounts'] = 'admin/account/approvedFailedAccounts';
+
+    //------kyc--------//
+$route['admin/user/pending-kyc'] = 'admin/user/viewPendingKyc';
+$route['admin/user/approved-kyc'] = 'admin/user/viewApproveKyc';
+$route['admin/user/rejected-kyc'] = 'admin/user/viewRejectedKyc';
+
+    //------add coupons------//
+$route['admin/add-coupons'] = 'admin/coupon';
 //-------------------- End Admin dashboard ------------------
-
-
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
