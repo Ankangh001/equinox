@@ -25,8 +25,24 @@ class Purchase extends APIMaster {
 			'p_type' =>  $this->input->post('cat'),
 		);
 		$iD = $this->input->post('id');
+		
+		$servers = array(
+			'ip' => $this->input->post('ip'),
+			'port'=> $this->input->post('port'),
+			'server'=> $this->input->post('server')
+		);
+		if($this->input->post('cat') == '0'){
+			$phase = $this->db->where(['phase' => '1'])->update('userproducts', $servers);;
+		}elseif($this->input->post('cat') == '1'){
+			$phase = $this->db->where(['phase' => '2'])->update('userproducts', $servers);;			
+		}elseif($this->input->post('cat') == '2'){
+			$phase = $this->db->where(['phase' => '3'])->update('userproducts', $servers);;			
+		}
+
+		
 		$res = $this->db->where(['id' =>  $iD])->update('servers', $data);
-		if($res){
+
+		if($res && $phase){
 			$response = array(
 				'status' => '200',
 				'message' => 'Added successfully',
