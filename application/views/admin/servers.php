@@ -62,8 +62,9 @@ $this->load->view('admin/includes/header'); ?>
                       <label for="port-add" class="col-md-4 col-form-label d-flex">Port</label>                                
                       <input required value="" id="port-id" name="port"  type="text" class="col-md-8 form-control w-50" placeholder="Enter Port Number" />
                     </div>
-
-                    <div class="mb-3 pb-3 row border-bottom justfy-content-evenly">
+                    
+                    <input required id="cat" name="cat" type="hidden" />
+                    <!-- <div class="mb-3 pb-3 row border-bottom justfy-content-evenly">
                       <label for="cat" class="col-md-4 col-form-label d-flex">Port</label>                                
                       <select required id="cat" name="cat" class="col-md-8 form-control w-50">
                         <option value="">Select category</option>
@@ -71,7 +72,7 @@ $this->load->view('admin/includes/header'); ?>
                         <option id="normal" value="1">Normal</option>
                         <option id="funded" value="2">Funded</option>
                       </select>
-                    </div>
+                    </div> -->
 
                   </div>
                 </div>
@@ -135,6 +136,7 @@ $this->load->view('admin/includes/header'); ?>
           $('#ip-add').val(res[0].sIp);
           $('#port-id').val(res[0].sPort);
           $('#server-add').val(res[0].serverName);
+          $('#cat').val(res[0].p_type);
           if(res[0].p_type == 0){
             $('#aggressive').attr('selected','selected');
           }else if(res[0].p_type == 1){
@@ -209,7 +211,7 @@ $this->load->view('admin/includes/header'); ?>
             }
           },
           {
-            width: "15%",
+            width: "25%",
             data: null,
             render: function (data, type, row) {
                 return row.serverName;
@@ -219,9 +221,9 @@ $this->load->view('admin/includes/header'); ?>
             data: null,
             render: function (data, type, row) {
                 return `${
-                  row.p_type == 0 ? '<span class="badge bg-label-danger">Aggressive</span>' : 
-                  (row.p_type == 1 ? '<span class="badge bg-label-success">Normal</span>' : 
-                    row.p_type == 2 ? '<span class="badge bg-label-info">Funded</span>' :'')
+                  row.p_type == 0 ? '<span class="badge bg-label-primary">PHASE 1</span>' : 
+                  (row.p_type == 1 ? '<span class="badge bg-label-primary">PHASE 2</span>' : 
+                    row.p_type == 2 ? '<span class="badge bg-label-success">Funded</span>' :'')
                 }`;
             }
           },

@@ -14,7 +14,7 @@ $this->load->view('admin/includes/header');
   <!-- Content -->
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>phase-1" class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -27,7 +27,7 @@ $this->load->view('admin/includes/header');
           </div>
         </a>
       </div>
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>phase-2" class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -41,7 +41,7 @@ $this->load->view('admin/includes/header');
         </a>
       </div>
 
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>phase-3"  class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -55,7 +55,7 @@ $this->load->view('admin/includes/header');
         </a>
       </div>
 
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>users"  class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -69,7 +69,7 @@ $this->load->view('admin/includes/header');
         </a>
       </div>
 
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>completed"  class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -83,7 +83,7 @@ $this->load->view('admin/includes/header');
         </a>
       </div>
 
-      <div class="col-lg-4 col-md-4 col-3 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <a href="<?=base_url('admin/')?>completed"  class="card text-dark">
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
