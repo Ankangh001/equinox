@@ -234,7 +234,7 @@
       <i class="fa fa-user-circle fa-4x chatbox-popup__avatar" aria-hidden="true"></i>
     </aside>
     <aside style="flex:8">
-      <h1>Sussanah Austin</h1> Agent (Online)
+      <h1>Equinox</h1> Bot (Online)
     </aside>
     <aside style="flex:1">
       <button class="chatbox-maximize"><i class="fa fa-window-maximize" aria-hidden="true"></i></button>
@@ -248,14 +248,14 @@
       <i class="fa fa-camera" aria-hidden="true"></i>
     </aside>
     <aside style="flex:10">
-      <textarea type="text" placeholder="Type your message here..." autofocus></textarea>
+      <textarea type="text" placeholder="Type your message here..." autofocus style="background:#cccccc80; border-radius:20px; padding:1rem 1.2rem 2rem 1rem"></textarea>
     </aside>
     <aside style="flex:1;color:#888;text-align:center;">
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </aside>
   </footer>
-</section>
-<section class="chatbox-panel">
+</section> -->
+<!-- <section class="chatbox-panel">
   <header class="chatbox-panel__header">
     <aside style="flex:3">
       <i class="fa fa-user-circle fa-3x chatbox-popup__avatar" aria-hidden="true"></i>

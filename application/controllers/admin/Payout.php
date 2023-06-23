@@ -525,7 +525,7 @@ class Payout extends APIMaster {
 		}
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
-		$email = send_email($user_email, $subject, $finaltemp,'','',3);
+		$email = send_email($user_email, $subject, $finaltemp,'','',5);
 
 		if($email){
 			$response = array(
