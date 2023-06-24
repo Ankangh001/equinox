@@ -581,7 +581,7 @@ $this->load->view('user/includes/header');
                                         <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
                                       </div>
                                       <div class="mb-3 row border-bottom justfy-content-between">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password                          </label>
+                                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password</label>
                                         <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
                                           ${element.account_password}
                                           <!-- <i class='bx bxs-low-vision'></i> -->

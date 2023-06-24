@@ -613,6 +613,11 @@ $myArray = explode(',', $myString);
           makeUser_pass_for_maxDrawdown();
         }else{
           makeMaxdrawdown_userFailed();
+          $('#max_dd').html(`
+            <div class="d-flex align-items-center justify-content-start text-danger" >
+              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+            </div>
+          `);
         };
         //---------------end max drawdown render------------
 
