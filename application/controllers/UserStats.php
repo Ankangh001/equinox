@@ -28,9 +28,8 @@ class UserStats extends CI_Controller {
             $balance = $data['balance']-$value['account_size'];
             $saveTodb = $this->db->where(['id'=>$value['id']])
                 ->update('userproducts',[
-                    'equity' => $equity,
-                    'balance' => $balance
-                ]);
+                    // 'equity' => $equity,
+                    'balance' => $balance]);
         }
 
         $this->coinbaseSuccess();
