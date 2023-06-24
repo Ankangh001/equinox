@@ -2,6 +2,7 @@
 // echo "<pre>";
 // echo (substr($res[0]['phase3_issue_date'], 0, 10));
 // print_r($certificates);
+// print_r($certificates[0]['amount'].$certificates[0]['payout_date'].$_SESSION['user_name']);
 // die;
 
 $this->load->view('user/includes/header');
@@ -183,8 +184,11 @@ $this->load->view('user/includes/header');
                                 <li> 
                                     <a href="#" class="card-body">
                                         <div class="fptext">
-                                            <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
-                                            <button class="btn btn-info" id="submitBtn"><i class="bx bx-download"></i>&nbsp;&nbsp;Download</button>
+                                            <!-- <input type="hidden" name="Name" autocomplete="name" id="name" value="" > -->
+                                            <button class="btn btn-info" id="submitBtnPayout" 
+                                                onclick="generatePayoutPDF('<?= $_SESSION['user_name'] ?>', '$<?= $value['amount'] ?>','<?= substr($value['payout_date'], 0, 10) ?>')">
+                                                <i class="bx bx-download"></i>&nbsp;&nbsp;Download
+                                            </button>
                                         </div>
                                     </a>
                                 </li>
@@ -282,6 +286,74 @@ $this->load->view('user/includes/header');
         );
         saveAs(file);
     };
+
+
+    const generatePayoutPDF = async (fname, amount, pDate) => {
+        var name = capitalize(fname);
+        const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/payout_cert.pdf").then((res) =>
+            res.arrayBuffer()
+        );
+
+        // Load a PDFDocument from the existing PDF bytes
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
+        pdfDoc.registerFontkit(fontkit);
+
+        //get font
+        const fontBytes = await fetch("<?=base_url('assets/certificates')?>/Sanchez-Regular.ttf").then((res) =>
+            res.arrayBuffer()
+        );
+
+        // Embed our custom font in the document
+        const SanChezFont = await pdfDoc.embedFont(fontBytes);
+
+        // Get the first page of the document
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
+
+        // Draw a string of text diagonally across the first page
+        firstPage.drawText(name, {
+            x: 650,
+            y: 428,
+            size: 26,
+            font: SanChezFont,
+            color: rgb(0, 0, 0),
+        });
+
+        firstPage.drawText(amount, {
+            x: 700,
+            y: 343,
+            size: 18,
+            font: SanChezFont,
+            color: rgb(0, 0, 0),
+        });
+
+        firstPage.drawText(pDate, {
+            x: 700,
+            y: 187,
+            size: 12,
+            font: SanChezFont,
+            color: rgb(0, 0, 0),
+        });
+
+        // Serialize the PDFDocument to bytes (a Uint8Array)
+        const pdfBytes = await pdfDoc.save();
+        console.log("Done creating");
+
+        // this was for creating uri and showing in iframe
+
+        // const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+        // document.getElementById("pdf").src = pdfDataUri;
+
+        var file = new File(
+            [pdfBytes],
+            "Certificate.pdf",
+            {
+                type: "application/pdf;charset=utf-8",
+            }
+        );
+        saveAs(file);
+    };
+
 
     $.ajax({
       type: "GET",
