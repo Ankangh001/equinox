@@ -20,22 +20,29 @@ $this->load->view('user/includes/header');
                 <input type="hidden" name="Name" autocomplete="name" id="name" value="<?= @$res[0]['first_name'] .' '.@$res[0]['last_name'] ?>" >
 
                 <button id="submitBtn" class="mt-3 w-100 fw-bold pointer btn btn-primary p-2"><i class='bx bx-download fs-3' ></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D O W N L O A D</button>
+            <?php }else{ ?>
+                <div class="row">
+                    <span class="card badge bg-label-warning mx-auto my-5 fs-3" style="text-transform : none;white-space: normal;line-height: 3rem;">
+                        You Need to have atleast one Funded Account.
+                    </span>
+                </div>
             <?php }?>
         </div>
         <div class="col-2"></div>
-        
-        <div class="card-title fs-3 text-center fw-bold mt-5">
-            Payout Certificates
-        </div>
+        <?php 
+            if($certificates){?>
+                <div class="card-title fs-3 text-center fw-bold mt-5">
+                    Payout Certificates
+                </div>
+        <?php foreach ($certificates as $key => $value) { ?>
         <div class="col-md-4 m-auto">
-            <?php 
-                if($certificates){
-                    foreach ($certificates as $key => $value) {
-            ?>
                 <img class="card-img" src="<?=base_url('assets/img')?>/pcrt.png" alt="image">
                 <button onclick="generatePayoutPDF('<?= $_SESSION['user_name'] ?>', '$<?= $value['amount'] ?>','<?= substr($value['payout_date'], 0, 10) ?>')"
                 class="mt-3 w-100 pointer fw-bold btn btn-primary p-2"><i class='bx bx-download fs-3' ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D O W N L O A D</button>
-            <?php }} ?>
+        <?php 
+                }
+            }
+        ?>
         </div>
       </div>
     </div>
