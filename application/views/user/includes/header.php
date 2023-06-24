@@ -351,7 +351,7 @@
                                 if($_SESSION['kyc_status'] == '2'){ 
                                   echo '<span class="badge bg-label-success">KYC Verified</span>';
                                 }else{
-                                  echo '<span class="badge bg-label-danger">KYC Un verified</span>';
+                                  echo '<span class="badge bg-label-danger">KYC Pending</span>';
                                 }
                               ?>
                             <small class="text-muted">
