@@ -173,7 +173,9 @@ $this->load->view('user/includes/header');
                         <?php }?>
 
 
-                        <?php if($certificates){?>
+                        <?php if($certificates){
+                            foreach ($certificates as $key => $value) {
+                            ?>
                             <div class="card-title  text-center fw-bold mt-5">
                                 Payout Certificates
                             </div>
@@ -187,7 +189,7 @@ $this->load->view('user/includes/header');
                                     </a>
                                 </li>
                             </ul>
-                        <?php } ?>
+                        <?php } }?>
                     </div>
                 </div>
             </div>
@@ -287,9 +289,9 @@ $this->load->view('user/includes/header');
       dataType: "html",
       success: function(data){
         let res = JSON.parse(data);
+        console.log(res);                
         if(data.status == 200){
             data.data.forEach(element => {
-                console.log(element.user_id);                
             });
         }
       },
