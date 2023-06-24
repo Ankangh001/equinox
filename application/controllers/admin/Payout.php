@@ -214,6 +214,7 @@ class Payout extends APIMaster {
 		$this->load->helper('email_helper');
 		$this->load->library('mailer');
 
+		$body ="";
 		if($status == 'APPROVED' && $type == "AFFILIATE"){
 			$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
 			$subject ='Affiliate account payout status';
@@ -525,7 +526,7 @@ class Payout extends APIMaster {
 		}
 		$finaltemp = str_replace("{CONTENT}", $content, $body);
 
-		$email = send_email($user_email, $subject, $finaltemp,'','',3);
+		$email = send_email($user_email, $subject, $finaltemp,'','',5);
 
 		if($email){
 			$response = array(

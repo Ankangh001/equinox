@@ -223,60 +223,23 @@ $this->load->view('admin/includes/header');
         dataType: "html",
         success:function(data){
           let res = JSON.parse(data);
-          if(product_category == 'Normal'){
-            if(res[0].ip == ''){
-              $('#ip-add').val(nsIp);
-            }else{
-              $('#ip-add').val(res[0].ip);
-            }
 
-            if(res[0].port == ''){
-              $('#port-id').val(nsPort);
-            }else{
-              $('#port-id').val(res[0].port);
-            }
+          if(res[0].ip == ''){
+            $('#ip-add').val(nsIp);
+          }else{
+            $('#ip-add').val(res[0].ip);
+          }
 
-            if(res[0].server == ''){
-              $('#server-add').val(nserverName);
-            }else{
-              $('#server-add').val(res[0].server);
-            }
-          }else if(product_category == 'Aggressive'){
-            if(res[0].ip == ''){
-              $('#ip-add').val(asIp);
-            }else{
-              $('#ip-add').val(res[0].ip);
-            }
+          if(res[0].port == ''){
+            $('#port-id').val(nsPort);
+          }else{
+            $('#port-id').val(res[0].port);
+          }
 
-            if(res[0].port == ''){
-              $('#port-id').val(asPort);
-            }else{
-              $('#port-id').val(res[0].port);
-            }
-
-            if(res[0].server == ''){
-              $('#server-add').val(aserverName);
-            }else{
-              $('#server-add').val(res[0].server);
-            }
-          }else if(phase == '3'){
-            if(res[0].ip == ''){
-              $('#ip-add').val(fsIp);
-            }else{
-              $('#ip-add').val(res[0].ip);
-            }
-
-            if(res[0].port == ''){
-              $('#port-id').val(fsPort);
-            }else{
-              $('#port-id').val(res[0].port);
-            }
-
-            if(res[0].server == ''){
-              $('#server-add').val(fserverName);
-            }else{
-              $('#server-add').val(res[0].server);
-            }
+          if(res[0].server == ''){
+            $('#server-add').val(nserverName);
+          }else{
+            $('#server-add').val(res[0].server);
           }
 
 
