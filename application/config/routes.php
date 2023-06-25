@@ -121,6 +121,10 @@ $route['admin/user/rejected-kyc'] = 'admin/user/viewRejectedKyc';
 
     //------add coupons------//
 $route['admin/add-coupons'] = 'admin/coupon';
+
+    //------LOGS------//
+$route['admin/account-logs'] = 'admin/logs/viewlogs';
+$route['admin/all-accounts'] = 'admin/logs/allAccounts';
 //-------------------- End Admin dashboard ------------------
 
 $route['404_override'] = '';

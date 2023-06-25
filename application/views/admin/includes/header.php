@@ -238,8 +238,23 @@
               </ul>
             </li>
 
+            <!-- Account -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'all-accounts') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>all-accounts" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div>All Accounts</div>
+              </a>
+            </li>
 
-            <!-- Payouts -->
+            <!-- Logs -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'account-logs') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>account-logs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div>Logs</div>
+              </a>
+            </li>
+
+            <!-- Coupons -->
             <li class="menu-item <?php if ($this->uri->segment(2) == 'coupons') { echo 'active';} ?>">
               <a href="<?=base_url('admin/')?>add-coupons" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
