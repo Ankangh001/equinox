@@ -9,7 +9,7 @@ class UserStats extends CI_Controller {
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['userproducts.product_status !=' => '3']); 
+        // $this->db->where(['userproducts.product_status !=' => '3']); 
         $this->db->where(['userproducts.product_status !=' => '0']);
         $check = $this->db->get()->result_array();
 
@@ -21,15 +21,19 @@ class UserStats extends CI_Controller {
         // exit;
         foreach ($check as $key => $value) {
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
-            if($res){
+
+            if(isset(json_decode($res,true)['status']) == '400'){
+                echo "/////////////////////////////////////----NO--//////////////////////<br/>";
                 continue;
+            }else{
                 $data = json_decode($res, true);
-                $equity = $data['equity'];
+                // $equity = $data['equity'];
                 $balance = $data['balance']-$value['account_size'];
                 $saveTodb = $this->db->where(['id'=>$value['id']])
                 ->update('userproducts',[
                     // 'equity' => $equity,
                         'balance' => $balance]);
+                echo "update <br/>";
             }
         }
 
@@ -39,12 +43,23 @@ class UserStats extends CI_Controller {
     //---mt5 swagger api call to get account info----
     public function accounts($accountId, $password, $host, $port){
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$accountId.'&password='.$password.'&host='.$host.'&port='.$port);
-        $accountSummary = $this->accountSummary($token);
-        $orderHistory = $this->OrderHistory($token);
-        $openedOrders = $this->OpenedOrders($token);
-        $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
-        $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
-        return json_encode($data, true);
+        // echo "<pre>";
+        $response = json_decode($token, JSON_PRETTY_PRINT);
+        // print_r($response['message']);
+        // print_r((json_decode($token)), 0, 12);
+        // exit;
+        // return json_decode($token['message']);
+
+        if(isset($response['message'])){
+            return json_encode(array('status'=> '400'));
+        }else{
+            $accountSummary = $this->accountSummary($token);
+            $orderHistory = $this->OrderHistory($token);
+            $openedOrders = $this->OpenedOrders($token);
+            $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
+            $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
+            return json_encode($data, true);
+        }
     }
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
