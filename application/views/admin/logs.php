@@ -44,6 +44,7 @@ $this->load->view('admin/includes/header'); ?>
                   <table class="table hover" style="padding: 2rem 0 0 0;">
                     <thead class="table-light">
                       <tr>
+                        <th>SL No</th>
                         <th>User Name</th>
                         <th>Account</th>
                         <th>Password</th>
@@ -153,6 +154,12 @@ $this->load->view('admin/includes/header'); ?>
           deferRender: false,
           "pageLength": 100,
           columns:[
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.id}` ;
+              }
+            },
             {
               data: null,
               render: function (data, type, row) {

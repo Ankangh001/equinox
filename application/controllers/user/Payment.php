@@ -122,6 +122,7 @@ class Payment extends APIMaster {
 				'created_date'  => date('Y-m-d H:m:s'),
 				'product_status'=> '0',
 				'payment_status'=> $status,
+				'payment_code'  => $dump['data']['code']
 			);
 
             $transaction = array(

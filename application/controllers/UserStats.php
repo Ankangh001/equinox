@@ -5,34 +5,37 @@ class UserStats extends CI_Controller {
 
     public function index()
 	{
+	    $this->coinbaseSuccess();
+	    
         $this->db->select('userproducts.*, products.*, user.email');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['product_status' => '1']);
+        $this->db->where(['account_status' => '1']);
         $check = $this->db->get()->result_array();
 
         // echo "<pre>";
         // print_r($check);
-
         // echo $check[0]['account_size'].'<br/>';
         // echo $check[0]['email'].'<br/>';
         // echo $check[0]['phase'].'<br/>';
-
         // exit;
-        
         foreach ($check as $key => $value) {
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
-            $data = json_decode($res, true);
-            $equity = $data['equity'];
-            $balance = $data['balance']-$value['account_size'];
-            $saveTodb = $this->db->where(['id'=>$value['id']])
-                ->update('userproducts',[
-                    // 'equity' => $equity,
-                    'balance' => $balance]);
+            if($res){
+                $data = json_decode($res, true);
+                $equity = $data['equity'];
+                $balance = $data['balance']-$value['account_size'];
+                $saveTodb = $this->db->where(['id'=>$value['id']])
+                    ->update('userproducts',[
+                        // 'equity' => $equity,
+                        'balance' => $balance]);
+            }else{
+                continue;
+            }
         }
 
-        $this->coinbaseSuccess();
+        
 	}
 
     //---mt5 swagger api call to get account info----
@@ -109,7 +112,7 @@ class UserStats extends CI_Controller {
 
             $response = json_decode($response,true);
             $responseStatus = end($response['data']['timeline'])['status'];
-            if($responseStatus == 'Completed'){
+            if($responseStatus == 'COMPLETED'){
                 $payment_code = $response['data']['code'];
                 $this->db->where(['payment_code'=> $payment_code])->update('userproducts',['payment_status'=>1]);
                 $this->db->where(['payment_code'=> $payment_code])->update('transactions',['payment_status'=>1]);

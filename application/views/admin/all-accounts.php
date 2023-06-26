@@ -158,27 +158,30 @@ $this->load->view('admin/includes/header'); ?>
             {
               data: null,
               render: function (data, type, row) {
-                  return `${((Number(row.equity)).toFixed(2) < 0) ? 
+                  return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':
+                    (((Number(row.equity)).toFixed(2) < 0) ? 
                     '<span class="text-danger">'+(Number(row.equity)).toFixed(2)+'</span>':
                     '<span class="text-success">'+(Number(row.equity)).toFixed(2)+'</span>'
+                    )
                   }`;
               }
             },
             {
               data: null,
               render: function (data, type, row) {
-                  return `${((Number(row.balance)).toFixed(2) < 0) ? 
+                  return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':
+                  (((Number(row.balance)).toFixed(2) < 0) ? 
                     '<span class="text-danger">'+(Number(row.balance)).toFixed(2)+'</span>':
                     '<span class="text-success">'+(Number(row.balance)).toFixed(2)+'</span>'
-                  }`;
+                  )}`;
               }
             },
             {
               data: null,
               render: function (data, type, row) {
-                  return `${
+                  return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':
                     (row.phase == 1 ? '<span class="btn btn-sm btn-info">PHASE 1</span>' : 
-                      (row.phase == 2 ? '<span class="btn btn-sm btn-info">PHASE 2</span>' : 
+                      (row.phase == 2 ? '<span class="btn btn-sm btn-primary">PHASE 2</span>' : 
                         row.phase == 3 ? '<span class="btn btn-sm btn-success">FUNDED</span>' :''
                       )
                     )
