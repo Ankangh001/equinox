@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MetricsCron extends APIMaster {
 
 	public function index(){
+        date_default_timezone_set('Asia/Calcutta');
+        echo date('H:m:s');
         $this->db->select('userproducts.*, products.*, user.email');
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
@@ -19,7 +21,7 @@ class MetricsCron extends APIMaster {
             // print_r();
             // die;
             if(isset(json_decode($res,true)['status']) == '400'){
-                echo "//////////////////////////////////////////////////////////////////////////////";
+                echo "//////////////////////////////////////////////////////////////////////////////<br/>";
                 continue;
             }else{
                 echo $value['account_id'];
