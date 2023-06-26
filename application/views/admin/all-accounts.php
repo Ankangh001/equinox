@@ -46,12 +46,12 @@ $this->load->view('admin/includes/header'); ?>
                       <tr>
                         <th>Name</th>
                         <th>Account Size</th>
+                        <th>Account Num</th>
                         <th>Price</th>
                         <th>Equity</th>
-                        <th>Balance</th>
+                        <th>Closed Profit</th>
                         <th>Phase</th>
                         <th>Status</th>
-                        <!-- <th>Actions</th> -->
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -68,63 +68,7 @@ $this->load->view('admin/includes/header'); ?>
     
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
-  
-  let requestData = {};
-  
-  function approveKyc(id){
-      requestData.user_id = id;
-      $.ajax({
-          type: "POST",
-          url: "<?php echo base_url('admin/user/approveKyc'); ?>",
-          data: requestData,
-          beforeSend: function(){
-            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>`
-            );
-          },
-          success: function(data){
-            $('div#loading').hide(200);
-            $('.modal').modal('hide');
-            $('#modalCenter').modal('show');
-            loadTable();
-            setTimeout(() => {
-              $('#modalCenter').modal('hide');
-            }, 8000);
-          },
-          error: function() { alert("Error posting feed."); }
-      });
-    };
-  
-    function rejectKyc(id){
-      requestData.user_id = id;
-      $.ajax({
-          type: "POST",
-          url: "<?php echo base_url('admin/user/rejectKyc'); ?>",
-          data: requestData,
-          beforeSend: function(){
-            $('body').prepend(`<div id="loading" class="demo-inline-spacing">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>`
-            );
-          },
-          success: function(data){
-            $('div#loading').hide(200);
-            $('.modal').modal('hide');
-            $('#modalCenter').modal('show');
-            loadTable();
-            setTimeout(() => {
-              $('#modalCenter').modal('hide');
-            }, 8000);
-          },
-          error: function() { alert("Error posting feed."); }
-      });
-    };
-  $(document).ready(function () {
+ $(document).ready(function () {
     // $('.table').DataTable();
     // $('.paginate_button').addClass('btn btn-primary');
     $('#navbar-collapse').prepend(`<h4 class="fw-bold mb-0"><span class="text-muted fw-light"></span> All accounts</h4>`);
@@ -152,7 +96,13 @@ $this->load->view('admin/includes/header'); ?>
             {
               data: null,
               render: function (data, type, row) {
-                  return row.product_price;
+                  return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':row.account_id}`;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.product_price}`;
               }
             },
             {
@@ -192,10 +142,10 @@ $this->load->view('admin/includes/header'); ?>
               data: null,
               render: function (data, type, row) {
                   return `${
-                  row.product_status == 0 ? '<span class="btn btn-sm btn-warning">Pending</span>' : 
-                  (row.product_status == 1 ? '<span class="btn btn-sm btn-primary">Active</span>' : 
-                    (row.product_status == 2 ? '<span class="btn btn-sm btn-success">Passed</span>' : 
-                      row.product_status == 3 ? '<span class="btn btn-sm btn-danger">Failed</span>' :''
+                  row.product_status == 0 ? '<span class="btn btn-sm btn-warning">PENDING</span>' : 
+                  (row.product_status == 1 ? '<span class="btn btn-sm btn-primary">ACTIVE</span>' : 
+                    (row.product_status == 2 ? '<span class="btn btn-sm btn-success">PASSED</span>' : 
+                      row.product_status == 3 ? '<span class="btn btn-sm btn-danger">FAILED</span>' :''
                     )
                   )
                 }`;
@@ -206,6 +156,10 @@ $this->load->view('admin/includes/header'); ?>
     }
 
   loadTable();
+  setInterval(() => {
+    loadTable();
+    
+  }, 60000);
   $('.paginate_button').addClass('btn btn-primary');
 </script>
 </body>
