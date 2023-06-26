@@ -38,7 +38,7 @@ class MetricsCron extends APIMaster {
                 'equity' => $service_equity,
                 'balance' => $service_balance,
 
-                'dbEquity' => $value['balance'],
+                'dbEquity' => $value['equity'],
                 'dbBalance' => $value['balance'],
                 
                 'accountSize' => $value['account_size'],
