@@ -9,7 +9,7 @@ class MetricsCron extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['product_status' => '1',  'account_status' => '1']);
+        $this->db->where(['account_id!=""',  'account_status' => '1']);
         $check = $this->db->get()->result_array();
         
         foreach ($check as $key => $value) {
