@@ -450,8 +450,9 @@ textarea::placeholder {
 </style>
 
   <!-- <script src="https://kit.fontawesome.com/26637080d5.js" crossorigin="anonymous"></script> -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
   <script src="<?= base_url('assets/user/assets/') ?>vendor/libs/jquery/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   
@@ -467,7 +468,37 @@ textarea::placeholder {
   <!-- Template Main JS File -->
   <script src="assets/js/main.js?v=2"></script>
   <script>
-    // Disable right-click
+
+    const chatbox = jQuery.noConflict();
+
+    chatbox(() => {
+      chatbox(".chatbox-open").click(() =>
+        chatbox(".chatbox-popup, .chatbox-close").fadeIn()
+      );
+
+      chatbox(".chatbox-close").click(() =>
+        chatbox(".chatbox-popup, .chatbox-close").fadeOut()
+      );
+
+      chatbox(".chatbox-maximize").click(() => {
+        chatbox(".chatbox-popup, .chatbox-open, .chatbox-close").fadeOut();
+        chatbox(".chatbox-panel").fadeIn();
+        chatbox(".chatbox-panel").css({ display: "flex" });
+      });
+
+      chatbox(".chatbox-minimize").click(() => {
+        chatbox(".chatbox-panel").fadeOut();
+        chatbox(".chatbox-popup, .chatbox-open, .chatbox-close").fadeIn();
+      });
+
+      chatbox(".chatbox-panel-close").click(() => {
+        chatbox(".chatbox-panel").fadeOut();
+        chatbox(".chatbox-open").fadeIn();
+      });
+});
+
+
+
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
     function ctrlShiftKey(e, keyCode) {

@@ -82,7 +82,6 @@
           $('#alert').fadeOut();
         }, 5000);
       }
-      Disable right-click
       document.addEventListener('contextmenu', (e) => e.preventDefault());
 
       function ctrlShiftKey(e, keyCode) {
