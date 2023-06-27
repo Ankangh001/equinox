@@ -15,6 +15,7 @@ class ContactForm extends CI_Controller {
             'created_at' => date('Y-m-d H:m:s'),
             'ticketId' => 'EQ'.rand(10,100).date('m-y-d'),
         );
+        $userEmail = $this->input->post('email-add');
 
         $res = $this->db->insert('contact_form', $data);
 
@@ -25,7 +26,7 @@ class ContactForm extends CI_Controller {
                 <h4> From User -'. $this->input->post('name').'</h4><br/>
                 <p>Message - '.$this->input->post('email').'</p><br/><br/>
                 <p>Message - '.$this->input->post('message').'</p>
-                Reply To User<a href="mailto:'.$this->input->post('email').'"> '.$this->input->post('email').'</a>';
+                <a href="mailto:'.$userEmail.'"><button>Reply To User</button></a>';
 
 
         $body2  = '
@@ -40,9 +41,9 @@ class ContactForm extends CI_Controller {
             <br/>
             <p>Your Message - '.$this->input->post('message').'</p>';
         
-        $email = send_email('support@equinoxtradingcapital.com', $this->input->post('subject'), $body,'','',8);
+        send_email('support@equinoxtradingcapital.com', $this->input->post('subject'), $body,'','',8);
 
-        $userEmail = send_email($this->input->post('email'), "Equinox enquiry ticket", $body2,'','',2);
+        send_email($userEmail, "Equinox enquiry ticket", $body2,'','',2);
 
         if($res){
             $response = array(
