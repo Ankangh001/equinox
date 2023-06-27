@@ -12,7 +12,8 @@ class ContactForm extends CI_Controller {
             'subject' => $this->input->post('subject'),
             'message' => $this->input->post('message'),
             'type' => $this->input->post('type'),
-            'created_at' => date('Y-m-d H:m:s')
+            'created_at' => date('Y-m-d H:m:s'),
+            'ticketId' => 'EQ'.$lastId.date('m-y-d'),
         );
 
         $res = $this->db->insert('contact_form', $data);
