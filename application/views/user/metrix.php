@@ -812,6 +812,7 @@ $myArray = explode(',', $myString);
         let dataRes = JSON.parse(data).status;
         if(dataRes == 200){
           getAccounts();
+          checkUserStatus();
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
