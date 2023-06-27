@@ -15,7 +15,8 @@
 		"square/square": "18.0.0.20220420",
 		"vlucas/phpdotenv": "^3.3",
 		"ramsey/uuid": "*",
-		"amzn/amazon-pay-api-sdk-php": "^2.6"
+		"amzn/amazon-pay-api-sdk-php": "^2.6",
+		"tarikh/php-mt5": "^1.7"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
