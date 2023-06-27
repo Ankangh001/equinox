@@ -5,6 +5,7 @@ class ContactForm extends CI_Controller {
 
 	public function index()
 	{     
+        $ticketID = 'EQ'.rand(10,100).date('m-y-d');
         $data = array(
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email-add'),
@@ -13,7 +14,7 @@ class ContactForm extends CI_Controller {
             'message' => $this->input->post('message'),
             'type' => $this->input->post('type'),
             'created_at' => date('Y-m-d H:m:s'),
-            'ticketId' => 'EQ'.rand(10,100).date('m-y-d'),
+            'ticketId' => $ticketID,
         );
         $userEmail = $this->input->post('email-add');
 
@@ -22,11 +23,14 @@ class ContactForm extends CI_Controller {
         $this->load->helper('email_helper');
         $this->load->library('mailer'); 
 
-        $body  = '<h2> Ticket Type -'. $this->input->post('type').'</h2><br/>
+        $body  = '
+                <h2> Ticket ID -'.$ticketID.'</h2><br/>
+                <h2> Ticket Type -'. $this->input->post('type').'</h2><br/>
                 <h4> From User -'. $this->input->post('name').'</h4><br/>
                 <p>Message - '.$this->input->post('email').'</p><br/><br/>
                 <p>Message - '.$this->input->post('message').'</p>
-                <a href="mailto:'.$userEmail.'"><button>Reply To User</button></a>';
+                <a href="mailto:'.$userEmail.'"><button>Reply To User</button></a>
+            ';
 
 
         $body2  = '
@@ -35,7 +39,7 @@ class ContactForm extends CI_Controller {
             <p>
             Thank you for reaching us,
             <br/>
-            we will try to resolve your ticket <strong>EQ'.rand(10,100).date('m-y-d').'</strong> as soon as possible <br/>
+            we will try to resolve your ticket <strong>'.$ticketID.'</strong> as soon as possible <br/>
             Please find below your information regarding raised ticket.
             </p>
             <br/>
