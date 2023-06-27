@@ -13,11 +13,10 @@ class ContactForm extends CI_Controller {
             'message' => $this->input->post('message'),
             'type' => $this->input->post('type'),
             'created_at' => date('Y-m-d H:m:s'),
-            'ticketId' => 'EQ'.$lastId.date('m-y-d'),
+            'ticketId' => 'EQ'.rand(10,100).date('m-y-d'),
         );
 
         $res = $this->db->insert('contact_form', $data);
-        $lastId = $this->db->insert_id();
 
         $this->load->helper('email_helper');
         $this->load->library('mailer'); 
@@ -34,7 +33,7 @@ class ContactForm extends CI_Controller {
             <br/>
             <br/>
             <p>
-                Thank you for reaching us, we will try to resolve your ticket <strong>EQ'.$lastId.date('m-y-d').'<strong> as soon as possible <br/>
+                Thank you for reaching us, we will try to resolve your ticket <strong>EQ'.rand(10,100).date('m-y-d').'<strong> as soon as possible <br/>
                 Please find below your information regarding raised ticket.
             </p>
             <br/>
