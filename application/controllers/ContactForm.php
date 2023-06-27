@@ -30,16 +30,17 @@ class ContactForm extends CI_Controller {
 
 
         $body2  = '
-            <h2><strong>Dear'. $this->input->post('name').'</strong></h2>
-            <br/>
+            <h2>Dear <strong> '. $this->input->post('name').',</strong></h2>
             <br/>
             <p>
-                Thank you for reaching us, we will try to resolve your ticket <strong>EQ'.rand(10,100).date('m-y-d').'<strong> as soon as possible <br/>
-                Please find below your information regarding raised ticket.
+            Thank you for reaching us,
+            <br/>
+            we will try to resolve your ticket <strong>EQ'.rand(10,100).date('m-y-d').'</strong> as soon as possible <br/>
+            Please find below your information regarding raised ticket.
             </p>
             <br/>
             <br/>
-            <p>Your Message - '.$this->input->post('message').'</p>';
+            <p>Your Message - <br/>'.$this->input->post('message').'</p>';
         
         send_email('support@equinoxtradingcapital.com', $this->input->post('subject'), $body,'','',8);
 
