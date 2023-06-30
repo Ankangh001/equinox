@@ -13,7 +13,12 @@ class Logs extends APIMaster {
         
     }
 	public function viewlogs(){
-        $this->load->view('admin/logs');
+        $this->load->helper('directory');
+        $map['res'] = directory_map(FCPATH.'Logs/');
+        // echo "<pre>";
+        // print_r($map);
+        // die;
+        $this->load->view('admin/logs', $map);
 	}
 
     public function allAccounts(){
