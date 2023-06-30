@@ -14,7 +14,7 @@ class Logs extends APIMaster {
     }
 	public function viewlogs(){
         $this->load->helper('directory');
-        $map['res'] = directory_map(FCPATH.'Logs/');
+        $map['res'] = directory_map(FCPATH.'logs/');
         // echo "<pre>";
         // print_r($map);
         // die;
@@ -36,7 +36,9 @@ class Logs extends APIMaster {
 	}
 
     public function getLogs(){
-        $response['data'] = $this->db->get('metrics_cron_job')->result_array();
+        $this->load->helper('directory');
+        $response['data'] = directory_map(FCPATH.'logs/');
+
 		echo json_encode($response);
 	}
 }
