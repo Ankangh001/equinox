@@ -25,7 +25,7 @@ class Logs extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->get()->result_array();
+        $response['data'] = $this->db->where(['payment_status' =>'1'])->get()->result_array();
 
 		echo  json_encode($response);
 	}
