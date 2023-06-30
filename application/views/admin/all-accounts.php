@@ -47,6 +47,7 @@ $this->load->view('admin/includes/header'); ?>
                         <th>Name</th>
                         <th>Account Size</th>
                         <th>Account Num</th>
+                        <th>Account Pass</th>
                         <th>Price</th>
                         <th>Equity</th>
                         <th>Closed Profit</th>
@@ -97,6 +98,12 @@ $this->load->view('admin/includes/header'); ?>
               data: null,
               render: function (data, type, row) {
                   return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':row.account_id}`;
+              }
+            },
+            {
+              data: null,
+              render: function (data, type, row) {
+                  return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':row.account_password}`;
               }
             },
             {
