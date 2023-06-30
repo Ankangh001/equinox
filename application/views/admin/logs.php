@@ -9,79 +9,28 @@ $this->load->view('admin/includes/header'); ?>
     border: none !important;
     background: transparent !important;
     color: blue !important;
-}
+  }
 </style>
 <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- update alert modal -->
-      <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="col-xl">
-                <div class="card-body">
-                  <h5 class="modal-title" id="modalCenterTitle">KYC Approved<i class="mb-1 bx bx-check-circle fw-bold fs-1 text-success"></i></h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-  <div id="alert" class="alert alert-success alert-dismissible d-none" role="alert">
-      Product Deleted Successfully 
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
     <div class="row">
-        <div class="col-xl-12">
-          <div class="nav-align-top mb-4">
-            <div class="col-xl">
-              <div class="card">
-                <div class="table-responsive text-nowrap">
-                  <table class="table hover" style="padding: 2rem 0 0 0;">
-                    <thead class="table-light">
-                      <tr>
-                        <th>SL No</th>
-                        <th>User Name</th>
-                        <th>Account</th>
-                        <th>Password</th>
-                        <th>IP</th>
-                        <th>Port</th>
-                        <th>Phase</th>
-                        <th>Max Drawdown</th>
-                        <th>Max Daily Loss</th>
-                        <th>Profit Target 1</th>
-                        <th>Profit Target 2</th>
-                        <th>Equity</th>
-                        <th>DB Equity</th>
-                        <th>Balance</th>
-                        <th>DB Balance</th>
-                        <th>Size</th>
-                        <th>Max Drawdown Stats</th>
-                        <th>Max Loss Stats</th>
-                        <th>Profit Target Stats</th>
-                        <th>Max Drawdown Failed</th>
-                        <th>Max Loss Fail</th>
-                        <th>Profit Target Pass</th>
-                        <th>Check User 1</th>
-                        <th>Check User 2</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                     
-                    </tbody>
-                  </table>
+      <div class="col-md-6">
+        <div class="row g-0">
+          <?php foreach ($res as $key => $value) { ?>
+            <div class="col-lg-4">
+               <div class="card mb-3 p-3">
+                  <img class="card-img mb-3" src="<?=base_url('assets/img/')?>log.webp" alt="log-file">
+                  <a href="<?=base_url('logs/').$value ?>" target="_blank" class="w-100 pointer btn btn-info">
+                    <i class='bx bx-link-external'></i>
+                  </a>
                 </div>
               </div>
-            </div>
+             <?php } ?>            
           </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
     
 <?php $this->load->view('admin/includes/footer'); ?>
 <script>
