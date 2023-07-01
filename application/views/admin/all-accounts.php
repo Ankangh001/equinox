@@ -166,7 +166,7 @@ $this->load->view('admin/includes/header'); ?>
   setInterval(() => {
     loadTable();
     
-  }, 60000);
+  }, 80000);
   $('.paginate_button').addClass('btn btn-primary');
 </script>
 </body>

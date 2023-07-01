@@ -90,16 +90,19 @@ class MetricsCron extends APIMaster {
                 echo "<br/>If ".$service_equity." is greater than >  (".$account_size." - ".$max_drawdown.") which is (".$account_size-$max_drawdown.")";
 
                 //------check max drawdown fail or pass || equity from api > accountSize - max drawdown
-                if($service_equity > ($account_size - $max_drawdown)){
-                    //user still passed for max drawdown
-                    echo $this->maxDDPass($value['id']);
-                    $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
-                    $logsData['maxDDStatus_pass'] = $this->maxDDPass($value['id']);
-                }else{
-                    //user made failed for max drawdown and full account goes to fail
-                    $this->make_userFail_for_maxDrawdown($value['id']);
-                    $logsData['maxDDStatus_fail'] = $this->make_userFail_for_maxDrawdown($value['id']);
-                    $logsData['failed_Time_MaxDD'] = date('Y-m-d H:m:s');
+                if($service_equity != 'null' || $service_equity != 'NULL'){
+                    if($service_equity > ($account_size - $max_drawdown)){
+                        //user still passed for max drawdown
+                        echo $this->maxDDPass($value['id']);
+                        $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
+                        $logsData['maxDDStatus_pass'] = $this->maxDDPass($value['id']);
+                    }else{
+                        //user made failed for max drawdown and full account goes to fail
+                        $this->make_userFail_for_maxDrawdown($value['id']);
+                        $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is not greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
+                        $logsData['maxDDStatus_fail'] = $this->make_userFail_for_maxDrawdown($value['id']);
+                        $logsData['failed_Time_MaxDD'] = date('Y-m-d H:m:s');
+                    }
                 }
                 //------check max drawdown fail or pass-------
                 
@@ -111,22 +114,24 @@ class MetricsCron extends APIMaster {
                 echo "<br/>If ".$service_equity." greater than ".$equity." - ".$daily_drawdown." i.e ".$equity-$daily_drawdown."<br/>";
                 
                 if($value['product_category'] == 'Normal'){
-                    //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                    if($service_equity > ($equity - $daily_drawdown)){
-                        //user still passed for max drawdown
-                        echo "<br/>calling pass_max_dailyLoass<br/>";
-                        echo $this->pass_max_dailyLoass($value['id']);
-                        $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
-                        $logsData['maxDLStatus_pass'] = $this->pass_max_dailyLoass($value['id']);
-                    }else{
-                        //user made failed for max drawdown and full account goes to fail
-                        echo "<br/>calling make_userFail_for_maxDrawdown<br/>";
-                        $this->makeMaxDailylossFail($value['id']);
-                        $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is not greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
-                        $logsData['maxDLStatus_fail'] = $this->makeMaxDailylossFail($value['id']);
-                        $logsData['failTimeMaxDL'] = date('Y-m-d H:m:s');
+                    if($service_equity != 'null' || $service_equity != 'NULL'){
+                        //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
+                        if($service_equity > ($equity - $daily_drawdown)){
+                            //user still passed for max drawdown
+                            echo "<br/>calling pass_max_dailyLoass<br/>";
+                            echo $this->pass_max_dailyLoass($value['id']);
+                            $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
+                            $logsData['maxDLStatus_pass'] = $this->pass_max_dailyLoass($value['id']);
+                        }else{
+                            //user made failed for max drawdown and full account goes to fail
+                            echo "<br/>calling make_userFail_for_maxDrawdown<br/>";
+                            $this->makeMaxDailylossFail($value['id']);
+                            $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is not greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
+                            $logsData['maxDLStatus_fail'] = $this->makeMaxDailylossFail($value['id']);
+                            $logsData['failTimeMaxDL'] = date('Y-m-d H:m:s');
+                        }
+                        //------check max daily loss fail or pass------------------------
                     }
-                    //------check max daily loss fail or pass------------------------
                 }
                 
                 
@@ -135,22 +140,24 @@ class MetricsCron extends APIMaster {
                 echo "If BALANCE FROM SERVICE ".$service_balance." - ".$value['account_size']." > ".$profit_target."<br/>";
 
                 if($value['phase'] != '3'){
-                    //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                    if(($service_balance - $account_size) >= $profit_target){
-                        //user still passed for max drawdown
-                        echo "<br/>makeUserPassProfitTarget<br/>";
-                        echo $this->makeUserPassProfitTarget($value['id']);
-                        $logsData['profit_target_message'] = "balance from swagger is : ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : ".$service_balance." - ".$account_size." is the closed profit : ".($service_balance - $account_size)." which is greater than and equal to current profit target ".$profit_target;
-                        $logsData['profitTargetStatus'] = $this->makeUserPassProfitTarget($value['id']);
-                        $logsData['passTimeProfitTarget'] = date('Y-m-d H:m:s');
-                    }else{
-                        //user made failed for max drawdown and full account goes to fail
-                        echo "<br/>userFailedPT<br/>";
-                        echo $this->userFailedPT($value['id']);
-                        $logsData['profit_target_message'] = "balance from swagger is  ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : (balance from swagger the closed profit : ".$service_balance.") - (account size : ".$account_size.") is : ".($service_balance - $account_size)." which is not greater than or equal to current profit target ".$profit_target;
-                        $logsData['profitTargetStatus'] = $this->userFailedPT($value['id']);
+                    if($service_balance != 'null' || $service_balance != 'NULL'){
+                        //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
+                        if(($service_balance - $account_size) >= $profit_target){
+                            //user still passed for max drawdown
+                            echo "<br/>makeUserPassProfitTarget<br/>";
+                            echo $this->makeUserPassProfitTarget($value['id']);
+                            $logsData['profit_target_message'] = "balance from swagger is : ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : ".$service_balance." - ".$account_size." is the closed profit : ".($service_balance - $account_size)." which is greater than and equal to current profit target ".$profit_target;
+                            $logsData['profitTargetStatus'] = $this->makeUserPassProfitTarget($value['id']);
+                            $logsData['passTimeProfitTarget'] = date('Y-m-d H:m:s');
+                        }else{
+                            //user made failed for max drawdown and full account goes to fail
+                            echo "<br/>userFailedPT<br/>";
+                            echo $this->userFailedPT($value['id']);
+                            $logsData['profit_target_message'] = "balance from swagger is  ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : (balance from swagger the closed profit : ".$service_balance.") - (account size : ".$account_size.") is : ".($service_balance - $account_size)." which is not greater than or equal to current profit target ".$profit_target;
+                            $logsData['profitTargetStatus'] = $this->userFailedPT($value['id']);
+                        }
+                        //------check max daily loss fail or pass------------------------
                     }
-                    //------check max daily loss fail or pass------------------------
                 }
                 echo "<br/>";
                 
