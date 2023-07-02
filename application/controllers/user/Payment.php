@@ -578,10 +578,15 @@ class Payment extends APIMaster {
         $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
         try {
             $token = $this->connectManagerAccount();
-            $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.'&master_pass='.$master_password.'&investor_pass='.$investor_password.'&enabled=true&FirstName='.$user['first_name'].' '.$user['last_name'].' - '.$acc_type.' - P1 - &LastName=ETC&Group=Contest\LIVEProp\USD&Rights=USER_RIGHT_CONFIRMED&Leverage=100&Balance=100000&BalancePrevDay=100000&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+            $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.
+            '&master_pass='.$master_password.'&investor_pass='.$investor_password.
+            '&enabled=true&FirstName='.$user['first_name'].'%20'.$user['last_name'].
+            '%20-%20'.$acc_type.
+            '%20-%20P1%20-%20&LastName=ETC&Group=contest%5CFProp%5CFpropa%5CUSD&Rights=USER_RIGHT_CONFIRMED&Leverage=100&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+
             $response = $this->get_curl($path);
 			
-			echo $path; die;
+			echo $response; die;
 			// return json_encode($response);  
 
 		} catch (\Throwable $th) {
