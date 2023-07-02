@@ -16,13 +16,27 @@ class Metrix extends APIMaster {
         $response = base64_decode($this->input->post('r'));
         $decrypted = json_decode($response, true);
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$decrypted['ieqd'].'&password='.$decrypted['peqd'].'&host='.$decrypted['ieqp'].'&port='.$decrypted['peqt']);
-        $accountSummary = $this->accountSummary($token);
-        $orderHistory = $this->OrderHistory($token);
-        $openedOrders = $this->OpenedOrders($token);
-        $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
-        $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
-        echo json_encode($data, true);
-        // print_r($token);
+        
+        // $accountSummary = $this->accountSummary($token);
+        // $orderHistory = $this->OrderHistory($token);
+        // $openedOrders = $this->OpenedOrders($token);
+        // $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
+        // $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
+        // echo json_encode($data, true);
+
+
+        $response = json_decode($token, JSON_PRETTY_PRINT);
+
+        if(isset($response['message'])){
+            echo json_encode(array('status'=> '400'));
+        }else{
+            $accountSummary = $this->accountSummary($token);
+            $orderHistory = $this->OrderHistory($token);
+            $openedOrders = $this->OpenedOrders($token);
+            $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
+            $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
+            echo json_encode($data, true);
+        }
     }
     public function accountSummary($token){
         return $this->get_curl('https://mt5.mtapi.be/AccountSummary?id='.$token);
