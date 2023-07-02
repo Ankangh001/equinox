@@ -531,257 +531,277 @@ $myArray = explode(',', $myString);
 
         let res = JSON.parse(data);
 
-        if(((res['balance'])-accountSize) < 0){
-          $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
-        }else if(((res['balance'])-accountSize) > 0){
-          $('#closed_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
-        }else{
-          $('#closed_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
-        }
+        // res['equity'] = "null";
+        // res['balance'] = "null";
+        // console.log(res['balance']);
 
-        if((res['equity'])-(res['balance']) < 0){
-          $('#floating_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
-        }else if((res['equity'])-(res['balance']) > 0){
-          $('#floating_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
-        }else{
-          $('#floating_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
-        }
+        if(res['equity'] != "null" && res['balance'] != "null"){
 
-        //load statistics
-        $('#stats').html(`
-          <tr>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Balance</p>
-                <span class="text-dark fw-bold text-left">$${res['balance']}</span>
-              </div>
-            </td>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Equity</p>
-                <span class="text-dark fw-bold text-left">$${res['equity'].toFixed(2)}</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
-                ${(((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) < 0 ? 
-                  `<span class="text-danger fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
-                  (
-                    (((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) > 0 ?
-                    `<span class="text-success fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
-                    `<span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`
-                  )
-                }
-                
-              </div>
-            </td>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
-                ${((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) < 0 ?
-                  `<span class="text-danger fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
-                  (
-                    ((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) > 0 ?
-                    `<span class="text-success fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
-                    `<span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`
-                  )
-                }
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Total Trades</p>
-                <span class="text-dark fw-bold text-left">${(res['orders'].length)-1}</span>
-              </div>
-            </td>
-            <td>
-              <div class="hol">
-                <p class="text-dark text-left" style="margin-bottom:-1px">Lots Traded</p>
-                <span class="text-dark fw-bold text-left" id="lots"></span>
-              </div>
-            </td>
-          </tr>
-        `);
-
-        //---------------max drawdown render------------
-        if(res['equity'] > checkAmount){ //user have passed now let's check if its permanently failed or not !
-          makeUser_pass_for_maxDrawdown();
-        }else{
-          makeMaxdrawdown_userFailed();
-          $('#max_dd').html(`
-            <div class="d-flex align-items-center justify-content-start text-danger" >
-              <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-            </div>
-          `);
-        };
-        //---------------end max drawdown render------------
-
-        //-------------max daily loss render------------
-        if(product_type_en != 'Aggressive'){
-          if(res['equity'] > (equity - maxDL)){
-            makeUser_pass_for_dailyLoss();
+          if(((res['balance'])-accountSize) < 0){
+            $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
+          }else if(((res['balance'])-accountSize) > 0){
+            $('#closed_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
           }else{
-            makeMaxDailylossFail();
+            $('#closed_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
           }
-        }
-        //--------end-----max daily loss render------------
 
-        //-----profit target render----------------
-        if(product_current_phase != '3'){
-          //profit target render
-          if(res['balance']-accountSize >= target){ 
-            //make user permanently pass
-            $.ajax({
-              type: "POST",
-              url: "<?php echo base_url('user/metrix/makeUserPassProfitTarget'); ?>",
-              data: {r},
-              dataType: "html",
-              success: function(data){
-                if(data){
-                  let maxDailyStatus = JSON.parse(data);
-                  if(maxDailyStatus.status == 200){
-                    $('#pt').html(`
-                      <div class="d-flex align-items-center justify-content-start text-success" >
-                        <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-                      </div>
-                    `);
-                  }else if(maxDailyStatus.status == 400){
-                    // console.log('unable to pass profit target');
-                  }
-                }
-              },
-              error: function(data){
-                // console.log(data);
-              }
-            });
+          if((res['equity'])-(res['balance']) < 0){
+            $('#floating_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
+          }else if((res['equity'])-(res['balance']) > 0){
+            $('#floating_profit').html(`<span class="text-success readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
           }else{
-            //make the user fail
-            $.ajax({
-              type: "POST",
-              url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
-              data: {r},
-              dataType: "html",
-              success: function(data){
-                if(data){
-                  let maxDailyStatus = JSON.parse(data);
-                  if(maxDailyStatus.status == 200){
-                    $('#pt').html(`
-                      <div class="d-flex align-items-center justify-content-start text-success" >
-                        <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
-                      </div>
-                    `);
-                  }else if(maxDailyStatus.status == 400){
-                    // console.log('unable to pass profit target');
-                  }
-                }
-              },
-              error: function(data){
-                // console.log(data);
-              }
-            });
-            // $('#pt').html(`
-            //   <div class="d-flex align-items-center justify-content-start text-danger" >
-            //     <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
-            //   </div>
-            // `);
+            $('#floating_profit').html(`<span class="text-dark readonly bg-light form-control">`+((res['equity'])-(res['balance'])).toFixed(2)+`</span>`);
           }
-        }
 
-        $('#orders').html('');
-
-        //EMPTY ARRAY EVERYTIME
-        chartData = [];
-        chartLabel = [];
-        tempChartData = [];
-        lots = 0;
-
-        res['orders'].forEach((element, index) => {
-          lots += element['lots'];
-          chartLabel.push(index);
-          tempChartData.push(element['profit']);
-
-          $('#orders').append(`
+          //load statistics
+          $('#stats').html(`
             <tr>
-              <td>${element['ticket'] ? element['ticket'] : '-'}</td>
-              <td>${element['symbol'] ? element['symbol'] : '-'}</td>
-              <td>${element['placedType'] == 'ByDealer' ? '-' : element['orderType']}</td>
-              <td>${element['placedType'] ? element['placedType'] : '-'}</td>
-              <td>${element['lots'] ? element['lots'] : '-'}</td>
-              <td>${element['openPrice'] ? element['openPrice'].toFixed(4) : '-'}</td>
-              <td>${element['closePrice'] ? element['closePrice'].toFixed(4) : '-'}</td>
-              <td>${element['openTime'] ? element['openTime'] : '-'}</td>
-              <td>${element['closeTime'] == '0001-01-01T00:00:00' ? '--' : element['closeTime']}</td>
-              <td>${element['profit'] ? element['profit'] : '-'}</td>
-              <td>${element['swap'] ? element['swap'] : '-'}</td>
-              <td>${element['commission'] ? element['commission'] : '-'}</td>
-              <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
-              <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Balance</p>
+                  <span class="text-dark fw-bold text-left">$${res['balance']}</span>
+                </div>
+              </td>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Equity</p>
+                  <span class="text-dark fw-bold text-left">$${res['equity'].toFixed(2)}</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Cummulative Return</p>
+                  ${(((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) < 0 ? 
+                    `<span class="text-danger fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                    (
+                      (((((res['balance']-accountSize))/accountSize)*100).toFixed(2)) > 0 ?
+                      `<span class="text-success fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`:
+                      `<span class="text-dark fw-bold text-left">${((((res['balance']-accountSize))/accountSize)*100).toFixed(2)}%</span>`
+                    )
+                  }
+                  
+                </div>
+              </td>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Floating Return</p>
+                  ${((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) < 0 ?
+                    `<span class="text-danger fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                    (
+                      ((((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)) > 0 ?
+                      `<span class="text-success fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`:
+                      `<span class="text-dark fw-bold text-left">${(((((res['equity'])-(res['balance'])))/accountSize)*100).toFixed(2)}%</span>`
+                    )
+                  }
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Total Trades</p>
+                  <span class="text-dark fw-bold text-left">${(res['orders'].length)-1}</span>
+                </div>
+              </td>
+              <td>
+                <div class="hol">
+                  <p class="text-dark text-left" style="margin-bottom:-1px">Lots Traded</p>
+                  <span class="text-dark fw-bold text-left" id="lots"></span>
+                </div>
+              </td>
             </tr>
           `);
-        });
-        $('#lots').text(lots.toFixed(2))
-        chartData[0] = accountSize;
 
-        tempChartData.forEach((element, i) => {
-          if(i != 0){
-            chartData[i] = (chartData[i-1] + tempChartData[i]);
-          }
-        });
+          //---------------max drawdown render------------
+          if(res['equity'] > checkAmount){ //user have passed now let's check if its permanently failed or not !
+            makeUser_pass_for_maxDrawdown();
+          }else{
+            makeMaxdrawdown_userFailed();
+            $('#max_dd').html(`
+              <div class="d-flex align-items-center justify-content-start text-danger" >
+                <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+              </div>
+            `);
+          };
+          //---------------end max drawdown render------------
 
-        myLineChart.data.labels = chartLabel;
-        myLineChart.data.datasets[0].data = chartData;
-        myLineChart.update();
-
-        $('#openOrders').html('');
-        
-        if((res['openorders'].length) > 0){
-          // console.log((res['openorders'][0]['openTime']).slice(0,10));
-          saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10);
-          saveDate();
-          res['openorders'].forEach((element) => {
-            $('#openOrders').append(`
-                <tr>
-                  <td>${element['ticket'] ? element['ticket'] : '-'}</td>
-                  <td>${element['symbol'] ? element['symbol'] : '-'}</td>
-                  <td>${element['orderType'] ? element['orderType'] : '-'}</td>
-                  <td>${element['placedType'] ? element['placedType'] : '-'}</td>
-                  <td>${element['lots'] ? element['lots'] : '-'}</td>
-                  <td>${element['openPrice'] ? element['openPrice'] : '-'}</td>
-                  <td>${element['openTime'] ? element['openTime'] : '-'}</td>
-                  <td>${element['profit'] ? element['profit'] : '-'}</td>
-                  <td>${element['swap'] ? element['swap'] : '-'}</td>
-                  <td>${element['commission'] ? element['commission'] : '-'}</td>
-                  <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
-                  <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
-                </tr>
-              `);
+          //-------------max daily loss render------------
+          if(product_type_en != 'Aggressive'){
+            if(res['equity'] > (equity - maxDL)){
+              makeUser_pass_for_dailyLoss();
+            }else{
+              makeMaxDailylossFail();
             }
-          );
-        }else{
+          }
+          //--------end-----max daily loss render------------
+
+          //-----profit target render----------------
+          if(product_current_phase != '3'){
+            //profit target render
+            if(res['balance']-accountSize >= target){ 
+              //make user permanently pass
+              $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('user/metrix/makeUserPassProfitTarget'); ?>",
+                data: {r},
+                dataType: "html",
+                success: function(data){
+                  if(data){
+                    let maxDailyStatus = JSON.parse(data);
+                    if(maxDailyStatus.status == 200){
+                      $('#pt').html(`
+                        <div class="d-flex align-items-center justify-content-start text-success" >
+                          <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                        </div>
+                      `);
+                    }else if(maxDailyStatus.status == 400){
+                      // console.log('unable to pass profit target');
+                    }
+                  }
+                },
+                error: function(data){
+                  // console.log(data);
+                }
+              });
+            }else{
+              //make the user fail
+              $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('user/metrix/userFailedPT'); ?>",
+                data: {r},
+                dataType: "html",
+                success: function(data){
+                  if(data){
+                    let maxDailyStatus = JSON.parse(data);
+                    if(maxDailyStatus.status == 200){
+                      $('#pt').html(`
+                        <div class="d-flex align-items-center justify-content-start text-success" >
+                          <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass
+                        </div>
+                      `);
+                    }else if(maxDailyStatus.status == 400){
+                      // console.log('unable to pass profit target');
+                    }
+                  }
+                },
+                error: function(data){
+                  // console.log(data);
+                }
+              });
+              // $('#pt').html(`
+              //   <div class="d-flex align-items-center justify-content-start text-danger" >
+              //     <i class="bx bx-x-circle text-danger"></i>&nbsp;&nbsp;Failed
+              //   </div>
+              // `);
+            }
+          }
+
+          $('#orders').html('');
+
+          //EMPTY ARRAY EVERYTIME
+          chartData = [];
+          chartLabel = [];
+          tempChartData = [];
+          lots = 0;
+
+          res['orders'].forEach((element, index) => {
+            lots += element['lots'];
+            chartLabel.push(index);
+            tempChartData.push(element['profit']);
+
+            $('#orders').append(`
+              <tr>
+                <td>${element['ticket'] ? element['ticket'] : '-'}</td>
+                <td>${element['symbol'] ? element['symbol'] : '-'}</td>
+                <td>${element['placedType'] == 'ByDealer' ? '-' : element['orderType']}</td>
+                <td>${element['placedType'] ? element['placedType'] : '-'}</td>
+                <td>${element['lots'] ? element['lots'] : '-'}</td>
+                <td>${element['openPrice'] ? element['openPrice'].toFixed(4) : '-'}</td>
+                <td>${element['closePrice'] ? element['closePrice'].toFixed(4) : '-'}</td>
+                <td>${element['openTime'] ? element['openTime'] : '-'}</td>
+                <td>${element['closeTime'] == '0001-01-01T00:00:00' ? '--' : element['closeTime']}</td>
+                <td>${element['profit'] ? element['profit'] : '-'}</td>
+                <td>${element['swap'] ? element['swap'] : '-'}</td>
+                <td>${element['commission'] ? element['commission'] : '-'}</td>
+                <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
+                <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
+              </tr>
+            `);
+          });
+          $('#lots').text(lots.toFixed(2))
+          chartData[0] = accountSize;
+
+          tempChartData.forEach((element, i) => {
+            if(i != 0){
+              chartData[i] = (chartData[i-1] + tempChartData[i]);
+            }
+          });
+
+          myLineChart.data.labels = chartLabel;
+          myLineChart.data.datasets[0].data = chartData;
+          myLineChart.update();
+
           $('#openOrders').html('');
-          $('#openOrders').append(`
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>
-            </td>
-          </tr>
+          
+          if((res['openorders'].length) > 0){
+            // console.log((res['openorders'][0]['openTime']).slice(0,10));
+            saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10);
+            saveDate();
+            res['openorders'].forEach((element) => {
+              $('#openOrders').append(`
+                  <tr>
+                    <td>${element['ticket'] ? element['ticket'] : '-'}</td>
+                    <td>${element['symbol'] ? element['symbol'] : '-'}</td>
+                    <td>${element['orderType'] ? element['orderType'] : '-'}</td>
+                    <td>${element['placedType'] ? element['placedType'] : '-'}</td>
+                    <td>${element['lots'] ? element['lots'] : '-'}</td>
+                    <td>${element['openPrice'] ? element['openPrice'] : '-'}</td>
+                    <td>${element['openTime'] ? element['openTime'] : '-'}</td>
+                    <td>${element['profit'] ? element['profit'] : '-'}</td>
+                    <td>${element['swap'] ? element['swap'] : '-'}</td>
+                    <td>${element['commission'] ? element['commission'] : '-'}</td>
+                    <td>${element['stopLoss'] ? element['stopLoss'] : '-'}</td>
+                    <td>${element['takeProfit'] ? element['takeProfit'] : '-'}</td>
+                  </tr>
+                `);
+              }
+            );
+          }else{
+            $('#openOrders').html('');
+            $('#openOrders').append(`
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <p class="d-block text-muted text-center pt-3 w-100">No Open Orders Found</p>
+              </td>
+            </tr>
+            `);
+          }
+
+          $('#orders').css('opacity', '1');
+          $('#openOrders').css('opacity', '1');
+          $('#eqLoader').css('display', 'none');
+          $('.container-p-y').css('opacity', '1');
+          $('.container-p-y').fadeIn();
+        }else{
+          $('.container-p-y').html('');
+          $('.container-p-y').html(`
+            <div class="row my-5 mx-auto">
+              <div class="col-md-6 m-auto">
+                <div class="card">
+                    <div class="card-body text-center text-muted ">
+                      😧 <br/>Your Credentials has not been updated yet.
+                    </div>
+                </div>
+              </div>
+            </div>
           `);
         }
-
-        $('#orders').css('opacity', '1');
-        $('#openOrders').css('opacity', '1');
-        $('#eqLoader').css('display', 'none');
-        $('.container-p-y').css('opacity', '1');
-        $('.container-p-y').fadeIn();
       },
       error: function() {
         $('.container-p-y').html('');
@@ -812,7 +832,6 @@ $myArray = explode(',', $myString);
         let dataRes = JSON.parse(data).status;
         if(dataRes == 200){
           getAccounts();
-          checkUserStatus();
           $('#max_dd').html(`
             <div class="d-flex align-items-center justify-content-start text-success" >
               <i class="bx bx-check-circle text-success"></i>&nbsp;&nbsp;Pass

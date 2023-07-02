@@ -19,8 +19,14 @@ class MetricsCron extends APIMaster {
             // echo "<pre>";
             // print_r(json_decode($res, true));
             // die;
+            $accounts_data = json_decode($res, true);
+            // $accounts_data['equity'] = "null";
+            // $accounts_data['balance'] = "null";
+
             if(isset(json_decode($res,true)['status']) == '400'){
                 echo "---////////////------/////////////////---<br/>";
+                continue;
+            }elseif($accounts_data['equity'] == 'null' && $accounts_data['balance'] == 'null'){
                 continue;
             }else{
                 echo "Account ID - ".$value['account_id']."<br />";
@@ -30,7 +36,6 @@ class MetricsCron extends APIMaster {
                 echo "PHASE - ".$value['phase']."<br />";
                 echo "STATUS - ".$value['metrics_status']."<br />";
 
-                $accounts_data = json_decode($res, true);
                 $service_equity = $accounts_data['equity'];
                 $service_balance = $accounts_data['balance'];
                 
@@ -90,25 +95,23 @@ class MetricsCron extends APIMaster {
                 echo "<br/>If ".$service_equity." is greater than >  (".$account_size." - ".$max_drawdown.") which is (".$account_size-$max_drawdown.")";
 
                 //------check max drawdown fail or pass || equity from api > accountSize - max drawdown
-                if($service_equity != 'null' || $service_equity != 'NULL'){
-                    if($service_equity > ($account_size - $max_drawdown)){
-                        //user still passed for max drawdown
-                        echo $this->maxDDPass($value['id']);
-                        $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
-                        $logsData['maxDDStatus_pass'] = $this->maxDDPass($value['id']);
-                    }else{
-                        //user made failed for max drawdown and full account goes to fail
-                        $this->make_userFail_for_maxDrawdown($value['id']);
-                        $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is not greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
-                        $logsData['maxDDStatus_fail'] = $this->make_userFail_for_maxDrawdown($value['id']);
-                        $logsData['failed_Time_MaxDD'] = date('Y-m-d H:m:s');
-                    }
+                if($service_equity > ($account_size - $max_drawdown)){
+                    //user still passed for max drawdown
+                    echo $this->maxDDPass($value['id']);
+                    $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
+                    $logsData['maxDDStatus_pass'] = $this->maxDDPass($value['id']);
+                }else{
+                    //user made failed for max drawdown and full account goes to fail
+                    $this->make_userFail_for_maxDrawdown($value['id']);
+                    $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is not greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
+                    $logsData['maxDDStatus_fail'] = $this->make_userFail_for_maxDrawdown($value['id']);
+                    $logsData['failed_Time_MaxDD'] = date('Y-m-d H:m:s');
                 }
                 //------check max drawdown fail or pass-------
-                
-                
-                
-                
+            
+            
+            
+            
                 echo "<br/><br/>checking max daily loss <br/>";
                 echo "<br/>EQUITY FROM API IS ".$service_equity.",  EQUITY SAVED IN DB ".$equity.",  DAILY DRAWDOWN ".$daily_drawdown."<br/>";
                 echo "<br/>If ".$service_equity." greater than ".$equity." - ".$daily_drawdown." i.e ".$equity-$daily_drawdown."<br/>";
@@ -187,7 +190,7 @@ class MetricsCron extends APIMaster {
                     echo 'Unable to write the file';
                 }
                 else{
-                   echo 'File written!';
+                    echo 'File written!';
                 }
             }
         }
