@@ -530,6 +530,11 @@ $myArray = explode(',', $myString);
       success: function(data){
 
         let res = JSON.parse(data);
+
+        // res['equity'] = "null";
+        // res['balance'] = "null";
+        // console.log(res['balance']);
+
         if(res['equity'] != "null" && res['balance'] != "null"){
 
           if(((res['balance'])-accountSize) < 0){
@@ -783,6 +788,19 @@ $myArray = explode(',', $myString);
           $('#eqLoader').css('display', 'none');
           $('.container-p-y').css('opacity', '1');
           $('.container-p-y').fadeIn();
+        }else{
+          $('.container-p-y').html('');
+          $('.container-p-y').html(`
+            <div class="row my-5 mx-auto">
+              <div class="col-md-6 m-auto">
+                <div class="card">
+                    <div class="card-body text-center text-muted ">
+                      😧 <br/>Your Credentials has not been updated yet.
+                    </div>
+                </div>
+              </div>
+            </div>
+          `);
         }
       },
       error: function() {
