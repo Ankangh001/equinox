@@ -221,7 +221,6 @@ class Payment extends APIMaster {
           $idempotencyKey = $data->idempotencyKey;
           $requestData = $data->requestData;
           if(isset($requestData->product_id) && $requestData->product_id !=''){
-            // $productPrice = $this->db->select('product_price')->where(['product_id' => $requestData->product_id])->get('products')->row_array()['product_price'];
             $productPrice = $requestData->final_product_price;
             $square_client = new SquareClient([
                 'accessToken'   => SQUARE_ACCESS_TOKEN,
@@ -259,6 +258,7 @@ class Payment extends APIMaster {
 	{        
         try {
             $product_category = $this->db->where(['product_id' => $requestData->product_id])->get('products')->row_array();
+            $this->autoAccountCreate($requestData);
 			$userProducts = array(
 				'user_id'       => $requestData->user_id,
 				'product_id'    => $requestData->product_id,
@@ -562,4 +562,51 @@ class Payment extends APIMaster {
 			);
 		}
 	}
+
+    public function connectManagerAccount(){
+        $token = $this->get_curl('https://mt5mng.mtapi.io/Connect?user=30001&password=Nedr6b3ld&server=8.208.91.123%3A443');
+        return $token;
+    }
+
+    public function autoAccountCreate($requestData){  
+        $account = $this->db->where(['product_id' => $requestData->product_id])->get('products')->row_array();
+        $user = $this->db->where(['user_id' => $requestData->user_id])->get('user')->row_array();
+        $account_size = $account['account_size'];
+        $acc_type = $account['product_category'];        
+
+        $master_password = $user['first_name'].substr($account_size,0,3).'K'; 
+        $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
+        try {
+            $token = $this->connectManagerAccount();
+            $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.'&master_pass='.$master_password.'&investor_pass='.$investor_password.'&enabled=true&FirstName='.$user['first_name'].' '.$user['last_name'].' - '.$acc_type.' - P1 - &LastName=ETC&Group=Contest\LIVEProp\USD&Rights=USER_RIGHT_CONFIRMED&Leverage=100&Balance=100000&BalancePrevDay=100000&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+            $response = $this->get_curl($path);
+			
+			echo $path; die;
+			// return json_encode($response);  
+
+		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+    public function get_curl($url){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
+    }
 }
