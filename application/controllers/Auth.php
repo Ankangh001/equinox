@@ -57,7 +57,7 @@ class Auth extends APIMaster {
 	
 				$this->db->insert('login_analytics',$insertData);
 				$lastId = $this->db->insert_id();
-				$this->db->query("update login_analytics set status=0 where auto_id!='$lastId' and user_id='{$user_data['user_id']}'");
+				// $this->db->query("update login_analytics set status=0 where auto_id!='$lastId' and user_id='{$user_data['user_id']}'");
 	
 				//set token in cookie
 				$cookie_name = "API_TOKEN";
