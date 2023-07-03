@@ -13,7 +13,12 @@ class Logs extends APIMaster {
         
     }
 	public function viewlogs(){
-        $this->load->view('admin/logs');
+        $this->load->helper('directory');
+        $map['res'] = directory_map(FCPATH.'logs/');
+        // echo "<pre>";
+        // print_r($map);
+        // die;
+        $this->load->view('admin/logs', $map);
 	}
 
     public function allAccounts(){
@@ -25,13 +30,15 @@ class Logs extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
-        $response['data'] = $this->db->get()->result_array();
+        $response['data'] = $this->db->where(['payment_status' =>'1'])->get()->result_array();
 
 		echo  json_encode($response);
 	}
 
     public function getLogs(){
-        $response['data'] = $this->db->get('metrics_cron_job')->result_array();
+        $this->load->helper('directory');
+        $response['data'] = directory_map(FCPATH.'logs/');
+
 		echo json_encode($response);
 	}
 }

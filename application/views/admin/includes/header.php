@@ -19,8 +19,8 @@
     <meta name="description" content="" />
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/equinoxLogoBlack.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/new-favicon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -57,7 +57,7 @@ class Auth extends APIMaster {
 	
 				$this->db->insert('login_analytics',$insertData);
 				$lastId = $this->db->insert_id();
-				$this->db->query("update login_analytics set status=0 where auto_id!='$lastId' and user_id='{$user_data['user_id']}'");
+				// $this->db->query("update login_analytics set status=0 where auto_id!='$lastId' and user_id='{$user_data['user_id']}'");
 	
 				//set token in cookie
 				$cookie_name = "API_TOKEN";
@@ -154,12 +154,10 @@ class Auth extends APIMaster {
 											<br/>
 											<br/>
 												<a style="text-decoration: none; " href="'.$mail_data['verification_link'].'" target="_blank" class="v-button" style="box-sizing: border-box;display: inline-block;font-family:"Cabin",sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #ff6600; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;">
-												<span style="display:block;padding:14px 44px 13px;line-height:120%;">
-													<span style="color:#fff;font-weight:bold;font-size:16px;line-height:19.2px;background: #f18700;padding:15px 20px;border-radius: 5px;letter-spacing:2px;font-family:sans-serif;box-shadow: 5px 4px 3px #00000070;">
+												<span style="display:block;color:#fff;font-weight:bold;font-size:16px;line-height:19.2px;background: #f18700;padding:15px 20px;border-radius: 5px;letter-spacing:2px;font-family:sans-serif;box-shadow: 5px 4px 3px #00000070;">
 													<strong>
 														<span style="line-height: 19.2px; font-size: 16px;">VERIFY YOUR EMAIL</span>
 													</strong>
-													</span>
 												</span>
 											<br/>
 											<br/>
@@ -251,8 +249,21 @@ class Auth extends APIMaster {
 					'fullname' => $response['first_name'].' '.$response['last_name'],
 					'reset_link' => base_url('auth/reset_password/'.$pwd_reset_code)
 				);
-				$emailData = $this->mailer->mail_template($to,'pwd_reset_email',$mail_data);
-				$email = send_email($to,$emailData['subject'],$emailData['content'],'','',1);
+				// $emailData = $this->mailer->mail_template($to,'pwd_reset_email',$mail_data);
+
+				$body ='<h3>Hi '.$response['first_name'].' '.$response['last_name'].',</h3>
+				<p>Welcome to Equinox!</p>
+				<p>We have received a request to reset your password. If you did not initiate this request, you can simply ignore this message and no action will be taken.</p> 
+				<p>To reset your password, please click the link below:</p> 
+				<p>'.base_url('auth/reset_password/'.$pwd_reset_code).'</p>
+	
+				<br>
+				<br>
+	
+				<p>Regards, <br> 
+				   Equinox Team <br> 
+				</p>';
+				$email = send_email($to,'Password reset link',$body,'','',2);
 
 				if($email){
 					$response = array(
