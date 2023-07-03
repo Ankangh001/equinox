@@ -20,15 +20,13 @@ class MetricsCron extends APIMaster {
             // print_r(json_decode($res, true));
             // die;
             $accounts_data = json_decode($res, true);
-            // $accounts_data['equity'] = "null";
-            // $accounts_data['balance'] = "null";
+            // $accounts_data['equity'] = null;
+            // $accounts_data['balance'] = null;
 
             if(isset(json_decode($res,true)['status']) == '400'){
                 echo "---////////////------/////////////////---<br/>";
                 continue;
-            }elseif($accounts_data['equity'] == 'null' && $accounts_data['balance'] == 'null'){
-                continue;
-            }else{
+            }elseif($accounts_data['equity'] != null && $accounts_data['balance'] != null){
                 echo "Account ID - ".$value['account_id']."<br />";
                 echo "Account PASSWORD - ".$value['account_password']."<br />";
                 echo "Account IP - ".$value['ip']."<br />";
