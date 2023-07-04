@@ -10,11 +10,13 @@ class MetricsCron extends APIMaster {
         $this->db->from('userproducts');
         $this->db->join('user', 'userproducts.user_id=user.user_id');
         $this->db->join('products', 'userproducts.product_id=products.product_id');
-        $this->db->where(['account_id!=""',  'account_status' => '1', 'payment_status' => '1']);
+        $this->db->where(['account_id !=' => '',  'account_status' => '1', 'payment_status' => '1']);
         $check = $this->db->get()->result_array();
         
         foreach ($check as $key => $value) {
-
+            // echo "Account ID - ".$value['account_id']."<br />";
+            // continue;
+            
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
             // echo "<pre>";
             // print_r(json_decode($res, true));
@@ -26,7 +28,7 @@ class MetricsCron extends APIMaster {
             if(isset(json_decode($res,true)['status']) == '400'){
                 echo "---////////////------/////////////////---<br/>";
                 continue;
-            }elseif($accounts_data['equity'] != null && $accounts_data['balance'] != null){
+            }else   if(isset($accounts_data['equity']) != null && $accounts_data['balance'] != null){
                 echo "Account ID - ".$value['account_id']."<br />";
                 echo "Account PASSWORD - ".$value['account_password']."<br />";
                 echo "Account IP - ".$value['ip']."<br />";
@@ -85,7 +87,7 @@ class MetricsCron extends APIMaster {
                 
                 //checking user status 
                 echo "<br/>checking user stats<br/>";
-                echo $this->checkUserStatus($value['id'])."<br />"; 
+                print_r($this->checkUserStatus($value['id'])); 
                 $logsData['first_checkUserStatus'] = $this->checkUserStatus($value['id']); //storing message in db
 
 
