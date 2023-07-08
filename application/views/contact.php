@@ -122,7 +122,7 @@ $this->load->view('includes/header');
 							<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
 						</div>
 						<div class="form-group mt-3">
-							<textarea class="form-control" name="message" rows="8" placeholder="Description" required></textarea>
+							<textarea class="form-control" name="message" rows="8" placeholder="Description" required style="height:100px"></textarea>
 						</div>
 						<div class="my-3">
 							<div class="loading">Loading</div>

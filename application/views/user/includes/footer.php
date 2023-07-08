@@ -71,7 +71,6 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
     <script>
-          Disable right-click
           document.addEventListener('contextmenu', (e) => e.preventDefault());
 
           function ctrlShiftKey(e, keyCode) {

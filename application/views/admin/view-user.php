@@ -156,6 +156,7 @@ $this->load->view('admin/includes/header');
                     <th>Account Size</th>
                     <th>Type</th>
                     <th>Price</th>
+                    <th>Phase</th>
                     <th>Date</th>
                     <th>Metrics Status</th>
                     <th>Actions</th>
@@ -367,18 +368,35 @@ $this->load->view('admin/includes/header');
           },
           {data:'product_category'},
           {data:'product_price'},
-          {data:'created_date'},
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `${row.product_status == 0 ? '<span class="text-warning">No creds Updated</span>':
+                  (row.phase == 1 ? '<span class="btn btn-sm btn-info">PHASE 1</span>' : 
+                    (row.phase == 2 ? '<span class="btn btn-sm btn-primary">PHASE 2</span>' : 
+                      row.phase == 3 ? '<span class="btn btn-sm btn-success">FUNDED</span>' :''
+                    )
+                  )
+                }`;
+            }
+          },
+          {
+            data: null,
+            render: function (data, type, row) {
+                return `${(row.created_date).slice(0,10)}`;
+            }
+          },
           {
             data: null,
             render: function (data, type, row) {
                 return `${
-                  row.product_status == 0 ? '<span class="badge bg-label-warning">Pending</span>' : 
-                  (row.product_status == 1 ? '<span class="badge bg-label-success">Active</span>' : 
-                    (row.product_status == 2 ? '<span class="badge bg-label-primary">Passed</span>' : 
-                      row.product_status == 3 ? '<span class="badge bg-label-danger">Failed</span>' :''
-                    )
+                row.product_status == 0 ? '<span class="btn btn-sm btn-warning">PENDING</span>' : 
+                (row.product_status == 1 ? '<span class="btn btn-sm btn-primary">ACTIVE</span>' : 
+                  (row.product_status == 2 ? '<span class="btn btn-sm btn-success">PASSED</span>' : 
+                    row.product_status == 3 ? '<span class="btn btn-sm btn-danger">FAILED</span>' :''
                   )
-                }`;
+                )
+              }`;
             }
           },
           {
