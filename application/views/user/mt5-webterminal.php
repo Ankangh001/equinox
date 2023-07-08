@@ -20,7 +20,7 @@ $this->load->view('user/includes/header');
               <!-- Web Terminal Code Start -->
               <iframe 
                 id="element" 
-                src="https://trade.mql5.com/trade?servers=DKInternational-Demo,DKInternational-Live&amp;
+                src="https://metatraderweb.app/trade?servers=DKInternational-Demo,DKInternational-Live&amp;
                   lang=en&amp;"
                 allowfullscreen="allowfullscreen" 
                 style="width: 100%; height: 100vh; border: none;"
