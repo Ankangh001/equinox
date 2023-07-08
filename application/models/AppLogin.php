@@ -54,7 +54,7 @@ class AppLogin extends CI_Model
     function validateUserSession($login_token)
     {
         try {
-            $sql = "SELECT user_id, REPLACE(CONCAT(first_name,' ',last_name),'  ',' ') user_name, email, number FROM user where user_id = (SELECT user_id FROM login_analytics where token = '{$login_token}' AND status =1)";
+            $sql = "SELECT user_id, REPLACE(CONCAT(first_name,' ',last_name),'  ',' ') user_name, email, number FROM user where user_id = (SELECT user_id FROM login_analytics where token = '{$login_token}' AND status =1 limit 1)";
             $result = $this->db->query($sql)->row_array();
             if ($result) {
                 $response['success'] = 1;

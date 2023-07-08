@@ -8,6 +8,48 @@ class Purchase extends APIMaster {
         $this->verifyAdminAuth();
     }
 
+	//----------MT-Manager account--------------
+	public function mtManager(){
+        $this->load->view('admin/mtManager');
+	}
+	public function getmtManagerDetails(){
+		$iD = $this->input->post('id');
+		$response = $this->db->where(['id' =>  $iD])->get('mt_manager')->result_array();
+		echo json_encode($response);
+	}
+	public function editmtManager(){
+		// print_r($this->input->post());die;
+		$data = array(
+			'userID' =>  $this->input->post('user_id'),
+			'pass' =>  $this->input->post('pass'),
+			'ip' =>  $this->input->post('ip'),
+			'port' =>  $this->input->post('port'),
+		);
+		$iD = $this->input->post('id');
+		
+		$res = $this->db->where(['id' =>  $iD])->update('mt_manager', $data);
+
+		if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'Added successfully',
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'Unable to add data',
+			);
+		}
+		echo json_encode($response);  
+	}
+	public function mtManagerTable(){
+		$response['data'] = $this->db->get('mt_manager')->result_array();
+		echo  json_encode($response);
+
+	}
+	//----------end MT-Manager account--------------
+
+
 	//----------servers starts--------------
 	public function servers(){
         $this->load->view('admin/servers');
