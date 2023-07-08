@@ -84,6 +84,7 @@ $route['admin/phase-2'] = 'admin/purchase/phase2';
 $route['admin/phase-3'] = 'admin/purchase/phase3';
 $route['admin/completed'] = 'admin/purchase/completed';
 $route['admin/server-settings'] = 'admin/purchase/servers';
+$route['admin/mt-manager'] = 'admin/purchase/mtManager';
 
     //-----payouts------------//
 $route['admin/payout/pending'] = 'admin/payout/pending';

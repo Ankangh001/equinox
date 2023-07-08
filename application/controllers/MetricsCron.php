@@ -13,26 +13,15 @@ class MetricsCron extends APIMaster {
         $this->db->where(['account_id !=' => '',  'account_status' => '1', 'payment_status' => '1']);
         $check = $this->db->get()->result_array();
         
-        foreach ($check as $key => $value) {
-            // echo "Account ID - ".$value['account_id']."<br />";
-            // continue;
-            
+        foreach ($check as $key => $value) {            
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
-            // echo "<pre>";
-            // print_r(json_decode($res, true));
-            // die;
             $accounts_data = json_decode($res, true);
-            // $accounts_data['equity'] = null;
-            // $accounts_data['balance'] = null;
 
             if(isset(json_decode($res,true)['status']) == '400'){
                 echo "---////////////------/////////////////---<br/>";
                 continue;
             }else   if(isset($accounts_data['equity']) != null && $accounts_data['balance'] != null){
                 echo "Account ID - ".$value['account_id']."<br />";
-                echo "Account PASSWORD - ".$value['account_password']."<br />";
-                echo "Account IP - ".$value['ip']."<br />";
-                echo "Account PORT - ".$value['port']."<br />";
                 echo "PHASE - ".$value['phase']."<br />";
                 echo "STATUS - ".$value['metrics_status']."<br />";
 
@@ -82,53 +71,32 @@ class MetricsCron extends APIMaster {
                     $profit_target = $value['p2_target'];
                 }
 
-                echo "<br/>USER CURRENT PROFIT TARGET IS ".$profit_target."<br/><br/>";
                 $logsData['current_profitTarget'] = $profit_target;
                 
                 //checking user status 
-                echo "<br/>checking user stats<br/>";
-                print_r($this->checkUserStatus($value['id'])); 
                 $logsData['first_checkUserStatus'] = $this->checkUserStatus($value['id']); //storing message in db
-
-
-                echo "<br/><br/>checking max dd <br/>";
-                echo "<br/>If ".$service_equity." is greater than >  (".$account_size." - ".$max_drawdown.") which is (".$account_size-$max_drawdown.")";
 
                 //------check max drawdown fail or pass || equity from api > accountSize - max drawdown
                 if($service_equity > ($account_size - $max_drawdown)){
-                    //user still passed for max drawdown
-                    echo $this->maxDDPass($value['id']);
                     $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
                     $logsData['maxDDStatus_pass'] = $this->maxDDPass($value['id']);
                 }else{
                     //user made failed for max drawdown and full account goes to fail
-                    $this->make_userFail_for_maxDrawdown($value['id']);
                     $logsData['maximum_drawdown_message'] = "equity from swagger is : ".$service_equity.", and current account size is : ".$account_size.", and maximum_drawdown is : ".$max_drawdown." || Hence : ".$service_equity." is not greater than ".($account_size - $max_drawdown)."[account size -  max drawdown]";
                     $logsData['maxDDStatus_fail'] = $this->make_userFail_for_maxDrawdown($value['id']);
                     $logsData['failed_Time_MaxDD'] = date('Y-m-d H:m:s');
                 }
                 //------check max drawdown fail or pass-------
             
-            
-            
-            
-                echo "<br/><br/>checking max daily loss <br/>";
-                echo "<br/>EQUITY FROM API IS ".$service_equity.",  EQUITY SAVED IN DB ".$equity.",  DAILY DRAWDOWN ".$daily_drawdown."<br/>";
-                echo "<br/>If ".$service_equity." greater than ".$equity." - ".$daily_drawdown." i.e ".$equity-$daily_drawdown."<br/>";
-                
                 if($value['product_category'] == 'Normal'){
-                    if($service_equity != 'null' || $service_equity != 'NULL'){
+                    if($service_equity != null){
                         //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
                         if($service_equity > ($equity - $daily_drawdown)){
                             //user still passed for max drawdown
-                            echo "<br/>calling pass_max_dailyLoass<br/>";
-                            echo $this->pass_max_dailyLoass($value['id']);
                             $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
                             $logsData['maxDLStatus_pass'] = $this->pass_max_dailyLoass($value['id']);
                         }else{
                             //user made failed for max drawdown and full account goes to fail
-                            echo "<br/>calling make_userFail_for_maxDrawdown<br/>";
-                            $this->makeMaxDailylossFail($value['id']);
                             $logsData['maximum_daily_loss_message'] = "As product is normal category equity from swagger is : ".$service_equity.", and current equity in Database is : ".$equity.", and daily drawdown is : ".$daily_drawdown." || Hence : ".$service_equity." is not greater than ".($equity - $daily_drawdown)."[database equity -  daily drawdown]";
                             $logsData['maxDLStatus_fail'] = $this->makeMaxDailylossFail($value['id']);
                             $logsData['failTimeMaxDL'] = date('Y-m-d H:m:s');
@@ -137,61 +105,33 @@ class MetricsCron extends APIMaster {
                     }
                 }
                 
-                
-                echo "<br/><br/>checking profit trget <br/>";
-                echo "BALANCE FROM SERVICE ".$service_balance.", ACCOUNT SIZE ".$value['account_size'].", profit target ".$profit_target." service_equity ".$service_equity."<br/>";
-                echo "If BALANCE FROM SERVICE ".$service_balance." - ".$value['account_size']." > ".$profit_target."<br/>";
-
                 if($value['phase'] != '3'){
-                    if($service_balance != 'null' || $service_balance != 'NULL'){
-                        //------check max daily loss fail or pass || equity from api > savedEquity - max daily drawdown
-                        if(($service_balance - $account_size) >= $profit_target){
-                            //user still passed for max drawdown
-                            echo "<br/>makeUserPassProfitTarget<br/>";
-                            echo $this->makeUserPassProfitTarget($value['id']);
+                    if($service_balance != null){
+                        //------check profit target fail or pass
+                        if(1){
                             $logsData['profit_target_message'] = "balance from swagger is : ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : ".$service_balance." - ".$account_size." is the closed profit : ".($service_balance - $account_size)." which is greater than and equal to current profit target ".$profit_target;
                             $logsData['profitTargetStatus'] = $this->makeUserPassProfitTarget($value['id']);
                             $logsData['passTimeProfitTarget'] = date('Y-m-d H:m:s');
                         }else{
                             //user made failed for max drawdown and full account goes to fail
-                            echo "<br/>userFailedPT<br/>";
-                            echo $this->userFailedPT($value['id']);
                             $logsData['profit_target_message'] = "balance from swagger is  ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : (balance from swagger the closed profit : ".$service_balance.") - (account size : ".$account_size.") is : ".($service_balance - $account_size)." which is not greater than or equal to current profit target ".$profit_target;
                             $logsData['profitTargetStatus'] = $this->userFailedPT($value['id']);
                         }
                         //------check max daily loss fail or pass------------------------
                     }
                 }
-                echo "<br/>";
-                
 
-                echo "checking user stats again <br/>";
                 //checking user status 
-                $this->checkUserStatus($value['id']); 
                 $logsData['userEndStats'] = $this->checkUserStatus($value['id']); //storing message in db
 
                 // $this->db->insert('metrics_cron_job', $logsData);
                 $this->load->helper('file');
 
-
                 //generate log
-                $file_path= 'logs/'.date('Y-m-d').'_'.$value['account_id'].'.txt';
+                $file_path= 'logs';
+                $filename= date('Y-m-d').'_'.$value['account_id'].'.log';
 
-                if(file_exists($file_path)){
-                    $res = write_file(FCPATH.$file_path, json_encode($logsData), 'a');
-                }
-                else
-                {
-                    $res = write_file(FCPATH.$file_path, json_encode($logsData));
-                }
-
-
-                if(!$res){
-                    echo 'Unable to write the file';
-                }
-                else{
-                    echo 'File written!';
-                }
+                $this->createLog($file_path, $filename, $logsData);
             }
         }
     }
@@ -202,12 +142,17 @@ class MetricsCron extends APIMaster {
     //---mt5 swagger api call to get account info----
     public function accounts($accountId, $password, $host, $port){
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$accountId.'&password='.$password.'&host='.$host.'&port='.$port);
-        // echo "<pre>";
         $response = json_decode($token, JSON_PRETTY_PRINT);
-        // print_r($response['message']);
-        // print_r((json_decode($token)), 0, 12);
-        // exit;
-        // return json_decode($token['message']);
+
+        $file_path = 'accounts';
+        $filename = 'accounts_'.date('Y-m-d H:m:s').'.log';
+        $logsData = array(
+            date('Y-m-d H:m:s') => array(
+                'request'=>$token,
+                'response'=>$response
+            )
+        );
+        $this->createLog($file_path, $filename, $logsData);
 
         if(isset($response['message'])){
             return json_encode(array('status'=> '400'));
@@ -292,19 +237,17 @@ class MetricsCron extends APIMaster {
         $check2 = $this->db->get()->result_array();
         $email = $check2[0]['email'];
 
-        //0 = failed
-        //1 = initial pass
-        //2 = permanent pass
-        //3 = permanent fail
-        //4 = fluctuate pass
+        //0 = initial failed -- profit target
+        //1 = initial pass   -- profit target
+
+        //2 = permanent pass -- max ddd, max dl
+        //3 = permanent fail -- max ddd, max dl
+
         if($check[0]['maxdd_status'] == 3){
-            $response = array(
-                'status'=> 400,
-                'message'=>'User permanently failed in Maximum drawdown'
-            );
+            $response = "message'=>'User already failed in Maximum drawdown !";
         }elseif($check[0]['maxdd_status'] == 1){
             // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '2']);
-            $response = 'User still pass for Maximum Drawdown!';
+            $response = 'User still pass for Maximum Drawdown';
         }
         return ($response);
     } 
@@ -329,6 +272,10 @@ class MetricsCron extends APIMaster {
         //3 = permanent fail
         if($check[0]['maxdd_status'] == 1 && $check[0]['metrics_status'] != 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            
+            $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+            $deactiveAccount = $this->deactiveAccount($requestData);
+            
             $this->send_user_email($email, "FAIL", "1", $name, $account, "");
         }else{
             $update = 0;
@@ -371,7 +318,7 @@ class MetricsCron extends APIMaster {
         }
         return ($response);
     }
-    //--------PASS PROFIT TARGET-------
+    //--------FAIL PROFIT TARGET-------
     public function userFailedPT($id){
         $decrypted['eqid'] = $id;
 
@@ -444,7 +391,10 @@ class MetricsCron extends APIMaster {
         //2 = permanent pass
         //3 = permanent fail
         if($check[0]['maxDl_status'] == 1 && $check[0]['metrics_status'] != 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            $update = $this->db->where(['id' => $decrypted['eqid']])
+            ->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+            $deactiveAccount = $this->deactiveAccount($requestData);
             $this->send_user_email($email, "FAIL", "2", $name, $account, "");
         }else{
             $update = 0;
@@ -470,11 +420,7 @@ class MetricsCron extends APIMaster {
         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status!=0']);
         $check = $this->db->get()->result_array();
 
-        // print_r($check);die;
-        // $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-
         if($check){
-            
             $maxdd_status = $check[0]['maxdd_status'];
             $maxDl_status = $check[0]['maxDl_status'];
             $target_status = $check[0]['target_status'];
@@ -489,35 +435,44 @@ class MetricsCron extends APIMaster {
             //1 = pass
             //2 = permanent pass
             //3 = permanent fail
-
             if($product_category == 'Aggressive'){
                 if($phase == '1') {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
-                
+                        
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+                        $accountCreate = $this->autoAccountCreate($requestData, "");
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '2',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
-                        $response = array(
-                            'status'=> 200,
-                            'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
-                        );                           
+
+                        $response = 'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product';
                     }else{
-                        $response = "account not passed phase-1 yet";
+                        $response = "Account not passed phase-1 yet";
                     }
                 }elseif($phase == '2') {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
@@ -525,23 +480,34 @@ class MetricsCron extends APIMaster {
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
                         
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '3',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-m-d H:m:s'),
-                            'phase3_issue_date' => date('Y-m-d H:m:s')
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        
                         $response = 'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product';  
                     }else{
                         $response = 'User id: '.$check[0]['user_id'].' account not passed phase-2 yet';
@@ -586,7 +552,7 @@ class MetricsCron extends APIMaster {
                         );
                         $res = $this->db->insert('userproducts', $userProducts);
                         $this->send_user_email($email, "PASS", "", $name, $account);
-                        $response = "User id: '.$check[0]['user_id'].' account is passed phase1 for normal product";
+                        $response = 'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product';
                     }else{
                         $response = "Account not passed phase-1 yet or normal";  
                     }
@@ -643,8 +609,6 @@ class MetricsCron extends APIMaster {
         }
         return ($response);
     }
-
-
 
     //send mail for passing phases
     //violation_type = 0,1,2
@@ -747,4 +711,493 @@ class MetricsCron extends APIMaster {
 			);
 		}
 	}
+
+
+
+
+    public function connectManagerAccount(){
+		$credentials = $this->db->get('mt_manager')->row_array();
+		// $user = '30001';
+		// $password = 'Nedr6b3ld';
+		// $ip = '8.208.91.123';
+		// $port = '443';
+		// $server = $ip.'%3A'.$port;
+
+		$user = $credentials['userID'];
+		$password = $credentials['pass'];
+		$ip = $credentials['ip'];
+		$port = $credentials['port'];
+		$server = $ip.'%3A'.$port;
+
+        $token = $this->get_acc_curl('https://mt5mng.mtapi.io/Connect?user='.$user.'&password='.$password.'&server='.$server);
+        return $token;
+    }
+
+    public function autoAccountCreate($requestData, $isLive){ 
+
+        $account = $this->db->where(['product_id' => $requestData['product_id']])->get('products')->row_array();
+        $user = $this->db->where(['user_id' => $requestData['user_id']])->get('user')->row_array();
+        $account_size = $account['account_size'];
+        $acc_type = $account['product_category'];        
+
+        $master_password = $user['first_name'].substr($account_size,0,3).'K'; 
+        $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
+        if($isLive == '1'){
+            $groupCode = "contest%5CLIVEProp%5CUSD";
+        }else{
+            $groupCode = "contest%5CFProp%5CFpropa%5CUSD";
+        }
+
+        try {
+            $token = $this->connectManagerAccount();
+            $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.
+            '&master_pass='.$master_password.'&investor_pass='.$investor_password.
+            '&enabled=true&FirstName='.$user['first_name'].'%20'.$user['last_name'].
+            '%20-%20'.$acc_type.
+            '%20-%20P1%20-%20&LastName=ETC&Group='.$groupCode.'&Rights=USER_RIGHT_CONFIRMED&Leverage=100&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+
+            $json = $this->get_acc_curl($path);
+            
+            $response = json_decode($json, JSON_PRETTY_PRINT);
+            // $response['login'] = '850952';
+            
+			//generate log
+			$logsData = array(
+                date('Y-m-d H:m:s') => array(
+                    'Token' => $token,
+                    'Request Url' => $path,
+                    'Response' => $json,
+                    'Decoded Response' => $response
+                )
+			);
+
+			$file_path= 'accountCreate';
+			$filename= date('Y-m-d').'_createAccount.log';
+            $this->createLog($file_path, $filename, $logsData);
+
+			if($response['login']){
+                $account_num = $response['login'];
+                $addBalanceUrl = 'https://mt5mng.mtapi.io/Deposit?id='.$token.'&login='.$account_num.'&amount='.$account_size.'&comment=Deposit&credit=false';
+                if($this->get_acc_curl($addBalanceUrl)){
+                    
+                    $name = $user['first_name'].' '.$user['last_name'];
+                    $servers = $this->db->get('servers')->row_array();
+                    $responseData = array(
+                        'status' => '200',
+                        'account_num' => $account_num,
+                        'password' => $master_password,
+                        'ip' => $servers['sIp'],
+                        'port' => $servers['sPort'],
+                        'server' => $servers['serverName'],
+                        'balance' => $account_size,
+                        'equity' => $account_size,
+                        'balance-added' => true
+                    );
+
+                    $sendEmail = $this->send_credentials_email(
+                        $user['email'], 
+                        $account_num, 
+                        $master_password, 
+                        $servers['serverName'],
+                        $account_size,
+                        $name,
+                        '2'
+                    );
+                    
+                }
+            }else{
+                $responseData = array(
+                    'status' => '400'
+                );
+            }
+			
+			return $responseData;
+
+		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+    public function deactiveAccount($requestData){ 
+
+        $account_id = $requestData['account_id'];
+        
+        try {
+            $token = $this->connectManagerAccount();
+            $path = 'https://mt5mng.mtapi.io/AccountUpdate?id='.$token.'&enabled=false&Login='.$account_id;
+
+            $response = $this->get_acc_curl($path);
+            
+			//generate log
+			$logsData = array(
+                date('Y-m-d H:m:s') => array(
+                    'Token' => $token,
+                    'Request Url' => $path,
+                    'Response' => $response
+                )
+			);
+
+			$file_path= 'deactiveAccount';
+			$filename= date('Y-m-d').'_deactiveAccount.log';
+            $this->createLog($file_path, $filename, $logsData);
+
+			if($response == "OK"){
+                $responseData = array(
+                    'status' => '200'
+                );
+            }else{
+                $responseData = array(
+                    'status' => '400'
+                );
+            }
+			
+			return $responseData;
+
+		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+    public function get_acc_curl($url){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            )
+        );
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return $response;
+    }
+
+    public function send_credentials_email($user_email, $accountId,  $password, $server, $balance, $name, $phase){
+		$this->load->helper('email_helper');
+		$this->load->library('mailer');
+
+		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
+		if($phase == '1'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										We are excited that you have decided to be a part of our ETC family and we wish you
+										very best with the evaluation.<br /><br />
+										You can monitor the performance of your account from the metrics section in your
+										dashboard.
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}elseif($phase == '2'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										Congratulations again on passing your Evaluation Phase-1. We wish you very best in your Phase 2 and on your path to a becoming part of the ETC live trader family.<br /><br />
+										Always remember, “The Sky is the limit”.
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}elseif($phase == '3'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										Congratulations again on passing your Evaluation Phase-2. Welcome to the ETC funded family.<br /><br />
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}
+		$finaltemp = str_replace("{CONTENT}", $content, $body);
+
+		$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',3);
+
+		if($email){
+			$response = array(
+				"success" => 1,
+				"message" => "Credentials email sent to ".$user_email
+			);
+		}	
+		else{
+			$response = array(
+				"success" => 0,
+				"message" => "Some error occured!"
+			);
+		}
+	}
+
+    public function createLog($path, $filename, $data){
+        
+        $file_path= 'storage/'.$path;
+
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+        
+        if(file_exists($file_path.'/'.$filename)){
+            $res = write_file(FCPATH.$file_path.'/'.$filename, json_encode($data), 'a');
+        }
+        else{
+            $res = write_file(FCPATH.$file_path.'/'.$filename, json_encode($data));
+        }
+
+        
+        if(!$res){
+            echo 'Unable to write the '.$filename.'file<br/><br/>';
+        }
+        else{
+            echo $filename.' File written!<br/><br/>';
+        }
+    }
 }
