@@ -108,7 +108,7 @@ class Metrix extends APIMaster {
         $current_date = date('Y-m-d H:m:s');
         
         $res = 0;
-        if($check[0]['product_status'] != '4'){
+        if($check[0]['product_status'] != '4' && $end_date != '0000-00-00 00:00:00'){
             if($current_date > $end_date){
                 $res = $this->db->where(['id'=>$decrypted['eqid']])
                 ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
