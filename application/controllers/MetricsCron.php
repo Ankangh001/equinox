@@ -223,7 +223,7 @@ class MetricsCron extends APIMaster {
             'start_date' => $start_date,
             'end_date' => $end_date
         );
-        $res = $this->db->where(['user_id'=>$_SESSION['user_id']])->update('userproducts', $data);
+        $res = $this->db->where(['id'=>$decrypted['eqid']])->update('userproducts', $data);
         if($res){
             $response = 'start date and end date added successfully';
         }else{
