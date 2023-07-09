@@ -307,7 +307,7 @@ class Metrix extends APIMaster {
             );
         }else{
             $response = array(
-                'status'=> 400,
+                'status'=> 200,
                 'message'=>'Server Error !, unable to fail user'
             );
         }
