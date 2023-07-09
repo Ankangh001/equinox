@@ -17,10 +17,11 @@ class MetricsCron extends APIMaster {
             $res = $this->accounts($value['account_id'],  $value['account_password'], $value['ip'], $value['port']);
             $accounts_data = json_decode($res, true);
 
+            
             if(isset(json_decode($res,true)['status']) == '400'){
                 echo "---////////////------/////////////////---<br/>";
                 continue;
-            }else   if(isset($accounts_data['equity']) != null && $accounts_data['balance'] != null){
+            }elseif(isset($accounts_data['equity']) != null && $accounts_data['balance'] != null){
                 echo "Account ID - ".$value['account_id']."<br />";
                 echo "PHASE - ".$value['phase']."<br />";
                 echo "STATUS - ".$value['metrics_status']."<br />";
@@ -75,6 +76,15 @@ class MetricsCron extends APIMaster {
                 
                 //checking user status 
                 $logsData['first_checkUserStatus'] = $this->checkUserStatus($value['id']); //storing message in db
+                
+                if(isset($accounts_data['openorders'][0]['openTime'])){
+                    $sDate =  substr(($accounts_data['openorders'][0]['openTime']),0,10).' '.substr(($accounts_data['openorders'][0]['openTime']),11,-4);
+                    $logsData['start_date'] = $sDate;
+                    //save date
+                    $logsData['start_date_status'] = $this->saveStartDate($value['id'], $sDate);
+                    //check expiry
+                }
+                $logsData['check_expiry'] = $this->check_account_expiry($value['id']);
 
                 //------check max drawdown fail or pass || equity from api > accountSize - max drawdown
                 if($service_equity > ($account_size - $max_drawdown)){
@@ -125,7 +135,6 @@ class MetricsCron extends APIMaster {
                 $logsData['userEndStats'] = $this->checkUserStatus($value['id']); //storing message in db
 
                 // $this->db->insert('metrics_cron_job', $logsData);
-                $this->load->helper('file');
 
                 //generate log
                 $file_path= 'logs';
@@ -144,19 +153,23 @@ class MetricsCron extends APIMaster {
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$accountId.'&password='.$password.'&host='.$host.'&port='.$port);
         $response = json_decode($token, JSON_PRETTY_PRINT);
 
-        $file_path = 'accounts';
-        $filename = 'accounts_'.date('Y-m-d H:m:s').'.log';
-        $logsData = array(
-            date('Y-m-d H:m:s') => array(
-                'request'=>$token,
-                'response'=>$response
-            )
-        );
-        $this->createLog($file_path, $filename, $logsData);
+        // print_r($token);
+        // die;
 
         if(isset($response['message'])){
             return json_encode(array('status'=> '400'));
         }else{
+            $file_path = 'accounts';
+            $filename = 'accounts_'.date('Y-m-d').'.log';
+            $logsData = array(
+                date('Y-m-d H:m:s') => array(
+                    'request'=>$token,
+                    'response'=>$response
+                )
+            );
+            $logd= $this->createLog($file_path, $filename, $logsData);
+            // print_r($logd);
+
             $accountSummary = $this->accountSummary($token);
             $orderHistory = $this->OrderHistory($token);
             $openedOrders = $this->OpenedOrders($token);
@@ -200,26 +213,49 @@ class MetricsCron extends APIMaster {
 
 
     //----save start and end date---
-    public function check_account_expiry(){
-        $start_date =  $this->input->post('date');
-        $end_date = date('Y-m-d', strtotime($start_date. ' +30 days'));
+    public function saveStartDate($id, $sDate){
+        $decrypted['eqid'] = $id;
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+
+        $start_date =  $sDate;
+        $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
         $data = array(
             'start_date' => $start_date,
             'end_date' => $end_date
         );
         $res = $this->db->where(['user_id'=>$_SESSION['user_id']])->update('userproducts', $data);
         if($res){
-            $response = array(
-                'status'=> 200,
-                'message'=>'start date and end date added successfully'
-            );
+            $response = 'start date and end date added successfully';
         }else{
-            $response = array(
-                'status'=> 400,
-                'message'=>'Error adding start date and end date to database'
-            );
+            $response = 'Error adding start date and end date to database';
         }
-        echo json_encode($response);
+        return $response;
+    }
+
+    //----save start and end date---
+    public function check_account_expiry($id){
+        $decrypted['eqid'] = $id;
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        
+        $end_date = $check[0]['end_date'];
+        $current_date = date('Y-m-d H:m:s');
+        
+        $res = 0;
+        if($check[0]['product_status'] != '4'){
+            if($current_date > $end_date){
+                $res = $this->db->where(['id'=>$decrypted['eqid']])
+                ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
+            }
+            if($res){
+                $response = 'account expired, product status updated';
+            }else{
+                $response = 'nothing changed';
+            }
+        }else{
+            $response = 'not checking any more already expired!';
+        }
+        
+        return json_encode($response);
     }
 
     
@@ -244,7 +280,7 @@ class MetricsCron extends APIMaster {
         //3 = permanent fail -- max ddd, max dl
 
         if($check[0]['maxdd_status'] == 3){
-            $response = "message'=>'User already failed in Maximum drawdown !";
+            $response = "User already failed in Maximum drawdown !";
         }elseif($check[0]['maxdd_status'] == 1){
             // $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '2']);
             $response = 'User still pass for Maximum Drawdown';
@@ -271,7 +307,8 @@ class MetricsCron extends APIMaster {
         //2 = permanent pass
         //3 = permanent fail
         if($check[0]['maxdd_status'] == 1 && $check[0]['metrics_status'] != 1){
-            $update = $this->db->where(['id' => $decrypted['eqid']])->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            $update = $this->db->where(['id' => $decrypted['eqid']])
+            ->update('userproducts', ['maxdd_status' => '3', 'product_status' => '3', 'target_status'=> '3', 'account_status' => '0']);
             
             $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
             $deactiveAccount = $this->deactiveAccount($requestData);
@@ -392,7 +429,7 @@ class MetricsCron extends APIMaster {
         //3 = permanent fail
         if($check[0]['maxDl_status'] == 1 && $check[0]['metrics_status'] != 1){
             $update = $this->db->where(['id' => $decrypted['eqid']])
-            ->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3']);
+            ->update('userproducts', ['maxDl_status' => '3', 'product_status' => '3', 'target_status'=> '3', 'account_status' => '0']);
             $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
             $deactiveAccount = $this->deactiveAccount($requestData);
             $this->send_user_email($email, "FAIL", "2", $name, $account, "");
@@ -440,7 +477,7 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1', 'account_status' => '0']);
                         
                         $this->send_user_email($email, "PASS", "", $name, $account);
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
@@ -478,7 +515,7 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
+                        ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1',  'account_status' => '0']);
                         
                         $this->send_user_email($email, "PASS", "", $name, $account);
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
@@ -517,7 +554,7 @@ class MetricsCron extends APIMaster {
                         // no phase after this
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        // $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
                         
                         $response = array(
                             'status'=> 200,
@@ -535,23 +572,36 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         //--move to phse 2
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1',  'account_status' => '0']);
+                        
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+                        $accountCreate = $this->autoAccountCreate($requestData, "");
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '2',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
                         $response = 'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product';
                     }else{
                         $response = "Account not passed phase-1 yet or normal";  
@@ -560,25 +610,36 @@ class MetricsCron extends APIMaster {
                     if($maxdd_status == 1 && $maxDl_status == 1 && $target_status == 2 && $metrics_status == 0){
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
-                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
+                        ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1', 'account_status' => '0']);
                         
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '3',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-m-d H:m:s'),
-                            'phase3_issue_date' => date('Y-m-d H:m:s')
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
                         $response = "User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product";
                     }else{
                         $response = "Account not passed phase-1 yet";
@@ -588,7 +649,7 @@ class MetricsCron extends APIMaster {
                         // no phase after this
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        // $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
                         
                         $response = array(
                             'status'=> 200,
@@ -1178,6 +1239,7 @@ class MetricsCron extends APIMaster {
 	}
 
     public function createLog($path, $filename, $data){
+        $this->load->helper('file');
         
         $file_path= 'storage/'.$path;
 
@@ -1194,7 +1256,7 @@ class MetricsCron extends APIMaster {
 
         
         if(!$res){
-            echo 'Unable to write the '.$filename.'file<br/><br/>';
+            echo 'Unable to write the '.$filename.' file on path '.$file_path.'/'.$filename.'<br/><br/>';
         }
         else{
             echo $filename.' File written!<br/><br/>';
