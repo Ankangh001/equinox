@@ -640,7 +640,7 @@ class MetricsCron extends APIMaster {
 
                         $res = $this->db->insert('userproducts', $userProducts);
 
-                        $response = "User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product";
+                        $response = 'User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product';
                     }else{
                         $response = "Account not passed phase-1 yet";
                     }
