@@ -215,6 +215,7 @@ $this->load->view('user/includes/header');
         </div>
       <?php } }?>
 
+      <hr class="mt-5">
 
       <!-- Evaluation Phase 2 -->
       <?php 
@@ -363,6 +364,8 @@ $this->load->view('user/includes/header');
           </div>
         </div>
       <?php } }?>
+
+      <hr class="mb-3">
 
       <!-- Evaluation Funded -->
       <?php 
