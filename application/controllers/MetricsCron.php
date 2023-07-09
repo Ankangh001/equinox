@@ -118,7 +118,7 @@ class MetricsCron extends APIMaster {
                 if($value['phase'] != '3'){
                     if($service_balance != null){
                         //------check profit target fail or pass
-                        if(1){
+                        if(($service_balance - $account_size) >= $profit_target){
                             $logsData['profit_target_message'] = "balance from swagger is : ".$service_balance.", and current account size is : ".$account_size.", and profit target is : ".$profit_target." || Hence : ".$service_balance." - ".$account_size." is the closed profit : ".($service_balance - $account_size)." which is greater than and equal to current profit target ".$profit_target;
                             $logsData['profitTargetStatus'] = $this->makeUserPassProfitTarget($value['id']);
                             $logsData['passTimeProfitTarget'] = date('Y-m-d H:m:s');
