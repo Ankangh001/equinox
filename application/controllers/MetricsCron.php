@@ -321,7 +321,7 @@ class MetricsCron extends APIMaster {
         if($update){
             $response = "'User Made Failed permanently !";
         }else{
-            $response = "Server Error !, unable to fail user";
+            $response = "already failed";
         }
 
         return ($response);
@@ -440,7 +440,7 @@ class MetricsCron extends APIMaster {
         if($update){
             $response = "User Made Failed permanently in Maximum Daily loss";
         }else{
-            $response = "Server Error !, unable to fail user";
+            $response = "already fail user";
         }
         return ($response);
     }
