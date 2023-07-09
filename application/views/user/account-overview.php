@@ -388,7 +388,7 @@ $this->load->view('user/includes/header');
                   <?php }elseif($value['product_status'] == '1'){ ?>
                     <span class="badge bg-primary text-white me-1">ACTIVE</span>
                   <?php }elseif($value['product_status'] == '2'){?>
-                    <span class="badge bg-success text-white me-1">PASSED</span>
+                    <span class="badge bg-primary text-white me-1">ACTIVE</span>
                   <?php }elseif($value['product_status'] == '3'){?>
                     <span class="badge bg-danger text-white me-1">FAILED</span>
                   <?php }elseif($value['product_status'] == '4'){?>
@@ -471,7 +471,7 @@ $this->load->view('user/includes/header');
                           <?php }elseif($value['product_status'] == '1'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '2'){?>
-                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>
+                            Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">ACTIVE</span>
                           <?php }elseif($value['product_status'] == '3'){?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>
                           <?php }elseif($value['product_status'] == '4'){?>
