@@ -443,7 +443,7 @@ $myArray = explode(',', $myString);
     $.ajax({
       type: "POST",
       url: "<?php echo base_url('user/metrix/saveStartDate'); ?>",
-      data: saveStartDate,
+      data: {r,'saveStartDate':saveStartDate},
       dataType: "html",
       success: function(data){
         let res = JSON.parse(data);
@@ -530,12 +530,8 @@ $myArray = explode(',', $myString);
       success: function(data){
 
         let res = JSON.parse(data);
-
-        // res['equity'] = "null";
-        // res['balance'] = "null";
-        // console.log(res['balance']);
-
-        if(res['equity'] != "null" && res['balance'] != "null"){
+        
+        if(res['equity'] != null && res['balance'] != null){
 
           if(((res['balance'])-accountSize) < 0){
             $('#closed_profit').html(`<span class="text-danger readonly bg-light form-control">`+((res['balance'])-accountSize).toFixed(2)+`</span>`);
@@ -747,7 +743,7 @@ $myArray = explode(',', $myString);
           
           if((res['openorders'].length) > 0){
             // console.log((res['openorders'][0]['openTime']).slice(0,10));
-            saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10);
+            saveStartDate.date = (res['openorders'][0]['openTime']).slice(0,10)+' '+(res['openorders'][0]['openTime']).slice(11,20);
             saveDate();
             res['openorders'].forEach((element) => {
               $('#openOrders').append(`
@@ -822,7 +818,27 @@ $myArray = explode(',', $myString);
     });
   }
 
+  function check_account_expiry(){
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('user/metrix/check_account_expiry'); ?>",
+      data: {r},
+      dataType: "html",
+      success: function(data){
+        let dataRes = JSON.parse(data).status;
+        if(dataRes == 200){
+          console.log('yes');
+        }else if(dataRes == 400){
+          console.log('yes');
+        }
+      },
+      error: function(data){
+        return false;
+      }
+    });
+  }
   function checkUserStatus(){
+    check_account_expiry();
     $.ajax({
       type: "POST",
       url: "<?php echo base_url('user/metrix/checkUserStatus'); ?>",

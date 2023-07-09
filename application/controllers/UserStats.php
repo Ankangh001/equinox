@@ -27,11 +27,11 @@ class UserStats extends CI_Controller {
                 continue;
             }else{
                 $data = json_decode($res, true);
-                // $equity = $data['equity'];
+                $equity = $data['equity'];
                 $balance = $data['balance']-$value['account_size'];
                 $saveTodb = $this->db->where(['id'=>$value['id']])
                 ->update('userproducts',[
-                    // 'equity' => $equity,
+                        'service_equity' => $equity,
                         'balance' => $balance]);
                 echo "update <br/>";
             }

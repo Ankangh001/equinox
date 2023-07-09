@@ -1,5 +1,7 @@
 <?php
 // echo "<pre>";
+// print_r($res);
+// die;
 // echo (substr($res[0]['phase3_issue_date'], 0, 10));
 // print_r($certificates);
 // print_r($certificates[0]['amount'].$certificates[0]['payout_date'].$_SESSION['user_name']);
@@ -79,11 +81,11 @@ $this->load->view('user/includes/header');
         }
     });
 
-    const generatePDF = async (name, date="<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>") => {
+    const generatePDF = async (name) => {
         const existingPdfBytes = await fetch("<?=base_url('assets/certificates')?>/funded_cert.pdf").then((res) =>
             res.arrayBuffer()
         );
-
+        const date= "<?= substr($res[0]['phase3_issue_date'], 0, 10) ?>";
         // Load a PDFDocument from the existing PDF bytes
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
         pdfDoc.registerFontkit(fontkit);

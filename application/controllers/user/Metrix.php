@@ -16,16 +16,17 @@ class Metrix extends APIMaster {
         $response = base64_decode($this->input->post('r'));
         $decrypted = json_decode($response, true);
         $token = $this->get_curl('https://mt5.mtapi.be/Connect?user='.$decrypted['ieqd'].'&password='.$decrypted['peqd'].'&host='.$decrypted['ieqp'].'&port='.$decrypted['peqt']);
-        
-        // $accountSummary = $this->accountSummary($token);
-        // $orderHistory = $this->OrderHistory($token);
-        // $openedOrders = $this->OpenedOrders($token);
-        // $mergedArray = array_merge(json_decode($accountSummary, true),json_decode($orderHistory, true));
-        // $data = array_merge($mergedArray, array('openorders'=>json_decode($openedOrders, true)));
-        // echo json_encode($data, true);
-
-
         $response = json_decode($token, JSON_PRETTY_PRINT);
+
+        $file_path = 'accounts';
+        $filename = 'accounts_'.date('Y-m-d H:m:s').'.log';
+        $logsData = array(
+            date('Y-m-d H:m:s') => array(
+                'request'=>$token,
+                'response'=>$response
+            )
+        );
+        $this->createLog($file_path, $filename, $logsData);
 
         if(isset($response['message'])){
             echo json_encode(array('status'=> '400'));
@@ -72,13 +73,17 @@ class Metrix extends APIMaster {
 
     //----save start and end date---
     public function saveStartDate(){
-        $start_date =  $this->input->post('date');
-        $end_date = date('Y-m-d', strtotime($start_date. ' +30 days'));
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        
+        $start_date =  $this->input->post('saveStartDate')['date'];
+        $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
         $data = array(
             'start_date' => $start_date,
             'end_date' => $end_date
         );
-        $res = $this->db->where(['user_id'=>$_SESSION['user_id']])->update('userproducts', $data);
+        $res = $this->db->where(['id'=>$decrypted['eqid']])->update('userproducts', $data);
         if($res){
             $response = array(
                 'status'=> 200,
@@ -90,6 +95,42 @@ class Metrix extends APIMaster {
                 'message'=>'Error adding start date and end date to database'
             );
         }
+        echo json_encode($response);
+    }
+
+    //----save start and end date---
+    public function check_account_expiry(){
+        $request = base64_decode($this->input->post('r'));
+        $decrypted = json_decode($request, true);
+        $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        
+        $end_date = $check[0]['end_date'];
+        $current_date = date('Y-m-d H:m:s');
+        
+        $res = 0;
+        if($check[0]['product_status'] != '4'){
+            if($current_date > $end_date){
+                $res = $this->db->where(['id'=>$decrypted['eqid']])
+                ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
+            }
+            if($res){
+                $response = array(
+                    'status'=> 200,
+                    'message'=>'account expired, product status updated'
+                );
+            }else{
+                $response = array(
+                    'status'=> 400,
+                    'message'=>'nothing changed'
+                );
+            }
+        }else{
+            $response = array(
+                'status'=> 400,
+                'message'=>'not checking any more already expired!'
+            );
+        }
+        
         echo json_encode($response);
     }
 
@@ -385,21 +426,34 @@ class Metrix extends APIMaster {
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
                 
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+                        $accountCreate = $this->autoAccountCreate($requestData, "");
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '2',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-1 for aggressive product',
@@ -415,24 +469,35 @@ class Metrix extends APIMaster {
                         // move to phase3
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2', 'metrics_status'=> '1']);
-                        echo "hi";
+                       
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '3',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-m-d H:m:s'),
-                            'phase3_issue_date' => date('Y-m-d H:m:s')
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase-2 for aggressive product',
@@ -448,7 +513,7 @@ class Metrix extends APIMaster {
                         // no phase after this
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        // $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
                         
                         $response = array(
                             'status'=> 200,
@@ -468,21 +533,34 @@ class Metrix extends APIMaster {
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
                 
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+                        $accountCreate = $this->autoAccountCreate($requestData, "");
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '2',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
-                            'payment_status' => $check[0]['payment_status']
+                            'payment_status' => $check[0]['payment_status'],
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase1 for normal product',
@@ -499,23 +577,35 @@ class Metrix extends APIMaster {
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
                         
+                        $this->send_user_email($email, "PASS", "", $name, $account);
+                        $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
+                        
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $deactiveAccount = $this->deactiveAccount($requestData);
+
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
                             'product_id' => $check[0]['product_id'],
                             'phase' => '3',
                             'created_date' => date('Y-m-d H:m:s'),
-                            'product_status' => '0',
+                            'product_status' => '1',
 
                             'product_price' => $check[0]['product_price'],
                             'product_discount' => $check[0]['product_discount'],
                             'final_product_price' => $check[0]['final_product_price'],
-                            'equity' => '0.0',
                             'payment_status' => $check[0]['payment_status'],
-                            'payoutDate' => date('Y-m-d H:m:s'),
-                            'phase3_issue_date' => date('Y-m-d H:m:s')
+
+                            'account_id' => $accountCreate['account_num'],
+                            'account_password' =>  $accountCreate['password'],
+                            'server' =>  $accountCreate['server'],
+                            'ip' =>  $accountCreate['ip'],
+                            'port' =>  $accountCreate['port'],
+                            'equity' => $accountCreate['equity'],
                         );
+
                         $res = $this->db->insert('userproducts', $userProducts);
-                        $this->send_user_email($email, "PASS", "", $name, $account);
+
+
                         $response = array(
                             'status'=> 200,
                             'message'=>'User id: '.$check[0]['user_id'].' account is passed phase2 for nonrmal product',
@@ -531,7 +621,7 @@ class Metrix extends APIMaster {
                         // no phase after this
                         $this->db->where(['id' => $decrypted['eqid'], 'payment_status' => '1', 'product_status'=>'1'])
                         ->update('userproducts', ['product_status'=>'2','metrics_status'=> '1']);
-                        $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
+                        // $this->send_user_email($email, "PASS", "FUNDED", $name, $account);
                         
                         $response = array(
                             'status'=> 200,
@@ -661,4 +751,484 @@ class Metrix extends APIMaster {
 			);
 		}
 	}
+
+
+
+    public function connectManagerAccount(){
+		$credentials = $this->db->get('mt_manager')->row_array();
+		// $user = '30001';
+		// $password = 'Nedr6b3ld';
+		// $ip = '8.208.91.123';
+		// $port = '443';
+		// $server = $ip.'%3A'.$port;
+
+		$user = $credentials['userID'];
+		$password = $credentials['pass'];
+		$ip = $credentials['ip'];
+		$port = $credentials['port'];
+		$server = $ip.'%3A'.$port;
+
+        $token = $this->get_acc_curl('https://mt5mng.mtapi.io/Connect?user='.$user.'&password='.$password.'&server='.$server);
+        return $token;
+    }
+
+    public function autoAccountCreate($requestData, $isLive){ 
+
+        $account = $this->db->where(['product_id' => $requestData['product_id']])->get('products')->row_array();
+        $user = $this->db->where(['user_id' => $requestData['user_id']])->get('user')->row_array();
+        $account_size = $account['account_size'];
+        $acc_type = $account['product_category'];        
+
+        $master_password = $user['first_name'].substr($account_size,0,3).'K'; 
+        $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
+        if($isLive == '1'){
+            $groupCode = "contest%5CLIVEProp%5CUSD";
+        }else{
+            $groupCode = "contest%5CFProp%5CFpropa%5CUSD";
+        }
+
+        try {
+            $token = $this->connectManagerAccount();
+            $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.
+            '&master_pass='.$master_password.'&investor_pass='.$investor_password.
+            '&enabled=true&FirstName='.$user['first_name'].'%20'.$user['last_name'].
+            '%20-%20'.$acc_type.
+            '%20-%20P1%20-%20&LastName=ETC&Group='.$groupCode.'&Rights=USER_RIGHT_CONFIRMED&Leverage=100&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+
+            $json = $this->get_acc_curl($path);
+            
+            $response = json_decode($json, JSON_PRETTY_PRINT);
+            // $response['login'] = '850952';
+            
+			//generate log
+			$logsData = array(
+                date('Y-m-d H:m:s') => array(
+                    'Token' => $token,
+                    'Request Url' => $path,
+                    'Response' => $json,
+                    'Decoded Response' => $response
+                )
+			);
+
+			$file_path= 'accountCreate';
+			$filename= date('Y-m-d').'_createAccount.log';
+            $this->createLog($file_path, $filename, $logsData);
+
+			if($response['login']){
+                $account_num = $response['login'];
+                $addBalanceUrl = 'https://mt5mng.mtapi.io/Deposit?id='.$token.'&login='.$account_num.'&amount='.$account_size.'&comment=Deposit&credit=false';
+                if($this->get_acc_curl($addBalanceUrl)){
+                    
+                    $name = $user['first_name'].' '.$user['last_name'];
+                    $servers = $this->db->get('servers')->row_array();
+                    $responseData = array(
+                        'status' => '200',
+                        'account_num' => $account_num,
+                        'password' => $master_password,
+                        'ip' => $servers['sIp'],
+                        'port' => $servers['sPort'],
+                        'server' => $servers['serverName'],
+                        'balance' => $account_size,
+                        'equity' => $account_size,
+                        'balance-added' => true
+                    );
+
+                    $sendEmail = $this->send_credentials_email(
+                        $user['email'], 
+                        $account_num, 
+                        $master_password, 
+                        $servers['serverName'],
+                        $account_size,
+                        $name,
+                        '2'
+                    );
+                    
+                }
+            }else{
+                $responseData = array(
+                    'status' => '400'
+                );
+            }
+			
+			return $responseData;
+
+		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+    public function deactiveAccount($requestData){ 
+
+        $account_id = $requestData['account_id'];
+        
+        try {
+            $token = $this->connectManagerAccount();
+            $path = 'https://mt5mng.mtapi.io/AccountUpdate?id='.$token.'&enabled=false&Login='.$account_id;
+
+            $response = $this->get_acc_curl($path);
+            
+			//generate log
+			$logsData = array(
+                date('Y-m-d H:m:s') => array(
+                    'Token' => $token,
+                    'Request Url' => $path,
+                    'Response' => $response
+                )
+			);
+
+			$file_path= 'deactiveAccount';
+			$filename= date('Y-m-d').'_deactiveAccount.log';
+            $this->createLog($file_path, $filename, $logsData);
+
+			if($response == "OK"){
+                $responseData = array(
+                    'status' => '200'
+                );
+            }else{
+                $responseData = array(
+                    'status' => '400'
+                );
+            }
+			
+			return $responseData;
+
+		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+    public function get_acc_curl($url){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            )
+        );
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return $response;
+    }
+
+    public function send_credentials_email($user_email, $accountId,  $password, $server, $balance, $name, $phase){
+		$this->load->helper('email_helper');
+		$this->load->library('mailer');
+
+		$body = file_get_contents(base_url('assets/mail/crdentialsEmail.html'));
+		if($phase == '1'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										We are excited that you have decided to be a part of our ETC family and we wish you
+										very best with the evaluation.<br /><br />
+										You can monitor the performance of your account from the metrics section in your
+										dashboard.
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}elseif($phase == '2'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										Congratulations again on passing your Evaluation Phase-1. We wish you very best in your Phase 2 and on your path to a becoming part of the ETC live trader family.<br /><br />
+										Always remember, “The Sky is the limit”.
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}elseif($phase == '3'){
+			$content = '
+			<tbody>
+				<tr>
+					<td align="left">
+						<div style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:"Cabin",sans-serif;">
+							<div style="font-size: 14px; line-height: 160%; text-align: left; word-wrap: break-word;">
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 35.2px;">Hello '.$name.', </span>
+								</p>
+								<p style="font-size: 14px; line-height: 160%;">
+									<span style="font-size: 18px; line-height: 28.8px;">
+										Congratulations again on passing your Evaluation Phase-2. Welcome to the ETC funded family.<br /><br />
+									</span>
+								</p>
+								<br />
+								<br />
+								<table style="font-size: 12px;width: 100%;text-align: center;" align="center">
+									<tbody>
+										<tr>
+											<td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tr>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong>Account Details:</strong>
+														</td>
+														<td align="left" bgcolor="#CCCCCC" width="50%" style="padding: 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															<strong></strong>
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Account
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$accountId.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Password
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$password.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Server
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$server.'
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Leverage
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															1:100
+														</td>
+													</tr>
+													<tr>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															Balance
+														</td>
+														<td align="left" width="50%" style="padding: 6px 12px;font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+															'.$balance.'
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<p style="font-size: 14px; line-height: 160%;">
+							<span style="font-size: 16px; line-height: 28.8px;">
+								Please test the above credentials right away and let us know if you have any issues.
+								If you have any questions, please feel free to get in touch with us. Best of luck with
+								your trading account!
+							</span>
+							</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>';
+		}
+		$finaltemp = str_replace("{CONTENT}", $content, $body);
+
+		$email = send_email($user_email, 'Evaluation Account Credentials', $finaltemp,'','',3);
+
+		if($email){
+			$response = array(
+				"success" => 1,
+				"message" => "Credentials email sent to ".$user_email
+			);
+		}	
+		else{
+			$response = array(
+				"success" => 0,
+				"message" => "Some error occured!"
+			);
+		}
+	}
+
+    public function createLog($path, $filename, $data){
+        
+        $file_path= 'storage/'.$path;
+
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+        
+        if(file_exists($file_path.'/'.$filename)){
+            $res = write_file(FCPATH.$file_path.'/'.$filename, json_encode($data), 'a');
+        }
+        else{
+            $res = write_file(FCPATH.$file_path.'/'.$filename, json_encode($data));
+        }
+    }
 }
