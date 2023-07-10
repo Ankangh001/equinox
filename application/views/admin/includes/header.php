@@ -133,7 +133,7 @@
             <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial'|| $this->uri->segment(2) == 'completed' || $this->uri->segment(2) == 'phase-3'  || $this->uri->segment(2) == 'phase-1'||$this->uri->segment(2) == 'phase-2' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-chart"></i>
-                <div>Purchase History</div>
+                <div>All Accounts</div>
               </a>
               <ul class="menu-sub">
                 <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'free-trial') { echo 'active';} ?>">
@@ -156,11 +156,11 @@
                     <div>Funded</div>
                   </a>
                 </li>
-                <li class="menu-item <?php if ($this->uri->segment(2) == 'completed') { echo 'active';} ?>">
+                <!-- <li class="menu-item <?php if ($this->uri->segment(2) == 'completed') { echo 'active';} ?>">
                   <a href="<?=base_url('admin/')?>completed" class="menu-link">
                     <div>Completed</div>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
 
