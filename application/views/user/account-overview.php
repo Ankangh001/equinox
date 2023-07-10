@@ -83,7 +83,8 @@ $this->load->view('user/includes/header');
               <div class="closed-details col-lg-8 d-flex align-items-center">
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                <span class="col-lg-2 col-md-2 <?= @$value['account_id'] ?>">
+                  <?php if($value['product_status'] == '0'){ ?>
                     <span class="badge bg-warning text-white me-1">PENDING</span>
                   <?php }elseif($value['product_status'] == '1'){ ?>
                     <span class="badge bg-primary text-white me-1">ACTIVE</span>
@@ -153,11 +154,11 @@ $this->load->view('user/includes/header');
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= $value['product_category'] == 'Aggressive' ? (substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)) : ''?></label>
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label <?= @$value['account_id'] ?>">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
@@ -235,7 +236,8 @@ $this->load->view('user/includes/header');
               <div class="closed-details col-lg-8 d-flex align-items-center">
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                <span class="col-lg-2 col-md-2 <?= @$value['account_id'] ?>">
+                  <?php if($value['product_status'] == '0'){ ?>
                     <span class="badge bg-warning text-white me-1">PENDING</span>
                   <?php }elseif($value['product_status'] == '1'){ ?>
                     <span class="badge bg-primary text-white me-1">ACTIVE</span>
@@ -304,11 +306,11 @@ $this->load->view('user/includes/header');
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp; $<?= @$value['account_size'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp; <?= $value['product_category'] == 'Aggressive' ? (substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)) : ''?></label>
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp; <?= @$value['product_category'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label <?= @$value['account_id'] ?>">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
@@ -383,7 +385,8 @@ $this->load->view('user/includes/header');
               
                 <span class="col-lg-2 col-md-2 mob-acc"><?= @$value['product_category'] ? $value['product_category'] : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
                 <span class="col-lg-2 col-md-2">$<?= @$value['account_size'] ? number_format($value['account_size'], 0, '.',',') : "<span style='color:#fff'>12345&nbsp;&nbsp;&nbsp;&nbsp;</span>" ?></span>
-                <span class="col-lg-2 col-md-2"><?php if($value['product_status'] == '0'){ ?>
+                <span class="col-lg-2 col-md-2 <?= @$value['account_id'] ?>">
+                  <?php if($value['product_status'] == '0'){ ?>
                     <span class="badge bg-warning text-white me-1">PENDING</span>
                   <?php }elseif($value['product_status'] == '1'){ ?>
                     <span class="badge bg-primary text-white me-1">ACTIVE</span>
@@ -461,11 +464,11 @@ $this->load->view('user/includes/header');
                       <div class="row">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= $value['product_category'] == 'Aggressive' ? (substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)) : ''?></label>
                       </div>
                       <div class="row mb-3">
                         <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
-                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+                        <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label <?= @$value['account_id'] ?>">
                           <?php if($value['product_status'] == '0'){ ?>
                             Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>
                           <?php }elseif($value['product_status'] == '1'){ ?>
@@ -560,115 +563,128 @@ $this->load->view('user/includes/header');
         if(res.status == 200){
           console.log(res);
           res.data.forEach(element => {
-            $('#accordionExample').html('');
-            $('#accordionExample').append(`
-                ${
-                  element.phase == '1' ?
-                  (`
-                    <div class="card accordion-item mb-5">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button" 
-                        data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
-                          Login :  ${element.account_id}
-                        </button>
-                      </h2>
-                      <div id="accordionOne_${element.id}" class="accordion-collapse  show data-bs-parent="#accordionExample">
-                          <div class="modal fade" id="modalCenter<?= @$value['id'] ?>" tabindex="-1" style="display: none;" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="modalCenterTitle">Your Login Credentials</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="col-xl">
-                                    <div class="card-body">
-                                      <div class="mb-3 row border-bottom justfy-content-start">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.account_id}</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
-                                      </div>
-                                      <div class="mb-3 row border-bottom justfy-content-between">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password</label>
-                                        <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
-                                          ${element.account_password}
-                                          <!-- <i class='bx bxs-low-vision'></i> -->
-                                        </label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
-                                      </div>
+            // $('#accordionExample').html('');
+            // $('#accordionExample').append(`
+            //     ${
+            //       element.phase == '1' ?
+            //       (`
+            //         <div class="card accordion-item mb-5">
+            //           <h2 class="accordion-header" id="headingOne">
+            //             <button type="button" class="bg-light text-dark fw-bold p-3  accordion-button" 
+            //             data-bs-toggle="collapse" data-bs-target="#accordionOne_<?= @$value['id'] ?>" aria-expanded="false" aria-controls="accordionOne_<?= @$value['id'] ?>">
+            //               Login :  ${element.account_id}
+            //             </button>
+            //           </h2>
+            //           <div id="accordionOne_${element.id}" class="accordion-collapse  show data-bs-parent="#accordionExample">
+            //               <div class="modal fade" id="modalCenter<?= @$value['id'] ?>" tabindex="-1" style="display: none;" aria-hidden="true">
+            //                 <div class="modal-dialog modal-dialog-centered" role="document">
+            //                   <div class="modal-content">
+            //                     <div class="modal-header">
+            //                       <h5 class="modal-title" id="modalCenterTitle">Your Login Credentials</h5>
+            //                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            //                     </div>
+            //                     <div class="modal-body">
+            //                       <div class="col-xl">
+            //                         <div class="card-body">
+            //                           <div class="mb-3 row border-bottom justfy-content-start">
+            //                             <label for="html5-text-input" class="col-md-4 col-form-label">Login</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.account_id}</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+            //                           </div>
+            //                           <div class="mb-3 row border-bottom justfy-content-between">
+            //                             <label for="html5-text-input" class="col-md-4 col-form-label d-flex">Password</label>
+            //                             <label for="html5-text-input" style="text-transform: none;" class="col-md-4 text-right col-form-label">
+            //                               ${element.account_password}
+            //                               <!-- <i class='bx bxs-low-vision'></i> -->
+            //                             </label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+            //                           </div>
                                       
-                                      <div class="mb-3 row border-bottom justfy-content-between">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.server}</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
-                                      </div>
+            //                           <div class="mb-3 row border-bottom justfy-content-between">
+            //                             <label for="html5-text-input" class="col-md-4 col-form-label">Server</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label">${element.server}</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+            //                           </div>
 
-                                      <div class="mb-3 row border-bottom justfy-content-between">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
-                                        <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                    Close
-                                  </button>
-                                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+            //                           <div class="mb-3 row border-bottom justfy-content-between">
+            //                             <label for="html5-text-input" class="col-md-4 col-form-label">Platform</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label">Meta Trader 5</label>
+            //                             <label for="html5-text-input" class="col-md-4 text-right col-form-label"></label>
+            //                           </div>
+            //                         </div>
+            //                       </div>
+            //                     </div>
+            //                     <div class="modal-footer">
+            //                       <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            //                         Close
+            //                       </button>
+            //                       <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            //                     </div>
+            //                   </div>
+            //                 </div>
+            //               </div>
                                         
-                          <div class="accordion-body p-0">
-                            <div class="row">
-                              <div class="col-xl">
-                                <div class="">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
-                                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
-                                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
-                                      <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
-                                        ${
-                                          element.product_status == '0' ? ('Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>') :
-                                              (element.product_status == '1' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>':
-                                                element.product_status == '2' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>':
-                                                  element.product_status == '3' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>':'')
-                                        }                         
-                                      </label>
-                                    </div>
+            //               <div class="accordion-body p-0">
+            //                 <div class="row">
+            //                   <div class="col-xl">
+            //                     <div class="">
+            //                       <div class="card-body">
+            //                         <div class="row">
+            //                           <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Account size: &nbsp;&nbsp;&nbsp;&nbsp; $<?= @$value['account_size'] ?></label>
+            //                           <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Start Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['start_date'],0,10) == '0000-00-00' ? '': substr($value['start_date'],0,10)?></label>
+            //                           <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">End Date: &nbsp;&nbsp;&nbsp;&nbsp; <?= substr($value['end_date'],0,10) == '0000-00-00' ? '': substr($value['end_date'],0,10)?></label>
+            //                         </div>
+            //                         <div class="row mb-3">
+            //                           <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">Type: &nbsp;&nbsp;&nbsp;&nbsp; <?= @$value['product_category'] ?></label>
+            //                           <label for="html5-text-input" class="text-dark fw-bold col-md-12 col-lg-4 col-form-label">
+            //                             ${
+            //                               element.product_status == '0' ? ('Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-warning text-white me-1">PENDING</span>') :
+            //                                   (element.product_status == '1' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-success text-white me-1">ACTIVE</span>':
+            //                                     element.product_status == '2' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-primary text-white me-1">PASSED</span>':
+            //                                       element.product_status == '3' ? 'Status: &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge bg-danger text-white me-1">FAILED</span>':'')
+            //                             }                         
+            //                           </label>
+            //                         </div>
 
-                                    <div class="row">
-                                      <div class="col-lg-6 text-left">
-                                        <button data-bs-toggle="modal" data-bs-target="#modalCenter${element.id}" class="me-3 btn btn-sm btn-outline-primary">
-                                          <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
-                                        </button>
-                                        <a href="" style="pointer-events: none; opacity: 0.5; background: #696cff; color: #ffffff; border: 2px solid #696cff; cursor: not-allowed;" 
-                                          class="btn btn-sm btn-outline-primary">
-                                        &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  `) :
-                  element.phase == '2' ?
-                  (`<div class="card-title fw-bold">Evaluation Phase 2</div>`) :
-                  element.phase == '3' ?
-                  (`<div class="card-title fw-bold">Evaluation Funded</div>`) :''                  
-                }
-            `);
+            //                         <div class="row">
+            //                           <div class="col-lg-6 text-left">
+            //                             <button data-bs-toggle="modal" data-bs-target="#modalCenter${element.id}" class="me-3 btn btn-sm btn-outline-primary">
+            //                               <i class='bx bxs-key p-1 fs-3 text-dark'></i>Credentials
+            //                             </button>
+            //                             <a href="" style="pointer-events: none; opacity: 0.5; background: #696cff; color: #ffffff; border: 2px solid #696cff; cursor: not-allowed;" 
+            //                               class="btn btn-sm btn-outline-primary">
+            //                             &nbsp;&nbsp;<i class='bx bx-line-chart-down p-1 fs-3 text-dark' ></i>&nbsp;&nbsp;&nbsp;Metrics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            //                             </a>
+            //                           </div>
+            //                         </div>
+            //                       </div>
+            //                     </div>
+            //                   </div>
+            //                 </div>
+            //               </div>
+            //             </div>
+            //           </div>
+            //       `) :
+            //       element.phase == '2' ?
+            //       (`<div class="card-title fw-bold">Evaluation Phase 2</div>`) :
+            //       element.phase == '3' ?
+            //       (`<div class="card-title fw-bold">Evaluation Funded</div>`) :''                  
+            //     }
+            // `);
             console.log(element.account_id);
+            let content = '';
+            if(element.product_status == '0'){
+              content = '<span class="badge bg-warning text-white me-1">PENDING</span>';
+            }else if(element.product_status == '1'){
+              content = '<span class="badge bg-primary text-white me-1">ACTIVE</span>';
+            }else if(element.product_status == '2'){
+              content = '<span class="badge bg-success text-white me-1">PASSED</span>';
+            }else if(element.product_status == '3'){
+              content = '<span class="badge bg-danger text-white me-1">FAILED</span>';
+            }else if(element.product_status == '4'){
+              content = '<span class="badge bg-info text-white me-1">EXPIRED</span>';
+            }      
+            $('.'+element.account_id).html(content)
           });
         }
       },
@@ -698,9 +714,10 @@ $this->load->view('user/includes/header');
     }
   });
 
-  // setInterval(() => {
-  //   getAccounts();
-  // }, 1000);
+  getAccounts();
+  setInterval(() => {
+    getAccounts();
+  }, 2300);
 </script>
 </body>
 </html>

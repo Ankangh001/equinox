@@ -78,7 +78,13 @@ class Metrix extends APIMaster {
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
         
         $start_date =  $this->input->post('saveStartDate')['date'];
-        $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
+
+        if($check['phase'] == '1'){
+            $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
+        }elseif($check['phase'] == '2'){
+            $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +60 days'));
+        }
+        
         $data = array(
             'start_date' => $start_date,
             'end_date' => $end_date
@@ -103,34 +109,42 @@ class Metrix extends APIMaster {
         $request = base64_decode($this->input->post('r'));
         $decrypted = json_decode($request, true);
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        $products = $this->db->where(['product_id' => $check['product_id']])->get('products')->result_array();
         
         $end_date = $check[0]['end_date'];
         $current_date = date('Y-m-d H:m:s');
         
         $res = 0;
-        if($check[0]['product_status'] != '4' && $end_date != '0000-00-00 00:00:00'){
-            if($current_date > $end_date){
-                $res = $this->db->where(['id'=>$decrypted['eqid']])
-                ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
-            }
-            if($res){
-                $response = array(
-                    'status'=> 200,
-                    'message'=>'account expired, product status updated'
-                );
+        if($products[0]['product_category'] == 'Aggressive'){
+            if($check[0]['product_status'] != '4' && $end_date != '0000-00-00 00:00:00'){
+                if($current_date > $end_date){
+                    $res = $this->db->where(['id'=>$decrypted['eqid']])
+                    ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
+                }
+                if($res){
+                    $response = array(
+                        'status'=> 200,
+                        'message'=>'account expired, product status updated'
+                    );
+                }else{
+                    $response = array(
+                        'status'=> 400,
+                        'message'=>'nothing changed'
+                    );
+                }
             }else{
                 $response = array(
                     'status'=> 400,
-                    'message'=>'nothing changed'
+                    'message'=>'not checking any more already expired!'
                 );
             }
         }else{
             $response = array(
                 'status'=> 400,
-                'message'=>'not checking any more already expired!'
+                'message'=>'product is not aggressive!'
             );
         }
-        
+
         echo json_encode($response);
     }
 
