@@ -218,14 +218,20 @@ class MetricsCron extends APIMaster {
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
 
         $start_date =  $sDate;
-        $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
+        
+        if($check['phase'] == '1'){
+            $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +30 days'));
+        }elseif($check['phase'] == '2'){
+            $end_date = date('Y-m-d H:m:s', strtotime($start_date. ' +60 days'));
+        }
+
         $data = array(
             'start_date' => $start_date,
             'end_date' => $end_date
         );
         $res = $this->db->where(['id'=>$decrypted['eqid']])->update('userproducts', $data);
         if($res){
-            $response = 'start date and end date added successfully';
+            $response = 'Start date and end date added successfully';
         }else{
             $response = 'Error adding start date and end date to database';
         }
@@ -236,23 +242,28 @@ class MetricsCron extends APIMaster {
     public function check_account_expiry($id){
         $decrypted['eqid'] = $id;
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
+        $products = $this->db->where(['product_id' => $check['product_id']])->get('products')->result_array();
         
         $end_date = $check[0]['end_date'];
         $current_date = date('Y-m-d H:m:s');
         
         $res = 0;
-        if($check[0]['product_status'] != '4' && $end_date != '0000-00-00 00:00:00'){
-            if($current_date > $end_date){
-                $res = $this->db->where(['id'=>$decrypted['eqid']])
-                ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
-            }
-            if($res){
-                $response = 'account expired, product status updated';
+        if($products[0]['product_category'] == 'Aggressive'){
+            if($check[0]['product_status'] != '4' && $end_date != '0000-00-00 00:00:00'){
+                if($current_date > $end_date){
+                    $res = $this->db->where(['id'=>$decrypted['eqid']])
+                    ->update('userproducts', ['product_status' => '4', 'account_status' => '0']);
+                }
+                if($res){
+                    $response = 'account expired, product status updated';
+                }else{
+                    $response = 'nothing changed';
+                }
             }else{
-                $response = 'nothing changed';
+                $response = 'not checking any more already expired!';
             }
         }else{
-            $response = 'not checking any more already expired!';
+            $response = 'product is not aggressive!';
         }
         
         return json_encode($response);
