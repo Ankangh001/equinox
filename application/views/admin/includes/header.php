@@ -181,6 +181,14 @@
               </a>
             </li>
 
+            <!-- Mt Manager Login -->
+            <li class="menu-item <?php if ($this->uri->segment(2) == 'group-code') { echo 'active';} ?>">
+              <a href="<?=base_url('admin/')?>group-code" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-globe"></i>
+                <div>Group Code</div>
+              </a>
+            </li>
+
             <!-- Payouts  -->
             <li class="menu-item <?php if ($this->uri->segment(3) == 'pending' || $this->uri->segment(3) == 'declined' || $this->uri->segment(3) == 'approved' ) { echo 'active open';} ?>">
               <a href="<?=base_url('admin/')?>purchase-history" class="menu-link menu-toggle">

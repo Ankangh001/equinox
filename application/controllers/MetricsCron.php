@@ -242,7 +242,7 @@ class MetricsCron extends APIMaster {
     public function check_account_expiry($id){
         $decrypted['eqid'] = $id;
         $check = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->result_array();
-        $products = $this->db->where(['product_id' => $check['product_id']])->get('products')->result_array();
+        $products = $this->db->where(['product_id' => $check[0]['product_id']])->get('products')->result_array();
         
         $end_date = $check[0]['end_date'];
         $current_date = date('Y-m-d H:m:s');
@@ -494,7 +494,7 @@ class MetricsCron extends APIMaster {
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
                         
                         $deactiveAccount = $this->deactiveAccount($requestData);
-                        $accountCreate = $this->autoAccountCreate($requestData, "");
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
 
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -531,7 +531,7 @@ class MetricsCron extends APIMaster {
                         $this->send_user_email($email, "PASS", "", $name, $account);
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
                         
-                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $accountCreate = $this->autoAccountCreate($requestData, "2");
                         $deactiveAccount = $this->deactiveAccount($requestData);
 
                         $userProducts = array(
@@ -589,7 +589,7 @@ class MetricsCron extends APIMaster {
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
                         
                         $deactiveAccount = $this->deactiveAccount($requestData);
-                        $accountCreate = $this->autoAccountCreate($requestData, "");
+                        $accountCreate = $this->autoAccountCreate($requestData, "1");
 
                         $userProducts = array(
                             'user_id' => $check[0]['user_id'],
@@ -626,7 +626,7 @@ class MetricsCron extends APIMaster {
                         $this->send_user_email($email, "PASS", "", $name, $account);
                         $requestData = $this->db->where(['id' => $decrypted['eqid']])->get('userproducts')->row_array();
                         
-                        $accountCreate = $this->autoAccountCreate($requestData, "1");
+                        $accountCreate = $this->autoAccountCreate($requestData, "2");
                         $deactiveAccount = $this->deactiveAccount($requestData);
 
                         $userProducts = array(
@@ -809,18 +809,21 @@ class MetricsCron extends APIMaster {
 
         $account = $this->db->where(['product_id' => $requestData['product_id']])->get('products')->row_array();
         $user = $this->db->where(['user_id' => $requestData['user_id']])->get('user')->row_array();
-        $account_size = $account['account_size'];
+        $account_size = $account['account_size']/1000;
         $acc_type = $account['product_category'];        
 
-        $master_password = $user['first_name'].substr($account_size,0,3).'K'; 
-        $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
-        if($isLive == '1'){
-            $groupCode = "contest%5CLIVEProp%5CUSD";
+        $master_password = $user['first_name'].$account_size.'K';
+        $investor_password = $user['last_name'].$account_size.'K';
+
+        if($isLive == '2'){
+            $gCode = $this->db->where(['phase' => '2'])->get('group_code')->row_array();
+		    $groupCode = str_replace("\\","%5C",$gCode['code']);
         }else{
-            $groupCode = "contest%5CFProp%5CFpropa%5CUSD";
+            $gCode = $this->db->where(['phase' => '2'])->get('group_code')->row_array();
+		    $groupCode = str_replace("\\","%5C",$gCode['code']);
         }
 
-        try {
+		try {
             $token = $this->connectManagerAccount();
             $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.
             '&master_pass='.$master_password.'&investor_pass='.$investor_password.
@@ -832,13 +835,13 @@ class MetricsCron extends APIMaster {
             
             $response = json_decode($json, JSON_PRETTY_PRINT);
             // $response['login'] = '850952';
-            
+			            
 			//generate log
 			$logsData = array(
                 date('Y-m-d H:m:s') => array(
-                    'Token' => $token,
-                    'Request Url' => $path,
-                    'Response' => $json,
+				'Token' => $token,
+				'Request Url' => $path,
+				'Response' => $json,
                     'Decoded Response' => $response
                 )
 			);

@@ -120,7 +120,7 @@ class Payment extends APIMaster {
 				'final_product_price' => $requestData['final_product_price'],
 				'phase'         => '1',
 				'created_date'  => date('Y-m-d H:m:s'),
-				'product_status'=> '0',
+				'product_status'=> '1',
 				'payment_status'=> $status,
 				'payment_code'  => $dump['data']['code']
 			);
@@ -572,11 +572,6 @@ class Payment extends APIMaster {
 
     public function connectManagerAccount(){
 		$credentials = $this->db->get('mt_manager')->row_array();
-		// $user = '30001';
-		// $password = 'Nedr6b3ld';
-		// $ip = '8.208.91.123';
-		// $port = '443';
-		// $server = $ip.'%3A'.$port;
 		$user = $credentials['userID'];
 		$password = $credentials['pass'];
 		$ip = $credentials['ip'];
@@ -590,25 +585,28 @@ class Payment extends APIMaster {
     public function autoAccountCreate($requestData){  
         $account = $this->db->where(['product_id' => $requestData->product_id])->get('products')->row_array();
         $user = $this->db->where(['user_id' => $requestData->user_id])->get('user')->row_array();
+		$groupCode = $this->db->get('group_code')->row_array();
         $account_size = $account['account_size'];
+        $passAcc_size = $account['account_size']/1000;
         $acc_type = $account['product_category'];        
 
-        $master_password = $user['first_name'].substr($account_size,0,3).'K'; 
-        $investor_password = $user['last_name'].substr($account_size,0,3).'K'; 
-        try {
+        $master_password = $user['first_name'].$passAcc_size.'K'; 
+        $investor_password = $user['last_name'].$passAcc_size.'K'; 
+		$newGroupCode = str_replace("\\","%5C",$groupCode['code']);
+
+		try {
             $token = $this->connectManagerAccount();
             $path = 'https://mt5mng.mtapi.io/AccountCreate?id='.$token.
             '&master_pass='.$master_password.'&investor_pass='.$investor_password.
             '&enabled=true&FirstName='.$user['first_name'].'%20'.$user['last_name'].
             '%20-%20'.$acc_type.
-            '%20-%20P1%20-%20&LastName=ETC&Group=contest%5CFProp%5CFpropa%5CUSD&Rights=USER_RIGHT_CONFIRMED&Leverage=100&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
+            '%20-%20P1%20-%20&LastName=ETC&Group='.$newGroupCode.
+			'&Rights=USER_RIGHT_CONFIRMED&Leverage=100&ApiDataClearAll=MT_RET_OK&ExternalAccountClear=MT_RET_OK';
 
             $json = $this->get_curl($path);
             
             $response = json_decode($json, JSON_PRETTY_PRINT);
-			
-			// $response = json_decode($json, JSON_PRETTY_PRINT);
-            
+			            
 			//generate log
 			$logsData = array(
 				'Token' => $token,
@@ -626,18 +624,7 @@ class Payment extends APIMaster {
 			else{
 				$res = write_file(FCPATH.$file_path, json_encode($logsData));
 			}
-
-
-			// if(!$res){
-			// 	echo 'Unable to write the file';
-			// }
-			// else{
-			// 	echo 'File written!';
-			// }
-
-
-			// print_r($response);
-			// die;
+			
 			if($response['login']){
                 $account_num = $response['login'];
                 $addBalanceUrl = 'https://mt5mng.mtapi.io/Deposit?id='.$token.'&login='.$account_num.'&amount='.$account_size.'&comment=Deposit&credit=false';
