@@ -791,7 +791,7 @@ $myArray = explode(',', $myString);
               <div class="col-md-6 m-auto">
                 <div class="card">
                     <div class="card-body text-center text-muted ">
-                      😧 <br/>Your Account has been disabled !.
+                      😧 <br/>Your Account has been disabled !
                     </div>
                 </div>
               </div>
