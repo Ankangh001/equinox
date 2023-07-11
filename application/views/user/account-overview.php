@@ -671,14 +671,18 @@ $this->load->view('user/includes/header');
             //       (`<div class="card-title fw-bold">Evaluation Funded</div>`) :''                  
             //     }
             // `);
-            console.log(element.account_id);
+            // console.log(element.account_id);
             let content = '';
             if(element.product_status == '0'){
               content = '<span class="badge bg-warning text-white me-1">PENDING</span>';
             }else if(element.product_status == '1'){
               content = '<span class="badge bg-primary text-white me-1">ACTIVE</span>';
             }else if(element.product_status == '2'){
-              content = '<span class="badge bg-success text-white me-1">PASSED</span>';
+              if(element.phase == '3'){
+                content = '<span class="badge bg-primary text-white me-1">ACTIVE</span>';
+              }else{
+                content = '<span class="badge bg-success text-white me-1">PASSED</span>';
+              }
             }else if(element.product_status == '3'){
               content = '<span class="badge bg-danger text-white me-1">FAILED</span>';
             }else if(element.product_status == '4'){

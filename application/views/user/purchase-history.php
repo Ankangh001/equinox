@@ -24,9 +24,7 @@ $this->load->view('user/includes/header'); ?>
               <td><?php echo substr($value['purchase_date'], 0, 10) ?></td>
               <td>$<?= @$value['amount'] ?></td>
               <td><?= @$value['product_category'] ?></td>
-              <td>
-                <span class="badge bg-label-success me-1">Paid</span>
-              </td>
+              <td><?= @$value['payment_status'] == '1' ? '<span class="badge bg-label-success me-1">Paid</span>' : '<span class="badge bg-label-danger me-1">Failed</span>'?></td>
             </tr>              
           <?php } ?>
         </tbody>

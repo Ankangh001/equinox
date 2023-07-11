@@ -105,6 +105,43 @@ class Purchase extends APIMaster {
 	//----------end servers--------------------------------
 
 
+	//----------Group code--------------
+	public function groupCode(){
+        $this->load->view('admin/group-code');
+	}
+	public function getGroupCodeDetails(){
+		$iD = $this->input->post('id');
+		$response = $this->db->where(['id' =>  $iD])->get('group_code')->result_array();
+		echo json_encode($response);
+	}
+	public function editGroupCode(){
+		$data = array(
+			'code' =>  $this->input->post('code')
+		);
+		$iD = $this->input->post('id');
+		
+		$res = $this->db->where(['id' =>  $iD])->update('group_code', $data);
+
+		if($res){
+			$response = array(
+				'status' => '200',
+				'message' => 'Added successfully',
+			);
+		}else{
+			$response = array(
+				'status' => '400',
+				'message' => 'Unable to add data',
+			);
+		}
+		echo json_encode($response);  
+	}
+	public function groupCodeTable(){
+		$response['data'] = $this->db->get('group_code')->result_array();
+		echo  json_encode($response);
+
+	}
+	//----------end group code--------------------------------
+
 
 	//-----------credentials------------
 	public function getCredentials(){
