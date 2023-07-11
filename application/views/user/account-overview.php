@@ -561,7 +561,7 @@ $this->load->view('user/includes/header');
       success: function(data){
         let res = JSON.parse(data);
         if(res.status == 200){
-          console.log(res);
+          // console.log(res);
           res.data.forEach(element => {
             // $('#accordionExample').html('');
             // $('#accordionExample').append(`
