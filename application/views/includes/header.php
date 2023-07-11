@@ -10,7 +10,7 @@
   <meta http-equiv='pragma' content='no-cache'>
 
 
-  <meta description ="Funding for traders - Simplified! | Equinox Trading Capital">
+  <meta description ="Funding for traders - Simplified! | Equinox Trading Capital - Product License ID: dee3cccc3a7fa4cce557a90e204169ef688f37373e7e279aa663ac16beb361b9">
   <title>Funding for traders - Simplified! | Equinox Trading Capital</title>
   <meta content="We developed a unique 2-step evaluation course for traders. This evaluation process consists of Phase 1 & Phase 2 and is specially tailored to discover trading talents. Upon successful completion of the evaluation course, you are offered a placement in our firm where you can remotely manage accounts with a balance of up to $500,000." name="description">
   <meta content="thefundedtrader, myforexfunds, forexlifestyle, Forex, fundedtrader, forexpropfirm, propfirm, forextrading, forextrader, forexlifestyle, forexmarket, equinoxtradingcapital, ftmo, myforexfunds, thefundedtrader, fundednext, fundedtrader" name="keywords">
